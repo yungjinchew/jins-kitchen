@@ -1,0 +1,213 @@
+{
+  "assignment_key": "ragu",
+  "source_file": "docs/pork-fennel-lemon-ragu/v1/pork-fennel-lemon-ragu.html",
+  "meal": null,
+  "dishes": [
+    {
+      "slug": "pork-fennel-lemon-ragu-pappardelle",
+      "existing": true,
+      "name": "Pork, Fennel & Lemon Ragù with Pappardelle",
+      "protein": "Pork",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "Italian"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "braise",
+        "pasta",
+        "one-pot",
+        "white ragù",
+        "Dutch oven"
+      ],
+      "occasion": [],
+      "status": "cooked",
+      "source": "Recovered from pork-fennel-lemon-ragu.html, generated 13 June 2026",
+      "governance_version": null,
+      "summary": "A bright white ragù of oven-braised, shredded pork shoulder with fennel, lemon and Pecorino Romano, emulsified with pasta water and a little cream and tossed with pappardelle.",
+      "servings": 3,
+      "equipment": [
+        "Dutch oven",
+        "warm bowls"
+      ],
+      "method_md": "## Dish Overview\nA bright, aromatic white ragù built around pork shoulder, fennel, lemon, and Pecorino Romano — tender shredded pork against soft pappardelle, with fennel fronds providing aromatic lift at service.\n\n## Yield & Timing\nYield: 3–4 servings · Total: ~3½ hr · Active: ~55–60 min · Oven: 300°F / 150°C\n\n## Prep Phase\n1. Finely chop onion and fennel bulb.\n2. Mince garlic and thyme.\n3. Finely chop fennel fronds; reserve separately.\n4. Zest and juice the lemons separately. Divide zest: reserve 25% for plating; set aside 75% for the sauce.\n5. Pat pork completely dry with paper towels.\n\n## Active Cooking\n**Workflow summary:** Dutch oven runs two sequential fond builds before deglazing — transfer base mixture to a bowl between phases so the pan is clear for the pork sear.\n\n### Phase 1 — Build the Base\n1. Heat Dutch oven over medium-high heat.\n2. Add pancetta and ⅔ cup / 160 ml water. Cook until water evaporates and pancetta renders, *8–10 min.*\n3. Continue until *golden fond develops on the base.*\n4. Add onion and fennel. Cook until softened and *lightly browned, 7–10 min.*\n5. Add garlic, thyme, salt, and pepper. Cook 30 seconds.\n\nTransfer mixture to a bowl.\n\n### Phase 2 — Moderate Pork Sear\n1. Return Dutch oven to medium-high heat.\n2. Confirm pork is completely dry before adding to pan.\n3. Sear pork pieces until *lightly browned on all sides.* Develop moderate color only — avoid a dark crust.\n\nRemove pork.\n\n### Phase 3 — Deglaze and Braise\n1. Add wine. Scrape up fond and reduce by roughly half.\n2. Return vegetable mixture. Add chicken stock and water.\n3. Return pork. Bring to a simmer.\n4. Cover and transfer to oven. Cook at 300°F / 150°C for approximately 2½ hours.\n\n*Doneness: pork shreds easily with light fork pressure; muscle groups separate without resistance.*\n\n### Phase 4 — Develop the Sauce\n1. Remove pork to a plate. Cover Dutch oven and let stand 10–15 min so sidewall fond softens.\n2. Scrape all fond into the sauce.\n3. Shred pork into bite-sized pieces. Return pork and accumulated juices to the Dutch oven.\n\n### Phase 5 — Build Final Flavor\n1. Stir in 75% of the lemon zest and all of the lemon juice. Bring to a gentle simmer.\n2. Assess consistency.\n\n*Target: ragù should appear slightly too loose — almost stew-like. If it already heavily coats a spoon or sits in thick ridges, loosen with a splash of stock or water before proceeding.*\n\n### Phase 6 — Cook Pasta\n1. Bring 4 quarts / 3.8 L water to a boil. Add 1 tbsp kosher salt.\n2. Cook pappardelle until al dente — typically 30–60 seconds beyond package timing for dried.\n3. Reserve 2 cups / 475 ml pasta water. Drain.\n\n### Phase 7 — Finish\nKeep Dutch oven over **low heat** throughout this phase.\n\n1. Add pasta to the ragù.\n2. Add 1 cup / 240 ml reserved pasta water.\n3. Add 70% of the Pecorino. Toss until fully emulsified.\n4. Assess consistency — add additional pasta water if needed.\n5. Stir in heavy cream. Toss 30–60 seconds.\n6. Final consistency check — add additional pasta water if required.\n\n*Target: sauce coats pasta fluidly and pools lightly at the bottom of the bowl. It should not cling heavily.*\n\n## Holding & Assembly\n1. Remove from heat. Rest 1–2 minutes only.\n2. Divide among warm bowls.\n3. Garnish with reserved lemon zest and fennel fronds.\n4. Serve remaining Pecorino at the table.\n\nServe immediately.\n\n## Critical Control Points\n<table header-row=\"true\"><tr><td>Severity</td><td>Failure Mode & Cue</td><td>Recovery</td></tr><tr><td>Critical</td><td>Sauce over-reduced before pasta enters — sits in thick ridges and barely flows when spoon is dragged through it</td><td>Loosen with stock, water, or pasta water before adding pasta</td></tr><tr><td>Critical</td><td>Pork under-braised — resists shredding or pulls into long tough strands</td><td>Return to oven until it shreds easily with light fork pressure</td></tr><tr><td>Major</td><td>Moderate sear exceeded — dark crust and deeply roasted fond</td><td>Proceed; dish remains serviceable</td></tr><tr><td>Major</td><td>Pecorino clumps — cheese forms strings rather than emulsifying</td><td>Add warm pasta water gradually while tossing</td></tr><tr><td>Minor</td><td>Lemon dominates — acidity overwhelms pork and fennel</td><td>Adjust with pasta water before considering additional cream</td></tr></table>\n\n## Adjustment Notes\nAdd salt only after Pecorino is incorporated. Correct texture with pasta water, not cream — pasta water is the primary finishing lever throughout. Increase richness with additional Pecorino before increasing cream. Use reserved lemon zest at plating for brightness; additional lemon juice only at service.\n",
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "pancetta",
+          "department": "Protein",
+          "qty": 115,
+          "unit": "g",
+          "qty_alt": "4 oz",
+          "prep_note": "finely chopped; for the ragù",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "onion",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": "1 large",
+          "prep_note": "finely chopped",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fennel bulb",
+          "department": "Produce",
+          "qty": 1.5,
+          "unit": "piece",
+          "qty_alt": "1½ large",
+          "prep_note": "finely chopped — fronds reserved for garnish",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 4,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "minced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "thyme",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "fresh, minced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 1.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "for the ragù",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "freshly ground",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "pork shoulder, boneless",
+          "department": "Protein",
+          "qty": 680,
+          "unit": "g",
+          "qty_alt": "1½ lb",
+          "prep_note": "trimmed, cut into 2 pieces",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "dry white wine",
+          "department": "Alcohol",
+          "qty": 150,
+          "unit": "ml",
+          "qty_alt": "⅔ cup",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "chicken stock",
+          "department": "Oils & Liquids",
+          "qty": 240,
+          "unit": "ml",
+          "qty_alt": "1 cup",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "water",
+          "department": "Pantry",
+          "qty": 300,
+          "unit": "ml",
+          "qty_alt": "1¼ cups",
+          "prep_note": "for the braise",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "lemon zest",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": "2 lemons",
+          "prep_note": "75% into sauce, 25% reserved for plating",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon juice",
+          "department": "Produce",
+          "qty": 60,
+          "unit": "ml",
+          "qty_alt": "¼ cup",
+          "prep_note": "fresh",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "heavy cream",
+          "department": "Dairy",
+          "qty": 80,
+          "unit": "ml",
+          "qty_alt": "⅓ cup",
+          "prep_note": "finish",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "pecorino romano",
+          "department": "Dairy",
+          "qty": 55,
+          "unit": "g",
+          "qty_alt": "2 oz",
+          "prep_note": "finely grated — 70% sauce, 30% table",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "dried pappardelle",
+          "department": "Pantry",
+          "qty": 340,
+          "unit": "g",
+          "qty_alt": "12 oz",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "for the pasta water",
+          "pantry_check": true,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "notes": "Single standalone dish — the sheet has one recipe only (no meal workflow, shared prep or shopping list), so meal=null. Yield is stated as 3–4 servings; servings set to lower bound 3 (range preserved in method_md). Two kosher-salt lines kept as two ingredient entries (ragù 1½ tsp; pasta water 1 tbsp). Additional water used in method (⅔ cup / 160 ml for pancetta render; 4 qt / 3.8 L pasta water) is not in the ingredient table and is kept in method_md only. No shopping list in the sheet, so pantry_check=true was set only for salt, pepper and water. No governance/Core version or nutrition estimate stated. Sheet dated 13 June 2026 (footer). New ingredient names not in ingredient_names.txt: pancetta, pecorino romano, dried pappardelle."
+}

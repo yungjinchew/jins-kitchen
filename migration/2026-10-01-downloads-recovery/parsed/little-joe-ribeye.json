@@ -1,0 +1,655 @@
+{
+ "assignment_key": "little-joe-ribeye",
+ "source_file": "docs/little-joe-ribeye-sunday/v1/little-joe-ribeye-sunday.docx",
+ "meal": {
+  "slug": "little-joe-ribeye-sunday",
+  "name": "Sunday Menu — Reverse-Seared Little Joe Ribeye",
+  "planned_date": "2026-09-06",
+  "status": "cooked",
+  "pax": 3,
+  "workflow_md": "## Register\n\nBistro. The steak is the point; everything else either cuts it or stays out of the way. The plate is deliberately light on live workflow — two components need no heat at all — because this cook exists to take measurements, and those need attention that is not competing with a sauce.\n\n## Meal Balance Audit\n\n**Richness:** ribeye and a butter-rich purée. No butter sauce and no fried starch — the salsa verde replaces a butter mount with oil and acid, so the fat present works harder and stacks less.\n\n**Acid — two sources, distinct functions:** red wine vinegar in the salsa verde cuts the steak's fat directly; the vinaigrette on the watercress is a lighter reset between mouthfuls. The same vinegar in both, deliberately — a third acid character would fragment a plate this simple.\n\n**Sweetness:** none added anywhere. The only sweetness is browning on the steak and mushrooms. Adding a sweet element would fight the grass-fed character.\n\n**Texture:** seared crust, tender interior, soft purée, browned mushroom, raw peppery watercress. Purée is entirely soft — the mushrooms and watercress carry the contrast, so do not drop the mushrooms.\n\n**Temperature:** steak and purée hot, mushrooms warm, watercress deliberately cold. Plates warmed — this addresses the negative-carryover finding from the salmon cook.\n\n**Accumulation risk:** the purée. At 450 g raw against roughly 900 g of carved beef it is correctly sized as a spoonful under the steak rather than a mound alongside.\n\n**No dessert.** If wanted, a reset — citrus or poached fruit.\n\n## Critical Path\n\n**Steak oven exit → 8 min rest → prescribed sear → 10 min rest → carve.** A fixed 29-minute convergence sequence including measurement time.\n\n**Strategy: fixed convergence, floating service.** The low-roast band cannot be predicted closely enough for a fixed service time, so the variance lands in service rather than in a hold window. Everything after the oven exit is measured from that instant, written E+. Set a timer at the exit and stop watching the clock. 7:00 pm is not a target.\n\n## Failure Prioritization\n\n**Protect the steak's internal temperature above everything.** There is one piece and no backup.\n\n- If the sear runs long, serve the mushrooms cooler.\n- If the purée tightens, loosen it with warm milk. Do not hold the steak for it.\n- If the steak has not reached 120°F / 49°C, wait. Service moves.\n- If a measurement and a cooking step collide, take the measurement. Everything else on this plate holds or recovers.\n\n## Oven Sequencing\n\n**225°F / 107°C, constant, steak only. No mid-cook temperature change.** At exit, drop to 170°F / 77°C, crack the door two minutes to speed the drop, and put the plates in. Nothing else competes for the oven at any point.\n\n## Heat Resource Allocation\n\n<table header-row=\"true\"><tr><td>Resource</td><td>Component</td><td>Window</td></tr><tr><td>Oven</td><td>Steak low-roast, then plate warming</td><td>5:15 pm → service</td></tr><tr><td>Induction 1</td><td>Potatoes boiling, then purée</td><td>5:25 → 6:13 pm</td></tr><tr><td>Induction 2</td><td>Purée bain-marie hold</td><td>6:13 pm → service</td></tr><tr><td>Outdoor gas 1</td><td>Mushrooms</td><td>E+8 → E+18</td></tr><tr><td>Outdoor gas 2</td><td>Steak sear</td><td>E+8 → E+12:30</td></tr></table>\n\n**Burner-count validation:** peak concurrency at E+8 — induction 2 plus outdoor gas 1 and 2. Three of five available burners, two spare. The sear is outdoors deliberately: high heat, heavy smoke, away from indoor extraction.\n\n## Parallel vs. Sequential\n\n**Parallel:** mushrooms and the sear, both starting at E+8. The purée runs against the low roast, not the convergence.\n\n**Sequential, non-overlappable:** exit → rest → sear → rest → carve.\n\n**No component depends on the sear fond.** The salsa verde is made hours earlier and there is no pan sauce, which removes the tightest timing dependency this workflow would otherwise carry.\n\n## Low-Roast Allowance — Planning Only\n\n**60–85 minutes** for this piece: 1.160 kg bone-in, 5.5 cm, fridge-cold, 225°F / 107°C, to a 120°F / 49°C pull.\n\nLonger and wider than a boneless steak of the same thickness, for two compounding reasons. Bone insulates the face it sits against, slowing the centre. And at 1.160 kg the thermal centre is further from every surface, not only the top and bottom — thickness still governs, but a piece this large extends beyond what a thickness model predicts.\n\n**This is outside the range of any data point available and is a scheduling estimate, not a doneness prediction. Probe temperature controls.**\n\n## Holding Chain\n\n<table header-row=\"true\"><tr><td>Component</td><td>Vessel & Condition</td><td>Planned Max Hold</td><td>Drift</td><td>Corrective</td></tr><tr><td>Salsa verde</td><td>Covered, refrigerated; out 45 min before service</td><td>24 hr cold</td><td>Parsley darkens</td><td>Cosmetic. Stir and re-taste after tempering</td></tr><tr><td>Purée</td><td>Bain-marie, covered, low</td><td>60 min</td><td>Tightens, skins over</td><td>Beat in warm milk 1 tbsp at a time</td></tr><tr><td>Mushrooms</td><td>Pan off heat, uncovered</td><td>12 min</td><td>Steam softens the browning</td><td>Do not cover</td></tr><tr><td>Steak, pre-sear</td><td>Rack, uncovered, room temp</td><td>Fixed 8 min</td><td>Internal drops — this is measurement B</td><td>None; the window is fixed</td></tr><tr><td>Steak, post-sear</td><td>Warmed plate, uncovered, not tented</td><td>Fixed 10 min</td><td>Tenting traps steam and degrades the crust</td><td>Never tent</td></tr><tr><td>Vinaigrette</td><td>Jar, room temperature</td><td>4 hr</td><td>Separates</td><td>Shake before use</td></tr><tr><td>Watercress</td><td>Undressed, damp cloth, fridge</td><td>4 hr</td><td>Wilts once dressed</td><td>Dress at the table</td></tr></table>\n\n**On the 10-minute post-sear rest:** set at 10 rather than 8 because 1.160 kg wants the longer rest, and fixed so that measurement D is comparable against future cooks. This is the baseline cook, so 10 becomes the reference. It is not established that 10 beats a shorter rest on the plate — designed, not validated.\n\n## Timeline Verification\n\n**Forward:** load 5:15 pm → 60–85 min → exit 6:15–6:40 pm → 29 min convergence → service 6:44–7:09 pm.\n\n**Band closure, both ends:** earliest exit 6:15 gives a 29-minute hold on the purée; latest exit 6:40 gives 54 minutes. Both sit inside the 60-minute bain-marie ceiling. The convergence is a fixed 29 minutes at both ends, so the entire 25-minute spread lands in service time and no hold window absorbs it.\n\n**Purée timing note:** the purée completes around 6:13 pm, before the earliest predicted exit. If the steak runs fast it may spill a few minutes into the early convergence — which competes with nothing, since induction 1 is free from E+0 to E+8 and both outdoor burners handle the sear and mushrooms.\n\n## Final Plating Window\n\nPlates out at E+27. A spoonful of purée, steak carved across it, mushrooms alongside. Watercress and salsa verde at the table. Two minutes from first plate to service.\n\n## Timeline — Absolute Phase\n\n*Anchored on oven load. Service floats.*\n\n<table header-row=\"true\"><tr><td>Time</td><td>Action</td></tr><tr><td>Saturday</td><td>Pat steak dry. 9 g salt across all faces including the fat cap and the exposed bone. Uncovered on a rack, refrigerated. Do not cover; do not rinse.</td></tr><tr><td>~2:00 pm Sun</td><td>Salsa verde complete, covered, refrigerated. Vinaigrette mixed in a jar. Watercress washed, spun dry, wrapped in a damp cloth, refrigerated. Mushrooms cleaned and torn.</td></tr><tr><td>5:10 pm</td><td>Oven to 225°F / 107°C. Confirm at temperature before loading.</td></tr><tr><td>5:15 pm</td><td>Steak on a rack over a tray, straight from the fridge. Probe entered from the side into the centre of the eye, angled away from the bone. Alarm 120°F / 49°C. Allowance 60–85 min.</td></tr><tr><td>5:25 pm</td><td>Induction 1: potatoes peeled, cut even, into 1.25 L cold water with 12 g salt. Bring to a simmer, then 20–25 min at a simmer to full tenderness.</td></tr><tr><td>6:00 pm</td><td>Salsa verde out of the fridge to temper.</td></tr><tr><td>6:13 pm</td><td>Drain, steam-dry 5 min, rice. Beat in cold butter, then warm milk. Salt. Bain-marie on induction 2, covered.</td></tr><tr><td>6:15–6:40 pm</td><td>Steak exits on temperature, not clock. Thermapen-confirm from a second angle before removing. E+0 starts here.</td></tr><tr><td>6:44–7:09 pm</td><td>Predicted service.</td></tr></table>\n\n**Declared format deviation:** the phase after oven exit is expressed exit-relative rather than T-minus, because the low-roast band cannot be predicted closely enough for a fixed-service timeline to close without violating a hold ceiling. The table above is the scheduling anchor; the E+ table governs on the day. Where they diverge, E+ wins.\n\n## Timeline — Exit-Relative Phase (governs on the day)\n\n*Start a timer the instant the steak leaves the oven.*\n\n<table header-row=\"true\"><tr><td>Offset</td><td>Action</td></tr><tr><td>E+0</td><td>RECORD A — the reading at exit. Steak to a rack, uncovered. Rest 8 min. Oven to 170°F / 77°C, door cracked 2 min. Plates in.</td></tr><tr><td>E+8</td><td>RECORD B — pre-sear, before the steak touches the pan.</td></tr><tr><td>E+8</td><td>Outdoor gas 2: cast iron preheated hard, longer than feels necessary. Neutral oil shimmering. Sear 90 sec per broad face. Fat cap on edge as needed. Then lift the pan off the flame or drop to low, add butter, thyme and garlic, and baste 30 sec. No probing during the sear.</td></tr><tr><td>E+8</td><td>Outdoor gas 1: neutral oil, high. Mushrooms in a single layer, undisturbed 4 min, then butter, thyme, sliced garlic. 10 min total.</td></tr><tr><td>E+12:30</td><td>Sear off. RECORD C immediately — this reading is time-sensitive, take it before doing anything else.</td></tr><tr><td>E+13</td><td>Steak to a warmed plate, uncovered, not tented. Rest 10 min.</td></tr><tr><td>E+18</td><td>Mushrooms off heat, uncovered.</td></tr><tr><td>E+22</td><td>Watercress and dressing jar to the table. Check purée consistency; loosen with warm milk if it has tightened.</td></tr><tr><td>E+23</td><td>RECORD D — post-rest reading, plus the plate temperature taken with the same probe.</td></tr><tr><td>E+24</td><td>Carve the meat off the bone in one piece, then across the grain into 1 cm slices. Flaky salt on the cut surface.</td></tr><tr><td>E+27</td><td>Plate. Purée, steak across, mushrooms alongside.</td></tr><tr><td>E+29</td><td>Serve. Salsa verde and watercress at the table.</td></tr></table>\n\n## Designed, Not Validated — Post-Cook Confirmation Candidates\n\nThese parameters were engineered for this cook and have not been observed. Record each against actual and log to the Vault.\n\n<table header-row=\"true\"><tr><td>#</td><td>Parameter</td></tr><tr><td>1</td><td>Sear gain (C−B) across a standardised 90-second-per-face sear. The primary objective of this cook, outstanding since before the pork cook.</td></tr><tr><td>2</td><td>Carryover (D−C) across the 10-minute post-sear rest onto warmed plates, with plate temperature recorded. Direction genuinely open — the salmon cook showed negative carryover onto room-temperature plates.</td></tr><tr><td>3</td><td>Pre-sear drift (B−A) across the 8-minute rack rest. The first measurement of what that rest actually costs.</td></tr><tr><td>4</td><td>Low-roast allowance of 60–85 min for 1.160 kg bone-in at 5.5 cm. A scheduling estimate outside the range of any existing data point; this cook produces the first beef reference.</td></tr><tr><td>5</td><td>Overnight dry brine at ~0.8% gross on beef — whether seasoning reads through the cut, and whether the surface dried enough for a 90-second face.</td></tr><tr><td>6</td><td>Whether 10 minutes is the right post-sear rest for a piece this size, as distinct from a standardised one.</td></tr><tr><td>7</td><td>Grass-fed MB4+ fat behaviour at reverse-sear temperatures — whether the seams read firm and waxy rather than melting.</td></tr><tr><td>8</td><td>Purée bain-marie hold across the full 29–54 minute spread.</td></tr></table>\n\n*Items 1 to 3 are why this menu was built light. Everything else on the plate holds, so if anything competes for your attention at E+8, E+12:30 or E+23, take the reading.*",
+  "shared_prep_md": "Prepare these in aggregate before starting individual dishes.\n\n**Thyme: 4 sprigs —** 2 to the steak baste, 2 to the mushrooms.\n\n**Red wine vinegar: 35 ml —** 20 ml to the salsa verde, 15 ml to the vinaigrette.\n\n**Dijon: 2 tsp —** 1 tsp to the salsa verde, 1 tsp to the vinaigrette.\n\n**Olive oil: 145 ml —** 100 ml to the salsa verde, 45 ml to the vinaigrette. A primary flavour in both, not a medium — use a good one.\n\n**Butter: 125 g / 8¾ tbsp —** 15 g to the steak baste, 90 g to the purée (must be cold and cubed), 20 g to the mushrooms.\n\n**Garlic is not consolidated here.** The three cloves take three different preparations — finely grated for the salsa verde, smashed skin-on for the steak baste, finely sliced for the mushrooms — so each is prepared with its own dish.\n\n**Salt:** Diamond Crystal kosher throughout. The 12 g for the potato water seasons the water, not the food.\n\n## Sourcing Notes\n\n**Steak secured:** Little Joe Grass Fed MB4+ Rib Eye On Bone, 1.160 kg, S$89.90/kg, S$104.28. Use by 11 September. Measured at 5.5 cm.\n\n**Parsley: a real bunch.** A supermarket sachet will not yield 40 g of leaves, and salsa verde made short of parsley is just oily caper dressing.\n\n**Mushrooms mixed if possible.** A single variety works but loses the textural range that is doing real work on this plate.",
+  "wine_pairing": null,
+  "components": [
+   {
+    "dish_slug": "little-joe-bone-in-ribeye",
+    "role": "main",
+    "service_order": 1
+   },
+   {
+    "dish_slug": "ribeye-lj-salsa-verde",
+    "role": "sauce",
+    "service_order": 2
+   },
+   {
+    "dish_slug": "ribeye-lj-pommes-puree",
+    "role": "side",
+    "service_order": 3
+   },
+   {
+    "dish_slug": "ribeye-lj-sauteed-mushrooms-thyme",
+    "role": "side",
+    "service_order": 4
+   },
+   {
+    "dish_slug": "ribeye-lj-watercress-mustard-vinaigrette",
+    "role": "salad",
+    "service_order": 5
+   }
+  ]
+ },
+ "dishes": [
+  {
+   "slug": "little-joe-bone-in-ribeye",
+   "existing": true,
+   "name": "Reverse-Seared Little Joe Bone-In Ribeye",
+   "protein": "Beef",
+   "category": [
+    "Main"
+   ],
+   "cuisine": [
+    "Bistro",
+    "French"
+   ],
+   "difficulty": "Special",
+   "tags": [
+    "reverse sear",
+    "dry brine",
+    "bone-in",
+    "grass-fed",
+    "cast iron",
+    "outdoor gas",
+    "measurement series",
+    "probe"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "cooked",
+   "source": "Recovered from little-joe-ribeye-sunday.docx, generated for Sunday 2026-09-06 (no generation date printed in doc)",
+   "governance_version": "v3.5",
+   "summary": "A 1.160 kg bone-in grass-fed Little Joe ribeye dry-brined overnight, low-roasted at 225°F to a 120°F pull, rested 8 minutes and finished with a prescribed 90-second-per-face outdoor cast-iron sear and butter baste, with a four-point temperature measurement series.",
+   "servings": 3,
+   "equipment": [
+    "oven",
+    "wire rack",
+    "tray",
+    "leave-in probe thermometer",
+    "Thermapen",
+    "cast iron pan",
+    "outdoor gas burner",
+    "paper towel",
+    "timer",
+    "warmed plates"
+   ],
+   "method_md": "## Dish Overview\n\nA large bone-in grass-fed ribeye, overnight dry-brined, brought slowly to 120°F and finished with a short prescribed sear — an even rosy interior wall to wall beneath a dark crust, with no grey band.\n\n## Yield & Timing\n\nServes 3 with leftovers · Total: ~30 hr including brine · Active: ~12 min · Oven: 225°F / 107°C\n\n## Flavor Architecture\n\n### Salting Strategy\n\n**Overnight dry brine, uncovered on a rack in the fridge, at approximately 0.8% of gross weight.**\n\nSalt dissolves, is drawn in, and the muscle reabsorbs the resulting brine — the mechanism that reduces cooking loss, and it needs hours rather than minutes. Separately, the uncovered rest dries the surface, which is what lets a 90-second face build crust rather than steam. These are two distinct operations sharing one window: the salt seasons, the air-drying conditions the surface. Neither substitutes for the other.\n\n**On a grass-fed cut this matters more, not less.** Less intramuscular fat means less internal moisture buffer, so the reabsorbed brine does more work.\n\nA window of roughly 30 hours is slightly beyond the 18–24 hr norm and is fine at this dose — beef continues to improve out to around 48 hours. No adjustment required.\n\n## Prep Phase\n\n1. Pat every face dry with paper towel.\n2. Salt all faces including the fat cap and the exposed bone end.\n3. Rack in the fridge, uncovered, until the oven. Do not cover; do not rinse before cooking.\n\n## Active Cooking\n\n1. Oven at 225°F / 107°C, confirmed at temperature and held constant throughout. Steak on a rack over a tray.\n2. **Probe placement is the critical step on a bone-in cut. Enter from the side, into the centre of the eye, angled deliberately away from the bone.** Side entry makes it easier to keep the sensing tip at the coolest geometric centre; a tip sitting close to the surface, or against the bone, reads artificially high and will pull you early.\n3. **Pull at 120°F / 49°C.** Thermapen-confirm from a second angle before removing. There is one piece and no backup.\n4. RECORD A. Rest uncovered on a rack, 8 minutes.\n5. RECORD B, before the steak touches the pan.\n6. Cast iron over high outdoor gas, preheated hard — longer than feels necessary. Neutral oil to shimmering. 90 seconds per broad face. Fat cap held on edge until coloured and slumped.\n7. **Lift the pan off the flame, or drop to low, before adding the butter.** Then butter, thyme and smashed garlic; baste 30 seconds. Butter and garlic will burn within seconds at sear heat on an outdoor burner.\n8. RECORD C immediately off the pan.\n\n### Why the Sear Is Prescribed Rather Than Temperature-Gated\n\nMedium-rare beef has no mandatory endpoint — anywhere from 128°F to 138°F is good eating — and that slack is what makes a prescribed sear safe here. It is also the only way the measurement works: if the sear stops at a target temperature, that target is what gets recorded, and sear gain becomes an artefact of the gate rather than an observation. Prescribe the sear; measure the consequence.\n\n**If the colour is short at 90 seconds, record that rather than silently extending** — otherwise the numbers describe a different sear than the one written down.\n\n**Risk envelope:** a 1.160 kg bone-in piece entering the pan near 117°F with roughly three minutes of total contact will not approach 140°F. Mass and contact time bound it, and the large thermal mass makes that bound stronger here than on a smaller steak.\n\n### The Measurement Series\n\n<table header-row=\"true\"><tr><td>Point</td><td>When</td><td>What</td></tr><tr><td>A</td><td>At oven exit</td><td>Leave-in reading, cross-checked with the Thermapen</td></tr><tr><td>B</td><td>E+8, before the pan</td><td>Pre-sear, after the 8-minute rack rest</td></tr><tr><td>C</td><td>Immediately off the pan</td><td>Post-sear. Time-sensitive — take it before anything else</td></tr><tr><td>D</td><td>E+23, after the 10-minute rest</td><td>Post-rest, plus the plate temperature with the same probe</td></tr></table>\n\n**Three deltas: pre-sear drift (B−A), sear gain (C−B), carryover (D−C).** The carryover direction is genuinely open — the salmon cook showed negative carryover onto room-temperature plates, and it has never been resolved for a seared whole muscle.\n\n### Pull Temperature, Mechanism and Carryover\n\nOven exit 120°F / 49°C. The rise across the sear is active heating, not carryover — the two must not be conflated. No expected rise is stated here deliberately: a predicted figure alongside a prescribed protocol becomes a competing metric that invites the cook to chase a number instead of following the method.\n\n### Secondary Doneness Cue\n\nIf the probe reads within 3°F of target but the centre still feels firm with a resistant core, take a second reading from a different angle before pulling — the first placement is likely off-centre or bone-adjacent. On a bone-in cut this is the most probable measurement error, not a marginal one.\n\n### Food Safety\n\n**The USDA recommendation for whole cuts of beef is 145°F / 63°C followed by a 3-minute rest. This recipe cooks well below that, which is a deliberate quality choice and is stated as such rather than presented as equivalent.**\n\nThe basis is that on intact whole-muscle beef, surface contamination does not migrate into the interior, and the sear addresses the surface. This reasoning does not apply to mechanically or blade-tenderised beef, where the needle carries surface bacteria inward — if there is any doubt whether the cut was tenderised, cook to 145°F. It also carries more risk for anyone immunocompromised, pregnant, very young or elderly.\n\n## Holding & Assembly\n\nPost-sear rest 10 minutes on a warmed plate, uncovered. Do not tent — tenting traps steam against a crust that took a hard sear to build. Carve the meat off the bone in one piece, then across the grain into 1 cm slices. Flaky salt on the cut surface, not before.\n\n## Critical Control Points\n\n<table header-row=\"true\"><tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr><tr><td>Critical</td><td>Internal passes 140°F / 60°C — medium-well. Grey, and noticeably dry on a lean grass-fed cut</td><td>Reading C, taken immediately off the pan</td><td>Unrecoverable. The salsa verde will not rescue it</td></tr><tr><td>Critical</td><td>Probe sits against the bone and reads high — steak pulled well before target</td><td>Centre feels firm and resistant despite a reading near 120°F</td><td>Return to the oven and re-probe from a fresh angle. Recoverable if caught before the sear</td></tr><tr><td>Major</td><td>Butter and garlic burn during the baste</td><td>Acrid smell, black solids in the pan</td><td>Pan not taken off the flame. Discard the butter, wipe the pan, re-baste briefly with fresh butter off heat</td></tr><tr><td>Major</td><td>No crust after 90 sec per face — grey, steamed exterior</td><td>No aggressive sizzle on contact</td><td>Pan under-preheated or the surface still damp. Record the deviation, dry the face, re-sear briefly</td></tr><tr><td>Major</td><td>Crust burns</td><td>Very dark colour at 45 sec</td><td>Lift and reduce. Recoverable at 45 sec; past 90 sec unrecoverable for that face, dish remains serviceable</td></tr><tr><td>Minor</td><td>Fat cap unrendered — waxy band at the edge</td><td>Cap pale and firm rather than coloured and slumped</td><td>Return the cap edge to the pan 30 sec</td></tr></table>\n\n## Adjustment Notes\n\nTaste a slice before the salsa verde goes near it. If it reads flat, more flaky salt on the cut surface. If the fat seams read firm and waxy rather than melting — likely on this grass-fed cut, whose fat has a higher melting point than grain-fed — that is a characteristic of the beef, not a cooking error. Record it; do not cook further to correct it.",
+   "designed_unvalidated": [
+    {
+     "param": "Sear gain (C−B)",
+     "designed_value": "Standardised 90-second-per-face sear",
+     "note": "The primary objective of this cook, outstanding since before the pork cook."
+    },
+    {
+     "param": "Carryover (D−C)",
+     "designed_value": "10-minute post-sear rest onto warmed plates, plate temperature recorded",
+     "note": "Direction genuinely open — the salmon cook showed negative carryover onto room-temperature plates."
+    },
+    {
+     "param": "Pre-sear drift (B−A)",
+     "designed_value": "8-minute rack rest",
+     "note": "The first measurement of what that rest actually costs."
+    },
+    {
+     "param": "Low-roast allowance",
+     "designed_value": "60–85 min for 1.160 kg bone-in at 5.5 cm, 225°F / 107°C, to 120°F / 49°C",
+     "note": "A scheduling estimate outside the range of any existing data point; this cook produces the first beef reference."
+    },
+    {
+     "param": "Overnight dry brine dose",
+     "designed_value": "~0.8% of gross weight (9 g on 1.160 kg), ~30 hr",
+     "note": "Whether seasoning reads through the cut, and whether the surface dried enough for a 90-second face."
+    },
+    {
+     "param": "Post-sear rest duration",
+     "designed_value": "10 min",
+     "note": "Whether 10 minutes is the right post-sear rest for a piece this size, as distinct from a standardised one."
+    },
+    {
+     "param": "Grass-fed MB4+ fat behaviour",
+     "designed_value": "Reverse-sear temperatures",
+     "note": "Whether the seams read firm and waxy rather than melting."
+    }
+   ],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "little joe grass fed mb4+ ribeye on bone",
+     "department": "Protein",
+     "qty": 1160,
+     "unit": "g",
+     "qty_alt": "2 lb 9 oz; 1 pc, 5.5 cm thick",
+     "prep_note": "bone-in, 5.5 cm; dry-brined overnight uncovered on a rack",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 9,
+     "unit": "g",
+     "qty_alt": "3 tsp",
+     "prep_note": "for the overnight dry brine, all faces including fat cap and bone end",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "black pepper",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "at the sear",
+     "prep_note": "coarse",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "neutral oil",
+     "department": "Oils & Liquids",
+     "qty": 15,
+     "unit": "ml",
+     "qty_alt": "1 tbsp",
+     "prep_note": "for the sear, to shimmering",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "unsalted butter",
+     "department": "Dairy",
+     "qty": 15,
+     "unit": "g",
+     "qty_alt": "1 tbsp",
+     "prep_note": "for the baste",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "thyme",
+     "department": "Produce",
+     "qty": 2,
+     "unit": "sprig",
+     "qty_alt": null,
+     "prep_note": "for the baste",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "garlic",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "clove",
+     "qty_alt": null,
+     "prep_note": "smashed, skin on, for the baste",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "flaky salt",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "at carving",
+     "prep_note": "on the cut surface only",
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "ribeye-lj-salsa-verde",
+   "existing": false,
+   "name": "Salsa Verde",
+   "protein": null,
+   "category": [
+    "Sauce"
+   ],
+   "cuisine": [
+    "Italian",
+    "Bistro"
+   ],
+   "difficulty": "Easy",
+   "tags": [
+    "no heat",
+    "make ahead",
+    "raw sauce",
+    "herb",
+    "caper",
+    "anchovy optional"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "cooked",
+   "source": "Recovered from little-joe-ribeye-sunday.docx, generated for Sunday 2026-09-06 (no generation date printed in doc)",
+   "governance_version": "v3.5",
+   "summary": "A hand-chopped parsley, caper, garlic and red wine vinegar sauce loosened with good olive oil, made 2–24 hours ahead and refrigerated, with the anchovy mashed into two-thirds only and one-third kept plain.",
+   "servings": 3,
+   "equipment": [
+    "knife",
+    "bowl",
+    "container with lid"
+   ],
+   "method_md": "## Dish Overview\n\nA raw herb, caper and vinegar sauce, loose and spoonable — sharp and green, cutting the steak's fat with acid rather than adding more fat.\n\n## Yield & Timing\n\n~150 ml, serves 3 · Active: 12 min · Made 2–24 hr ahead · No heat\n\n## Flavor Architecture\n\n**Anchovy — split at the end.** Anchovy improves this sauce and does not read fishy once chopped in, but Lukas dislikes oily fish and asking him to trust that is the wrong move. Make the base without it. Reserve one-third plain for Lukas. Mash the 4 fillets to a paste and stir into the remaining two-thirds. Two bowls at the table.\n\n## Prep Phase\n\n1. Pick the parsley leaves. Stems make it bitter and stringy.\n2. Rinse the capers well. Brined capers are aggressively salty; salt-packed need a proper soak.\n\n## Active Cooking\n\n1. **Chop the parsley and capers together by hand, medium-fine.** A food processor turns this into a smooth paste that tastes bruised and dull — visible leaf is part of the dish.\n2. Combine with the grated garlic, Dijon, vinegar, lemon zest, salt and pepper.\n3. Stir in the olive oil in a stream. It should be loose and spoonable, not emulsified.\n4. Reserve one-third plain. Mash the anchovies to a paste and stir into the remaining two-thirds.\n\n## Holding & Assembly\n\n**Covered and refrigerated, up to 24 hours.** Raw garlic held in oil at ambient temperature is a recognised botulism vector, and there is no reason to accept that exposure when refrigeration costs nothing operationally. Out 45 minutes before service to temper, then stir and re-taste — cold flattens it, and seasoning that read correctly in the fridge may need a correction once it warms.\n\n## Critical Control Points\n\n<table header-row=\"true\"><tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr><tr><td>Major</td><td>Over-processed to a paste — bruised, dull, muddy green</td><td>Uniform smooth texture with no visible leaf</td><td>Unrecoverable. Chop by hand</td></tr><tr><td>Minor</td><td>Too salty — overwhelms the steak</td><td>Taste before the oil goes in</td><td>Capers under-rinsed. Add more parsley and oil to dilute</td></tr><tr><td>Minor</td><td>Served straight from the fridge — muted and stiff</td><td>Oil cloudy, flavour flat</td><td>Temper 45 min. Fully recoverable if the time is allowed</td></tr></table>\n\n## Adjustment Notes\n\nTaste on a piece of bread, not from a spoon — neat, it will always read too sharp. Flat calls for more vinegar; harsh calls for more oil. Salt last, after the capers have distributed, and re-check after tempering.",
+   "designed_unvalidated": [],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "flat-leaf parsley",
+     "department": "Produce",
+     "qty": 40,
+     "unit": "g",
+     "qty_alt": "1 large bunch",
+     "prep_note": "leaves picked; a real bunch, not a supermarket sachet",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "capers in brine",
+     "department": "Pantry",
+     "qty": 20,
+     "unit": "g",
+     "qty_alt": "2 tbsp",
+     "prep_note": "rinsed well (brine or salt-packed; salt-packed need a proper soak)",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "garlic",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "clove",
+     "qty_alt": null,
+     "prep_note": "finely grated",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "dijon mustard",
+     "department": "Pantry",
+     "qty": 1,
+     "unit": "tsp",
+     "qty_alt": null,
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "red wine vinegar",
+     "department": "Oils & Liquids",
+     "qty": 20,
+     "unit": "ml",
+     "qty_alt": "4 tsp",
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "olive oil",
+     "department": "Oils & Liquids",
+     "qty": 100,
+     "unit": "ml",
+     "qty_alt": "scant ½ cup",
+     "prep_note": "good quality — a primary flavour, not a medium",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "lemon",
+     "department": "Produce",
+     "qty": 0.5,
+     "unit": "piece",
+     "qty_alt": "zest of half",
+     "prep_note": "zest only",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 1,
+     "unit": "g",
+     "qty_alt": "¼ tsp",
+     "prep_note": "salt last, after the capers have distributed",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "anchovy fillet",
+     "department": "Pantry",
+     "qty": 4,
+     "unit": "piece",
+     "qty_alt": "4 fillets",
+     "prep_note": "in oil; kept separate — mashed to a paste into two-thirds of the sauce only",
+     "pantry_check": false,
+     "optional": true
+    },
+    {
+     "name": "black pepper",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "to taste",
+     "prep_note": "named in method step 2 and shopping list only, not in the ingredient table",
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "ribeye-lj-pommes-puree",
+   "existing": false,
+   "name": "Pommes Purée",
+   "protein": null,
+   "category": [
+    "Side"
+   ],
+   "cuisine": [
+    "French",
+    "Bistro"
+   ],
+   "difficulty": "Medium",
+   "tags": [
+    "potato",
+    "purée",
+    "ricer",
+    "bain-marie hold",
+    "induction"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "cooked",
+   "source": "Recovered from little-joe-ribeye-sunday.docx, generated for Sunday 2026-09-06 (no generation date printed in doc)",
+   "governance_version": "v3.5",
+   "summary": "Floury potatoes simmered in salted water, steam-dried, riced hot and beaten over low heat with 90 g cold butter and 75 ml warm milk to a glossy soft-ribbon purée, held covered over a bain-marie up to 60 minutes.",
+   "servings": 3,
+   "equipment": [
+    "induction hob",
+    "saucepan",
+    "colander",
+    "potato ricer or food mill",
+    "warm pan",
+    "bain-marie"
+   ],
+   "method_md": "## Dish Overview\n\nRiced potato beaten with butter and warm milk to a smooth, glossy purée that holds a soft ribbon. Meal-level texture exemption: purée is inherently single-texture; contrast is carried by the crust, mushrooms and watercress.\n\n## Yield & Timing\n\nServes 3 · Total: ~50 min · Active: ~15 min · Made during the low roast\n\n## Flavor Architecture\n\n**On the butter quantity.** 90 g against 450 g is 20%. Robuchon runs closer to 50%, so this is a restrained version and will still read rich. The quantity is a choice about how luxurious you want it, not a structural threshold — there is no butter level below which purée becomes gluey. Glueyness comes from starch damage through overworking, which is a technique failure rather than a ratio failure.\n\n## Prep Phase\n\n1. Peel and cut into even 4 cm pieces. Even sizing matters more than size — mixed pieces cook unevenly and the small ones waterlog.\n\n## Active Cooking\n\n1. Potatoes into 1.25 L cold salted water. Bring to a simmer, then 20–25 min at a simmer to full tenderness — a piece should collapse under a knife with no resistance at all. Under-cooked potato will not rice smoothly and cannot be fixed later.\n2. Drain thoroughly. Steam-dry in the colander 5 min. Excess water is the main cause of a loose, bland purée.\n3. **Rice while hot, into a warm pan. A ricer or food mill only** — a masher leaves lumps, and a food processor develops the starch and turns it to glue within seconds.\n4. Over low heat, beat in the cold butter cube by cube until absorbed. Then the warm milk, gradually, until glossy and holding a soft ribbon. Salt.\n\n## Holding & Assembly\n\nBain-marie over low heat, covered, up to 60 minutes. Beat before serving. If it has tightened, add warm milk a tablespoon at a time.\n\n## Critical Control Points\n\n<table header-row=\"true\"><tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr><tr><td>Critical</td><td>Gluey, elastic texture — inedible paste</td><td>Pulls away from the spoon in sticky sheets</td><td>Over-worked starch, usually from a processor. Unrecoverable</td></tr><tr><td>Major</td><td>Lumpy — coarse and uneven</td><td>Visible lumps after ricing</td><td>Under-boiled. Pass through a sieve — laborious but recoverable</td></tr><tr><td>Minor</td><td>Too loose — runs on the plate</td><td>Will not hold a ribbon</td><td>Over low heat 3–4 min to drive off moisture</td></tr><tr><td>Minor</td><td>Skins over during the hold</td><td>Dry film on the surface</td><td>Cover properly. Beat the skin back in</td></tr></table>\n\n## Adjustment Notes\n\nSeason after the milk, not before — the milk dilutes and you will under-salt if you season early. Taste at serving temperature; purée reads flatter hot than warm.",
+   "designed_unvalidated": [
+    {
+     "param": "Purée bain-marie hold",
+     "designed_value": "Covered, low, across the full 29–54 minute spread (60 min ceiling)",
+     "note": "Whether the purée holds without tightening or skinning across the floating-service spread."
+    }
+   ],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "potato",
+     "department": "Produce",
+     "qty": 450,
+     "unit": "g",
+     "qty_alt": "1 lb",
+     "prep_note": "floury (Maris Piper, Desiree, russet); peeled, cut into even 4 cm pieces",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "water",
+     "department": "Oils & Liquids",
+     "qty": 1250,
+     "unit": "ml",
+     "qty_alt": "1.25 L / 5 cups",
+     "prep_note": "for boiling, cold",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 12,
+     "unit": "g",
+     "qty_alt": "1 tbsp",
+     "prep_note": "for the boiling water — seasons the water, not the food",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "unsalted butter",
+     "department": "Dairy",
+     "qty": 90,
+     "unit": "g",
+     "qty_alt": "6½ tbsp",
+     "prep_note": "cold, cubed",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "whole milk",
+     "department": "Dairy",
+     "qty": 75,
+     "unit": "ml",
+     "qty_alt": "⅓ cup",
+     "prep_note": "warmed; plus extra warm milk to loosen during the hold",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 2,
+     "unit": "g",
+     "qty_alt": "½ tsp",
+     "prep_note": "to season the purée after the milk",
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "ribeye-lj-sauteed-mushrooms-thyme",
+   "existing": false,
+   "name": "Sautéed Mushrooms with Thyme",
+   "protein": "Veg",
+   "category": [
+    "Side"
+   ],
+   "cuisine": [
+    "Bistro",
+    "French"
+   ],
+   "difficulty": "Easy",
+   "tags": [
+    "mushroom",
+    "high heat",
+    "outdoor gas",
+    "single layer",
+    "thyme"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "cooked",
+   "source": "Recovered from little-joe-ribeye-sunday.docx, generated for Sunday 2026-09-06 (no generation date printed in doc)",
+   "governance_version": "v3.5",
+   "summary": "Mixed chestnut, shiitake and oyster mushrooms torn and browned hard in a single layer over high outdoor gas, finished with butter, thyme and sliced garlic and salted only after browning.",
+   "servings": 3,
+   "equipment": [
+    "wide pan",
+    "outdoor gas burner"
+   ],
+   "method_md": "## Dish Overview\n\nMixed mushrooms browned hard in a single layer — deeply coloured at the edges, the plate's middle texture between soft purée and raw watercress.\n\n## Yield & Timing\n\nServes 3 · Total: 10 min · Active: 10 min · Outdoor gas\n\n## Prep Phase\n\n1. Tear rather than slice where the variety allows — torn edges catch more colour.\n2. Rinse if they need it and dry them properly. Surface moisture is the only issue; mushrooms absorb far less water than the folklore suggests.\n\n## Active Cooking\n\n1. E+8: neutral oil in a wide pan over high outdoor gas. Mushrooms in a single layer, undisturbed 4 minutes. They release water first and then begin to colour — do not move them during this.\n2. Toss. Add butter, thyme and sliced garlic. A further 6 minutes, tossing occasionally, until deeply browned at the edges.\n3. **Salt after browning,** so released moisture does not slow the initial colour development. Pan heat and loading are what govern browning — an uncrowded pan at high heat is the whole technique.\n\n## Holding & Assembly\n\nPan off heat, uncovered, up to 12 minutes. Covering traps steam and undoes the browning.\n\n## Critical Control Points\n\n<table header-row=\"true\"><tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr><tr><td>Major</td><td>Steamed grey, no browning — soggy and flat</td><td>Liquid pooling and not evaporating after 5 min</td><td>Pan crowded or heat too low. Raise the heat and work in two batches. Recoverable</td></tr><tr><td>Minor</td><td>Garlic burns</td><td>Visible blackening, acrid smell</td><td>Added too early or heat too high. Remove the slices</td></tr></table>\n\n## Adjustment Notes\n\nIf they read flat, salt and a further minute over high heat rather than more butter. Fat is not what they are missing.",
+   "designed_unvalidated": [],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "mushroom, mixed",
+     "department": "Produce",
+     "qty": 300,
+     "unit": "g",
+     "qty_alt": "10 oz",
+     "prep_note": "chestnut, shiitake, oyster; torn or thickly sliced; mixed if possible",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "neutral oil",
+     "department": "Oils & Liquids",
+     "qty": 10,
+     "unit": "ml",
+     "qty_alt": "2 tsp",
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "unsalted butter",
+     "department": "Dairy",
+     "qty": 20,
+     "unit": "g",
+     "qty_alt": "1½ tbsp",
+     "prep_note": "added after the first 4 min",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "thyme",
+     "department": "Produce",
+     "qty": 2,
+     "unit": "sprig",
+     "qty_alt": null,
+     "prep_note": null,
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "garlic",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "clove",
+     "qty_alt": null,
+     "prep_note": "finely sliced",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 1,
+     "unit": "g",
+     "qty_alt": "¼ tsp",
+     "prep_note": "salt after browning",
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "ribeye-lj-watercress-mustard-vinaigrette",
+   "existing": false,
+   "name": "Watercress with Mustard Vinaigrette",
+   "protein": "Veg",
+   "category": [
+    "Salad"
+   ],
+   "cuisine": [
+    "French",
+    "Bistro"
+   ],
+   "difficulty": "Easy",
+   "tags": [
+    "no heat",
+    "salad",
+    "vinaigrette",
+    "dressed at table",
+    "make ahead"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "cooked",
+   "source": "Recovered from little-joe-ribeye-sunday.docx, generated for Sunday 2026-09-06 (no generation date printed in doc)",
+   "governance_version": "v3.5",
+   "summary": "Washed, spun-dry watercress held undressed in a damp cloth and dressed at the table with a jar-shaken Dijon, red wine vinegar and olive oil vinaigrette.",
+   "servings": 3,
+   "equipment": [
+    "salad spinner",
+    "damp cloth",
+    "jar with lid",
+    "salad bowl"
+   ],
+   "method_md": "## Dish Overview\n\nRaw, peppery leaves with a sharp mustard vinaigrette — the plate's cold reset against a rich steak.\n\n## Yield & Timing\n\nServes 3 · Total: 5 min · Active: 5 min · No heat · Dressed at the table\n\n## Prep Phase\n\n1. Wash and spin thoroughly dry — wet leaves repel dressing.\n2. Wrap in a damp cloth and refrigerate, up to 4 hours.\n\n## Active Cooking\n\n1. No heat. Whisk the Dijon, vinegar, salt and pepper in a jar, then add the oil and shake to emulsify. Hold at room temperature.\n\n## Holding & Assembly\n\n**Dress at the table, not in the kitchen.** Watercress wilts within two or three minutes of contact with vinaigrette. A bowl of leaves and the jar of dressing, poured and tossed in front of everyone — which also lets each person take as much as they want of an assertive leaf.\n\n## Critical Control Points\n\n<table header-row=\"true\"><tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr><tr><td>Major</td><td>Dressed too early — limp, dark, collapsed</td><td>Leaves darkening and losing structure</td><td>Unrecoverable. Dress at the table</td></tr><tr><td>Minor</td><td>Dressing will not emulsify</td><td>Oil sitting separate after shaking</td><td>More Dijon, shake again</td></tr></table>\n\n## Adjustment Notes\n\nWatercress already reads peppery and saline, so under-salt the vinaigrette rather than over-salt it. Taste on a leaf, not from the jar.",
+   "designed_unvalidated": [],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "watercress",
+     "department": "Produce",
+     "qty": 100,
+     "unit": "g",
+     "qty_alt": "3½ oz",
+     "prep_note": "thick stems trimmed; washed and spun dry",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "dijon mustard",
+     "department": "Pantry",
+     "qty": 1,
+     "unit": "tsp",
+     "qty_alt": null,
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "red wine vinegar",
+     "department": "Oils & Liquids",
+     "qty": 15,
+     "unit": "ml",
+     "qty_alt": "1 tbsp",
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "olive oil",
+     "department": "Oils & Liquids",
+     "qty": 45,
+     "unit": "ml",
+     "qty_alt": "3 tbsp",
+     "prep_note": "good quality — a primary flavour, not a medium",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 0.5,
+     "unit": "g",
+     "qty_alt": "pinch",
+     "prep_note": "under-salt — watercress already reads saline",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "black pepper",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "to taste",
+     "prep_note": "named in method step 1 only, not in the ingredient table or shopping list",
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  }
+ ],
+ "notes": "Multi-component menu with five recipes; task listed only the ribeye as existing. Four new dishes created with prefix ribeye-lj-: ribeye-lj-salsa-verde (sauce), ribeye-lj-pommes-puree (side), ribeye-lj-sauteed-mushrooms-thyme (side), ribeye-lj-watercress-mustard-vinaigrette (salad). Existing dish little-joe-bone-in-ribeye now has its full recipe and 8 ingredients. Doc has no generation date; header says 'Governance framework v3.5' (stored as governance_version 'v3.5'). No wine pairing in the doc. Meal Balance Audit and Register (meal-level, not part of Meal Workflow) were prepended to workflow_md so the content is not lost; the meal-level 'Designed, Not Validated' table (8 items) was appended to workflow_md verbatim and also distributed to dishes (items 1–7 → ribeye, item 8 → purée). Sourcing Notes appended to shared_prep_md. Shopping list skipped per rules; used only to set pantry_check (Dijon, neutral oil, red wine vinegar, black pepper, flaky salt, Diamond Crystal kosher salt). Black pepper is NOT in the ingredient tables of the salsa verde or the vinaigrette but both methods say 'salt and pepper' (and the shopping list marks pepper 'yes' for salsa verde), so one qty-less 'black pepper' entry was added to each with a prep_note flagging its origin — remove if strictness requires table-only lines. Pommes purée has two separate Diamond Crystal kosher salt lines (12 g for the water, 2 g to season) kept as two entries per the doc. Ribeye ingredient named 'little joe grass fed mb4+ ribeye on bone' (new canonical; nearest existing is 'wagyu sirloin, mb5+'). 'mushroom, mixed', 'watercress' and 'olive oil' (good quality, kept as 'olive oil' not 'extra-virgin') used as names. Shopping list total for kosher salt reads 25.5 g (9+1+12+2+1+0.5) — consistent with the per-dish lines. Doc mentions guest 'Lukas' dislikes oily fish (reason for the anchovy split) — kept in the salsa verde method text."
+}

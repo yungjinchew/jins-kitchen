@@ -1,0 +1,452 @@
+{
+ "assignment_key": "maiale",
+ "source_file": "docs/maiale-al-latte-dinner/v1/maiale-al-latte-dinner.html",
+ "meal": {
+  "slug": "maiale-al-latte-dinner",
+  "name": "Maiale al Latte — Sunday Dinner",
+  "planned_date": "2026-06-28",
+  "status": "cooked",
+  "pax": 3,
+  "workflow_md": "## T-Minus Timeline\n\n<table header-row=\"true\">\n<tr><td>Time</td><td>Action</td></tr>\n<tr><td>T−3:15</td><td>Pork out of fridge; pat dry, re-truss if needed. Oven to 300°F / 150°C.</td></tr>\n<tr><td>T−3:05</td><td>Brown pork hard, 12–15 min to deep mahogany (induction).</td></tr>\n<tr><td>T−2:50</td><td>Bloom garlic + sage; add 850 ml milk, zest strips, bay; return pork. Bring to gentle simmer.</td></tr>\n<tr><td>T−2:45</td><td>Lid ajar → oven. Braise begins (~2 hr 15 min).</td></tr>\n<tr><td>T−2:00</td><td>Turn pork (first turn).</td></tr>\n<tr><td>T−1:15</td><td>Turn pork again. <b>90-min check:</b> top up 60–120 ml hot water if milk below ⅓ meat height.</td></tr>\n<tr><td>T−0:35</td><td>Drain + rinse beans. Slice 2 garlic, dice shallot, chop parsley, grate broccolini zest. Trim + halve thick broccolini stalks.</td></tr>\n<tr><td>T−0:30</td><td>Pork done (fork twists free / 195–203°F). Lift to board, tent. <b>Remove bay + zest from pot. Reserve 3 tbsp liquor for beans — before reducing.</b> Then reduce sauce if needed. Pork rests through this window.</td></tr>\n<tr><td>T−0:20</td><td>Beans: sweat shallot + garlic (induction); add beans, water + reserved liquor; simmer 10–12 min.</td></tr>\n<tr><td>T−0:15</td><td>Broccolini: blanch 90 sec, drain and pat dry; heat pan; char 3–4 min, turning, until blistered and tender-crisp.</td></tr>\n<tr><td>T−0:05</td><td>Finish beans: mash 20–25%, stir in parsley, drizzle EVOO, season. Hold covered, low. Broccolini off heat → dress with zest, lemon, oil, salt.</td></tr>\n<tr><td>T−0:03</td><td>Mash 2 garlic cloves into pork sauce; off-heat lemon juice; adjust salt. Slice pork against grain.</td></tr>\n<tr><td>T</td><td>Plate: pork + curd sauce + fresh pepper; beans; broccolini; bread on table.</td></tr>\n</table>\n\n## Failure Prioritisation\n\nIf the window slips: the broccolini fails first — limp within ~10 min of dressing. Plate it last, serve immediately. Beans and pork both hold comfortably.\n\n## Workflow Notes\n\n**Critical path:** The pork braise governs everything — it is the only long, fixed-duration component, and its doneness is a fork-feel judgment, not a clock. Everything else builds around its exit. If the pork needs more time at T−0:30, hold service: beans wait indefinitely on low, broccolini isn't started until T−0:15 anyway. Do not pull the pork early to hit a clock — under-braised shoulder is the meal's worst failure. Sacrifice timing, not doneness.\n\n**Oven & heat sequencing:** The oven runs one job — pork at 300°F / 150°C, start to finish, no transitions. All other cooking is cooktop in the final 35 minutes. Induction #1 holds the sauce reduction, induction #2 runs the beans, and the broccolini chars on the outdoor gas stove (hot pan or direct burner, keeping high heat and splatter outside). To stay fully indoors, run broccolini on induction #2 in a hot cast-iron pan after the beans come off, holding the beans covered on low. Nothing competes for a heat source.\n\n## Holding Chain\n\n<table header-row=\"true\">\n<tr><td>Component</td><td>Hold Strategy</td><td>Max Hold</td><td>Drift Risk</td><td>Corrective</td></tr>\n<tr><td>Pork (sliced)</td><td>Tented on board, sauced at plating</td><td>~25 min</td><td>Surface cools, slices firm</td><td>Spoon warm sauce over at plating</td></tr>\n<tr><td>Pork sauce</td><td>In pot, lowest heat or off</td><td>~30 min</td><td>Tightens / curds clump</td><td>Loosen with warm milk or water off-heat</td></tr>\n<tr><td>Cannellini beans</td><td>Covered, induction on low</td><td>~30 min</td><td>Absorb liquid, tighten</td><td>Loosen with hot water or reserved liquor</td></tr>\n<tr><td>Broccolini</td><td>Do not hold — serve immediately</td><td>~10 min</td><td>Goes limp, loses char</td><td>None — plate-last component; time to service</td></tr>\n</table>\n",
+  "shared_prep_md": "**Lemon:** 1 lemon total — zest in wide strips → Pork braise; remaining zest finely grated → Broccolini; juice → Pork sauce (1–2 tsp) + Broccolini squeeze.\n\n**Garlic:** 7 cloves total — 5 smashed → Pork braise; 2 thinly sliced → Beans.\n\n**Parsley:** ¼ cup chopped → Beans (pinch reserved for the pork platter if desired).\n\n**Braising liquor:** reserve ~3 tbsp of the pork's milk sauce *before its final reduction* → Beans.\n\n*Sourcing: Tinned cannellini are the right call — dried would add a soak the brief avoids. Jarred Spanish-style large white beans (one 660 g jar) substitute cleanly for a creamier result if you're already at a shop that carries them.*",
+  "wine_pairing": null,
+  "components": [
+   {
+    "dish_slug": "maiale-al-latte",
+    "role": "main",
+    "service_order": 1
+   },
+   {
+    "dish_slug": "maiale-creamy-cannellini-beans",
+    "role": "side",
+    "service_order": 2
+   },
+   {
+    "dish_slug": "maiale-charred-broccolini-lemon-zest",
+    "role": "side",
+    "service_order": 3
+   }
+  ]
+ },
+ "dishes": [
+  {
+   "slug": "maiale-al-latte",
+   "existing": true,
+   "name": "Maiale al Latte (Pork Shoulder Braised in Milk)",
+   "protein": "Pork",
+   "category": [
+    "Main"
+   ],
+   "cuisine": [
+    "Italian"
+   ],
+   "difficulty": "Medium",
+   "tags": [
+    "braise",
+    "milk braise",
+    "pork shoulder",
+    "sage",
+    "lemon zest",
+    "dutch oven",
+    "overnight salt"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "cooked",
+   "source": "Recovered from maiale-al-latte-dinner.html (cooking sheet), generated 27 June 2026",
+   "governance_version": null,
+   "summary": "Boneless pork shoulder salted overnight, browned hard to mahogany, then braised lid-ajar at 300°F in 850 ml whole milk with smashed garlic, whole sage, wide lemon zest strips and bay for ~2 hr 15 min until fork-soft, the milk breaking into a curd-flecked sauce finished with mashed braised garlic and off-heat lemon juice.",
+   "servings": 3,
+   "equipment": [
+    "heavy Dutch oven",
+    "induction cooktop",
+    "oven",
+    "rack (for overnight salting)",
+    "kitchen twine",
+    "carving board"
+   ],
+   "method_md": "## Dish Overview\n\nPork shoulder browned hard and braised in milk with sage, garlic, and lemon zest until fork-soft, the milk reducing to a savory, curd-flecked sauce — meltingly soft meat against lightly granular, ricotta-like sauce solids.\n\nMenu line: Maiale al Latte — pork shoulder braised in milk.\n\n## Yield & Timing\n\nYield: 3 adults · Total: ~3 hr (plus optional overnight salt) · Active: ~50 min · Oven: 300°F / 150°C\n\n## Prep Phase\n\n1. **Salt ahead (preferred):** Pat the pork thoroughly dry, season all over with the salt and pepper, and refrigerate **uncovered overnight** (up to 24 hr) on a rack — penetrates seasoning, dries the surface for a better crust. *No other day-before work.* **If not salting ahead:** season and rest at room temperature 30–45 min while you prep.\n2. Pat the surface dry again if it came from the fridge. *A dry surface is essential for the hard sear.* Truss at 1-inch intervals if not already tied.\n3. Smash 5 garlic cloves. Pull 10 whole sage leaves from their stems — **leave whole, do not chop** *(chopped sage disperses through the curds and muddies the sauce)*. Peel 1 lemon into wide zest strips, avoiding pith.\n\n## Active Cooking\n\n1. **Brown the pork hard.** In a heavy Dutch oven over medium-high (induction), heat butter and olive oil until the foam subsides. Brown on all sides, **12–15 min to a deep mahogany crust on every face.** *Few flavor-building ingredients here — this fond is the savory backbone, so push past a standard medium sear.* Watch the base: deep brown is the goal, but lower the heat if it threatens to blacken — scorched fond turns the milk bitter. Transfer to a plate.\n2. **Bloom aromatics.** Lower to medium. Add garlic and sage to the fat; cook 60–90 sec until fragrant and the garlic is pale gold — *not browned.*\n3. **Build the braise.** Pour in the milk; add zest strips and bay. Scrape the fond off the base. Return the pork and juices. **The milk should reach roughly halfway up the shoulder — top up toward the 850 ml if a wide pot leaves it short.**\n4. **Braise.** Bring to a gentle simmer, then cover lid-ajar and transfer to the 300°F / 150°C oven. Braise ~2 hr 15 min, **turning every 45–60 min** so no face stays exposed long enough to dry. **At 90 min:** if milk is below ⅓ of meat height, add 60–120 ml hot water — *not milk, which reads raw added late.* *The milk separates into golden curds in a thin whey — this is correct.* Done when a fork twists with no resistance (secondary cue: 195–203°F / 90–95°C at the thickest part).\n5. **Rest + remove aromatics + reduce.** Lift the pork to a board, tent loosely. **Fish out and discard the bay and zest strips now, before any reduction** — left in during an active reduce, the zest over-extracts and citrus turns dominant. Then, if the sauce is thin, set over medium and reduce a few minutes to a loose, spoonable consistency.\n\n## Holding & Assembly\n\n1. The pork rests tented while you finish the sauce (rest overlaps the reduction — ~15 min total).\n2. **Mash 2 softened garlic cloves into the sauce** for body, then taste — braised cloves vary in strength, so add one more only if it reads thin on garlic. *Mashing all five can tip the sauce sweet-garlicky, away from the clean pork-and-dairy register.*\n3. Off-heat, stir 1–2 tsp lemon juice into the sauce; taste and adjust salt. *Add juice only off the heat — boiling dulls brightness.*\n4. Slice against the grain into thick slices (soft meat — sharp knife, gentle hand). Spoon curd sauce over and **finish with fresh black pepper.**\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Severity</td><td>Failure Mode & Cue</td><td>Recovery</td></tr>\n<tr><td>Major</td><td><b>Pork under-braised</b> — fork meets resistance, slices hold tight. Pulled before collagen melts.</td><td>Return to oven, covered, 20–30 min; re-check. Fully recoverable with time; unrecoverable only if served early.</td></tr>\n<tr><td>Major</td><td><b>Fond/aromatics scorched</b> — pot base blackens during the sear, or garlic browns past gold at bloom; bitter edge carries into the sauce.</td><td>Unrecoverable for the sauce if badly scorched; wipe pot, re-bloom fresh garlic/sage before milk. Prevent by lowering heat as the base threatens to blacken.</td></tr>\n<tr><td>Major</td><td><b>Braise dried out</b> — milk over-evaporates, exposed pork dries, base scorches. Liquid below ⅓ meat height.</td><td>Add 60–120 ml hot water at the 90-min check; recoverable if caught before the base scorches. Not milk.</td></tr>\n<tr><td>Minor</td><td><b>Sauce broken too far / dry curds</b> — over-reduced, curds clump grainy-dry.</td><td>Loosen with warm milk or water off-heat to a loose consistency.</td></tr>\n</table>\n\n## Adjustment Notes\n\n**Adjust:** For salt, season the sauce at the very end — reduction concentrates it, so hold back during cooking and correct with flaky salt at the table. For acid, off-heat lemon juice is the main lever; add ½ tsp at a time if flat or heavy. For richness, more lemon cuts heaviness; a small knob of butter stirred in rounds out a lean sauce.\n",
+   "designed_unvalidated": [
+    {
+     "param": "braise time",
+     "designed_value": "~2 hr 15 min at 300°F / 150°C, turning every 45–60 min",
+     "note": "Doc gates on fork-feel (secondary 195–203°F / 90–95°C), not the clock; actual time not recorded."
+    },
+    {
+     "param": "hot-water top-up",
+     "designed_value": "60–120 ml at the 90-min check if milk is below ⅓ meat height",
+     "note": "Conditional step; whether it was needed is not recorded."
+    },
+    {
+     "param": "garlic mashed into sauce",
+     "designed_value": "2 of the 5 braised cloves, adding a third only if thin on garlic",
+     "note": "Doc notes braised cloves vary in strength."
+    }
+   ],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "pork shoulder, boneless",
+     "department": "Protein",
+     "qty": 900,
+     "unit": "g",
+     "qty_alt": "2 lb",
+     "prep_note": "tied; truss at 1-inch intervals if not already tied",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 1.25,
+     "unit": "tsp",
+     "qty_alt": "~1¼ tsp (plus more to finish)",
+     "prep_note": "overnight salt; plus more to finish",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "black pepper",
+     "department": "Seasoning",
+     "qty": 0.5,
+     "unit": "tsp",
+     "qty_alt": "½ tsp, plus fresh grinds to finish",
+     "prep_note": "plus fresh grinds to finish",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "unsalted butter",
+     "department": "Dairy",
+     "qty": 14,
+     "unit": "g",
+     "qty_alt": "1 tbsp",
+     "prep_note": "for the sear",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "olive oil",
+     "department": "Oils & Liquids",
+     "qty": 15,
+     "unit": "ml",
+     "qty_alt": "1 tbsp",
+     "prep_note": "for the sear",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "whole milk",
+     "department": "Dairy",
+     "qty": 850,
+     "unit": "ml",
+     "qty_alt": "3½ cups",
+     "prep_note": "braising liquid; should reach roughly halfway up the shoulder",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "garlic",
+     "department": "Produce",
+     "qty": 5,
+     "unit": "clove",
+     "qty_alt": null,
+     "prep_note": "lightly smashed; 2 mashed into the sauce at the end",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "sage",
+     "department": "Produce",
+     "qty": 10,
+     "unit": "piece",
+     "qty_alt": "10 leaves",
+     "prep_note": "fresh, whole leaves — do not chop",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "lemon zest",
+     "department": "Produce",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "from 1 lemon",
+     "prep_note": "wide strips (no pith); removed before reduction",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "bay leaf",
+     "department": "Seasoning",
+     "qty": 1,
+     "unit": "piece",
+     "qty_alt": null,
+     "prep_note": "removed before reduction",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "hot water",
+     "department": "Oils & Liquids",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "up to ~120 ml",
+     "prep_note": "as needed at the 90-min check (60–120 ml if milk below ⅓ meat height)",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "lemon juice",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "tsp",
+     "qty_alt": "1–2 tsp, to taste",
+     "prep_note": "finish; stirred in off-heat",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "flaky salt",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "to finish",
+     "prep_note": "finish",
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "maiale-creamy-cannellini-beans",
+   "existing": true,
+   "name": "Creamy Cannellini Beans with Braising Liquor & Parsley",
+   "protein": null,
+   "category": [
+    "Side"
+   ],
+   "cuisine": [
+    "Italian"
+   ],
+   "difficulty": "Easy",
+   "tags": [
+    "beans",
+    "cannellini",
+    "tinned beans",
+    "braising liquor",
+    "parsley",
+    "carb-light",
+    "holds well"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "cooked",
+   "source": "Recovered from maiale-al-latte-dinner.html (cooking sheet), generated 27 June 2026",
+   "governance_version": null,
+   "summary": "Two tins of cannellini simmered 10–12 min with sweated shallot, sliced garlic, ~60 ml water and 3 tbsp of the pork's pre-reduction milk braising liquor, 20–25% mashed for body and finished off-heat with parsley and extra-virgin olive oil.",
+   "servings": 3,
+   "equipment": [
+    "saucepan",
+    "induction cooktop"
+   ],
+   "method_md": "## Dish Overview\n\nTinned cannellini gently simmered with garlic, shallot, and a spoonful of the pork's milk braising liquor, then partly mashed for a creamy, spoonable texture finished with parsley and olive oil — the carb-light alternative to mash.\n\nMenu line: Creamy cannellini beans with braising liquor & parsley.\n\n## Yield & Timing\n\nYield: 3 as a side · Total: ~20 min · Active: ~15 min\n\n## Prep Phase\n\n1. Drain and rinse the beans well. Thinly slice 2 garlic cloves; finely dice 1 small shallot. Chop ¼ cup parsley.\n2. **Reserve ~3 tbsp pork braising liquor *before* the pork sauce is reduced** (at the pork's T−0:30 step) — reserving after reduction spoons over-concentrated sauce into the beans and skews seasoning.\n\n## Active Cooking\n\n1. Warm 2 tbsp olive oil in a saucepan over medium (induction). Add shallot and a pinch of salt; sweat 2–3 min until soft and translucent — *not browned.* Add garlic; cook 60 sec until fragrant and pale.\n2. Add beans, ~60 ml water, and the 3 tbsp reserved liquor. Bring to a gentle simmer; cook 10–12 min, stirring occasionally, until creamy and heated through.\n3. Mash **approximately 20–25%** of the beans against the pot to thicken into a loose, creamy base — *leave the rest whole for texture.* Stir in parsley off-heat, finish with a drizzle of extra-virgin olive oil and black pepper. Season to taste.\n\n## Holding & Assembly\n\n1. Hold covered on lowest heat up to ~30 min. Beans tighten as they sit; loosen with a splash of hot water or more liquor to a spoonable consistency before serving.\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Severity</td><td>Failure Mode & Cue</td><td>Recovery</td></tr>\n<tr><td>Minor</td><td><b>Beans too tight / pasty</b> — over-mashed or over-reduced; gluey not creamy.</td><td>Loosen off-heat with hot water or liquor a tablespoon at a time.</td></tr>\n<tr><td>Minor</td><td><b>Garlic scorched</b> — sliced garlic browns and turns bitter at the sweat.</td><td>Keep heat at medium, add garlic after shallot softens; if scorched, restart the aromatics.</td></tr>\n</table>\n\n## Adjustment Notes\n\n**Adjust:** For salt, the liquor is already seasoned — salt last and lightly. For richness, a little more liquor deepens; water lightens if too heavy. Texture is the main lever — mash more for creamier, less for more intact beans.\n\n*Sourcing: Tinned cannellini are the right call — dried would add a soak the brief avoids. Jarred Spanish-style large white beans (one 660 g jar) substitute cleanly for a creamier result if you're already at a shop that carries them.*\n",
+   "designed_unvalidated": [],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "cannellini beans, tinned",
+     "department": "Pantry",
+     "qty": 480,
+     "unit": "g",
+     "qty_alt": "2 × 400 g tins (≈480 g)",
+     "prep_note": "drained and rinsed",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "garlic",
+     "department": "Produce",
+     "qty": 2,
+     "unit": "clove",
+     "qty_alt": null,
+     "prep_note": "thinly sliced",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "shallot",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "piece",
+     "qty_alt": "1 small",
+     "prep_note": "finely diced",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "olive oil",
+     "department": "Oils & Liquids",
+     "qty": 30,
+     "unit": "ml",
+     "qty_alt": "2 tbsp",
+     "prep_note": "plus extra-virgin to finish",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "pork braising liquor, reserved",
+     "department": "Oils & Liquids",
+     "qty": 3,
+     "unit": "tbsp",
+     "qty_alt": "~3 tbsp",
+     "prep_note": "reserved from the pork before reduction",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "water",
+     "department": "Oils & Liquids",
+     "qty": 60,
+     "unit": "ml",
+     "qty_alt": "~60 ml / ¼ cup",
+     "prep_note": "plus more as needed",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "flat-leaf parsley",
+     "department": "Produce",
+     "qty": 15,
+     "unit": "g",
+     "qty_alt": "¼ cup / 15–20 g",
+     "prep_note": "chopped; stirred in off-heat",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "to taste",
+     "prep_note": "pinch with the shallot; season last and lightly",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "black pepper",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "to taste",
+     "prep_note": "to finish",
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "maiale-charred-broccolini-lemon-zest",
+   "existing": true,
+   "name": "Charred Broccolini with Lemon Zest",
+   "protein": "Veg",
+   "category": [
+    "Side"
+   ],
+   "cuisine": [
+    "Italian"
+   ],
+   "difficulty": "Easy",
+   "tags": [
+    "broccolini",
+    "blanch and char",
+    "cast iron",
+    "lemon zest",
+    "outdoor gas",
+    "plate-last",
+    "no-hold"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "cooked",
+   "source": "Recovered from maiale-al-latte-dinner.html (cooking sheet), generated 27 June 2026",
+   "governance_version": null,
+   "summary": "Broccolini blanched 90 sec in well-salted water, dried, tossed in olive oil and charred 3–4 min in a very hot cast-iron pan (outdoor gas preferred) until blistered and tender-crisp, dressed off-heat with grated lemon zest, a squeeze of juice, oil, salt and optional chili flakes.",
+   "servings": 3,
+   "equipment": [
+    "pot for blanching",
+    "cast-iron or heavy stainless pan",
+    "outdoor gas burner (preferred) or induction cooktop"
+   ],
+   "method_md": "## Dish Overview\n\nBroccolini blanched briefly, then charred in a hot pan until blistered and tender-crisp, dressed with grated lemon zest, a squeeze of juice, and olive oil — the bright, firm, charred counterpoint to two soft, rich components.\n\nMenu line: Charred broccolini with lemon zest.\n\n## Yield & Timing\n\nYield: 3 as a side · Total: ~12 min · Active: ~10 min\n\n## Prep Phase\n\n1. Trim the woody ends. Halve thick stalks lengthwise so they cook evenly with thinner ones. Finely grate the lemon zest.\n\n## Active Cooking\n\n1. **Blanch:** Drop the broccolini into well-salted boiling water for 90 sec, just until the stalks lose their raw snap. Drain and pat thoroughly dry. *The blanch lets a fast, hot pan-sear blister the surface without leaving the stalks raw — a flat pan has no indirect zone to finish them gently, so they need par-cooking first.* Toss with 1 tbsp olive oil and a pinch of salt.\n2. **Char:** Heat a cast-iron or heavy stainless pan over medium-high until properly hot (outdoor gas burner preferred for heat and splatter, or induction indoors). Lay the broccolini in a single layer — don't crowd — and char 3–4 min, turning, until blistered and lightly blackened in spots and the stalks are tender-crisp. *Blistered and spotted, not ashed grey — pull while there's still bite.* Char in two batches if crowded; piling it steams rather than blisters.\n\n## Holding & Assembly\n\n1. Do not hold — plate-last component. Off heat, dress immediately with grated zest, a squeeze of juice, a thread of olive oil, salt, and optional chili. Serve at once.\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Severity</td><td>Failure Mode & Cue</td><td>Recovery</td></tr>\n<tr><td>Major</td><td><b>Overcooked / limp</b> — held too long after dressing or charred past tender-crisp; stalks floppy, no snap. Unrecoverable for texture; dish remains serviceable.</td><td>None — texture is lost once gone. Prevent by charring to just-tender and serving immediately; this is why it's plated last.</td></tr>\n<tr><td>Minor</td><td><b>Undercooked stalk</b> — char looks done but the thick stalk is raw-firm inside.</td><td>Return to the pan briefly; mostly prevented by the blanch and halving thick stalks.</td></tr>\n</table>\n\n## Adjustment Notes\n\n**Adjust:** For salt, dress and taste at the end — char concentrates flavor, so season lightly. For acid, lemon is the brightness lever; zest first, then juice a little at a time. Heat: chili flakes optional, at plating.\n",
+   "designed_unvalidated": [],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "broccolini",
+     "department": "Produce",
+     "qty": 350,
+     "unit": "g",
+     "qty_alt": "2 bunches / ~350 g",
+     "prep_note": "trimmed (woody ends removed; thick stalks halved lengthwise)",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "olive oil",
+     "department": "Oils & Liquids",
+     "qty": 15,
+     "unit": "ml",
+     "qty_alt": "1 tbsp",
+     "prep_note": "plus a little to finish",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "lemon zest",
+     "department": "Produce",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "from shared lemon",
+     "prep_note": "finely grated; remaining zest after the pork's strips",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "lemon juice",
+     "department": "Produce",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "a squeeze",
+     "prep_note": "to dress off heat",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "to taste",
+     "prep_note": "pinch after blanching; dress lightly at the end",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "chilli flakes",
+     "department": "Seasoning",
+     "qty": 1,
+     "unit": "pinch",
+     "qty_alt": "a pinch",
+     "prep_note": "at plating",
+     "pantry_check": true,
+     "optional": true
+    }
+   ]
+  }
+ ],
+ "notes": "All three recipe components map to the existing slugs given in the task; no new dishes created. The menu lists a fourth item — 'Optional: small amount of crusty bread (generally unnecessary at this scale)' — which appears in the shopping list (Bread: Crusty bread (optional), 1 small loaf) and the T timeline ('bread on table') but has no recipe of its own, so it was NOT made a dish; recorded here only. The HTML sheet is compressed: dish sections are Yield line, Ingredients, Prep Phase, Active Cooking, Holding & Assembly, Critical Control Points and a single 'Adjust:' paragraph — there is no separate Flavor Architecture, Scaling Notes or Nutrition Estimate section, and no Core/governance version is stated. Meal title in the doc is 'Maiale al Latte — Sunday Dinner' (rendered with '---' em dash in the extraction). No wine pairing given. The beans' ingredient table has one combined line 'Diamond Crystal kosher salt & black pepper — to taste'; split into two ingredient entries (salt, pepper) so both canonical names are captured — so beans show 9 entries for 8 table lines. Pork ingredient table sub-headers 'Pork & Braise' / 'Finish' captured in prep_note (lemon juice and flaky salt are the Finish items). Pantry checks taken from the shopping list: parsley, bay leaf, chili flakes, unsalted butter, olive oil, Diamond Crystal kosher salt, black pepper. Shared Prep section reproduced verbatim plus the shopping-list 'Sourcing' note about tinned vs jarred beans (also appended to the beans dish Adjustment Notes)."
+}

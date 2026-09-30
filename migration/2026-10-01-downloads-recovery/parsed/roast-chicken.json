@@ -1,0 +1,478 @@
+{
+ "assignment_key": "roast-chicken",
+ "source_file": "docs/roast-chicken-sunday/v1/roast-chicken-sunday.docx",
+ "meal": {
+  "slug": "roast-chicken-sunday",
+  "name": "Sunday Roast Chicken",
+  "planned_date": "2026-07-06",
+  "status": "cooked",
+  "pax": 3,
+  "workflow_md": "*Anchored to 8:00 PM service · chicken is the clock · pasta & salad built into the rest window · dessert assembled ahead, torched at service*\n\n## T-Minus Timeline\n\n<table header-row=\"true\">\n<tr><td>Time</td><td>Action</td></tr>\n<tr><td>T-24 hr</td><td>Dry-brine both birds: ~9–10 g salt each, uncovered on racks in fridge with airflow (target 18–24 hr; 30 hr hard stop)</td></tr>\n<tr><td>T-3 to 4 hr</td><td>Assemble dessert pots: jam base, sweetened yogurt over, level surface, chill (holds up to 4 hr; do NOT torch yet)</td></tr>\n<tr><td>T-120</td><td>Pull both birds from fridge — temper on counter (full 60 min)</td></tr>\n<tr><td>T-75</td><td>Preheat oven 450°F / 232°C</td></tr>\n<tr><td>T-65</td><td>Pat both birds bone-dry, truss, pepper skin (no re-salt). Insert ThermoWorks leave-in probe into the breast of one bird — thickest part, off the bone; set high alarm ~150°F / 66°C</td></tr>\n<tr><td>T-60</td><td>Both birds into oven on wire racks set over trays, side by side with a gap — roast to breast temp, ~40–55 min</td></tr>\n<tr><td>T-30</td><td>Prep salad: wash and dry leaves, hold in fridge; whisk vinaigrette, set aside</td></tr>\n<tr><td>T-20</td><td>Leave-in probe alarms near ~150°F. Spot-check the second bird's breast with the Thermapen (one probe watches one bird)</td></tr>\n<tr><td>T-8</td><td>Birds out at breast temp — add thyme to pan, single baste. Rest uncovered (15 min; dinner bird carves at T-0, lunch bird cools for fridge)</td></tr>\n<tr><td>T-8</td><td>Induction #1: pasta water on to boil (salted lightly). Induction #2: oil + garlic, low (2 min)</td></tr>\n<tr><td>T-6</td><td>Add anchovies to garlic oil — cook to just-coloring garlic (~3 min), then off-heat (skillet stays as finishing pan)</td></tr>\n<tr><td>T-6</td><td>Spaghetti into water — cook firm-tender (~9–10 min); reserve ¼ cup water before draining</td></tr>\n<tr><td>T-3</td><td>Warm plates. Carve dinner bird; spoon a little warm pan juice over the breast (not the skin)</td></tr>\n<tr><td>T-1</td><td>Transfer drained pasta into anchovy skillet — lemon juice + zest, splash of pasta water, emulsify off-heat, pepper</td></tr>\n<tr><td>T-0</td><td>Dress salad, plate the three savoury dishes. Parsley over pasta; vinaigrette & pan juices beside the chicken</td></tr>\n<tr><td>Dessert</td><td>After mains clear: sugar the chilled pots and torch to amber, one at a time; rest 1 min to set, serve (torch only at service)</td></tr>\n</table>\n\n## Failure Prioritisation\n\n*If the plating window slips, pasta fails first — it clumps and its oil breaks as it cools; the dressed salad wilts second. The chicken tolerates the wait best, so plate it first. The dessert is decoupled — assembled hours ahead, torched only when the mains are done.*\n\n## Workflow Notes\n\n**Critical path:** The chicken governs — dry-brine → temper → roast both birds to breast temp (150–152°F / 66–67°C) → mandatory 15-min uncovered rest. Pasta and salad build inside that rest window; never hold the chicken for a side. Dessert is fully decoupled: assembled hours ahead, torched once the mains clear.\n\n**Oven & heat sequencing:** Single oven state throughout — 450°F / 232°C, the two birds on wire racks over trays, side by side with a gap for airflow, no transitions. No pasta water until the birds are out resting, so oven and induction never contend. Induction #1 owns the pasta pot; Induction #2 owns the anchovy skillet, which doubles as the finishing pan (off-heat before pasta lands). The butane torch finishes the dessert at service. If the garlic races, pull it off-heat first — scorched garlic oil is unrecoverable.\n\n**Thermometers:** ThermoWorks leave-in probe in one bird's breast (alarm ~150°F / 66°C) as the primary gate; Thermapen instant-read to spot-check the second bird. One leave-in probe watches one bird only.\n\n## Holding Chain\n\n<table header-row=\"true\">\n<tr><td>Component</td><td>Hold Strategy</td><td>Max Hold</td><td>Drift Risk</td><td>Corrective</td></tr>\n<tr><td>Chicken (post-rest)</td><td>Uncovered on board, carved late</td><td>15 min ideal, 25 max</td><td>Skin softens if tented; meat cools</td><td>Do not tent. Carve just before serving. Past 20 min, warm plates</td></tr>\n<tr><td>Anchovy oil base</td><td>Skillet off-heat, residual warm</td><td>10 min</td><td>Garlic bitters if re-heated</td><td>Hold off-heat; pasta finishes in it — no re-fry</td></tr>\n<tr><td>Pasta (in skillet)</td><td>Do not hold</td><td>0 min</td><td>Clumps, oil dulls</td><td>Time drain to skillet being ready; emulsify and plate immediately</td></tr>\n<tr><td>Salad leaves (undressed)</td><td>Fridge, dry, in bowl</td><td>60 min</td><td>Wilt if dressed early</td><td>Keep leaves and vinaigrette separate until T-0</td></tr>\n<tr><td>Vinaigrette</td><td>Room temp, whisk before use</td><td>2 hr</td><td>Separates on standing</td><td>Re-whisk before dressing</td></tr>\n<tr><td>Dessert pots (un-torched)</td><td>Fridge, chilled, levelled</td><td>4 hr</td><td>Yogurt weeps if held too long</td><td>Pour off surface whey before sugaring</td></tr>\n<tr><td>Torched crust</td><td>Torch to order</td><td>~10 min</td><td>Crust weeps on cold yogurt</td><td>Torch only at service, one at a time; serve within minutes</td></tr>\n</table>\n",
+  "shared_prep_md": "**Lemon:** 1–2 lemons total — zest ½ + 1½ tsp juice → pasta; 1½ tbsp juice → vinaigrette; reserve a wedge for the table\n\n**Parsley:** 1 bunch — chop ~6 tbsp → pasta finish (doubled for freshness against the roast)\n\n**Garlic:** 4 large cloves, minced → pasta only\n\n**Thyme:** 2 tsp minced per bird → chicken pan (optional, Keller)\n\n**Dijon:** 1 tbsp → vinaigrette\n\n*Shopping-list notes: Two Huber's birds (~1.07 kg each) — salt ~9–10 g per bird, ~18–20 g total; one carved for dinner, one for next-day lunch. One tin of anchovies covers the pasta with fillets to spare. One–two lemons cover pasta and vinaigrette. Salad uses extra-virgin for the vinaigrette; pasta can use regular olive oil. Dessert: Odette jam on hand; caster sugar and yogurt the only additions. No rice component in this meal.*",
+  "wine_pairing": null,
+  "components": [
+   {
+    "dish_slug": "roast-chicken-keller-method",
+    "role": "main",
+    "service_order": 1
+   },
+   {
+    "dish_slug": "roast-chicken-anchovy-spaghetti",
+    "role": "side",
+    "service_order": 2
+   },
+   {
+    "dish_slug": "roast-chicken-bitter-leaf-salad",
+    "role": "salad",
+    "service_order": 3
+   },
+   {
+    "dish_slug": "roast-chicken-torched-sugar-yogurt-pots",
+    "role": "dessert",
+    "service_order": 4
+   }
+  ]
+ },
+ "dishes": [
+  {
+   "slug": "roast-chicken-keller-method",
+   "existing": true,
+   "name": "Roast Chicken",
+   "protein": "Chicken",
+   "category": [
+    "Main"
+   ],
+   "cuisine": [
+    "French",
+    "American"
+   ],
+   "difficulty": "Medium",
+   "tags": [
+    "keller method",
+    "dry-brine",
+    "high-heat roast",
+    "whole chicken",
+    "probe-gated",
+    "two birds",
+    "next-day lunch"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "cooked",
+   "source": "Recovered from roast-chicken-sunday.docx (no generation date stated in doc; menu cooked Sunday 2026-07-06)",
+   "governance_version": null,
+   "summary": "Thomas Keller's austere 450°F roast chicken with an 18–24 hr uncovered dry-brine, no basting, and a breast-temperature pull at 150–152°F; two ~1.07 kg Huber's birds roasted side by side, one for dinner and one for next-day lunch.",
+   "servings": 3,
+   "equipment": [
+    "wire racks",
+    "shallow trays",
+    "kitchen twine",
+    "ThermoWorks leave-in probe thermometer",
+    "Thermapen instant-read thermometer",
+    "oven (Bosch)",
+    "carving board"
+   ],
+   "method_md": "## Dish Overview\n\nKeller's austere high-heat roast — crackling salted skin over juicy meat, no basting — with an overnight dry-brine and a breast-temperature pull for even seasoning and a reliably juicy breast. Two small birds roasted side by side; one carved for dinner, one for next-day lunch.\n\nMenu line: **Roast Chicken** — Keller method, overnight dry-brine, breast-temp pull; two Huber's birds, one for dinner, one for next-day lunch.\n\n## Yield & Timing\n\n*Serves 3 + next-day lunch · Two birds ~1.07 kg each (Huber's, 2.14 kg combined) · Total ~24 hr (mostly passive) · Active ~20 min · Temper 60 min · Roast ~40–55 min · Rest 15 min · Oven 450°F / 232°C*\n\n## Prep Phase\n\n**1. Dry-brine (both birds), T-24 hr.** Pat each bird very dry, inside and out. Weigh ~9–10 g salt per bird; rain ~85% over the skin from height, the rest in the cavity. Set both breast-up on racks over trays, **uncovered**, in the fridge — target 18–24 hr, 30 hr hard stop. *Give each bird airflow — do not crowd or stack. Past 30 hr on a bird this small turns the texture ham-like.*\n\n**2. Temper, T-120.** Counter, full 60 min, to take the chill off both. *A fridge-cold bird roasts unevenly and steams; small birds still want the full hour for an even centre.*\n\n**3. Final prep, T-65.** Re-pat each skin bone-dry. Truss. Pepper the skin. **Do not re-salt** — the dry-brine has seasoned through. Insert the ThermoWorks leave-in probe into the breast of one bird — thickest part, tip centred, off the bone — and set the high alarm to ~150°F / 66°C.\n\n## Active Cooking\n\n**1. Roast (both birds), T-60.** Oven fully at 450°F / 232°C. Set each bird on a **wire rack over a shallow tray**, side by side with a few cm gap. *The rack lets air circulate underneath so the skin crisps rather than steams; the tray catches the jus for basting and the carved breast. Do not sit the bird flat in a solid pan — the underside steams. Do not stack on a second rack.* **No basting, no added butter** — added fat steams and softens the skin.\n\n**2. Monitor by probe.** The leave-in probe in the first bird alarms at ~150°F / 66°C — no need to check it repeatedly. When it nears the alarm, **spot-check the second bird's breast with the Thermapen**, since one leave-in probe watches only one bird and they may not finish together. *Skin should be fully browned by ~40 min for a ~1 kg bird; colour corroborates the probe.*\n\n**3. Out and rest, T-8.** At breast temp, add thyme to the pan and give one baste with pan juices. Rest **uncovered** on a board, breast-up, 15 min. *Carve the dinner bird first; the lunch bird cools fully before refrigerating.*\n\n*Doneness (primary gate = breast): Pull when the breast reads 150–152°F / 66–67°C; carries to ~155°F / 68°C during the rest. Thighs read ~165–175°F / 74–79°C by then, correct for dark meat. Secondary cue: thigh-joint juices run clear; legs loose in the socket. If the breast is at temp but thigh juices run pink, tent only the legs and give 5 more min.*\n\n## Holding & Assembly\n\nRest 15 min uncovered on a board (catches carving juices; tenting steams the skin). Remove twine. Carve per Keller: separate wing joints, remove legs and thighs, lift the oysters, split the breast down the middle and serve each half on the bone with a wing joint attached. **Slather the carved meat — not the skin — with fresh butter.** Spoon a little warm pan juice over the breast meat, avoiding the skin; reserve the rest for the table. Serve the lemon-Dijon vinaigrette *beside* the chicken, not over the skin. *Carve within ~3 min of serving so the skin doesn't soften.*\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr>\n<tr><td>Critical</td><td>Skin steams instead of crisps — pale, flabby, no crackle.</td><td>Skin slack and blond after ~40 min in the oven.</td><td>Largely unrecoverable once roasted wet. Prevent: 18–24 hr uncovered dry-brine + re-pat dry + no in-roast basting + no tenting at rest + butter/juice on meat, not skin.</td></tr>\n<tr><td>Major</td><td>Breast dries chasing thigh doneness. Unrecoverable for breast if pushed past; dish remains serviceable.</td><td>Breast climbs past 155°F / 68°C before the pull.</td><td>Pull on breast at 150–152°F, not the thigh; tent only the legs if they lag.</td></tr>\n<tr><td>Major</td><td>Birds crowd the oven — touching or too close, they steam rather than crisp.</td><td>Pale, soft skin between the birds even as tops brown.</td><td>Roast side by side with a gap; if the Bosch can't fit both with clearance, roast the lunch bird after the dinner bird.</td></tr>\n<tr><td>Major</td><td>Salt over-concentrates on a small bird.</td><td>Skin tastes sharply salty pre-roast.</td><td>Hold to ~9–10 g per bird; don't re-salt at T-65; unsalted butter at carving buffers.</td></tr>\n<tr><td>Minor</td><td>Uneven browning — one side pale.</td><td>Visible at the browning check.</td><td>Rotate the pan; give 3–5 min more; acceptable cosmetic variance.</td></tr>\n</table>\n\n## Adjustment Notes\n\n<table header-row=\"true\">\n<tr><td>Adjustment</td><td>Guidance</td></tr>\n<tr><td>Salt</td><td>If skin reads under-seasoned, a light finishing-salt pinch at carving recovers it — the dry-brine should prevent this.</td></tr>\n<tr><td>Acid</td><td>If the jus tastes flat, a few drops of reserved lemon lift it.</td></tr>\n<tr><td>Richness</td><td>Self-buffers at the table via butter, pan juices, and vinaigrette served separately.</td></tr>\n<tr><td>Lunch bird</td><td>Cool fully uncovered before refrigerating; eats well cold next day (use-by 07/07, keep to Monday).</td></tr>\n</table>\n\n## Scaling Notes\n\nToward the top of the size range, add 5–10 min and verify by breast temp, not clock. Salt scales with weight — hold 0.8–1.0%. Do not dry-brine past ~30 hr on a small bird. Two birds need oven clearance between them; if unavailable, roast sequentially.\n",
+   "designed_unvalidated": [
+    {
+     "param": "roast time",
+     "designed_value": "~40–55 min at 450°F / 232°C for ~1.07 kg birds",
+     "note": "Doc gives a range and gates on breast temp (150–152°F), not the clock; actual time not recorded."
+    },
+    {
+     "param": "two-bird oven clearance",
+     "designed_value": "side by side with a few cm gap",
+     "note": "Doc hedges: if the Bosch can't fit both with clearance, roast the lunch bird after the dinner bird."
+    },
+    {
+     "param": "salt per bird",
+     "designed_value": "~9–10 g per bird (0.8–1.0% of weight)",
+     "note": "Doc flags salt over-concentration on a small bird as a Major CCP."
+    }
+   ],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "whole chicken",
+     "department": "Protein",
+     "qty": 2,
+     "unit": "piece",
+     "qty_alt": "2 birds, ~1.07 kg each (2.14 kg combined)",
+     "prep_note": "cage-free (Huber's); one for dinner, one for next-day lunch",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 18,
+     "unit": "g",
+     "qty_alt": "~9–10 g per bird (≈1 tbsp), ~18–20 g total",
+     "prep_note": "dry-brine; ~85% over the skin, rest in the cavity",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "black pepper",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "to taste",
+     "prep_note": "freshly ground, on the skin at T-65",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "thyme",
+     "department": "Produce",
+     "qty": 2,
+     "unit": "tsp",
+     "qty_alt": "2 tsp per bird",
+     "prep_note": "minced; added to the pan at the T-8 baste",
+     "pantry_check": false,
+     "optional": true
+    },
+    {
+     "name": "unsalted butter",
+     "department": "Dairy",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "to slather on carved meat only",
+     "prep_note": "on carved meat, not the skin",
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "roast-chicken-anchovy-spaghetti",
+   "existing": true,
+   "name": "Anchovy Spaghetti",
+   "protein": null,
+   "category": [
+    "Side"
+   ],
+   "cuisine": [
+    "Italian"
+   ],
+   "difficulty": "Easy",
+   "tags": [
+    "pasta",
+    "anchovy",
+    "garlic oil",
+    "lemon",
+    "parsley",
+    "skillet finish",
+    "no-hold"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "cooked",
+   "source": "Recovered from roast-chicken-sunday.docx (no generation date stated in doc; menu cooked Sunday 2026-07-06)",
+   "governance_version": null,
+   "summary": "Spaghetti tossed off-heat in a low-cooked garlic and anchovy oil with lemon juice, zest, a splash of pasta water and doubled parsley; Parmesan deliberately omitted against the salted roast chicken.",
+   "servings": 3,
+   "equipment": [
+    "induction burners (both)",
+    "pasta pot",
+    "skillet"
+   ],
+   "method_md": "## Dish Overview\n\nA garlic-and-anchovy oil sauce clinging to firm spaghetti, lifted with lemon juice, zest, and doubled parsley — the umami, acid, and freshness the austere chicken lacks. Salt kept low against the salted bird.\n\nMenu line: **Anchovy Spaghetti** — garlic, olive oil, lemon, doubled parsley; finished in the skillet.\n\n## Yield & Timing\n\n*Serves 3 (2 restrained + 1 full) · Total ~15 min · Active ~15 min · Induction (both burners)*\n\n## Prep Phase\n\nMince garlic. Chop 6–8 anchovies. Chop parsley (~6 tbsp). Zest ½ lemon; juice 1½ tsp. *All done during the chicken's roast so the rest window is pure execution.*\n\n## Active Cooking\n\n*Both induction burners run concurrently — pot boils on #1, oil base builds on #2. The base skillet becomes the finishing pan: off-heat before the pasta lands so the garlic doesn't re-fry.*\n\n**1. Base (Induction #2, low).** Heat oil, add garlic, cook gently 2 min — *pale gold, never brown.* Add anchovies; cook until garlic just begins to color, ~3 min, stirring so the fillets melt in. Pull **off-heat** — leave it in the skillet.\n\n**2. Pasta (Induction #1).** Boil lightly salted water. Cook spaghetti firm-tender (just past the bite), ~9–10 min. Reserve **¼ cup / 60 ml** pasta water before draining.\n\n**3. Finish in the skillet.** With the skillet off-heat (or barely warm), transfer the drained pasta straight in. Add lemon juice + zest and a splash of pasta water. Toss vigorously to emulsify and coat. Pepper. *Should sheen and cling, not pool — add pasta water a splash at a time only if dry. The skillet must not be hot or the garlic turns bitter.*\n\n**4.** Plate; parsley over the top.\n\n## Holding & Assembly\n\nDo not hold. Finished last, plated last — toss and serve within ~1 min of draining. *Even 3–4 min of holding clumps the pasta and dulls the oil.* Omit Parmesan with this menu — chicken + anchovy + Parmesan stacks salt and umami with no upside; the pasta is a support act.\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr>\n<tr><td>Critical</td><td>Garlic scorches — bitter, acrid oil. The oil is the sauce.</td><td>Garlic browns past gold, oil smells sharp; or pasta added to a hot skillet.</td><td>Keep base heat low; anchovies in at 2 min; skillet off-heat before the pasta lands. Unrecoverable once scorched.</td></tr>\n<tr><td>Major</td><td>Sauce breaks / oily — no cling, oil pools on the plate.</td><td>Pasta greasy, sauce won't coat.</td><td>Add reserved pasta water a splash at a time, toss hard off-heat to re-emulsify the starch-oil bond.</td></tr>\n<tr><td>Major</td><td>Over-salted from anchovy + salted water against the salted bird.</td><td>Aggressively salty on the plate.</td><td>Prevent: salt the water lightly, no sauce salt, no Parmesan. If salty, add lemon + parsley to cut.</td></tr>\n<tr><td>Minor</td><td>Pasta overcooked / soft.</td><td>No bite.</td><td>Pull at firm-tender; it softens slightly in the hot toss.</td></tr>\n</table>\n\n## Adjustment Notes\n\n<table header-row=\"true\">\n<tr><td>Adjustment</td><td>Guidance</td></tr>\n<tr><td>Salt</td><td>Withheld from the sauce — taste at the toss, correct only at the table given the salted bird. If flat rather than salty, a few drops of lemon before any salt.</td></tr>\n<tr><td>Acid</td><td>Lemon at the toss; add a touch more to brighten if the dish reads heavy.</td></tr>\n<tr><td>Richness</td><td>Too lean or sharp → another tablespoon of the warm oil base; too rich → more lemon and parsley.</td></tr>\n</table>\n\n## Scaling Notes\n\nAnchovy salt scales non-linearly — don't scale fillet count linearly on a bigger batch; taste at 1.5×. A wider skillet keeps garlic in a single layer and prevents scorch; crowded oil heats unevenly.\n",
+   "designed_unvalidated": [],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "olive oil",
+     "department": "Oils & Liquids",
+     "qty": 60,
+     "unit": "ml",
+     "qty_alt": "4 tbsp",
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "garlic",
+     "department": "Produce",
+     "qty": 4,
+     "unit": "clove",
+     "qty_alt": "4 large cloves",
+     "prep_note": "large cloves, minced",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "anchovy fillet",
+     "department": "Pantry",
+     "qty": 6,
+     "unit": "piece",
+     "qty_alt": "6–8 fillets (1 tin)",
+     "prep_note": "drained, chopped",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "spaghetti",
+     "department": "Pantry",
+     "qty": 340,
+     "unit": "g",
+     "qty_alt": "12 oz",
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "lemon",
+     "department": "Produce",
+     "qty": 1.5,
+     "unit": "tsp",
+     "qty_alt": "1½ tsp juice + zest of ½ lemon",
+     "prep_note": "fresh; juice + zest of ½ lemon",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "black pepper",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "to taste",
+     "prep_note": "at the toss",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "flat-leaf parsley",
+     "department": "Produce",
+     "qty": 6,
+     "unit": "tbsp",
+     "qty_alt": "~6 tbsp (doubled)",
+     "prep_note": "Italian parsley, chopped; doubled for freshness against the roast",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "parmigiano-reggiano",
+     "department": "Dairy",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "omit with this menu (see note)",
+     "prep_note": "grated; omit with this menu — stacks salt and umami against chicken + anchovy",
+     "pantry_check": false,
+     "optional": true
+    }
+   ]
+  },
+  {
+   "slug": "roast-chicken-bitter-leaf-salad",
+   "existing": true,
+   "name": "Bitter Leaf Salad, Lemon-Dijon Vinaigrette",
+   "protein": "Veg",
+   "category": [
+    "Salad"
+   ],
+   "cuisine": [
+    "French"
+   ],
+   "difficulty": "Easy",
+   "tags": [
+    "bitter leaves",
+    "little gem",
+    "frisée",
+    "endive",
+    "lemon-dijon vinaigrette",
+    "no-cook",
+    "dress to order"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "cooked",
+   "source": "Recovered from roast-chicken-sunday.docx (no generation date stated in doc; menu cooked Sunday 2026-07-06)",
+   "governance_version": null,
+   "summary": "Little gem, frisée and a minority of Belgian endive dressed at T-0 with a 1½:4:1 lemon:oil:Dijon vinaigrette — the fresh, acid, crunch axis against the roast chicken and oil-based pasta.",
+   "servings": 3,
+   "equipment": [
+    "salad bowl",
+    "whisk"
+   ],
+   "method_md": "## Dish Overview\n\nCold, crisp mixed bitter leaves in a sharp lemon-Dijon vinaigrette — the meal's relief valve, cutting the chicken fat and oil-based pasta with bitterness and acid. Meal-level carve-out: this is the fresh/acid/crunch axis the two cooked components lack.\n\nMenu line: **Bitter Leaf Salad** — little gem, frisée, endive; lemon-Dijon vinaigrette.\n\n## Yield & Timing\n\n*Serves 3 · Total ~10 min · Active ~10 min · No heat*\n\n## Prep Phase\n\nWash and thoroughly **dry** the leaves (a wet leaf won't hold dressing) at T-30; hold in the fridge. Tear frisée and larger leaves to bite size; keep little gem in short ribbons; separate endive leaves or halve lengthwise. Whisk the vinaigrette: Dijon + lemon first, then stream in the oil to emulsify; season with the pinch of salt and pepper. Hold at room temp. *Little gem for sweet crunch and body, frisée for delicate bitterness, endive as the crisp bitter accent — keep it a minority.*\n\n## Active Cooking\n\nNot applicable — no heat. Assembly only.\n\n## Holding & Assembly\n\nKeep leaves and vinaigrette **separate** until the last moment. At T-0, dress lightly — leaves just coated, not wet — toss, and plate immediately. *Reserve a little vinaigrette to spoon beside the chicken. Dress only what will be eaten; undressed spares keep, dressed leaves wilt within minutes.*\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr>\n<tr><td>Major</td><td>Leaves dressed too early — wilted, soggy. Unrecoverable for wilted leaves; hold back undressed spares.</td><td>Leaves limp and weeping before serving.</td><td>Dress at T-0 only.</td></tr>\n<tr><td>Minor</td><td>Vinaigrette split — oil separates.</td><td>Dressing looks broken, won't cling.</td><td>Re-whisk before dressing; the Dijon re-emulsifies it.</td></tr>\n<tr><td>Minor</td><td>Over-dressed — heavy, oily leaves.</td><td>Dressing pools at the bowl base.</td><td>Dress lightly, in stages; serve extra on the side.</td></tr>\n</table>\n\n## Adjustment Notes\n\n<table header-row=\"true\">\n<tr><td>Adjustment</td><td>Guidance</td></tr>\n<tr><td>Acid</td><td>If the plate reads rich, sharpen with a few drops of lemon; if too sharp against the wine, round with a little more oil.</td></tr>\n<tr><td>Salt</td><td>Stays minimal; the Dijon and the meal's other salted components carry it.</td></tr>\n</table>\n\n## Scaling Notes\n\nVinaigrette holds the ~1½:4:1 lemon:oil:Dijon ratio at any volume. Dress-to-order regardless of batch size — never pre-dress expecting leftovers to hold.\n",
+   "designed_unvalidated": [],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "little gem lettuce",
+     "department": "Produce",
+     "qty": 2,
+     "unit": "piece",
+     "qty_alt": "~2 heads",
+     "prep_note": "leaves separated; kept in short ribbons",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "frisée",
+     "department": "Produce",
+     "qty": 0.5,
+     "unit": "piece",
+     "qty_alt": "~½ head",
+     "prep_note": "torn to bite size",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "endive",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "piece",
+     "qty_alt": "1–2 heads",
+     "prep_note": "Belgian; separated or halved lengthwise (accent only)",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "dijon mustard",
+     "department": "Pantry",
+     "qty": 1,
+     "unit": "tbsp",
+     "qty_alt": null,
+     "prep_note": "for the vinaigrette",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "lemon juice",
+     "department": "Produce",
+     "qty": 1.5,
+     "unit": "tbsp",
+     "qty_alt": null,
+     "prep_note": "fresh; for the vinaigrette",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "extra-virgin olive oil",
+     "department": "Oils & Liquids",
+     "qty": 60,
+     "unit": "ml",
+     "qty_alt": "4 tbsp",
+     "prep_note": "for the vinaigrette",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 1,
+     "unit": "pinch",
+     "qty_alt": "1 small pinch",
+     "prep_note": "for the vinaigrette",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "black pepper",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "to taste",
+     "prep_note": "for the vinaigrette",
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "roast-chicken-torched-sugar-yogurt-pots",
+   "existing": true,
+   "name": "Torched-Sugar Yogurt Pots, Odette Jam",
+   "protein": null,
+   "category": [
+    "Dessert"
+   ],
+   "cuisine": [
+    "French"
+   ],
+   "difficulty": "Easy",
+   "tags": [
+    "yogurt",
+    "brûlée",
+    "torched sugar",
+    "jam",
+    "make-ahead",
+    "no-cook",
+    "torch at service"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "cooked",
+   "source": "Recovered from roast-chicken-sunday.docx (no generation date stated in doc; menu cooked Sunday 2026-07-06)",
+   "governance_version": null,
+   "summary": "Three ramekins of lightly sweetened full-fat Greek yogurt over 2 tsp Odette dark-fruit jam, chilled up to 4 hr, then topped with 1 tsp caster sugar and torched to amber one at a time at service.",
+   "servings": 3,
+   "equipment": [
+    "3 torch-safe ramekins",
+    "butane torch"
+   ],
+   "method_md": "## Dish Overview\n\nChilled tangy yogurt over a base of Odette dark-fruit jam, finished with a thin torched-sugar crust cracked at the table — a cool, tart-sweet reset after the rich savoury meal.\n\nMenu line: **Torched-Sugar Yogurt Pots, Odette Jam** — chilled yogurt over dark-fruit jam, brûléed sugar lid cracked at the table.\n\n## Yield & Timing\n\n*Serves 3 · Total ~15 min + 20 min chill · Active ~10 min · Butane torch finish, no cook*\n\n## Prep Phase\n\n**1.** Stir the yogurt with honey/icing sugar to a light sweetness — *taste; it should stay tangy, not dessert-sweet. The jam carries the sweetness.*\n\n**2.** Spoon 2 tsp jam into the base of each of three torch-safe ramekins; spread to cover.\n\n**3.** Spoon ~115 g sweetened yogurt over the jam in each; level the surface flat. *A flat surface torches evenly.* Chill 20 min uncovered to firm the surface (holds up to 4 hr).\n\n## Active Cooking\n\n*No cook — butane torch finish only, to order. Do this after the mains have cleared, one pot at a time.*\n\n**1.** Sprinkle 1 tsp caster sugar in a thin, even layer across each chilled pot. *Use caster, not icing sugar — icing sugar scorches.*\n\n**2.** Torch, moving continuously, until the sugar melts and turns amber. *Stop at deep gold — black flecks are bitter. Done when it stops bubbling and sets glassy-matte within a few seconds of pulling the flame away.*\n\n**3.** Rest 1 min to harden into a crisp sheet. Finish with a little lemon zest if using.\n\n## Holding & Assembly\n\nAssemble and chill up to 4 hr ahead — the surface holds. **Torch only at service:** the crust weeps and dissolves within ~15 min of contact with the cold yogurt. Serve immediately, cracking the crust at the table. *Torch one pot at a time; a torched pot cannot wait.*\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr>\n<tr><td>Major</td><td>Sugar crust won't crisp — layer too thick, still syrupy. Unrecoverable if pooled; scrape and redo.</td><td>Stays wet, no glassy set after torching.</td><td>Sprinkle thin and even; torch longer with continuous motion.</td></tr>\n<tr><td>Major</td><td>Torched too far — acrid, burnt.</td><td>Black flecks, bitter smell.</td><td>Stop at deep amber; keep the flame moving. Unrecoverable once burnt — wipe and re-sugar.</td></tr>\n<tr><td>Minor</td><td>Yogurt weeps / watery surface.</td><td>Liquid pooling before torching.</td><td>Use thick full-fat Greek yogurt; pour off any whey before sugaring.</td></tr>\n</table>\n\n## Adjustment Notes\n\n<table header-row=\"true\">\n<tr><td>Adjustment</td><td>Guidance</td></tr>\n<tr><td>Sweetness</td><td>If too sweet against the meal, the yogurt was over-sweetened — a few drops of lemon or zest pulls it back.</td></tr>\n<tr><td>Acid / balance</td><td>If too tart, a thread more jam at the base rather than more sugar.</td></tr>\n<tr><td>Texture</td><td>Keep the crust thin; it is contrast, not a sugar hit.</td></tr>\n</table>\n\n## Scaling Notes\n\nScales linearly by pot. Torch one pot at a time regardless of batch — the crust must be crisp at service. For more than ~4 pots, torch in the kitchen in quick succession rather than at the table.\n",
+   "designed_unvalidated": [],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "greek yogurt",
+     "department": "Dairy",
+     "qty": 350,
+     "unit": "g",
+     "qty_alt": "1½ cups",
+     "prep_note": "full-fat; ~115 g per pot",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "dark-fruit jam",
+     "department": "Pantry",
+     "qty": 6,
+     "unit": "tsp",
+     "qty_alt": "6 tsp (2 tsp per pot)",
+     "prep_note": "Odette dark-fruit jam; base of each pot",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "honey or icing sugar",
+     "department": "Pantry",
+     "qty": 1,
+     "unit": "tsp",
+     "qty_alt": "1–2 tsp, to taste (light)",
+     "prep_note": "to sweeten the yogurt",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "caster sugar",
+     "department": "Pantry",
+     "qty": 3,
+     "unit": "tsp",
+     "qty_alt": "~3 tsp (1 tsp per pot)",
+     "prep_note": "for the brûlée crust",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "lemon zest",
+     "department": "Produce",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "a little",
+     "prep_note": "optional finish",
+     "pantry_check": false,
+     "optional": true
+    }
+   ]
+  }
+ ],
+ "notes": "All four menu components map to the existing slugs given in the task; no new dishes. Roast chicken output has 5 ingredient lines (whole chicken, Diamond Crystal kosher salt, black pepper, optional thyme, unsalted butter for carved meat) versus the 3 in the DB. The doc states no generation date and no Core/governance version; the only date cue is 'use-by 07/07, keep to Monday' in the chicken's Adjustment Notes, consistent with the 2026-07-06 cook. No wine pairing is given (the salad's Adjustment Notes mention 'too sharp against the wine' but name no wine). Anchovy Spaghetti lists 'Parmesan, grated — omit with this menu' as an ingredient line; kept as an optional ingredient with the omit note rather than dropped. 'Honey or icing sugar' has no match in ingredient_names.txt; added as a new canonical name. The Odette jam is mapped to the existing 'dark-fruit jam' name with pantry_check=true since the shopping list marks it '(have)'. The dish name for the salad component in the doc is 'Bitter Leaf Salad, Lemon-Dijon Vinaigrette' (menu line: 'Bitter Leaf Salad'). Shared Prep section reproduced verbatim plus the italic shopping-list summary paragraph; the shopping list table itself was skipped per instructions and used only to set pantry_check."
+}

@@ -1,0 +1,344 @@
+{
+ "assignment_key": "white-bean-soup",
+ "source_file": "docs/white-bean-turkey-spinach-soup/v1/white-bean-turkey-spinach-soup.html",
+ "meal": {
+  "slug": "white-bean-turkey-soup-supper",
+  "name": "Healing-Mouth Sunday Dinner",
+  "planned_date": null,
+  "status": "backlog",
+  "pax": 3,
+  "workflow_md": "## Menu\nServes 3 adults · soup + adult salmon add-on for 2 · Total ~45 min · Active ~30 min\n\nA soft white bean and turkey soup adapted for a post-extraction healing mouth: smooth and lukewarm for the son's portion, textured and brightened with lemon, herbs and chili at the table for the two adults, with a parallel roast salmon add-on to make it a full dinner. No acid or chili enters the shared pot.\n\n- **Lemony White Bean Soup with Turkey & Spinach** — the shared base; son's portion blended & sieved, served lukewarm\n- **Roast Salmon Add-On** — adult-first, flaked over the two adult bowls; optional and plain for the son\n\n## T-Minus Timeline\n<table header-row=\"true\"><tr><td>Time</td><td>Action</td></tr><tr><td>T-45</td><td>Heat pot; sauté onion + carrot until soft and golden-edged (7–10 min).</td></tr><tr><td>T-35</td><td>Add tomato paste + cumin (1 min); add turkey, garlic, ginger, salt. Cook to 165°F / 74°C (5–8 min).</td></tr><tr><td>T-27</td><td>Add stock + beans; smash reserved third of beans. Simmer 15–20 min.</td></tr><tr><td>T-25</td><td>Salmon into oven at 275°F / 135°C — roast 15–18 min; pull at 120°F / 49°C internal.</td></tr><tr><td>T-8</td><td>Salmon out; rest 5 min on tray, then flake, discard skin.</td></tr><tr><td>T-7</td><td>Add chopped spinach to soup; simmer ~5 min until fully collapsed.</td></tr><tr><td>T-2</td><td>Off heat. Adjust salt + cumin only — no lemon in the pot.</td></tr><tr><td>T-0 (son)</td><td>Ladle son's portion; blend smooth + sieve; cool uncovered to lukewarm before serving.</td></tr><tr><td>T-0 (adults)</td><td>Finish adult bowls: lemon, herbs, olive oil, chili/pepper. Flake salmon on top.</td></tr></table>\n\n## Failure Prioritisation\nIf the window slips, the son's portion fails first — it must be both uniformly smooth and cooled to lukewarm before it is served. Protect that ahead of plating speed for the adults.\n\n## Critical Path\nThe soup base governs timing; the salmon is a parallel roast slotted into the soup's simmer window and is not on the critical path. If timing slips, hold the salmon (it is fine at room temperature within the 2-hour window) and protect the son's portion — it must be smooth and lukewarm before serving. Do not serve his portion hot to save time.\n\n## Heat / Oven Sequencing\nSoup runs on one induction burner start to finish; salmon owns the Bosch oven at a single temperature (275°F / 135°C) — no oven transition required. The two run concurrently with no resource conflict. Spinach goes in only after the salmon is out, so final soup attention and salmon flaking do not compete.\n\n## Holding Chain\n<table header-row=\"true\"><tr><td>Component</td><td>Hold Strategy</td><td>Max Hold</td><td>Drift Risk</td><td>Corrective</td></tr><tr><td>Soup (pot)</td><td>Off-heat, covered; lukewarm/room temp acceptable.</td><td>2 hr out of fridge total</td><td>Thickens as beans absorb; over-2-hr food-safety risk.</td><td>Loosen with warm stock/water to ladling consistency. Refrigerate beyond 2 hr; reheat adult leftovers gently.</td></tr><tr><td>Son's portion</td><td>Blended + sieved; cooled uncovered to lukewarm.</td><td>Serve fresh-cooled</td><td>Skin forms; serves too warm if rushed.</td><td>Stir to break skin; do not serve until comfortable on the lip. Thin with a little stock if tightened.</td></tr><tr><td>Salmon</td><td>Flaked, loosely covered at room temp.</td><td>2 hr out of fridge total</td><td>Dries / firms as it sits.</td><td>Fold flaked salmon into warm soup to re-moisten; refrigerate beyond 2 hr.</td></tr></table>\n",
+  "shared_prep_md": null,
+  "wine_pairing": null,
+  "components": [
+   {
+    "dish_slug": "white-bean-turkey-spinach-soup",
+    "role": "soup",
+    "service_order": 1
+   },
+   {
+    "dish_slug": "white-bean-soup-roast-salmon-add-on",
+    "role": "side",
+    "service_order": 2
+   }
+  ]
+ },
+ "dishes": [
+  {
+   "slug": "white-bean-turkey-spinach-soup",
+   "existing": false,
+   "name": "Lemony White Bean Soup with Turkey & Spinach",
+   "protein": null,
+   "category": [
+    "Soup"
+   ],
+   "cuisine": [],
+   "difficulty": "Easy",
+   "tags": [
+    "soft food",
+    "healing-mouth",
+    "one-pot",
+    "stovetop",
+    "blended portion"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "designed",
+   "source": "Recovered from white-bean-turkey-spinach-soup.html, generated 20 June 2026",
+   "governance_version": null,
+   "summary": "A gentle ground-turkey and cannellini soup thickened with smashed beans and finished with spinach, kept acid- and chili-free in the pot so it can be blended and sieved for a healing mouth while adults finish their bowls with lemon, herbs and chili at the table.",
+   "servings": 3,
+   "equipment": [
+    "large pot",
+    "induction burner",
+    "probe thermometer",
+    "immersion blender",
+    "fine sieve"
+   ],
+   "method_md": "## Dish Overview\nA soft, savory white bean and turkey soup with partially smashed beans for body; lemon, herbs and chili are moved entirely to the table so the shared base stays gentle on healing extraction sites.\n\nMeal-level carve-out: the soup functions as a soft, single-register dish by design — no internal hard-texture contrast required, as the post-extraction context prohibits it.\n\n## Yield & Timing\nYield: 3 adults · Total: ~45 min · Active: ~30 min · No oven (stovetop)\n\n## Prep Phase\n1. Dice onion and carrot. *Carrot peeled — skin turns fibrous and works against the no-chew goal.*\n2. Mince garlic; grate ginger.\n3. Drain and rinse beans; set aside about one-third for smashing.\n4. Thaw frozen spinach and squeeze out excess water firmly in a towel or sieve. *If using fresh instead: 5 oz / 140 g baby spinach, roughly chopped.*\n5. Chop herbs; hold for the table.\n\n## Active Cooking\n1. Heat a large pot over medium-high, 1 min. Add olive oil; heat until it thins, ~30 sec.\n2. Add onion and carrot. Sauté until very soft and browned at the edges, 7–10 min. *Edges golden, onion translucent and collapsing.*\n3. Add tomato paste and cumin. Sauté until the paste darkens and smells caramelized, ~1 min.\n4. Add turkey, garlic, ginger, and ¾ tsp salt. Break up with a spoon and cook through, 5–8 min. *Primary cue: 165°F / 74°C on a probe. Corroborating: no raw pink remaining; fond building on pot base.*\n5. Add stock and beans; bring to a simmer. Smash the reserved third of beans against the side of the pot and stir in to thicken. Simmer 15–20 min until thickened and flavorful.\n6. Add chopped spinach. Simmer until fully collapsed and silky, ~5 min. *Fully wilted, no structure remaining.*\n7. Off heat. Taste and adjust salt and cumin only — no lemon in the pot. *Salt conservatively; the dish finishes at the table and the salmon carries its own seasoning.*\n8. **Son's portion (default — blended & sieved):** ladle out 1–2 servings, blend with an immersion blender until silky, then pass through a fine sieve to remove bean skins and any turkey grit. Cool uncovered to lukewarm before serving.\n\n## Holding & Assembly\nSoup is eaten lukewarm or at room temperature. Total time out of refrigeration — soup and salmon both — should not exceed 2 hours; refrigerate beyond that. The son's portion is served smooth and lukewarm-to-room-temperature, never hot — cool uncovered, stirring occasionally, until comfortable on the lip; no lemon, chili, or black pepper. Adult bowls are finished at the table with lemon, herbs, a thread of olive oil, and chili/pepper to taste, with salmon flaked on top.\n\n## Critical Control Points\n<table header-row=\"true\"><tr><td>Severity</td><td>Failure Mode & Cue</td><td>Recovery</td></tr><tr><td>Critical</td><td>Ground turkey undercooked — below 165°F / 74°C, food-safety risk. <em>Probe under 165°F / 74°C; meat soft-pink in the thickest clumps.</em></td><td>Continue cooking until 165°F / 74°C throughout. Not served until reached.</td></tr><tr><td>Critical</td><td>Son's portion served too hot — heat on raw extraction sites risks irritating the wound or dislodging the clot. <em>Steam rising; warm-to-hot on the lip.</em></td><td>Cool uncovered, stirring, until lukewarm-to-room-temperature. Do not serve until comfortable on the lip.</td></tr><tr><td>Critical</td><td>Son's portion too textured — bean skins, turkey grit, or spinach fiber can lodge in the sockets. <em>Visible skins or fibers; not uniformly smooth.</em></td><td>Blend longer; pass through a fine sieve. Do not serve until uniformly smooth.</td></tr><tr><td>Major</td><td>Soup over-reduces during simmer or holding — beans absorb liquid, base turns paste-thick rather than spoonable. <em>Coats the spoon heavily, mounds rather than settles.</em></td><td>Loosen with warm stock or water, a splash at a time, off heat, until it ladles cleanly. Re-check salt after.</td></tr></table>\n\n## Adjustment Notes\nIf the adult bowls read flat, it's almost always lemon or salt rather than more cumin — add lemon a teaspoon at a time off-heat. If the soup is too thick after holding, loosen with warm stock. The son's portion should taste mild and clean by design — correct only with a pinch of salt and a little stock to thin, nothing sharp.\n",
+   "designed_unvalidated": [
+    {
+     "param": "turkey doneness",
+     "designed_value": "165°F / 74°C on a probe, 5–8 min",
+     "note": "Primary cue; corroborate with no raw pink and fond on pot base."
+    },
+    {
+     "param": "bean simmer",
+     "designed_value": "15–20 min with one-third of beans smashed",
+     "note": "Target thickened and flavorful, still spoonable."
+    },
+    {
+     "param": "spinach simmer",
+     "designed_value": "~5 min until fully collapsed",
+     "note": "Added only after salmon is out of the oven."
+    },
+    {
+     "param": "son's portion",
+     "designed_value": "1–2 servings blended, sieved, cooled uncovered to lukewarm",
+     "note": "Serve temperature judged on the lip; no lemon, chili or pepper."
+    }
+   ],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "olive oil",
+     "department": "Oils & Liquids",
+     "qty": 45,
+     "unit": "ml",
+     "qty_alt": "3 tbsp",
+     "prep_note": "for the soup base",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "onion",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "piece",
+     "qty_alt": "1 large",
+     "prep_note": "diced",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "carrot",
+     "department": "Produce",
+     "qty": 140,
+     "unit": "g",
+     "qty_alt": "1 large (~5 oz)",
+     "prep_note": "peeled, diced",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "tomato paste",
+     "department": "Pantry",
+     "qty": 1,
+     "unit": "tbsp",
+     "qty_alt": null,
+     "prep_note": null,
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "ground cumin",
+     "department": "Seasoning",
+     "qty": 0.75,
+     "unit": "tsp",
+     "qty_alt": "¾ tsp, plus more to taste",
+     "prep_note": null,
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "ground turkey",
+     "department": "Protein",
+     "qty": 450,
+     "unit": "g",
+     "qty_alt": "1 lb",
+     "prep_note": null,
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "garlic",
+     "department": "Produce",
+     "qty": 3,
+     "unit": "clove",
+     "qty_alt": null,
+     "prep_note": "minced",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "ginger",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "tbsp",
+     "qty_alt": null,
+     "prep_note": "fresh, finely grated",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 0.75,
+     "unit": "tsp",
+     "qty_alt": "¾ tsp, plus more to taste",
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "chicken stock",
+     "department": "Oils & Liquids",
+     "qty": 950,
+     "unit": "ml",
+     "qty_alt": "1 qt",
+     "prep_note": null,
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "cannellini beans, tinned",
+     "department": "Pantry",
+     "qty": 850,
+     "unit": "g",
+     "qty_alt": "2 × 15 oz / 425 g cans",
+     "prep_note": "cannellini or great northern; drained & rinsed; reserve one-third for smashing",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "spinach, frozen",
+     "department": "Frozen",
+     "qty": 140,
+     "unit": "g",
+     "qty_alt": "5–6 oz / 140–170 g",
+     "prep_note": "chopped (default); thawed & squeezed — or 5 oz / 140 g fresh baby spinach, roughly chopped",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "lemon",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "piece",
+     "qty_alt": null,
+     "prep_note": "juiced — adult finish, at the table, not in the pot",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "soft herbs (parsley, dill, basil, chives)",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "cup",
+     "qty_alt": null,
+     "prep_note": "chopped — adult finish, at the table",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "olive oil",
+     "department": "Oils & Liquids",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "to taste",
+     "prep_note": "adult finish, at the table",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "chilli flakes",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "to taste",
+     "prep_note": "red-pepper flakes — adult finish, at the table",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "black pepper",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "to taste",
+     "prep_note": "adult finish, at the table",
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "white-bean-soup-roast-salmon-add-on",
+   "existing": false,
+   "name": "Roast Salmon Add-On",
+   "protein": "Fish",
+   "category": [
+    "Side"
+   ],
+   "cuisine": [],
+   "difficulty": "Easy",
+   "tags": [
+    "slow roast",
+    "low oven",
+    "add-on",
+    "soft food"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "designed",
+   "source": "Recovered from white-bean-turkey-spinach-soup.html, generated 20 June 2026",
+   "governance_version": null,
+   "summary": "Skin-on salmon fillet roasted low at 275°F / 135°C and pulled at 120°F / 49°C for a soft, just-set flake, served flaked over the adult soup bowls.",
+   "servings": 2,
+   "equipment": [
+    "oven",
+    "lined tray",
+    "probe thermometer"
+   ],
+   "method_md": "## Dish Overview\nGently roasted salmon pulled early for a soft, just-set flake, flaked over the two adult bowls to turn the soup into a complete dinner.\n\n## Yield & Timing\nYield: 2 adults (optional plain share for the son) · Total: ~25 min · Active: ~5 min · Oven: 275°F / 135°C\n\n## Prep Phase\n1. Pat fillet dry; rub with olive oil and ½ tsp salt.\n2. Hold at room temperature 15 min before roasting.\n\n## Active Cooking\n1. Heat oven to 275°F / 135°C.\n2. Place salmon skin-side down on a lined tray. Roast until it flakes with gentle pressure and is just opaque at the thickest point — pull at 120°F / 49°C internal; carries to ~125°F / 52°C off-heat. About 15–18 min for a 1-inch fillet. *Flakes separate when nudged with a fork; center barely translucent at pull.*\n3. Rest 5 min on the tray. Flake into large pieces, discarding skin.\n\n## Holding & Assembly\nAdult-first add-on. Holds at room temperature within the same 2-hour out-of-fridge window. Flake over the two adult bowls at serving; lemon wedges are adult-only. Soft enough for the son if he'd like a little, kept plain and lemon-free — but flaky fish still needs some oral movement, so it's optional for him, not part of his core portion.\n\n## Critical Control Points\n<table header-row=\"true\"><tr><td>Severity</td><td>Failure Mode & Cue</td><td>Recovery</td></tr><tr><td>Major</td><td>Salmon overcooked — pulled past 125°F / 52°C, flesh dries and firms, losing the soft flake the healing context needs. <em>Flakes chalky, no sheen.</em></td><td>Unrecoverable for texture; dish remains serviceable. Fold flaked salmon into the warm soup so the broth re-moistens it.</td></tr></table>\n\n## Adjustment Notes\nIf the salmon firms or dries while holding, fold the flaked pieces into the warm soup so the broth re-moistens them; this also softens it further for the son's optional share.\n",
+   "designed_unvalidated": [
+    {
+     "param": "salmon pull temperature",
+     "designed_value": "120°F / 49°C internal, carries to ~125°F / 52°C",
+     "note": "About 15–18 min for a 1-inch fillet at 275°F / 135°C."
+    },
+    {
+     "param": "rest",
+     "designed_value": "5 min on the tray",
+     "note": "Then flake into large pieces, discarding skin."
+    }
+   ],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "salmon fillet",
+     "department": "Protein",
+     "qty": 280,
+     "unit": "g",
+     "qty_alt": "10 oz",
+     "prep_note": "skin-on",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "olive oil",
+     "department": "Oils & Liquids",
+     "qty": 15,
+     "unit": "ml",
+     "qty_alt": "1 tbsp",
+     "prep_note": "rubbed on fillet",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 0.5,
+     "unit": "tsp",
+     "qty_alt": null,
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "lemon wedge",
+     "department": "Produce",
+     "qty": null,
+     "unit": null,
+     "qty_alt": null,
+     "prep_note": "adult-only, to serve",
+     "pantry_check": false,
+     "optional": true
+    }
+   ]
+  }
+ ],
+ "notes": "Multi-component sheet (soup + salmon add-on), so a NEW meal was created: white-bean-turkey-soup-supper, named 'Healing-Mouth Sunday Dinner' as titled on page 1 (page header calls it 'White Bean Soup with Turkey & Spinach · Healing-Mouth Menu'). Sheet dated 20 June 2026; planned_date left null per task. The task did not list the salmon component; created as NEW dish white-bean-soup-roast-salmon-add-on (role side, protein Fish). PROTEIN ENUM GAP: the soup's protein is ground turkey, which is not in the allowed protein list (Beef|Pork|Lamb|Chicken|Duck|Fish|Shellfish|Seafood|Veg); set to null — caller should decide whether to add 'Turkey' or map otherwise. One combined ingredient line ('Olive oil, red-pepper flakes, black pepper — to taste', adult table finishes) was split into three entries (olive oil / chilli flakes / black pepper) with prep_note marking them as table finishes; olive oil therefore appears twice in the soup (45 ml base + to-taste finish). White beans given as '2 × 15 oz / 425 g cans' → qty 850 g with the can count in qty_alt. Frozen spinach range 5–6 oz / 140–170 g → 140 g; fresh alternative (5 oz / 140 g baby spinach) kept in prep_note. The Menu section says 'Serves 3 adults' but the household context is two adults + son; pax set to 3 as stated. No shopping list in the sheet, so pantry_check=true only for salt, chilli flakes and black pepper. No governance version or nutrition estimate stated. Equipment: 'Bosch oven' and 'induction burner' named in the workflow; probe named in cues. New ingredient names not in ingredient_names.txt: ground turkey, spinach, frozen, soft herbs (parsley, dill, basil, chives)."
+}

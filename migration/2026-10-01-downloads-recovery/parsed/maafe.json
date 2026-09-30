@@ -1,0 +1,659 @@
+{
+ "assignment_key": "maafe",
+ "source_file": "docs/west-african-peanut-stew-dinner/v1/west-african-peanut-stew-dinner.docx",
+ "meal": {
+  "slug": "west-african-peanut-stew-dinner",
+  "name": "West African Peanut Stew Dinner (Maafe) — 2× Batch",
+  "planned_date": "2026-09-13",
+  "status": "cooked",
+  "pax": 3,
+  "workflow_md": "## Menu\n\n*Sunday 13 September 2026 · 3 pax served + reserve*\n\n1. Chicken Peanut Stew with Kabocha & Okra — 2× batch\n2. Steamed Rice\n3. Tomato–Cucumber Lime Salad\n4. Bird's Eye Chilli Paste\n5. Crushed Roasted Peanuts\n6. Chilled Pineapple with Lime & Flaky Salt\n\n*Dishes 2–6 carry forward unchanged and are sized for the served meal only. They are not scaled with the stew — salad and pineapple degrade within a day, and peanuts soften on contact with moisture.*\n\n## Before You Shop — Vessel Capacity\n\nThe doubled stew needs 6–7 L working capacity. Measure the wide Le Creuset. If it is under 6 L: sear in the wide Le Creuset for the surface area, then transfer to a stockpot for the braise.\n\n**Either way, keep the 1.5 L + 300 ml stock architecture.** A correction reserve costs nothing; removing water from a peanut stew is hard.\n\n## Workflow Notes\n\n**Critical path:** Kabocha entry → kabocha cue / heat termination → lime + cilantro → plating → service. Okra and spinach nest inside that sequence. The strategy is early completion plus a safe submerged hold on the chicken, and cue-terminated heat on the kabocha — neither endpoint can be scheduled to a fixed minute, so neither is. Four cues govern the cook: chicken (flesh separates cleanly from the bone under firm thumb pressure), kabocha (knife tip enters the centre with slight remaining resistance — this one stops the heat), okra (yields to pressure, retains snap at the seed line), and lime (added off heat in 5 ml increments against kabocha sweetness).\n\n**What yields to what:** Stew texture → kabocha texture → okra texture → rice → salad → condiments → pineapple. Do not delay service for any other component. If the kabocha cue fires while the okra is still firm, take the pot off heat anyway — firm okra is serviceable, over-tendered okra is not. Heat: Burner 1 owns the stew for the full cook; Burner 2 owns the rice from T-40 to T-12, then goes off. No oven, so no temperature transitions and no concurrent heat conflict. Everything except the stew runs in parallel during the T-45 prep block.\n\n**Reserve architecture:** The reserve is chicken and peanut-tomato sauce only, diverted before any vegetable enters and before spinach, lime, and cilantro. Squash and okra are poor candidates for freeze-thaw texture, spinach degrades markedly on freeze-thaw, and lime brightness dulls in storage — all four are rebuilt fresh on reheat.\n\n## Holding Chain\n\n<table header-row=\"true\"><tr><td>Component</td><td>Hold Strategy</td><td>Max Hold</td><td>Drift & Corrective</td></tr><tr><td>Stew — chicken phase</td><td>Very low, covered, submerged</td><td>15 min</td><td>None — thighs hold well submerged</td></tr><tr><td>Stew — served, after cue</td><td>Off active heat</td><td>10 min</td><td>Tightens — hot stock, 50 ml increments</td></tr><tr><td>Stew — reserve</td><td>Shallow containers ≤5 cm, loosely covered → fridge</td><td>3 days fridge / 3 months freezer</td><td>See food-safety checkpoint, Dish 1</td></tr><tr><td>Rice</td><td>Covered, off heat</td><td>25 min</td><td>15 ml water, re-cover, re-fluff</td></tr><tr><td>Salad</td><td>Room temperature</td><td>30 min</td><td>Drain pooled liquid; re-season lime + salt</td></tr><tr><td>Chilli paste</td><td>Ambient, covered</td><td>4 hrs</td><td>None</td></tr><tr><td>Crushed peanuts</td><td>Dry bowl</td><td>Stable</td><td>None</td></tr><tr><td>Pineapple</td><td>Chilled</td><td>2 hrs</td><td>Re-dress with lime before serving</td></tr></table>\n\n## T-Minus Timeline\n\n*Total run approximately 2 hours.*\n\n<table header-row=\"true\"><tr><td>Time</td><td>Task</td></tr><tr><td>T-115</td><td>Sear batch 1 — 4–5 min skin-side down, 2 min flip</td></tr><tr><td>T-107</td><td>Sear batch 2 — same. Remove all chicken; strip skin, discard</td></tr><tr><td>T-99</td><td>Aromatic base — onions + 4 g salt, 8–10 min</td></tr><tr><td>T-89</td><td>Garlic + ginger — 1 min</td></tr><tr><td>T-88</td><td>Tomato paste — 3–4 min to darken</td></tr><tr><td>T-84</td><td>Bloom spices 30 sec; crushed tomatoes 4–5 min, scraping fond</td></tr><tr><td>T-79</td><td>Add 1.5 L stock (hold 300 ml back); bring to low simmer — 6–8 min</td></tr><tr><td>T-71</td><td>Temper peanut butter with 240 ml hot liquid; return slowly, stirring</td></tr><tr><td>T-68</td><td>Chicken returns. Braise begins — low, partially covered</td></tr><tr><td>T-45</td><td>Prep block: cut kabocha, trim okra, salad, chilli paste, peanuts, pineapple</td></tr><tr><td>T-43</td><td><b>First chicken check</b> (25 min mark). Re-check every 5 min. Once the cue is met — expected T-43 to T-33 — immediately reduce to very low, cover, and hold submerged until T-28</td></tr><tr><td>T-40</td><td>Start rice — 12–15 min very low, then 10 min rest covered</td></tr><tr><td>T-28</td><td><b>Divert reserve</b> — half out, chicken and sauce only, no vegetables</td></tr><tr><td>T-24</td><td><b>Kabocha into served half. Begin checking after 12 min. Its cue, not the clock, controls when the stew leaves active heat</b></td></tr><tr><td>T-16</td><td>Okra into served half</td></tr><tr><td>T-12</td><td>Rice rest ends</td></tr><tr><td>T-8</td><td>Spinach in — <b>unless the kabocha cue has already fired</b>, in which case add spinach immediately off heat and let residual heat wilt it</td></tr><tr><td>T-9 to T-4 expected</td><td><b>Kabocha cue → pot off active heat immediately</b></td></tr><tr><td>Off heat</td><td>Lime in 5 ml increments, tasting between. Then cilantro, reserving some for plating</td></tr><tr><td>T-2</td><td>Plate rice and stew</td></tr><tr><td>T-0</td><td>Garnish with peanuts and reserved cilantro; serve</td></tr></table>\n\n*Plating window is 3–4 minutes from first plate to service. If it is missed, the stew temperature drops first, then the rice surface dries. Serve the salad alongside, within reach at every setting — it is interleaved with stew bites, not a separate course.*\n\n## Timeline Verification\n\n**Chicken.** Enters T-68, first check T-43 at the 25-minute mark. Band completion T-43 to T-38; worst case T-33 with the +5 min recovery invoked. Diversion at T-28 leaves 5 minutes of slack at the far edge, 15 at the near edge.\n\n**Kabocha.** Enters T-24, band 15–20 min, checked from T-12. Cue expected T-9 to T-4. Earliest edge gives 9 minutes off active heat before service, inside the 10-minute served-stew ceiling. Latest edge leaves 4 minutes to kill the heat, adjust lime, add cilantro, and plate from T-2. Closes at both edges.\n\n**Rice.** T-40 start, rest ends T-12, held 10 minutes against a 25-minute ceiling.\n\n**Okra — stated, not closed.** Enters T-16 with a 10–12 minute band, but the kabocha cue terminates active heat somewhere between T-9 and T-4. Okra therefore gets 7–12 minutes active plus 4–9 minutes residual in a pot that keeps cooking off the burner. Residual heat brackets the gap at both ends, but this does not close arithmetically. Moving okra earlier to guarantee the earliest edge would hand it 17 minutes at the latest edge — straight into the over-tendered failure. Under the stated failure priority, okra yields to kabocha and firm is the accepted outcome.\n\n**On the day:** if the kabocha cue fires at T-9, the pot comes off heat as the spinach goes in and residual heat wilts it. If at T-4, the spinach has already had its time. Both are fine. What you must not do is hold the pot on active heat waiting for T-0.\n\n## Meal Balance Audit\n\n**Richness** comes from peanut fat and chicken and is the dominant axis. Relief is carried by the salad's acidity mid-meal and the pineapple's cold acid at the close.\n\n**Sweetness stacking is this version's specific risk.** Kabocha, peanut butter, and pineapple all contribute. Relieving elements: Stage 2 lime working harder than in the original, okra's vegetal note, and the salad's raw acidity. Watch this at the finish — it is the most likely place the meal drifts from the 9.5 baseline.\n\n**Heat** is entirely externalised to the chilli paste, which is what lets one pot serve all three.\n\n**Acid appears in four components, all lime.** Intended as functionally distinct — corrective brightness in the stew, between-bite reset in the salad, heat-carrier in the paste, closing cleanse on the pineapple. Whether four lime hits read as monochromatic in the eating is an open question. Observe and record. If it reads lime-dominated, the salad is the better place to switch: red wine vinegar gives a different acid shape.\n\n**Texture** runs tender chicken → intact kabocha → okra snap → soft rice → crisp salad → peanut crunch → cold yielding fruit. No monotony risk. Register: comforting and generous.\n\n## Sourcing Notes\n\n- **Buy small okra pods, under 8 cm.** Large pods are woody at the stem and force you to cut through them, which releases the most mucilage.\n- One cilantro bunch covers the 20 g.\n- Kabocha loses roughly 25% to seeds and stem — hence 500 g whole for 300–350 g prepared.\n- Order the chicken from Butcher Box this week rather than assuming counter stock.\n\n## Designed, Not Validated — Log After the Cook\n\nThese parameters are engineered for this cook but have never been observed. Record them rather than letting them harden into assumed fact.\n\n<table header-row=\"true\"><tr><td>#</td><td>Parameter</td><td>What to Record</td></tr><tr><td>1</td><td>Kabocha at 15–20 min, 3 cm, unpeeled, in this stew</td><td>Time from entry to cue. This determines when the pot comes off heat, so it sets the entry anchor for every future cook of this dish</td></tr><tr><td>2</td><td>Okra exposure — active and residual</td><td>Both figures, and whether firm-at-service was acceptable at the table. This is the one relationship in the timeline that does not close arithmetically, and the acceptable lower bound for whole okra is itself under test</td></tr><tr><td>3</td><td>2× evaporation in the wide vessel</td><td>How much of the 300 ml reserve stock went back in, and at what point</td></tr><tr><td>4</td><td>Freezer hold for a vegetable-free reserve</td><td>Reheat quality. Structurally more plausible than a fully finished stew, but unverified</td></tr><tr><td>5</td><td>Skin-on sear value</td><td>Whether it materially improves the sauce, or whether skin-off-first would be equivalent at less fat</td></tr><tr><td>6</td><td>Lime multiplicity</td><td>Whether four lime uses read as coherent or repetitive across the meal</td></tr></table>\n\n## Cook-Day Cues — Quick Reference\n\n- **Chicken —** flesh separates cleanly from the bone under firm thumb pressure. First check 25 min in.\n- **Kabocha —** knife tip enters the centre with slight remaining resistance. This one stops the heat.\n- **Okra —** yields to pressure, retains snap at the seed line. Subordinate to the kabocha cue.\n- **Lime —** added off heat in 5 ml increments against kabocha sweetness. Expect the upper end of the range.\n",
+  "shared_prep_md": "**Limes: juice 3 limes (approx. 90 ml total)**\n\n- 15–22 ml → Stew finish\n- 22 ml → Tomato–Cucumber Salad\n- 10–15 ml → Chilli paste\n- 15–22 ml → Pineapple\n\n**Garlic is deliberately not aggregated.** The stew takes 8 cloves minced; the chilli paste takes 1 clove rough-chopped for pounding. Different prep treatment, kept separate.\n\n*Nothing else appears in two or more components in a form that can sensibly be prepared in aggregate. Onion and shallot are different items; the salad's red onion is a third.*\n",
+  "wine_pairing": null,
+  "components": [
+   {
+    "dish_slug": "maafe-chicken-peanut-stew",
+    "role": "main",
+    "service_order": 1
+   },
+   {
+    "dish_slug": "maafe-steamed-rice",
+    "role": "side",
+    "service_order": 2
+   },
+   {
+    "dish_slug": "maafe-tomato-cucumber-lime-salad",
+    "role": "salad",
+    "service_order": 3
+   },
+   {
+    "dish_slug": "maafe-birds-eye-chilli-paste",
+    "role": "sauce",
+    "service_order": 4
+   },
+   {
+    "dish_slug": "maafe-crushed-roasted-peanuts",
+    "role": "side",
+    "service_order": 5
+   },
+   {
+    "dish_slug": "maafe-chilled-pineapple-lime-flaky-salt",
+    "role": "dessert",
+    "service_order": 6
+   }
+  ]
+ },
+ "dishes": [
+  {
+   "slug": "maafe-chicken-peanut-stew",
+   "existing": true,
+   "name": "Chicken Peanut Stew with Kabocha & Okra — 2× Batch",
+   "protein": "Chicken",
+   "category": [
+    "Main"
+   ],
+   "cuisine": [
+    "West African",
+    "Senegalese"
+   ],
+   "difficulty": "Medium",
+   "tags": [
+    "braise",
+    "one-pot",
+    "stovetop",
+    "peanut",
+    "batch-cook",
+    "freezer-reserve",
+    "2x batch"
+   ],
+   "occasion": [
+    "Sunday dinner",
+    "Family dinner"
+   ],
+   "status": "cooked",
+   "source": "Recovered from west-african-peanut-stew-dinner.docx (2× batch version), cook date Sunday 13 September 2026 (no generation date stated)",
+   "governance_version": null,
+   "summary": "Doubled maafe: bone-in chicken thighs braised in a peanut-tomato emulsion, half diverted as a vegetable-free reserve, served half finished with unpeeled kabocha, whole okra, spinach, lime and cilantro.",
+   "servings": 6,
+   "equipment": [
+    "wide Le Creuset (6–7 L working capacity) or stockpot for the braise",
+    "shallow containers ≤5 cm for the reserve",
+    "whisk",
+    "ladle"
+   ],
+   "method_md": "## Dish Overview\n\nRich peanut-tomato braise with staged acidity — tender chicken, kabocha holding its edges, okra with a slight snap at the seed line, glossy sauce, crunchy peanut garnish.\n\nThis is the **2× batch** version: roughly half is served, half is diverted as a chicken-and-sauce reserve before any vegetable enters.\n\n## Yield & Timing\n\n*Yield: 6–8 servings (roughly half served, half reserved) · Total: ~115 min · Active: ~45 min · No oven · Hold: see Holding Chain*\n\nVessel: the doubled stew needs 6–7 L working capacity. Measure the wide Le Creuset. If it is under 6 L: sear in the wide Le Creuset for the surface area, then transfer to a stockpot for the braise. Either way, keep the 1.5 L + 300 ml stock architecture — a correction reserve costs nothing; removing water from a peanut stew is hard.\n\n## Flavor Architecture\n\n**Salt is computed on edible weight** — roughly 900 g from the bone-in figure, plus sauce volume.\n\n**Kabocha is unpeeled deliberately.** The skin is edible, softens fully, and holds each chunk together — it is the structural reason kabocha survives a braise that would collapse peeled squash.\n\n**Okra pods stay whole, cap trimmed without breaching the pod.** Mucilage sits inside; every cut surface releases it. Whole pods give vegetal flavour and snap while keeping thickening minimal — which matters, because the peanut emulsion already does that job.\n\nIngredients marked \"served half only\" (kabocha, okra, baby spinach, cilantro, lime juice) are added after the reserve diversion.\n\n## Prep Phase\n\nPat chicken completely dry. Dice onions; mince garlic; grate ginger. Halve kabocha, scrape seeds, cut into uniform 3 cm chunks with skin on. Trim okra caps without breaching the pod; leave whole. Measure peanut butter separately. Keep the 300 ml reserved stock hot and within reach.\n\n## Active Cooking\n\n**1 Sear, two batches (high).** Heat half the oil until shimmering. Sear batch 1 skin-side down 4–5 min until deeply browned; flip, 2 min. Remove. Repeat with the remaining oil and batch 2. Do not crowd — crowding is the difference between fond and steam at this volume. Remove all skin and discard.\n\n**2 Aromatic base (medium).** Onions + 4 g salt, 8–10 min until softened with light golden edges. Garlic + ginger, 1 min.\n\n**3 Tomato development (medium).** Tomato paste 2–3 min until darkened. Cumin, coriander, chilli flakes; bloom 30 sec. Crushed tomatoes 4–5 min, scraping fond off the base.\n\n**4 Peanut emulsification.** Add 1.5 L stock; bring to a low simmer. Ladle 240 ml / 1 cup hot liquid into the peanut butter and whisk fully smooth before it goes near the pot. Return slowly while stirring.\n\n**5 Braise (low).** Return chicken. Gentle simmer, partially covered. First check at 25 min, then every 5 min. Chicken remains submerged to service — no formal rest. **Doneness:** flesh alongside the bone separates cleanly under firm thumb pressure → stop. Resists or tears → continue 5 min. Once met, drop to very low, cover, and hold submerged.\n\n**6 Reserve diversion.** Ladle roughly half the stew — chicken and sauce in proportion — into shallow containers. No vegetables. See the cooling protocol below.\n\n**7 Kabocha, served half.** Add kabocha. Begin checking after 12 min. **Doneness:** knife tip enters the centre with slight remaining resistance → stop, and take the pot off active heat. Fully yielding → already too far. The cue terminates the heat; the clock does not override it.\n\n**8 Okra, served half.** Add whole pods 8 minutes after the kabocha. **Doneness:** pod yields to gentle pressure but retains a slight snap at the seed line. If the kabocha cue fires first, the okra comes off with everything else and finishes on residual heat — firm is acceptable, slimy is not.\n\n**9 Finish.** Spinach 2–3 min, or straight into the pot off heat if the kabocha cue has already fired. Then: lime in 5 ml increments, tasting between — this is where kabocha sweetness gets corrected. Cilantro last, reserving some for plating.\n\n**If the sauce reads tight at any point from Step 5 onward:** reserved hot stock, 50 ml at a time. Tightening is the expected direction of drift in a wide vessel.\n\n## Holding & Assembly — Reserve Cooling\n\n**Culinary target: none. This step exists solely for food safety.**\n\n**Controlling safety requirement.** The reserve must move from hot to cold without lingering in the 57–5°C / 135–41°F range. Standard trajectory: down to 21°C / 70°F within two hours, then to 5°C / 41°F within four hours after that.\n\n**Method.** Divide immediately into shallow containers no deeper than 5 cm. Leave uncovered or loosely covered while cooling — sealing traps heat and defeats the shallow container. Move to the refrigerator promptly; it need not be cold first, and it must not sit until ambient. Cover fully once cold. If the containers are large or the fridge is loaded, use an ice bath.\n\n**Food-safety checkpoint (not a culinary CCP).** At two hours, the reserve must be at or below 21°C / 70°F. If warmer, accelerate immediately with an ice bath, stirring, and verify the final cooling requirement is still met. If the controlling limit is ultimately exceeded, discard. Consume within 3 days refrigerated, or freeze once cold.\n\n**Reheat.** Warm gently with a splash of stock. Add freshly cooked kabocha, spinach, lime, and cilantro at that point. Okra optional and best fresh.\n\n**Served-stew hold.** Chicken phase: very low, covered, submerged — max 15 min. After the kabocha cue: off active heat — max 10 min; tightens, correct with hot stock in 50 ml increments. Plating window is 3–4 minutes from first plate to service. Garnish with crushed peanuts and reserved cilantro at T-0.\n\n## Critical Control Points\n\n<table header-row=\"true\"><tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr><tr><td>Major</td><td>Kabocha collapse — muddy, homogenous body</td><td>Chunk edges rounding; definition lost against the spoon</td><td>Unrecoverable for the kabocha texture; dish remains serviceable. Prevention is the cue-terminated heat in Step 7</td></tr><tr><td>Major</td><td>Broken emulsion — greasy, grainy sauce</td><td>Oil pooling on the surface, not re-integrating after stirring</td><td>Whisk vigorously; add 50 ml hot stock; whisk again. Only if it will not return, whisk fresh peanut butter into cooler liquid separately and reintegrate off heat</td></tr><tr><td>Major</td><td>Okra over-tendered — slimy texture</td><td>Pods fully limp, no resistance at the seed line, visible stringing when lifted</td><td>Unrecoverable for the okra; dish remains serviceable. Lift the pods and serve the stew without them</td></tr><tr><td>Major</td><td>Weak fond from crowded searing — flat, thin stew</td><td>Pale chicken surfaces; clean pan base with no browned residue</td><td>10–15 ml fish sauce or soy sauce off heat</td></tr></table>\n\n*No Critical CCP remains: every named failure degrades an element while the dish continues to service. The kabocha cue protects eating quality, not the meal itself — which argues against panic if the cue arrives late.*\n\n## Adjustment Notes\n\n**Adjust:** salt into the stew body only, never the garnish. Lime in 5 ml increments — expect the upper end against kabocha sweetness. Thin with hot stock, 50 ml at a time. If the stew reads spice-forward rather than peanut-forward, add 30–60 ml stock plus 2 tbsp peanut butter over low heat.\n\n## Scaling Notes\n\nThis document is the 2× (doubled) batch of the Recipe Vault stew: 1.2–1.4 kg bone-in thighs, 800 g crushed tomatoes, 280–320 g peanut butter, 1.8 L stock (1.5 L added, 300 ml held back). The served-half vegetables (kabocha 300–350 g, okra 150 g, spinach 60 g, cilantro 20 g, lime 15–22 ml) are sized for the 3-pax served meal only and are NOT doubled — the reserve is chicken and sauce only, with vegetables, lime and cilantro rebuilt fresh on reheat. Sear in two batches; expect tightening drift in a wide vessel (hence the 300 ml stock reserve). Supporting dishes 2–6 are not scaled with the stew.\n",
+   "designed_unvalidated": [
+    {
+     "param": "Kabocha at 15–20 min, 3 cm, unpeeled, in this stew",
+     "designed_value": "15–20 min from entry to cue (entry T-24, cue expected T-9 to T-4)",
+     "note": "Record time from entry to cue. This determines when the pot comes off heat, so it sets the entry anchor for every future cook of this dish"
+    },
+    {
+     "param": "Okra exposure — active and residual",
+     "designed_value": "7–12 min active + 4–9 min residual (whole pods, entry T-16)",
+     "note": "Record both figures, and whether firm-at-service was acceptable at the table. The one relationship in the timeline that does not close arithmetically; the acceptable lower bound for whole okra is itself under test"
+    },
+    {
+     "param": "2× evaporation in the wide vessel",
+     "designed_value": "1.5 L stock added, 300 ml held back as correction reserve",
+     "note": "Record how much of the 300 ml reserve stock went back in, and at what point"
+    },
+    {
+     "param": "Freezer hold for a vegetable-free reserve",
+     "designed_value": "3 days fridge / 3 months freezer; vegetables, lime, cilantro rebuilt on reheat",
+     "note": "Record reheat quality. Structurally more plausible than a fully finished stew, but unverified"
+    },
+    {
+     "param": "Skin-on sear value",
+     "designed_value": "Sear skin-on, strip and discard skin after searing",
+     "note": "Whether it materially improves the sauce, or whether skin-off-first would be equivalent at less fat"
+    },
+    {
+     "param": "Lime multiplicity (meal-level)",
+     "designed_value": "Lime in four components: stew finish, salad, chilli paste, pineapple",
+     "note": "Whether four lime uses read as coherent or repetitive across the meal. If lime-dominated, switch the salad to red wine vinegar"
+    }
+   ],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "chicken thigh, bone-in, skin-on",
+     "department": "Protein",
+     "qty": 1200,
+     "unit": "g",
+     "qty_alt": "2 lb 10 oz – 3 lb 1 oz / 1.2–1.4 kg",
+     "prep_note": "skin removed and discarded after searing",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "neutral oil",
+     "department": "Oils & Liquids",
+     "qty": 40,
+     "unit": "ml",
+     "qty_alt": "2¾ tbsp",
+     "prep_note": "half per sear batch",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "yellow onion",
+     "department": "Produce",
+     "qty": 2,
+     "unit": "piece",
+     "qty_alt": "2 large",
+     "prep_note": "brown onion, diced",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "garlic",
+     "department": "Produce",
+     "qty": 8,
+     "unit": "clove",
+     "qty_alt": null,
+     "prep_note": "minced",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "ginger",
+     "department": "Produce",
+     "qty": 30,
+     "unit": "ml",
+     "qty_alt": "2 tbsp (shopping list: 30 g)",
+     "prep_note": "fresh, grated",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "tomato paste",
+     "department": "Pantry",
+     "qty": 60,
+     "unit": "g",
+     "qty_alt": "2 oz / 4 tbsp",
+     "prep_note": null,
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "crushed tomatoes, tinned",
+     "department": "Pantry",
+     "qty": 800,
+     "unit": "g",
+     "qty_alt": "1 lb 12 oz",
+     "prep_note": null,
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "ground cumin",
+     "department": "Seasoning",
+     "qty": 10,
+     "unit": "g",
+     "qty_alt": "2 tsp",
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "ground coriander",
+     "department": "Seasoning",
+     "qty": 8,
+     "unit": "g",
+     "qty_alt": "2 tsp",
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "chilli flakes",
+     "department": "Seasoning",
+     "qty": 2,
+     "unit": "g",
+     "qty_alt": "2–4 g / 1–2 tsp",
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "peanut butter, natural unsweetened",
+     "department": "Pantry",
+     "qty": 280,
+     "unit": "g",
+     "qty_alt": "10–11 oz / 280–320 g",
+     "prep_note": "tempered with 240 ml hot liquid before it goes in",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "chicken stock",
+     "department": "Oils & Liquids",
+     "qty": 1800,
+     "unit": "ml",
+     "qty_alt": "1.8 L / 7½ cups (1.5 L added; 300 ml held back)",
+     "prep_note": "300 ml kept hot as correction reserve",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 14,
+     "unit": "g",
+     "qty_alt": "14–18 g (4 g to onions; rest to body)",
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "kabocha pumpkin",
+     "department": "Produce",
+     "qty": 300,
+     "unit": "g",
+     "qty_alt": "11–12 oz / 300–350 g prepared (from ~500 g / 1 lb 2 oz whole)",
+     "prep_note": "unpeeled, 3 cm chunks — served half only, added after reserve diversion",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "okra",
+     "department": "Produce",
+     "qty": 150,
+     "unit": "g",
+     "qty_alt": "5 oz",
+     "prep_note": "small pods under 8 cm, caps trimmed, left whole — served half only",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "baby spinach",
+     "department": "Produce",
+     "qty": 60,
+     "unit": "g",
+     "qty_alt": "2 oz",
+     "prep_note": "served half only",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "cilantro",
+     "department": "Produce",
+     "qty": 20,
+     "unit": "g",
+     "qty_alt": "⅔ oz (one bunch)",
+     "prep_note": "fresh; some reserved for plating — served half only",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "lime juice",
+     "department": "Produce",
+     "qty": 15,
+     "unit": "ml",
+     "qty_alt": "15–22 ml / 1–1½ tbsp",
+     "prep_note": "added off heat in 5 ml increments — served half only",
+     "pantry_check": false,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "maafe-steamed-rice",
+   "existing": true,
+   "name": "Steamed Rice",
+   "protein": null,
+   "category": [
+    "Side"
+   ],
+   "cuisine": [],
+   "difficulty": "Easy",
+   "tags": [
+    "rice",
+    "stovetop",
+    "carried forward from Recipe Vault"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "cooked",
+   "source": "Recovered from west-african-peanut-stew-dinner.docx (2× batch version), cook date Sunday 13 September 2026 (no generation date stated)",
+   "governance_version": null,
+   "summary": "Plain absorption-method long-grain white rice, the soft neutral contrast against the rich stew.",
+   "servings": 4,
+   "equipment": [
+    "lidded pot"
+   ],
+   "method_md": "## Dish Overview\n\nPlain steamed long-grain white rice. Carried forward unchanged from the Recipe Vault and sized for the served meal (4 servings), not the doubled stew.\n\n## Yield & Timing\n\n*Yield: 4 servings · Total: ~25 min · Active: ~5 min · Hold: 25 min covered off heat*\n\nBurner 2 owns the rice from T-40 to T-12, then goes off.\n\n## Flavor Architecture\n\n**Meal-level carve-out:** rice functions as the soft neutral contrast against the rich stew — no internal texture contrast required.\n\n## Prep Phase\n\nRinse the rice until the water runs mostly clear.\n\n## Active Cooking\n\nCombine rice, water and salt; bring to a boil, cover, drop to very low for 12–15 min, then rest covered 10 min without lifting the lid. Fluff before serving.\n\n**Doneness:** chalky centre → continue. Fully tender grain → stop.\n\n## Holding & Assembly\n\nCovered, off heat — max hold 25 min. Drift: surface dries. Corrective: 15 ml water, re-cover, re-fluff. Plate rice and stew at T-2; if the plating window (3–4 min) is missed the rice surface dries after the stew cools.\n\n## Critical Control Points\n\nNone stated for this component.\n\n## Adjustment Notes\n\nNone stated beyond the hold corrective (15 ml water, re-cover, re-fluff).\n\n## Scaling Notes\n\nNot scaled with the 2× stew — sized for the served meal only.\n",
+   "designed_unvalidated": [],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "long-grain white rice",
+     "department": "Pantry",
+     "qty": 200,
+     "unit": "g",
+     "qty_alt": "7 oz",
+     "prep_note": "rinsed until water runs mostly clear",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "water",
+     "department": "Oils & Liquids",
+     "qty": 240,
+     "unit": "ml",
+     "qty_alt": null,
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 1,
+     "unit": "g",
+     "qty_alt": null,
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "maafe-tomato-cucumber-lime-salad",
+   "existing": true,
+   "name": "Tomato–Cucumber Lime Salad",
+   "protein": "Veg",
+   "category": [
+    "Salad"
+   ],
+   "cuisine": [
+    "West African"
+   ],
+   "difficulty": "Easy",
+   "tags": [
+    "raw",
+    "no-cook",
+    "lime",
+    "carried forward from Recipe Vault"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "cooked",
+   "source": "Recovered from west-african-peanut-stew-dinner.docx (2× batch version), cook date Sunday 13 September 2026 (no generation date stated)",
+   "governance_version": null,
+   "summary": "Raw tomato, cucumber and red onion dressed with lime and salt — the between-bite acid reset served alongside the stew.",
+   "servings": 4,
+   "equipment": [],
+   "method_md": "## Dish Overview\n\nRaw tomato–cucumber salad with lime. Carried forward unchanged from the Recipe Vault and sized for the served meal, not the doubled stew. Serve alongside, within reach at every setting — it is interleaved with stew bites, not a separate course.\n\n## Yield & Timing\n\n*Yield: 4 servings · Total: ~25 min · Active: ~15 min · Hold: 30 min room temperature*\n\nPrepared during the T-45 prep block.\n\n## Flavor Architecture\n\nCarries the between-bite acid reset in the meal; its raw acidity is one of the relieving elements against sweetness stacking (kabocha, peanut butter, pineapple). If the meal reads lime-dominated across its four lime uses, this salad is the better place to switch: red wine vinegar gives a different acid shape.\n\n## Prep Phase\n\nCut tomatoes in wedges; slice the cucumber unpeeled and thinly; slice the red onion thin.\n\n## Active Cooking\n\nNo heat. Toss tomatoes, cucumber, red onion with lime juice, salt and (optionally) olive oil. Rest 10–15 min.\n\n## Holding & Assembly\n\nRoom temperature, max hold 30 min. Drain the pooled liquid and re-season with lime and salt immediately before serving.\n\n## Critical Control Points\n\nNone stated for this component.\n\n## Adjustment Notes\n\nRe-season with lime and salt after draining. Red wine vinegar as an alternative acid if lime reads monochromatic across the meal.\n\n## Scaling Notes\n\nNot scaled with the 2× stew — salad degrades within a day.\n",
+   "designed_unvalidated": [],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "tomato",
+     "department": "Produce",
+     "qty": 2,
+     "unit": "piece",
+     "qty_alt": "2 medium",
+     "prep_note": "in wedges",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "cucumber",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "piece",
+     "qty_alt": "1 medium",
+     "prep_note": "unpeeled, thinly sliced",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "red onion",
+     "department": "Produce",
+     "qty": 0.25,
+     "unit": "piece",
+     "qty_alt": "¼",
+     "prep_note": "sliced thin",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "lime juice",
+     "department": "Produce",
+     "qty": 22,
+     "unit": "ml",
+     "qty_alt": null,
+     "prep_note": "plus more to re-season before serving",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 2,
+     "unit": "g",
+     "qty_alt": "2–3 g",
+     "prep_note": "plus more to re-season before serving",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "olive oil",
+     "department": "Oils & Liquids",
+     "qty": 15,
+     "unit": "ml",
+     "qty_alt": "1 tbsp",
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": true
+    }
+   ]
+  },
+  {
+   "slug": "maafe-birds-eye-chilli-paste",
+   "existing": true,
+   "name": "Bird's Eye Chilli Paste",
+   "protein": null,
+   "category": [
+    "Sauce"
+   ],
+   "cuisine": [
+    "West African"
+   ],
+   "difficulty": "Easy",
+   "tags": [
+    "condiment",
+    "spicy",
+    "no-cook",
+    "pounded",
+    "carried forward from Recipe Vault"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "cooked",
+   "source": "Recovered from west-african-peanut-stew-dinner.docx (2× batch version), cook date Sunday 13 September 2026 (no generation date stated)",
+   "governance_version": null,
+   "summary": "Coarse pounded bird's eye chilli, shallot and garlic paste with oil and lime — the externalised heat so each diner sets their own level.",
+   "servings": null,
+   "equipment": [
+    "pestle and mortar"
+   ],
+   "method_md": "## Dish Overview\n\nCoarse pounded chilli paste. Carried forward unchanged from the Recipe Vault. Vault notes record this as quite spicy, which is the point: heat is externalised so each diner sets their own level and the stew stays approachable.\n\n## Yield & Timing\n\n*Yield: ~60 ml · Active: ~5 min · Hold: 4 hrs ambient, covered*\n\nPrepared during the T-45 prep block.\n\n## Flavor Architecture\n\nHeat for the whole meal lives here, which is what lets one pot serve all three diners. Lime acts as heat-carrier. Garlic is deliberately not aggregated with the stew's: this takes 1 clove rough-chopped for pounding.\n\n## Prep Phase\n\nRemove stems from the chillies; rough-chop shallot and garlic.\n\n## Active Cooking\n\nNo heat. Pound chillies, shallot, garlic and salt into a coarse paste, then stir in oil and lime. Do not blend smooth.\n\n## Holding & Assembly\n\nAmbient, covered — max hold 4 hrs. No drift corrective needed.\n\n## Critical Control Points\n\nNone stated for this component.\n\n## Adjustment Notes\n\nNone stated.\n\n## Scaling Notes\n\nNot scaled with the 2× stew — sized for the served meal.\n",
+   "designed_unvalidated": [],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "bird's eye chilli",
+     "department": "Produce",
+     "qty": 4,
+     "unit": "piece",
+     "qty_alt": "4–6",
+     "prep_note": "stems removed",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "shallot",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "piece",
+     "qty_alt": "1 small",
+     "prep_note": "rough-chopped",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "garlic",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "clove",
+     "qty_alt": null,
+     "prep_note": "rough-chopped for pounding",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 1,
+     "unit": "g",
+     "qty_alt": "1–2 g",
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "neutral oil",
+     "department": "Oils & Liquids",
+     "qty": 15,
+     "unit": "ml",
+     "qty_alt": null,
+     "prep_note": "stirred in after pounding",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "lime juice",
+     "department": "Produce",
+     "qty": 10,
+     "unit": "ml",
+     "qty_alt": "10–15 ml",
+     "prep_note": "stirred in after pounding",
+     "pantry_check": false,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "maafe-crushed-roasted-peanuts",
+   "existing": true,
+   "name": "Crushed Roasted Peanuts",
+   "protein": null,
+   "category": [
+    "Side"
+   ],
+   "cuisine": [
+    "West African"
+   ],
+   "difficulty": "Easy",
+   "tags": [
+    "garnish",
+    "crunch",
+    "no-cook",
+    "carried forward from Recipe Vault"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "cooked",
+   "source": "Recovered from west-african-peanut-stew-dinner.docx (2× batch version), cook date Sunday 13 September 2026 (no generation date stated)",
+   "governance_version": null,
+   "summary": "Roasted unsalted peanuts crushed into rough irregular pieces, applied to the stew immediately before serving for crunch.",
+   "servings": null,
+   "equipment": [],
+   "method_md": "## Dish Overview\n\nCrushed peanut garnish for the stew. Carried forward unchanged from the Recipe Vault.\n\n## Yield & Timing\n\n*Yield: 80–100 g · Active: ~2 min · Hold: stable in a dry bowl*\n\nPrepared during the T-45 prep block.\n\n## Flavor Architecture\n\nSupplies the peanut-crunch step on the meal's texture ladder (tender chicken → intact kabocha → okra snap → soft rice → crisp salad → peanut crunch → cold yielding fruit).\n\n## Prep Phase\n\nCrush the peanuts into rough irregular pieces. Do not pulverise.\n\n## Active Cooking\n\nNone.\n\n## Holding & Assembly\n\nDry bowl — stable. Apply immediately before serving (T-0, with reserved cilantro) — they soften within 2–3 minutes of contact with the stew. Peanuts soften on contact with moisture, so they are not scaled with the stew.\n\n## Critical Control Points\n\nNone stated for this component.\n\n## Adjustment Notes\n\nSalt goes into the stew body only, never the garnish.\n\n## Scaling Notes\n\nNot scaled with the 2× stew — sized for the served meal.\n",
+   "designed_unvalidated": [],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "roasted unsalted peanuts",
+     "department": "Pantry",
+     "qty": 80,
+     "unit": "g",
+     "qty_alt": "80–100 g / 3–3½ oz",
+     "prep_note": "crushed into rough irregular pieces, not pulverised",
+     "pantry_check": false,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "maafe-chilled-pineapple-lime-flaky-salt",
+   "existing": true,
+   "name": "Chilled Pineapple with Lime & Flaky Salt",
+   "protein": null,
+   "category": [
+    "Dessert"
+   ],
+   "cuisine": [],
+   "difficulty": "Easy",
+   "tags": [
+    "fruit",
+    "no-cook",
+    "chilled",
+    "lime",
+    "carried forward from Recipe Vault"
+   ],
+   "occasion": [
+    "Sunday dinner"
+   ],
+   "status": "cooked",
+   "source": "Recovered from west-african-peanut-stew-dinner.docx (2× batch version), cook date Sunday 13 September 2026 (no generation date stated)",
+   "governance_version": null,
+   "summary": "Peeled pineapple spears tossed with lime, chilled, and finished with flaky sea salt — the cold acid close to the meal.",
+   "servings": 4,
+   "equipment": [],
+   "method_md": "## Dish Overview\n\nChilled pineapple spears with lime and flaky salt. Carried forward unchanged from the Recipe Vault and sized for the served meal.\n\n## Yield & Timing\n\n*Yield: 4 servings · Active: ~10 min · Chill: 20–30 min · Hold: 2 hrs chilled*\n\nPrepared during the T-45 prep block.\n\n## Flavor Architecture\n\nThe pineapple's cold acid at the close is one of the meal's two relief elements against peanut/chicken richness; lime here is the closing cleanse. Pineapple also contributes to the meal's sweetness-stacking risk (with kabocha and peanut butter).\n\n## Prep Phase\n\nPeel the pineapple fully with eyes removed; cut into spears.\n\n## Active Cooking\n\nNo heat. Toss with lime juice and chill 20–30 min.\n\n## Holding & Assembly\n\nChilled — max hold 2 hrs. Re-dress with lime before serving. Flaky sea salt immediately before serving. Take it out of the fridge 10 minutes ahead if over-chilled — cold mutes the aroma and flattens the finish.\n\n## Critical Control Points\n\nNone stated for this component.\n\n## Adjustment Notes\n\nRe-dress with lime before serving; salt only at the moment of service.\n\n## Scaling Notes\n\nNot scaled with the 2× stew — pineapple degrades within a day.\n",
+   "designed_unvalidated": [],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "pineapple, ripe",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "piece",
+     "qty_alt": null,
+     "prep_note": "peeled fully, eyes removed, cut into spears",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "lime juice",
+     "department": "Produce",
+     "qty": 15,
+     "unit": "ml",
+     "qty_alt": "15–22 ml",
+     "prep_note": "plus a little to re-dress before serving",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "flaky salt",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": "pinch",
+     "qty_alt": "pinch",
+     "prep_note": "immediately before serving",
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  }
+ ],
+ "notes": "This docx is the 2× (DOUBLED) batch version of the stew: 1.2–1.4 kg thighs, 800 g crushed tomatoes, 280–320 g peanut butter, 1.8 L stock, yield 6–8 servings with roughly half diverted as a chicken-and-sauce reserve. Existing DB dish maafe-chicken-peanut-stew is presumably the 1× recipe — compare quantities before overwriting; the served-half vegetables (kabocha, okra, spinach, cilantro, lime) are sized for 3 pax and NOT doubled. Dishes 2–6 are stated as carried forward unchanged from the Recipe Vault; the docx gives them only as compressed one-paragraph recipes (no CCP tables, no nutrition), so their method_md is thin by design. All six menu components matched the existing slugs; no new dishes created. Meal pax recorded as 3 (served) though the stew yields 6–8 with reserve. No governance/Core version and no nutrition estimates stated anywhere in the doc. Onion: recipe table says 'Onion, diced 2 large', shopping list says 'Onion, brown' — mapped to canonical 'yellow onion' with prep_note 'brown onion'. Ginger given as 30 ml / 2 tbsp in the recipe table but 30 g in the shopping list — recorded as 30 ml with the gram figure in qty_alt. Salt for rice/salad/paste/pineapple: the shopping list allocates Diamond Crystal kosher salt across all dishes and flaky sea salt to the pineapple, so those were used as the canonical names. The stew's Adjust line mentions fish sauce or soy sauce (10–15 ml) as a CCP recovery only — not listed as an ingredient. Cook-day cues, timeline verification, meal balance audit and the 'Designed, Not Validated' table were placed in workflow_md; the six designed parameters were also copied into the stew's designed_unvalidated (item 6, lime multiplicity, is meal-level)."
+}

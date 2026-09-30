@@ -1,0 +1,699 @@
+{
+  "assignment_key": "rib-eye-roast",
+  "source_file": "docs/rib-eye-roast-sunday/v1/rib-eye-roast-sunday.docx",
+  "meal": {
+    "slug": "rib-eye-roast-sunday",
+    "name": "Sunday Roast — Complete Menu",
+    "planned_date": "2026-07-12",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": "*Serves 3 (2 carb-moderate adults + teen) · 1.18 kg compact tied MB3+ rib eye, 12 cm dia · Service 7:05pm, Sun 12 Jul · Register: classic, generous, restrained*\n\n## Menu\n\n- Rib eye roast (reverse sear)\n- Duck-fat roast potatoes (split-roast)\n- Honey-glazed carrots (light honey)\n- Green beans, butter + lemon zest\n- Horseradish cream\n- Red wine jus (staged)\n\n## Critical Path\n\nPotato pre-roast → beef low roast → beef rest (potato recrisp overlaps) → potato out → oven to max → beef blast → carve. Single Bosch oven; every oven transition is gated by the oven reaching temperature, not by elapsed time — the clock is the planning path, not a guarantee. Horseradish is made ahead and never gates service.\n\n**Failure prioritization:** Protect beef core temp and the final potato crisp. Governing rule — the beef's 40-min rest ceiling outranks potato recrisp duration and nominal service time. If a transition compresses the recrisp, pull potatoes at achieved crust; the beef blast does not wait.\n\n## Oven Sequencing (single Bosch — state-gated)\n\n- 450°F / 230°C — potato pre-roast. Potatoes enter only once the oven actually reads 450°F.\n- 250°F / 121°C — beef low roast. After pre-roast, drop the setting and briefly vent the door (450→250 with door shut is slow); beef enters only once near 250°F.\n- ≥425–450°F / 220–230°C — potato recrisp. Begins once genuinely recovered.\n- Max / 500°F — beef blast. Begins once the oven reaches actual max.\n\n## Parallel vs. Sequential\n\n- Parallel: carrots (induction 1), beans blanch-then-hold (induction 2), jus on outdoor gas burner (keeps both induction burners free). Horseradish done ahead.\n- Sequential (oven-bound): potato pre-roast → beef low → potato recrisp → beef blast. One owner at a time.\n\n## T-Minus Timeline\n\n*Planning path, 7:05pm service. Beef pull temp is the master trigger; oven transitions are temperature-gated. The clock is the on-time estimate — the trigger band below governs deviation.*\n\n<table header-row=\"true\">\n<tr><td>Time</td><td>Action</td></tr>\n<tr><td>Sat evening</td><td>Cut + re-tie roast done, 1.18 kg. Dry-brine 12 g Diamond Crystal (1%), uncovered on rack, fridge, ~24 hr</td></tr>\n<tr><td>3:45 pm</td><td>Beef out of fridge (~70 min before roasting — takes surface chill off; do not wait for center to reach room temp). Make horseradish if not done</td></tr>\n<tr><td>3:55 pm</td><td>Oven → 450°F. Parboil potatoes (baking soda), drain, rough, dry</td></tr>\n<tr><td>~4:05 pm</td><td>Once oven reads 450°F: potatoes pre-roast, aim to finish ~4:40–4:45 — pale gold, set, not yet deeply crisp</td></tr>\n<tr><td>~4:40–4:45 pm</td><td>Potatoes out → hold uncovered, single layer, wire rack, room temp. Drop oven to 250°F, vent door briefly. (If beef start shifts later, delay the pre-roast rather than hold potatoes past 2 hr.)</td></tr>\n<tr><td>4:45 pm</td><td>Jus stage 1: brown 1 sliced shallot (+ optional trimmings) in a little oil on outdoor gas; deglaze with wine, reduce by half; add stock, brief simmer, then off heat, covered</td></tr>\n<tr><td>4:50 pm</td><td>Beef: pat bone-dry, oil, pepper, insert probe (alarm 116°F)</td></tr>\n<tr><td>~4:55 pm</td><td>Once oven near 250°F: beef in (~75–80 min, probe-governed)</td></tr>\n<tr><td>6:05 pm</td><td>Jus stage 2: return to gas, finish stock reduction to a light nappe. Begin watching probe</td></tr>\n<tr><td>6:15 pm</td><td>Beef pulls at 119–120°F. Onto rack, rest uncovered. Oven → back up to 450°F. Fold low-roast drippings into jus</td></tr>\n<tr><td>~6:28–6:30 pm</td><td>Once oven ≥425–450°F: potatoes back in, recrisp ~15–20 min — pull when deeply golden and audibly crisp, turning once. Watch the garlic/thyme</td></tr>\n<tr><td>6:35 pm</td><td>Carrots on induction 1; bean water to boil on induction 2</td></tr>\n<tr><td>~6:40–6:43 pm</td><td>Jus stage 3: add drippings, strain, mount 20 g cold butter, hold warm on lowest gas. Blanch beans 4 min, shock, drain, hold</td></tr>\n<tr><td>~6:48 pm</td><td>Potatoes out at achieved crisp → hold on rack, room temp. Oven → max</td></tr>\n<tr><td>~6:54 pm</td><td>Once oven at max: beef in, blast 5–8 min, crust-color-governed</td></tr>\n<tr><td>6:57 pm</td><td>Toss beans butter + zest, low induction. Plate carrots</td></tr>\n<tr><td>~7:00–7:02 pm</td><td>Beef out when crust set. Thermapen-verify ~127–133°F. Add final-blast drippings to jus</td></tr>\n<tr><td>7:05 pm</td><td>Handling done — carve against grain. Plate; jus + horseradish to table</td></tr>\n</table>\n\n### Trigger band (governs deviation)\n\n- Pull 6:14–6:20: normal path, hold ~7:05 service.\n- Pull 6:10–6:13: advance potato exit, oven-to-max, and blast by the matching minutes; potatoes accept a shorter recrisp.\n- Pull before 6:10: advance the whole final sequence, accept earlier service. Don't extend the rest to protect 7:05.\n- Pull after 6:20: shift service later; carrots and beans wait, beef doesn't.\n\n*Verification: Beef rest 6:15→~6:54 = ~39 min, under 40 ✓. Potato recrisp sensory-governed ~15–20 min ✓. Jus staged with hold, not continuously reduced ✓. Blast + handling → 7:05 carve ✓. Transitions state-gated, none assumed instantaneous ✓.*\n\n## Holding Chain\n\n<table header-row=\"true\">\n<tr><td>Component</td><td>Hold Strategy</td><td>Max Hold</td><td>Drift Risk</td><td>Corrective</td></tr>\n<tr><td>Beef</td><td>Rack, uncovered, room temp</td><td>40 min</td><td>Over-rest cools core</td><td>Blast reheats surface; Thermapen-verify post-blast</td></tr>\n<tr><td>Potatoes (pre-roast)</td><td>Wire rack, room temp, single layer</td><td>~2 hr</td><td>Surface dries (harmless)</td><td>Recrisp restores; never stack/cover</td></tr>\n<tr><td>Potatoes (final)</td><td>Wire rack, room temp, single layer</td><td>~10 min</td><td>Crust softens</td><td>Uncovered, never cover</td></tr>\n<tr><td>Carrots</td><td>Covered pan, residual heat</td><td>15 min</td><td>Glaze tightens</td><td>Loosen with splash of water off-heat</td></tr>\n<tr><td>Green beans</td><td>Drained, dry, room temp</td><td>15 min</td><td>Lose gloss</td><td>Butter + zest toss at 6:57</td></tr>\n<tr><td>Jus</td><td>Warm, lowest gas</td><td>30 min</td><td>Over-reduces</td><td>Loosen with stock; re-strain</td></tr>\n<tr><td>Horseradish</td><td>Fridge, covered</td><td>Days</td><td>None</td><td>Serve cold</td></tr>\n</table>\n\n## Plating Window\n\nBeef out of blast ~7:00–7:02 when crust set; 2–3 min handling/transfer (not a formal rest). 7:05 carve against the grain, ~1 cm. Plate carrots at 6:57, beans tossed in butter + zest at 6:57; jus + horseradish to table.\n\n## Meal Balance Audit\n\nRichness: beef + duck fat + butter jus — high, relieved by green beans (fresh-firm reset), horseradish (cold sharp cut), and lemon zest aroma. Acid: horseradish (cultured cream + vinegar) and wine reduction across the savoury plate; lemon juice as adjustment. Distinct roles throughout — no redundancy. Sweet: carrots (light honey), single and isolated. Texture: crisp potato + beef crust vs. tender beef + soft carrots, green beans as firm anchor. No monotony, no accumulation gap.\n",
+    "shared_prep_md": "- **Lemon:** zest 1 → beans; juice → reserve for adjustments (horseradish, carrots, jus).\n- **Butter (cold, cubed):** 60 g total — 20 g → jus mount, 20 g → carrots, 20 g → beans.\n- **Diamond Crystal salt:** 12 g → beef brine (Sat); remainder to season potatoes/carrots/beans to taste.\n- **Jus base:** 1 sliced shallot browned in a little oil (default); beef trimmings optional additive.\n\n*Sourcing: Ask the butcher for trimmings when collecting the roast — free jus-base boost. Horseradish cream: taste before adding lemon or salt — prepared horseradish carries its own vinegar and salt.*",
+    "wine_pairing": "1. 2004 Château Léoville Barton — verified present in Current cellar, Drink now, window closes 2027 (Drink Soon — genuine urgency). Archetypal roast-beef match; restraint flatters the jus.\n2. 2015 Clos Apalta — present, Drink now. Bridge/backup — generous for you, elegant enough for HF.\n3. 2018 Caymus Special Selection — present, Drink now; works but broadens the meal.\n\nCellar VALID; all three verified present and Drink now in the live Current cellar table (fetch returns snapshot 2026-06-18). Barton service: stand upright in advance, open and taste, then decant off the sediment only if sound — don't assume it needs prolonged air; a 22-year bottle can fade fast.",
+    "components": [
+      {
+        "dish_slug": "ribeye-reverse-seared-rib-eye-roast",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "ribeye-roast-potatoes",
+        "role": "side",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "ribeye-honey-glazed-carrots",
+        "role": "side",
+        "service_order": 3
+      },
+      {
+        "dish_slug": "ribeye-green-beans-butter-lemon-zest",
+        "role": "side",
+        "service_order": 4
+      },
+      {
+        "dish_slug": "ribeye-yogurt-mustard-cream",
+        "role": "sauce",
+        "service_order": 5
+      },
+      {
+        "dish_slug": "ribeye-jus",
+        "role": "sauce",
+        "service_order": 6
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "ribeye-reverse-seared-rib-eye-roast",
+      "existing": true,
+      "name": "Rib Eye Roast (Reverse Sear)",
+      "protein": "Beef",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "British",
+        "Classic Roast"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "reverse sear",
+        "dry brine",
+        "probe-governed",
+        "roast beef",
+        "sunday roast"
+      ],
+      "occasion": [
+        "Sunday Roast",
+        "Family Dinner"
+      ],
+      "status": "cooked",
+      "source": "Recovered from rib-eye-roast-sunday.docx, generated for service Sun 12 Jul 2026 (no generation date stated in doc)",
+      "governance_version": null,
+      "summary": "MB3+ boneless rib eye dry-brined 24 hr, roasted at 250°F to a probe-governed 119–120°F pull, rested under 40 min, then blasted in a max oven for a single deep crust and an even medium-rare (~127–133°F).",
+      "servings": 3,
+      "equipment": [
+        "Bosch oven",
+        "wire rack",
+        "leave-in probe thermometer (ThermoWorks)",
+        "Thermapen"
+      ],
+      "method_md": "## Dish Overview\n\nMB3+ boneless rib eye roasted low to an even medium-rare, then blasted hot for a single deep crust. Uniform rosy interior wall-to-wall, deep-browned exterior, beef unmasked. Crust built once, at the end.\n\n## Yield & Timing\n\n*Yield: serves 3 with leftovers · Total ~3.5 hr incl. temper · Active ~25 min · Oven 250°F → max*\n\n## Flavor Architecture\n\n<table header-row=\"true\">\n<tr><td>Element</td><td>Definition</td></tr>\n<tr><td>Base</td><td>Rendered beef fat + oil film for sear conduction</td></tr>\n<tr><td>Primary driver</td><td>The beef — MB3+ marbling; no competing element</td></tr>\n<tr><td>Acid</td><td>None in the roast — externalized to horseradish + jus (meal-level)</td></tr>\n<tr><td>Aromatic/finish</td><td>Black pepper; thyme background</td></tr>\n</table>\n\n*Meal-level carve-out: acid provided by horseradish and jus, not the roast.*\n\n## Texture\n\nTwo distinct — yielding interior vs. crisp-browned crust. The final blast is the entire crust mechanism.\n\n## Prep Phase\n\n1. Sat: cut + re-tie done, 1.18 kg. Salt all surfaces evenly (12 g). Rack, uncovered, fridge, ~24 hr — dries surface, seasons deep. 1% is moderate and sufficient; the meat needs no finishing salt by default — taste a slice first.\n2. 3:45pm Sun: out of fridge, ~70 min before roasting — takes the surface chill off; do not wait for the center to reach room temp. Pat bone-dry before roasting.\n3. 4:50pm: rub with 1 tbsp oil, crack pepper all over. No additional salt.\n\n## Active Cooking\n\n1. Oven 250°F / 121°C. Leave-in probe (ThermoWorks) into thickest center, alarm 116°F.\n2. Roast to pull — probe-governed (~75–80 min; 12 cm diameter drives this, not weight). Pull at 119–120°F / 48–49°C.\n3. Rest uncovered on rack ~39 min (40 min ceiling). Oven → 450°F for potato recrisp, then → max in the final minutes.\n4. Final blast: into max oven (500°F / 260°C), 5–8 min, crust-color-governed. A 1.18 kg roast climbs fast — watch it.\n5. Verify: Thermapen the center post-blast. Expect ~127–133°F / 53–56°C — verify, don't assume a fixed rise. The probe number is the truth.\n\n## Holding & Assembly\n\nOff the blast, 2–3 min handling/transfer (not a formal rest — the pre-blast rest already redistributed juices). Carve against the grain, ~1 cm. Jus + horseradish to table.\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Severity</td><td>Failure Mode & Cue</td><td>Recovery</td></tr>\n<tr><td>Critical</td><td>Overshoot core — pulled too high or blasted too long. Cue: Thermapen >133°F post-blast → past medium-rare, grey band</td><td>Unrecoverable. Prevention: pull 119–120°F, blast by crust color not clock, verify with Thermapen</td></tr>\n<tr><td>Major</td><td>Weak crust — surface not dry, or oven didn't recover to max. Cue: pale exterior after blast</td><td>Extend blast 1–2 min watching center; if core near limit, accept lighter crust (serviceable)</td></tr>\n<tr><td>Minor</td><td>Off-center probe → uneven read. Cue: one end more done</td><td>Cosmetic — serve to preference</td></tr>\n</table>\n\n## Adjustment Notes\n\nThe meat is moderately salted from the brine — taste a slice before any finishing salt; jus and horseradish also carry salt. If flat, a few flakes at the plate, not the board.\n\n## Scaling Notes\n\nDiameter governs low-roast time more than weight — 12 cm compact runs ~75–80 min. A long/narrow roast of the same weight runs faster with more crust. Below 1 kg, drop blast to 4–5 min.\n",
+      "designed_unvalidated": [
+        {
+          "param": "Post-blast core temperature",
+          "designed_value": "~127–133°F / 53–56°C from a 119–120°F pull",
+          "note": "Doc: 'verify, don't assume a fixed rise. The probe number is the truth.'"
+        },
+        {
+          "param": "Low-roast duration",
+          "designed_value": "~75–80 min at 250°F for 12 cm diameter",
+          "note": "Probe-governed; diameter drives it, not weight"
+        },
+        {
+          "param": "Final blast duration",
+          "designed_value": "5–8 min at max / 500°F",
+          "note": "Crust-color-governed; 1.18 kg climbs fast"
+        }
+      ],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "rib eye roast, mb3+ black angus",
+          "department": "Protein",
+          "qty": 1180,
+          "unit": "g",
+          "qty_alt": "1.18 kg / 2.6 lb",
+          "prep_note": "compact tied, 12 cm dia",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 12,
+          "unit": "g",
+          "qty_alt": "1% of weight",
+          "prep_note": "dry brine, Sat, all surfaces",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "neutral oil",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "rub before roasting",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "to taste",
+          "prep_note": "freshly cracked",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "thyme",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "sprig",
+          "qty_alt": "2–3 sprigs",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": true
+        }
+      ]
+    },
+    {
+      "slug": "ribeye-roast-potatoes",
+      "existing": true,
+      "name": "Duck-Fat Roast Potatoes (Split-Roast)",
+      "protein": null,
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "British",
+        "Classic Roast"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "roast potatoes",
+        "duck fat",
+        "baking soda parboil",
+        "split-roast",
+        "make-ahead",
+        "sunday roast"
+      ],
+      "occasion": [
+        "Sunday Roast",
+        "Family Dinner"
+      ],
+      "status": "cooked",
+      "source": "Recovered from rib-eye-roast-sunday.docx, generated for service Sun 12 Jul 2026 (no generation date stated in doc)",
+      "governance_version": null,
+      "summary": "Peeled Yukon/Maris potatoes parboiled with baking soda, roughed up, pre-roasted in shimmering duck fat at 450°F to set, held on a rack, then recrisped ~15–20 min during the beef rest for a craggy shattering crust.",
+      "servings": 3,
+      "equipment": [
+        "Bosch oven",
+        "roasting tray",
+        "colander",
+        "wire rack"
+      ],
+      "method_md": "## Dish Overview\n\nParboiled potatoes pre-roasted to set, held, then recrisped during the beef rest — a shattering craggy crust and fluffy interior in duck fat. Baking soda in the parboil raises surface pH so the exterior crisps aggressively. The split solves the single-oven bottleneck.\n\n## Yield & Timing\n\n*Yield: serves 3 · Total ~55 min across two phases · Active ~15 min · Oven 450°F / 230°C*\n\n## Flavor Architecture\n\n<table header-row=\"true\">\n<tr><td>Element</td><td>Definition</td></tr>\n<tr><td>Base</td><td>Duck fat (roasting medium + flavor)</td></tr>\n<tr><td>Primary driver</td><td>Potato + duck fat richness</td></tr>\n<tr><td>Acid</td><td>None — externalized to meal</td></tr>\n<tr><td>Aromatic/finish</td><td>Garlic + thyme in the fat; salt at finish</td></tr>\n</table>\n\n*Single-stage acceptable: no acid by design; richness component, acid externalized.*\n\n## Texture\n\nTwo distinct — craggy crisp shell vs. fluffy interior, via baking-soda parboil + roughing-up.\n\n## Prep Phase\n\n1. Peel (skin blocks crust and steams under the fat). Even ~4 cm chunks.\n2. Parboil in salted water + ¼ tsp baking soda, ~8 min from boil, until edges just soften.\n3. Drain thoroughly, dry in the hot pan 30 sec, then shake hard in the colander to rough the surfaces — roughed edges become the crust.\n\n## Active Cooking\n\n1. Pre-roast: heat duck fat in the tray in the 450°F oven ~5 min until shimmering. Add potatoes (dry — spatter risk), turn to coat, add garlic/thyme if using. Roast to pale gold and structurally set, ~25–30 min. Remove; hold uncovered, single layer, wire rack, room temp.\n2. Recrisp: once the oven has recovered to ≥425–450°F during the beef rest, return potatoes ~15–20 min, turning once, until deeply golden and audibly crisp. Salt out of the oven.\n\n## Holding & Assembly\n\nPre-roasted potatoes hold up to ~2 hr on the rack, room temp. Final crisped potatoes hold ~10 min. Never stack or cover at any stage — trapped steam softens the crust instantly.\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Severity</td><td>Failure Mode & Cue</td><td>Recovery</td></tr>\n<tr><td>Major</td><td>Soft, greasy — fat not hot at entry, or crowded tray. Cue: pale, oil-slicked</td><td>Spread out, raise to 475°F, extend. Prevention: fat shimmering before entry; single layer</td></tr>\n<tr><td>Major</td><td>Over-browned crags / scorched garlic on recrisp — too long at true 450°F. Cue: dark bitter edges, acrid garlic</td><td>Recoverable for potatoes (pull immediately); discard scorched aromatics. Prevention: sensory-govern the recrisp, pull when golden not dark</td></tr>\n<tr><td>Minor</td><td>Over-roughed → mushy exterior. Cue: edges disintegrate on turning</td><td>Cosmetic — still crisps</td></tr>\n</table>\n\n## Adjustment Notes\n\nSalt only out of the oven — earlier salt draws moisture, softens crust. Undercrisp at service → a few more minutes, but this competes with the beef blast; accept as-is if the beef needs the oven.\n\n## Scaling Notes\n\nDo not crowd — potatoes need space. Above 700 g, use two trays or the crust fails across the batch.\n",
+      "designed_unvalidated": [
+        {
+          "param": "Pre-roast duration",
+          "designed_value": "~25–30 min at 450°F to pale gold, structurally set",
+          "note": "Sensory-governed"
+        },
+        {
+          "param": "Recrisp duration",
+          "designed_value": "~15–20 min at ≥425–450°F, turning once",
+          "note": "Pull when deeply golden and audibly crisp; competes with beef blast for the oven"
+        },
+        {
+          "param": "Pre-roast hold",
+          "designed_value": "up to ~2 hr on wire rack, room temp",
+          "note": "Surface dries (harmless); recrisp restores"
+        }
+      ],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "potato, yukon gold or maris piper",
+          "department": "Produce",
+          "qty": 700,
+          "unit": "g",
+          "qty_alt": "1.5 lb",
+          "prep_note": "peeled, ~4 cm chunks",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "duck fat",
+          "department": "Dairy",
+          "qty": 60,
+          "unit": "g",
+          "qty_alt": "4 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "baking soda",
+          "department": "Pantry",
+          "qty": 0.25,
+          "unit": "tsp",
+          "qty_alt": "¼ tsp",
+          "prep_note": "in the parboil water",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "to taste",
+          "prep_note": "salted parboil water; finishing salt only out of the oven",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "smashed",
+          "pantry_check": true,
+          "optional": true
+        },
+        {
+          "name": "thyme",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "in the fat with the garlic",
+          "pantry_check": false,
+          "optional": true
+        }
+      ]
+    },
+    {
+      "slug": "ribeye-honey-glazed-carrots",
+      "existing": false,
+      "name": "Honey-Glazed Carrots (Light Honey)",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "British",
+        "Classic Roast"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "glazed carrots",
+        "honey",
+        "induction",
+        "sunday roast"
+      ],
+      "occasion": [
+        "Sunday Roast",
+        "Family Dinner"
+      ],
+      "status": "cooked",
+      "source": "Recovered from rib-eye-roast-sunday.docx, generated for service Sun 12 Jul 2026 (no generation date stated in doc)",
+      "governance_version": null,
+      "summary": "Carrot batons steamed under a lid with butter, 1 tsp honey and a splash of water, then reduced uncovered to a light glossy glaze; optional lemon squeeze corrects any cloying sweetness.",
+      "servings": 3,
+      "equipment": [
+        "induction hob",
+        "lidded pan"
+      ],
+      "method_md": "## Dish Overview\n\nCarrots glazed in butter with a restrained touch of honey to a tender-yielding bite and light gloss — the warm sweet-soft counterpoint to the beef, honey held to 1 tsp so it doesn't stack richness against the wine.\n\n## Yield & Timing\n\n*Yield: serves 3 · Total ~20 min · Active ~15 min · Induction*\n\n## Flavor Architecture\n\n<table header-row=\"true\">\n<tr><td>Element</td><td>Definition</td></tr>\n<tr><td>Base</td><td>Butter</td></tr>\n<tr><td>Primary driver</td><td>Carrot sweetness, lightly lifted by honey</td></tr>\n<tr><td>Acid</td><td>Optional lemon squeeze at finish — corrective, pulls back sweetness if cloying</td></tr>\n<tr><td>Aromatic/finish</td><td>Salt; optional pepper</td></tr>\n</table>\n\n*Acid single-stage at finish justified: glaze reduction; acid's role is corrective, not structural.*\n\n## Texture\n\nMeal-level texture exemption — glazed carrots are inherently soft; contrast provided by crisp potatoes and beef crust across the plate.\n\n## Prep Phase\n\n1. Peel (skin turns leathery and bitter under a glaze). Even ~5 cm batons.\n\n## Active Cooking\n\n1. Carrots, butter, 1 tsp honey, ~50 ml water, pinch salt in a pan on induction 1. Cover, medium, ~8 min until a knife meets slight resistance.\n2. Uncover, raise heat, reduce to a glossy glaze, ~4–5 min. Toss to coat.\n3. Taste — if even slightly cloying, small squeeze of lemon.\n\n## Holding & Assembly\n\nCover, hold on residual heat up to 15 min. Glaze tightens — loosen with a splash of water off-heat before plating.\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Severity</td><td>Failure Mode & Cue</td><td>Recovery</td></tr>\n<tr><td>Major</td><td>Glaze breaks/scorches — reduced too hard. Cue: fat separates, brown flecks, acrid smell</td><td>Unrecoverable if scorched. Prevention: reduce over medium, pull when glossy not sticky</td></tr>\n<tr><td>Minor</td><td>Undercooked core. Cue: knife meets hard resistance</td><td>Splash water, cover, 2–3 min more</td></tr>\n</table>\n\n## Adjustment Notes\n\nToo sweet → lemon squeeze. Flat → pinch of salt sharpens. Don't add honey at the end — won't integrate off-heat.\n\n## Scaling Notes\n\nNot applicable.\n",
+      "designed_unvalidated": [
+        {
+          "param": "Covered cook time",
+          "designed_value": "~8 min, medium, until knife meets slight resistance",
+          "note": "Then ~4–5 min uncovered reduction to glaze"
+        }
+      ],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "carrot",
+          "department": "Produce",
+          "qty": 400,
+          "unit": "g",
+          "qty_alt": "14 oz",
+          "prep_note": "peeled, ~5 cm batons",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "butter",
+          "department": "Dairy",
+          "qty": 20,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "from the 60 g shared cold cubed butter",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "honey",
+          "department": "Pantry",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "or omit; glaze on butter + salt alone",
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "to taste",
+          "prep_note": "pinch in the pan; adjust at finish",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "water",
+          "department": "Oils & Liquids",
+          "qty": 50,
+          "unit": "ml",
+          "qty_alt": "~50 ml",
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "lemon juice",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "optional squeeze",
+          "prep_note": "reserved from the shared lemon; only if cloying",
+          "pantry_check": false,
+          "optional": true
+        }
+      ]
+    },
+    {
+      "slug": "ribeye-green-beans-butter-lemon-zest",
+      "existing": false,
+      "name": "Green Beans, Butter + Lemon Zest",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "British",
+        "Classic Roast"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "green beans",
+        "blanch and shock",
+        "lemon zest",
+        "induction",
+        "sunday roast"
+      ],
+      "occasion": [
+        "Sunday Roast",
+        "Family Dinner"
+      ],
+      "status": "cooked",
+      "source": "Recovered from rib-eye-roast-sunday.docx, generated for service Sun 12 Jul 2026 (no generation date stated in doc)",
+      "governance_version": null,
+      "summary": "Trimmed green beans blanched 4 min in well-salted water, ice-shocked, held dry, then warmed through in butter at service with lemon zest added off-heat.",
+      "servings": 3,
+      "equipment": [
+        "induction hob",
+        "pot for blanching",
+        "ice bath"
+      ],
+      "method_md": "## Dish Overview\n\nBlanched green beans, shocked to hold color and bite, finished with butter and lemon zest for aromatic lift. The palate-resetting fresh-firm element against the rich plate.\n\n## Yield & Timing\n\n*Yield: serves 3 · Total ~12 min · Active ~8 min · Induction*\n\n## Flavor Architecture\n\n<table header-row=\"true\">\n<tr><td>Element</td><td>Definition</td></tr>\n<tr><td>Base</td><td>Butter (finishing fat)</td></tr>\n<tr><td>Primary driver</td><td>Green bean; vegetal-fresh</td></tr>\n<tr><td>Acid</td><td>None — lemon zest is aromatic, not acid</td></tr>\n<tr><td>Aromatic/finish</td><td>Lemon zest (volatile citrus + slight bitterness); optional garlic</td></tr>\n</table>\n\n*No-acid by design: fresh-finish component; brightness is aromatic (zest), not acidic. Meal acid lives in horseradish and jus.*\n\n## Texture\n\nTwo distinct — firm snap vs. tender core, held by blanch-and-shock. The plate's firmest element by design.\n\n## Prep Phase\n\n1. Trim beans. Zest the shared lemon (all zest → here); juice the lemon, reserve for adjustments.\n\n## Active Cooking\n\n1. Blanch in well-salted boiling water ~4 min — bright green, just tender with snap.\n2. Ice-shock immediately — locks color and bite. Drain, dry well.\n3. At 6:57: melt butter over low induction, toss beans to warm through ~2 min, add zest off-heat, salt to taste.\n\n## Holding & Assembly\n\nHold drained and dry, room temp, up to 15 min. Beans go into the butter cold and warm through — holding doesn't degrade them.\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Severity</td><td>Failure Mode & Cue</td><td>Recovery</td></tr>\n<tr><td>Major</td><td>Overcooked — blanched too long or not shocked. Cue: olive-drab, limp, no snap</td><td>Unrecoverable. Prevention: 4 min max, immediate shock</td></tr>\n<tr><td>Minor</td><td>Zest added on heat → bitter. Cue: acrid edge</td><td>Prevention: zest off-heat only, at the very end</td></tr>\n</table>\n\n## Adjustment Notes\n\nZest is the default for brightness without added sharpness; a few drops of lemon juice off-heat are a valid post-cook correction if it needs lift. Finishing salt at the toss if under-seasoned.\n\n## Scaling Notes\n\nNot applicable.\n",
+      "designed_unvalidated": [
+        {
+          "param": "Blanch time",
+          "designed_value": "~4 min max in well-salted boiling water",
+          "note": "Immediate ice shock; overcooking unrecoverable"
+        }
+      ],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "green bean",
+          "department": "Produce",
+          "qty": 300,
+          "unit": "g",
+          "qty_alt": "10 oz",
+          "prep_note": "trimmed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "butter",
+          "department": "Dairy",
+          "qty": 20,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "from the 60 g shared cold cubed butter; finishing fat",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "lemon zest",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "from 1 lemon (shared)",
+          "prep_note": "zest only, all of it; added off-heat",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "to taste",
+          "prep_note": "well-salted blanching water; finishing salt at the toss",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "sliced",
+          "pantry_check": true,
+          "optional": true
+        }
+      ]
+    },
+    {
+      "slug": "ribeye-yogurt-mustard-cream",
+      "existing": true,
+      "name": "Horseradish Cream",
+      "protein": null,
+      "category": [
+        "Sauce"
+      ],
+      "cuisine": [
+        "British",
+        "Classic Roast"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "horseradish",
+        "no-cook",
+        "make-ahead",
+        "condiment",
+        "cold sauce",
+        "sunday roast"
+      ],
+      "occasion": [
+        "Sunday Roast",
+        "Family Dinner"
+      ],
+      "status": "cooked",
+      "source": "Recovered from rib-eye-roast-sunday.docx, generated for service Sun 12 Jul 2026 (no generation date stated in doc)",
+      "governance_version": null,
+      "summary": "No-cook condiment of prepared horseradish folded into crème fraîche, tasted before any lemon or salt, held cold in the fridge for days and served straight from the fridge against the hot beef.",
+      "servings": 3,
+      "equipment": [],
+      "method_md": "## Dish Overview\n\nCold, sharp horseradish folded into crème fraîche — the acid-and-heat cutting agent for the rich beef. No-cook, make-ahead.\n\n## Yield & Timing\n\n*Yield: ~100 ml · Total 5 min · Active 5 min · No heat*\n\n## Flavor Architecture\n\n<table header-row=\"true\">\n<tr><td>Element</td><td>Definition</td></tr>\n<tr><td>Base</td><td>Crème fraîche</td></tr>\n<tr><td>Primary driver</td><td>Horseradish heat + pungency</td></tr>\n<tr><td>Acid</td><td>Crème fraîche tang + vinegar inherent to prepared horseradish; optional lemon</td></tr>\n<tr><td>Aromatic/finish</td><td>—</td></tr>\n</table>\n\n*Single-stage acid justified: no-cook condiment, acid inherent to the cultured cream and prepared horseradish.*\n\n## Texture\n\nMeal-level exemption — a smooth condiment; contrast provided across the plate. Its job is flavor (sharp/cold), not texture.\n\n## Prep Phase\n\n1. Fold horseradish into crème fraîche. Taste before adding anything — prepared horseradish already carries vinegar and salt. Then adjust: pinch of salt if flat, lemon if it needs lift, more horseradish for bite.\n\n## Active Cooking\n\nNone.\n\n## Holding & Assembly\n\nFridge, covered, up to several days. Serve cold, straight from the fridge — the cold contrast against hot beef is part of its function.\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Severity</td><td>Failure Mode & Cue</td><td>Recovery</td></tr>\n<tr><td>Minor</td><td>Too hot or too flat. Cue: overwhelms, or reads as plain cream</td><td>Fully adjustable: more crème fraîche to soften, more horseradish to sharpen</td></tr>\n</table>\n\n## Adjustment Notes\n\nEntirely tunable before service — soften with crème fraîche, sharpen with horseradish, brighten with lemon. Taste before salting.\n\n## Scaling Notes\n\nNot applicable.\n",
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "crème fraîche",
+          "department": "Dairy",
+          "qty": 100,
+          "unit": "ml",
+          "qty_alt": null,
+          "prep_note": "or sour cream",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "prepared horseradish",
+          "department": "Pantry",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "adjust to heat preference",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon juice",
+          "department": "Produce",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": "½ tsp",
+          "prep_note": "optional — only after tasting; reserved from shared lemon",
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "pinch",
+          "qty_alt": "small pinch",
+          "prep_note": "only after tasting",
+          "pantry_check": true,
+          "optional": true
+        }
+      ]
+    },
+    {
+      "slug": "ribeye-jus",
+      "existing": true,
+      "name": "Red Wine Jus (Staged, Independent Reduction)",
+      "protein": null,
+      "category": [
+        "Sauce"
+      ],
+      "cuisine": [
+        "French",
+        "Classic Roast"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "jus",
+        "red wine reduction",
+        "staged",
+        "butter mount",
+        "outdoor gas",
+        "sunday roast"
+      ],
+      "occasion": [
+        "Sunday Roast",
+        "Family Dinner"
+      ],
+      "status": "cooked",
+      "source": "Recovered from rib-eye-roast-sunday.docx, generated for service Sun 12 Jul 2026 (no generation date stated in doc)",
+      "governance_version": null,
+      "summary": "Shallot-based red wine and beef stock reduction built independently of pan fond in three staged steps with an off-heat hold, enriched with roast drippings as available, reduced to ~150 ml light nappe and mounted with cold butter.",
+      "servings": 3,
+      "equipment": [
+        "outdoor gas burner",
+        "saucepan",
+        "fine strainer",
+        "whisk"
+      ],
+      "method_md": "## Dish Overview\n\nA concentrated red-wine-and-stock reduction built on browned shallot — not dependent on roast-pan fond, which a 250°F roast won't reliably produce. Staged with a hold to preserve the make-ahead without over-concentrating. Low-roast and post-blast drippings fold in as available. Reduced to a light nappe, mounted with cold butter.\n\n## Yield & Timing\n\n*Yield: ~150 ml · Total ~45 min across stages · Active ~15 min · Outdoor gas*\n\n## Flavor Architecture\n\n<table header-row=\"true\">\n<tr><td>Element</td><td>Definition</td></tr>\n<tr><td>Base</td><td>Browned shallot fond (+ optional trimmings), built independently in the saucepan</td></tr>\n<tr><td>Primary driver</td><td>Reduced beef stock + wine depth</td></tr>\n<tr><td>Acid</td><td>Red wine — staged early, reduced; acidity mellows and integrates</td></tr>\n<tr><td>Aromatic/finish</td><td>Cold butter mount for gloss + body</td></tr>\n</table>\n\n*Acid staged correctly: wine in early, reduced to depth not sharpness.*\n\n## Texture\n\nMeal-level exemption — a sauce; target is a light-syrup nappe coating a spoon back.\n\n## Prep Phase\n\n1. Finely slice 1 shallot. If using trimmings, have them ready.\n\n## Active Cooking (staged)\n\n1. Stage 1 (~4:45pm): brown shallot (+ optional trimmings) in a little oil over medium until deeply colored. Deglaze with wine, scraping the pan; reduce by half, ~5 min. Add stock, bring to a brief simmer, then off heat, covered.\n2. Stage 2 (~6:05pm): return to gas, finish reducing to ~150 ml, lightly syrupy. Fold in low-roast drippings once the beef pulls.\n3. Stage 3 (~6:40–6:43pm): off-heat, whisk in cold butter for gloss. Strain. Taste — salt sparingly (stock + drippings already salty). Hold warm on lowest gas.\n4. After the beef's blast, pour any last drippings into the finished sauce and re-warm briefly.\n\n## Holding & Assembly\n\nWarm on lowest gas up to 30 min. If sticky, loosen with a splash of stock and re-strain.\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Severity</td><td>Failure Mode & Cue</td><td>Recovery</td></tr>\n<tr><td>Major</td><td>Over-reduced sticky/salty — reduced too far, or not held between stages. Cue: coats too thick, concentrated-salty</td><td>Loosen with stock/water; don't add salt. Prevention: stage with the off-heat hold; taste before final reduction</td></tr>\n<tr><td>Minor</td><td>Butter mount breaks — added on too-high heat. Cue: oily, split</td><td>Off-heat, whisk in a splash of cold stock to re-emulsify</td></tr>\n</table>\n\n## Adjustment Notes\n\nIf flat, a few drops of reserved lemon juice or a splash of wine lifts it. Salt last and sparingly — reduction concentrates existing salt.\n\n## Scaling Notes\n\nNot applicable.\n",
+      "designed_unvalidated": [
+        {
+          "param": "Wine reduction",
+          "designed_value": "reduce by half, ~5 min",
+          "note": "Stage 1"
+        },
+        {
+          "param": "Final volume",
+          "designed_value": "~150 ml, lightly syrupy (light nappe)",
+          "note": "Stage 2; taste before final reduction"
+        },
+        {
+          "param": "Warm hold",
+          "designed_value": "up to 30 min on lowest gas",
+          "note": "Loosen with stock and re-strain if sticky"
+        }
+      ],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "dry red wine",
+          "department": "Alcohol",
+          "qty": 150,
+          "unit": "ml",
+          "qty_alt": null,
+          "prep_note": "drinkable",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "beef stock",
+          "department": "Oils & Liquids",
+          "qty": 300,
+          "unit": "ml",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "shallot",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "finely sliced (default base)",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "beef trimmings",
+          "department": "Protein",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "small / as available",
+          "prep_note": "optional additive for extra meat fond; ask the butcher when collecting the roast",
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "neutral oil",
+          "department": "Oils & Liquids",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "a little",
+          "prep_note": "for browning",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "butter",
+          "department": "Dairy",
+          "qty": 20,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "cold, cubed; from the 60 g shared butter; for the mount",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "beef drippings",
+          "department": "Protein",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "as available (low-roast + post-blast)",
+          "prep_note": "from the rib eye roast; folded in at stage 2 and after the blast",
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "to taste",
+          "prep_note": "salt last and sparingly",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "to taste",
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "notes": "SLUG MISMATCH: the doc's sauce component is 'Horseradish Cream' (crème fraîche + prepared horseradish); the task's existing sauce slug is 'ribeye-yogurt-mustard-cream', which describes a different condiment. Per task instructions the existing slug was used (existing:true) with the doc's name/recipe, but the DB dish name may need renaming to 'Horseradish Cream' — or, if yogurt-mustard cream was a genuinely different dish from an earlier menu version, a new slug 'ribeye-horseradish-cream' should be created instead. Flagging for the caller to decide. NEW DISHES not in task list: 'ribeye-honey-glazed-carrots' (Honey-Glazed Carrots, side) and 'ribeye-green-beans-butter-lemon-zest' (Green Beans, Butter + Lemon Zest, side) — both have full recipes in the doc and were created as existing:false. INGREDIENT LINE SPLITS: potato table line 'Garlic, smashed (optional); thyme (optional) — 2 cloves' split into two entries (garlic 2 cloves optional, thyme optional); jus table line 'Salt + pepper — to taste' split into diamond crystal kosher salt + black pepper. Generic 'Salt' lines mapped to 'diamond crystal kosher salt' per Shared Prep ('remainder to season potatoes/carrots/beans to taste') and the shopping list. Shopping list also marks black pepper ✓ for potatoes/carrots/beans but the dish ingredient tables omit it, so it was not added there (only where the dish table lists it: beef, jus). PLACEMENT: the doc's 'Meal Balance Audit' section is not in the schema; appended to workflow_md as a final section. The shopping list 'Sourcing' note (butcher trimmings; taste horseradish before lemon/salt) appended to shared_prep_md. The menu header line (serves 3, 2 carb-moderate adults + teen, register) leads workflow_md. No Core/governance version is stated in the doc (governance_version null); no nutrition estimates are present (nutrition_estimate null). No explicit generation date in the doc; source string uses the service date Sun 12 Jul 2026 (wine section references a cellar snapshot 2026-06-18). Cuisine/tags/occasion/difficulty are editorial (doc gives none). Wine pairing kept verbatim including cellar verification note."
+}

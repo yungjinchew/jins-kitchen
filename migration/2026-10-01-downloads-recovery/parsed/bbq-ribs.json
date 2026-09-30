@@ -1,0 +1,576 @@
+{
+  "assignment_key": "bbq-ribs",
+  "source_file": "docs/bbq-ribs-dinner/v1/bbq-ribs-dinner.docx",
+  "meal": {
+    "slug": "bbq-ribs-dinner",
+    "name": "BBQ Ribs Dinner",
+    "planned_date": "2026-07-19",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": "*Three-component meal · 3 adults (2 carb-moderate + 1 full portion) · 2 racks cooked, 1 broiled tonight, 1 banked un-broiled for leftovers*\n\n**Menu**\n- St. Louis ribs, sealed-roasted in foil, vinegar-forward BBQ sauce (oven anchor) — 2 racks; broil 1 tonight, bank 1 un-broiled\n- Lightly creamy cabbage-carrot slaw (make-ahead, cold — the relieving component)\n- Stovetop charred corn with butter and lime (selective carb)\n\n*Controlling execution artifact — supersedes timing notes in the individual recipes where they conflict.*\n\n## Critical Path\nThe ribs govern everything, via early completion + an extended sealed hold — not just-in-time timing. Both racks sealed-roast together (timing is governed by rack thickness, not pan load). Sequence: sealed-roast to first clear probe-tender → hold sealed at 170–180°F / 75–80°C → open. Bank rack 2 un-broiled: pull it from its packet at probe-tender and refrigerate for leftovers. Serving rack only → switch to broil, taste & dry in parallel → two-coat broil → 5-min rest → slice. **Pull at the first clear probe-tender threshold, not beyond it — an extended hold is expected and the target is clean-bite, not fall-apart.**\n\n## Failure Prioritization\nProtect the broiler finish — the only à-la-minute step; the lacquer degrades within ~10 min. **Corn is finished and holding before the first glaze goes on; no induction work once broiling starts.** The broiler window is not negotiable — slaw and corn tolerate waiting; the lacquer does not.\n\n## Oven Sequencing (single Bosch oven — the bottleneck)\n- **300°F / 150°C —** Ribs sealed-roast; oven owned by ribs; nothing else enters.\n- **170–180°F / 75–80°C sealed hold —** Once first probe-tender, reduce oven and hold the sealed packet, up to 60 min (planned maximum; designed, not yet cook-tested). Keeps ribs safely hot and shortens the climb to broil.\n- **Transition to broil —** At convergence, remove packet and switch to broil immediately, then open/taste/dry while the element heats. Gate the first glaze on the broiler being visibly hot, not on a stated duration; the 5–10 min surface dry absorbs the heat-up.\n\n*Single-oven cold-sides resolution: slaw is cold, corn is induction — no side ever waits on oven access.*\n\n## Parallel vs. Sequential\n**Parallel with the roast (wide window):** make the BBQ sauce early (~T−3:00); make and dress the slaw; cut the corn kernels — all off the oven.\n\n**Sequential at convergence (last ~30 min):** char corn (finish first) → open ribs + switch oven to broil → taste/adjust sauce → dry surface → confirm broiler hot → glaze → broil → rest → slice. No induction work once the first glaze is applied.\n\n## Holding Chain\n<table header-row=\"true\"><tr><td>Component</td><td>Hold Strategy</td><td>Max Hold</td><td>Drift Risk</td><td>Corrective</td></tr><tr><td>Ribs (post-roast, pre-broil)</td><td>Sealed foil packet, oven at 170–180°F / 75–80°C</td><td>60 min (planned)</td><td>Continued softening toward fall-apart; surface re-moistens</td><td>Pull at first clear tenderness, not beyond; re-dry surface 5–10 min before glazing</td></tr><tr><td>Ribs — rack 2 (banked, un-broiled)</td><td>Cool, then fridge airtight; sauce reserved separately</td><td>Fridge 3–4 days / freeze 2–3 mo</td><td>Dries if stored uncovered; loses no crust (never had one)</td><td>Store un-glazed; re-lacquer fresh on reheat (300°F/150°C covered + broil 2–3 min)</td></tr><tr><td>Ribs (post-broil)</td><td>Uncovered, rested</td><td>Serve <10 min</td><td>Lacquer softens, edges lose crisp</td><td>None — broil is à la minute; do not hold</td></tr><tr><td>Slaw</td><td>Covered, fridge</td><td>2–3 hr (best 1st hr)</td><td>Softens, may weep</td><td>Drain excess liquid, add 1 tsp mayo</td></tr><tr><td>Corn</td><td>Wide warm bowl, uncovered — never enclosed</td><td>15–20 min</td><td>Char softens, kernels dull</td><td>None material under 20 min — time near service</td></tr></table>\n\n## T-Minus Timeline\n*Anchored to service (T). Ribs enter early; a 60-min warm hold absorbs completion variance; the last ~30 min is active convergence.*\n\n<table header-row=\"true\"><tr><td>Time</td><td>Action</td></tr><tr><td>T−8 to T−24 hr</td><td>Dry-brine ribs (salt, uncovered, fridge).</td></tr><tr><td>T−4 hr 15 min</td><td>Rub ribs; double-wrap; oven to 300°F / 150°C.</td></tr><tr><td>T−4 hr 00 min</td><td>Both racks into oven, side by side in one pan (sealed-roast; expect 2 hr 30 min–3 hr 30 min).</td></tr><tr><td>T−3 hr 00 min</td><td>Make BBQ sauce — doubled batch (reduce 20–30 min); season, hold reserved vinegar separate, split into serving / glazing / leftover-reserve portions.</td></tr><tr><td>T−1 hr 30 min</td><td>First tenderness check begins.</td></tr><tr><td>T−1:30 to T−0:30</td><td>Completion window. At first clear probe-tender, reduce oven to 170–180°F / 75–80°C and hold sealed (up to 60 min). Do not cook past clear tenderness. Make and dress slaw (15–20 min salt-rest, gentle squeeze, dress 20–30 min before service).</td></tr><tr><td>T−0 hr 30 min</td><td>Begin convergence. Remove both packets. Bank rack 2: open, and once cool enough to handle, refrigerate un-glazed in a fresh wrap or airtight container (no broil). Switch oven to broil immediately. Cool serving rack 5 min, open. Taste pork with sauce; add reserved vinegar 1 tsp at a time; whisk butter into glaze if lean.</td></tr><tr><td>T−0 hr 25 min</td><td>Char corn on induction (5–6 min; finishes ~T−0:20); butter, lime, salt; transfer to wide warm bowl, uncovered. Corn done — no more induction work.</td></tr><tr><td>T−0 hr 25 min</td><td>Rack bone-side down on lined sheet; let surface dry (5–10 min, parallel with corn + broiler heat-up).</td></tr><tr><td>T−0 hr 12 min</td><td>Confirm broiler visibly hot. First glaze coat; broil (2–4 min, watch constantly).</td></tr><tr><td>T−0 hr 08 min</td><td>Second glaze coat; broil (1–2 min).</td></tr><tr><td>T−0 hr 06 min</td><td>Ribs out; rest uncovered (5 min).</td></tr><tr><td>T−0 hr 01 min</td><td>Slice ribs between bones.</td></tr><tr><td>T−0</td><td>Plate and serve. Slaw from fridge; corn scooped selectively (full for Lukas, spoonful/none adults); ribs with reserved sauce on the side.</td></tr></table>\n\n## Plating Window\n*If the plating window slips: the ribs' lacquer fails first — soft and dulled within ~10 min. Plate ribs last and serve immediately; slaw and corn tolerate the wait.*\n\n## Meal Balance Audit\n**Richness:** ribs carry the rich lane; the lightly creamy slaw relieves rather than compounds. **Relief:** slaw's cold temperature, crunch, acid. **Acidity:** cider vinegar in ribs sauce (integrated depth + fat-cut) and slaw (cold bright sharpness); lime in corn (fresh aromatic lift) — three functionally distinct roles, no redundancy. **Temperature:** hot ribs + hot corn vs. cold slaw. **Texture:** tender meat + crisp slaw + tender-pop corn + lacquered crust. **Accumulation risk:** fat saturation, mitigated by the lightened slaw as the named relieving element. No sweetness stacking — only the restrained glaze. **Register:** casual, generous, BBQ — preserved.",
+    "shared_prep_md": "*Ingredients appearing in two or more components, consolidated for upfront prep.*\n\n- **Red onion:** finely dice / thin-slice 90 g total — 60 g → BBQ sauce (diced, doubled batch), 30 g → Slaw (paper-thin). Note: different cuts, prep separately.\n- **Garlic:** total 2 cloves minced → BBQ sauce (doubled). (Dry-rub uses garlic powder, not fresh.)\n- **Cider vinegar:** total ~175 ml — 160 ml → BBQ sauce (30 ml of it reserved for finishing), 15 ml → Slaw dressing.\n- **Unsalted butter:** total up to 15 g — up to 5 g → serving-rack glaze (only if lean), 10 g → corn.\n- **Diamond Crystal kosher salt:** dry-brine ribs (14 g across 2 racks) + slaw salt-rest (3 g) + season sauce/corn to taste.\n\n*Note: red onion is cut two ways (diced for the sauce, paper-thin for the slaw) — keep the two preps separate despite the shared ingredient.*\n\n### Sourcing notes\nTwo racks (one served tonight, one banked for leftovers), one head of cabbage, one large carrot, one lime, one medium red onion, and 1–2 ears of corn cover the meal. The sauce and rub are doubled for the two racks — the doubled sauce also yields the leftover-reserve portion for the day-two reheat. Slaw and corn stay sized for tonight's three people (the leftover value is the ribs). Most sauce and rub items are pantry staples — check before buying. Rice is intentionally excluded from tonight (carb-moderate; corn is the selective starch); a rice type will be confirmed separately for any leftover rice bowl. Buttermilk is optional — plain yogurt loosened with a splash of milk substitutes 1:1.",
+    "wine_pairing": null,
+    "components": [
+      {
+        "dish_slug": "bbq-st-louis-ribs-vinegar-bbq-sauce",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "bbq-cabbage-carrot-slaw",
+        "role": "salad",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "bbq-charred-corn",
+        "role": "side",
+        "service_order": 3
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "bbq-st-louis-ribs-vinegar-bbq-sauce",
+      "existing": true,
+      "name": "St. Louis Ribs, Sealed-Roasted in Foil",
+      "protein": "Pork",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "American",
+        "BBQ"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "ribs",
+        "sealed-roast",
+        "dry-brine",
+        "dry-rub",
+        "bbq sauce",
+        "broil",
+        "make-ahead",
+        "leftovers",
+        "oven anchor"
+      ],
+      "occasion": [
+        "Family Dinner",
+        "Weekend"
+      ],
+      "status": "cooked",
+      "source": "Recovered from bbq-ribs-dinner.docx (no generation date stated in document)",
+      "governance_version": null,
+      "summary": "Dry-brined, dry-rubbed St. Louis pork ribs sealed-roasted in foil at 300°F/150°C until probe-tender, with the serving rack broiled under two thin coats of vinegar-forward BBQ sauce and the second rack banked un-broiled for leftovers.",
+      "servings": 3,
+      "equipment": [
+        "heavy-duty foil",
+        "large roasting pan",
+        "rack over a tray (dry-brine)",
+        "nonreactive saucepan",
+        "foil-lined baking sheet",
+        "probe or skewer",
+        "paper towel",
+        "oven with broiler",
+        "pastry brush"
+      ],
+      "method_md": "## Dish Overview\nDry-brined, dry-rubbed pork ribs sealed-roasted low until a probe glides between the bones. Two racks cook together; the serving rack is finished meat-side-up under the broiler with two thin coats of tangy, tomato-thin BBQ sauce set to a sticky lacquer, while the second rack is banked un-broiled for leftovers — clean-bite tender meat against a caramelized crust.\n\n## Yield & Timing\n*Yield: 2 racks — 1 served tonight (3 people), 1 banked for leftovers · Total: 3 hr 15 min–4 hr 15 min, plus 8–24 hr dry-brine · Active: ~35 min · Oven: 300°F / 150°C, then broil*\n\n## Prep Phase\n**1. Membrane:** For each rack, turn bone-side up. If the rib membrane is on, slide a knife tip or probe under it at one end, lift, grip with a paper towel, and peel it off in one sheet. *Pull it for even seasoning access and better eating quality — a left-on membrane stays tough and chewy.*\n\n**2. Dry-brine:** Pat each rack dry. Salt both sides of each rack evenly with 7 g (14 g total across the two). Set uncovered on a rack over a tray in the fridge, 8–24 hr.\n\n**3. Rub:** Combine the doubled rub spices. Within ~1 hr of cooking, coat both sides of each rack evenly, pressing to adhere. Preheat oven to 300°F / 150°C.\n\n## Active Cooking\n### Sealed-roast the ribs\n**1.** Double-wrap each rack separately: for each, lay two overlapping sheets of heavy-duty foil, each ~30 in / 75 cm; place the rack meat-side up, seal the first sheet around it, then wrap the second as an outer leak-resistant layer, both seams facing up. Pleat all seams tight. Set both packets side by side in one large roasting pan so oven heat reaches both evenly — do not stack.\n\n**2.** Roast both at 300°F / 150°C for 2 hr 30 min–3 hr 30 min, until the meat shrinks from the bone ends by ¼–½ in / 6–12 mm and a probe slides through the thickest meat between bones with almost no resistance — like room-temp butter. *Doneness is governed by probe tenderness, not internal temperature. Thickness governs timing — check from T−1:30, but don't rush a thick rack. Plan for early completion and hold sealed (see Meal Workflow).*\n\n### Make the sauce (early in the roast, ~T−3:00)\n**1.** In a nonreactive saucepan over medium heat, sweat the diced onion in 1 tsp neutral oil until soft and translucent, ~5 min. Add minced garlic; cook 30 sec until fragrant.\n\n**2.** Add ketchup, cider vinegar (all but the reserved 1 tbsp), water, mustard, Worcestershire, brown sugar, molasses, and hot sauce. Simmer on low 20–30 min, stirring, until it coats a spoon. Splash in water if it tightens too far.\n\n**3.** Off heat, season with black pepper. **Hold the reserved 2 tbsp vinegar without adding it.** Split the doubled batch three ways: a glazing portion for tonight's serving rack, a serving portion for the table, and a leftover-reserve portion (store airtight with the banked rack for the day-two reheat/re-glaze). Sauce holds without degradation for weeks.\n\n### Open, taste, and finish adjustments\n**1.** Remove both packets, cool 5 min, open carefully (steam escapes). **Bank rack 2:** leave the second rack un-glazed; once cool enough to handle, refrigerate it airtight (or freeze) with its leftover-reserve sauce alongside — it re-lacquers fresh on reheat. Serving rack — taste a small loose edge of pork with a dab of sauce. **Acid:** add the reserved vinegar 1 tsp at a time, stopping when it cuts the fat without tasting sharply acidic. **Richness:** if tender but noticeably lean or dry, whisk 5 g / 1 tsp butter into the glazing portion off heat.\n\n### Broil to finish (meat-side only)\n**1. Serving rack only:** transfer it bone-side down to a foil-lined baking sheet. Let the exposed meat surface dry 5–10 min. Switch oven to broil (or 450°F / 230°C if the broiler runs uneven); confirm it is visibly hot before glazing.\n\n**2.** Brush one thin coat over the meat side. Broil 2–4 min, watching constantly, until it bubbles and browns at the edges. Apply a second thin coat; broil 1–2 min more. *The sugar goes from mahogany to acrid fast — stay at the oven door. Do not flip a fully tender rack; it tears.*\n\n## Holding & Assembly\nThe sealed rack holds well: after roasting, the sealed packet holds at 170–180°F / 75–80°C up to 60 min (planned maximum) before the broil step. Do the glaze-and-broil à la minute — the lacquer softens within ~10 min of finishing. Rest the glazed serving rack 5 min uncovered before slicing so the bubbling sauce settles without steaming the lacquer. Cut between the bones just before serving; serve reserved sauce on the side.\n\n### Banked rack — storage\nStore the second rack un-glazed. Cool, then wrap tight or seal airtight (cut into 1–2 bone sections for easy handling); keep the leftover-reserve sauce in a separate tub. Fridge 3–4 days, or freeze 2–3 months. **Reheat that rebuilds the finish:** 300°F / 150°C in a covered dish or loose foil with a spoonful of water or reserved sauce, ~15–20 min from cold; then uncover, brush with sauce, and broil 2–3 min to re-lacquer. The un-broiled banked rack reheats better than a pre-glazed one — nothing to go soggy, and the crust is built fresh.\n\n## Critical Control Points\n<table header-row=\"true\"><tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr><tr><td>Critical</td><td>Severe scorch across the glazed surface — sugar burns acrid.</td><td>Acrid smell; black (not mahogany) crust over most of the meat side.</td><td>Unrecoverable if it covers the surface — bitterness carries into every bite. Prevent: stay at the door; thin coats only.</td></tr><tr><td>Major</td><td>Packet leaks during cooking — rack roasts dry instead of sealed-roasting.</td><td>Rendered liquid pooling outside the foil; audible sizzling; exposed seam gap.</td><td>Rewrap immediately in fresh foil with 30 ml / 2 tbsp water; continue until probe-tender. If found after cooking, glaze generously and serve extra sauce.</td></tr><tr><td>Major</td><td>Under-tenderized — meat still grips the bone.</td><td>Skewer meets noticeable resistance; lifting the rack near its centre gives little bend or surface cracking.</td><td>Fully recoverable: re-seal, return to 300°F / 150°C in 20-min increments, re-check. Do not broil until tender.</td></tr><tr><td>Major</td><td>Sauce over-reduced / too sharp.</td><td>Pastes rather than coats; tastes harsh.</td><td>Loosen with water 1 tbsp at a time; balance with a pinch of brown sugar. Correct before the reserved-vinegar step.</td></tr><tr><td>Minor</td><td>Ribs slightly dry despite tender roast (lean rack).</td><td>Tender but not juicy.</td><td>Whisk in the 5 g butter; glaze more generously; serve extra sauce. Prevent by choosing a fattier rack next time.</td></tr><tr><td>Major</td><td>Banked rack cooled too slowly before refrigeration (food-safety).</td><td>Rack sits warm at room temp well past 1–2 hr before going into the fridge.</td><td>Get it below fridge temp promptly — cut into sections to speed cooling, then refrigerate. If it lingered in the 40–140°F / 4–60°C zone over ~2 hr total, discard rather than risk it.</td></tr></table>\n\n## Adjustment Notes\n***Adjust:** the dry-brine seasons the meat — correct final seasoning in the sauce, off-heat, tasting between additions. For acid, the reserved off-heat vinegar is the primary brightness lever; add it after tasting the reduced sauce against the pork, which reads sharper alone. For richness, if the rack ran lean, the 5 g butter melted into the glazing sauce adds gloss and body without more sugar.*",
+      "designed_unvalidated": [
+        {
+          "param": "Sealed warm hold after roast",
+          "designed_value": "170–180°F / 75–80°C, up to 60 min",
+          "note": "Planned maximum; designed, not yet cook-tested (stated in Oven Sequencing and Holding Chain)."
+        }
+      ],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "st. louis pork ribs",
+          "department": "Protein",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": "2 racks, 2.5–3 lb / 1.15–1.35 kg each",
+          "prep_note": "St. Louis-cut pork spare ribs; 2 racks (1 served, 1 banked)",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 14,
+          "unit": "g",
+          "qty_alt": "5 tsp total (2½ tsp / 7 g per rack)",
+          "prep_note": "dry-brine",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "smoked paprika",
+          "department": "Seasoning",
+          "qty": 4,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "dry rub (doubled for 2 racks)",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "sweet paprika",
+          "department": "Seasoning",
+          "qty": 2,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "dry rub",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "garlic powder",
+          "department": "Seasoning",
+          "qty": 2,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "dry rub",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "onion powder",
+          "department": "Seasoning",
+          "qty": 2,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "dry rub",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "freshly ground; dry rub",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "ground cumin",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "dry rub",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "cayenne",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "dry rub",
+          "pantry_check": true,
+          "optional": true
+        },
+        {
+          "name": "ketchup",
+          "department": "Pantry",
+          "qty": 240,
+          "unit": "ml",
+          "qty_alt": "1 cup",
+          "prep_note": "BBQ sauce (doubled batch)",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "cider vinegar",
+          "department": "Oils & Liquids",
+          "qty": 160,
+          "unit": "ml",
+          "qty_alt": "⅔ cup",
+          "prep_note": "BBQ sauce; reserve 30 ml / 2 tbsp for off-heat finishing",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "water",
+          "department": "Oils & Liquids",
+          "qty": 90,
+          "unit": "ml",
+          "qty_alt": "6 tbsp",
+          "prep_note": "BBQ sauce; plus more as needed",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "dijon mustard",
+          "department": "Pantry",
+          "qty": 3,
+          "unit": "tbsp",
+          "qty_alt": "45 ml",
+          "prep_note": "grainy or Dijon; BBQ sauce",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "worcestershire sauce",
+          "department": "Pantry",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": "30 ml",
+          "prep_note": "BBQ sauce",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "dark brown sugar",
+          "department": "Pantry",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": "30 g",
+          "prep_note": "BBQ sauce; plus more to taste",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "molasses",
+          "department": "Pantry",
+          "qty": 2,
+          "unit": "tsp",
+          "qty_alt": "10 ml",
+          "prep_note": "BBQ sauce",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "red onion",
+          "department": "Produce",
+          "qty": 60,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "finely diced; BBQ sauce",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "clove",
+          "qty_alt": "2 small cloves",
+          "prep_note": "minced; BBQ sauce",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "hot sauce",
+          "department": "Pantry",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "BBQ sauce; plus more to taste",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "neutral oil",
+          "department": "Oils & Liquids",
+          "qty": 2,
+          "unit": "tsp",
+          "qty_alt": "10 ml",
+          "prep_note": "grapeseed/canola; for the sauce aromatics",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "unsalted butter",
+          "department": "Dairy",
+          "qty": 5,
+          "unit": "g",
+          "qty_alt": "1 tsp",
+          "prep_note": "optional — whisk into glazing portion only if rack is lean",
+          "pantry_check": true,
+          "optional": true
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "to taste",
+          "prep_note": "season the BBQ sauce off-heat",
+          "pantry_check": true,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "bbq-cabbage-carrot-slaw",
+      "existing": true,
+      "name": "Lightly Creamy Cabbage-Carrot Slaw",
+      "protein": "Veg",
+      "category": [
+        "Salad"
+      ],
+      "cuisine": [
+        "American"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "slaw",
+        "cabbage",
+        "carrot",
+        "no-cook",
+        "make-ahead",
+        "cold",
+        "relieving component",
+        "buttermilk dressing"
+      ],
+      "occasion": [
+        "Family Dinner",
+        "Weekend"
+      ],
+      "status": "cooked",
+      "source": "Recovered from bbq-ribs-dinner.docx (no generation date stated in document)",
+      "governance_version": null,
+      "summary": "Salt-rested shredded green cabbage and carrot with paper-thin red onion, lightly coated in a mayo-buttermilk dressing sharpened with cider vinegar and Dijon — the cold, crunchy relief against the ribs.",
+      "servings": 3,
+      "equipment": [
+        "colander",
+        "large bowl",
+        "whisk",
+        "grater"
+      ],
+      "method_md": "## Dish Overview\nShredded cabbage and carrot lightly coated in a buttermilk-loosened dressing sharpened with cider vinegar and mustard — maximum cold crunch as the plate's primary relief against the hot, rich ribs.\n\n## Yield & Timing\n*Yield: 3 (generous) · Total: ~40 min incl. 15–20 min salt-rest · Active: ~15 min · No cook*\n\n## Prep Phase\n**1.** Toss shredded cabbage, carrot, and red onion with the ½ tsp salt in a colander over a bowl. Rest 15–20 min — a light draw, not a heavy purge; remove just enough water to prevent weeping while keeping the shred crisp.\n\n**2.** Whisk the dressing ingredients in a large bowl until smooth. Hold in the fridge.\n\n## Active Cooking\nNot applicable — no cook.\n\n## Holding & Assembly\nAfter the rest, drain and blot or squeeze gently (do not wring — wringing trades crunch for pliability). Add to the dressing and toss to lightly coat; the cabbage should look glossed, not swimming. Taste — salt only if needed, adjust vinegar for sharpness. Dress 20–30 min before service for best crunch; it holds 2–3 hr dressed but dulls after the first hour. Serve cold.\n\n## Critical Control Points\n<table header-row=\"true\"><tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr><tr><td>Major</td><td>Vegetables not drained — slaw weeps, dressing thins.</td><td>Liquid pooling at the bowl base within 30 min of dressing.</td><td>Unrecoverable for texture; serviceable. Drain liquid, add 1 tsp mayo to re-cling. Prevent by the light salt-rest and gentle squeeze.</td></tr><tr><td>Minor</td><td>Over-salted (salted veg and dressing).</td><td>Tastes sharp-salty.</td><td>Toss in a handful of extra un-salted shredded cabbage to dilute.</td></tr></table>\n\n## Adjustment Notes\n***Adjust:** season after resting and tasting — the veg carries residual salt. For acid, add vinegar ½ tsp at a time if flat against the dressing. For richness, keep it light — a touch more buttermilk to loosen rather than more mayo, so the slaw stays in its relieving role.*",
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "cabbage",
+          "department": "Produce",
+          "qty": 400,
+          "unit": "g",
+          "qty_alt": "~½ head",
+          "prep_note": "green cabbage; cored and finely shredded",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "carrot",
+          "department": "Produce",
+          "qty": 100,
+          "unit": "g",
+          "qty_alt": "1 large",
+          "prep_note": "peeled and coarsely grated",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "red onion",
+          "department": "Produce",
+          "qty": 30,
+          "unit": "g",
+          "qty_alt": "¼ small",
+          "prep_note": "paper-thin",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 3,
+          "unit": "g",
+          "qty_alt": "½ tsp",
+          "prep_note": "for a light draw (salt-rest)",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "mayonnaise",
+          "department": "Dairy",
+          "qty": 30,
+          "unit": "g",
+          "qty_alt": "2 tbsp",
+          "prep_note": "dressing",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "buttermilk",
+          "department": "Dairy",
+          "qty": 30,
+          "unit": "ml",
+          "qty_alt": "2 tbsp",
+          "prep_note": "dressing; or plain yogurt thinned with milk (1:1 substitute)",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "cider vinegar",
+          "department": "Oils & Liquids",
+          "qty": 15,
+          "unit": "ml",
+          "qty_alt": "1 tbsp",
+          "prep_note": "dressing",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "dijon mustard",
+          "department": "Pantry",
+          "qty": 1.5,
+          "unit": "tsp",
+          "qty_alt": "7 ml",
+          "prep_note": "dressing",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "caster sugar",
+          "department": "Pantry",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": "2.5 g",
+          "prep_note": "dressing",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "to taste",
+          "prep_note": "freshly ground; dressing",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "to taste",
+          "prep_note": "after resting, light",
+          "pantry_check": true,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "bbq-charred-corn",
+      "existing": true,
+      "name": "Stovetop Charred Corn with Butter and Lime",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "American"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "corn",
+        "charred",
+        "stovetop",
+        "induction",
+        "cast iron",
+        "quick",
+        "selective starch",
+        "lime"
+      ],
+      "occasion": [
+        "Family Dinner",
+        "Weekend"
+      ],
+      "status": "cooked",
+      "source": "Recovered from bbq-ribs-dinner.docx (no generation date stated in document)",
+      "governance_version": null,
+      "summary": "Corn kernels blistered in a ripping-hot skillet until charred in patches, finished off-heat with butter, lime juice and zest, salt and pepper — the meal's selective starch, plated by portion.",
+      "servings": 3,
+      "equipment": [
+        "cast-iron or heavy skillet",
+        "induction hob",
+        "splatter screen",
+        "wide warm bowl"
+      ],
+      "method_md": "## Dish Overview\nCorn kernels blistered in a ripping-hot dry skillet until charred in patches, tossed off-heat with a little butter, salt, and lime — a warm, savory counterpoint plated selectively. Meal-level carve-out: corn is the selective starch; its single warm-savory texture is fine because contrast comes from the cold slaw and the ribs' lacquer.\n\n## Yield & Timing\n*Yield: 1 full (Lukas) + 2 spoonfuls · Total: ~12 min · Active: ~12 min · Induction, high*\n\n## Prep Phase\n**1.** Cut kernels from the cobs (stand the ear in a bowl, run a knife down). If using frozen, thaw fully and **pat very dry** — wet kernels steam instead of charring.\n\n## Active Cooking\n**1.** Heat a cast-iron or heavy skillet on induction, high, until it just begins to smoke. Add the oil, swirl, then add the kernels in one layer. *Expect popping — stand back; a splatter screen helps.*\n\n**2.** Leave undisturbed 2 min to blister, then toss and repeat, 5–6 min total, until charred in patches. *Char in spots, not uniformly browned — you want contrast, not scorched throughout.*\n\n**3.** Off heat, stir in the butter, lime juice and zest, salt lightly, and pepper. Add optional chili.\n\n## Holding & Assembly\nBest straight from the pan. Transfer to a wide, warm bowl, uncovered or very loosely covered — do not enclose it (an enclosed warm environment steams and softens the char). Holds ~15 min without material loss; char softens after ~20 min, so time it near service. Plate selectively: full scoop for Lukas, a spoonful or none for the adults.\n\n## Critical Control Points\n<table header-row=\"true\"><tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr><tr><td>Major</td><td>Kernels steam instead of char (wet corn or pan not hot enough).</td><td>Pale, wet kernels, no colour after 4 min.</td><td>Recoverable: raise heat, spread thin, keep going — but wet frozen corn may never fully char. Prevent by drying thoroughly and preheating hard.</td></tr><tr><td>Minor</td><td>Scorched (left too long / heat too high).</td><td>Acrid, uniformly blackened.</td><td>Unrecoverable for scorched kernels; pick around or accept.</td></tr></table>\n\n## Adjustment Notes\n***Adjust:** salt off-heat after tasting. For acid, the lime is built in; add a few more drops if it reads flat-sweet. For richness, a touch more butter, kept light — this is a supporting scoop.*",
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "corn",
+          "department": "Produce",
+          "qty": 200,
+          "unit": "g",
+          "qty_alt": "1 large or 2 small ears (200–250 g kernels)",
+          "prep_note": "kernels cut off the cob (or frozen, thawed + patted very dry)",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "neutral oil",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": "5 ml",
+          "prep_note": "grapeseed or canola",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "unsalted butter",
+          "department": "Dairy",
+          "qty": 10,
+          "unit": "g",
+          "qty_alt": "2 tsp",
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "lime",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": "½ tsp juice + zest of ¼ lime",
+          "prep_note": "juice and zest; add off-heat",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "to taste",
+          "prep_note": "salt lightly off-heat",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "to taste",
+          "prep_note": "freshly ground",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "chilli flakes",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": "pinch",
+          "qty_alt": "pinch",
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": true
+        }
+      ]
+    }
+  ],
+  "notes": "All three menu components map to the task's existing slugs; no additional components in the doc, so no new dishes created. Document is a compressed cooking sheet: no Flavor Architecture, Scaling Notes or Nutrition Estimate sections, no Core/governance version and no generation date stated — source string says so and governance_version/nutrition_estimate are null. No wine pairing in the doc. The Meal Balance Audit and the shopping-list 'Sourcing notes' paragraph carry non-shopping content (rice deliberately excluded, buttermilk substitution), so the audit is appended to workflow_md and the sourcing notes to shared_prep_md; the shopping-list table itself is not stored. Ribs recipe yield is 2 racks (1 served to 3 people, 1 banked un-broiled for leftovers); the rub and BBQ sauce quantities are the doubled 2-rack amounts as written; servings set to 3 (tonight's table). Ribs dish already has a DB recipe per task — output fully for comparison. The 60-min sealed warm hold is flagged in the doc as designed, not yet cook-tested (designed_unvalidated). Ingredient naming: reused list names for st. louis pork ribs, diamond crystal kosher salt, smoked/sweet paprika, garlic powder, onion powder, black pepper, ground cumin, cayenne, dijon mustard (doc says 'grainy or Dijon'), worcestershire sauce, molasses, red onion, garlic, hot sauce, neutral oil, unsalted butter, water, cabbage, carrot, buttermilk, caster sugar, corn, lime, chilli flakes; new canonical names: ketchup, cider vinegar, dark brown sugar, mayonnaise. Salt and pepper appear as separate 'to taste' lines in the doc for each dish and are kept as separate entries (ribs has two salt lines: dry-brine 14 g and sauce to-taste). pantry_check follows the shopping list's '(pantry check)' marks; water and chilli flakes are not in the shopping list at all (pantry staples) and are also marked pantry_check=true. Mayonnaise placed under Dairy because the doc's shopping list files it under FRIDGE / DAIRY. Corn protein set to 'Veg' as a vegetable-led side even though the doc calls it the selective starch. Lime qty given as 1 piece (shopping list) with the recipe amount '½ tsp juice + zest of ¼ lime' in qty_alt. Corn qty is the lower bound of the 200–250 g kernel range. Meal name 'BBQ Ribs Dinner' and planned_date/pax taken from the task; 'Lukas' is named in the doc as the full-portion diner."
+}

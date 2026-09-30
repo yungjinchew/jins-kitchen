@@ -1,0 +1,717 @@
+{
+  "assignment_key": "pork-rack-chop",
+  "source_file": "docs/pork-rack-chop-sunday/v1/pork-rack-chop-sunday.docx",
+  "meal": {
+    "slug": "pork-rack-chop-sunday",
+    "name": "Sunday Menu — Reverse-Seared Bone-In Rack Chops",
+    "planned_date": "2026-08-30",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": "*Three covers. Service window 6:37–7:02 pm. Governance framework v3.5.*\n\n## The Menu\n\n- Reverse-seared bone-in rack chops, mustard-thyme sauce\n- Braised red cabbage with apple and juniper (made Saturday)\n- Crushed potatoes in pork, duck or olive fat\n- Charred tenderstem broccoli with lemon (chilli served separately)\n- Crackling shards — conditional, only if the rind arrives with the rack\n\n## Crackling Dependency — Read Before Shopping\n\n**If** the rack is skin-on and the counter can give you the rind as an intact sheet of roughly 250 g or more, render it, use the fat for the potatoes, and serve the shards.\n\n**If not** — rind already removed, irregular, or under about 200 g — omit crackling entirely and use 40 g duck fat or olive oil for the potatoes. Do not buy a rind separately to force the component, and do not ask the counter to preserve one. The plate is already rich; crackling is a bonus, not a load-bearing element.\n\n## Critical Path\n\n**Chop oven exit → 8 min rest → temperature-gated sear → 7 min rest → carve.** A fixed 22-minute convergence sequence with no compressible steps.\n\n**Strategy: fixed convergence, floating service.** The low-roast band is genuinely 55–80 minutes from fridge-cold and cannot be reliably steered. Rather than absorb that variance in a hold window — which fails, because a long pre-sear rest leaves the sear too much ground to make up — the variance goes into service time. Everything from the oven exit onward is measured in minutes after exit, written E+. Set a timer at the exit and stop watching the clock.\n\n## Failure Prioritization\n\n**Protect the chops' internal temperature above everything.** It is the only unrecoverable failure on the table, and dryness is the specific concern this menu was built around.\n\n- If the sear runs long, serve the potatoes and broccoli cooler. Do not shorten the post-sear rest.\n- If the potatoes are not crisp at E+19, plate them as they are.\n- If the chops have not reached 133°F / 56°C, wait. Service moves; the chops do not.\n- If everything converges late, serve the cabbage lukewarm. It is the most heat-tolerant component.\n\n## Oven Sequencing\n\n**225°F / 107°C, constant, chops only. No mid-cook temperature change —** a downward steer actuates through the Bosch's slow transition and the effect lags unpredictably. At exit, drop to 170°F / 77°C, crack the door two minutes to speed the drop, and put the plates in. Nothing else competes for the oven at any point.\n\n## Heat Resource Allocation\n\n<table header-row=\"true\">\n<tr><td>Resource</td><td>Component</td><td>Window</td></tr>\n<tr><td>Induction 1</td><td>Rind rendering (conditional)</td><td>2:20–3:20 pm</td></tr>\n<tr><td>Induction 1</td><td>Sauce base pre-reduction</td><td>5:30–5:45 pm</td></tr>\n<tr><td>Induction 1</td><td>Sauce finish (sear pan carried in)</td><td>E+12 → E+18</td></tr>\n<tr><td>Induction 2</td><td>Cabbage reheat</td><td>E+2 → E+17</td></tr>\n<tr><td>Oven</td><td>Chop low-roast, then plate warming</td><td>5:20 pm → service</td></tr>\n<tr><td>Outdoor gas 1</td><td>Potatoes crisping</td><td>E−5 → E+19</td></tr>\n<tr><td>Outdoor gas 2</td><td>Broccoli charring</td><td>E+10 → E+17</td></tr>\n<tr><td>Outdoor gas 3</td><td>Chop sear</td><td>E+8 → E+12</td></tr>\n</table>\n\n**Burner-count validation:** peak concurrency at E+10 — outdoor gas 1, 2 and 3 plus induction 2. Four of five available burners. Closes with one spare. The sear is outdoors deliberately; it smokes heavily and belongs away from indoor extraction. Both chops fit one cast-iron pan at 300–400 g each without collapsing the surface temperature.\n\n## Parallel vs. Sequential\n\n**Parallel:** potatoes, cabbage, broccoli and the sear all run inside the E+ window.\n\n**Sequential, non-overlappable:** exit → rest → sear → rest → carve.\n\n**Cannot overlap:** the sauce finish requires the sear fond, so it cannot begin before the sear ends. The post-sear rest is not idle time — it is the sauce window.\n\n## Timeline Verification\n\n**Forward:** salt 2:15 pm → 3 hr 5 min brine → oven 5:20 pm → 55–80 min → exit 6:15–6:40 pm → 22 min convergence → service 6:37–7:02 pm.\n\n**Band closure:** the 25-minute low-roast band lands entirely in service time. The convergence sequence is a fixed 22 minutes at both ends of the band, so no hold ceiling is stressed and no corrective is required. Earliest and latest finishes produce identical sequences, 25 minutes apart. Holds at plating: potatoes 1 min, broccoli 3 min, cabbage 3 min, sauce 4 min — all well inside their ceilings.\n\n*This is a deliberate deviation from pure T-minus format, taken because a fixed-service timeline cannot close against this band without violating a hold ceiling. The absolute-time phase is stated in clock time; the convergence is exit-relative.*\n\n## Chop Divergence Rule\n\nE+0 is the moment the **second** chop is out of the oven. If one finishes first, pull it to the rack and let it wait.\n\nIf the two exits differ by more than about 6 minutes, sear sequentially, colder chop first. Under 6 minutes, sear together — but probe both and remove each individually at 145°F / 63°C rather than treating the pair as one unit. The post-sear rest is per chop, 7 minutes from its own removal; if they come out 90 seconds apart, the carve waits for the second.\n\n## Holding Chain\n\n<table header-row=\"true\">\n<tr><td>Component</td><td>Vessel &amp; Condition</td><td>Planned Max Hold</td><td>Drift</td><td>Corrective</td></tr>\n<tr><td>Crackling</td><td>Uncovered, dry spot, room temp</td><td>4 hr</td><td>Softens if covered</td><td>Never cover. 3 min at 400°F re-crisps</td></tr>\n<tr><td>Cabbage</td><td>Covered pan, off heat</td><td>45 min</td><td>Tightens, dulls</td><td>1 tbsp water; reserved 15 ml vinegar at plating</td></tr>\n<tr><td>Potatoes</td><td>Pan off heat, uncovered</td><td>12 min</td><td>Crust softens from residual steam</td><td>Do not cover. 60 sec over high heat before plating</td></tr>\n<tr><td>Broccoli</td><td>Warm platter, uncovered</td><td>8 min</td><td>Char dulls, colour fades</td><td>None — plate within the window</td></tr>\n<tr><td>Chops, pre-sear</td><td>Rack, uncovered, room temp</td><td>Fixed 8 min</td><td>Internal drops 2–3°F</td><td>None required — the window is fixed, not variable</td></tr>\n<tr><td>Chops, post-sear</td><td>Warmed plate, uncovered, not tented</td><td>8 min</td><td>Tenting traps steam and degrades the crust</td><td>Never tent</td></tr>\n<tr><td>Sauce</td><td>Pan, off heat</td><td>10 min</td><td>Mount breaks if reheated</td><td>Do not reheat. Whisk off-heat</td></tr>\n</table>\n\n## Final Plating Window\n\nPlates out at E+20. Cabbage first as the heat reservoir, then potatoes, then broccoli, then carved chop across. Crackling last. Sauce at the table. Two minutes between first plate and service. If the window is missed, the potato crust fails first.\n\n## Timeline — Absolute Phase\n\n<table header-row=\"true\">\n<tr><td>Time</td><td>Action</td></tr>\n<tr><td>Saturday</td><td>Braise the red cabbage complete. Cool uncovered, refrigerate.</td></tr>\n<tr><td>~2:00 pm</td><td>Collect. Confirm chop thickness at the counter — every timing number below is thickness-dependent. Ask whether the rind comes off as a sheet.</td></tr>\n<tr><td>2:15 pm</td><td>Pat chops dry. 6 g / 2 tsp salt across both, all faces including fat cap and bone end. Uncovered on a rack, refrigerated. Brine window runs 3 hr 5 min.</td></tr>\n<tr><td>2:20 pm</td><td>If rind available — Induction 1: rind in a cold heavy pan, low. Render 45–60 min, turning every 15 min, until fat runs clear and the sheet is amber and rigid. Medium-high 3–4 min to blister. Strain and reserve fat. Drain on a rack, salt 2 g while hot, hold uncovered.</td></tr>\n<tr><td>4:45 pm</td><td>Potatoes into 1.25 L / 5 cups cold water with 12 g / 1 tbsp salt. Simmer 12–14 min to light knife resistance. Drain, steam-dry in the colander 10 min, crush to 1.5 cm. Hold uncovered at room temperature, or refrigerate if preferred — cold and dry crisps well.</td></tr>\n<tr><td>5:15 pm</td><td>Oven to 225°F / 107°C. Confirm at temperature before loading.</td></tr>\n<tr><td>5:20 pm</td><td>Chops on a rack over a tray, spaced, straight from the fridge. Leave-in probe into the thicker chop, clear of bone. Alarm 133°F / 56°C. Band 55–80 min.</td></tr>\n<tr><td>5:30 pm</td><td>Induction 1 — sauce base: shallot 90 sec; 100 ml wine reduced near-dry 4 min; 150 ml stock plus 2 thyme sprigs, reduce 8–10 min to 70–80 ml. Off heat, hold.</td></tr>\n<tr><td>6:15–6:40 pm</td><td>Chops exit on temperature, not clock. Thermapen the second chop before pulling. Each comes out on its own reading.</td></tr>\n</table>\n\n## Timeline — Exit-Relative Phase\n\n*Start a timer when the second chop leaves the oven. E+0 is that instant.*\n\n<table header-row=\"true\">\n<tr><td>Offset</td><td>Action</td></tr>\n<tr><td>E−5</td><td>Probe reads 128°F / 53°C. Outdoor gas 1: fat, 3 smashed garlic, 3 thyme. Potatoes cut-face down. Crisp 24 min, turning at E+7.</td></tr>\n<tr><td>E+0</td><td>Both chops out. Rack, uncovered. Rest 8 min. Oven to 170°F / 77°C, door cracked 2 min. Plates in.</td></tr>\n<tr><td>E+2</td><td>Induction 2: cabbage covered, low. Reheat 15 min. Hold the reserved 15 ml vinegar — do not add yet.</td></tr>\n<tr><td>E+8</td><td>Outdoor gas 3: cast iron high, neutral oil shimmering. Sear. 45–75 sec per broad face, colour-led. Fat caps on edge 45 sec. Butter, thyme, garlic; baste 30 sec. Probe both chops between faces and remove each individually at 145°F / 63°C.</td></tr>\n<tr><td>E+10</td><td>Outdoor gas 2: broccoli in olive oil, high. Char 7 min, undisturbed the first 3.</td></tr>\n<tr><td>E+12</td><td>Chops off as each reaches temperature. Warmed plate, uncovered, not tented. Rest 7 min from its own removal. Sear pan indoors to induction 1.</td></tr>\n<tr><td>E+12</td><td>Sauce: pour off all but 1 tbsp fat. Pre-reduced base in, scrape fond 90 sec over medium-high. Off heat — both mustards, then cold butter cube by cube, then cider vinegar.</td></tr>\n<tr><td>E+17</td><td>Cabbage off heat, stir in reserved 15 ml vinegar, cover. Broccoli off — lemon zest and juice of half through residual heat. Chilli flakes to a separate dish.</td></tr>\n<tr><td>E+18</td><td>Taste the sauce and correct salt. First point the seasoning is real — the fond carries salt from the chops.</td></tr>\n<tr><td>E+19</td><td>Potatoes off heat, uncovered, flaky salt. Carve chops off the bone, then across the grain into 1 cm slices. Rest slices 60 sec on the warm plate — note whether they hold or lose heat.</td></tr>\n<tr><td>E+20</td><td>Plates out. Plate up — cabbage, potatoes, broccoli, chop. Crackling last.</td></tr>\n<tr><td>E+22</td><td>Serve. Sauce at the table.</td></tr>\n</table>\n\n## Meal Balance Audit\n\n**Richness:** high — chop, fat-crisped potatoes, butter-mounted sauce, plus crackling if it happens. This is the plate's principal risk. The cabbage is the relieving component and must be portioned generously, not as a garnish. If crackling is on the plate, spoon the sauce sparingly rather than pouring.\n\n**Acid — three sources, distinct functions:** red wine vinegar in the cabbage builds sweet-sour depth and fixes colour; white wine and cider vinegar in the sauce cut the butter mount; lemon on the broccoli is a fresh reset at the end of the plate. No duplication of function.\n\n**Sweetness:** cabbage only, from apple and brown sugar. No stacking.\n\n**Texture:** seared crust, crisp-shattered potato exterior against fluffy interior, charred broccoli stem, soft cabbage, brittle crackling if present. Contrast is carried across the plate rather than within every component.\n\n**Temperature:** all hot. Plates are warmed — this addresses the negative-carryover finding from the salmon cook, where protein lost heat on room-temperature plates.\n\n**No dessert.** The accumulated fat load does not support a continuation course. If one is wanted it should function as a reset — citrus granita or poached fruit, not a rich plate.\n\n## Sourcing Notes\n\n**Ask for the outcome, not the label.** \"Two bone-in chops off the loin rack, about 4 cm thick, 300–400 g each.\" Do not say double-cut — it means different things in different shops and forcing the term risks getting something else. Confirm the thickness before leaving.\n\n**Ask separately whether the rind comes off as a sheet.** Do not buy one if it does not, and do not ask them to preserve it for this menu.\n\n**Buy the cabbage Saturday** if possible — it is made the day before regardless.\n\n## Designed, Not Validated — Post-Cook Confirmation Candidates\n\nThese parameters were engineered for this cook and have not been observed. Record each against actual and log to the Vault.\n\n<table header-row=\"true\">\n<tr><td>#</td><td>Parameter</td></tr>\n<tr><td>1</td><td>Low-roast band 55–80 min at 225°F to 133°F from fridge-cold, two ~350 g bone-in 4 cm chops. The service window depends on it.</td></tr>\n<tr><td>2</td><td>Actual sear gain from 133°F. Removed from execution and now pure measurement. Record the post-rest temperature entering the pan, the reading at the stop, and the total contact time — three numbers that together settle the pull point for every future pork reverse sear.</td></tr>\n<tr><td>3</td><td>Carryover direction and magnitude across the 7-minute post-sear rest onto warmed plates. Record plate temperature alongside.</td></tr>\n<tr><td>4</td><td>8-minute pre-sear rest — whether it dries the surface enough for a short colour-led sear.</td></tr>\n<tr><td>5</td><td>Same-day 3-hour dry brine at approximately 0.8% gross — whether the seasoning reads surface-weighted.</td></tr>\n<tr><td>6</td><td>Chop divergence at exit, and whether the 6-minute sequential-sear threshold was needed.</td></tr>\n<tr><td>7</td><td>The exit-anchored convergence architecture itself — whether keying the last 22 minutes to the oven exit rather than the clock executes cleanly under live conditions.</td></tr>\n<tr><td>8</td><td>Rind fat yield, if applicable. 40 g assumed.</td></tr>\n</table>\n\n*Items 2, 3 and 7 carry beyond this cook. The rest are recipe-specific.*\n",
+    "shared_prep_md": "Prepare these in aggregate before starting individual dishes.\n\n**Garlic: 5 cloves, all smashed skin-on —** 2 → Chop baste · 3 → Potatoes\n\n**Thyme: 7 sprigs —** 2 → Chop baste · 2 → Sauce · 3 → Potatoes\n\n**Butter: 60 g / 4¼ tbsp —** 15 g → Chop baste · 20 g → Sauce mount (must be cold and cubed) · 25 g → Cabbage\n\n**Rendered pork fat from the crackling, if applicable:** reserve all of it. 40 g goes to the potatoes; any surplus keeps refrigerated for weeks. If the yield falls under 40 g, top up with duck fat or olive oil — do not reduce the potato quantity to match.\n\n**Salt:** Diamond Crystal kosher throughout. The 12 g for the potato water seasons the water, not the food.\n",
+    "wine_pairing": null,
+    "components": [
+      {
+        "dish_slug": "pork-rack-chop-reverse-seared",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "pork-rack-chop-mustard-thyme-sauce",
+        "role": "sauce",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "pork-rack-chop-braised-red-cabbage",
+        "role": "side",
+        "service_order": 3
+      },
+      {
+        "dish_slug": "pork-rack-chop-crushed-potatoes",
+        "role": "side",
+        "service_order": 4
+      },
+      {
+        "dish_slug": "pork-rack-chop-charred-tenderstem-broccoli",
+        "role": "side",
+        "service_order": 5
+      },
+      {
+        "dish_slug": "pork-rack-chop-crackling-shards",
+        "role": "side",
+        "service_order": 6
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "pork-rack-chop-reverse-seared",
+      "existing": true,
+      "name": "Reverse-Seared Bone-In Rack Chops",
+      "protein": "Pork",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "Modern European"
+      ],
+      "difficulty": "Special",
+      "tags": [
+        "reverse sear",
+        "dry brine",
+        "bone-in",
+        "pork loin chop",
+        "temperature-gated",
+        "cast iron",
+        "outdoor gas"
+      ],
+      "occasion": [
+        "Sunday dinner"
+      ],
+      "status": "cooked",
+      "source": "Recovered from pork-rack-chop-sunday.docx (Sunday menu, governance framework v3.5; no generation date stated in doc — cooked 2026-08-30)",
+      "governance_version": "v3.5",
+      "summary": "Two thick bone-in loin chops, same-day dry-brined for ~3 hours, low-roasted at 225°F / 107°C to 133°F / 56°C, rested 8 minutes and finished with a short temperature-gated cast-iron sear to 145°F / 63°C with a butter-thyme-garlic baste.",
+      "servings": 3,
+      "equipment": [
+        "wire rack",
+        "sheet tray",
+        "leave-in probe thermometer",
+        "Thermapen",
+        "cast-iron pan",
+        "outdoor gas burner",
+        "oven",
+        "paper towel",
+        "warmed plates"
+      ],
+      "method_md": "## Dish Overview\n\nTwo thick bone-in loin chops, same-day dry-brined, taken slowly to temperature and finished with a short colour-led sear — firm and juicy at 145°F / 63°C with a dark, dry crust.\n\n## Yield & Timing\n\nServes 3 · Total: ~4 hr 45 min · Active: ~12 min · Oven: 225°F / 107°C\n\n## Flavor Architecture\n\n### Salting Strategy\n\n**Same-day dry brine, roughly 3 hours, uncovered on a rack in the fridge.** Overnight is the better option, but a Sunday afternoon collection makes it unavailable — the constraint drives the decision.\n\nThree hours still does real work. Salt dissolves and begins moving into the muscle, and the uncovered fridge rest dries the surface, which is what lets a short sear build colour instead of steam. What you do not get is full equilibration, so the seasoning will read slightly more surface-weighted than an overnight brine would.\n\n**6 g is the chosen dose for this geometry — roughly 0.8% of gross weight for two chops at 600–800 g.** Salting and air-drying are distinct operations sharing one window here: the salt seasons, the uncovered rest conditions the surface. Neither substitutes for the other.\n\n## Prep Phase\n\n1. Pat every face dry with paper towel.\n2. Salt all faces including the fat cap and the exposed bone end.\n3. Rack in the fridge, uncovered, until the oven. Do not cover; do not rinse before cooking.\n\n## Active Cooking\n\n1. Oven at 225°F / 107°C, confirmed at temperature and held constant throughout. Chops on a rack over a tray, spaced so air moves between them.\n2. Leave-in probe into the thicker chop at its thickest point, angled clear of the bone — bone conducts differently and a bone-adjacent reading runs hot, which would pull you early.\n3. **Pull each chop at 133°F / 56°C on its own reading.** The leave-in tells you about one chop only; Thermapen the second before pulling it. If they diverge, pull separately and rest the first on the rack.\n4. Rest uncovered on a rack, 8 minutes.\n5. Cast iron over high outdoor gas, neutral oil to shimmering. Both chops in. 45–75 seconds per broad face, with colour dictating the exact duration — dry-brined pork browns faster than expected and a fixed 90 seconds risks overshooting the crust. Fat caps on edge together, 45 seconds. Butter, thyme and garlic; baste 30 seconds.\n6. **The sear is gated on temperature, not time. Probe both chops between faces and remove each individually the moment it reads 145°F / 63°C.** The second continues alone. If exits from the oven differed by more than about 6 minutes, sear sequentially, colder chop first.\n\n### Pull Temperature, Mechanism and Carryover\n\nOven exit 133°F / 56°C. The rise across the sear is active heating, not carryover — the two must not be conflated. No expected rise is given here deliberately: once 145°F is the decision trigger, a predicted figure becomes a competing metric that invites the cook to follow the wrong number. Passive carryover across the post-sear rest is expected to add 2–3°F onto warmed plates. Measure it. The salmon cook showed negative carryover onto room-temperature plates; a 350 g bone-in chop has far more mass, but the direction is a prediction, not a value.\n\n### Secondary Doneness Cue\n\nPress the centre. Slow rebound holding a slight depression means at target; immediate tight spring-back means past. Corroborative only — the probe is the decision trigger.\n\n### Food Safety\n\nThe USDA standard for whole cuts of pork is 145°F / 63°C reached before removal from the final heat source, followed by a rest of at least 3 minutes. The sear is the final heat source, so the standard is met at the end of the sear, and the 7-minute rest exceeds the required 3. Culinary target and safety requirement coincide at this endpoint — no trade-off is being made and none is claimed.\n\n## Holding & Assembly\n\nPost-sear rest 7 minutes per chop, from its own removal, on a warmed plate, uncovered. Do not tent — tenting traps steam against the crust and degrades it. Carve off each bone in one piece, then across the grain into 1 cm slices. Fan onto warmed plates.\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr>\n<tr><td><b>Critical</b></td><td>Internal overshoots past 68°C / 155°F — chalky, dry, fibrous. Loin has the least margin of any chop cut</td><td>Thermapen between sear faces. This is the gate, not the oven alarm</td><td>Unrecoverable. The sauce masks nothing</td></tr>\n<tr><td><b>Major</b></td><td>Crust burns during the sear — acrid surface</td><td>Colour at 45 sec. Already dark mahogany means the pan is too hot</td><td>Lift and reduce heat. Recoverable at 45 sec; unrecoverable past 75 sec for that face, dish remains serviceable</td></tr>\n<tr><td><b>Major</b></td><td>Pan crowded at the sear — surface temperature collapses, chops steam, no crust forms</td><td>No audible sizzle within 3 sec of contact</td><td>Remove one chop, sear sequentially. Unrecoverable for the first chop's timing; dish remains serviceable</td></tr>\n<tr><td><b>Major</b></td><td>Sear ends before 145°F is reached — below the USDA endpoint</td><td>Thermapen reading on the chop being removed</td><td>Return to the pan on lower heat 30–45 sec. Fully recoverable — this is why the sear is temperature-gated</td></tr>\n<tr><td><b>Minor</b></td><td>Fat cap unrendered — waxy band at the edge</td><td>Cap should be coloured and slumped, not pale and firm</td><td>Return the cap edge to the pan 30 sec</td></tr>\n</table>\n\n## Adjustment Notes\n\n*Adjust: taste a slice before saucing. If it reads flat, flaky salt on the cut surface — not stirred into the sauce, where it disappears. If it reads dry, log the observation with the actual pull temperature, sear duration, final reading, probe placement and brine window; do not assign a cause from one bite. Dryness here could originate in any of those, and a guessed attribution in the Vault is worse than none.*\n",
+      "designed_unvalidated": [
+        {
+          "param": "Low-roast band",
+          "designed_value": "55–80 min at 225°F to 133°F from fridge-cold, two ~350 g bone-in 4 cm chops",
+          "note": "The service window depends on it."
+        },
+        {
+          "param": "Actual sear gain from 133°F",
+          "designed_value": "Not predicted — pure measurement",
+          "note": "Record the post-rest temperature entering the pan, the reading at the stop, and the total contact time — three numbers that together settle the pull point for every future pork reverse sear. Carries beyond this cook."
+        },
+        {
+          "param": "Carryover across 7-minute post-sear rest onto warmed plates",
+          "designed_value": "Expected +2–3°F; direction is a prediction, not a value",
+          "note": "Record plate temperature alongside. Carries beyond this cook."
+        },
+        {
+          "param": "8-minute pre-sear rest",
+          "designed_value": "8 min uncovered on a rack",
+          "note": "Whether it dries the surface enough for a short colour-led sear."
+        },
+        {
+          "param": "Same-day dry brine",
+          "designed_value": "~3 hours at approximately 0.8% gross (6 g for two chops at 600–800 g)",
+          "note": "Whether the seasoning reads surface-weighted."
+        },
+        {
+          "param": "Chop divergence at exit",
+          "designed_value": "6-minute threshold for sequential sear",
+          "note": "Whether the 6-minute sequential-sear threshold was needed."
+        },
+        {
+          "param": "Exit-anchored convergence architecture",
+          "designed_value": "Last 22 minutes keyed to the oven exit (E+) rather than the clock",
+          "note": "Whether it executes cleanly under live conditions. Meal-level parameter; carries beyond this cook."
+        }
+      ],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "pork rack chop, bone-in",
+          "department": "Protein",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": "300–400 g / 11–14 oz each",
+          "prep_note": "~4 cm / 1.6 in thick, off the loin rack",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 6,
+          "unit": "g",
+          "qty_alt": "2 tsp",
+          "prep_note": "dry brine, all faces including fat cap and bone end",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "to taste, at the sear",
+          "prep_note": "coarse",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "neutral oil",
+          "department": "Oils & Liquids",
+          "qty": 15,
+          "unit": "ml",
+          "qty_alt": "1 tbsp",
+          "prep_note": "for the sear",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "unsalted butter",
+          "department": "Dairy",
+          "qty": 15,
+          "unit": "g",
+          "qty_alt": "1 tbsp",
+          "prep_note": "for the baste",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "thyme",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "sprig",
+          "qty_alt": null,
+          "prep_note": "for the baste",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "smashed, skin on, for the baste",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "pork-rack-chop-mustard-thyme-sauce",
+      "existing": false,
+      "name": "Mustard-Thyme Sauce",
+      "protein": null,
+      "category": [
+        "Sauce"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "pan sauce",
+        "butter mount",
+        "pre-reduced base",
+        "sear fond",
+        "mustard"
+      ],
+      "occasion": [
+        "Sunday dinner"
+      ],
+      "status": "cooked",
+      "source": "Recovered from pork-rack-chop-sunday.docx (Sunday menu, governance framework v3.5; no generation date stated in doc — cooked 2026-08-30)",
+      "governance_version": "v3.5",
+      "summary": "A ~150 ml butter-mounted pan sauce: shallot, white wine and chicken stock pre-reduced to 70–80 ml, then finished on the chop sear fond with wholegrain and Dijon mustard, cold butter and a final touch of cider vinegar.",
+      "servings": 3,
+      "equipment": [
+        "saucepan",
+        "sear pan (cast iron)",
+        "whisk",
+        "induction hob"
+      ],
+      "method_md": "## Dish Overview\n\nA short butter-mounted sauce, base reduced in advance and finished on the fresh sear fond — sharp and glossy, deliberately not cider- or apple-based since the cabbage owns that axis.\n\n## Yield & Timing\n\n~150 ml, serves 3 · Active: 6 min live, 12 min prep · Hold: 10 min\n\n## Flavor Architecture\n\n**Why the base is pre-reduced:** reducing 250 ml to sauce consistency takes 12–14 minutes, not the 5 a post-sear rest allows. Splitting it removes the dependency and costs nothing. The 225°F low-roast phase produces no usable fond — the chops sit on a rack and the tray stays dry — so this sauce is built on the sear pan alone, structurally independent of the low roast.\n\n## Prep Phase\n\n1. 5:30 pm: 1 tbsp fat in a saucepan, medium-low. Shallot 90 seconds, translucent not coloured.\n2. Wine in, reduce 4 minutes to near-dry.\n3. Stock and thyme in, reduce 8–10 minutes to 70–80 ml. Off heat, hold.\n\n## Active Cooking\n\n1. E+12: pour off all but 1 tbsp fat from the sear pan. Induction, medium-high.\n2. Pre-reduced base in, scrape the fond 90 seconds.\n3. Off heat. Whisk in both mustards, then the cold butter cube by cube, each only when the last has emulsified. Cider vinegar last.\n4. **Taste and correct salt at E+18,** after the fond and mustards are in. This is the first point the seasoning is real — the fond carries salt from the chops and the sauce is frequently seasoned enough already.\n\n## Holding & Assembly\n\nOff heat in the pan, up to 10 minutes. Do not reheat — the mount breaks over direct heat. If it slackens, whisk off-heat.\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr>\n<tr><td><b>Major</b></td><td>Emulsion breaks — greasy and separated</td><td>Visible oil pooling at the surface</td><td>Off heat, whisk in 1 tsp cold stock. If still broken, unrecoverable for the sauce; serve the chops unsauced</td></tr>\n<tr><td><b>Minor</b></td><td>Base over-reduced during the hold — sticky and gluey</td><td>Coats the spoon like gravy at E+12</td><td>Loosen with 1 tbsp stock before the fond step</td></tr>\n</table>\n\n## Adjustment Notes\n\n*Adjust: sharp reads call for one more butter cube. Flat and heavy calls for a few more drops of cider vinegar, not salt. If crackling is on the plate, spoon sparingly rather than pouring.*\n",
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "shallot",
+          "department": "Produce",
+          "qty": 40,
+          "unit": "g",
+          "qty_alt": "1 medium",
+          "prep_note": "finely diced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "dry white wine",
+          "department": "Alcohol",
+          "qty": 100,
+          "unit": "ml",
+          "qty_alt": "scant ½ cup",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "chicken stock",
+          "department": "Oils & Liquids",
+          "qty": 150,
+          "unit": "ml",
+          "qty_alt": "⅔ cup",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "thyme",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "sprig",
+          "qty_alt": null,
+          "prep_note": "for the base reduction",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "wholegrain mustard",
+          "department": "Pantry",
+          "qty": 2,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "whisked in off heat",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "dijon mustard",
+          "department": "Pantry",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "whisked in off heat",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "cider vinegar",
+          "department": "Oils & Liquids",
+          "qty": 5,
+          "unit": "ml",
+          "qty_alt": "1 tsp",
+          "prep_note": "added last",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "unsalted butter",
+          "department": "Dairy",
+          "qty": 20,
+          "unit": "g",
+          "qty_alt": "1½ tbsp",
+          "prep_note": "cold, cubed — for the mount",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "pork-rack-chop-braised-red-cabbage",
+      "existing": true,
+      "name": "Braised Red Cabbage with Apple and Juniper",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "British"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "braise",
+        "make-ahead",
+        "sweet-sour",
+        "red cabbage",
+        "juniper",
+        "reheats well"
+      ],
+      "occasion": [
+        "Sunday dinner"
+      ],
+      "status": "cooked",
+      "source": "Recovered from pork-rack-chop-sunday.docx (Sunday menu, governance framework v3.5; no generation date stated in doc — cooked 2026-08-30)",
+      "governance_version": "v3.5",
+      "summary": "Finely shredded red cabbage braised slowly with grated apple, butter, staged red wine vinegar, soft brown sugar, bay and crushed juniper — made the day before, reheated and finished with the reserved vinegar.",
+      "servings": 3,
+      "equipment": [
+        "narrow Le Creuset (lidded casserole)",
+        "box grater",
+        "induction hob"
+      ],
+      "method_md": "## Dish Overview\n\nSweet-sour, deeply coloured and fully yielding — the acid counterweight to a rich plate. Meal-level texture exemption: braised cabbage is inherently single-texture; contrast is provided by the potatoes, broccoli and chop crust.\n\n## Yield & Timing\n\nServes 3 generously with leftovers · Total: ~1 hr 15 min · Active: ~15 min · Made Saturday\n\n## Prep Phase\n\n1. Core and finely shred the cabbage.\n2. Peel, core and coarsely grate the apple. Unpeeled turns leathery over a long braise and reads as stray skin in the finished dish.\n3. Lightly crush the juniper berries.\n\n## Active Cooking\n\n**Use the narrow Le Creuset.** The wide pot spreads the cabbage thin and the liquid evaporates before it softens, leaving it sharp and crunchy — the same geometry failure that thinned the milk braise.\n\n1. Butter over medium-low. Cabbage, apple, 30 ml vinegar, sugar, bay, juniper, salt and water. Stir to coat.\n2. Cover and cook 50–60 minutes over low, stirring every 15 minutes, until fully yielding and the liquid has nearly gone.\n3. If liquid remains at 60 minutes, uncover and reduce 5 minutes. Cool uncovered, then refrigerate.\n\n## Holding & Assembly\n\nReheat covered over low induction, 15 minutes from E+2. Off heat at E+17, stir in the reserved 15 ml vinegar, cover and hold up to 45 minutes. Remove the bay leaf and any juniper you can find before serving.\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr>\n<tr><td><b>Major</b></td><td>Cabbage still firm when the liquid has gone — sharp, crunchy, unbalanced</td><td>Audible crunch; pan dry</td><td>Add 60 ml water, cover, 15 minutes more. Fully recoverable</td></tr>\n<tr><td><b>Minor</b></td><td>Colour dulls to brown-purple — muddy appearance</td><td>Visual, against the raw cabbage colour</td><td>Insufficient opening acid. 1 tsp vinegar partially returns it</td></tr>\n</table>\n\n## Adjustment Notes\n\n*Adjust: taste after the reserved vinegar goes in. Flat calls for more vinegar in 5 ml steps; sharp calls for a pinch of brown sugar stirred through the residual heat.*\n",
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "red cabbage",
+          "department": "Produce",
+          "qty": 400,
+          "unit": "g",
+          "qty_alt": "14 oz",
+          "prep_note": "cored and finely shredded",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "apple, braeburn or granny smith",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": "1 medium",
+          "prep_note": "peeled, cored, coarsely grated",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "unsalted butter",
+          "department": "Dairy",
+          "qty": 25,
+          "unit": "g",
+          "qty_alt": "1¾ tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "red wine vinegar",
+          "department": "Oils & Liquids",
+          "qty": 45,
+          "unit": "ml",
+          "qty_alt": "3 tbsp",
+          "prep_note": "staged: 30 ml at the start, 15 ml reserved for plating",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "light brown sugar",
+          "department": "Pantry",
+          "qty": 20,
+          "unit": "g",
+          "qty_alt": "1½ tbsp",
+          "prep_note": "soft brown sugar",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "bay leaf",
+          "department": "Pantry",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "remove before serving",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "juniper berry",
+          "department": "Pantry",
+          "qty": 6,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "lightly crushed",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 3,
+          "unit": "g",
+          "qty_alt": "¾ tsp",
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "water",
+          "department": "Oils & Liquids",
+          "qty": 60,
+          "unit": "ml",
+          "qty_alt": "¼ cup",
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "pork-rack-chop-crushed-potatoes",
+      "existing": false,
+      "name": "Crushed Potatoes",
+      "protein": null,
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "British"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "crushed potatoes",
+        "par-boil",
+        "crisped in fat",
+        "two-stage",
+        "outdoor gas"
+      ],
+      "occasion": [
+        "Sunday dinner"
+      ],
+      "status": "cooked",
+      "source": "Recovered from pork-rack-chop-sunday.docx (Sunday menu, governance framework v3.5; no generation date stated in doc — cooked 2026-08-30)",
+      "governance_version": "v3.5",
+      "summary": "Waxy potatoes par-boiled in salted water, steam-dried, crushed to 1.5 cm and crisped 24 minutes crushed-face down in rendered pork fat (or duck fat / olive oil) with smashed garlic and thyme, finished with flaky salt.",
+      "servings": 3,
+      "equipment": [
+        "saucepan or pot",
+        "colander",
+        "glass (base, for crushing)",
+        "wide pan",
+        "outdoor gas burner"
+      ],
+      "method_md": "## Dish Overview\n\nPar-boiled, crushed and crisped until the exposed edges shatter against a fluffy interior — the plate's carbohydrate anchor.\n\n## Yield & Timing\n\nServes 3 · Total: ~40 min across two stages · Active: ~10 min\n\n## Prep Phase\n\n1. 4:45 pm: potatoes into 1.25 L cold salted water. Bring to a simmer, 12–14 minutes to light knife resistance.\n2. Drain. Steam-dry in the colander 10 minutes — surface moisture prevents crisping and this step is not optional.\n3. Crush each to about 1.5 cm with the base of a glass, keeping it in one piece. Hold uncovered at room temperature, or refrigerate — cold and dry crisps well.\n\n## Active Cooking\n\n1. E−5, when the chop probe reads 128°F / 53°C: fat, garlic and thyme in a wide pan over outdoor gas, medium-high.\n2. Potatoes crushed-face down in a single layer. Crisp 24 minutes, turning once at E+7. Do not move them between turns — contact time is what builds the crust.\n\n## Holding & Assembly\n\nOff heat at E+19, uncovered, in the pan. Maximum 12 minutes. Covering traps steam and the crust goes. If they slacken before plating, 60 seconds over high heat.\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr>\n<tr><td><b>Major</b></td><td>No crust after 24 minutes — pale, slick, soft</td><td>Surface stays pale and greasy</td><td>Under-dried or crowded pan. Raise the heat and give them 6 minutes more in two batches</td></tr>\n<tr><td><b>Major</b></td><td>Potatoes crumble apart at the crush — rough fragments rather than rounds</td><td>They fall apart instead of flattening</td><td>Under-boiled or a floury variety. Fragments still crisp. Unrecoverable as neat rounds; dish remains serviceable</td></tr>\n<tr><td><b>Minor</b></td><td>Garlic burns — acrid smell, black slices</td><td>Visible blackening</td><td>Remove the garlic and thyme at the turn</td></tr>\n</table>\n\n## Adjustment Notes\n\n*Adjust: flaky salt at plating only. Applied earlier it dissolves and loses the textural contrast that is the reason for using it.*\n",
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "potato, waxy (charlotte or red-skinned)",
+          "department": "Produce",
+          "qty": 500,
+          "unit": "g",
+          "qty_alt": "1 lb 2 oz",
+          "prep_note": "unpeeled — the skin holds each potato together through the crush and crisps in the fat",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "water",
+          "department": "Oils & Liquids",
+          "qty": 1250,
+          "unit": "ml",
+          "qty_alt": "1.25 L / 5 cups",
+          "prep_note": "for boiling",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 12,
+          "unit": "g",
+          "qty_alt": "1 tbsp",
+          "prep_note": "for the water",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "rendered pork fat, duck fat or olive oil",
+          "department": "Oils & Liquids",
+          "qty": 40,
+          "unit": "g",
+          "qty_alt": "3 tbsp",
+          "prep_note": "rendered pork fat if the rind was available, otherwise duck fat or olive oil",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 3,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "smashed, skin on",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "thyme",
+          "department": "Produce",
+          "qty": 3,
+          "unit": "sprig",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "flaky salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "to finish",
+          "prep_note": "at plating only",
+          "pantry_check": true,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "pork-rack-chop-charred-tenderstem-broccoli",
+      "existing": false,
+      "name": "Charred Tenderstem Broccoli with Lemon",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "Modern European"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "charred",
+        "quick",
+        "lemon",
+        "tenderstem",
+        "outdoor gas",
+        "chilli on the side"
+      ],
+      "occasion": [
+        "Sunday dinner"
+      ],
+      "status": "cooked",
+      "source": "Recovered from pork-rack-chop-sunday.docx (Sunday menu, governance framework v3.5; no generation date stated in doc — cooked 2026-08-30)",
+      "governance_version": "v3.5",
+      "summary": "Trimmed tenderstem broccoli hard-charred in olive oil over high outdoor gas for 7 minutes, finished off heat with whole-lemon zest and the juice of half, chilli flakes served separately.",
+      "servings": 3,
+      "equipment": [
+        "pan",
+        "outdoor gas burner",
+        "zester",
+        "warm platter",
+        "small dish (for chilli flakes)"
+      ],
+      "method_md": "## Dish Overview\n\nHard char on the stems with lemon off the heat — the plate's fresh reset against a heavy protein and fat-crisped potatoes.\n\n## Yield & Timing\n\nServes 3 · Total: 8 min · Active: 8 min\n\n## Flavor Architecture\n\n**No garlic here, deliberately.** Garlic already appears in the chop baste and the potatoes in the same smashed-and-infused role. A third instance would be ingredient redundancy without functional distinction, and this is the one component that should read clean.\n\n## Prep Phase\n\n1. Trim the woody stem ends.\n2. Zest the lemon and halve it.\n\n## Active Cooking\n\n1. E+10: olive oil in a pan over high outdoor gas. Broccoli in a single layer, salted.\n2. Leave undisturbed 3 minutes to build char on the contact face, then toss and cook a further 4 minutes.\n3. Off heat at E+17. Lemon zest and the juice of half a lemon through the residual heat. Chilli flakes into a small dish at the table — this externalises the heat so Lukas takes his without.\n\n## Holding & Assembly\n\nWarm platter, uncovered, 8 minutes maximum. The char dulls and the green fades past that window. Plate within it.\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr>\n<tr><td><b>Major</b></td><td>Stems raw when the florets have blackened — inedible tips, crunchy stems</td><td>Floret tips carbonised while the stem resists a knife</td><td>Pan too hot. Lower heat and cover 2 minutes to steam through. Unrecoverable for the florets; dish remains serviceable</td></tr>\n<tr><td><b>Minor</b></td><td>Overcooked to army green — limp and dull</td><td>Colour shifts from bright to olive</td><td>Serve as is. Unrecoverable but cosmetic</td></tr>\n</table>\n\n## Adjustment Notes\n\n*Adjust: flat calls for more lemon juice, not salt. The chops and potatoes already carry the plate's salt load.*\n",
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "broccolini",
+          "department": "Produce",
+          "qty": 250,
+          "unit": "g",
+          "qty_alt": "9 oz",
+          "prep_note": "tenderstem broccoli, trimmed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 20,
+          "unit": "ml",
+          "qty_alt": "1½ tbsp",
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "lemon",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "zest of the whole, juice of half",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "chilli flakes",
+          "department": "Seasoning",
+          "qty": 0.25,
+          "unit": "tsp",
+          "qty_alt": "¼ tsp",
+          "prep_note": "served separately at the table",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 2,
+          "unit": "g",
+          "qty_alt": "½ tsp",
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "pork-rack-chop-crackling-shards",
+      "existing": false,
+      "name": "Crackling Shards — Conditional",
+      "protein": "Pork",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "British"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "crackling",
+        "conditional",
+        "garnish",
+        "rendered fat",
+        "slow render",
+        "induction"
+      ],
+      "occasion": [
+        "Sunday dinner"
+      ],
+      "status": "cooked",
+      "source": "Recovered from pork-rack-chop-sunday.docx (Sunday menu, governance framework v3.5; no generation date stated in doc — cooked 2026-08-30)",
+      "governance_version": "v3.5",
+      "summary": "Conditional garnish: a scored pork rind sheet rendered slowly from a cold pan for 45–60 minutes, blistered at medium-high, salted while hot and broken into shards, yielding ~40–55 g rendered fat for the potatoes.",
+      "servings": 3,
+      "equipment": [
+        "heavy pan",
+        "induction hob",
+        "strainer",
+        "wire rack",
+        "oven (400°F, for re-crisping)"
+      ],
+      "method_md": "## Dish Overview\n\n**Only if the rind came off the rack as a usable sheet. If not, this component does not exist and the potatoes take duck fat or olive oil.**\n\nRind rendered slowly then blistered and broken into shards — the plate's brittle texture, and the source of the potato fat. Meal-level carve-out: crackling functions as the brittle texture element; no internal texture contrast required.\n\n## Yield & Timing\n\nGarnish for 3, plus ~40–55 g rendered fat · Total: ~1 hr · Active: ~10 min\n\n## Prep Phase\n\n1. Pat thoroughly dry on collection. A damp rind bubbles and goes leathery rather than blistering. There is no overnight fridge-dry available on this schedule, so dry it by hand.\n\n## Active Cooking\n\n1. Rind into a cold heavy pan, fat side down, induction on low. Starting cold lets the fat render gradually instead of the surface seizing.\n2. Render 45–60 minutes, turning every 15 minutes, until the fat runs clear and the sheet is amber and rigid.\n3. Raise to medium-high, 3–4 minutes, until it blisters and puffs.\n4. Strain and reserve all the fat. Drain on a rack and salt immediately while hot.\n\n## Holding & Assembly\n\nRack or bowl, uncovered, room temperature, up to 4 hours. Covering traps steam and it softens. Break into shards at plating. If it has softened, 3 minutes in a 400°F oven restores it.\n\n## Critical Control Points\n\n<table header-row=\"true\">\n<tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr>\n<tr><td><b>Major</b></td><td>Leathery rather than brittle — chewy and unpleasant</td><td>Does not shatter under knife pressure after blistering</td><td>Insufficient rendering. Low heat 15 minutes more, then re-blister. Recoverable</td></tr>\n<tr><td><b>Major</b></td><td>Fat yield under 40 g — potatoes short of fat</td><td>Measure the strained fat before the potatoes go on</td><td>Top up with duck fat or olive oil. Do not reduce the potato quantity to match</td></tr>\n<tr><td><b>Minor</b></td><td>Scorched at the blister stage — bitter</td><td>Dark brown patches spreading</td><td>Remove the scorched sections; the rest is fine</td></tr>\n</table>\n\n## Adjustment Notes\n\n*Adjust: salt while hot only. Applied cold it sits on the surface and tastes raw.*\n",
+      "designed_unvalidated": [
+        {
+          "param": "Rind fat yield",
+          "designed_value": "40 g assumed (expected ~40–55 g)",
+          "note": "If applicable. Measure the strained fat before the potatoes go on; top up with duck fat or olive oil if short."
+        }
+      ],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "pork rind sheet",
+          "department": "Protein",
+          "qty": 250,
+          "unit": "g",
+          "qty_alt": "250 g+ / 9 oz+",
+          "prep_note": "scored; conditional — only if the rind comes off the rack as an intact sheet",
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 2,
+          "unit": "g",
+          "qty_alt": "½ tsp",
+          "prep_note": "salt while hot",
+          "pantry_check": true,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "notes": "Doc has 6 recipe components; task listed only 2 existing slugs (chops, cabbage). Created 4 NEW dishes: pork-rack-chop-mustard-thyme-sauce (Sauce), pork-rack-chop-crushed-potatoes (Side, protein null), pork-rack-chop-charred-tenderstem-broccoli (Side, Veg), pork-rack-chop-crackling-shards (Side, Pork — conditional garnish; no 'Garnish' category exists so filed as Side, protein Pork since it is pork rind). No generation date appears anywhere in the doc; 'Governance framework v3.5' is the only version reference, used as governance_version. No wine pairing in the doc. No nutrition estimates, scaling notes or per-dish 'Flavor Architecture' headings in the doc — method_md uses the doc's own sub-sections (Salting Strategy, Pull Temperature..., Food Safety etc.) placed under Flavor Architecture / Active Cooking where they sit in the doc. workflow_md carries the whole meal-level content so nothing is dropped: The Menu, Crackling Dependency, all Meal Workflow sub-sections, Meal Balance Audit, Sourcing Notes, and the 'Designed, Not Validated' table (which sits after the recipes in the doc). Designed-not-validated items 1–7 are attached to the chops dish (item 7 is meal-level architecture but has no meal-level field), item 8 to crackling. Shopping list skipped (derived); its 'pantry check' marks drove pantry_check=true; water also set pantry_check=true though it is not in the shopping list. Ingredient name choices: 'broccolini' reused for tenderstem broccoli (same vegetable; prep_note says tenderstem); 'light brown sugar' reused for 'soft brown sugar' (prep_note records the doc wording); new names: 'pork rack chop, bone-in', 'pork rind sheet', 'red cabbage', 'apple, braeburn or granny smith', 'juniper berry', 'wholegrain mustard', 'cider vinegar', 'potato, waxy (charlotte or red-skinned)', 'rendered pork fat, duck fat or olive oil'. Shallot given as 40 g (metric) with '1 medium' as qty_alt. Chilli flakes qty 0.25 tsp. The sauce Prep step uses '1 tbsp fat in a saucepan' which is not in the sauce ingredient table — left in method only, not added as an ingredient. Broccoli method mentions 'Lukas takes his without' (chilli) — kept verbatim. Existing dishes had no recipe/ingredients in DB, so both are output fully."
+}

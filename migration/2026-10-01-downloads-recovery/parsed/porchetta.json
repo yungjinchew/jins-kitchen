@@ -1,0 +1,706 @@
+{
+ "assignment_key": "porchetta",
+ "source_file": "docs/porchetta-dinner/v1/porchetta-dinner.docx",
+ "meal": {
+  "slug": "porchetta-dinner",
+  "name": "Porchetta Dinner",
+  "planned_date": null,
+  "status": "backlog",
+  "pax": 3,
+  "workflow_md": "## Menu\n\n*3 pax + leftovers · 26 June 2026*\n\n1. Porchetta with Salsa Verde\n2. Crispy Roast Potatoes with Garlic, Lemon Zest & Flaky Salt\n3. Charred Radicchio & Raw Fennel Salad\n4. Warm Cannellini Beans with Garlic & Olive Oil\n5. Chilled Orange with Olive Oil & Flaky Salt\n\n> *Portion note: Potatoes and beans together are substantial. For lighter appetites, omit one or the other — if retaining only one, keep the salad.*\n\n## Critical Path\n\n> ***Critical path:** Rendering complete before crackling phase → crackling phase → 30-minute steam-free rest governs service. Do not delay slicing for side synchronisation. If crackling runs long, sacrifice potato crispness and bean temperature — protect crackling integrity and pork temperature.*\n\n## T-Minus Timeline\n\n<table header-row=\"true\"><tr><td>Time</td><td>Action</td></tr>\n<tr><td><b>T−24 to T−18</b></td><td>Salt and roll porchetta. Tie every 2.5 cm. Salt skin. Air-dry uncovered on rack over tray in refrigerator.</td></tr>\n<tr><td><b>T−2:45</b></td><td>Begin rendering phase — oven 300°F / 150°C, middle rack, elevated wire rack over tray. (1 hr 45 min–2 hr 10 min)</td></tr>\n<tr><td><b>T−2:00</b></td><td>Reserve 45–60 ml / 3–4 tbsp rendered pork fat from drip tray for potatoes.</td></tr>\n<tr><td><b>T−1:05</b></td><td>Start beans on Burner 1. Make salsa verde. Char radicchio cut-side down in cast-iron on Burner 2 (60–90 sec). Slice fennel thinly.</td></tr>\n<tr><td><b>T−0:55</b></td><td>Parboil potatoes in well-salted water on Burner 2 — 12–14 min (outer layer yields, centre still firm).</td></tr>\n<tr><td><b>T−0:52</b></td><td>Raise oven to 475°F / 245°C. Crackling phase begins. (15–25 min)</td></tr>\n<tr><td><b>T−0:42</b></td><td>Drain potatoes. Rough surfaces aggressively in pot until shaggy. Hold uncovered on tray — 10 min surface drying before oven entry.</td></tr>\n<tr><td><b>T−0:32</b></td><td>Remove porchetta. Rest uncovered on elevated rack (30 min — do not tent). Potatoes enter oven immediately in reserved pork fat at 475°F / 245°C.</td></tr>\n<tr><td><b>T−0:10</b></td><td>Remove potatoes. Hold uncovered on rack.</td></tr>\n<tr><td><b>T−0:04</b></td><td>Zest and juice Lemon 2. Dress salad. Final seasoning on beans.</td></tr>\n<tr><td><b>T−0:02</b></td><td>Finish potatoes with lemon zest and flaky salt. Slice porchetta (remove twine; 1–1.5 cm slices).</td></tr>\n<tr><td><b>T−0:00</b></td><td><b>SERVE — Beans → Potatoes → Porchetta → Salsa verde → Salad. Window: 5–7 min. First failure if delayed: crackling softens.</b></td></tr></table>\n\n**Critical path:** *Rendering must be complete before crackling phase — premature high heat is the primary failure mode. Once oven raises to 475°F at T−0:52, potatoes hold dry on tray. Porchetta 30-minute rest is non-negotiable; do not begin slicing before T−0:02.*\n\n## Oven Sequencing & Heat Allocation\n\n**Oven sequencing:** *300°F / 150°C for rendering (Burner 1: beans; Burner 2: potato parboil from T−0:55, cast-iron radicchio char at T−1:05 clears well before parboil). Raise to 475°F / 245°C at T−0:52 for crackling. Oven remains at 475°F continuously through potato roast — no second transition. Potatoes enter the vacated oven at T−0:32 at full temperature.*\n\n## Holding Chain\n\n<table header-row=\"true\"><tr><td>Component</td><td>Hold Strategy</td><td>Max Hold</td><td>Drift Risk</td><td>Corrective Action</td></tr>\n<tr><td>Porchetta</td><td>Elevated rack, uncovered, airflow underneath</td><td>30 min</td><td>Crackling softens</td><td>Return uncovered to 475°F / 245°C for 5–7 min before slicing</td></tr>\n<tr><td>Potatoes</td><td>Uncovered on rack, room temp</td><td>10–15 min</td><td>Crust softens progressively</td><td>No recovery — serve as promptly as possible; never cover</td></tr>\n<tr><td>Beans</td><td>Covered on very low heat</td><td>30 min</td><td>Tighten and thicken</td><td>Loosen with 1–2 tbsp warm water before serving</td></tr>\n<tr><td>Salad</td><td>Undressed, refrigerated</td><td>Until T−0:04</td><td>Wilting if dressed early</td><td>Dress only at T−0:04 — never before</td></tr>\n<tr><td>Salsa verde</td><td>Room temperature, covered</td><td>2 hours</td><td>Herb oxidation over time</td><td>Prepare at T−1:05; use within 2 hours</td></tr></table>\n\n## Sourcing Notes\n\n*Sourcing: One parsley bunch covers salsa verde (20 g). Lemon 1 zested at assembly (T−24); Lemon 2 zested and juiced at service (T−0:04) — do not zest in advance. Olive oil: ~190 ml total, one 500 ml bottle covers all dishes.*\n",
+  "shared_prep_md": "**Lemons — 2 total:** prep differs by timing.\n\nLemon 1: zest only → Porchetta paste (at roll assembly, T−24 to T−18).\n\nLemon 2: zest of ½ → Potato finish; juice of ½ → Salad dressing. Both at service — zest and juice Lemon 2 together at T−0:04.\n\n**Garlic — 13 medium cloves + 1 small:** prep differs per dish, do not aggregate.\n\n6 cloves → Porchetta paste (process with herbs) · 3 cloves → Potatoes (crush lightly, add halfway through roast) · 3 cloves → Beans (slice thin at T−1:05) · 1 small clove → Salsa verde (mince fine at T−1:05)\n",
+  "wine_pairing": null,
+  "components": [
+   {
+    "dish_slug": "porchetta-with-salsa-verde",
+    "role": "main",
+    "service_order": 1
+   },
+   {
+    "dish_slug": "porchetta-crispy-roast-potatoes",
+    "role": "side",
+    "service_order": 2
+   },
+   {
+    "dish_slug": "porchetta-charred-radicchio-raw-fennel-salad",
+    "role": "salad",
+    "service_order": 3
+   },
+   {
+    "dish_slug": "porchetta-warm-cannellini-beans",
+    "role": "side",
+    "service_order": 4
+   },
+   {
+    "dish_slug": "porchetta-chilled-orange-olive-oil-flaky-salt",
+    "role": "dessert",
+    "service_order": 5
+   }
+  ]
+ },
+ "dishes": [
+  {
+   "slug": "porchetta-with-salsa-verde",
+   "existing": false,
+   "name": "Porchetta with Salsa Verde",
+   "protein": "Pork",
+   "category": [
+    "Main",
+    "Sauce"
+   ],
+   "cuisine": [
+    "Italian"
+   ],
+   "difficulty": "Special",
+   "tags": [
+    "roast",
+    "crackling",
+    "dry-brine",
+    "overnight",
+    "two-stage-oven",
+    "salsa-verde",
+    "leftovers"
+   ],
+   "occasion": [
+    "Dinner party",
+    "Sunday dinner"
+   ],
+   "status": "designed",
+   "source": "Recovered from porchetta-dinner.docx, generated 26 June 2026",
+   "governance_version": null,
+   "summary": "Skin-on pork belly rolled around a centre-cut loin with a fennel-herb paste, dry-brined 18–30 h, rendered at 300°F / 150°C then blistered at 475°F / 245°C to 142°F / 61°C, rested 30 min uncovered and served with a parsley-mint-caper salsa verde.",
+   "servings": 6,
+   "equipment": [
+    "butcher's twine",
+    "wire rack",
+    "tray",
+    "food processor",
+    "probe thermometer",
+    "tongs",
+    "skewer"
+   ],
+   "method_md": "## Dish Overview\n\nThree-texture porchetta — shattered crackling, rendered belly fat, juicy loin centre — with mandatory salsa verde delivering the meal's primary acid balance and preventing palate fatigue across a full serving.\n\n## Yield & Timing\n\n*Yield: 6–8 · Total: ~24 hr (incl. drying) · Active: ~35 min · Oven: 300°F → 475°F / 150°C → 245°C · Rest: 30 min*\n\n## Prep Phase\n\n> *Critical path: full fat rendering before blistering phase. Overnight drying is non-negotiable. Salsa verde prepared at T−1:05 during rendering.*\n\n1. **Belly:** Butterfly thicker areas to create an even slab ~1.5 cm / 0.6 in throughout. Make shallow horizontal cuts through thick interior sections only — do not cut through skin. Verify thickness end-to-end. Pat completely dry.\n\n2. **Loin:** Trim silver skin. Orient loin so its grain runs parallel to the long axis of the roll — crosswise slicing at carving cuts across the grain of both belly and loin simultaneously.\n\n3. **Salt cure:** Rub 18 g salt directly onto meat surfaces of both belly and loin. Rest 30–60 min refrigerated.\n\n4. **Paste:** Combine fennel seed, peppercorns, garlic, rosemary, sage, lemon zest, chili flakes, olive oil. Process to a coarse paste.\n\n5. **Assemble:** Rub paste over meat surfaces. Centre loin on belly. Roll tightly skin-side out. Tie every 2.5 cm / 1 in with butcher's twine.\n\n6. **Dry-brine:** Rub skin with 8 g salt. Place uncovered on wire rack over tray in refrigerator 18–30 hours. Before roasting: skin must feel dry and tacky — not damp or cool. If moisture beads remain, continue drying.\n\n## Active Cooking\n\n**Temper**\n\nRemove from refrigerator 60 min before roasting. Pat skin dry. Rub with neutral oil. Optional for weaker ovens: skewer perforations through skin every 2–3 cm / 1 in — do not deeply score.\n\n**Rendering Phase — 300°F / 150°C**\n\nMiddle rack, elevated wire rack over tray. Cook until loin centre reaches 130°F / 54°C and fat beneath skin appears translucent rather than opaque white. Approx. 1 hr 45 min–2 hr 10 min. Secondary cue: fat feels softened rather than rubbery when pressed lightly with tongs — if still firm and opaque, continue.\n\n**Crackling Phase — 475°F / 245°C**\n\nRoast 15–25 min, rotating as needed. Pull when crackling is deeply blistered and audibly crisp when tapped, and loin centre reaches 142°F / 61°C. Carryover: final ~145°F / 63°C. Secondary cue: probe enters loin centre with light resistance like warm butter — springy or tight means continue.\n\n## Holding & Assembly\n\nRest uncovered on elevated wire rack over tray or board — 30 minutes. Do not tent. Trapped steam softens crackling; elevated airflow prevents underside steaming.\n\nIf crackling softens during rest: return uncovered to 475°F / 245°C for 5–7 min before slicing.\n\nSalsa verde: finely chop parsley, mint, capers, garlic. Combine with vinegar, oil, salt, pepper. Hold at room temperature up to 2 hours.\n\nRemove twine. Slice 1–1.5 cm / 0.4–0.6 in. Serve immediately with salsa verde.\n\n## Critical Control Points\n\n<table header-row=\"true\"><tr><td>Severity</td><td>Failure Mode &amp; Cue</td><td>Recovery</td></tr>\n<tr><td><b>Critical</b></td><td>Wet skin entering oven — skin feels damp or cool rather than dry and tacky before roasting</td><td>Extend uncovered refrigeration 6–12 h; unrecoverable once roasting begins</td></tr>\n<tr><td><b>Critical</b></td><td>High heat before full rendering — fat layer opaque white and firm at start of crackling phase</td><td>Return to 300°F / 150°C; continue until fat turns translucent and softens; retry crackling phase</td></tr>\n<tr><td><b>Major</b></td><td>Loose rolling — visible gaps or movement inside roll when lifted before roasting</td><td>Re-roll and re-tie tightly before roasting</td></tr>\n<tr><td><b>Major</b></td><td>Excessive blistering — skin transitions to dark mahogany with acrid aroma during crackling phase</td><td>Remove immediately; lightly scrape isolated burnt spots if limited in area</td></tr></table>\n\n## Adjustment Notes\n\n***Adjust:** Increase salsa verde quantity if pork reads heavy; add additional salsa verde at the plate rather than applying citrus directly to the meat.*\n",
+   "designed_unvalidated": [
+    {
+     "param": "Rendering phase",
+     "designed_value": "300°F / 150°C, approx. 1 hr 45 min–2 hr 10 min, to loin centre 130°F / 54°C and translucent fat",
+     "note": "Secondary cue: fat softened rather than rubbery when pressed with tongs."
+    },
+    {
+     "param": "Crackling phase",
+     "designed_value": "475°F / 245°C, 15–25 min, pull at loin centre 142°F / 61°C",
+     "note": "Carryover to final ~145°F / 63°C."
+    },
+    {
+     "param": "Dry-brine duration",
+     "designed_value": "18–30 hours uncovered in refrigerator",
+     "note": "Skin must feel dry and tacky before roasting; extend 6–12 h if damp."
+    },
+    {
+     "param": "Rest",
+     "designed_value": "30 min uncovered on elevated rack",
+     "note": "Max hold 30 min; return to 475°F / 245°C for 5–7 min if crackling softens."
+    },
+    {
+     "param": "Salsa verde hold",
+     "designed_value": "Up to 2 hours at room temperature, covered",
+     "note": "Herb oxidation over time."
+    }
+   ],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "pork belly, skin-on",
+     "department": "Protein",
+     "qty": 1800,
+     "unit": "g",
+     "qty_alt": "1.8–2.2 kg / 4–5 lb",
+     "prep_note": "butterflied to an even ~1.5 cm slab",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "pork loin, centre-cut",
+     "department": "Protein",
+     "qty": 700,
+     "unit": "g",
+     "qty_alt": "700–900 g / 1.5–2 lb",
+     "prep_note": "silver skin trimmed",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 18,
+     "unit": "g",
+     "qty_alt": null,
+     "prep_note": "salt cure — meat surfaces of belly and loin",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "fennel seed",
+     "department": "Seasoning",
+     "qty": 12,
+     "unit": "g",
+     "qty_alt": null,
+     "prep_note": "lightly toasted; herb-fennel paste",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "black peppercorn",
+     "department": "Seasoning",
+     "qty": 3,
+     "unit": "g",
+     "qty_alt": null,
+     "prep_note": "herb-fennel paste",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "garlic",
+     "department": "Produce",
+     "qty": 6,
+     "unit": "clove",
+     "qty_alt": null,
+     "prep_note": "herb-fennel paste — process with herbs",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "rosemary",
+     "department": "Produce",
+     "qty": 8,
+     "unit": "g",
+     "qty_alt": null,
+     "prep_note": "leaves; herb-fennel paste",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "sage",
+     "department": "Produce",
+     "qty": 6,
+     "unit": "g",
+     "qty_alt": null,
+     "prep_note": "leaves; herb-fennel paste",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "lemon",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "piece",
+     "qty_alt": "zest of 1 lemon",
+     "prep_note": "zest only (Lemon 1); herb-fennel paste",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "chilli flakes",
+     "department": "Seasoning",
+     "qty": 5,
+     "unit": "g",
+     "qty_alt": null,
+     "prep_note": "red pepper flakes; herb-fennel paste",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "olive oil",
+     "department": "Oils & Liquids",
+     "qty": 30,
+     "unit": "ml",
+     "qty_alt": "2 tbsp",
+     "prep_note": "herb-fennel paste",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 8,
+     "unit": "g",
+     "qty_alt": null,
+     "prep_note": "skin — dry-brine",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "neutral oil",
+     "department": "Oils & Liquids",
+     "qty": 5,
+     "unit": "ml",
+     "qty_alt": "1 tsp",
+     "prep_note": "rubbed on skin before roasting",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "parsley leaves",
+     "department": "Produce",
+     "qty": 20,
+     "unit": "g",
+     "qty_alt": null,
+     "prep_note": "salsa verde — finely chopped",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "mint",
+     "department": "Produce",
+     "qty": 10,
+     "unit": "g",
+     "qty_alt": null,
+     "prep_note": "leaves; salsa verde — finely chopped",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "capers in brine",
+     "department": "Pantry",
+     "qty": 15,
+     "unit": "g",
+     "qty_alt": null,
+     "prep_note": "salsa verde — finely chopped",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "garlic",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "clove",
+     "qty_alt": "1 small clove",
+     "prep_note": "small; salsa verde — minced fine",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "red wine vinegar",
+     "department": "Oils & Liquids",
+     "qty": 30,
+     "unit": "ml",
+     "qty_alt": "2 tbsp",
+     "prep_note": "salsa verde",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "olive oil",
+     "department": "Oils & Liquids",
+     "qty": 80,
+     "unit": "ml",
+     "qty_alt": "⅓ cup",
+     "prep_note": "salsa verde",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 2,
+     "unit": "g",
+     "qty_alt": null,
+     "prep_note": "salsa verde",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "black pepper",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "to taste",
+     "prep_note": "salsa verde",
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "porchetta-crispy-roast-potatoes",
+   "existing": false,
+   "name": "Crispy Roast Potatoes with Garlic, Lemon Zest & Flaky Salt",
+   "protein": null,
+   "category": [
+    "Side"
+   ],
+   "cuisine": [
+    "Italian",
+    "British"
+   ],
+   "difficulty": "Medium",
+   "tags": [
+    "roast",
+    "starch",
+    "parboil",
+    "pork-fat"
+   ],
+   "occasion": [
+    "Dinner party",
+    "Sunday dinner"
+   ],
+   "status": "designed",
+   "source": "Recovered from porchetta-dinner.docx, generated 26 June 2026",
+   "governance_version": null,
+   "summary": "Parboiled and roughed Yukon Gold chunks roasted 20–30 min at 475°F / 245°C in fat reserved from the porchetta, with crushed garlic added halfway and finished with lemon zest and flaky salt.",
+   "servings": 3,
+   "equipment": [
+    "pot",
+    "tray",
+    "wire rack"
+   ],
+   "method_md": "## Dish Overview\n\nCrisp starch contrast cooked in reserved pork fat; lemon zest at finish adds aromatic brightness without introducing another sauce.\n\n## Yield & Timing\n\n*with Garlic, Lemon Zest & Flaky Salt · Yield: 3–4 · Parboil: 12–14 min · Roast: 20–30 min at 475°F / 245°C*\n\n## Prep Phase\n\nCut into large chunks. Parboil in well-salted water 12–14 min until outer layer yields easily, centre still firm. Drain. Rough surfaces aggressively in pot until edges look shaggy. Hold uncovered on tray — 10 min surface drying before oven entry. Do not cover.\n\n## Active Cooking\n\nRoast at 475°F / 245°C in reserved pork fat, 20–30 min. Add crushed garlic halfway through. Stop when deep golden crust forms and potatoes are audibly crisp when shaken in tray.\n\n## Holding & Assembly\n\nHold uncovered on rack up to 10–15 min. Finish with finely grated lemon zest and flaky salt immediately before serving.\n\n## Critical Control Points\n\n<table header-row=\"true\"><tr><td>Severity</td><td>Failure Mode &amp; Cue</td><td>Recovery</td></tr>\n<tr><td><b>Critical</b></td><td>Insufficient roughing — smooth potato exterior after draining with no shaggy edges; crust will be thin and weak</td><td>Return to pot; shake vigorously until surfaces look shaggy before roasting</td></tr></table>\n",
+   "designed_unvalidated": [
+    {
+     "param": "Parboil",
+     "designed_value": "12–14 min in well-salted water",
+     "note": "Outer layer yields, centre still firm."
+    },
+    {
+     "param": "Roast",
+     "designed_value": "20–30 min at 475°F / 245°C",
+     "note": "Stop at deep golden crust, audibly crisp when shaken."
+    },
+    {
+     "param": "Hold",
+     "designed_value": "10–15 min uncovered on rack",
+     "note": "Crust softens progressively; no recovery."
+    }
+   ],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "yukon gold potato",
+     "department": "Produce",
+     "qty": 900,
+     "unit": "g",
+     "qty_alt": "2 lb",
+     "prep_note": "peeled, cut into large chunks",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "rendered pork fat, reserved",
+     "department": "Protein",
+     "qty": 45,
+     "unit": "ml",
+     "qty_alt": "45–60 ml / 3–4 tbsp",
+     "prep_note": "reserved from porchetta drip tray at T−2:00",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "garlic",
+     "department": "Produce",
+     "qty": 3,
+     "unit": "clove",
+     "qty_alt": null,
+     "prep_note": "lightly crushed; added halfway through roast",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 8,
+     "unit": "g",
+     "qty_alt": null,
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "lemon",
+     "department": "Produce",
+     "qty": 0.5,
+     "unit": "piece",
+     "qty_alt": "zest of ½ lemon (Lemon 2)",
+     "prep_note": "zest only, finely grated; finish",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "flaky salt",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "to finish",
+     "prep_note": "finish",
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "porchetta-charred-radicchio-raw-fennel-salad",
+   "existing": false,
+   "name": "Charred Radicchio & Raw Fennel Salad",
+   "protein": "Veg",
+   "category": [
+    "Salad"
+   ],
+   "cuisine": [
+    "Italian"
+   ],
+   "difficulty": "Easy",
+   "tags": [
+    "char",
+    "cast-iron",
+    "bitter",
+    "dress-at-service"
+   ],
+   "occasion": [
+    "Dinner party",
+    "Sunday dinner"
+   ],
+   "status": "designed",
+   "source": "Recovered from porchetta-dinner.docx, generated 26 June 2026",
+   "governance_version": null,
+   "summary": "Radicchio quarters charred 60–90 sec cut-side down in cast-iron, combined with mandoline-thin raw fennel and dressed at T−0:04 with olive oil, lemon juice, salt and pepper.",
+   "servings": 3,
+   "equipment": [
+    "cast-iron pan",
+    "mandoline"
+   ],
+   "method_md": "## Dish Overview\n\nBitterness, crunch, and temperature contrast — raw fennel brings volatile anise freshness structurally distinct from the porchetta's toasted fennel seed.\n\n## Yield & Timing\n\n*Yield: 3 · Prep: 15 min · Active: 5 min · Dress at service only*\n\n## Prep Phase\n\nQuarter radicchio through the core. Slice fennel very thinly on a mandoline or by hand. Refrigerate undressed until T−0:04.\n\n## Active Cooking\n\nHeat a cast-iron pan over high heat until very hot. Place radicchio quarters cut-side down. Char 60–90 sec without moving. Remove when outer leaves lightly charred but interior structure remains firm.\n\n## Holding & Assembly\n\nCombine charred radicchio and raw fennel. Dress immediately before serving with olive oil, lemon juice, salt, and pepper.\n\n## Critical Control Points\n\n<table header-row=\"true\"><tr><td>Severity</td><td>Failure Mode &amp; Cue</td><td>Recovery</td></tr>\n<tr><td><b>Major</b></td><td>Overcooking radicchio — collapsed leaves, no crunch remaining; monitoring required at 60 seconds</td><td>Unrecoverable; monitor closely during char</td></tr></table>\n\n## Adjustment Notes\n\n***Adjust:** Increase lemon juice if salad reads too bitter.*\n",
+   "designed_unvalidated": [
+    {
+     "param": "Char time",
+     "designed_value": "60–90 sec cut-side down over high heat, without moving",
+     "note": "Monitor at 60 seconds; collapse is unrecoverable."
+    }
+   ],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "radicchio",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "piece",
+     "qty_alt": "1 small",
+     "prep_note": "small; quartered through the core",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "fennel bulb",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "piece",
+     "qty_alt": "1 small",
+     "prep_note": "small; sliced very thinly on a mandoline or by hand",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "olive oil",
+     "department": "Oils & Liquids",
+     "qty": 30,
+     "unit": "ml",
+     "qty_alt": "2 tbsp",
+     "prep_note": "dressing",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "lemon juice",
+     "department": "Produce",
+     "qty": 15,
+     "unit": "ml",
+     "qty_alt": "~15 ml / 1 tbsp (juice of ½ Lemon 2)",
+     "prep_note": "juiced at T−0:04; dressing",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 5,
+     "unit": "g",
+     "qty_alt": null,
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "black pepper",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "to taste",
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "porchetta-warm-cannellini-beans",
+   "existing": false,
+   "name": "Warm Cannellini Beans with Garlic & Olive Oil",
+   "protein": "Veg",
+   "category": [
+    "Side"
+   ],
+   "cuisine": [
+    "Italian"
+   ],
+   "difficulty": "Easy",
+   "tags": [
+    "stovetop",
+    "beans",
+    "tinned",
+    "hold-friendly"
+   ],
+   "occasion": [
+    "Dinner party",
+    "Sunday dinner"
+   ],
+   "status": "designed",
+   "source": "Recovered from porchetta-dinner.docx, generated 26 June 2026",
+   "governance_version": null,
+   "summary": "Tinned cannellini beans warmed 8–10 min in olive oil with thin-sliced garlic sweated 2–3 min without browning; holds covered on very low heat up to 30 min.",
+   "servings": 3,
+   "equipment": [
+    "saucepan"
+   ],
+   "method_md": "## Dish Overview\n\nSoft earthy buffer that absorbs pork juices on the plate without introducing creaminess or competing with either crisp component.\n\n## Yield & Timing\n\n*with Garlic & Olive Oil · Yield: 3–4 · Prep: 5 min · Active: 15 min · Hold: 30 min max*\n\n## Prep Phase\n\nDrain and rinse beans. Slice garlic thin.\n\n## Active Cooking\n\nHeat olive oil over medium-low. Cook garlic until translucent and fragrant, 2–3 min — no browning. Add beans; warm through 8–10 min until some beans begin lightly collapsing at the edges.\n\n## Holding & Assembly\n\nHold covered on very low heat up to 30 min. If beans tighten, loosen with 1–2 tbsp warm water before serving.\n\n## Critical Control Points\n\n<table header-row=\"true\"><tr><td>Severity</td><td>Failure Mode &amp; Cue</td><td>Recovery</td></tr>\n<tr><td><b>Major</b></td><td>Browning garlic — edges darkening, aroma turns sharp before beans are added</td><td>Discard; restart garlic in clean oil</td></tr></table>\n\n## Adjustment Notes\n\n***Adjust:** Add a small spoonful of salsa verde if beans read flat.*\n",
+   "designed_unvalidated": [
+    {
+     "param": "Hold",
+     "designed_value": "Covered on very low heat up to 30 min",
+     "note": "Loosen with 1–2 tbsp warm water if beans tighten."
+    }
+   ],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "cannellini beans, tinned",
+     "department": "Pantry",
+     "qty": 800,
+     "unit": "g",
+     "qty_alt": "2 × 400 g cans",
+     "prep_note": "drained & rinsed",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "olive oil",
+     "department": "Oils & Liquids",
+     "qty": 30,
+     "unit": "ml",
+     "qty_alt": "2 tbsp",
+     "prep_note": null,
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "garlic",
+     "department": "Produce",
+     "qty": 3,
+     "unit": "clove",
+     "qty_alt": null,
+     "prep_note": "sliced thin",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 5,
+     "unit": "g",
+     "qty_alt": null,
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "black pepper",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "to taste",
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "porchetta-chilled-orange-olive-oil-flaky-salt",
+   "existing": false,
+   "name": "Chilled Orange with Olive Oil & Flaky Salt",
+   "protein": null,
+   "category": [
+    "Dessert"
+   ],
+   "cuisine": [
+    "Italian"
+   ],
+   "difficulty": "Easy",
+   "tags": [
+    "no-cook",
+    "palate-cleanser",
+    "fruit",
+    "make-ahead"
+   ],
+   "occasion": [
+    "Dinner party",
+    "Sunday dinner"
+   ],
+   "status": "designed",
+   "source": "Recovered from porchetta-dinner.docx, generated 26 June 2026",
+   "governance_version": null,
+   "summary": "Fully peeled orange rounds chilled 30 min minimum and finished at service with a light drizzle of good olive oil and flaky salt — a palate cleanser rather than a sweet dessert.",
+   "servings": 3,
+   "equipment": [],
+   "method_md": "## Dish Overview\n\nCold, bitter-acid palate reset after rendered pork fat — a palate cleanser, not a conventional sweet dessert; set this expectation with guests in advance.\n\n## Yield & Timing\n\n*Yield: 3 · Prep: 10 min · Chill: 30 min minimum*\n\n## Prep Phase\n\nPeel oranges fully, removing all pith. Slice into rounds. Refrigerate 30 min minimum.\n\n## Holding & Assembly\n\nDrizzle lightly with olive oil. Finish with flaky salt immediately before serving.\n\n## Critical Control Points\n\n<table header-row=\"true\"><tr><td>Severity</td><td>Failure Mode &amp; Cue</td><td>Recovery</td></tr>\n<tr><td><b>Minor</b></td><td>Excess olive oil — pooling on plate, greasy mouthfeel</td><td>Blot lightly with kitchen paper</td></tr></table>\n",
+   "designed_unvalidated": [
+    {
+     "param": "Chill",
+     "designed_value": "30 min minimum refrigerated",
+     "note": null
+    }
+   ],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "orange",
+     "department": "Produce",
+     "qty": 3,
+     "unit": "piece",
+     "qty_alt": null,
+     "prep_note": "peeled fully, all pith removed, sliced into rounds",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "olive oil",
+     "department": "Oils & Liquids",
+     "qty": 15,
+     "unit": "ml",
+     "qty_alt": "1 tbsp",
+     "prep_note": "good quality; drizzle to finish",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "flaky salt",
+     "department": "Seasoning",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "to finish",
+     "prep_note": "finish",
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  }
+ ],
+ "notes": "Document header says '3 pax + leftovers · 26 June 2026'; pax set to 3, planned_date left null per task (backlog), date preserved in source string and workflow_md. No Core/governance version stated — governance_version null. All five menu components are new dishes (task listed no existing slugs). Salsa verde has its own ingredient block but is written inside the porchetta recipe, not as a separate recipe, so it is kept in the porchetta dish (category Main + Sauce); slug chosen as 'porchetta-with-salsa-verde' (prefix 'porchetta-' + 'with-salsa-verde') to avoid the doubled 'porchetta-porchetta-…'. Plating sequence at T−0:00 is Beans → Potatoes → Porchetta → Salsa verde → Salad (recorded in workflow_md); components.service_order follows the menu numbering instead. Ingredient lines kept one-to-one with the doc, so diamond crystal kosher salt appears three times in the porchetta dish (18 g cure / 8 g skin / 2 g salsa verde), garlic twice (6 cloves paste / 1 small clove salsa verde), olive oil twice (30 ml paste / 80 ml salsa verde). Shopping List skipped (derived); its pantry flags applied: garlic, butcher's twine (equipment, not an ingredient), black peppercorns, red pepper flakes, neutral oil, kosher salt, flaky salt, black pepper. 'Reserved rendered pork fat' is a by-product of the porchetta, absent from the doc's shopping list, so pantry_check=true to keep it off a derived list. Ranges taken at lower bound: pork belly 1800 g (1.8–2.2 kg), pork loin 700 g (700–900 g), pork fat 45 ml (45–60 ml); yields 6–8 → servings 6, 3–4 → servings 3. Lemons: Lemon 1 recorded as 'lemon' 1 piece zest-only in porchetta; Lemon 2 split as 'lemon' 0.5 piece zest in potatoes and 'lemon juice' 15 ml in salad (doc gives ~15 ml / 1 tbsp). Shopping total is 2 lemons. New canonical ingredient names not in ingredient_names.txt: 'pork belly, skin-on', 'pork loin, centre-cut', 'rosemary', 'mint', 'radicchio', 'rendered pork fat, reserved'. Reused: 'diamond crystal kosher salt', 'fennel seed', 'black peppercorn', 'garlic', 'sage', 'lemon', 'lemon juice', 'chilli flakes' (doc: red pepper flakes), 'olive oil', 'neutral oil', 'parsley leaves', 'capers in brine' (doc: capers), 'red wine vinegar', 'black pepper', 'yukon gold potato', 'flaky salt', 'fennel bulb', 'cannellini beans, tinned', 'orange'. Portion note and Sourcing note are meal-level and placed in workflow_md rather than dropped. No nutrition estimates in the document."
+}

@@ -1,0 +1,436 @@
+{
+ "assignment_key": "miso-salmon",
+ "source_file": "docs/miso-salmon-dinner/v1/miso-salmon-dinner.docx",
+ "meal": {
+  "slug": "miso-salmon-dinner",
+  "name": "Sunday Dinner — Miso-Roasted Salmon",
+  "planned_date": null,
+  "status": "backlog",
+  "pax": 3,
+  "workflow_md": "## Menu\n\n*Serves 3 (Jin, Hui Fong — moderate carb; Lukas — full portion) · Arrival 4:15–4:30 · Service 5:30 · Oven: 425°F / 218°C conventional*\n\n- Miso-roasted salmon, centre-cut, skin lifted at plating\n- Roasted broccolini, sesame\n- Steamed Japanese short-grain rice\n- Cucumber sunomono\n\n## Workflow Notes\n\nCritical path is the rice cooker. It must be loaded within 10 minutes of walking in the door; everything else aligns to it. The salmon and broccolini together occupy only the final 20 minutes. Protect the salmon: rice holds on Keep Warm indefinitely and broccolini holds uncovered, so if timing slips, those two absorb it. Nothing waits on the fish.\n\nThe oven runs a single state throughout — 425°F / 218°C conventional, lower-middle rack, no transitions. One half-sheet serves both roasted components, staggered: broccolini enters at T-20, the tray comes out briefly at T-15 to receive the salmon, then returns. Work quickly with the tray on the stovetop, not on the open door, and return it immediately — the brief interruption is already absorbed in the stated cooking bands. If running convection, drop to 400°F / 205°C and expect the salmon at the short end of its band. Rice runs unattended start to finish on the Tiger; the cucumber is fully complete before the oven is used. No cooktop burner is required, and outdoor gas and binchotan stay idle.\n\n## Ahead of the Day\n\nPortion the salmon the night before or Sunday morning, not at 4:30. Cut the centre section into three portions of equal thickness rather than equal weight — a side tapers, so cut narrower from the thick end and wider from the thin end so all three finish at the same height. Thickness, not weight, drives the cooking band and the probe reading; if the portions cannot be brought within ¼ in / 6 mm of each other, probe the thickest and accept that the thinnest runs slightly past. Run a finger down the centre line and pull the pin bones with tweezers or needle-nose pliers, following the direction they lean rather than pulling straight up. Trim the belly flap.\n\nSalt at that point — ½ tsp total, weighted to the underside — and hold the portions skin-down on a rack over a tray, uncovered, in the fridge. The overnight uncovered rest dries the surface better than the 15-minute cure does, so it replaces that step rather than adding to it. If this is not done ahead, fall back to the T-58 salting step below.\n\n## T-Minus Timeline\n\n<table header-row=\"true\"><tr><td>T-minus</td><td>Action</td></tr>\n<tr><td><b>T-60 (4:30)</b></td><td><b>Rinse 1½ cooker cups rice to near-clear; into Tiger, water to line 1½, Plain setting. Runs ~50 min, then Keep Warm.</b></td></tr>\n<tr><td>T-58</td><td>Only if not portioned ahead: salt salmon lightly (½ tsp, weighted to the underside); skin-down on a rack over a plate, uncovered, fridge. 15 min — off the critical path.</td></tr>\n<tr><td>T-55</td><td>Whisk glaze. Set aside.</td></tr>\n<tr><td>T-53</td><td>Slice cucumber, salt, drain in colander. 15 min.</td></tr>\n<tr><td><b>T-40 (4:50)</b></td><td><b>Oven to 425°F / 218°C, rack lower-middle. ~15 min to temperature.</b></td></tr>\n<tr><td>T-38</td><td>Line half-sheet with parchment. Trim and toss broccolini; spread across one end only, leaving the other end clear.</td></tr>\n<tr><td>T-36</td><td>Squeeze cucumber, dress, sesame. Fridge; ~30 min designed hold.</td></tr>\n<tr><td><b>T-25 (5:05)</b></td><td><b>Salmon out of fridge, pat both faces dry, glaze thinly.</b></td></tr>\n<tr><td><b>T-20 (5:10)</b></td><td><b>Tray into oven.</b></td></tr>\n<tr><td><b>T-15 (5:15)</b></td><td><b>Tray out onto stovetop. Salmon skin-down on the clear end. Straight back in. Salmon 9–11 min.</b></td></tr>\n<tr><td><b>T-6 to T-4</b></td><td><b>Tray out. Salmon pulled at 122°F / 50°C. Broccolini tossed with sesame oil and seeds while hot.</b></td></tr>\n<tr><td>T-6 to T-4</td><td>Salmon rests on warm plates, uncovered. 3–4 min.</td></tr>\n<tr><td>T-3</td><td>Fluff rice, lid back on. Drain any liquid from the cucumber.</td></tr>\n<tr><td><b>T-0</b></td><td><b>Lift each fillet off its skin with a fish slice; plate. Lemon wedges to table.</b></td></tr></table>\n\n*Variance-band closure. Earliest finish T-6 gives a 4-minute rest, plating at T-2 and a 2-minute hold — inside the salmon's designed 5–8 minute window. Latest finish T-4 gives a 4-minute rest to T-0 and immediate plating; realistic service in that case is 5:32 with no plating buffer. Both ends close. The late edge has no slack, which is why the broccolini and rice absorb any slip and the salmon never does. Broccolini total lands at 14–16 minutes on parchment, against 12–14 on bare metal.*\n\n## Holding Chain\n\n<table header-row=\"true\"><tr><td>Component</td><td>Hold Strategy</td><td>Designed Max</td><td>Drift</td><td>Corrective</td></tr>\n<tr><td><b>Rice</b></td><td>Tiger, Keep Warm, lid closed</td><td>Indefinite</td><td>Surface dries at the lid</td><td>Fluff at T-3, lid back on</td></tr>\n<tr><td><b>Broccolini</b></td><td>Tray, uncovered, on stovetop</td><td>~15–20 min</td><td>Softens if covered</td><td>Never cover</td></tr>\n<tr><td><b>Cucumber</b></td><td>Sealed, fridge</td><td>~30 min</td><td>Weeps; dressing dilutes</td><td>Drain at T-3 — mandatory, not conditional</td></tr>\n<tr><td><b>Salmon</b></td><td>Warm plate, uncovered</td><td>~5–8 min</td><td>Surface goes tacky, flesh firms</td><td>None — plate it</td></tr></table>\n\n*Hold windows are designed, not validated. Planning targets, not cliffs.*\n\n## Meal Balance Audit\n\nRichness sits entirely in the salmon and is capped three ways — centre-cut selection (the dominant lever), a thin glaze, and skin removal at plating (a mouthfeel gain rather than a large reduction in total fat, since most salmon fat is intramuscular). Salt is deliberately consolidated in the glaze rather than layered: the fillet carries only ½ tsp, weighted to the unglazed face, so the miso and soy set the exterior level without stacking.\n\nAcidity appears in three components in functionally distinct roles — rice vinegar in the glaze builds depth against the miso, the sunomono resets between bites, and the lemon wedge is a per-diner brightness control, which is the correct lever for Lukas specifically. Texture runs soft salmon, yielding rice, firm broccolini, cool crisp-tender cucumber. Sweetness is confined to the mirin and 1 tsp in the sunomono — no stacking. Aromatic interest is split deliberately: ginger on the fish, sesame on the vegetable, so neither dominates. No heat, no smoke. Register: restrained Sunday, not occasion cooking.\n\n*Post-cook confirmation candidate: the 3°F / 2°C carryover delta over a 3–4 minute uncovered rest on a 5–6 oz centre-cut portion from a 425°F oven. Designed, not validated — log the observed figure after this cook.*\n\n## Sourcing Notes\n\nBuy the centre section of a side rather than pre-cut fillets. Counters routinely portion across the whole side, so one of three pre-cut fillets is often quietly a tail piece — and cut selection is the single biggest lever on the richness constraint. Ask for roughly 1¼ lb / 570 g off the middle of the side, skin on; the extra 4 oz over the 1 lb / 450 g needed absorbs trim loss. If buying a whole side (2.5–3.5 lb / 1.1–1.6 kg), portion it all at once: surplus centre portions freeze well wrapped tight, and the belly and tail are better used for tartare, rice bowls, or poached flake than roasted — they are the pieces removed for a reason.\n\nOra King or Tasmanian if available; otherwise centre-cut Atlantic. Skin-on is strongly preferred for handling and clean release, though skinless centre-cut on parchment remains executable. Japanese or Persian cucumber only — field cucumber carries too much seed and water. Smallwares: tweezers or needle-nose pliers for pin bones; instant-read thermometer.\n",
+  "shared_prep_md": "**Rice vinegar:** 3 tbsp total — 1 tsp → Salmon glaze, 2 tbsp + 2 tsp → Cucumber\n\n**Toasted sesame seeds:** 2 tsp total — 1 tsp → Broccolini, 1 tsp → Cucumber\n\nNo other ingredient appears in two or more components in a form that can sensibly be prepared in aggregate. Ginger is grated for the glaze only; the two sesame applications differ (seeds on both, oil on the broccolini alone) and are listed separately in each dish.\n",
+  "wine_pairing": null,
+  "components": [
+   {
+    "dish_slug": "miso-salmon-miso-roasted-salmon",
+    "role": "main",
+    "service_order": 1
+   },
+   {
+    "dish_slug": "miso-salmon-roasted-broccolini-sesame",
+    "role": "side",
+    "service_order": 2
+   },
+   {
+    "dish_slug": "miso-salmon-cucumber-sunomono",
+    "role": "salad",
+    "service_order": 3
+   },
+   {
+    "dish_slug": "miso-salmon-steamed-japanese-short-grain-rice",
+    "role": "side",
+    "service_order": 4
+   }
+  ]
+ },
+ "dishes": [
+  {
+   "slug": "miso-salmon-miso-roasted-salmon",
+   "existing": false,
+   "name": "Miso-Roasted Salmon",
+   "protein": "Fish",
+   "category": [
+    "Main"
+   ],
+   "cuisine": [
+    "Japanese"
+   ],
+   "difficulty": "Medium",
+   "tags": [
+    "roast",
+    "glaze",
+    "sheet-pan",
+    "quick",
+    "weeknight",
+    "sunday-dinner"
+   ],
+   "occasion": [
+    "Sunday dinner",
+    "Family dinner"
+   ],
+   "status": "designed",
+   "source": "Recovered from miso-salmon-dinner.docx (no generation date stated in document)",
+   "governance_version": null,
+   "summary": "Centre-cut skin-on salmon under a thin shiro-miso lacquer, roasted at 425°F / 218°C on parchment, pulled at 122°F / 50°C, rested 3–4 min and lifted off its skin to plate.",
+   "servings": 3,
+   "equipment": [
+    "half-sheet pan",
+    "parchment paper",
+    "wire rack",
+    "instant-read thermometer",
+    "fish slice",
+    "brush"
+   ],
+   "method_md": "## Dish Overview\n\nA thin savoury-sweet miso lacquer over centre-cut salmon, roasted hot and fast so the surface caramelises before the interior fat renders into the flesh: silky at the centre, with a set — not sticky — glazed surface.\n\n## Yield & Timing\n\n*Yield: 3 · Total: ~40 min · Active: ~10 min · Oven: 425°F / 218°C*\n\n## Prep Phase\n\n**1.** Salt lightly, weighting the ½ tsp toward the underside — that face takes no glaze and would otherwise be unseasoned. The miso and soy carry the exterior salt load; do not add more.\n\n**2.** Rest skin-down on a rack over a plate, uncovered, fridge, 15 minutes. This runs during the oven preheat at no attention cost. Skip it freely if you walk in late, or if the portions were already salted and held uncovered overnight, in which case that rest has done the work.\n\n**3.** Whisk miso, mirin, sake, soy, rice vinegar and ginger to a smooth, pourable paste.\n\n**4.** Line the sheet pan with parchment. This is mandatory for the salmon — the glaze welds to bare metal and burns onto it.\n\n## Active Cooking\n\n**5.** Blot both faces dry. The surface must read matte, not beaded.\n\n**6.** Brush the glaze thinly and evenly over top and sides — roughly two-thirds of it. Do not let it pool on the parchment.\n\n**7.** At T-15, lay skin-down on the clear end of the tray alongside the broccolini. Roast 9–11 minutes.\n\n**8. Pull at 122°F / 50°C** at the thickest point — probed horizontally into the centre of the thickest portion. This is the controlling trigger; these portions are cut to uniform thickness precisely so placement is reliable. Carries approximately 3°F / 2°C to a finished 125°F / 52°C.\n\n> ***Corroborative only:** the portion should give slightly under light pressure at the thickest point without separating. Do not pull it open to check — it damages the glaze, and translucency varies with species and fat.*\n\n## Holding & Assembly\n\n**9.** Rest uncovered on warm plates, 3–4 minutes. At a 2°C delta the rest is doing almost no thermal work — its job is letting the glaze set from tacky to firm and giving a clean release from the skin. Do not tent; trapped steam slackens the glaze.\n\n**10.** To plate, slide a fish slice between flesh and skin and lift. The skin and rendered subcutaneous layer stay on the parchment. Lemon wedges to the table.\n\n## Critical Control Points\n\n<table header-row=\"true\"><tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr>\n<tr><td><b>Critical</b></td><td>Glaze scorches — coat applied too thick, or glaze pooled on the parchment</td><td>Surface goes from glossy amber to matte dark brown at the thin edges; smells acrid rather than sweet</td><td>Unrecoverable — bitterness carries into the flesh. Prevent: thin coat, lower-middle rack</td></tr>\n<tr><td><b>Major (b)</b></td><td>Overcooked — pulled past 122°F / 50°C</td><td>White albumin beading heavily across the surface</td><td>Unrecoverable for texture; dish remains serviceable. Lemon compensates for lost moisture perception</td></tr>\n<tr><td><b>Major</b></td><td>Portion tears on lift — flesh grips the pan</td><td>Fish slice meets resistance and the flesh begins to shear rather than release</td><td>Prevented by parchment. Without it, serve the torn portion to yourself</td></tr></table>\n\n## Adjustment Notes\n\n***Adjust:** if the plated fish reads flat, add lemon rather than salt — the glaze carries the salt load. If it reads sweet, lemon again; vinegar stacks with the glaze.*\n",
+   "designed_unvalidated": [
+    {
+     "param": "Carryover delta",
+     "designed_value": "3°F / 2°C over a 3–4 min uncovered rest (122°F / 50°C pull → 125°F / 52°C finished)",
+     "note": "Post-cook confirmation candidate on a 5–6 oz centre-cut portion from a 425°F oven; log observed figure after this cook."
+    },
+    {
+     "param": "Roast time",
+     "designed_value": "9–11 min at 425°F / 218°C, entering at T-15",
+     "note": "Convection: drop to 400°F / 205°C and expect the short end of the band."
+    },
+    {
+     "param": "Hold window",
+     "designed_value": "~5–8 min on warm plate, uncovered",
+     "note": "Designed, not validated — planning target, not a cliff."
+    }
+   ],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "salmon, centre-cut, skin-on",
+     "department": "Protein",
+     "qty": 3,
+     "unit": "piece",
+     "qty_alt": "3 portions, 5–6 oz / 140–170 g each",
+     "prep_note": "cut to equal thickness; pin bones pulled, belly flap trimmed",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 0.5,
+     "unit": "tsp",
+     "qty_alt": null,
+     "prep_note": "weighted to the underside",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "white miso (shiro)",
+     "department": "Dairy",
+     "qty": 36,
+     "unit": "g",
+     "qty_alt": "2 tbsp",
+     "prep_note": "glaze",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "mirin",
+     "department": "Oils & Liquids",
+     "qty": 1,
+     "unit": "tbsp",
+     "qty_alt": null,
+     "prep_note": "glaze",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "sake",
+     "department": "Oils & Liquids",
+     "qty": 1,
+     "unit": "tbsp",
+     "qty_alt": null,
+     "prep_note": "glaze",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "soy sauce",
+     "department": "Oils & Liquids",
+     "qty": 2,
+     "unit": "tsp",
+     "qty_alt": null,
+     "prep_note": "glaze",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "rice vinegar",
+     "department": "Oils & Liquids",
+     "qty": 1,
+     "unit": "tsp",
+     "qty_alt": null,
+     "prep_note": "glaze",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "ginger",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "tsp",
+     "qty_alt": "1 tsp grated",
+     "prep_note": "peeled and finely grated; glaze",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "lemon",
+     "department": "Produce",
+     "qty": 1,
+     "unit": "piece",
+     "qty_alt": null,
+     "prep_note": "in wedges, to serve",
+     "pantry_check": false,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "miso-salmon-roasted-broccolini-sesame",
+   "existing": false,
+   "name": "Roasted Broccolini, Sesame",
+   "protein": "Veg",
+   "category": [
+    "Side"
+   ],
+   "cuisine": [
+    "Japanese"
+   ],
+   "difficulty": "Easy",
+   "tags": [
+    "roast",
+    "sheet-pan",
+    "vegetable",
+    "sesame"
+   ],
+   "occasion": [
+    "Sunday dinner",
+    "Family dinner"
+   ],
+   "status": "designed",
+   "source": "Recovered from miso-salmon-dinner.docx (no generation date stated in document)",
+   "governance_version": null,
+   "summary": "Broccolini roasted 14–16 min at 425°F / 218°C on parchment alongside the salmon, finished off-heat with toasted sesame oil and seeds.",
+   "servings": 3,
+   "equipment": [
+    "half-sheet pan",
+    "parchment paper",
+    "paring knife",
+    "warm bowl"
+   ],
+   "method_md": "## Dish Overview\n\nBlistered stems with charred floret tips — the firm counterweight to the soft salmon and rice.\n\n## Yield & Timing\n\n*Yield: 3 · Total: ~18 min · Active: ~5 min · Oven: 425°F / 218°C*\n\n## Prep Phase\n\n**1.** Trim ½ in / 1 cm of woody stem. Leave unpeeled — the skins are tender at this thickness and hold the char. Halve any stem thicker than ½ in / 1 cm lengthwise.\n\n## Active Cooking\n\n**2.** Toss with the neutral oil and salt on the parchment-lined half-sheet. Spread across one end in as close to a single layer as the space allows, leaving the other end clear for the salmon. Parchment is the default — it costs a little contact char and buys much easier cleanup and no stuck florets. For maximum char, use a second bare pan.\n\n**3.** In at T-20. Total 14–16 minutes, including the brief T-15 tray-out.\n\n**4. Primary cue:** stems yield to a paring knife with light resistance and floret tips are blackened at the edges. Still rigid at 16 minutes means the end was crowded — give it 3 more.\n\n## Holding & Assembly\n\n**5.** Into a warm bowl. Toss with the sesame oil and seeds off-heat, while hot — the oil's aromatics degrade at 425°F and it must not go on before roasting.\n\n**6.** Hold uncovered, ~15–20 minutes. Covering steams the char away.\n\n## Critical Control Points\n\n<table header-row=\"true\"><tr><td>Class</td><td>Failure Mode</td><td>Sensory Cue</td><td>Recovery</td></tr>\n<tr><td><b>Major</b></td><td>Crowded end — broccolini steams rather than roasts</td><td>Reads wet and dull green rather than blistered at 12 minutes</td><td>Recoverable: spread onto a second pan and continue 4 minutes</td></tr></table>\n\n## Adjustment Notes\n\n***Adjust:** if under-seasoned, a pinch of salt while hot.*\n",
+   "designed_unvalidated": [
+    {
+     "param": "Roast time",
+     "designed_value": "14–16 min on parchment (12–14 on bare metal), including the T-15 tray-out",
+     "note": "Still rigid at 16 min means the end was crowded — give it 3 more."
+    },
+    {
+     "param": "Hold window",
+     "designed_value": "~15–20 min uncovered on tray",
+     "note": "Designed, not validated."
+    }
+   ],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "broccolini",
+     "department": "Produce",
+     "qty": 340,
+     "unit": "g",
+     "qty_alt": "12 oz",
+     "prep_note": "unpeeled, ½ in / 1 cm of woody stem trimmed; halve stems thicker than ½ in / 1 cm lengthwise",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "neutral oil",
+     "department": "Oils & Liquids",
+     "qty": 20,
+     "unit": "g",
+     "qty_alt": "1½ tbsp",
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 0.5,
+     "unit": "tsp",
+     "qty_alt": null,
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "toasted sesame oil",
+     "department": "Oils & Liquids",
+     "qty": 0.5,
+     "unit": "tsp",
+     "qty_alt": null,
+     "prep_note": "off-heat finish",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "sesame seed",
+     "department": "Pantry",
+     "qty": 1,
+     "unit": "tsp",
+     "qty_alt": null,
+     "prep_note": "toasted; off-heat finish",
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "miso-salmon-cucumber-sunomono",
+   "existing": false,
+   "name": "Cucumber Sunomono",
+   "protein": "Veg",
+   "category": [
+    "Salad"
+   ],
+   "cuisine": [
+    "Japanese"
+   ],
+   "difficulty": "Easy",
+   "tags": [
+    "no-cook",
+    "pickle",
+    "palate-reset",
+    "make-ahead"
+   ],
+   "occasion": [
+    "Sunday dinner",
+    "Family dinner"
+   ],
+   "status": "designed",
+   "source": "Recovered from miso-salmon-dinner.docx (no generation date stated in document)",
+   "governance_version": null,
+   "summary": "Salted and gently squeezed 2 mm cucumber slices dressed in sweetened rice vinegar with toasted sesame — the named relieving component for the salmon's richness.",
+   "servings": 3,
+   "equipment": [
+    "colander"
+   ],
+   "method_md": "## Dish Overview\n\nCool, sharp, crisp-tender — the palate reset against the miso. Not optional; it is the named relieving component for the salmon's richness.\n\n## Yield & Timing\n\n*Yield: 3 · Total: ~20 min (15 passive) · Active: ~5 min · No heat*\n\n## Prep Phase\n\n**1.** Slice the cucumbers 2 mm, unpeeled — the thin skin supplies the snap and colour.\n\n**2.** Toss with the salt; drain in a colander 15 minutes.\n\n**3.** Squeeze gently but thoroughly — press the water out without compacting the slices, and stop while they still hold a distinct snap. Do not squeeze to a halved volume; that produces a yielding salad and loses the contrast the plate needs.\n\n**4.** Dissolve the sugar in the vinegar, toss through, add the sesame seeds.\n\n## Holding & Assembly\n\n**5.** Sealed, fridge, ~30 minutes designed. Because the slices are deliberately left wetter than a hard-squeezed sunomono, they continue to release water and the dressing dilutes faster.\n\n**6.** Drain at T-3 before serving. Mandatory, not conditional.\n\n## Critical Control Points\n\n*Critical control points: not applicable — no heat, no irreversible step.*\n\n## Adjustment Notes\n\n***Adjust:** if too sharp, a further ¼ tsp sugar. Do not add water.*\n",
+   "designed_unvalidated": [
+    {
+     "param": "Hold window",
+     "designed_value": "~30 min sealed in fridge",
+     "note": "Slices left wetter than a hard-squeezed sunomono continue to weep; drain at T-3 is mandatory."
+    }
+   ],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "cucumber, japanese or persian",
+     "department": "Produce",
+     "qty": 2,
+     "unit": "piece",
+     "qty_alt": null,
+     "prep_note": "unpeeled, sliced 2 mm",
+     "pantry_check": false,
+     "optional": false
+    },
+    {
+     "name": "diamond crystal kosher salt",
+     "department": "Seasoning",
+     "qty": 1,
+     "unit": "tsp",
+     "qty_alt": null,
+     "prep_note": "for salting and draining",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "rice vinegar",
+     "department": "Oils & Liquids",
+     "qty": 40,
+     "unit": "ml",
+     "qty_alt": "2 tbsp + 2 tsp",
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "sugar",
+     "department": "Pantry",
+     "qty": 1,
+     "unit": "tsp",
+     "qty_alt": null,
+     "prep_note": "dissolved in the vinegar",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "sesame seed",
+     "department": "Pantry",
+     "qty": 1,
+     "unit": "tsp",
+     "qty_alt": null,
+     "prep_note": "toasted",
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  },
+  {
+   "slug": "miso-salmon-steamed-japanese-short-grain-rice",
+   "existing": false,
+   "name": "Steamed Japanese Short-Grain Rice",
+   "protein": null,
+   "category": [
+    "Side"
+   ],
+   "cuisine": [
+    "Japanese"
+   ],
+   "difficulty": "Easy",
+   "tags": [
+    "rice-cooker",
+    "starch",
+    "unattended",
+    "critical-path"
+   ],
+   "occasion": [
+    "Sunday dinner",
+    "Family dinner"
+   ],
+   "status": "designed",
+   "source": "Recovered from miso-salmon-dinner.docx (no generation date stated in document)",
+   "governance_version": null,
+   "summary": "1½ cooker cups of rinsed Japanese short-grain rice cooked on the Tiger's Plain setting and held on Keep Warm; the meal's critical path, started at T-60.",
+   "servings": 6,
+   "equipment": [
+    "Tiger rice cooker"
+   ],
+   "method_md": "## Dish Overview\n\nNeutral carrier by design. Meal-level texture exemption: rice is inherently single-texture; contrast is provided by the broccolini and cucumber.\n\n## Yield & Timing\n\n*Yield: ~6–7 half-cup portions · Total: ~50 min · Active: ~3 min · Tiger, Plain setting*\n\n## Active Cooking\n\n**1.** Rinse under cold water, swirling and draining 4–5 times, until the water runs near-clear.\n\n**2.** Water to the cooker's line 1½. Plain setting. Start at T-60 — this is the critical path.\n\n## Holding & Assembly\n\n**3.** Keep Warm, lid closed. Holds indefinitely.\n\n**4.** Fluff at T-3, lid straight back on. Portion moderate for Jin and Hui Fong, full for Lukas; the modest surplus is intentional and reheats well.\n\n## Critical Control Points\n\n*Critical control points: not applicable — single-step preparation with no irreversible failure point.*\n\n## Adjustment Notes\n\n***Adjust:** none applicable post-cook; hydration is fixed at the cooker line.*\n",
+   "designed_unvalidated": [],
+   "nutrition_estimate": null,
+   "ingredients": [
+    {
+     "name": "japanese short-grain rice",
+     "department": "Pantry",
+     "qty": 225,
+     "unit": "g",
+     "qty_alt": "1½ cooker cups / ~225 g dry",
+     "prep_note": "rinsed 4–5 times until water runs near-clear",
+     "pantry_check": true,
+     "optional": false
+    },
+    {
+     "name": "water",
+     "department": "Oils & Liquids",
+     "qty": null,
+     "unit": null,
+     "qty_alt": "To cooker line 1½",
+     "prep_note": null,
+     "pantry_check": true,
+     "optional": false
+    }
+   ]
+  }
+ ],
+ "notes": "Document carries no generation date and no Core/governance version — governance_version null, source string says so. All four menu components are new dishes (task listed no existing slugs). Shopping List table skipped (derived); its '(pantry check)' flags applied: rice, sesame seeds, sugar, mirin, neutral oil, rice vinegar, sake, toasted sesame oil, soy sauce, kosher salt. Departments follow the doc's shopping-list grouping: white miso sits under FRIDGE / DAIRY → 'Dairy'; mirin, sake and soy under OILS & LIQUIDS. Water for the rice given department 'Oils & Liquids' with pantry_check true (not a shopping item). New canonical ingredient names not in ingredient_names.txt: 'white miso (shiro)', 'mirin', 'sake', 'toasted sesame oil'. Reused: 'salmon, centre-cut, skin-on', 'cucumber, japanese or persian', 'japanese short-grain rice', 'sesame seed' (prep_note toasted), 'neutral oil', 'ginger', 'lemon', 'sugar', 'water'. Sunomono rice vinegar '2 tbsp + 2 tsp' converted to 40 ml with the original in qty_alt. Rice yield is '~6–7 half-cup portions' → servings 6 (lower bound) though the meal is for 3. Sourcing Notes and Meal Balance Audit are meal-level and were placed in workflow_md rather than dropped. Service order follows the doc's dish numbering (salmon, broccolini, cucumber, rice); all components are plated together at T-0."
+}
