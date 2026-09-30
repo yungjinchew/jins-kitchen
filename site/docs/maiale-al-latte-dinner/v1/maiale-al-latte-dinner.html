@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maiale al Latte — Sunday Dinner</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:opsz,wght@9..144,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal:       #1B5E7B;
+  --teal-light: #D0E8F0;
+  --gray-dark:  #333333;
+  --gray-mid:   #555555;
+  --gray-light: #F0F0F0;
+  --crit-bg:    #FEE2E2;
+  --major-bg:   #FEF3C7;
+  --minor-bg:   #F3F4F6;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: #d8d8d8;
+  margin: 0;
+  padding: 24px 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: #222222;
+}
+
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  background: #fff;
+  margin: 0 auto 24px;
+  padding: 13mm 14mm 16mm;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.25);
+  position: relative;
+}
+
+/* Running header */
+.pg-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--teal-light);
+  padding-bottom: 3mm;
+  margin-bottom: 7mm;
+}
+.pg-header .meal {
+  font-size: 7.5pt;
+  font-weight: 600;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.pg-header .pg {
+  font-size: 7pt;
+  color: #999;
+}
+
+/* Footer */
+.pg-footer {
+  position: absolute;
+  bottom: 7mm;
+  right: 14mm;
+  font-size: 7pt;
+  color: #999;
+}
+
+h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 15pt;
+  font-weight: 700;
+  color: var(--teal);
+  margin: 0 0 2px;
+}
+.menu-title {
+  font-family: 'Fraunces', serif;
+  font-size: 17pt;
+  font-weight: 700;
+  color: var(--teal);
+  margin: 0 0 1px;
+}
+.menu-sub {
+  font-size: 8.5pt;
+  color: var(--gray-mid);
+  margin: 0 0 8px;
+}
+
+h2 {
+  font-size: 7.5pt;
+  font-weight: 600;
+  color: var(--gray-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 12px 0 5px;
+  border-bottom: 0.5px solid #ddd;
+  padding-bottom: 2px;
+}
+h3 {
+  font-size: 8pt;
+  font-weight: 600;
+  color: var(--teal);
+  margin: 9px 0 3px;
+}
+
+.timing {
+  font-size: 8pt;
+  color: var(--gray-mid);
+  font-style: italic;
+  margin: 0 0 6px;
+}
+.overview {
+  font-size: 8.5pt;
+  margin: 0 0 8px;
+  line-height: 1.45;
+}
+
+ul.menu-list {
+  margin: 4px 0 10px;
+  padding-left: 16px;
+  font-size: 9pt;
+  line-height: 1.5;
+}
+ul.menu-list li { margin-bottom: 2px; }
+
+ol.steps {
+  margin: 0 0 6px;
+  padding-left: 16px;
+  font-size: 8.5pt;
+  line-height: 1.5;
+}
+ol.steps li { margin-bottom: 4px; }
+
+.shared-prep {
+  font-size: 8.5pt;
+  line-height: 1.55;
+  background: #f7fbfd;
+  border-left: 2.5px solid var(--teal-light);
+  padding: 7px 10px;
+  margin: 4px 0 10px;
+}
+.shared-prep p { margin: 0 0 4px; }
+.shared-prep strong { color: var(--gray-dark); }
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 8px;
+}
+th, td {
+  border: 0.5px solid #ddd;
+  padding: 3px 6px;
+  text-align: left;
+  vertical-align: top;
+}
+td { word-wrap: break-word; font-size: 8pt; }
+th {
+  font-size: 7.5pt;
+  font-weight: 600;
+  color: var(--gray-dark);
+  background: var(--teal-light);
+}
+
+/* Ingredient table */
+.ing-table td:first-child { width: 67%; }
+.ing-table td:last-child  { width: 33%; font-variant-numeric: tabular-nums; word-wrap: break-word; }
+tr.ing-section td {
+  background: var(--gray-light);
+  font-size: 7pt;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray-mid);
+  font-weight: 600;
+  padding: 3px 6px;
+}
+
+/* CCP table */
+.ccp-table th:nth-child(1),
+.ccp-table td:nth-child(1) {
+  width: 58px;
+  font-size: 7pt;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.ccp-table th:nth-child(2),
+.ccp-table td:nth-child(2) { width: 57%; }
+.ccp-table th:nth-child(3),
+.ccp-table td:nth-child(3) { width: 37%; }
+.ccp-table td { font-size: 7.5pt; word-wrap: break-word; }
+tr.crit  td { background: var(--crit-bg); }
+tr.major td { background: var(--major-bg); }
+tr.minor td { background: var(--minor-bg); }
+
+/* T-minus table */
+.tmin-table th:nth-child(1),
+.tmin-table td:first-child {
+  width: 100px;
+  font-weight: 600;
+  color: var(--teal);
+  white-space: nowrap;
+  font-size: 8pt;
+}
+.tmin-table td:last-child { word-wrap: break-word; font-size: 8pt; }
+
+.plate-note {
+  font-size: 8pt;
+  font-style: italic;
+  color: var(--gray-mid);
+  margin: -2px 0 10px;
+}
+
+/* Workflow notes */
+.wf-notes {
+  font-size: 8pt;
+  color: var(--gray-mid);
+  font-style: italic;
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+.wf-notes p { margin-bottom: 4px; }
+.wf-notes strong { font-style: normal; color: var(--gray-dark); }
+
+/* Holding chain table */
+.hold-table { font-size: 7.5pt; }
+.hold-table th { font-size: 7pt; }
+.hold-table td { font-size: 7.5pt; word-wrap: break-word; }
+.hold-table th:nth-child(1), .hold-table td:nth-child(1) { width: 14%; }
+.hold-table th:nth-child(2), .hold-table td:nth-child(2) { width: 23%; }
+.hold-table th:nth-child(3), .hold-table td:nth-child(3) { width: 10%; }
+.hold-table th:nth-child(4), .hold-table td:nth-child(4) { width: 17%; }
+.hold-table th:nth-child(5), .hold-table td:nth-child(5) { width: 36%; }
+
+/* Shopping list table */
+.shop-table { font-size: 7.5pt; }
+.shop-table th { font-size: 7pt; }
+.shop-table td { font-size: 7pt; word-wrap: break-word; padding: 3px 5px; }
+tr.shop-sec td {
+  background: #e4e4e4;
+  font-size: 7pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #444;
+  padding: 3px 5px;
+}
+
+.cue { font-style: italic; color: var(--gray-mid); }
+
+.wf-summary {
+  font-size: 7.5pt;
+  color: var(--gray-mid);
+  font-style: italic;
+  background: #f7fbfd;
+  border-left: 2.5px solid var(--teal-light);
+  padding: 4px 8px;
+  margin-bottom: 5px;
+  line-height: 1.45;
+}
+
+.adjust {
+  font-size: 8pt;
+  font-style: italic;
+  color: var(--gray-mid);
+  line-height: 1.5;
+  margin: 4px 0 6px;
+}
+.adjust strong { font-style: normal; color: var(--gray-dark); }
+
+.src-note {
+  font-size: 7.5pt;
+  color: var(--gray-mid);
+  font-style: italic;
+  line-height: 1.45;
+  margin: 2px 0 8px;
+}
+
+hr.dish-div {
+  border: none;
+  border-top: 1px dashed #bbb;
+  margin: 16px 0 12px;
+}
+
+@media print {
+  body { background: white; padding: 0; }
+  .page {
+    width: 100%;
+    min-height: auto;
+    margin: 0;
+    padding: 13mm 14mm 18mm;
+    box-shadow: none;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: avoid; }
+  @page { size: A4; margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1: MENU + SHARED PREP + SHOPPING LIST ============ -->
+<div class="page">
+  <div class="pg-header">
+    <span class="meal">Maiale al Latte — Sunday Dinner</span>
+    <span class="pg">Page 1</span>
+  </div>
+
+  <div class="menu-title">Maiale al Latte — Sunday Dinner</div>
+  <div class="menu-sub">Serves 3 adults</div>
+
+  <ul class="menu-list">
+    <li>Maiale al Latte — pork shoulder braised in milk</li>
+    <li>Creamy cannellini beans with braising liquor &amp; parsley</li>
+    <li>Charred broccolini with lemon zest</li>
+    <li>Optional: small amount of crusty bread (generally unnecessary at this scale)</li>
+  </ul>
+
+  <h2>Shared Prep</h2>
+  <div class="shared-prep">
+    <p><strong>Lemon:</strong> 1 lemon total — zest in wide strips &rarr; Pork braise; remaining zest finely grated &rarr; Broccolini; juice &rarr; Pork sauce (1–2 tsp) + Broccolini squeeze.</p>
+    <p><strong>Garlic:</strong> 7 cloves total — 5 smashed &rarr; Pork braise; 2 thinly sliced &rarr; Beans.</p>
+    <p><strong>Parsley:</strong> ¼ cup chopped &rarr; Beans (pinch reserved for the pork platter if desired).</p>
+    <p><strong>Braising liquor:</strong> reserve ~3 tbsp of the pork's milk sauce <em>before its final reduction</em> &rarr; Beans.</p>
+  </div>
+
+  <h2>Shopping List</h2>
+  <table class="shop-table">
+    <thead>
+      <tr>
+        <th style="width:31%;">Ingredient</th>
+        <th style="width:17%;">Total</th>
+        <th style="width:18%;">Pork</th>
+        <th style="width:17%;">Beans</th>
+        <th style="width:17%;">Broccolini</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="shop-sec"><td colspan="5">Protein / Meat</td></tr>
+      <tr><td>Boneless pork shoulder, tied</td><td>2 lb / 900 g</td><td>2 lb / 900 g</td><td>—</td><td>—</td></tr>
+
+      <tr class="shop-sec"><td colspan="5">Produce</td></tr>
+      <tr><td>Broccolini</td><td>2 bunches / ~350 g</td><td>—</td><td>—</td><td>2 bunches</td></tr>
+      <tr><td>Garlic</td><td>7 cloves</td><td>5</td><td>2</td><td>—</td></tr>
+      <tr><td>Lemon</td><td>1</td><td>zest strips + juice</td><td>—</td><td>zest + squeeze</td></tr>
+      <tr><td>Sage, fresh</td><td>10 leaves</td><td>10</td><td>—</td><td>—</td></tr>
+      <tr><td>Parsley, flat-leaf <em>(pantry check)</em></td><td>¼ cup / 15–20 g</td><td>garnish (opt)</td><td>¼ cup</td><td>—</td></tr>
+      <tr><td>Shallot</td><td>1 small</td><td>—</td><td>1</td><td>—</td></tr>
+
+      <tr class="shop-sec"><td colspan="5">Pantry / Dry</td></tr>
+      <tr><td>Cannellini beans <em>(see note)</em></td><td>2 × 400 g tins</td><td>—</td><td>2 tins</td><td>—</td></tr>
+      <tr><td>Bay leaf <em>(pantry check)</em></td><td>1</td><td>1</td><td>—</td><td>—</td></tr>
+      <tr><td>Chili flakes <em>(optional, pantry check)</em></td><td>—</td><td>—</td><td>—</td><td>opt</td></tr>
+
+      <tr class="shop-sec"><td colspan="5">Fridge / Dairy</td></tr>
+      <tr><td>Whole milk</td><td>3½ cups / 850 ml</td><td>850 ml</td><td>—</td><td>—</td></tr>
+      <tr><td>Unsalted butter <em>(pantry check)</em></td><td>1 tbsp / 14 g</td><td>1 tbsp</td><td>—</td><td>—</td></tr>
+
+      <tr class="shop-sec"><td colspan="5">Oils &amp; Liquids</td></tr>
+      <tr><td>Olive oil <em>(pantry check)</em></td><td>~4 tbsp + EVOO to finish</td><td>1 tbsp</td><td>2 tbsp + finish</td><td>1 tbsp + finish</td></tr>
+
+      <tr class="shop-sec"><td colspan="5">Bread</td></tr>
+      <tr><td>Crusty bread <em>(optional)</em></td><td>1 small loaf</td><td>—</td><td>—</td><td>—</td></tr>
+
+      <tr class="shop-sec"><td colspan="5">Seasoning</td></tr>
+      <tr><td>Diamond Crystal kosher salt <em>(pantry check)</em></td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Black pepper <em>(pantry check)</em></td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    </tbody>
+  </table>
+
+  <p class="src-note"><strong>Sourcing:</strong> Tinned cannellini are the right call — dried would add a soak the brief avoids. Jarred Spanish-style large white beans (one 660 g jar) substitute cleanly for a creamier result if you're already at a shop that carries them.</p>
+
+  <div class="pg-footer">Generated 27 June 2026</div>
+</div>
+
+<!-- ============ PAGE 2: T-MINUS + WORKFLOW NOTES + HOLDING CHAIN ============ -->
+<div class="page">
+  <div class="pg-header">
+    <span class="meal">Maiale al Latte — Sunday Dinner</span>
+    <span class="pg">Page 2</span>
+  </div>
+
+  <h2>T-Minus Timeline</h2>
+  <table class="tmin-table">
+    <thead><tr><th>Time</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td>T−3:15</td><td>Pork out of fridge; pat dry, re-truss if needed. Oven to 300°F / 150°C.</td></tr>
+      <tr><td>T−3:05</td><td>Brown pork hard, 12–15 min to deep mahogany (induction).</td></tr>
+      <tr><td>T−2:50</td><td>Bloom garlic + sage; add 850 ml milk, zest strips, bay; return pork. Bring to gentle simmer.</td></tr>
+      <tr><td>T−2:45</td><td>Lid ajar &rarr; oven. Braise begins (~2 hr 15 min).</td></tr>
+      <tr><td>T−2:00</td><td>Turn pork (first turn).</td></tr>
+      <tr><td>T−1:15</td><td>Turn pork again. <strong>90-min check:</strong> top up 60–120 ml hot water if milk below ⅓ meat height.</td></tr>
+      <tr><td>T−0:35</td><td>Drain + rinse beans. Slice 2 garlic, dice shallot, chop parsley, grate broccolini zest. Trim + halve thick broccolini stalks.</td></tr>
+      <tr><td>T−0:30</td><td>Pork done (fork twists free / 195–203°F). Lift to board, tent. <strong>Remove bay + zest from pot. Reserve 3 tbsp liquor for beans — before reducing.</strong> Then reduce sauce if needed. Pork rests through this window.</td></tr>
+      <tr><td>T−0:20</td><td>Beans: sweat shallot + garlic (induction); add beans, water + reserved liquor; simmer 10–12 min.</td></tr>
+      <tr><td>T−0:15</td><td>Broccolini: blanch 90 sec, drain and pat dry; heat pan; char 3–4 min, turning, until blistered and tender-crisp.</td></tr>
+      <tr><td>T−0:05</td><td>Finish beans: mash 20–25%, stir in parsley, drizzle EVOO, season. Hold covered, low. Broccolini off heat &rarr; dress with zest, lemon, oil, salt.</td></tr>
+      <tr><td>T−0:03</td><td>Mash 2 garlic cloves into pork sauce; off-heat lemon juice; adjust salt. Slice pork against grain.</td></tr>
+      <tr><td>T</td><td>Plate: pork + curd sauce + fresh pepper; beans; broccolini; bread on table.</td></tr>
+    </tbody>
+  </table>
+  <p class="plate-note">If the window slips: the broccolini fails first — limp within ~10 min of dressing. Plate it last, serve immediately. Beans and pork both hold comfortably.</p>
+
+  <h2>Workflow Notes</h2>
+  <div class="wf-notes">
+    <p><strong>Critical path:</strong> The pork braise governs everything — it is the only long, fixed-duration component, and its doneness is a fork-feel judgment, not a clock. Everything else builds around its exit. If the pork needs more time at T−0:30, hold service: beans wait indefinitely on low, broccolini isn't started until T−0:15 anyway. Do not pull the pork early to hit a clock — under-braised shoulder is the meal's worst failure. Sacrifice timing, not doneness.</p>
+    <p><strong>Oven &amp; heat sequencing:</strong> The oven runs one job — pork at 300°F / 150°C, start to finish, no transitions. All other cooking is cooktop in the final 35 minutes. Induction #1 holds the sauce reduction, induction #2 runs the beans, and the broccolini chars on the outdoor gas stove (hot pan or direct burner, keeping high heat and splatter outside). To stay fully indoors, run broccolini on induction #2 in a hot cast-iron pan after the beans come off, holding the beans covered on low. Nothing competes for a heat source.</p>
+  </div>
+
+  <h2>Holding Chain</h2>
+  <table class="hold-table">
+    <thead>
+      <tr><th>Component</th><th>Hold Strategy</th><th>Max Hold</th><th>Drift Risk</th><th>Corrective</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pork (sliced)</td><td>Tented on board, sauced at plating</td><td>~25 min</td><td>Surface cools, slices firm</td><td>Spoon warm sauce over at plating</td></tr>
+      <tr><td>Pork sauce</td><td>In pot, lowest heat or off</td><td>~30 min</td><td>Tightens / curds clump</td><td>Loosen with warm milk or water off-heat</td></tr>
+      <tr><td>Cannellini beans</td><td>Covered, induction on low</td><td>~30 min</td><td>Absorb liquid, tighten</td><td>Loosen with hot water or reserved liquor</td></tr>
+      <tr><td>Broccolini</td><td>Do not hold — serve immediately</td><td>~10 min</td><td>Goes limp, loses char</td><td>None — plate-last component; time to service</td></tr>
+    </tbody>
+  </table>
+
+  <div class="pg-footer">Generated 27 June 2026</div>
+</div>
+
+<!-- ============ PAGE 3: PORK ============ -->
+<div class="page">
+  <div class="pg-header">
+    <span class="meal">Maiale al Latte — Sunday Dinner</span>
+    <span class="pg">Page 3</span>
+  </div>
+
+  <h1>Maiale al Latte (Pork Shoulder Braised in Milk)</h1>
+  <p class="timing">Yield: 3 adults · Total: ~3 hr (plus optional overnight salt) · Active: ~50 min · Oven: 300°F / 150°C</p>
+  <p class="overview">Pork shoulder browned hard and braised in milk with sage, garlic, and lemon zest until fork-soft, the milk reducing to a savory, curd-flecked sauce — meltingly soft meat against lightly granular, ricotta-like sauce solids.</p>
+
+  <h2>Ingredients</h2>
+  <table class="ing-table">
+    <tbody>
+      <tr class="ing-section"><td colspan="2">Pork &amp; Braise</td></tr>
+      <tr><td>Boneless pork shoulder, tied</td><td>2 lb / 900 g</td></tr>
+      <tr><td>Diamond Crystal kosher salt (plus more to finish)</td><td>~1¼ tsp</td></tr>
+      <tr><td>Black pepper, plus fresh grinds to finish</td><td>½ tsp</td></tr>
+      <tr><td>Unsalted butter</td><td>1 tbsp / 14 g</td></tr>
+      <tr><td>Olive oil</td><td>1 tbsp / 15 ml</td></tr>
+      <tr><td>Whole milk</td><td>3½ cups / 850 ml</td></tr>
+      <tr><td>Garlic, lightly smashed</td><td>5 cloves</td></tr>
+      <tr><td>Fresh sage, whole leaves</td><td>10</td></tr>
+      <tr><td>Lemon zest, wide strips (no pith)</td><td>from 1 lemon</td></tr>
+      <tr><td>Bay leaf</td><td>1</td></tr>
+      <tr><td>Hot water, as needed</td><td>up to ~120 ml</td></tr>
+      <tr class="ing-section"><td colspan="2">Finish</td></tr>
+      <tr><td>Lemon juice, to taste</td><td>1–2 tsp</td></tr>
+      <tr><td>Flaky salt</td><td>to finish</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Prep Phase</h2>
+  <ol class="steps">
+    <li><strong>Salt ahead (preferred):</strong> Pat the pork thoroughly dry, season all over with the salt and pepper, and refrigerate <strong>uncovered overnight</strong> (up to 24 hr) on a rack — penetrates seasoning, dries the surface for a better crust. <span class="cue">No other day-before work.</span> <strong>If not salting ahead:</strong> season and rest at room temperature 30–45 min while you prep.</li>
+    <li>Pat the surface dry again if it came from the fridge. <span class="cue">A dry surface is essential for the hard sear.</span> Truss at 1-inch intervals if not already tied.</li>
+    <li>Smash 5 garlic cloves. Pull 10 whole sage leaves from their stems — <strong>leave whole, do not chop</strong> <span class="cue">(chopped sage disperses through the curds and muddies the sauce)</span>. Peel 1 lemon into wide zest strips, avoiding pith.</li>
+  </ol>
+
+  <h2>Active Cooking</h2>
+  <ol class="steps">
+    <li><strong>Brown the pork hard.</strong> In a heavy Dutch oven over medium-high (induction), heat butter and olive oil until the foam subsides. Brown on all sides, <strong>12–15 min to a deep mahogany crust on every face.</strong> <span class="cue">Few flavor-building ingredients here — this fond is the savory backbone, so push past a standard medium sear.</span> Watch the base: deep brown is the goal, but lower the heat if it threatens to blacken — scorched fond turns the milk bitter. Transfer to a plate.</li>
+    <li><strong>Bloom aromatics.</strong> Lower to medium. Add garlic and sage to the fat; cook 60–90 sec until fragrant and the garlic is pale gold — <span class="cue">not browned.</span></li>
+    <li><strong>Build the braise.</strong> Pour in the milk; add zest strips and bay. Scrape the fond off the base. Return the pork and juices. <strong>The milk should reach roughly halfway up the shoulder — top up toward the 850 ml if a wide pot leaves it short.</strong></li>
+    <li><strong>Braise.</strong> Bring to a gentle simmer, then cover lid-ajar and transfer to the 300°F / 150°C oven. Braise ~2 hr 15 min, <strong>turning every 45–60 min</strong> so no face stays exposed long enough to dry. <strong>At 90 min:</strong> if milk is below ⅓ of meat height, add 60–120 ml hot water — <span class="cue">not milk, which reads raw added late.</span> <span class="cue">The milk separates into golden curds in a thin whey — this is correct.</span> Done when a fork twists with no resistance (secondary cue: 195–203°F / 90–95°C at the thickest part).</li>
+    <li><strong>Rest + remove aromatics + reduce.</strong> Lift the pork to a board, tent loosely. <strong>Fish out and discard the bay and zest strips now, before any reduction</strong> — left in during an active reduce, the zest over-extracts and citrus turns dominant. Then, if the sauce is thin, set over medium and reduce a few minutes to a loose, spoonable consistency.</li>
+  </ol>
+
+  <h2>Holding &amp; Assembly</h2>
+  <ol class="steps">
+    <li>The pork rests tented while you finish the sauce (rest overlaps the reduction — ~15 min total).</li>
+    <li><strong>Mash 2 softened garlic cloves into the sauce</strong> for body, then taste — braised cloves vary in strength, so add one more only if it reads thin on garlic. <span class="cue">Mashing all five can tip the sauce sweet-garlicky, away from the clean pork-and-dairy register.</span></li>
+    <li>Off-heat, stir 1–2 tsp lemon juice into the sauce; taste and adjust salt. <span class="cue">Add juice only off the heat — boiling dulls brightness.</span></li>
+    <li>Slice against the grain into thick slices (soft meat — sharp knife, gentle hand). Spoon curd sauce over and <strong>finish with fresh black pepper.</strong></li>
+  </ol>
+
+  <h2>Critical Control Points</h2>
+  <table class="ccp-table">
+    <thead><tr><th>Severity</th><th>Failure Mode &amp; Cue</th><th>Recovery</th></tr></thead>
+    <tbody>
+      <tr class="major"><td>Major</td><td><strong>Pork under-braised</strong> — fork meets resistance, slices hold tight. Pulled before collagen melts.</td><td>Return to oven, covered, 20–30 min; re-check. Fully recoverable with time; unrecoverable only if served early.</td></tr>
+      <tr class="major"><td>Major</td><td><strong>Fond/aromatics scorched</strong> — pot base blackens during the sear, or garlic browns past gold at bloom; bitter edge carries into the sauce.</td><td>Unrecoverable for the sauce if badly scorched; wipe pot, re-bloom fresh garlic/sage before milk. Prevent by lowering heat as the base threatens to blacken.</td></tr>
+      <tr class="major"><td>Major</td><td><strong>Braise dried out</strong> — milk over-evaporates, exposed pork dries, base scorches. Liquid below ⅓ meat height.</td><td>Add 60–120 ml hot water at the 90-min check; recoverable if caught before the base scorches. Not milk.</td></tr>
+      <tr class="minor"><td>Minor</td><td><strong>Sauce broken too far / dry curds</strong> — over-reduced, curds clump grainy-dry.</td><td>Loosen with warm milk or water off-heat to a loose consistency.</td></tr>
+    </tbody>
+  </table>
+
+  <p class="adjust"><strong>Adjust:</strong> For salt, season the sauce at the very end — reduction concentrates it, so hold back during cooking and correct with flaky salt at the table. For acid, off-heat lemon juice is the main lever; add ½ tsp at a time if flat or heavy. For richness, more lemon cuts heaviness; a small knob of butter stirred in rounds out a lean sauce.</p>
+
+  <div class="pg-footer">Generated 27 June 2026</div>
+</div>
+
+<!-- ============ PAGE 4: TWO SIDES (SHARE A PAGE) ============ -->
+<div class="page">
+  <div class="pg-header">
+    <span class="meal">Maiale al Latte — Sunday Dinner</span>
+    <span class="pg">Page 4</span>
+  </div>
+
+  <h1>Creamy Cannellini Beans with Braising Liquor &amp; Parsley</h1>
+  <p class="timing">Yield: 3 as a side · Total: ~20 min · Active: ~15 min</p>
+  <p class="overview">Tinned cannellini gently simmered with garlic, shallot, and a spoonful of the pork's milk braising liquor, then partly mashed for a creamy, spoonable texture finished with parsley and olive oil — the carb-light alternative to mash.</p>
+
+  <h2>Ingredients</h2>
+  <table class="ing-table">
+    <tbody>
+      <tr><td>Cannellini beans, drained and rinsed</td><td>2 × 400 g tins (≈480 g)</td></tr>
+      <tr><td>Garlic, thinly sliced</td><td>2 cloves</td></tr>
+      <tr><td>Shallot, finely diced</td><td>1 small</td></tr>
+      <tr><td>Olive oil, plus extra-virgin to finish</td><td>2 tbsp / 30 ml</td></tr>
+      <tr><td>Reserved pork braising liquor (before reduction)</td><td>~3 tbsp</td></tr>
+      <tr><td>Water, plus more as needed</td><td>~60 ml / ¼ cup</td></tr>
+      <tr><td>Flat-leaf parsley, chopped</td><td>¼ cup / 15–20 g</td></tr>
+      <tr><td>Diamond Crystal kosher salt &amp; black pepper</td><td>to taste</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Prep Phase</h2>
+  <ol class="steps">
+    <li>Drain and rinse the beans well. Thinly slice 2 garlic cloves; finely dice 1 small shallot. Chop ¼ cup parsley.</li>
+    <li><strong>Reserve ~3 tbsp pork braising liquor <em>before</em> the pork sauce is reduced</strong> (at the pork's T−0:30 step) — reserving after reduction spoons over-concentrated sauce into the beans and skews seasoning.</li>
+  </ol>
+
+  <h2>Active Cooking</h2>
+  <ol class="steps">
+    <li>Warm 2 tbsp olive oil in a saucepan over medium (induction). Add shallot and a pinch of salt; sweat 2–3 min until soft and translucent — <span class="cue">not browned.</span> Add garlic; cook 60 sec until fragrant and pale.</li>
+    <li>Add beans, ~60 ml water, and the 3 tbsp reserved liquor. Bring to a gentle simmer; cook 10–12 min, stirring occasionally, until creamy and heated through.</li>
+    <li>Mash <strong>approximately 20–25%</strong> of the beans against the pot to thicken into a loose, creamy base — <span class="cue">leave the rest whole for texture.</span> Stir in parsley off-heat, finish with a drizzle of extra-virgin olive oil and black pepper. Season to taste.</li>
+  </ol>
+
+  <h2>Holding &amp; Assembly</h2>
+  <ol class="steps">
+    <li>Hold covered on lowest heat up to ~30 min. Beans tighten as they sit; loosen with a splash of hot water or more liquor to a spoonable consistency before serving.</li>
+  </ol>
+
+  <h2>Critical Control Points</h2>
+  <table class="ccp-table">
+    <thead><tr><th>Severity</th><th>Failure Mode &amp; Cue</th><th>Recovery</th></tr></thead>
+    <tbody>
+      <tr class="minor"><td>Minor</td><td><strong>Beans too tight / pasty</strong> — over-mashed or over-reduced; gluey not creamy.</td><td>Loosen off-heat with hot water or liquor a tablespoon at a time.</td></tr>
+      <tr class="minor"><td>Minor</td><td><strong>Garlic scorched</strong> — sliced garlic browns and turns bitter at the sweat.</td><td>Keep heat at medium, add garlic after shallot softens; if scorched, restart the aromatics.</td></tr>
+    </tbody>
+  </table>
+
+  <p class="adjust"><strong>Adjust:</strong> For salt, the liquor is already seasoned — salt last and lightly. For richness, a little more liquor deepens; water lightens if too heavy. Texture is the main lever — mash more for creamier, less for more intact beans.</p>
+
+  <hr class="dish-div">
+
+  <h1>Charred Broccolini with Lemon Zest</h1>
+  <p class="timing">Yield: 3 as a side · Total: ~12 min · Active: ~10 min</p>
+  <p class="overview">Broccolini blanched briefly, then charred in a hot pan until blistered and tender-crisp, dressed with grated lemon zest, a squeeze of juice, and olive oil — the bright, firm, charred counterpoint to two soft, rich components.</p>
+
+  <h2>Ingredients</h2>
+  <table class="ing-table">
+    <tbody>
+      <tr><td>Broccolini, trimmed (woody ends removed; thick stalks halved lengthwise)</td><td>2 bunches / ~350 g</td></tr>
+      <tr><td>Olive oil, plus a little to finish</td><td>1 tbsp / 15 ml</td></tr>
+      <tr><td>Lemon zest, finely grated</td><td>from shared lemon</td></tr>
+      <tr><td>Lemon juice</td><td>a squeeze</td></tr>
+      <tr><td>Diamond Crystal kosher salt</td><td>to taste</td></tr>
+      <tr><td>Chili flakes, optional</td><td>a pinch</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Prep Phase</h2>
+  <ol class="steps">
+    <li>Trim the woody ends. Halve thick stalks lengthwise so they cook evenly with thinner ones. Finely grate the lemon zest.</li>
+  </ol>
+
+  <h2>Active Cooking</h2>
+  <ol class="steps">
+    <li><strong>Blanch:</strong> Drop the broccolini into well-salted boiling water for 90 sec, just until the stalks lose their raw snap. Drain and pat thoroughly dry. <span class="cue">The blanch lets a fast, hot pan-sear blister the surface without leaving the stalks raw — a flat pan has no indirect zone to finish them gently, so they need par-cooking first.</span> Toss with 1 tbsp olive oil and a pinch of salt.</li>
+    <li><strong>Char:</strong> Heat a cast-iron or heavy stainless pan over medium-high until properly hot (outdoor gas burner preferred for heat and splatter, or induction indoors). Lay the broccolini in a single layer — don't crowd — and char 3–4 min, turning, until blistered and lightly blackened in spots and the stalks are tender-crisp. <span class="cue">Blistered and spotted, not ashed grey — pull while there's still bite.</span> Char in two batches if crowded; piling it steams rather than blisters.</li>
+  </ol>
+
+  <h2>Holding &amp; Assembly</h2>
+  <ol class="steps">
+    <li>Do not hold — plate-last component. Off heat, dress immediately with grated zest, a squeeze of juice, a thread of olive oil, salt, and optional chili. Serve at once.</li>
+  </ol>
+
+  <h2>Critical Control Points</h2>
+  <table class="ccp-table">
+    <thead><tr><th>Severity</th><th>Failure Mode &amp; Cue</th><th>Recovery</th></tr></thead>
+    <tbody>
+      <tr class="major"><td>Major</td><td><strong>Overcooked / limp</strong> — held too long after dressing or charred past tender-crisp; stalks floppy, no snap. Unrecoverable for texture; dish remains serviceable.</td><td>None — texture is lost once gone. Prevent by charring to just-tender and serving immediately; this is why it's plated last.</td></tr>
+      <tr class="minor"><td>Minor</td><td><strong>Undercooked stalk</strong> — char looks done but the thick stalk is raw-firm inside.</td><td>Return to the pan briefly; mostly prevented by the blanch and halving thick stalks.</td></tr>
+    </tbody>
+  </table>
+
+  <p class="adjust"><strong>Adjust:</strong> For salt, dress and taste at the end — char concentrates flavor, so season lightly. For acid, lemon is the brightness lever; zest first, then juice a little at a time. Heat: chili flakes optional, at plating.</p>
+
+  <div class="pg-footer">Generated 27 June 2026</div>
+</div>
+
+</body>
+</html>

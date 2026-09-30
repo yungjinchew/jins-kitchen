@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pork, Fennel & Lemon Ragù with Pappardelle</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:opsz,wght@9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:       #1B5E7B;
+    --teal-light: #D0E8F0;
+    --gray-dark:  #333333;
+    --gray-mid:   #555555;
+    --gray-light: #F0F0F0;
+    --crit-bg:    #FEE2E2;
+    --major-bg:   #FEF3C7;
+    --minor-bg:   #F3F4F6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #d8d8d8;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 8.5pt;
+    color: #222222;
+    padding: 24px 0;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: white;
+    margin: 0 auto 24px;
+    padding: 13mm 14mm 16mm;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    position: relative;
+  }
+
+  /* Running header */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 7mm;
+    border-bottom: 0.5px solid var(--teal-light);
+    padding-bottom: 3px;
+  }
+  .page-header .meal-name {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 7pt;
+    font-weight: 600;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+  .page-header .page-num {
+    font-size: 7pt;
+    color: #999;
+  }
+
+  /* Footer */
+  .page-footer {
+    position: absolute;
+    bottom: 8mm;
+    right: 14mm;
+    font-size: 7pt;
+    color: #999;
+  }
+
+  /* Dish title */
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 15pt;
+    font-weight: 700;
+    color: var(--teal);
+    line-height: 1.2;
+    margin-bottom: 3px;
+  }
+
+  /* Timing subtitle */
+  .timing {
+    font-size: 8pt;
+    color: var(--gray-mid);
+    font-style: italic;
+    margin-bottom: 6px;
+  }
+
+  /* Dish overview */
+  .overview {
+    font-size: 8.5pt;
+    color: #222;
+    margin-bottom: 8px;
+    line-height: 1.45;
+  }
+
+  /* Section headers */
+  h2 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 7.5pt;
+    font-weight: 600;
+    color: var(--gray-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 9px;
+    margin-bottom: 4px;
+    border-bottom: 0.5px solid #e0e0e0;
+    padding-bottom: 2px;
+  }
+
+  /* Phase headers */
+  h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 8pt;
+    font-weight: 600;
+    color: var(--teal);
+    margin-top: 7px;
+    margin-bottom: 3px;
+  }
+
+  /* Numbered steps */
+  ol {
+    padding-left: 14px;
+    margin-bottom: 5px;
+  }
+  ol li {
+    font-size: 8.5pt;
+    color: #222;
+    line-height: 1.5;
+    margin-bottom: 1px;
+  }
+
+  /* Doneness / target cues */
+  .cue { font-style: italic; color: var(--gray-mid); }
+
+  .target-note {
+    font-size: 8pt;
+    color: var(--gray-mid);
+    font-style: italic;
+    margin: 4px 0 5px 0;
+    line-height: 1.45;
+  }
+
+  /* Workflow summary strip */
+  .wf-summary {
+    font-size: 7.5pt;
+    color: var(--gray-mid);
+    font-style: italic;
+    background: #f7fbfd;
+    border-left: 2.5px solid var(--teal-light);
+    padding: 4px 8px;
+    margin-bottom: 5px;
+    line-height: 1.45;
+  }
+
+  /* All tables */
+  table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 6px;
+  }
+  th {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 7.5pt;
+    font-weight: 600;
+    color: var(--gray-dark);
+    background: var(--teal-light);
+    padding: 4px 6px;
+    text-align: left;
+  }
+  td {
+    font-size: 8pt;
+    color: #222;
+    padding: 3px 6px;
+    vertical-align: top;
+    word-wrap: break-word;
+    border-bottom: 0.5px solid #ebebeb;
+  }
+
+  /* Ingredient table */
+  .ing-table td:first-child { width: 67%; }
+  .ing-table td:last-child  { width: 33%; font-variant-numeric: tabular-nums; }
+  tr.ing-section td {
+    background: var(--gray-light);
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray-mid);
+    font-weight: 600;
+    padding: 3px 6px;
+  }
+
+  /* CCP table */
+  .ccp-table th:nth-child(1),
+  .ccp-table td:nth-child(1) {
+    width: 58px;
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .ccp-table th:nth-child(2),
+  .ccp-table td:nth-child(2) { width: 57%; }
+  .ccp-table th:nth-child(3),
+  .ccp-table td:nth-child(3) { width: 37%; }
+  .ccp-table td { font-size: 7.5pt; }
+  tr.crit  td { background: var(--crit-bg); }
+  tr.major td { background: var(--major-bg); }
+  tr.minor td { background: var(--minor-bg); }
+
+  /* Adjust note */
+  .adjust-note {
+    font-size: 8pt;
+    color: var(--gray-mid);
+    font-style: italic;
+    line-height: 1.55;
+    margin-top: 5px;
+  }
+
+  /* Holding steps */
+  .holding-steps {
+    margin-bottom: 5px;
+  }
+  .holding-steps li {
+    font-size: 8.5pt;
+    line-height: 1.5;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page {
+      width: 100%;
+      min-height: auto;
+      margin: 0;
+      padding: 13mm 14mm 18mm;
+      box-shadow: none;
+      page-break-after: always;
+    }
+    .page:last-child { page-break-after: avoid; }
+    @page { size: A4; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="page-header">
+    <span class="meal-name">Pork, Fennel &amp; Lemon Ragù with Pappardelle</span>
+    <span class="page-num">Page 1</span>
+  </div>
+
+  <h1>Pork, Fennel &amp; Lemon Ragù with Pappardelle</h1>
+  <div class="timing">Yield: 3–4 servings &nbsp;·&nbsp; Total: ~3½ hr &nbsp;·&nbsp; Active: ~55–60 min &nbsp;·&nbsp; Oven: 300°F / 150°C</div>
+  <div class="overview">A bright, aromatic white ragù built around pork shoulder, fennel, lemon, and Pecorino Romano — tender shredded pork against soft pappardelle, with fennel fronds providing aromatic lift at service.</div>
+
+  <!-- INGREDIENTS -->
+  <h2>Ingredients</h2>
+  <table class="ing-table">
+    <tr class="ing-section"><td colspan="2">Ragù</td></tr>
+    <tr><td>Pancetta, finely chopped</td><td>4 oz / 115 g</td></tr>
+    <tr><td>Onion, finely chopped</td><td>1 large</td></tr>
+    <tr><td>Fennel bulbs (1½ large), finely chopped — fronds reserved</td><td>1½ large</td></tr>
+    <tr><td>Garlic cloves, minced</td><td>4 cloves</td></tr>
+    <tr><td>Fresh thyme, minced</td><td>2 tsp</td></tr>
+    <tr><td>Diamond Crystal kosher salt</td><td>1½ tsp</td></tr>
+    <tr><td>Black pepper, freshly ground</td><td>1 tsp</td></tr>
+    <tr><td>Boneless pork shoulder, trimmed, cut into 2 pieces</td><td>1½ lb / 680 g</td></tr>
+    <tr><td>Dry white wine</td><td>150 ml / ⅔ cup</td></tr>
+    <tr><td>Chicken stock</td><td>1 cup / 240 ml</td></tr>
+    <tr><td>Water</td><td>1¼ cups / 300 ml</td></tr>
+    <tr class="ing-section"><td colspan="2">Finish</td></tr>
+    <tr><td>Lemon zest (2 lemons) — 75% into sauce, 25% reserved for plating</td><td>2 lemons</td></tr>
+    <tr><td>Fresh lemon juice</td><td>¼ cup / 60 ml</td></tr>
+    <tr><td>Heavy cream</td><td>⅓ cup / 80 ml</td></tr>
+    <tr><td>Pecorino Romano, finely grated — 70% sauce, 30% table</td><td>2 oz / 55 g</td></tr>
+    <tr class="ing-section"><td colspan="2">Pasta</td></tr>
+    <tr><td>Dried pappardelle</td><td>12 oz / 340 g</td></tr>
+    <tr><td>Diamond Crystal kosher salt (pasta water)</td><td>1 tbsp</td></tr>
+  </table>
+
+  <!-- PREP -->
+  <h2>Prep Phase</h2>
+  <ol>
+    <li>Finely chop onion and fennel bulb.</li>
+    <li>Mince garlic and thyme.</li>
+    <li>Finely chop fennel fronds; reserve separately.</li>
+    <li>Zest and juice the lemons separately. Divide zest: reserve 25% for plating; set aside 75% for the sauce.</li>
+    <li>Pat pork completely dry with paper towels.</li>
+  </ol>
+
+  <!-- ACTIVE COOKING -->
+  <h2>Active Cooking</h2>
+
+  <div class="wf-summary">Dutch oven runs two sequential fond builds before deglazing — transfer base mixture to a bowl between phases so the pan is clear for the pork sear.</div>
+
+  <h3>Phase 1 — Build the Base</h3>
+  <ol>
+    <li>Heat Dutch oven over medium-high heat.</li>
+    <li>Add pancetta and ⅔ cup / 160 ml water. Cook until water evaporates and pancetta renders, <span class="cue">8–10 min.</span></li>
+    <li>Continue until <span class="cue">golden fond develops on the base.</span></li>
+    <li>Add onion and fennel. Cook until softened and <span class="cue">lightly browned, 7–10 min.</span></li>
+    <li>Add garlic, thyme, salt, and pepper. Cook 30 seconds.</li>
+  </ol>
+  <p class="target-note">Transfer mixture to a bowl.</p>
+
+  <h3>Phase 2 — Moderate Pork Sear</h3>
+  <ol>
+    <li>Return Dutch oven to medium-high heat.</li>
+    <li>Confirm pork is completely dry before adding to pan.</li>
+    <li>Sear pork pieces until <span class="cue">lightly browned on all sides.</span> Develop moderate color only — avoid a dark crust.</li>
+  </ol>
+  <p class="target-note">Remove pork.</p>
+
+  <h3>Phase 3 — Deglaze and Braise</h3>
+  <ol>
+    <li>Add wine. Scrape up fond and reduce by roughly half.</li>
+    <li>Return vegetable mixture. Add chicken stock and water.</li>
+    <li>Return pork. Bring to a simmer.</li>
+    <li>Cover and transfer to oven. Cook at 300°F / 150°C for approximately 2½ hours.</li>
+  </ol>
+  <p class="target-note"><span class="cue">Doneness: pork shreds easily with light fork pressure; muscle groups separate without resistance.</span></p>
+
+  <h3>Phase 4 — Develop the Sauce</h3>
+  <ol>
+    <li>Remove pork to a plate. Cover Dutch oven and let stand 10–15 min so sidewall fond softens.</li>
+    <li>Scrape all fond into the sauce.</li>
+    <li>Shred pork into bite-sized pieces. Return pork and accumulated juices to the Dutch oven.</li>
+  </ol>
+
+  <h3>Phase 5 — Build Final Flavor</h3>
+  <ol>
+    <li>Stir in 75% of the lemon zest and all of the lemon juice. Bring to a gentle simmer.</li>
+    <li>Assess consistency.</li>
+  </ol>
+  <p class="target-note"><span class="cue">Target: ragù should appear slightly too loose — almost stew-like. If it already heavily coats a spoon or sits in thick ridges, loosen with a splash of stock or water before proceeding.</span></p>
+
+  <h3>Phase 6 — Cook Pasta</h3>
+  <ol>
+    <li>Bring 4 quarts / 3.8 L water to a boil. Add 1 tbsp kosher salt.</li>
+    <li>Cook pappardelle until al dente — typically 30–60 seconds beyond package timing for dried.</li>
+    <li>Reserve 2 cups / 475 ml pasta water. Drain.</li>
+  </ol>
+
+  <h3>Phase 7 — Finish</h3>
+  <p class="target-note" style="margin-bottom:4px;">Keep Dutch oven over <strong>low heat</strong> throughout this phase.</p>
+  <ol>
+    <li>Add pasta to the ragù.</li>
+    <li>Add 1 cup / 240 ml reserved pasta water.</li>
+    <li>Add 70% of the Pecorino. Toss until fully emulsified.</li>
+    <li>Assess consistency — add additional pasta water if needed.</li>
+    <li>Stir in heavy cream. Toss 30–60 seconds.</li>
+    <li>Final consistency check — add additional pasta water if required.</li>
+  </ol>
+  <p class="target-note"><span class="cue">Target: sauce coats pasta fluidly and pools lightly at the bottom of the bowl. It should not cling heavily.</span></p>
+
+  <!-- HOLDING & ASSEMBLY -->
+  <h2>Holding &amp; Assembly</h2>
+  <ol class="holding-steps">
+    <li>Remove from heat. Rest 1–2 minutes only.</li>
+    <li>Divide among warm bowls.</li>
+    <li>Garnish with reserved lemon zest and fennel fronds.</li>
+    <li>Serve remaining Pecorino at the table.</li>
+  </ol>
+  <p class="target-note">Serve immediately.</p>
+
+  <!-- CCPs -->
+  <h2>Critical Control Points</h2>
+  <table class="ccp-table">
+    <thead>
+      <tr>
+        <th>Severity</th>
+        <th>Failure Mode &amp; Cue</th>
+        <th>Recovery</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="crit">
+        <td>Critical</td>
+        <td>Sauce over-reduced before pasta enters — sits in thick ridges and barely flows when spoon is dragged through it</td>
+        <td>Loosen with stock, water, or pasta water before adding pasta</td>
+      </tr>
+      <tr class="crit">
+        <td>Critical</td>
+        <td>Pork under-braised — resists shredding or pulls into long tough strands</td>
+        <td>Return to oven until it shreds easily with light fork pressure</td>
+      </tr>
+      <tr class="major">
+        <td>Major</td>
+        <td>Moderate sear exceeded — dark crust and deeply roasted fond</td>
+        <td>Proceed; dish remains serviceable</td>
+      </tr>
+      <tr class="major">
+        <td>Major</td>
+        <td>Pecorino clumps — cheese forms strings rather than emulsifying</td>
+        <td>Add warm pasta water gradually while tossing</td>
+      </tr>
+      <tr class="minor">
+        <td>Minor</td>
+        <td>Lemon dominates — acidity overwhelms pork and fennel</td>
+        <td>Adjust with pasta water before considering additional cream</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ADJUST NOTE -->
+  <p class="adjust-note"><em>Adjust:</em> Add salt only after Pecorino is incorporated. Correct texture with pasta water, not cream — pasta water is the primary finishing lever throughout. Increase richness with additional Pecorino before increasing cream. Use reserved lemon zest at plating for brightness; additional lemon juice only at service.</p>
+
+  <div class="page-footer">13 June 2026</div>
+</div>
+
+</body>
+</html>

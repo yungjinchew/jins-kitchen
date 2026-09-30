@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MB3+ Ribeye Dinner — Cooking Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:opsz,wght@9..144,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal:       #1B5E7B;
+  --teal-light: #D0E8F0;
+  --gray-dark:  #333333;
+  --gray-mid:   #555555;
+  --gray-light: #F0F0F0;
+  --crit-bg:    #FEE2E2;
+  --major-bg:   #FEF3C7;
+  --minor-bg:   #F3F4F6;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #d8d8d8;
+  padding: 24px 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 8.5pt;
+  color: #222222;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  background: white;
+  margin: 0 auto 24px;
+  padding: 13mm 14mm 16mm;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+}
+.content { flex: 1; }
+
+/* Running header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 0.5px solid #cccccc;
+  padding-bottom: 4px;
+  margin-bottom: 7mm;
+}
+.header-title {
+  font-size: 7pt;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 600;
+}
+.header-page { font-size: 7pt; color: #999; }
+
+/* Footer */
+.page-footer {
+  margin-top: auto;
+  padding-top: 5px;
+  border-top: 0.5px solid #cccccc;
+  font-size: 7pt;
+  color: #999;
+  text-align: right;
+}
+
+/* Headings */
+.meal-title {
+  font-family: 'Fraunces', serif;
+  font-size: 19pt;
+  font-weight: 700;
+  color: var(--teal);
+  margin-bottom: 2px;
+  line-height: 1.1;
+}
+.meal-sub {
+  font-size: 8pt;
+  color: var(--gray-mid);
+  margin-bottom: 10px;
+}
+h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 15pt;
+  font-weight: 700;
+  color: var(--teal);
+  margin-bottom: 2px;
+  line-height: 1.15;
+}
+h2 {
+  font-size: 7.5pt;
+  font-weight: 600;
+  color: var(--gray-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 2px;
+  margin: 8px 0 4px;
+}
+h3 {
+  font-size: 8pt;
+  font-weight: 600;
+  color: var(--teal);
+  margin: 5px 0 2px;
+}
+
+/* Timing & overview */
+.timing {
+  font-size: 8pt;
+  color: var(--gray-mid);
+  font-style: italic;
+  margin-bottom: 4px;
+}
+.overview {
+  font-size: 8.5pt;
+  font-style: italic;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+/* Lists */
+ol.steps { padding-left: 17px; margin-bottom: 4px; }
+ol.steps li {
+  font-size: 8.5pt;
+  line-height: 1.45;
+  margin-bottom: 3px;
+  color: #222;
+}
+ul.dish-list { list-style: disc; padding-left: 16px; margin-bottom: 6px; }
+ul.dish-list li { font-size: 8.5pt; line-height: 1.5; margin-bottom: 2px; }
+ul.prep-list { list-style: disc; padding-left: 16px; margin-bottom: 4px; }
+ul.prep-list li { font-size: 8.5pt; line-height: 1.4; margin-bottom: 2px; }
+
+/* Sensory cue */
+.cue { font-style: italic; color: var(--gray-mid); }
+
+/* Workflow summary strip */
+.wf-summary {
+  font-size: 7.5pt;
+  color: var(--gray-mid);
+  font-style: italic;
+  background: #f7fbfd;
+  border-left: 2.5px solid var(--teal-light);
+  padding: 4px 8px;
+  margin-bottom: 5px;
+  line-height: 1.45;
+}
+
+/* Workflow notes block */
+.wf-notes {
+  font-size: 8pt;
+  color: var(--gray-mid);
+  font-style: italic;
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+.wf-notes p { margin-bottom: 4px; }
+.wf-notes strong { font-style: normal; color: var(--gray-dark); }
+
+/* Tables — general */
+table { width: 100%; border-collapse: collapse; margin-bottom: 7px; }
+th {
+  background: var(--teal-light);
+  color: var(--gray-dark);
+  font-weight: 600;
+  font-size: 7.5pt;
+  padding: 4px 6px;
+  text-align: left;
+  border: 1px solid #b8d8e8;
+}
+td {
+  padding: 4px 6px;
+  border: 1px solid #ddd;
+  vertical-align: top;
+  line-height: 1.4;
+  font-size: 8pt;
+  color: #222;
+}
+
+/* Ingredient table */
+.ing-table { table-layout: fixed; }
+.ing-table td:first-child { width: 67%; }
+.ing-table td:last-child  { width: 33%; font-variant-numeric: tabular-nums; word-wrap: break-word; }
+tr.ing-section td {
+  background: var(--gray-light);
+  font-size: 7pt;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray-mid);
+  font-weight: 600;
+  padding: 3px 6px;
+}
+
+/* T-minus timeline */
+.tmin-table { table-layout: fixed; }
+.tmin-table th:nth-child(1), .tmin-table td:first-child {
+  width: 100px;
+  font-weight: 600;
+  color: var(--teal);
+  white-space: nowrap;
+  font-size: 8pt;
+}
+.tmin-table td:last-child { word-wrap: break-word; }
+
+/* Holding chain */
+.hold-table { table-layout: fixed; font-size: 7.5pt; }
+.hold-table th { font-size: 7pt; }
+.hold-table td { font-size: 7.5pt; word-wrap: break-word; }
+.hold-table th:nth-child(1), .hold-table td:nth-child(1) { width: 14%; }
+.hold-table th:nth-child(2), .hold-table td:nth-child(2) { width: 23%; }
+.hold-table th:nth-child(3), .hold-table td:nth-child(3) { width: 10%; }
+.hold-table th:nth-child(4), .hold-table td:nth-child(4) { width: 17%; }
+.hold-table th:nth-child(5), .hold-table td:nth-child(5) { width: 36%; }
+
+/* Shopping list */
+.shop-table { font-size: 7.5pt; table-layout: fixed; }
+.shop-table th { font-size: 7pt; }
+.shop-table td { font-size: 7pt; word-wrap: break-word; padding: 3px 5px; }
+tr.shop-sec td {
+  background: #e4e4e4;
+  font-size: 7pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #444;
+  padding: 3px 5px;
+}
+
+/* CCP table */
+.ccp-table { table-layout: fixed; }
+.ccp-table th:nth-child(1),
+.ccp-table td:nth-child(1) {
+  width: 58px;
+  font-size: 7pt;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.ccp-table th:nth-child(2),
+.ccp-table td:nth-child(2) { width: 57%; }
+.ccp-table th:nth-child(3),
+.ccp-table td:nth-child(3) { width: 37%; }
+.ccp-table td { font-size: 7.5pt; word-wrap: break-word; }
+tr.crit  td { background: var(--crit-bg); }
+tr.major td { background: var(--major-bg); }
+tr.minor td { background: var(--minor-bg); }
+
+/* Adjust note */
+.adjust {
+  font-size: 8pt;
+  font-style: italic;
+  color: var(--gray-mid);
+  margin-top: 5px;
+  line-height: 1.55;
+}
+
+/* Holding & Assembly body */
+.hold-body { font-size: 8.5pt; margin-bottom: 3px; line-height: 1.45; }
+
+/* Dish divider for shared pages */
+hr.dish-div {
+  border: none;
+  border-top: 1.5px solid var(--teal-light);
+  margin: 14px 0;
+}
+
+/* Shared prep */
+.shared-prep li { font-size: 8.5pt; line-height: 1.45; margin-bottom: 3px; }
+
+/* ── Print ─────────────────────────────────────────────── */
+@media print {
+  body { background: white; padding: 0; }
+  .page {
+    width: 100%;
+    min-height: auto;
+    margin: 0;
+    padding: 13mm 14mm 18mm;
+    box-shadow: none;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: avoid; }
+  @page { size: A4; margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE 1 — Menu Overview · Shared Prep · Shopping List
+     ══════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="header-title">MB3+ Ribeye Dinner &middot; 26 May 2026</span>
+    <span class="header-page">Page 1</span>
+  </div>
+  <div class="content">
+
+    <p class="meal-title">MB3+ Ribeye Dinner</p>
+    <p class="meal-sub">3 portions &middot; ~2 hr 5 min total &middot; 26 May 2026</p>
+
+    <h2>Menu</h2>
+    <ul class="dish-list">
+      <li>Dish 1 &mdash; Reverse-Seared MB3+ Ribeye with Mushroom Finish</li>
+      <li>Dish 2 &mdash; Cannellini Bean, Tomato &amp; Spinach Braise</li>
+      <li>Dish 3 &mdash; Charred Gruy&egrave;re Cauliflower</li>
+      <li>Dish 4 &mdash; Warm Blueberry-Strawberry Compote</li>
+    </ul>
+
+    <h2>Shared Prep</h2>
+    <ul class="prep-list shared-prep">
+      <li><strong>Parmesan:</strong> grate 35&ndash;40 g total &mdash; 15&ndash;20 g &rarr; Ribeye mushroom finish &nbsp;&bull;&nbsp; 20 g &rarr; Braise</li>
+      <li><strong>Gruy&egrave;re:</strong> grate or thinly slice 40 g &rarr; Cauliflower (held until T&minus;9)</li>
+    </ul>
+
+    <h2>Shopping List</h2>
+    <table class="shop-table">
+      <thead>
+        <tr>
+          <th style="width:30%">Ingredient</th>
+          <th style="width:15%">Total</th>
+          <th style="width:14%">Ribeye</th>
+          <th style="width:13%">Braise</th>
+          <th style="width:15%">Cauliflower</th>
+          <th style="width:13%">Compote</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="shop-sec"><td colspan="6">Protein / Meat</td></tr>
+        <tr><td>Ribeye steak, MB3+</td><td>1.1 lb / 500 g</td><td>1.1 lb / 500 g</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr class="shop-sec"><td colspan="6">Produce</td></tr>
+        <tr><td>Frozen blueberries</td><td>150 g / 5 oz</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>150 g</td></tr>
+        <tr><td>Frozen cauliflower</td><td>450 g / 1 lb</td><td>&mdash;</td><td>&mdash;</td><td>450 g</td><td>&mdash;</td></tr>
+        <tr><td>Frozen mushrooms</td><td>200 g / 7 oz</td><td>200 g</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>Frozen spinach</td><td>120 g / 4 oz</td><td>&mdash;</td><td>120 g</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>Frozen strawberries</td><td>150 g / 5 oz</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>150 g</td></tr>
+        <tr class="shop-sec"><td colspan="6">Pantry / Dry</td></tr>
+        <tr><td>Cannellini beans, tin <em>(pantry check)</em></td><td>1 &times; 400 g</td><td>&mdash;</td><td>1 tin</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>Canned tomatoes, crushed <em>(pantry check)</em></td><td>~300 g (¾ tin)</td><td>&mdash;</td><td>~300 g</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr class="shop-sec"><td colspan="6">Fridge / Dairy</td></tr>
+        <tr><td>Gruy&egrave;re</td><td>40 g / 1.4 oz</td><td>&mdash;</td><td>&mdash;</td><td>40 g</td><td>&mdash;</td></tr>
+        <tr><td>Parmesan</td><td>35&ndash;40 g</td><td>15&ndash;20 g (finish)</td><td>20 g (braise)</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr class="shop-sec"><td colspan="6">Oils &amp; Liquids</td></tr>
+        <tr><td>Neutral oil <em>(pantry check)</em></td><td>45 ml / 3 tbsp</td><td>15 ml (sear)</td><td>15 ml (base)</td><td>15 ml (char)</td><td>&mdash;</td></tr>
+        <tr class="shop-sec"><td colspan="6">Seasoning</td></tr>
+        <tr><td>Diamond Crystal kosher salt <em>(pantry check)</em></td><td>As needed</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
+        <tr><td>Sugar, optional <em>(pantry check)</em></td><td>To taste</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>optional</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="page-footer">26 May 2026</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE 2 — T-Minus Timeline · Workflow Notes · Holding Chain
+     ══════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="header-title">MB3+ Ribeye Dinner &middot; 26 May 2026</span>
+    <span class="header-page">Page 2</span>
+  </div>
+  <div class="content">
+
+    <h2>T&minus;Minus Timeline</h2>
+    <table class="tmin-table">
+      <thead>
+        <tr><th style="width:100px">Time</th><th>Action</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>T&minus;125</td><td>Pat steak completely dry on all surfaces; season with Diamond Crystal kosher salt; leave uncovered to temper at room temperature.</td></tr>
+        <tr><td>T&minus;80</td><td>Preheat oven to 250&deg;F / 120&deg;C.</td></tr>
+        <tr><td>T&minus;65</td><td>Steak onto rack over tray; into oven at 250&deg;F / 120&deg;C.</td></tr>
+        <tr><td>T&minus;55</td><td>Bean braise &mdash; heat oil over medium on Burner 1; add tomatoes (~300 g / &frac34; tin); begin reduction.</td></tr>
+        <tr><td>T&minus;45</td><td>Remove frozen cauliflower from freezer; leave at room temperature to partially thaw.</td></tr>
+        <tr><td>T&minus;40</td><td>Add cannellini beans to braise; reduce to medium-low; simmer.</td></tr>
+        <tr><td>T&minus;35</td><td>Compote &mdash; frozen berries over low heat on Burner 2; reduce lightly until glossy (~10 min).</td></tr>
+        <tr><td>T&minus;25</td><td>Compote done; remove from heat; hold at room temperature. Fold spinach and parmesan into braise; move to very low heat on Burner 1; cover and hold. Pat cauliflower dry; into dry pan on Burner 2 at maximum heat (Phase 1: moisture cook-off).</td></tr>
+        <tr><td>T&minus;23</td><td>Check steak internal temp &mdash; <span class="cue">if approaching 105&ndash;108&deg;F / 40&ndash;42&deg;C, monitor every 3 min.</span></td></tr>
+        <tr><td>T&minus;20</td><td>Steak at 112&ndash;115&deg;F / 44&ndash;46&deg;C; remove to rack to rest uncovered.</td></tr>
+        <tr><td>T&minus;13</td><td>Cauliflower charred on contact surfaces; transfer to heatproof dish (no cheese yet). Mushrooms into same dry pan on Burner 2 at maximum heat.</td></tr>
+        <tr><td>T&minus;9</td><td>Mushrooms cooked off and dry; remove. Add gruy&egrave;re to cauliflower; butane torch to melt and colour (~60&ndash;90 sec). Wipe Burner 2 pan; add neutral oil.</td></tr>
+        <tr><td>T&minus;7</td><td>Oil smoking; begin steak sear &mdash; 75&ndash;90 sec first side (steak has rested 13 min).</td></tr>
+        <tr><td>T&minus;5</td><td>Flip steak &mdash; 45&ndash;60 sec second side; render fat edge 20 sec.</td></tr>
+        <tr><td>T&minus;4</td><td>Steak off pan. Return mushrooms; add parmesan; 30&ndash;40 sec; remove from heat.</td></tr>
+        <tr><td>T&minus;3</td><td>Check braise &mdash; loosen with hot water if over-reduced. Slice steak immediately.</td></tr>
+        <tr><td>T&minus;0</td><td><strong>Plate and serve.</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div class="wf-notes">
+      <p><strong>Critical path:</strong> Steak reverse sear &rarr; 13-min rest &rarr; final sear &rarr; immediate slice and plate. Do not delay steak service for any other component. If timing slips: serve steak immediately; accept cauliflower with reduced char; loosen braise to order.</p>
+      <p><strong>Oven sequencing:</strong> 250&deg;F / 120&deg;C only &mdash; steak T&minus;65 to T&minus;20; no competing oven requirement. Cauliflower runs entirely on induction. Burner 1: braise active T&minus;55 to T&minus;25, then very low hold through service. Burner 2: compote (T&minus;35 to T&minus;25), cauliflower charring (T&minus;25 to T&minus;13), mushrooms (T&minus;13 to T&minus;9), steak sear (T&minus;7 onward) &mdash; strictly sequential on the same burner. Cauliflower and mushroom cook-off cannot overlap; sear follows mushroom cook-off on the wiped, re-oiled pan.</p>
+    </div>
+
+    <h2>Holding Chain</h2>
+    <table class="hold-table">
+      <thead>
+        <tr>
+          <th style="width:18%">Component</th>
+          <th style="width:24%">Hold Strategy</th>
+          <th style="width:12%">Max Hold</th>
+          <th style="width:20%">Drift Risk</th>
+          <th style="width:26%">Corrective</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Steak</td><td>Rack, uncovered</td><td>13 min</td><td>Carryover overshoot</td><td>Begin sear at T&minus;7 without delay</td></tr>
+        <tr><td>Bean braise</td><td>Covered, very low heat, Burner 1</td><td>25 min</td><td>Over-thickening</td><td>Loosen with 2&ndash;3 tbsp hot water; stir before serving</td></tr>
+        <tr><td>Cauliflower</td><td>Heatproof dish, uncovered</td><td>9 min post-torch</td><td>Crust softening</td><td>Brief 10-sec torch pass restores surface texture</td></tr>
+        <tr><td>Mushrooms</td><td>Pan edge, residual heat</td><td>5 min</td><td>Moisture weep</td><td>20-sec reheat at high before parmesan addition</td></tr>
+        <tr><td>Compote</td><td>Off heat, in pan</td><td>30 min</td><td>None material</td><td>Not required</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="page-footer">26 May 2026</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE 3 — Dish 1: Reverse-Seared MB3+ Ribeye
+     ══════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="header-title">MB3+ Ribeye Dinner &middot; 26 May 2026</span>
+    <span class="header-page">Page 3</span>
+  </div>
+  <div class="content">
+
+    <h1>Dish 1 &mdash; Reverse-Seared MB3+ Ribeye with Mushroom Finish</h1>
+    <p class="timing">Yield: 3 &middot; Total: ~1 hr 20 min &middot; Active: ~25 min &middot; Oven: 250&deg;F / 120&deg;C</p>
+    <p class="overview">Reverse sear establishes uniform internal doneness before the final high-heat crust; mushroom and parmesan finish served alongside, not over, the steak.</p>
+
+    <h2>Ingredients</h2>
+    <table class="ing-table">
+      <thead><tr><th>Ingredient</th><th>Amount</th></tr></thead>
+      <tbody>
+        <tr><td>Ribeye steak, MB3+</td><td>1.1 lb / 500 g</td></tr>
+        <tr><td>Diamond Crystal kosher salt</td><td>To season</td></tr>
+        <tr><td>Neutral oil</td><td>15 ml / 1 tbsp</td></tr>
+        <tr><td>Frozen mushrooms</td><td>200 g / 7 oz</td></tr>
+        <tr><td>Parmesan, finely grated</td><td>15&ndash;20 g / 0.5&ndash;0.7 oz</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Prep Phase</h2>
+    <ol class="steps">
+      <li>Pat steak completely dry on all surfaces including edges and fat cap.</li>
+      <li>Season with Diamond Crystal kosher salt on all surfaces.</li>
+      <li>Leave uncovered at room temperature 45&ndash;60 min before entering the oven.</li>
+    </ol>
+
+    <h2>Active Cooking</h2>
+    <div class="wf-summary">Mushroom cook-off (Burner 2, T&minus;13 to T&minus;9) and steak sear (T&minus;7 onward) are sequential in the same pan. Mushrooms must be fully cooked off, removed, and the pan wiped and re-oiled before the steak enters. Any residual moisture prevents crust formation.</div>
+    <ol class="steps">
+      <li>Place steak on rack over a tray; into oven at 250&deg;F / 120&deg;C.</li>
+      <li>Check internal temp at T&minus;23 (approx. 40 min). <span class="cue">If approaching 105&ndash;108&deg;F / 40&ndash;42&deg;C, monitor every 3 min.</span></li>
+      <li>Pull at 112&ndash;115&deg;F / 44&ndash;46&deg;C. Carries to 119&ndash;125&deg;F during rest; final sear raises centre to approx. 125&ndash;130&deg;F / 52&ndash;54&deg;C. Do not rely on elapsed time alone.</li>
+      <li>Remove to rack; rest uncovered. Begin sear at T&minus;7.</li>
+      <li>Mushroom cook-off (Burner 2, from T&minus;13): dry pan at high heat, 4&ndash;5 min without excessive stirring. <span class="cue">Primary cue: pan sounds dry &mdash; no sizzling water, only dry browning sounds.</span> Remove mushrooms; wipe pan.</li>
+      <li>Add 15 ml neutral oil to wiped pan; return to maximum heat. <span class="cue">Oil must be visibly smoking before steak enters.</span></li>
+      <li>Sear: 75&ndash;90 sec first side without moving. <span class="cue">Release cue: steak lifts cleanly with deep even browning.</span> Do not force the flip.</li>
+      <li>Flip: 45&ndash;60 sec second side. Render fat cap on edge 20 sec.</li>
+      <li>Remove steak to board. Return mushrooms to pan; add parmesan; 30&ndash;40 sec to gloss. Remove.</li>
+    </ol>
+    <p class="timing" style="margin-top:3px"><em>Secondary doneness cue (pre-sear):</em> <span class="cue">press centre lightly &mdash; if firm with significant resistance, shorten sear to 45&ndash;60 sec per side and skip the edge render.</span></p>
+
+    <h2>Holding &amp; Assembly</h2>
+    <p class="hold-body">Rest on rack, uncovered. Begin sear at T&minus;7 without delay.</p>
+    <p class="hold-body">Slice immediately before plating &mdash; do not slice and hold.</p>
+    <p class="hold-body">Spoon mushrooms alongside, not over, the steak. Serve steak partially over the bean braise.</p>
+
+    <h2>Critical Control Points</h2>
+    <table class="ccp-table">
+      <thead><tr><th>Severity</th><th>Failure Mode &amp; Cue</th><th>Recovery</th></tr></thead>
+      <tbody>
+        <tr class="crit"><td>Critical</td><td>Reverse sear overshoot &mdash; steak feels firm at centre; edges show grey before sear begins</td><td>Unrecoverable &mdash; shorten sear to absolute minimum; serve promptly</td></tr>
+        <tr class="major"><td>Major</td><td>Sear crust failure &mdash; pale grey surface on contact; pan moisture audible as weak sizzle instead of hard sear</td><td>Unrecoverable for that side; re-sear opposite side aggressively; accept uneven crust</td></tr>
+        <tr class="major"><td>Major</td><td>Mushroom moisture in sear pan &mdash; steak sizzles weakly and steams on contact</td><td>Remove steak; fully dry pan; re-heat oil to smoking; return steak</td></tr>
+        <tr class="minor"><td>Minor</td><td>Parmesan dominates beef at service &mdash; cheese aroma stronger than beef</td><td>Reduce parmesan on mushrooms; do not apply directly to sliced steak</td></tr>
+      </tbody>
+    </table>
+
+    <p class="adjust"><em>Adjust:</em> Taste sliced steak before adding finish salt &mdash; MB3+ fat amplifies salt perception; adjust only if under-seasoned. If crust softens during the rest-to-sear window, a 20-sec reflash in a dry pan at maximum heat recovers it. If the plate reads heavy, increase braise proportion per bite rather than adding acid to the steak.</p>
+
+  </div>
+  <div class="page-footer">26 May 2026</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE 4 — Dish 2: Cannellini Bean, Tomato & Spinach Braise
+     ══════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="header-title">MB3+ Ribeye Dinner &middot; 26 May 2026</span>
+    <span class="header-page">Page 4</span>
+  </div>
+  <div class="content">
+
+    <h1>Dish 2 &mdash; Cannellini Bean, Tomato &amp; Spinach Braise</h1>
+    <p class="timing">Yield: 3 &middot; Total: ~30 min &middot; Active: ~15 min</p>
+    <p class="overview">Thick tomato-cannellini braise providing the meal&rsquo;s acid balance &mdash; calibrated to support the steak, not compete with it.</p>
+
+    <h2>Ingredients</h2>
+    <table class="ing-table">
+      <thead><tr><th>Ingredient</th><th>Amount</th></tr></thead>
+      <tbody>
+        <tr><td>Cannellini beans, 1 tin, drained and rinsed</td><td>400 g / 14 oz</td></tr>
+        <tr><td>Canned tomatoes, crushed or chopped</td><td>~300 g / &frac34; of a 400 g tin</td></tr>
+        <tr><td>Frozen spinach</td><td>120 g / 4 oz</td></tr>
+        <tr><td>Parmesan, finely grated</td><td>20 g / 0.7 oz</td></tr>
+        <tr><td>Neutral or olive oil</td><td>15 ml / 1 tbsp</td></tr>
+        <tr><td>Diamond Crystal kosher salt</td><td>To finish</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Prep Phase</h2>
+    <ol class="steps">
+      <li>Drain and rinse beans lightly. Some surface starch aids cohesion &mdash; do not rinse aggressively.</li>
+    </ol>
+
+    <h2>Active Cooking</h2>
+    <ol class="steps">
+      <li>Heat oil over medium on Burner 1.</li>
+      <li>Add ~300 g tomatoes. Reduce over medium, stirring occasionally, until reduced by roughly one-third and <span class="cue">the surface coats a spoon lightly</span> &mdash; approx. 15 min. If tomato flavour reads full and deep before this point, hold back the remaining &frac14; tin.</li>
+      <li>Add drained beans. Reduce to medium-low; simmer until cohesive and thick but beans hold their shape &mdash; approx. 15 min.</li>
+      <li>Fold in frozen spinach; wilt fully, 2&ndash;3 min.</li>
+      <li>Stir in parmesan off heat. Move to very low heat on Burner 1; cover and hold.</li>
+    </ol>
+
+    <h2>Holding &amp; Assembly</h2>
+    <p class="hold-body">Hold covered on very low heat on Burner 1 through service.</p>
+    <p class="hold-body">At T&minus;3: stir and check consistency &mdash; loosen with 2&ndash;3 tbsp hot water if tightened.</p>
+
+    <h2>Critical Control Points</h2>
+    <table class="ccp-table">
+      <thead><tr><th>Severity</th><th>Failure Mode &amp; Cue</th><th>Recovery</th></tr></thead>
+      <tbody>
+        <tr class="major"><td>Major</td><td>Under-reduced &mdash; <span class="cue">liquid runs freely off a spoon; no body</span></td><td>Continue reducing uncovered; remove lid completely</td></tr>
+        <tr class="major"><td>Major</td><td>Over-reduced &mdash; <span class="cue">paste-like texture; beans compacting and beginning to break down</span></td><td>Add hot water 2 tbsp at a time; stir over low heat</td></tr>
+        <tr class="minor"><td>Minor</td><td>Spinach metallic dominance &mdash; <span class="cue">vegetal flavour obscures the tomato-bean base</span></td><td>Small splash of reserved tomato liquid or extra tbsp parmesan</td></tr>
+      </tbody>
+    </table>
+
+    <p class="adjust"><em>Adjust:</em> Add salt only after reduction completes &mdash; it concentrates with the liquid. If the braise reads flat after the hold, add the reserved &frac14; tin of tomatoes and stir briefly over low heat. Thin with water only &mdash; oil at this stage breaks the emulsification.</p>
+
+  </div>
+  <div class="page-footer">26 May 2026</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     PAGE 5 — Dish 3: Cauliflower + Dish 4: Compote (shared)
+     ══════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="page-header">
+    <span class="header-title">MB3+ Ribeye Dinner &middot; 26 May 2026</span>
+    <span class="header-page">Page 5</span>
+  </div>
+  <div class="content">
+
+    <!-- DISH 3 ─────────────────────────────────────────────────── -->
+    <h1>Dish 3 &mdash; Charred Gruy&egrave;re Cauliflower</h1>
+    <p class="timing">Yield: 3 &middot; Total: ~20 min active &middot; Equipment: induction Burner 2, butane torch</p>
+    <p class="overview">Pan-charred on induction at maximum heat, finished with butane-torched gruy&egrave;re &mdash; provides bitterness, char, and texture contrast with no oven conflict.</p>
+
+    <h2>Ingredients</h2>
+    <table class="ing-table">
+      <thead><tr><th>Ingredient</th><th>Amount</th></tr></thead>
+      <tbody>
+        <tr><td>Frozen cauliflower</td><td>450 g / 1 lb</td></tr>
+        <tr><td>Gruy&egrave;re, grated or thinly sliced</td><td>40 g / 1.4 oz</td></tr>
+        <tr><td>Neutral oil</td><td>15 ml / 1 tbsp</td></tr>
+        <tr><td>Diamond Crystal kosher salt</td><td>To season</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Prep Phase</h2>
+    <ol class="steps">
+      <li>Remove cauliflower from freezer at T&minus;45; leave at room temperature to partially thaw.</li>
+      <li>Pat dry at T&minus;25 before placing in the pan.</li>
+    </ol>
+
+    <h2>Active Cooking</h2>
+    <ol class="steps">
+      <li>At T&minus;25: heat dry pan on Burner 2 to maximum heat. <span class="cue">Cue: a drop of water evaporates in under 1 sec.</span></li>
+      <li>Add cauliflower dry; do not overcrowd.</li>
+      <li><strong>Phase 1 &mdash; Moisture cook-off (~2&ndash;3 min):</strong> cauliflower will steam initially; wait until audible moisture fully subsides.</li>
+      <li>Add 15 ml neutral oil; toss briefly.</li>
+      <li><strong>Phase 2 &mdash; Charring (~5&ndash;7 min):</strong> let florets sit in contact with the pan; turn only to expose uncharred surfaces. <span class="cue">Primary cue: edges deeply charred, centres yield to gentle pressure but hold shape.</span></li>
+      <li>Season lightly with Diamond Crystal.</li>
+      <li>At T&minus;13: transfer charred cauliflower to a heatproof dish (no cheese yet). Burner 2 is now free for mushrooms.</li>
+      <li>At T&minus;9: distribute gruy&egrave;re evenly over cauliflower; butane torch in slow passes 5&ndash;8 cm above the cheese until <span class="cue">fully melted, bubbling, and beginning to colour</span> &mdash; 60&ndash;90 sec. Serve within 9 min.</li>
+    </ol>
+
+    <h2>Holding &amp; Assembly</h2>
+    <p class="hold-body">Serve uncovered within 9 min of torching. Do not cover. If hold extends, a brief 10-sec torch pass over the set cheese restores surface texture.</p>
+
+    <h2>Critical Control Points</h2>
+    <table class="ccp-table">
+      <thead><tr><th>Severity</th><th>Failure Mode &amp; Cue</th><th>Recovery</th></tr></thead>
+      <tbody>
+        <tr class="major"><td>Major</td><td>Pan too cool or overcrowded &mdash; <span class="cue">pale wet surfaces after 4 min; no audible dry sear</span></td><td>Reduce quantity; increase heat; press florets against surface with spatula</td></tr>
+        <tr class="major"><td>Major</td><td>Overcrowded pan &mdash; <span class="cue">water pooling beneath florets; no contact browning visible</span></td><td>Cook in 2 batches; first holds uncovered while second finishes</td></tr>
+        <tr class="minor"><td>Minor</td><td>Gruy&egrave;re burns under torch &mdash; <span class="cue">dark, bitter-smelling spots on cheese surface</span></td><td>Move torch faster and further away; underlying cheese typically intact</td></tr>
+      </tbody>
+    </table>
+
+    <p class="adjust"><em>Adjust:</em> Finish cauliflower lightly with salt after torching, before serving. If texture has softened during the hold, a brief 10-sec torch pass restores the crust. Reduce gruy&egrave;re to 25 g / 0.9 oz if the meal reads heavy.</p>
+
+    <hr class="dish-div">
+
+    <!-- DISH 4 ─────────────────────────────────────────────────── -->
+    <h1>Dish 4 &mdash; Warm Blueberry-Strawberry Compote</h1>
+    <p class="timing">Yield: 3 &middot; Total: ~10 min &middot; Active: ~5 min &middot; Holds 30 min at room temperature</p>
+    <p class="overview">Warm, glossy berry compote serving as a light palate reset after the beef course &mdash; made at T&minus;35, held at room temperature.</p>
+
+    <h2>Ingredients</h2>
+    <table class="ing-table">
+      <thead><tr><th>Ingredient</th><th>Amount</th></tr></thead>
+      <tbody>
+        <tr><td>Frozen blueberries</td><td>150 g / 5 oz</td></tr>
+        <tr><td>Frozen strawberries</td><td>150 g / 5 oz</td></tr>
+        <tr><td>Diamond Crystal kosher salt</td><td>One pinch</td></tr>
+        <tr><td>Sugar</td><td>Optional &mdash; only if needed</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Prep Phase</h2>
+    <p class="hold-body" style="margin-bottom:4px">None required.</p>
+
+    <h2>Active Cooking</h2>
+    <ol class="steps">
+      <li>Add frozen berries to a small pan over low heat on Burner 2 at T&minus;35.</li>
+      <li>Warm gently until <span class="cue">juices release and berries are fully thawed</span> &mdash; approx. 5 min.</li>
+      <li>Reduce lightly until <span class="cue">surface is glossy but mixture remains fluid, not jammy.</span></li>
+      <li>Add one pinch Diamond Crystal.</li>
+      <li>Taste. Add sugar only if flavour reads flat or sharp. Remove from heat at T&minus;25; hold at room temperature.</li>
+    </ol>
+
+    <h2>Holding &amp; Assembly</h2>
+    <p class="hold-body">Serve warm or at room temperature. Holds up to 30 min without quality loss.</p>
+
+    <h2>Critical Control Points</h2>
+    <table class="ccp-table">
+      <thead><tr><th>Severity</th><th>Failure Mode &amp; Cue</th><th>Recovery</th></tr></thead>
+      <tbody>
+        <tr class="minor"><td>Minor</td><td>Over-reduced &mdash; <span class="cue">jam-like body; skins wrinkling and separating</span></td><td>Remove from heat; add 2&ndash;3 tbsp water; stir briefly over low heat</td></tr>
+      </tbody>
+    </table>
+
+    <p class="adjust"><em>Adjust:</em> If the compote reads sweet and flat, increase the strawberry ratio or add a small squeeze of lime if available. Thin with water only if paste-like &mdash; do not reduce further once glossy.</p>
+
+  </div>
+  <div class="page-footer">26 May 2026</div>
+</div>
+
+</body>
+</html>

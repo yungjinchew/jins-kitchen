@@ -113,7 +113,7 @@ details[open] summary::after{transform:rotate(90deg)}
 // ---------------------------------------------------------------- config
 const SB_URL = 'https://umqkgxsypcgvzkfjkzpc.supabase.co';
 const SB_KEY = 'sb_publishable_fsZ1rHHpObb4vFDmfqGSkQ_J8c64TUy';
-const DOCS_BASE = SB_URL + '/storage/v1/object/public/kitchen-docs/';
+const DOCS_BASE = ''; // documents are served from this site (site/docs/<owner-slug>/v<n>/<file>); Storage bucket unused
 const DEPT_ORDER = ['Protein','Produce','Dairy','Bread','Frozen','Pantry','Oils & Liquids','Alcohol','Seasoning'];
 const ROLE_ORDER = {starter:0,soup:1,main:2,side:3,salad:4,sauce:5,bread:6,dessert:7};
 
@@ -331,7 +331,7 @@ function cookCard(c){
 }
 function docsBlock(docs){
   if(!docs.length) return '';
-  return `<h3 class="section">Documents</h3><div class="list">${docs.map(x=>`<a class="card row" href="${DOCS_BASE+x.storage_path}" target="_blank" rel="noopener"><div class="grow"><div class="title">${esc(x.file_name)}</div><div class="sub">${x.kind.toUpperCase()} · v${x.version}${x.governance_version?' · governance '+esc(x.governance_version):''} · ${fmtDate(x.generated_at.slice(0,10))}${x.is_latest?' · <span class="pill">latest</span>':''}</div></div><span class="btn sm ${x.kind==='pdf'?'':'ghost'}">${x.kind==='pdf'?'Open / print':'Download'}</span></a>`).join('')}</div>`;
+  return `<h3 class="section">Documents</h3><div class="list">${docs.map(x=>`<a class="card row" href="${DOCS_BASE+x.storage_path}" target="_blank" rel="noopener"><div class="grow"><div class="title">${esc(x.file_name)}</div><div class="sub">${x.kind.toUpperCase()} · v${x.version}${x.governance_version?' · governance '+esc(x.governance_version):''} · ${fmtDate(x.generated_at.slice(0,10))}${x.is_latest?' · <span class="pill">latest</span>':''}</div></div><span class="btn sm ${x.kind==='pdf'||x.kind==='html'?'':'ghost'}">${x.kind==='pdf'||x.kind==='html'?'Open / print':'Download'}</span></a>`).join('')}</div>`;
 }
 
 // ---------------------------------------------------------------- meals
@@ -583,7 +583,7 @@ routes.docs=()=>{
   const latest=docs.filter(x=>x.is_latest);
   return `<div class="stack" style="padding-top:12px">
     <p class="muted small">Stored renders of each recipe. "Open / print" shows the PDF in the browser so you can print without regenerating; the Word file is the editable master.</p>
-    ${latest.length?`<div class="list">${latest.map(x=>`<a class="card row" href="${DOCS_BASE+x.storage_path}" target="_blank" rel="noopener"><div class="grow"><div class="title">${esc(x.owner.name)}</div><div class="sub">${x.kind.toUpperCase()} · v${x.version} · ${fmtDate(x.generated_at.slice(0,10))}${x.governance_version?' · governance '+esc(x.governance_version):''}</div></div><span class="btn sm ${x.kind==='pdf'?'':'ghost'}">${x.kind==='pdf'?'Open':'Download'}</span></a>`).join('')}</div>`:
+    ${latest.length?`<div class="list">${latest.map(x=>`<a class="card row" href="${DOCS_BASE+x.storage_path}" target="_blank" rel="noopener"><div class="grow"><div class="title">${esc(x.owner.name)}</div><div class="sub">${x.kind.toUpperCase()} · v${x.version} · ${fmtDate(x.generated_at.slice(0,10))}${x.governance_version?' · governance '+esc(x.governance_version):''}</div></div><span class="btn sm ${x.kind==='pdf'||x.kind==='html'?'':'ghost'}">${x.kind==='pdf'||x.kind==='html'?'Open':'Download'}</span></a>`).join('')}</div>`:
     `<div class="empty">No documents stored yet.<br><br><span class="small">From now on, every recipe Cowork generates is saved here as Word + PDF. The Coq au Vin build is the first candidate.</span></div>`}
   </div>`;
 };

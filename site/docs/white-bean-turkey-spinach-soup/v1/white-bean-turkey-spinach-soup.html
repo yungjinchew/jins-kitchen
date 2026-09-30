@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lemony White Bean Soup with Turkey & Spinach — Cooking Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Fraunces:opsz,wght@9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:       #1B5E7B;
+    --teal-light: #D0E8F0;
+    --gray-dark:  #333333;
+    --gray-mid:   #555555;
+    --gray-light: #F0F0F0;
+    --crit-bg:    #FEE2E2;
+    --major-bg:   #FEF3C7;
+    --minor-bg:   #F3F4F6;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: #d8d8d8;
+    margin: 0;
+    padding: 24px 0;
+    color: #222222;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: #ffffff;
+    margin: 0 auto 24px;
+    padding: 13mm 14mm 16mm;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.18);
+    position: relative;
+  }
+
+  .pg-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--teal-light);
+    padding-bottom: 3mm;
+    margin-bottom: 7mm;
+  }
+  .pg-header .meal {
+    font-size: 7.5pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--teal);
+  }
+  .pg-header .pgnum {
+    font-size: 7pt;
+    color: #999;
+  }
+
+  .pg-footer {
+    position: absolute;
+    bottom: 7mm;
+    right: 14mm;
+    font-size: 7pt;
+    color: #999;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 15pt;
+    font-weight: 700;
+    color: var(--teal);
+    margin: 0 0 2px;
+    line-height: 1.15;
+  }
+
+  .timing {
+    font-size: 8pt;
+    font-style: italic;
+    color: var(--gray-mid);
+    margin: 0 0 8px;
+  }
+
+  .overview {
+    font-size: 8.5pt;
+    color: #222222;
+    margin: 0 0 10px;
+    line-height: 1.4;
+  }
+
+  .carve {
+    font-size: 8pt;
+    color: var(--gray-mid);
+    font-style: italic;
+    margin: 0 0 12px;
+    line-height: 1.4;
+  }
+
+  h2 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 7.5pt;
+    font-weight: 600;
+    color: var(--gray-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 14px 0 6px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #e6e6e6;
+  }
+
+  h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 8pt;
+    font-weight: 600;
+    color: var(--teal);
+    margin: 9px 0 4px;
+  }
+
+  p, li { font-size: 8.5pt; line-height: 1.45; }
+
+  ol, ul { margin: 4px 0 4px; padding-left: 18px; }
+  ol li, ul li { margin-bottom: 3px; }
+
+  table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4px 0 8px;
+  }
+  th, td {
+    text-align: left;
+    vertical-align: top;
+    padding: 4px 6px;
+    border: 1px solid #e0e0e0;
+  }
+  td { word-wrap: break-word; font-size: 8pt; }
+  th {
+    font-size: 7.5pt;
+    font-weight: 600;
+    color: var(--gray-dark);
+    background: var(--teal-light);
+  }
+
+  .ing-table td:first-child { width: 67%; }
+  .ing-table td:last-child  { width: 33%; font-variant-numeric: tabular-nums; word-wrap: break-word; }
+
+  tr.ing-section td {
+    background: var(--gray-light);
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray-mid);
+    font-weight: 600;
+    padding: 3px 6px;
+  }
+
+  .cue { font-style: italic; color: var(--gray-mid); }
+
+  .wf-summary {
+    font-size: 7.5pt;
+    color: var(--gray-mid);
+    font-style: italic;
+    background: #f7fbfd;
+    border-left: 2.5px solid var(--teal-light);
+    padding: 4px 8px;
+    margin-bottom: 5px;
+    line-height: 1.45;
+  }
+
+  .tmin-table { table-layout: fixed; }
+  .tmin-table th:nth-child(1),
+  .tmin-table td:first-child {
+    width: 100px;
+    font-weight: 600;
+    color: var(--teal);
+    white-space: nowrap;
+    font-size: 8pt;
+  }
+  .tmin-table td:last-child { word-wrap: break-word; }
+
+  .tmin-note { font-size: 7.5pt; font-style: italic; color: var(--gray-mid); margin: 2px 0 8px; }
+
+  .wf-notes { font-size: 8pt; color: var(--gray-mid); font-style: italic; line-height: 1.55; margin-bottom: 8px; }
+  .wf-notes p { margin-bottom: 4px; font-size: 8pt; }
+  .wf-notes strong { font-style: normal; color: var(--gray-dark); }
+
+  .hold-table { table-layout: fixed; font-size: 7.5pt; }
+  .hold-table th { font-size: 7pt; }
+  .hold-table td { font-size: 7.5pt; word-wrap: break-word; }
+  .hold-table th:nth-child(1), .hold-table td:nth-child(1) { width: 14%; }
+  .hold-table th:nth-child(2), .hold-table td:nth-child(2) { width: 23%; }
+  .hold-table th:nth-child(3), .hold-table td:nth-child(3) { width: 10%; }
+  .hold-table th:nth-child(4), .hold-table td:nth-child(4) { width: 17%; }
+  .hold-table th:nth-child(5), .hold-table td:nth-child(5) { width: 36%; }
+
+  .ccp-table { table-layout: fixed; }
+  .ccp-table th:nth-child(1),
+  .ccp-table td:nth-child(1) {
+    width: 58px;
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .ccp-table th:nth-child(2),
+  .ccp-table td:nth-child(2) { width: 57%; }
+  .ccp-table th:nth-child(3),
+  .ccp-table td:nth-child(3) { width: 37%; }
+  .ccp-table td { font-size: 7.5pt; word-wrap: break-word; }
+  tr.crit  td { background: var(--crit-bg); }
+  tr.major td { background: var(--major-bg); }
+  tr.minor td { background: var(--minor-bg); }
+
+  .adjust {
+    font-size: 8pt;
+    font-style: italic;
+    color: var(--gray-mid);
+    line-height: 1.45;
+    margin: 6px 0 4px;
+  }
+  .adjust strong { font-style: normal; color: var(--gray-dark); }
+
+  .menu-list { margin: 6px 0 10px; }
+  .menu-list li { font-size: 9pt; margin-bottom: 4px; }
+
+  .lead {
+    font-size: 8.5pt;
+    line-height: 1.5;
+    margin: 0 0 10px;
+    color: #222;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page {
+      width: 100%;
+      min-height: auto;
+      margin: 0;
+      padding: 13mm 14mm 18mm;
+      box-shadow: none;
+      page-break-after: always;
+    }
+    .page:last-child { page-break-after: avoid; }
+    @page { size: A4; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 — MENU OVERVIEW + WORKFLOW ============ -->
+<div class="page">
+  <div class="pg-header">
+    <span class="meal">White Bean Soup with Turkey &amp; Spinach · Healing-Mouth Menu · 20 June 2026</span>
+    <span class="pgnum">Page 1</span>
+  </div>
+
+  <h1>Healing-Mouth Sunday Dinner</h1>
+  <p class="timing">Serves 3 adults · soup + adult salmon add-on for 2 · Total ~45 min · Active ~30 min</p>
+
+  <p class="lead">A soft white bean and turkey soup adapted for a post-extraction healing mouth: smooth and lukewarm for the son's portion, textured and brightened with lemon, herbs and chili at the table for the two adults, with a parallel roast salmon add-on to make it a full dinner. No acid or chili enters the shared pot.</p>
+
+  <h2>Menu</h2>
+  <ul class="menu-list">
+    <li><strong>Lemony White Bean Soup with Turkey &amp; Spinach</strong> — the shared base; son's portion blended &amp; sieved, served lukewarm</li>
+    <li><strong>Roast Salmon Add-On</strong> — adult-first, flaked over the two adult bowls; optional and plain for the son</li>
+  </ul>
+
+  <h2>T-Minus Timeline</h2>
+  <table class="tmin-table">
+    <tr><th>Time</th><th>Action</th></tr>
+    <tr><td>T-45</td><td>Heat pot; sauté onion + carrot until soft and golden-edged (7–10 min).</td></tr>
+    <tr><td>T-35</td><td>Add tomato paste + cumin (1 min); add turkey, garlic, ginger, salt. Cook to 165°F / 74°C (5–8 min).</td></tr>
+    <tr><td>T-27</td><td>Add stock + beans; smash reserved third of beans. Simmer 15–20 min.</td></tr>
+    <tr><td>T-25</td><td>Salmon into oven at 275°F / 135°C — roast 15–18 min; pull at 120°F / 49°C internal.</td></tr>
+    <tr><td>T-8</td><td>Salmon out; rest 5 min on tray, then flake, discard skin.</td></tr>
+    <tr><td>T-7</td><td>Add chopped spinach to soup; simmer ~5 min until fully collapsed.</td></tr>
+    <tr><td>T-2</td><td>Off heat. Adjust salt + cumin only — no lemon in the pot.</td></tr>
+    <tr><td>T-0 (son)</td><td>Ladle son's portion; blend smooth + sieve; cool uncovered to lukewarm before serving.</td></tr>
+    <tr><td>T-0 (adults)</td><td>Finish adult bowls: lemon, herbs, olive oil, chili/pepper. Flake salmon on top.</td></tr>
+  </table>
+  <p class="tmin-note">If the window slips, the son's portion fails first — it must be both uniformly smooth and cooled to lukewarm before it is served. Protect that ahead of plating speed for the adults.</p>
+
+  <div class="wf-notes">
+    <p><strong>Critical path:</strong> the soup base governs timing; the salmon is a parallel roast slotted into the soup's simmer window and is not on the critical path. If timing slips, hold the salmon (it is fine at room temperature within the 2-hour window) and protect the son's portion — it must be smooth and lukewarm before serving. Do not serve his portion hot to save time.</p>
+    <p><strong>Heat / oven sequencing:</strong> soup runs on one induction burner start to finish; salmon owns the Bosch oven at a single temperature (275°F / 135°C) — no oven transition required. The two run concurrently with no resource conflict. Spinach goes in only after the salmon is out, so final soup attention and salmon flaking do not compete.</p>
+  </div>
+
+  <h2>Holding Chain</h2>
+  <table class="hold-table">
+    <tr><th>Component</th><th>Hold Strategy</th><th>Max Hold</th><th>Drift Risk</th><th>Corrective</th></tr>
+    <tr>
+      <td>Soup (pot)</td>
+      <td>Off-heat, covered; lukewarm/room temp acceptable.</td>
+      <td>2 hr out of fridge total</td>
+      <td>Thickens as beans absorb; over-2-hr food-safety risk.</td>
+      <td>Loosen with warm stock/water to ladling consistency. Refrigerate beyond 2 hr; reheat adult leftovers gently.</td>
+    </tr>
+    <tr>
+      <td>Son's portion</td>
+      <td>Blended + sieved; cooled uncovered to lukewarm.</td>
+      <td>Serve fresh-cooled</td>
+      <td>Skin forms; serves too warm if rushed.</td>
+      <td>Stir to break skin; do not serve until comfortable on the lip. Thin with a little stock if tightened.</td>
+    </tr>
+    <tr>
+      <td>Salmon</td>
+      <td>Flaked, loosely covered at room temp.</td>
+      <td>2 hr out of fridge total</td>
+      <td>Dries / firms as it sits.</td>
+      <td>Fold flaked salmon into warm soup to re-moisten; refrigerate beyond 2 hr.</td>
+    </tr>
+  </table>
+
+  <div class="pg-footer">Generated 20 June 2026</div>
+</div>
+
+<!-- ============ PAGE 2 — SOUP ============ -->
+<div class="page">
+  <div class="pg-header">
+    <span class="meal">White Bean Soup with Turkey &amp; Spinach · Healing-Mouth Menu · 20 June 2026</span>
+    <span class="pgnum">Page 2</span>
+  </div>
+
+  <h1>Lemony White Bean Soup with Turkey &amp; Spinach</h1>
+  <p class="timing">Yield: 3 adults · Total: ~45 min · Active: ~30 min · No oven (stovetop)</p>
+  <p class="overview">A soft, savory white bean and turkey soup with partially smashed beans for body; lemon, herbs and chili are moved entirely to the table so the shared base stays gentle on healing extraction sites.</p>
+  <p class="carve">Meal-level carve-out: the soup functions as a soft, single-register dish by design — no internal hard-texture contrast required, as the post-extraction context prohibits it.</p>
+
+  <h2>Ingredients</h2>
+  <table class="ing-table">
+    <tr class="ing-section"><td colspan="2">Soup (shared base)</td></tr>
+    <tr><td>Olive oil</td><td>3 tbsp / 45 ml</td></tr>
+    <tr><td>Onion, diced</td><td>1 large</td></tr>
+    <tr><td>Carrot, peeled, diced</td><td>1 large (~5 oz / 140 g)</td></tr>
+    <tr><td>Tomato paste</td><td>1 tbsp</td></tr>
+    <tr><td>Ground cumin</td><td>¾ tsp, plus more to taste</td></tr>
+    <tr><td>Ground turkey</td><td>1 lb / 450 g</td></tr>
+    <tr><td>Garlic, minced</td><td>3 cloves</td></tr>
+    <tr><td>Fresh ginger, finely grated</td><td>1 tbsp</td></tr>
+    <tr><td>Diamond Crystal kosher salt</td><td>¾ tsp, plus more to taste</td></tr>
+    <tr><td>Chicken stock</td><td>1 qt / 950 ml</td></tr>
+    <tr><td>White beans (cannellini / great northern), drained &amp; rinsed</td><td>2 × 15 oz / 425 g cans</td></tr>
+    <tr><td>Frozen chopped spinach (default), thawed &amp; squeezed</td><td>5–6 oz / 140–170 g</td></tr>
+    <tr class="ing-section"><td colspan="2">Adult finishes — at the table, not in the pot</td></tr>
+    <tr><td>Lemon, juiced</td><td>1</td></tr>
+    <tr><td>Soft herbs (parsley, dill, basil, chives), chopped</td><td>1 cup</td></tr>
+    <tr><td>Olive oil, red-pepper flakes, black pepper</td><td>to taste</td></tr>
+  </table>
+
+  <h2>Prep</h2>
+  <ol>
+    <li>Dice onion and carrot. <span class="cue">Carrot peeled — skin turns fibrous and works against the no-chew goal.</span></li>
+    <li>Mince garlic; grate ginger.</li>
+    <li>Drain and rinse beans; set aside about one-third for smashing.</li>
+    <li>Thaw frozen spinach and squeeze out excess water firmly in a towel or sieve. <span class="cue">If using fresh instead: 5 oz / 140 g baby spinach, roughly chopped.</span></li>
+    <li>Chop herbs; hold for the table.</li>
+  </ol>
+
+  <h2>Active Cooking</h2>
+  <ol>
+    <li>Heat a large pot over medium-high, 1 min. Add olive oil; heat until it thins, ~30 sec.</li>
+    <li>Add onion and carrot. Sauté until very soft and browned at the edges, 7–10 min. <span class="cue">Edges golden, onion translucent and collapsing.</span></li>
+    <li>Add tomato paste and cumin. Sauté until the paste darkens and smells caramelized, ~1 min.</li>
+    <li>Add turkey, garlic, ginger, and ¾ tsp salt. Break up with a spoon and cook through, 5–8 min. <span class="cue">Primary cue: 165°F / 74°C on a probe. Corroborating: no raw pink remaining; fond building on pot base.</span></li>
+    <li>Add stock and beans; bring to a simmer. Smash the reserved third of beans against the side of the pot and stir in to thicken. Simmer 15–20 min until thickened and flavorful.</li>
+    <li>Add chopped spinach. Simmer until fully collapsed and silky, ~5 min. <span class="cue">Fully wilted, no structure remaining.</span></li>
+    <li>Off heat. Taste and adjust salt and cumin only — no lemon in the pot. <span class="cue">Salt conservatively; the dish finishes at the table and the salmon carries its own seasoning.</span></li>
+    <li><strong>Son's portion (default — blended &amp; sieved):</strong> ladle out 1–2 servings, blend with an immersion blender until silky, then pass through a fine sieve to remove bean skins and any turkey grit. Cool uncovered to lukewarm before serving.</li>
+  </ol>
+
+  <h2>Holding &amp; Assembly</h2>
+  <p>Soup is eaten lukewarm or at room temperature. Total time out of refrigeration — soup and salmon both — should not exceed 2 hours; refrigerate beyond that. The son's portion is served smooth and lukewarm-to-room-temperature, never hot — cool uncovered, stirring occasionally, until comfortable on the lip; no lemon, chili, or black pepper. Adult bowls are finished at the table with lemon, herbs, a thread of olive oil, and chili/pepper to taste, with salmon flaked on top.</p>
+
+  <p class="adjust"><strong>Adjust:</strong> if the adult bowls read flat, it's almost always lemon or salt rather than more cumin — add lemon a teaspoon at a time off-heat. If the soup is too thick after holding, loosen with warm stock. The son's portion should taste mild and clean by design — correct only with a pinch of salt and a little stock to thin, nothing sharp.</p>
+
+  <h2>Critical Control Points</h2>
+  <table class="ccp-table">
+    <tr><th>Severity</th><th>Failure Mode &amp; Cue</th><th>Recovery</th></tr>
+    <tr class="crit">
+      <td>Critical</td>
+      <td>Ground turkey undercooked — below 165°F / 74°C, food-safety risk. <span class="cue">Probe under 165°F / 74°C; meat soft-pink in the thickest clumps.</span></td>
+      <td>Continue cooking until 165°F / 74°C throughout. Not served until reached.</td>
+    </tr>
+    <tr class="crit">
+      <td>Critical</td>
+      <td>Son's portion served too hot — heat on raw extraction sites risks irritating the wound or dislodging the clot. <span class="cue">Steam rising; warm-to-hot on the lip.</span></td>
+      <td>Cool uncovered, stirring, until lukewarm-to-room-temperature. Do not serve until comfortable on the lip.</td>
+    </tr>
+    <tr class="crit">
+      <td>Critical</td>
+      <td>Son's portion too textured — bean skins, turkey grit, or spinach fiber can lodge in the sockets. <span class="cue">Visible skins or fibers; not uniformly smooth.</span></td>
+      <td>Blend longer; pass through a fine sieve. Do not serve until uniformly smooth.</td>
+    </tr>
+    <tr class="major">
+      <td>Major</td>
+      <td>Soup over-reduces during simmer or holding — beans absorb liquid, base turns paste-thick rather than spoonable. <span class="cue">Coats the spoon heavily, mounds rather than settles.</span></td>
+      <td>Loosen with warm stock or water, a splash at a time, off heat, until it ladles cleanly. Re-check salt after.</td>
+    </tr>
+  </table>
+
+  <div class="pg-footer">Generated 20 June 2026</div>
+</div>
+
+<!-- ============ PAGE 3 — SALMON ============ -->
+<div class="page">
+  <div class="pg-header">
+    <span class="meal">White Bean Soup with Turkey &amp; Spinach · Healing-Mouth Menu · 20 June 2026</span>
+    <span class="pgnum">Page 3</span>
+  </div>
+
+  <h1>Roast Salmon Add-On</h1>
+  <p class="timing">Yield: 2 adults (optional plain share for the son) · Total: ~25 min · Active: ~5 min · Oven: 275°F / 135°C</p>
+  <p class="overview">Gently roasted salmon pulled early for a soft, just-set flake, flaked over the two adult bowls to turn the soup into a complete dinner.</p>
+
+  <h2>Ingredients</h2>
+  <table class="ing-table">
+    <tr><td>Salmon fillet, skin-on</td><td>10 oz / 280 g</td></tr>
+    <tr><td>Olive oil</td><td>1 tbsp / 15 ml</td></tr>
+    <tr><td>Diamond Crystal kosher salt</td><td>½ tsp</td></tr>
+    <tr><td>Lemon wedges (adult-only), to serve</td><td>—</td></tr>
+  </table>
+
+  <h2>Prep</h2>
+  <ol>
+    <li>Pat fillet dry; rub with olive oil and ½ tsp salt.</li>
+    <li>Hold at room temperature 15 min before roasting.</li>
+  </ol>
+
+  <h2>Active Cooking</h2>
+  <ol>
+    <li>Heat oven to 275°F / 135°C.</li>
+    <li>Place salmon skin-side down on a lined tray. Roast until it flakes with gentle pressure and is just opaque at the thickest point — pull at 120°F / 49°C internal; carries to ~125°F / 52°C off-heat. About 15–18 min for a 1-inch fillet. <span class="cue">Flakes separate when nudged with a fork; center barely translucent at pull.</span></li>
+    <li>Rest 5 min on the tray. Flake into large pieces, discarding skin.</li>
+  </ol>
+
+  <h2>Holding &amp; Assembly</h2>
+  <p>Adult-first add-on. Holds at room temperature within the same 2-hour out-of-fridge window. Flake over the two adult bowls at serving; lemon wedges are adult-only. Soft enough for the son if he'd like a little, kept plain and lemon-free — but flaky fish still needs some oral movement, so it's optional for him, not part of his core portion.</p>
+
+  <p class="adjust"><strong>Adjust:</strong> if the salmon firms or dries while holding, fold the flaked pieces into the warm soup so the broth re-moistens them; this also softens it further for the son's optional share.</p>
+
+  <h2>Critical Control Points</h2>
+  <table class="ccp-table">
+    <tr><th>Severity</th><th>Failure Mode &amp; Cue</th><th>Recovery</th></tr>
+    <tr class="major">
+      <td>Major</td>
+      <td>Salmon overcooked — pulled past 125°F / 52°C, flesh dries and firms, losing the soft flake the healing context needs. <span class="cue">Flakes chalky, no sheen.</span></td>
+      <td>Unrecoverable for texture; dish remains serviceable. Fold flaked salmon into the warm soup so the broth re-moistens it.</td>
+    </tr>
+  </table>
+
+  <div class="pg-footer">Generated 20 June 2026</div>
+</div>
+
+</body>
+</html>
