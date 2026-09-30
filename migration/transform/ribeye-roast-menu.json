@@ -1,0 +1,192 @@
+{
+  "assignment_key": "ribeye-roast-menu",
+  "source_page_ids": [
+    "39be0391ce63813d97cdca2de78cd68c"
+  ],
+  "meal": {
+    "slug": "rib-eye-roast-sunday",
+    "name": "Rib Eye Roast Sunday (Reverse Sear)",
+    "planned_date": "2026-07-12",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": null,
+    "shared_prep_md": null,
+    "wine_pairing": "2004 Château Léoville Barton (primary) — mature Left Bank, restraint flattered the jus. Backup: 2015 Clos Apalta. Cellar VALID at cook.",
+    "legacy_notion_id": "39be0391ce63813d97cdca2de78cd68c",
+    "components": [
+      {
+        "dish_slug": "ribeye-reverse-seared-rib-eye-roast",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "ribeye-jus",
+        "role": "sauce",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "ribeye-yogurt-mustard-cream",
+        "role": "sauce",
+        "service_order": 3
+      },
+      {
+        "dish_slug": "ribeye-roast-potatoes",
+        "role": "side",
+        "service_order": 4
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "ribeye-reverse-seared-rib-eye-roast",
+      "name": "Reverse-Seared Rib Eye Roast",
+      "protein": "Beef",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "European",
+        "French"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Make-Ahead",
+        "Low Carb"
+      ],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Cooking project — dual-model review loop (7 rounds to stability). MB3+ Tender Valley Black Angus rib eye, Butcher Box SG.",
+      "governance_version": null,
+      "summary": "Compact tied rib eye roast (MB3+ Tender Valley Black Angus), 24 hr 1% dry-brined, reverse-seared at 250°F / 120°C, pulled at 119–120°F / 48–49°C and finished with a single-blast crust.",
+      "method_md": null,
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "39be0391ce63813d97cdca2de78cd68c",
+      "ingredients": []
+    },
+    {
+      "slug": "ribeye-jus",
+      "name": "Jus",
+      "protein": null,
+      "category": [
+        "Sauce"
+      ],
+      "cuisine": [
+        "European",
+        "French"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Cooking project — dual-model review loop (7 rounds to stability). MB3+ Tender Valley Black Angus rib eye, Butcher Box SG.",
+      "governance_version": null,
+      "summary": "Independent shallot-based reduction jus, not built from roast-pan fond.",
+      "method_md": null,
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "39be0391ce63813d97cdca2de78cd68c",
+      "ingredients": []
+    },
+    {
+      "slug": "ribeye-yogurt-mustard-cream",
+      "name": "Yogurt-Mustard Cream",
+      "protein": null,
+      "category": [
+        "Sauce"
+      ],
+      "cuisine": [
+        "European",
+        "French"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Cooking project — dual-model review loop (7 rounds to stability). MB3+ Tender Valley Black Angus rib eye, Butcher Box SG.",
+      "governance_version": null,
+      "summary": "Yogurt and mustard cream, a stand-in for the crème fraîche and prepared horseradish sauce.",
+      "method_md": null,
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "39be0391ce63813d97cdca2de78cd68c",
+      "ingredients": []
+    },
+    {
+      "slug": "ribeye-roast-potatoes",
+      "name": "Roast Potatoes",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "European",
+        "French"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Cooking project — dual-model review loop (7 rounds to stability). MB3+ Tender Valley Black Angus rib eye, Butcher Box SG.",
+      "governance_version": null,
+      "summary": "Roast potatoes with a split pre-roast and recrisp.",
+      "method_md": null,
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "39be0391ce63813d97cdca2de78cd68c",
+      "ingredients": []
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2026-07-12",
+      "rating": 9.5,
+      "execution_rating": 8,
+      "repeat": "with_modifications",
+      "cook_notes": "Beef executed to target: 1.18 kg / 12 cm compact tied roast (cut down from 1.566 kg, 500 g frozen raw), 24 hr 1% dry-brine, reverse sear at 250°F / 120°C, pulled 119–120°F / 48–49°C, single-blast crust. Rated very good. Jus (independent shallot-based reduction, not roast-pan fond) and the yogurt+mustard horseradish substitute both performed well — the yogurt/mustard cream was a successful stand-in when crème fraîche and prepared horseradish were unavailable. Primary execution gap: roast potatoes arrived cold at plating despite the split pre-roast/recrisp. Cause: the beef monopolised the single oven through its rest and blast, so the potatoes sat at room temperature after their recrisp with no hot-hold, and their last heat contact was too far from service. Modification for next cook: when a protein holds the oven to near service, time the sides' final heat step to finish after the protein vacates the oven, and/or provide an alternative hot-hold (warmed dish, low covered burner, binchotan, warmed plates). Framework updated (protein-in-oven cold-sides rule added; measurement formatting tightened to mandatory dual units and 5°C oven rounding).",
+      "deviations": [
+        "Roast cut down from 1.566 kg to a 1.18 kg / 12 cm compact tied roast; 500 g frozen raw",
+        "Yogurt + mustard cream substituted for crème fraîche and prepared horseradish (unavailable)",
+        "Roast potatoes arrived cold at plating — sat at room temperature after their recrisp with no hot-hold while the beef monopolised the single oven through rest and blast"
+      ],
+      "parameter_confirmations": [
+        {
+          "param": "Beef reverse sear",
+          "designed": "24 hr 1% dry-brine; 250°F / 120°C; pull 119–120°F / 48–49°C; single-blast crust",
+          "observed": "Executed to target; rated very good",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Sides hot-hold when protein holds the oven to near service",
+          "designed": "Split pre-roast/recrisp for potatoes",
+          "observed": "Potatoes cold at plating — last heat contact too far from service; framework rule added",
+          "verdict": "diverged"
+        }
+      ],
+      "household_split": null,
+      "wine_outcome": "2004 Château Léoville Barton (primary) — mature Left Bank, restraint flattered the jus. Backup: 2015 Clos Apalta. Cellar VALID at cook."
+    }
+  ]
+}

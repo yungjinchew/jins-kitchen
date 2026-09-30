@@ -1,0 +1,242 @@
+{
+  "assignment_key": "pork-rack-chop-sunday",
+  "source_page_ids": [
+    "3cce0391ce63819f9e7ec05979bd0ed6",
+    "3cce0391ce63818ebbd6e0fddb15f13a"
+  ],
+  "meal": {
+    "slug": "pork-rack-chop-sunday",
+    "name": "Pork Rack Chop Sunday",
+    "planned_date": "2026-08-30",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": null,
+    "shared_prep_md": null,
+    "wine_pairing": "2021 Château Mont-Redon Châteauneuf-du-Pape — worked well. Note: recommended against pre-cook, see cook record.",
+    "legacy_notion_id": null,
+    "components": [
+      {
+        "dish_slug": "pork-rack-chop-reverse-seared",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "pork-rack-chop-braised-red-cabbage",
+        "role": "side",
+        "service_order": 2
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "pork-rack-chop-reverse-seared",
+      "name": "Reverse-Seared Bone-In Pork Rack Chop",
+      "protein": "Pork",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "European"
+      ],
+      "difficulty": "Special",
+      "tags": [],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": "Governance Framework v3.5 — generated 2026-08-30. Butcher Box Singapore, Gooralie Free Range Pork Cutlets.",
+      "governance_version": "v3.5",
+      "summary": "Reverse-seared Gooralie free-range bone-in pork rack chop (7 cm), same-day 3 hr dry brine at 0.8%, low-roasted to 133°F/56°C at 225°F/107°C then seared, served with mustard-thyme pan sauce, braised red cabbage, crushed potatoes and charred tenderstem broccoli.",
+      "method_md": null,
+      "servings": 3,
+      "equipment": [
+        "Bosch single oven",
+        "rack over tray",
+        "outdoor gas"
+      ],
+      "designed_unvalidated": [
+        {
+          "param": "Sear gain from 133°F/56°C",
+          "designed_value": "not measured",
+          "note": "Temperature entering the pan, reading at the stop and total contact time not captured. Remains designed rather than validated; carries forward to the next pork cook."
+        },
+        {
+          "param": "Carryover across the 7-minute post-sear rest onto warmed plates",
+          "designed_value": "not measured",
+          "note": "Direction and magnitude not recorded. Remains designed rather than validated."
+        },
+        {
+          "param": "Potato crisping window in fat over outdoor gas",
+          "designed_value": "24 min",
+          "note": "Too long at this quantity and heat level; revise downward or specify a lower flame."
+        }
+      ],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3cce0391ce63819f9e7ec05979bd0ed6",
+      "ingredients": []
+    },
+    {
+      "slug": "pork-rack-chop-braised-red-cabbage",
+      "name": "Braised Red Cabbage with Apple and Juniper",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "European"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "Make-Ahead"
+      ],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": "Governance Framework v3.5 — generated 2026-08-30, as the acid-relief component of the pork chop menu.",
+      "governance_version": "v3.5",
+      "summary": "Braised red cabbage with apple and juniper, built on staged red wine vinegar (30 ml opening / 15 ml reserved), brown sugar, bay and butter in a narrow Le Creuset, as the acid-relief component of the pork chop menu.",
+      "method_md": null,
+      "servings": 3,
+      "equipment": [
+        "narrow Le Creuset"
+      ],
+      "designed_unvalidated": [
+        {
+          "param": "Hold ceiling for a chilled-then-reheated batch",
+          "designed_value": "45 minutes covered off heat",
+          "note": "Should stand for the chilled-then-reheated case until separately tested; the afternoon-braise warm hold is a different configuration."
+        },
+        {
+          "param": "Day-ahead braise as a quality requirement",
+          "designed_value": "day-ahead braise, cooled, refrigerated, 15-minute induction reheat at E+2",
+          "note": "Same-day braise with an extended warm hold rated 9.5; worth one more cook before treating as settled."
+        }
+      ],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3cce0391ce63818ebbd6e0fddb15f13a",
+      "ingredients": []
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2026-08-30",
+      "rating": null,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": "Menu: chop, mustard-thyme pan sauce, braised red cabbage, crushed potatoes, charred tenderstem broccoli. Crackling omitted — cutlets arrived without rind. Served to 3.",
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": "2021 Château Mont-Redon Châteauneuf-du-Pape — worked well. Recommended against pre-cook; see the chop cook record."
+    },
+    {
+      "owner": "dish",
+      "dish_slug": "pork-rack-chop-reverse-seared",
+      "cooked_on": "2026-08-30",
+      "rating": 9.5,
+      "execution_rating": 8.5,
+      "repeat": "yes",
+      "cook_notes": "First cook. Chop measured 7 cm, well outside the 4 cm design assumption; low roast to 133°F/56°C took approx. 90 min at 225°F/107°C from fridge-cold. Same-day 3 hr dry brine at 0.8% produced even seasoning through the cut. Sear produced full crust with no adjustment. Potatoes pulled ahead of the 24 min spec to avoid scorching. Sear gain and carryover not measured — both remain untested.\n\n## Cook record — 2026-08-30\n**Recipe version:** Governance Framework v3.5, docx generated 2026-08-30 (single-cutlet variant of the two-chop plan).\n**Ratings:** Flavour 9.5 · Execution 8.5 · Repeat: Yes\n### What was actually cooked\nGooralie Free Range pork cutlets, Butcher Box Singapore. Pack of 2, 1.530 kg gross, S\\$39.90/kg, S\\$61.05. **One cutlet cooked, measured 7 cm thick.** Second cutlet (approx. 5 cm) held raw, unsalted, use-by 2 September.\nServed to 3. Menu: chop, mustard-thyme pan sauce, braised red cabbage, crushed potatoes, charred tenderstem broccoli. Crackling omitted — cutlets arrived without rind.\n### Material deviations from the written plan\n<table header-row=\"true\">\n<tr>\n<td>Deviation</td>\n<td>Detail</td>\n</tr>\n<tr>\n<td>Chop geometry</td>\n<td>7 cm actual vs 4 cm designed. Single cutlet rather than two.</td>\n</tr>\n<tr>\n<td>Low-roast duration</td>\n<td>Approx. 90 min vs 55–80 min band.</td>\n</tr>\n<tr>\n<td>Shallot</td>\n<td>Omitted from the sauce — none in the house. Pre-reduction run without it.</td>\n</tr>\n<tr>\n<td>Potato fat</td>\n<td>Duck fat or olive oil substituted; no rind, so no rendered pork fat.</td>\n</tr>\n<tr>\n<td>Potato crisping</td>\n<td>Pulled ahead of the 24 min spec to prevent scorching.</td>\n</tr>\n<tr>\n<td>Cabbage</td>\n<td>Afternoon braise, held on the stove rather than chilled and reheated. Reheat step not used.</td>\n</tr>\n<tr>\n<td>Wine</td>\n<td>2021 Mont-Redon CdP, contrary to the pre-cook recommendation.</td>\n</tr>\n</table>\n### Designed-parameter confirmation\n**Confirmed for this configuration** (7 cm bone-in loin cutlet, single piece, fridge-cold, rack over tray, Bosch single oven at 225°F/107°C):\n- **Low-roast duration to 133°F/56°C: approx. 90 min.** The design table projected 160 min+ at 7 cm. Actual came in far shorter, indicating the thickness-to-duration scaling used in planning was too aggressive. Valid only for this geometry and equipment state.\n- **Same-day dry brine, approx. 3 hr at 0.8% of gross weight, uncovered on a rack in the fridge.** Produced seasoning that read through the cut rather than surface-weighted. The concern that a 3 hr window would under-season is not supported by this cook.\n- **8-minute pre-sear rest followed by a colour-led sear.** Crust formed without difficulty. The rest dried the surface sufficiently.\n- **Exit-anchored convergence architecture.** The last phase keyed to oven exit rather than clock time executed without a timing failure.\n**Failed or revised:**\n- **Potato crisping window, 24 min in fat over outdoor gas.** Too long at this quantity and heat level; scorching was imminent and the pan was pulled early. Revise downward or specify a lower flame on the next cook.\n**Still untested — not measured this cook:**\n- **Sear gain from 133°F/56°C.** The endpoint was reached and the crust formed, but the temperature entering the pan, the reading at the stop, and total contact time were not captured. The good outcome does not establish the magnitude of the rise.\n- **Carryover direction and magnitude across the 7-minute post-sear rest onto warmed plates.** Not recorded. The salmon finding of negative carryover onto room-temperature plates remains unresolved for pork.\nBoth remain designed rather than validated and carry forward to the next pork cook.\n### Wine pairing outcome\n**2021 Château Mont-Redon Châteauneuf-du-Pape — worked well.**\nThis was recommended *against* before the cook, on the grounds that it would be warm and broad where the plate needed lift. That reasoning was wrong. The screen over-weighted the red cabbage's vinegar as a tannin problem and under-weighted that a Grenache-led CdP is soft-tannin — which was the actual criterion. Soft tannin plus moderate acid handled the sweet-sour cabbage without the metallic clash that was predicted.\n**Pairing principle to carry forward:** for a vinegar-forward side, screen on tannin structure rather than on body or weight. A broad, warm red with resolved soft tannins is not disqualified.\n### Cellar data failure\nThe pre-cook recommendation drew from the live cellar export at `jins-cellar-data/main/cellar.md`, snapshot dated 2026-08-30. Two bottles recommended from it — 2023 Marcel Lapierre Morgon and 2019 La Rioja Alta Viña Ardanza Reserva — were not in the rack. CellarTracker was confirmed current, so the fault is in the Supabase-to-markdown sync, not refresh timing. **The export cannot be treated as authoritative until this is resolved.**\n### Next time\n1. **Measure the sear.** Temperature entering the pan, temperature at the stop, total contact time. This is the single most valuable number outstanding.\n2. **Measure carryover** across the post-sear rest, and record plate temperature alongside it.\n3. **Shorten or cool the potato crisping stage.** 24 min at that heat is too long.\n4. **The 5 cm leftover cutlet is a free second data point.** Cooking it gives a second thickness against the same method and equipment, which would let the low-roast band be modelled rather than guessed.\n5. Reconfirm chop thickness at the counter before planning — 7 cm against a 4 cm assumption moved the oven load by roughly half an hour and was only absorbed because service was designed to float.\n## Cross-reference — 2026-09-27\n**Scope limit on the validated pre-sear rest.** The 8-minute pre-sear rest confirmed above applies to the 7 cm configuration only. On a 3.5 cm dry-aged loin at the same oven setting, the loin *lost* 8–14°F over the same rest (130°F pull → 115.9°F and 122°F), and the subsequent sear overshot. For loin ≤4 cm, sear straight from the oven. Full record: <mention-page url=\"https://app.notion.com/p/3e8e0391ce6381bda0aac8b72a48748f\"/>",
+      "deviations": [
+        "Chop geometry: 7 cm actual vs 4 cm designed. Single cutlet rather than two.",
+        "Low-roast duration: Approx. 90 min vs 55–80 min band.",
+        "Shallot: Omitted from the sauce — none in the house. Pre-reduction run without it.",
+        "Potato fat: Duck fat or olive oil substituted; no rind, so no rendered pork fat.",
+        "Potato crisping: Pulled ahead of the 24 min spec to prevent scorching.",
+        "Cabbage: Afternoon braise, held on the stove rather than chilled and reheated. Reheat step not used.",
+        "Wine: 2021 Mont-Redon CdP, contrary to the pre-cook recommendation.",
+        "Crackling omitted — cutlets arrived without rind."
+      ],
+      "parameter_confirmations": [
+        {
+          "param": "Low-roast duration to 133°F/56°C (7 cm bone-in loin cutlet, single piece, fridge-cold, 225°F/107°C)",
+          "designed": "design table projected 160 min+ at 7 cm (55–80 min band at 4 cm)",
+          "observed": "approx. 90 min — thickness-to-duration scaling too aggressive",
+          "verdict": "diverged"
+        },
+        {
+          "param": "Same-day dry brine, approx. 3 hr at 0.8% of gross weight, uncovered on a rack in the fridge",
+          "designed": "even seasoning",
+          "observed": "seasoning read through the cut rather than surface-weighted",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "8-minute pre-sear rest followed by a colour-led sear",
+          "designed": "crust forms; rest dries the surface",
+          "observed": "crust formed without difficulty",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Exit-anchored convergence architecture",
+          "designed": "last phase keyed to oven exit rather than clock time",
+          "observed": "executed without a timing failure",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Potato crisping window, 24 min in fat over outdoor gas",
+          "designed": "24 min",
+          "observed": "scorching imminent; pan pulled early",
+          "verdict": "diverged"
+        },
+        {
+          "param": "Sear gain from 133°F/56°C",
+          "designed": "not stated",
+          "observed": "not captured",
+          "verdict": "unresolved"
+        },
+        {
+          "param": "Carryover across the 7-minute post-sear rest onto warmed plates",
+          "designed": "not stated",
+          "observed": "not recorded",
+          "verdict": "unresolved"
+        }
+      ],
+      "household_split": null,
+      "wine_outcome": "2021 Château Mont-Redon Châteauneuf-du-Pape — worked well. This was recommended against before the cook, on the grounds that it would be warm and broad where the plate needed lift. That reasoning was wrong. The screen over-weighted the red cabbage's vinegar as a tannin problem and under-weighted that a Grenache-led CdP is soft-tannin — which was the actual criterion. Soft tannin plus moderate acid handled the sweet-sour cabbage without the metallic clash that was predicted. Pairing principle to carry forward: for a vinegar-forward side, screen on tannin structure rather than on body or weight."
+    },
+    {
+      "owner": "dish",
+      "dish_slug": "pork-rack-chop-braised-red-cabbage",
+      "cooked_on": "2026-08-30",
+      "rating": 9.5,
+      "execution_rating": 9,
+      "repeat": "yes",
+      "cook_notes": "Made same-day in the afternoon rather than the designed day-ahead, held on the stove without chilling, and served without the reheat step. Result was strong — the extended warm hold appears to substitute for overnight rest. Staged vinegar (30 ml opening, 15 ml at finish) held. Narrow Le Creuset confirmed as the correct vessel.\n\n## Cook record — 2026-08-30\n**Recipe version:** Governance Framework v3.5, docx generated 2026-08-30.\n**Ratings:** Flavour 9.5 · Execution 9 · Repeat: Yes\n### What was actually cooked\n400 g red cabbage, 1 apple, butter, staged red wine vinegar (30 ml opening / 15 ml reserved), brown sugar, bay, juniper. Narrow Le Creuset. Served to 3 alongside a reverse-seared pork chop.\n### Material deviations from the written plan\nThe recipe specified a day-ahead braise, cooled and refrigerated, with a 15-minute induction reheat at E+2. **Cooked the same afternoon instead** — the plan was written on the assumption of a Saturday braise and the cook fell on a Sunday.\n**Held on the stove for an extended period without chilling.** The cool, refrigerate and reheat sequence was not used at all.\n### Designed-parameter confirmation\n**Confirmed:**\n- **Staged vinegar, 30 ml opening and 15 ml at the finish.** Colour held and the finish read bright. The staging rationale survives even without the reheat step it was originally written around.\n- **Narrow Le Creuset.** No premature evaporation; cabbage reached full yield. The vessel-geometry constraint holds.\n**Revised — hold ceiling:**\nThe written ceiling was 45 minutes covered off heat. The actual hold was several hours on the stove without chilling, and quality did not degrade. **For an afternoon braise that is never refrigerated, the hold window is materially longer than 45 minutes.** This is confirmed only for that configuration — a chilled-then-reheated batch is a different case and the 45-minute figure should stand there until separately tested.\n**New finding:**\nThe day-ahead braise was justified on flavour integration. A same-day braise with an extended warm hold produced a result rated 9.5, which suggests **the warm hold substitutes for a substantial part of the overnight rest.** Day-ahead is a scheduling convenience more than a quality requirement. Worth one more cook before treating as settled.\n### Next time\n1. Same-day afternoon braise with a long warm hold is a valid path — do not treat day-ahead as mandatory.\n2. Yield was generous by design and leftovers were expected. Cold cabbage is the intended partner for leftover cold pork.\n3. Reusable beyond pork. The acid profile suits duck, goose and rich poultry equally.",
+      "deviations": [
+        "Cooked the same afternoon instead of the specified day-ahead braise — the plan was written on the assumption of a Saturday braise and the cook fell on a Sunday.",
+        "Held on the stove for an extended period without chilling. The cool, refrigerate and reheat sequence was not used at all."
+      ],
+      "parameter_confirmations": [
+        {
+          "param": "Staged vinegar",
+          "designed": "30 ml opening and 15 ml at the finish",
+          "observed": "colour held and the finish read bright",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Vessel: narrow Le Creuset",
+          "designed": "no premature evaporation",
+          "observed": "cabbage reached full yield; vessel-geometry constraint holds",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Hold ceiling (afternoon braise, never refrigerated)",
+          "designed": "45 minutes covered off heat",
+          "observed": "several hours on the stove without chilling; quality did not degrade",
+          "verdict": "diverged"
+        },
+        {
+          "param": "Day-ahead braise for flavour integration",
+          "designed": "day-ahead braise, chilled and reheated",
+          "observed": "same-day braise with extended warm hold rated 9.5 — warm hold appears to substitute for a substantial part of the overnight rest",
+          "verdict": "diverged"
+        }
+      ],
+      "household_split": null,
+      "wine_outcome": null
+    }
+  ]
+}

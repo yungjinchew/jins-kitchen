@@ -1,0 +1,476 @@
+{
+  "assignment_key": "bistro-mussels",
+  "source_page_ids": [
+    "2d9e0391ce6380b58ae5f2ce96678c91"
+  ],
+  "meal": {
+    "slug": "bistro-mussels-dinner",
+    "name": "Buttered Bistro Mussels + Fries + Salad",
+    "planned_date": "2025-12-28",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": "## Method (Main Flow)\n1. Start fries (220°C fan / 240°C non-fan).\n2. Prep salad greens, parsley, garlic, bread.\n3. Toast baguette, rub with garlic.\n4. Heat oil, add garlic + chilli (20 sec).\n5. Add mussels + wine, cover, steam **7–8 min**.\n6. Off heat: butter, parsley, zest. Swirl.\n7. Toss salad lightly.\n8. Serve immediately.",
+    "shared_prep_md": null,
+    "wine_pairing": "Sauvignon Blanc — Cloudy Bay Sauvignon Blanc",
+    "legacy_notion_id": "2d9e0391ce6380b58ae5f2ce96678c91",
+    "components": [
+      {
+        "dish_slug": "mussels-buttered-bistro-mussels",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "mussels-fries",
+        "role": "side",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "mussels-garlic-baguette",
+        "role": "bread",
+        "service_order": 3
+      },
+      {
+        "dish_slug": "mussels-bistro-green-salad",
+        "role": "salad",
+        "service_order": 4
+      },
+      {
+        "dish_slug": "mussels-broccolini",
+        "role": "side",
+        "service_order": 5
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "mussels-buttered-bistro-mussels",
+      "name": "Buttered Bistro Mussels",
+      "protein": "Shellfish",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": "Easy",
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT",
+      "governance_version": null,
+      "summary": "Classic French brasserie moules-frites style: Mont-Saint-Michel mussels steamed in Sauvignon Blanc with garlic and chilli, finished with cold butter, parsley and lemon zest.",
+      "method_md": "**Classic French Brasserie Moules-Frites Style**\n---\n## Ingredients\n### Mussels\n- **1.4 kg Mont-Saint-Michel mussels**, cleaned\n- 1 tbsp extra-virgin olive oil\n- ½ garlic clove, minced\n- ½ garlic clove, lightly crushed\n- Tiny pinch chilli flakes (optional)\n- **¼ cup dry white wine (Sauvignon Blanc)**\n- **½ tbsp cold unsalted butter**\n- ½ cup flat-leaf parsley, chopped\n- Small pinch lemon zest\n- Fine salt (only if needed)\n---\n## Method (Main Flow)\n1. Start fries (220°C fan / 240°C non-fan).\n2. Prep salad greens, parsley, garlic, bread.\n3. Toast baguette, rub with garlic.\n4. Heat oil, add garlic + chilli (20 sec).\n5. Add mussels + wine, cover, steam **7–8 min**.\n6. Off heat: butter, parsley, zest. Swirl.\n7. Toss salad lightly.\n8. Serve immediately.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2d9e0391ce6380b58ae5f2ce96678c91",
+      "ingredients": [
+        {
+          "name": "mont-saint-michel mussel",
+          "department": "Protein",
+          "qty": 1400,
+          "unit": "g",
+          "qty_alt": "1.4 kg",
+          "prep_note": "cleaned",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "extra-virgin olive oil",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 0.5,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "minced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 0.5,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "lightly crushed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "chilli flake",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": "pinch",
+          "qty_alt": "tiny pinch",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "dry white wine (sauvignon blanc)",
+          "department": "Alcohol",
+          "qty": 0.25,
+          "unit": "cup",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "unsalted butter",
+          "department": "Dairy",
+          "qty": 0.5,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "cold",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "flat-leaf parsley",
+          "department": "Produce",
+          "qty": 0.5,
+          "unit": "cup",
+          "qty_alt": null,
+          "prep_note": "chopped",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon zest",
+          "department": "Produce",
+          "qty": null,
+          "unit": "pinch",
+          "qty_alt": "small pinch",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "only if needed",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "mussels-fries",
+      "name": "Fries",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT",
+      "governance_version": null,
+      "summary": "Frozen thin fries baked hot (220°C fan) and salted.",
+      "method_md": "### Fries\n- Frozen thin fries\n- Neutral oil\n- Fine salt",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2d9e0391ce6380b58ae5f2ce96678c91",
+      "ingredients": [
+        {
+          "name": "frozen thin fries",
+          "department": "Frozen",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "neutral oil",
+          "department": "Oils & Liquids",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "mussels-garlic-baguette",
+      "name": "Garlic Baguette",
+      "protein": null,
+      "category": [
+        "Bread"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT",
+      "governance_version": null,
+      "summary": "Toasted half baguette brushed with olive oil and rubbed with a whole garlic clove.",
+      "method_md": "### Garlic Baguette\n- ½ baguette\n- Olive oil\n- 1 whole garlic clove",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2d9e0391ce6380b58ae5f2ce96678c91",
+      "ingredients": [
+        {
+          "name": "baguette",
+          "department": "Bread",
+          "qty": 0.5,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "whole",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "mussels-bistro-green-salad",
+      "name": "Bistro Green Salad",
+      "protein": "Veg",
+      "category": [
+        "Salad"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT",
+      "governance_version": null,
+      "summary": "Butter lettuce or baby cos (optional arugula) lightly tossed in an olive oil and rice wine vinegar dressing.",
+      "method_md": "### Bistro Green Salad\n- Butter lettuce / baby cos\n- Optional arugula\n**Dressing**\n- 3 tbsp extra-virgin olive oil\n- **¾–1 tsp rice wine vinegar**\n- Pinch fine salt\n- Tiny grind pepper",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2d9e0391ce6380b58ae5f2ce96678c91",
+      "ingredients": [
+        {
+          "name": "butter lettuce / baby cos",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "arugula",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "extra-virgin olive oil",
+          "department": "Oils & Liquids",
+          "qty": 3,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "rice wine vinegar",
+          "department": "Oils & Liquids",
+          "qty": 0.75,
+          "unit": "tsp",
+          "qty_alt": "¾–1 tsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": "pinch",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "tiny grind",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "mussels-broccolini",
+      "name": "Broccolini Side (Optional Add-On)",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT",
+      "governance_version": null,
+      "summary": "Optional add-on: blanched then sautéed broccolini with garlic, salt and lemon zest.",
+      "method_md": "# 🥗 Broccolini Side (Optional Add-On)\n- 1–2 bunches broccolini\n- Olive oil\n- 1 garlic clove\n- Pinch salt\n- Tiny pinch lemon zest\nBlanch 90 sec → sauté 1–2 min.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2d9e0391ce6380b58ae5f2ce96678c91",
+      "ingredients": [
+        {
+          "name": "broccolini",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "bunch",
+          "qty_alt": "1–2 bunches",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": "pinch",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "lemon zest",
+          "department": "Produce",
+          "qty": null,
+          "unit": "pinch",
+          "qty_alt": "tiny pinch",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": true
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2025-12-28",
+      "rating": 8.5,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": null,
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    }
+  ]
+}

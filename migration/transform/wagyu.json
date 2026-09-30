@@ -1,0 +1,469 @@
+{
+  "assignment_key": "wagyu",
+  "source_page_ids": [
+    "2d9e0391ce6380c0ba1bc5bef49dbc6d"
+  ],
+  "meal": {
+    "slug": "binchotan-wagyu-dinner",
+    "name": "Binchotan MB5+ Wagyu Sirloin Dinner",
+    "planned_date": "2025-12-21",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": "## ⏱️ TIMING & FLOW (STRESS-FREE)\n<table header-row=\"true\">\n<tr>\n<td>Time before eating</td>\n<td>What to do</td>\n</tr>\n<tr>\n<td>60–45 min</td>\n<td>Steak out of fridge, start rice, make cucumber salad</td>\n</tr>\n<tr>\n<td>30 min</td>\n<td>Finish garlic rice, keep warm</td>\n</tr>\n<tr>\n<td>20 min</td>\n<td>Light binchotan</td>\n</tr>\n<tr>\n<td>10 min</td>\n<td>Grill asparagus & shishitos</td>\n</tr>\n<tr>\n<td>5–7 min</td>\n<td>Grill steak</td>\n</tr>\n<tr>\n<td>Serve</td>\n<td>Rest → slice → eat</td>\n</tr>\n</table>",
+    "shared_prep_md": null,
+    "wine_pairing": null,
+    "legacy_notion_id": "2d9e0391ce6380c0ba1bc5bef49dbc6d",
+    "components": [
+      {
+        "dish_slug": "wagyu-binchotan-sirloin",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "wagyu-garlic-rice",
+        "role": "side",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "wagyu-grilled-asparagus",
+        "role": "side",
+        "service_order": 3
+      },
+      {
+        "dish_slug": "wagyu-shishito-peppers",
+        "role": "side",
+        "service_order": 4
+      },
+      {
+        "dish_slug": "wagyu-cucumber-salad",
+        "role": "salad",
+        "service_order": 5
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "wagyu-binchotan-sirloin",
+      "name": "Binchotan MB5+ Wagyu Sirloin",
+      "protein": "Beef",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "Japanese"
+      ],
+      "difficulty": "Medium",
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT",
+      "governance_version": null,
+      "summary": "MB5+ wagyu sirloin seasoned with fine salt only and grilled briefly over white-hot binchotan, pulled at 49–50°C and sliced thin.",
+      "method_md": "## 1️⃣ Wagyu Sirloin (MB5+, 280–300g)\n**Seasoning**\n- Fine sea salt only (just before grilling)\n**Method**\n1. Thaw fully; bring to room temp (45–60 min).\n2. Pat completely dry.\n3. Season lightly with fine salt **right before grilling**.\n4. Grill over fully white-hot binchotan:\n\t- \\~45–60 sec per side\n\t- Optional quick render on fat edge\n5. **Pull at 120–122°F (49–50°C)**\n6. Rest 5–7 min.\n7. Slice thin across the grain.\n**Serve with**\n- Premium paste or fresh wasabi\n- Yuzu kosho (tiny dabs)\n- Flaky salt\n- Optional lemon wedges",
+      "servings": 3,
+      "equipment": [
+        "konro",
+        "binchotan"
+      ],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2d9e0391ce6380c0ba1bc5bef49dbc6d",
+      "ingredients": [
+        {
+          "name": "wagyu sirloin, mb5+",
+          "department": "Protein",
+          "qty": 280,
+          "unit": "g",
+          "qty_alt": "280–300g",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine sea salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "just before grilling",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "wasabi",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "premium paste or fresh; to serve",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "yuzu kosho",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "tiny dabs; to serve",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "flaky salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "to serve",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon wedge",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "to serve",
+          "pantry_check": false,
+          "optional": true
+        }
+      ]
+    },
+    {
+      "slug": "wagyu-garlic-rice",
+      "name": "Japanese Garlic Rice (Light & Fragrant)",
+      "protein": null,
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "Japanese"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT",
+      "governance_version": null,
+      "summary": "Japanese short-grain rice cooked with kombu and folded into gently cooked garlic oil.",
+      "method_md": "## 2️⃣ Japanese Garlic Rice (Light & Fragrant)\n**Ingredients**\n- 1 cup Japanese short-grain rice (uncooked)\n- 1 cup water\n- 1–2 small pieces kombu (optional; remove after cooking)\n- 2 cloves garlic, very finely minced\n- 1–1½ tbsp neutral oil (rice bran / grapeseed)\n- Salt\n- Tiny pinch white pepper (optional)\n**Method**\n1. Rinse rice; cook with water (+ kombu if using).\n2. Remove kombu immediately after cooking.\n3. Heat oil on low–medium; gently cook garlic until fragrant **not browned**.\n4. Fold rice into garlic oil.\n5. Season lightly with salt (+ white pepper if using).\n6. Keep warm, covered.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2d9e0391ce6380c0ba1bc5bef49dbc6d",
+      "ingredients": [
+        {
+          "name": "japanese short-grain rice",
+          "department": "Pantry",
+          "qty": 1,
+          "unit": "cup",
+          "qty_alt": null,
+          "prep_note": "uncooked",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "water",
+          "department": "Pantry",
+          "qty": 1,
+          "unit": "cup",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "kombu",
+          "department": "Pantry",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": "1–2 small pieces",
+          "prep_note": "remove after cooking",
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "very finely minced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "neutral oil",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": "1–1½ tbsp",
+          "prep_note": "rice bran / grapeseed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "white pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": "pinch",
+          "qty_alt": "tiny pinch",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": true
+        }
+      ]
+    },
+    {
+      "slug": "wagyu-grilled-asparagus",
+      "name": "Grilled Asparagus (Clean & Bright)",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "Japanese"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT",
+      "governance_version": null,
+      "summary": "Asparagus tossed in neutral oil and grilled until lightly charred, finished with lemon juice or sesame oil.",
+      "method_md": "## 3️⃣ Grilled Asparagus (Clean & Bright)\n**Ingredients**\n- 1 bunch asparagus\n- 1–1½ tbsp neutral oil\n- Fine sea salt\n- Finish: lemon juice **or** a few drops sesame oil (choose one)\n**Method**\n1. Snap off woody ends.\n2. Toss with oil and light salt.\n3. Grill over medium–high heat:\n\t- Roll occasionally\n\t- Until lightly charred and just tender (3–4 min)\n4. Finish off heat with lemon **or** sesame oil.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2d9e0391ce6380c0ba1bc5bef49dbc6d",
+      "ingredients": [
+        {
+          "name": "asparagus",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "bunch",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "neutral oil",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": "1–1½ tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine sea salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon juice or sesame oil",
+          "department": "Oils & Liquids",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "a few drops",
+          "prep_note": "finish; choose one",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "wagyu-shishito-peppers",
+      "name": "Blistered Shishito Peppers",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "Japanese"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT",
+      "governance_version": null,
+      "summary": "Shishito peppers grilled over high heat until blistered and finished with flaky salt.",
+      "method_md": "## 4️⃣ Blistered Shishito Peppers\n**Ingredients**\n- 150–200g shishito peppers\n- Neutral oil\n- Flaky salt\n- Optional lemon wedge\n**Method**\n1. Toss peppers lightly with oil.\n2. Grill over high heat until blistered and lightly charred.\n3. Finish with flaky salt (+ optional lemon).",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2d9e0391ce6380c0ba1bc5bef49dbc6d",
+      "ingredients": [
+        {
+          "name": "shishito pepper",
+          "department": "Produce",
+          "qty": 150,
+          "unit": "g",
+          "qty_alt": "150–200g",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "neutral oil",
+          "department": "Oils & Liquids",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "flaky salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon wedge",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": true
+        }
+      ]
+    },
+    {
+      "slug": "wagyu-cucumber-salad",
+      "name": "Light Japanese Cucumber Salad (Cold Reset)",
+      "protein": "Veg",
+      "category": [
+        "Salad"
+      ],
+      "cuisine": [
+        "Japanese"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT",
+      "governance_version": null,
+      "summary": "Thinly sliced salted Japanese cucumber tossed with rice vinegar and chilled — a cold reset for the meal.",
+      "method_md": "## 5️⃣ Light Japanese Cucumber Salad (Cold Reset)\n**Ingredients**\n- 1 large Japanese cucumber\n- ½ tsp fine salt\n- 1 tsp rice vinegar\n- Optional: pinch sugar\n- Optional garnish: sesame seeds\n**Method**\n1. Slice cucumber thin.\n2. Toss with salt; rest 5 min.\n3. Gently squeeze out excess water.\n4. Toss with vinegar (+ pinch sugar if needed).\n5. Chill until serving.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2d9e0391ce6380c0ba1bc5bef49dbc6d",
+      "ingredients": [
+        {
+          "name": "japanese cucumber",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "large, sliced thin",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine salt",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "rice vinegar",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "sugar",
+          "department": "Pantry",
+          "qty": null,
+          "unit": "pinch",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "sesame seed",
+          "department": "Pantry",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "garnish",
+          "pantry_check": false,
+          "optional": true
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2025-12-21",
+      "rating": 9,
+      "execution_rating": 8.5,
+      "repeat": "yes",
+      "cook_notes": "Binchotan timing is unforgiving — fully white-hot coals are non-negotiable. Pull at 49°C is correct; any longer risks losing the delicate fat render. Garlic rice benefits from resting covered for 5+ min after folding. Shishitos need high heat and no crowding to blister properly.",
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    }
+  ]
+}

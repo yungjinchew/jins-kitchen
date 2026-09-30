@@ -1,0 +1,165 @@
+{
+  "assignment_key": "tomahawk",
+  "source_page_ids": [
+    "3e8e0391ce6381bda0aac8b72a48748f"
+  ],
+  "meal": null,
+  "dishes": [
+    {
+      "slug": "dry-aged-pork-tomahawk",
+      "name": "Reverse-Seared Dry-Aged Pork Tomahawk",
+      "protein": "Pork",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": "Special",
+      "tags": [],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": "Governance Framework v3.5 — docx 2026-09-27-dry-aged-pork-tomahawk-dinner-final, plus in-chat revisions. Butcher Box Singapore, 30–40 day dry-aged Gooralie pork tomahawk.",
+      "governance_version": "v3.5",
+      "summary": "Reverse-seared 30–40 day dry-aged Gooralie pork tomahawk, split into loin and belly, low-roasted at 225°F/107°C and seared in cast iron, served with cider–shallot jus, potato–celeriac purée, fennel–Granny Smith salad and hispi cabbage.",
+      "method_md": null,
+      "servings": 3,
+      "equipment": [
+        "Bosch oven",
+        "rack over tray",
+        "leave-in probe",
+        "cast iron",
+        "outdoor gas",
+        "binchotan",
+        "broiler",
+        "Tiger Keep Warm",
+        "TempSpike Plus"
+      ],
+      "designed_unvalidated": [
+        {
+          "param": "Sear gain (pork)",
+          "designed_value": "not measured",
+          "note": "Still untested — not measured this cook; readings #3 and #4 not reported."
+        },
+        {
+          "param": "Post-sear carryover (pork)",
+          "designed_value": "not measured",
+          "note": "Still untested — not measured this cook."
+        },
+        {
+          "param": "Plate temperature (pork)",
+          "designed_value": "not measured",
+          "note": "Still untested — not measured this cook."
+        },
+        {
+          "param": "Thin loin (≤4 cm) sear straight from oven",
+          "designed_value": "Stop at about 138–140°F; verify ≥145°F/63°C after the rest",
+          "note": "Next-time item, designed."
+        },
+        {
+          "param": "Belly crackling in the oven",
+          "designed_value": "High heat, rind-up, after the loin exits",
+          "note": "Next-time item, designed."
+        },
+        {
+          "param": "Hispi in cast iron",
+          "designed_value": "Char the cut faces in cast iron, then add stock and butter, cover to steam the core and baste",
+          "note": "Designed, untested."
+        }
+      ],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3e8e0391ce6381bda0aac8b72a48748f",
+      "ingredients": []
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "dish",
+      "dish_slug": "dry-aged-pork-tomahawk",
+      "cooked_on": "2026-09-27",
+      "rating": 8,
+      "execution_rating": 7.5,
+      "repeat": "no",
+      "cook_notes": "First cook. Two 3.5 cm dry-aged tomahawks with the belly split off and cooked separately; loins pulled at 130°F/54°C after 60 and 67 min at 225°F/107°C, lost 8–14°F over an 8-min pre-sear rest, then overshot during a sear run without a leave-in probe and finished more well-done than intended. Jus, potato–celeriac purée and fennel–Granny Smith salad performed well; belly rind burnt in cast iron, and hispi on binchotan was too slow and was finished under the broiler. Not repeating the cut: yield is belly-heavy and belly is readily available — buy loin instead.\n\n## Cook record — 2026-09-27\n**Recipe version:** Governance Framework v3.5, docx `2026-09-27-dry-aged-pork-tomahawk-dinner-final`, with two later in-chat revisions: loin sear moved to cast iron on outdoor gas; hispi moved to the binchotan.\n**Ratings:** Meal 8 · Execution 7.5 · Repeat: No (cut — see Next time)\n### What was actually cooked\nButcher Box Singapore, 30–40 day dry-aged pork tomahawks, 700 g + 730 g, received frozen and thawed. Loin eye 3.5 cm. Rind present and pre-scored by the butcher, running over both the belly and the loin fat cap.\nSplit the day before: loins with rib bone, rind removed leaving \\~5 mm fat (702 g, salted 5.6 g, \\~3 hr same-day, uncovered); belly in \\~8 cm pieces plus loin-rind strips (631 g, salted 5 g, overnight, rind-up, uncovered).\nServed to 3. Menu: loin, belly, loin-rind crackling, cider–shallot jus (Thatchers Gold, medium dry), potato–celeriac purée, shaved fennel–Granny Smith salad, hispi cabbage.\n### Material deviations from the written plan\n<table header-row=\"true\">\n<tr>\n<td>Deviation</td>\n<td>Detail</td>\n</tr>\n<tr>\n<td>Purée</td>\n<td>Celeriac found; potato–celeriac version made instead of the all-potato fallback.</td>\n</tr>\n<tr>\n<td>Hispi</td>\n<td>Binchotan start abandoned as too slow and required too much movement between stations; finished under the broiler.</td>\n</tr>\n<tr>\n<td>Loin sear</td>\n<td>No leave-in probe at the fire; sear stop was not temperature-guided. Readings #3 and #4 not reported.</td>\n</tr>\n<tr>\n<td>Pre-sear rest</td>\n<td>Second loin rested on the rack still over the hot tray.</td>\n</tr>\n</table>\n### Designed-parameter confirmation\n**Configuration:** 3.5 cm bone-in dry-aged loin, rind removed (\\~5 mm fat), two pieces, fridge-cold, rack over tray, Bosch oven at 225°F/107°C, leave-in probe in the loin eye.\n**Confirmed for this configuration:**\n- **Low-roast duration to 130°F/54°C: 60 and 67 min** against a designed 40–70 min band.\n- **Loin-rind crackling rendered in cast iron:** crisp and well received.\n- **Cider–shallot jus with a medium-dry cider:** complemented the pork.\n- **Potato–celeriac purée:** very well received. **Tiger Keep Warm hold of approx. 60 min confirmed** — held without texture loss (65:35 potato–celeriac, recipe quantity).\n**Failed or revised:**\n- **Pre-sear rest, 8 min uncovered:** designed as a rise (+15 to +20°F total). Observed **−14°F and −8°F** (115.9°F and 122°F at E+8). A 3.5 cm loin out of a 225°F oven carries too little surface heat to drive carryover and cools on the rack; the piece left over the hot tray cooled less. The 8-min rest validated on the 7 cm rack chop does not transfer to thin loin.\n- **Reading-#2 sear gate:** both readings fell in the lowest branch (normal sear with fat-edge stand), which produced an overshoot. The thresholds assumed the rest would raise temperature; they are not valid for thin cuts.\n- **Belly rind crisped rind-down in cast iron, 12–18 min:** rind burnt. The belly meat itself cooked well.\n- **Hispi on binchotan:** too slow for service. Broiler finish gave char and crispness, but the dish was judged incomplete in flavour.\n**Still untested — not measured this cook:** sear gain, post-sear carryover and plate temperature for pork.\n### Household verdict\nThe loin was the attraction. The belly was well cooked but read as ordinary: it filled the plate without adding anything the loin did not.\n### Wine pairing outcome\n**2022 Domaine du Vieux Télégraphe “Télégramme” Châteauneuf-du-Pape — worked well.** Vintage and cuvée matched from the live cellar export (snapshot 2026-09-27), the only Vieux Télégraphe bottle listed. Second Grenache-led Châteauneuf to work with reverse-seared pork, after the 2021 Mont-Redon on 30 Aug.\n### Next time\n1. **Buy loin, not the tomahawk** — a bone-in rack or thick loin chops. The tomahawk's yield is mostly belly, which is available separately.\n2. **Thin loin (≤4 cm): no pre-sear rest.** Pat dry and sear straight from the oven with the TempSpike Plus in through the sear, exposed end angled away from the pan surface. Stop at about 138–140°F and verify ≥145°F/63°C after the rest (designed).\n3. **Belly crackling in the oven, not the pan:** high heat, rind-up, after the loin exits (designed).\n4. **Hispi: char the cut faces in cast iron, then add stock and butter, cover to steam the core and baste** (designed, untested).\n5. **Capture readings #3 and #4 and plate temperature** — pork sear gain and carryover remain unmeasured.",
+      "deviations": [
+        "Purée: Celeriac found; potato–celeriac version made instead of the all-potato fallback.",
+        "Hispi: Binchotan start abandoned as too slow and required too much movement between stations; finished under the broiler.",
+        "Loin sear: No leave-in probe at the fire; sear stop was not temperature-guided. Readings #3 and #4 not reported.",
+        "Pre-sear rest: Second loin rested on the rack still over the hot tray.",
+        "Loin sear moved to cast iron on outdoor gas; hispi moved to the binchotan (in-chat revisions to the docx)."
+      ],
+      "parameter_confirmations": [
+        {
+          "param": "Low-roast duration to 130°F/54°C (3.5 cm bone-in dry-aged loin, 225°F/107°C)",
+          "designed": "40–70 min band",
+          "observed": "60 and 67 min",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Loin-rind crackling rendered in cast iron",
+          "designed": "crisp crackling",
+          "observed": "crisp and well received",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Cider–shallot jus with a medium-dry cider",
+          "designed": "complements the pork",
+          "observed": "complemented the pork (Thatchers Gold, medium dry)",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Potato–celeriac purée Tiger Keep Warm hold",
+          "designed": "approx. 60 min hold",
+          "observed": "held without texture loss (65:35 potato–celeriac, recipe quantity)",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Pre-sear rest, 8 min uncovered",
+          "designed": "rise of +15 to +20°F total",
+          "observed": "−14°F and −8°F (115.9°F and 122°F at E+8)",
+          "verdict": "diverged"
+        },
+        {
+          "param": "Reading-#2 sear gate",
+          "designed": "thresholds assume the rest raises temperature",
+          "observed": "both readings fell in the lowest branch (normal sear with fat-edge stand), producing an overshoot",
+          "verdict": "diverged"
+        },
+        {
+          "param": "Belly rind crisped rind-down in cast iron",
+          "designed": "12–18 min",
+          "observed": "rind burnt; belly meat itself cooked well",
+          "verdict": "diverged"
+        },
+        {
+          "param": "Hispi on binchotan",
+          "designed": "binchotan char",
+          "observed": "too slow for service; broiler finish gave char and crispness but dish judged incomplete in flavour",
+          "verdict": "diverged"
+        },
+        {
+          "param": "Sear gain (pork)",
+          "designed": "not stated",
+          "observed": "not measured",
+          "verdict": "unresolved"
+        },
+        {
+          "param": "Post-sear carryover (pork)",
+          "designed": "not stated",
+          "observed": "not measured",
+          "verdict": "unresolved"
+        },
+        {
+          "param": "Plate temperature (pork)",
+          "designed": "not stated",
+          "observed": "not measured",
+          "verdict": "unresolved"
+        }
+      ],
+      "household_split": "The loin was the attraction. The belly was well cooked but read as ordinary: it filled the plate without adding anything the loin did not.",
+      "wine_outcome": "2022 Domaine du Vieux Télégraphe “Télégramme” Châteauneuf-du-Pape — worked well. Vintage and cuvée matched from the live cellar export (snapshot 2026-09-27), the only Vieux Télégraphe bottle listed. Second Grenache-led Châteauneuf to work with reverse-seared pork, after the 2021 Mont-Redon on 30 Aug."
+    }
+  ]
+}

@@ -1,0 +1,690 @@
+{
+  "assignment_key": "zaatar-chicken",
+  "source_page_ids": [
+    "34ee0391ce63801db50ef690f0697248"
+  ],
+  "meal": {
+    "slug": "zaatar-chicken-dinner",
+    "name": "Za’atar Chicken Menu (3 pax)",
+    "planned_date": "2026-04-26",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": "## ⏱️ Master Timeline\n- **T-24h**: Dry brine chicken.\n- **T-1:15**: Parboil potatoes → Stage 1 roast.\n- **T-0:50**: Prep salad (hold at room temp).\n- **T-0:40**: Chicken into oven.\n- **T-0:15**: Remove potatoes.\n- **T-0:10**: Make yogurt sauce.\n- **T+25**: Apply butter.\n- **T+30**: Start probing.\n- **T+32–36**: Broil chicken.\n- **T+36–42**: Chicken out → rest. Potatoes back in.\n- **T+38–45**: Cook beans.\n- **T+45–50**: Plate + serve.\n---\n## ⚠️ Critical Control Points\n- **Chicken**: Broil at temp, not time. Don’t apply butter early.\n- **Potatoes**: Don’t overcook Stage 1. Don’t cover while holding.\n- **Salad**: Onion must be soaked. Salt last.\n- **Yogurt**: Sauce = cold. Serve = cool.",
+    "shared_prep_md": null,
+    "wine_pairing": null,
+    "legacy_notion_id": "34ee0391ce63801db50ef690f0697248",
+    "components": [
+      {
+        "dish_slug": "zaatar-spatchcock-chicken",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "zaatar-roast-potatoes",
+        "role": "side",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "zaatar-green-beans",
+        "role": "side",
+        "service_order": 3
+      },
+      {
+        "dish_slug": "zaatar-fennel-citrus-salad",
+        "role": "salad",
+        "service_order": 4
+      },
+      {
+        "dish_slug": "zaatar-yogurt-sauce",
+        "role": "sauce",
+        "service_order": 5
+      },
+      {
+        "dish_slug": "zaatar-orange-yogurt-dessert",
+        "role": "dessert",
+        "service_order": 6
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "zaatar-spatchcock-chicken",
+      "name": "Spatchcock Chicken (Aleppo + Za’atar Butter)",
+      "protein": "Chicken",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "Modern"
+      ],
+      "difficulty": "Medium",
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Chatgpt / alton brown",
+      "governance_version": null,
+      "summary": "Dry-brined spatchcock chicken roasted at high heat, brushed with Aleppo and za’atar butter and finished under the broiler.",
+      "method_md": "## 🐔 Spatchcock Chicken (Aleppo + Za’atar Butter)\n### Ingredients\n- 1 whole chicken (\\~1.9 kg), spatchcocked\n- 2–2¼ tsp kosher salt (Diamond Crystal)\n- ½ tsp black pepper\n- 1 tbsp olive oil\n**Butter**\n- 30 g unsalted butter (\\~2 tbsp)\n- 1 tsp Aleppo pepper\n- 1–1½ tbsp za’atar\n### Prep (T-24h)\n- Salt both sides (70% skin / 30% underside).\n- Refrigerate uncovered for 12–24h.\n- Ensure fully flattened.\n### Cooking\n- Oven: 220°C / 425°F.\n- Pat dry, rub with oil + pepper.\n- Roast (skin side up) — 25 min.\n- Melt butter (low heat), add spices.\n- Brush at T+25 min.\n- Continue roasting 10–15 min.\n- At 66–68°C (151–154°F) → switch to broil high.\n- Broil 4–6 min (watch closely).\n- Pull at 68°C / 155°F.\n- Rest 10 min.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "34ee0391ce63801db50ef690f0697248",
+      "ingredients": [
+        {
+          "name": "whole chicken",
+          "department": "Protein",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": "~1.9 kg",
+          "prep_note": "spatchcocked",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "kosher salt, diamond crystal",
+          "department": "Seasoning",
+          "qty": 2,
+          "unit": "tsp",
+          "qty_alt": "2–2¼ tsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "unsalted butter",
+          "department": "Dairy",
+          "qty": 30,
+          "unit": "g",
+          "qty_alt": "~2 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "aleppo pepper",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "za’atar",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": "1–1½ tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "zaatar-roast-potatoes",
+      "name": "Roast Potatoes (Two-Stage)",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "Modern"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Chatgpt / alton brown",
+      "governance_version": null,
+      "summary": "Parboiled Yukon Gold potatoes roasted in two stages with garlic and finished with lemon zest and juice.",
+      "method_md": "## 🥔 Roast Potatoes (Two-Stage)\n### Ingredients\n- 800 g Yukon Gold potatoes (skin on)\n- 2 tbsp olive oil\n- 1 tsp kosher salt\n- Black pepper\n- Optional: ½ tsp paprika\n**Stage 2**\n- 2–3 garlic cloves (sliced)\n- Optional: thyme\n**Finish**\n- Lemon zest (½–1 lemon)\n- 1–2 tsp lemon juice\n- Optional: ½–1 tsp za’atar\n### Method\n1. **Parboil**: 8–10 min simmer. Drain + shake to rough edges.\n2. **Season**: Toss with oil, salt, pepper.\n3. **Stage 1 roast**: 220°C / 425°F for 25–30 min → light golden. Remove → hold uncovered.\n4. **Stage 2 roast**: After chicken comes out, 230°C / 445°F. Add garlic + herbs. Roast 10–15 min.\n5. **Finish**: Add lemon zest + juice. Optional light za’atar.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "34ee0391ce63801db50ef690f0697248",
+      "ingredients": [
+        {
+          "name": "yukon gold potato",
+          "department": "Produce",
+          "qty": 800,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "skin on",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "kosher salt",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "paprika",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "clove",
+          "qty_alt": "2–3 cloves",
+          "prep_note": "sliced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "thyme",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "lemon zest",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "½–1 lemon",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon juice",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": "1–2 tsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "za’atar",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": "½–1 tsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": true
+        }
+      ]
+    },
+    {
+      "slug": "zaatar-green-beans",
+      "name": "Green Beans (Garlic + Lemon)",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "Modern"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Chatgpt / alton brown",
+      "governance_version": null,
+      "summary": "Blanched green beans tossed in a hot pan with sliced garlic and finished with lemon.",
+      "method_md": "## 🥬 Green Beans (Garlic + Lemon)\n### Ingredients\n- 300 g green beans\n- 1 tbsp olive oil\n- 2 garlic cloves (sliced)\n- Zest ½ lemon\n- 1 tbsp lemon juice\n- Salt\n### Method\n- Blanch 2–3 min → ice bath.\n- Heat pan (medium).\n- Oil → garlic (light golden).\n- Add beans → toss 2–3 min.\n- Finish with lemon + salt.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "34ee0391ce63801db50ef690f0697248",
+      "ingredients": [
+        {
+          "name": "green bean",
+          "department": "Produce",
+          "qty": 300,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "sliced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon zest",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "zest ½ lemon",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon juice",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "zaatar-fennel-citrus-salad",
+      "name": "Fennel & Citrus Salad (Yellow Onion + Kalamata)",
+      "protein": "Veg",
+      "category": [
+        "Salad"
+      ],
+      "cuisine": [
+        "Modern"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Chatgpt / alton brown",
+      "governance_version": null,
+      "summary": "Thinly sliced fennel and soaked yellow onion with orange and grapefruit segments, Kalamata olives and a lemon–olive oil dressing.",
+      "method_md": "## 🥗 Fennel & Citrus Salad (Yellow Onion + Kalamata)\n### Ingredients\n- 1 fennel bulb (very thinly sliced)\n- ⅓ small yellow onion (thinly sliced)\n**Citrus**\n- 1 orange + ½ grapefruit (segmented)\n**Dressing**\n- Zest ½ lemon\n- 1½ tbsp lemon juice\n- 3 tbsp olive oil\n**Other**\n- 25 g Kalamata olives (sliced)\n- ¼–½ tsp kosher salt\n- Black pepper\n### Method\n- Soak onion 15–20 min, drain.\n- Combine fennel + onion.\n- Add lemon zest, juice, olive oil.\n- Add citrus (gently).\n- Add olives.\n**Balance**\n- Adjust acid/oil first.\n- Salt last.\n**Rest**\n- 10–15 min at room temp.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "34ee0391ce63801db50ef690f0697248",
+      "ingredients": [
+        {
+          "name": "fennel bulb",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "very thinly sliced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "yellow onion",
+          "department": "Produce",
+          "qty": 0.33,
+          "unit": "piece",
+          "qty_alt": "⅓ small onion",
+          "prep_note": "small, thinly sliced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "orange",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "segmented",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "grapefruit",
+          "department": "Produce",
+          "qty": 0.5,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "segmented",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon zest",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "zest ½ lemon",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon juice",
+          "department": "Produce",
+          "qty": 1.5,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 3,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "kalamata olive",
+          "department": "Pantry",
+          "qty": 25,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "sliced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "kosher salt",
+          "department": "Seasoning",
+          "qty": 0.25,
+          "unit": "tsp",
+          "qty_alt": "¼–½ tsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "zaatar-yogurt-sauce",
+      "name": "Yogurt Sauce",
+      "protein": null,
+      "category": [
+        "Sauce"
+      ],
+      "cuisine": [
+        "Modern"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Chatgpt / alton brown",
+      "governance_version": null,
+      "summary": "Cold Greek yogurt sauce with olive oil, grated garlic and lemon juice.",
+      "method_md": "## 🥣 Yogurt Sauce\n### Ingredients\n- 200 g Greek yogurt\n- 1 tbsp olive oil\n- 1 garlic clove (grated)\n- 1 tbsp lemon juice\n- ½ tsp salt\n### Method\n- Mix.\n- Refrigerate.\n- Bring out 10–15 min before serving.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "34ee0391ce63801db50ef690f0697248",
+      "ingredients": [
+        {
+          "name": "greek yogurt",
+          "department": "Dairy",
+          "qty": 200,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "grated",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon juice",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "salt",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "zaatar-orange-yogurt-dessert",
+      "name": "Yogurt Dessert (Orange)",
+      "protein": null,
+      "category": [
+        "Dessert"
+      ],
+      "cuisine": [
+        "Modern"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Chatgpt / alton brown",
+      "governance_version": null,
+      "summary": "Chilled honey–vanilla Greek yogurt layered with segmented oranges and toasted nuts.",
+      "method_md": "## 🍊 Yogurt Dessert (Orange)\n### Ingredients\n- 300 g Greek yogurt\n- 2–3 tbsp honey\n- Zest ½ orange\n- ½ tsp vanilla\n- Pinch salt\n**Fruit**\n- 2 oranges (segmented)\n**Toppings**\n- 40 g toasted nuts\n### Method\n1. **Oranges**: Segment cleanly. Toss with 1 tsp honey + pinch salt. Rest 10–15 min.\n2. **Yogurt**: Mix base. Chill 30–60 min.\n3. **Assemble**: Yogurt → oranges → nuts → honey drizzle.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "34ee0391ce63801db50ef690f0697248",
+      "ingredients": [
+        {
+          "name": "greek yogurt",
+          "department": "Dairy",
+          "qty": 300,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "honey",
+          "department": "Pantry",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": "2–3 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "orange zest",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "zest ½ orange",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "vanilla",
+          "department": "Pantry",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": "pinch",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "orange",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "segmented",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "toasted nut",
+          "department": "Pantry",
+          "qty": 40,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2026-04-26",
+      "rating": 9.5,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": null,
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    }
+  ]
+}

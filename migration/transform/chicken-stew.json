@@ -1,0 +1,655 @@
+{
+  "assignment_key": "chicken-stew",
+  "source_page_ids": [
+    "368e0391ce6381a3b56be65cc572209e"
+  ],
+  "meal": {
+    "slug": "chicken-stew-sunday",
+    "name": "Chicken Stew with White Wine, Wings & Gremolata — Sunday Dinner",
+    "planned_date": "2026-05-25",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": "## ⏱️ T-Minus Timeline\n<table header-row=\"true\">\n<tr>\n<td>Time</td>\n<td>Action</td>\n</tr>\n<tr>\n<td>T-5 hr</td>\n<td>Bake olive oil cake</td>\n</tr>\n<tr>\n<td>T-3 hr</td>\n<td>Prep all vegetables and salad components</td>\n</tr>\n<tr>\n<td>T-2 hr 45 min</td>\n<td>Begin stew — render bacon, brown wings</td>\n</tr>\n<tr>\n<td>T-2 hr 05 min</td>\n<td>Begin reduction phase</td>\n</tr>\n<tr>\n<td>T-1 hr 35 min</td>\n<td>Stew enters oven with wings, potatoes, early carrots</td>\n</tr>\n<tr>\n<td>T-1 hr 05 min</td>\n<td>Add thighs and remaining carrots</td>\n</tr>\n<tr>\n<td>T-35 min</td>\n<td>Begin raising oven to 400°F / 205°C — stew has \\~15 min remaining</td>\n</tr>\n<tr>\n<td>T-20 min</td>\n<td>Stew exits oven and holds uncovered</td>\n</tr>\n<tr>\n<td>T-15 min</td>\n<td>Toast bread</td>\n</tr>\n<tr>\n<td>T-5 min</td>\n<td>Dress salad</td>\n</tr>\n<tr>\n<td>T</td>\n<td>Plate and serve</td>\n</tr>\n</table>\n**Critical path:** Wing browning → reduction → final thigh braise. Do not delay stew service for bread or salad.\n**Oven sequencing:** Cake (350°F) → Stew (325°F) → Bread (400°F). Raise oven at T-35 while stew finishes. Transition takes \\~15–20 min. Bread enters only when oven confirms temperature.",
+    "shared_prep_md": null,
+    "wine_pairing": "Felton Road Bannockburn Pinot Noir 2022 — worked well. Consider Clos des Papes CdP 2018 next time for more body.",
+    "legacy_notion_id": "368e0391ce6381a3b56be65cc572209e",
+    "components": [
+      {
+        "dish_slug": "chicken-stew-fennel-celery-herb-salad",
+        "role": "salad",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "chicken-stew-white-wine-wings-gremolata",
+        "role": "main",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "chicken-stew-toasted-sourdough",
+        "role": "bread",
+        "service_order": 3
+      },
+      {
+        "dish_slug": "chicken-stew-orange-olive-oil-cake",
+        "role": "dessert",
+        "service_order": 4
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "chicken-stew-fennel-celery-herb-salad",
+      "name": "Fennel, Celery, and Herb Salad with Lemon Vinaigrette",
+      "protein": "Veg",
+      "category": [
+        "Salad"
+      ],
+      "cuisine": [
+        "Modern",
+        "European"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": "ATK / Claude",
+      "governance_version": null,
+      "summary": "Shaved fennel and celery with parsley in a deliberately broken lemon vinaigrette, dressed just before serving.",
+      "method_md": "## 🥗 Fennel, Celery, and Herb Salad\n**Serves 6–8 · 20 min active**\n### Ingredients\n- 2 fennel bulbs, shaved thin\n- 3 celery stalks, sliced thinly\n- ½ cup parsley leaves\n- 2 tbsp lemon juice\n- 60 ml / ¼ cup extra-virgin olive oil\n- Diamond Crystal kosher salt and black pepper\n- Optional: 30 g / 1 oz shaved Parmesan\n### Method\n1. Shave fennel and slice celery. Refrigerate until service.\n2. Whisk lemon juice + olive oil + salt + pepper vigorously. Broken vinaigrette is intentional.\n3. Dress immediately before serving. Toss with parsley. Add Parmesan at final toss if using.\n### ⚠️ CCPs\n- **Major:** Do not dress early — fennel softens and releases water. Unrecoverable for texture; salad remains edible.",
+      "servings": 6,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "368e0391ce6381a3b56be65cc572209e",
+      "ingredients": [
+        {
+          "name": "fennel bulb",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "shaved thin",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "celery stalk",
+          "department": "Produce",
+          "qty": 3,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "sliced thinly",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "parsley leaves",
+          "department": "Produce",
+          "qty": 0.5,
+          "unit": "cup",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon juice",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "extra-virgin olive oil",
+          "department": "Oils & Liquids",
+          "qty": 60,
+          "unit": "ml",
+          "qty_alt": "¼ cup",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "parmesan",
+          "department": "Dairy",
+          "qty": 30,
+          "unit": "g",
+          "qty_alt": "1 oz",
+          "prep_note": "shaved",
+          "pantry_check": false,
+          "optional": true
+        }
+      ]
+    },
+    {
+      "slug": "chicken-stew-white-wine-wings-gremolata",
+      "name": "Chicken Stew with White Wine, Wings, and Gremolata",
+      "protein": "Chicken",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "Modern",
+        "European"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Make-Ahead"
+      ],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": "ATK / Claude",
+      "governance_version": null,
+      "summary": "Chicken thigh stew built on a deep wing-and-bacon fond and a hard white-wine reduction, braised in the oven with potatoes and split-timed carrots, finished with sherry vinegar and gremolata.",
+      "method_md": "## 🍲 Chicken Stew with White Wine, Wings, and Gremolata\n**Yield: 6–8 · Total: \\~2 hr 45 min · Active: \\~50 min · Oven: 325°F / 163°C**\n### Ingredients — Stew\n- 2 lb boneless skinless chicken thighs, halved crosswise\n- 1 lb chicken wings, separated at joints\n- 3 slices bacon, chopped\n- 1 medium onion, finely chopped\n- 1 celery rib, minced\n- 2 garlic cloves, minced\n- 2 tsp anchovy paste\n- ½ tsp dried thyme\n- 1 bay leaf · parsley stems from 1 small bunch · 1 thin strip lemon peel\n- 5 cups / 1.2 L chicken broth\n- 1 cup / 240 ml dry white wine\n- 1 tbsp soy sauce\n- 57 g / 4 tbsp unsalted butter\n- 2½ tbsp all-purpose flour\n- 1 lb small red potatoes, quartered\n- 4 carrots, cut into ½-inch pieces, **divided**\n- ¾ tsp Diamond Crystal kosher salt · black pepper\n### Ingredients — Finish & Gremolata\n- 1–2 tsp sherry vinegar\n- 2 tbsp finely chopped parsley · ½ tsp lemon zest · ¼ small garlic clove, microplaned\n### Prep\n1. Heat oven to 325°F / 163°C.\n2. Pat wings dry thoroughly.\n3. Season thighs with ¾ tsp Diamond Crystal kosher salt + pepper. Temper 15–20 min.\n4. Divide carrots into two equal portions.\n### Phase 1 — Render Bacon and Brown Wings\n1. Cook bacon in Dutch oven over medium-low, 6–8 min. Transfer to bowl.\n2. Increase to medium. Brown wings deeply, 10–12 min total. **Brown in batches if necessary.**\n3. *Cue: deep golden brown, dark fond on pot.* Transfer wings and bacon to bowl. Hold up to 30 min at room temp.\n### Phase 2 — Build and Reduce Base\n1. Add onion, celery, garlic, anchovy paste, thyme. Cook 3–5 min.\n2. Add wine, 1 cup / 240 ml broth, soy sauce. Scrape up all browned bits.\n3. Add bay leaf, parsley stems, lemon peel.\n4. Boil aggressively until nearly dry, 12–15 min. *Cue: vegetables begin lightly frying again in concentrated fat.*\n### Phase 3 — Build Stew\n1. Reduce heat to medium-low. Stir in butter.\n2. Add flour; cook 1 min.\n3. Gradually whisk in remaining 4 cups / 960 ml broth until smooth.\n4. Add wings, bacon, potatoes, and **first half of carrots**. Bring to simmer.\n5. Transfer uncovered to oven for 30 min.\n### Phase 4 — Add Thighs\n1. Remove from oven. Scrape fond above liquid line back into stew.\n2. Add thighs and **remaining carrots**.\n3. Return uncovered to oven for 40–50 min.\n4. *Doneness: paring knife slides through thickest thigh with no drag. If resistance remains: 10 more min. Thighs remain submerged to service.*\n### Holding & Assembly\n1. During final 30 min, make gremolata. Hold uncovered max 30 min — discard and remake if longer.\n2. Remove and discard bay leaf, parsley stems, lemon peel.\n3. Remove wings, reclaim flat and drumette meat. Discard bones, skin, cartilage. Return meat to stew.\n4. Stir in 1–2 tsp sherry vinegar. Taste after first teaspoon.\n5. Adjust salt and pepper.\n6. Hold uncovered off heat up to 20 min. Loosen with hot broth if it thickens.\n7. Serve with \\~½ tsp gremolata per bowl.\n### ⚠️ CCPs\n<table header-row=\"true\">\n<tr>\n<td>Severity</td>\n<td>Failure Mode</td>\n<td>Recovery</td>\n</tr>\n<tr>\n<td>**Critical**</td>\n<td>Incomplete reduction — vegetables still floating in abundant liquid</td>\n<td>Continue until vegetables lightly fry</td>\n</tr>\n<tr>\n<td>**Major**</td>\n<td>Pale wings, weak fond — advance to Phase 2 anyway</td>\n<td>Continue browning before proceeding</td>\n</tr>\n<tr>\n<td>**Major**</td>\n<td>Over-thickened stew</td>\n<td>Thin with hot broth</td>\n</tr>\n<tr>\n<td>**Major**</td>\n<td>Overcooked late carrots</td>\n<td>Unrecoverable for texture; stew remains acceptable</td>\n</tr>\n<tr>\n<td>**Minor**</td>\n<td>Excess gremolata</td>\n<td>Reduce garnish</td>\n</tr>\n</table>",
+      "servings": 6,
+      "equipment": [
+        "Dutch oven"
+      ],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "368e0391ce6381a3b56be65cc572209e",
+      "ingredients": [
+        {
+          "name": "chicken thigh, boneless skinless",
+          "department": "Protein",
+          "qty": 2,
+          "unit": "lb",
+          "qty_alt": null,
+          "prep_note": "halved crosswise",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "chicken wing",
+          "department": "Protein",
+          "qty": 1,
+          "unit": "lb",
+          "qty_alt": null,
+          "prep_note": "separated at joints",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "bacon",
+          "department": "Protein",
+          "qty": 3,
+          "unit": "slice",
+          "qty_alt": null,
+          "prep_note": "chopped",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "onion",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": "1 medium",
+          "prep_note": "finely chopped",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "celery rib",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "minced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "minced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "anchovy paste",
+          "department": "Pantry",
+          "qty": 2,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "dried thyme",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "bay leaf",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "parsley stems",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "bunch",
+          "qty_alt": "stems from 1 small bunch",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon peel",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": "1 thin strip",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "chicken broth",
+          "department": "Oils & Liquids",
+          "qty": 1200,
+          "unit": "ml",
+          "qty_alt": "5 cups / 1.2 L",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "dry white wine",
+          "department": "Alcohol",
+          "qty": 240,
+          "unit": "ml",
+          "qty_alt": "1 cup",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "soy sauce",
+          "department": "Pantry",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "unsalted butter",
+          "department": "Dairy",
+          "qty": 57,
+          "unit": "g",
+          "qty_alt": "4 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "all-purpose flour",
+          "department": "Pantry",
+          "qty": 2.5,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "small red potato",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "lb",
+          "qty_alt": null,
+          "prep_note": "quartered",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "carrot",
+          "department": "Produce",
+          "qty": 4,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "cut into ½-inch pieces, divided",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 0.75,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "sherry vinegar",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": "1–2 tsp",
+          "prep_note": "finish",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "parsley",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "finely chopped, gremolata",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon zest",
+          "department": "Produce",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "gremolata",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 0.25,
+          "unit": "clove",
+          "qty_alt": "¼ small clove",
+          "prep_note": "microplaned, gremolata",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "chicken-stew-toasted-sourdough",
+      "name": "Toasted Country Sourdough",
+      "protein": null,
+      "category": [
+        "Bread"
+      ],
+      "cuisine": [
+        "Modern",
+        "European"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": "ATK / Claude",
+      "governance_version": null,
+      "summary": "Thick-sliced country sourdough brushed with olive oil and toasted at 400°F / 205°C.",
+      "method_md": "## 🍞 Toasted Country Sourdough\n**15 min total · 5 min active · Oven: 400°F / 205°C**\n### Ingredients\n- 1 large sourdough loaf · olive oil · flaky salt\n### Method\n1. Slice thickly.\n2. Raise oven to 400°F / 205°C. Wait for confirmed temperature before bread enters.\n3. Brush with olive oil. Toast 8–10 min.\n4. *Cue: edges crisp and browned; center yields under firm pressure.*\n5. Hold on loose rack up to 15 min. Re-toast 3–4 min if crust softens.",
+      "servings": null,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "368e0391ce6381a3b56be65cc572209e",
+      "ingredients": [
+        {
+          "name": "sourdough loaf",
+          "department": "Bread",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": "1 large",
+          "prep_note": "sliced thickly",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "flaky salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "chicken-stew-orange-olive-oil-cake",
+      "name": "Orange Olive Oil Cake",
+      "protein": null,
+      "category": [
+        "Dessert"
+      ],
+      "cuisine": [
+        "Modern",
+        "European"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": "ATK / Claude",
+      "governance_version": null,
+      "summary": "One 9-inch orange-zest olive oil cake, served with a light dusting of powdered sugar.",
+      "method_md": "## 🍊 Orange Olive Oil Cake\n**One 9-inch cake · Serves 8 · Total: 1 hr 30 min · Active: 20 min · Oven: 350°F / 177°C**\n### Ingredients\n- 200 g sugar\n- Zest of 2 oranges\n- 3 eggs\n- 180 ml / ¾ cup extra-virgin olive oil\n- 120 ml / ½ cup whole milk\n- 60 ml / ¼ cup orange juice\n- 210 g all-purpose flour *(weight authoritative)*\n- 1½ tsp baking powder\n- ½ tsp Diamond Crystal kosher salt\n- Powdered sugar for finish\n### Method\n1. Heat oven to 350°F / 177°C. Grease 9-inch cake pan with butter. Dust with flour and tap out excess. Cut a parchment round to fit the base; place in pan and grease the parchment.\n2. Rub orange zest into sugar. Whisk in eggs.\n3. Add olive oil, milk, orange juice.\n4. Fold in flour, baking powder, salt.\n5. Bake 40–50 min. *Cue: center springs back lightly; skewer with moist crumbs, no wet batter.*\n6. Cool 20 min before unmolding. If cake resists, return to pan and cool 10 min more.\n7. Hold uncovered at room temp up to 8 hr. Serve with light powdered sugar.\n### ⚠️ CCPs\n- **Major:** Underbaked center (wet batter on skewer) → continue in 5-min increments.\n- **Minor:** Overmixing → fold minimally once flour added.",
+      "servings": 8,
+      "equipment": [
+        "9-inch cake pan"
+      ],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "368e0391ce6381a3b56be65cc572209e",
+      "ingredients": [
+        {
+          "name": "sugar",
+          "department": "Pantry",
+          "qty": 200,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "orange zest",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": "zest of 2 oranges",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "egg",
+          "department": "Dairy",
+          "qty": 3,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "extra-virgin olive oil",
+          "department": "Oils & Liquids",
+          "qty": 180,
+          "unit": "ml",
+          "qty_alt": "¾ cup",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "whole milk",
+          "department": "Dairy",
+          "qty": 120,
+          "unit": "ml",
+          "qty_alt": "½ cup",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "orange juice",
+          "department": "Produce",
+          "qty": 60,
+          "unit": "ml",
+          "qty_alt": "¼ cup",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "all-purpose flour",
+          "department": "Pantry",
+          "qty": 210,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "weight authoritative",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "baking powder",
+          "department": "Pantry",
+          "qty": 1.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "powdered sugar",
+          "department": "Pantry",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "for finish",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2026-05-25",
+      "rating": 9.5,
+      "execution_rating": 8.5,
+      "repeat": "yes",
+      "cook_notes": "Reduction and wing browning both executed correctly — fond was deep, stew had good body. Split carrot timing worked; late carrots retained texture. Gremolata provided meaningful brightness; sherry vinegar finish essential. Minor timing issue with bread: oven transition ran approximately 5 minutes longer than T-15 allows — serve bread just after stew next time rather than simultaneously. Wine: Felton Road Bannockburn 2022 paired well, bright and plush without competing with the gremolata or vinegar finish. Consider Clos des Papes CdP 2018 next time for more body against the collagen-rich broth.",
+      "deviations": [
+        "Oven transition to 400°F for the bread ran approximately 5 minutes longer than T-15 allows — serve bread just after the stew next time rather than simultaneously"
+      ],
+      "parameter_confirmations": [
+        {
+          "param": "Reduction and wing browning",
+          "designed": "Boil aggressively until nearly dry; deep golden brown wings, dark fond",
+          "observed": "Both executed correctly — fond was deep, stew had good body",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Split carrot timing",
+          "designed": "Half the carrots in Phase 3, half with the thighs in Phase 4",
+          "observed": "Worked; late carrots retained texture",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Sherry vinegar finish",
+          "designed": "1–2 tsp off heat",
+          "observed": "Essential; gremolata provided meaningful brightness",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Oven transition to 400°F for bread",
+          "designed": "~15–20 min from T-35, bread at T-15",
+          "observed": "Ran approximately 5 minutes longer than T-15 allows",
+          "verdict": "diverged"
+        }
+      ],
+      "household_split": null,
+      "wine_outcome": "Felton Road Bannockburn 2022 paired well, bright and plush without competing with the gremolata or vinegar finish. Consider Clos des Papes CdP 2018 next time for more body against the collagen-rich broth."
+    }
+  ]
+}

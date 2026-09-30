@@ -1,0 +1,480 @@
+{
+  "assignment_key": "coq-au-vin",
+  "source_page_ids": [
+    "3e9e0391ce6381078935e7e079fa18ac"
+  ],
+  "meal": {
+    "slug": "coq-au-vin-dinner",
+    "name": "Coq au Vin Dinner — Skinless Thighs, Oven Braise",
+    "planned_date": null,
+    "status": "backlog",
+    "pax": 3,
+    "workflow_md": "# Meal Workflow\n**Critical path:** braise is the long pole; strategy = early completion + safe hold. Into oven T-140; tenderness gate window T-95 to T-65; sauce finished at exit; chicken held in sauce at 170°F / 77°C until T-12 reheat on Induction A, which governs plating.\n**Failure priority:** protect chicken tenderness endpoint. Do not serve under-tender thighs — service slides; purée holds in Tiger, croutons on rack, beans dressed only once new service time is fixed.\n**Oven:** preheat 300°F at T-160 (\\~15 min). Braise T-140 → gate. At exit, door open \\~2 min, reset to 170°F hold (gated on sauce temp at T-12, not dial). No other oven use.\n**Heat allocation:**\n- Induction A: lardons/brown/aromatics T-195 to T-140 → sauce finish at braise exit (15 min) → reheat T-12 to T-3.\n- Induction B: wine reduction T-180 to T-160 → beans T-130 to T-115 → onions then mushrooms T-110 to T-82 → potatoes T-80 to T-45 → lardon re-crisp + croutons T-35 to T-28.\n- Outdoor gas: overflow only.\n- Flambé: Induction B saucepan clear, extractor off.\n**Band closure:** earliest exit T-95 → sauce done T-80 → hold 68 min (≤75 planned ceiling ✓). Latest exit T-65 → sauce done T-50 → hold 38 min ✓. Beyond band: 10-min checks to T-35 max; after that service slides.\n# T-minus Timeline\n- Sunday 8:00–10:00 am: skin thighs; salt 9 g / 3 tsp Diamond Crystal; uncovered on rack, fridge (≥5 h before browning).\n- T-200: prep — dice onion, carrot, lardons; slice half mushrooms, quarter half; mince garlic; chop thyme, parsley; measure 710 ml wine, 30 ml brandy; thaw frozen pearl onions in sieve.\n- T-195: Induction A — render lardons medium-low 10–15 min until golden-crisp. Fat stays in pot. Half lardons → braise; half → fridge (garnish).\n- T-180: Induction B — 710 ml / 3 cups wine to boil (15–20 min). Induction A — pat thighs dry, brown batch 1 (3–4 min/side).\n- T-172 / T-164: batches 2 and 3.\n- T-160: preheat oven 300°F / 150°C. Wine into jug — off heat at 355 ml / 1½ cups (top up with water if under).\n- T-155: pour off fat if \\>2 tbsp. Onion, carrot, sliced mushrooms, ¼ tsp salt — 8 min, scraping fond.\n- T-147: garlic, tomato paste, thyme 1 min; flour 1 min.\n- T-145: flambé brandy off heat. Add reduced wine, scrape. Return chicken + juices, braise lardons, bay. Simmer, cover.\n- T-140: into oven.\n- T-130: Induction B — salted water to boil.\n- T-122: blanch beans 3–4 min; ice bath 2 min; dry; fridge.\n- T-120: 20-min bubbling check; turn thighs. Dead still → raise to 325°F / 163°C.\n- T-110: Induction B — pearl onions covered low 15 min.\n- T-95: onions uncovered medium-high 3–5 min to burnish; remove. First tenderness gate.\n- T-95 to T-65 (at gate pass): thighs to covered dish back in oven; oven → 170°F / 77°C. Skim; reduce sauce on A to nappe 10–15 min; first salt pass slightly under; vinegar reserved. Chicken back in pot, covered, oven hold (planned max 75 min).\n- T-90: Induction B — mushrooms medium-high 5–8 min; salt; combine with onions, uncovered, room temp.\n- T-80: Induction B — potatoes into cold salted water.\n- T-50 to T-45: potato gate; drain; steam-dry 1 min.\n- T-45: rice; butter; warm milk. Into Tiger keep-warm by T-38 (planned max 60 min).\n- T-35: Induction B — re-crisp garnish lardons 1–2 min, reserve. Croutons 2 min/side; salt; rack uncovered.\n- T-30: beans out of fridge; whisk vinaigrette.\n- T-12: pot to Induction A; add onions + mushrooms; gentle simmer 5–7 min, basting. Loosen with 1–2 tbsp water if tightened. Sauce ≥165°F / 74°C.\n- T-8: final taste — salt, then vinegar ¼ tsp at a time (max 2 tsp).\n- T-5: dress beans.\n- T-4: purée check; loosen with warm milk.\n- T-3: plate ×3 — purée, 2 thighs, sauce + onions + mushrooms, lardons, parsley, croutons dry on top, beans alongside.\n- T-0: serve.\n*Plating window: croutons fail first — plate them last, never into sauce.*\n# Holding Chain\n- Braise — pot covered, oven 170°F / 77°C — max 75 min (planned). Drift: sauce tightens → 1–2 tbsp water at T-12; meat keeps softening → pull at first passing gate.\n- Reduced wine — saucepan off heat — 20 min.\n- Onions + mushrooms — bowl uncovered, room temp — 90 min. Soften → reheated in sauce at T-12.\n- Garnish lardons — fridge until T-35. Soft → re-crisp.\n- Beans — fridge, undressed — 2 h. Vinegar greys them → dress at T-5 only.\n- Purée — Tiger keep-warm — 60 min (planned). Stiffens → warm milk 1 tbsp at a time.\n- Croutons — rack uncovered — 30 min. Humidity → re-toast 30 s.\n**Meal balance:** richness stacks (lardons, butter, purée, croutons) → relieved by beans/vinaigrette. Acid roles distinct: wine = depth, vinegar = conditional correction, vinaigrette = reset. Temperature: hot braise/purée vs room-temp beans. Texture: tender meat, napping sauce, crisp croutons/lardons, snapping beans, smooth purée. No chilli.",
+    "shared_prep_md": "# Shared Prep\n- Butter: 92 g / 6½ tbsp — 42 g / 3 tbsp coq (14 g onions, 28 g croutons), 50 g / 3½ tbsp purée.\n- Red wine vinegar: 4 tsp — 2 tsp vinaigrette, up to 2 tsp coq reserve.\n- Extra-virgin olive oil: 6 tbsp / 80 g — 4 tbsp coq (1 browning reserve, 1 onions, 1 mushrooms, 1 croutons), 2 tbsp vinaigrette.",
+    "wine_pairing": "Wine pairing (when requested): Dijon vinaigrette is the component that fights red Burgundy — keep it at 1:3 vinegar to oil; don't sharpen it.",
+    "legacy_notion_id": "3e9e0391ce6381078935e7e079fa18ac",
+    "components": [
+      {
+        "dish_slug": "coq-au-vin-oven-braise",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "coq-au-vin-pommes-puree",
+        "role": "side",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "coq-au-vin-haricots-verts",
+        "role": "side",
+        "service_order": 3
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "coq-au-vin-oven-braise",
+      "name": "Coq au Vin — Skinless Thighs, Oven Braise",
+      "protein": "Chicken",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": "Special",
+      "tags": [],
+      "occasion": [
+        "Family"
+      ],
+      "status": "designed",
+      "source": "Adapted from Melissa Clark, NYT Cooking ([cooking.nytimes.com/recipes/1018529-coq-au-vin](http://cooking.nytimes.com/recipes/1018529-coq-au-vin)). Rebuilt under governance v3.5 (2026-07-20); Claude build, GPT cross-checked and reconciled 29 Sep 2026.",
+      "governance_version": "v3.5",
+      "summary": "Skinless bone-in thighs gently braised in reduced Pinot on a lardon-fat mirepoix base — thighs tender but intact, sauce that naps, with dry croutons, re-crisped lardons, burnished pearl onions and browned mushrooms.",
+      "method_md": "# Design decisions (vs NYT original)\n- Skin removed before cooking and discarded — braised skin = flabby (Core hard failure). Skinless thighs brown the meat itself and render less fat.\n- Wine marinade dropped — wine barely penetrates, and wine-stained surface browns poorly. Dry-brine instead; wine goes straight to reduction. Design choice, not an open test.\n- Wine reduced in a separate saucepan (Induction B) during browning; endpoint 355 ml by measuring jug, not time.\n- Flour kept at 1 tbsp for first cook; test 2 tsp later only if sauce naps well but reads flour-muted.\n- Oven braise 300°F / 150°C with bubbling gate and 325°F / 163°C contingency; tenderness gate replaces fixed 60 min.\n- Early completion + hot hold (Meal Workflow long-cook strategy).\n- Onions and mushrooms cooked sequentially in the same skillet (not crowded together).\n- Croutons served dry — never dipped. Half the lardons re-crisped for garnish.\n- Finishing acid = red wine vinegar in ¼-tsp steps, conditional.\n- Pot: narrow oval Le Creuset 27.5 × 21.5 × 10.5 cm — 6 thighs in one snug layer; brown in 3 batches of 2; liquid expected ≈ top of thighs.\n# 1. Coq au Vin\n*Serves 3 (2 thighs each) · \\~3 h 20 min day-of + morning salting · Active \\~75 min · Oven 300°F / 150°C · Braise band 45–75 min (designed)*\n**Overview.** Skinless thighs gently braised in reduced Pinot on a lardon-fat mirepoix base. Target: thighs tender but intact, sauce that naps. Crunch from dry croutons and re-crisped lardons; bite from burnished pearl onions and browned mushrooms.\n**Ingredients**\n- 6 bone-in chicken thighs, \\~3¼ lb / 1.45 kg skin-on (\\~1.2 kg skinned)\n- 9 g / 3 tsp Diamond Crystal (0.75% skinned weight) + ¼ tsp for vegetables\n- ½ tsp black pepper\n- 4 oz / 115 g lardons, ¼ in / 6 mm dice\n- 1 large onion, diced\n- 1 large carrot, peeled and diced\n- 8 oz / 225 g mushrooms — 4 oz / 115 g sliced (base), 4 oz / 115 g quartered (garnish)\n- 2 garlic cloves, minced\n- 1 tsp tomato paste\n- 1 tsp chopped thyme\n- 1 bay leaf\n- 1 tbsp / 8 g all-purpose flour\n- 2 tbsp / 30 ml brandy\n- 710 ml / 3 cups Pinot Noir → reduced to 355 ml / 1½ cups\n- Up to 2 tsp red wine vinegar (reserve)\n- 8 oz / 225 g pearl onions + pinch sugar\n- 3 tbsp / 42 g unsalted butter\n- 4 tbsp / 55 g extra-virgin olive oil\n- 2 slices white bread, crusts off, each cut in 4 triangles\n- ¼ cup / 15 g chopped parsley\n**Flavor architecture.** Base: lardon fat; onion, carrot, sliced mushroom, garlic, tomato paste. Primary driver: reduced red wine + chicken juices. Acid: wine (early, structural) + vinegar (late, conditional, tasted at T-8 with garnish in). Finish: pearl onions, browned mushrooms, crisp lardons, parsley, dry croutons. Tomato paste and brandy held at original amounts.\n**Prep.** Skin thighs; discard skins. Salt morning-of, uncovered on rack in fridge — surface tacky-dry; pat any beads. Pot: narrow oval Le Creuset.\n**Active cooking**\n- Lardons: medium-low 10–15 min, golden-crisp. Split half/half.\n- Browning: lardon fat, medium, until shimmering. 3 batches of 2, 3–4 min/side — done when the side releases without tearing and is deep golden. Oil (1 tbsp) only if dry.\n- Wine reduction: saucepan, Induction B, parallel. Endpoint 355 ml by jug.\n- Aromatics: onion, carrot, sliced mushrooms, ¼ tsp salt — 8 min medium, scraping. Garlic, paste, thyme 1 min; flour 1 min.\n- Flambé: off heat, extractor off, brandy from a measure into cleared space, long lighter, lid within reach. Alternative: cook down 1 min.\n- Braise: add wine, scrape; return thighs + juices, braise lardons, bay; simmer; cover; oven 300°F. At 20 min: occasional lazy bubbles expected — turn thighs; if dead still, raise to 325°F. Expected liquid ≈ top of thighs (record on the day).\n- Doneness gate (submerged to service — no formal rest): from 45 min, every 10 min. Primary cue — thin probe into thickest meat beside (not touching) bone enters with little resistance → done; grips → continue. Secondary — thigh lifts whole on slotted spoon; meat sliding off bone = past target. Safety floor ≥165°F / 74°C throughout (far exceeded at tenderness endpoint).\n- Sauce finish: lift thighs; tilt and skim; reduce medium-high to nappe (coats spoon; finger line holds). Salt slightly under; hold vinegar. Return chicken; hold.\n- Garnish (Induction B): pearl onions — 1 tbsp butter, 1 tbsp oil, sugar, pinch salt; covered low 15 min, shaking; uncovered medium-high 3–5 min until burnished and knife enters easily but shape holds. Mushrooms — 1 tbsp oil, medium-high; undisturbed 3 min, 5–8 min total until cut faces brown; salt at end.\n**Holding & assembly.** T-12: garnish into pot, gentle simmer to ≥165°F. T-8: final taste — salt, then vinegar ¼ tsp at a time. Croutons: re-crisp garnish lardons in skillet first (their fat seasons the bread), then 2 tbsp butter + 1 tbsp oil medium until bubbling; triangles \\~2 min/side golden; salt; rack. Plate: thigh on purée, sauce and garnish over, lardons and parsley scattered, croutons dry on top.\n**Critical control points**\n1. Major (b) — Chicken steams instead of browning: surface stays grey, wet, sticks and tears. Unrecoverable for sear depth; dish serviceable. Prevent: dry surface, 3 batches.\n2. Major (a) — Fond scorches during aromatics: black spots, acrid smell before deglaze. Recovery: transfer to a clean pot before wine; accept shallower fond.\n3. Major (b) — Braise overshoots: meat slides off bone on lift. Unrecoverable for whole-thigh presentation; dish serviceable. Prevent: pull at first passing gate.\n4. Major (a) — Sauce thin or greasy at T-8: runs off spoon, fat pools. Recovery: skim; reduce with chicken lifted out.\n**Adjustment notes.** Salt — finishing salt on the chicken at the table. Acid — drops of vinegar into an individual portion. Richness — more parsley, bigger bean portion.\n**Scaling.** Narrow pot max \\~7 thighs single layer; beyond → wide Le Creuset, recheck liquid depth, may need more wine. Browning batches scale linearly. Wine reduction time non-linear — keep the jug.",
+      "servings": 3,
+      "equipment": [
+        "narrow oval Le Creuset"
+      ],
+      "designed_unvalidated": [
+        {
+          "param": "Dry-brine level",
+          "designed_value": "0.75% dry-brine, salted morning-of",
+          "note": "Confirm on first cook: dry-brine seasoning level."
+        },
+        {
+          "param": "Wine reduction time",
+          "designed_value": "15–20 min",
+          "note": "Confirm on first cook: wine reduction time to 355 ml."
+        },
+        {
+          "param": "Braise band / bubbling gate",
+          "designed_value": "Braise band 45–75 min at 300°F; 20-min bubbling gate",
+          "note": "Confirm on first cook: bubbling at 20 min (did oven need 325°F?) and actual braise time to tenderness gate."
+        },
+        {
+          "param": "Liquid level",
+          "designed_value": "Liquid level ≈ top of thighs in narrow oval",
+          "note": "Confirm on first cook: liquid level vs thighs in narrow oval."
+        },
+        {
+          "param": "Hot hold",
+          "designed_value": "170°F hold with 75-min ceiling",
+          "note": "Confirm on first cook: actual hold duration and sauce temp at T-12."
+        },
+        {
+          "param": "Crouton rack hold",
+          "designed_value": "Croutons 30-min rack hold",
+          "note": "Confirm on first cook: crouton crispness at T-0."
+        }
+      ],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3e9e0391ce6381078935e7e079fa18ac",
+      "ingredients": [
+        {
+          "name": "chicken thigh, bone-in",
+          "department": "Protein",
+          "qty": 6,
+          "unit": "piece",
+          "qty_alt": "~3¼ lb / 1.45 kg skin-on (~1.2 kg skinned)",
+          "prep_note": "skin removed and discarded before cooking",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "kosher salt, diamond crystal",
+          "department": "Seasoning",
+          "qty": 9,
+          "unit": "g",
+          "qty_alt": "3 tsp",
+          "prep_note": "0.75% skinned weight; + ¼ tsp for vegetables",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "lardon",
+          "department": "Protein",
+          "qty": 115,
+          "unit": "g",
+          "qty_alt": "4 oz",
+          "prep_note": "¼ in / 6 mm dice; unsmoked pancetta or slab bacon",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "onion",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "large, diced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "carrot",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "large, peeled and diced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "mushroom, white or brown",
+          "department": "Produce",
+          "qty": 225,
+          "unit": "g",
+          "qty_alt": "8 oz",
+          "prep_note": "4 oz / 115 g sliced (base), 4 oz / 115 g quartered (garnish)",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "minced",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "tomato paste",
+          "department": "Pantry",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "thyme",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": "4 sprigs",
+          "prep_note": "chopped",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "bay leaf",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "all-purpose flour",
+          "department": "Pantry",
+          "qty": 8,
+          "unit": "g",
+          "qty_alt": "1 tbsp",
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "brandy / cognac",
+          "department": "Oils & Liquids",
+          "qty": 30,
+          "unit": "ml",
+          "qty_alt": "2 tbsp",
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "red wine, pinot noir / burgundy style",
+          "department": "Oils & Liquids",
+          "qty": 710,
+          "unit": "ml",
+          "qty_alt": "3 cups (1 bottle, 750 ml)",
+          "prep_note": "reduced to 355 ml / 1½ cups",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "red wine vinegar",
+          "department": "Oils & Liquids",
+          "qty": 2,
+          "unit": "tsp",
+          "qty_alt": "up to 2 tsp",
+          "prep_note": "reserve; finishing acid in ¼-tsp steps",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "pearl onion",
+          "department": "Produce",
+          "qty": 225,
+          "unit": "g",
+          "qty_alt": "8 oz",
+          "prep_note": "peeled (frozen fine)",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "sugar",
+          "department": "Pantry",
+          "qty": null,
+          "unit": "pinch",
+          "qty_alt": null,
+          "prep_note": "for pearl onions",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "unsalted butter",
+          "department": "Dairy",
+          "qty": 42,
+          "unit": "g",
+          "qty_alt": "3 tbsp",
+          "prep_note": "14 g onions, 28 g croutons",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "extra-virgin olive oil",
+          "department": "Oils & Liquids",
+          "qty": 55,
+          "unit": "g",
+          "qty_alt": "4 tbsp",
+          "prep_note": "1 browning reserve, 1 onions, 1 mushrooms, 1 croutons",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "white sandwich bread (pain de mie)",
+          "department": "Bread",
+          "qty": 2,
+          "unit": "slice",
+          "qty_alt": null,
+          "prep_note": "crusts off, each cut in 4 triangles",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "parsley, flat-leaf",
+          "department": "Produce",
+          "qty": 15,
+          "unit": "g",
+          "qty_alt": "¼ cup",
+          "prep_note": "chopped; + garnish",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "coq-au-vin-pommes-puree",
+      "name": "Pommes Purée",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family"
+      ],
+      "status": "designed",
+      "source": "Adapted from Melissa Clark, NYT Cooking ([cooking.nytimes.com/recipes/1018529-coq-au-vin](http://cooking.nytimes.com/recipes/1018529-coq-au-vin)). Rebuilt under governance v3.5 (2026-07-20); Claude build, GPT cross-checked and reconciled 29 Sep 2026.",
+      "governance_version": "v3.5",
+      "summary": "Smooth, loose, neutral riced-potato purée with butter and warm milk — the carrier for the coq au vin sauce.",
+      "method_md": "# 2. Pommes Purée\n*Serves 3 (Lukas full, adults small) · \\~45 min · Active \\~15 min*\n- Overview: smooth, loose, neutral carrier for the sauce. Meal-level texture exemption — purée inherently single-texture; contrast from croutons, lardons, beans.\n- Ingredients: 1 lb 2 oz / 500 g Yukon Gold or russet potatoes, peeled, 1¼ in / 3 cm chunks; 50 g / 3½ tbsp unsalted butter, cubed; 120 ml / ½ cup whole milk, warm, + 60 ml / ¼ cup for loosening; 1% salted water (\\~15 g Diamond Crystal per 1.5 L).\n- Flavor architecture: base butter + milk; primary potato; acid none; finish none.\n- Method: cold-water start. Simmer 18–22 min — knife meets no resistance at centre → drain; grips → 3 more min. Steam-dry 1 min. Rice hot; fold in butter, then milk. No blender or processor.\n- Holding: Tiger keep-warm (planned max 60 min); loosen at T-4 with warm milk.\n- CCP: Major (b) — gluey, stretchy from overworking. Unrecoverable for texture; dish serviceable.\n- Adjustment: salt at table. Scaling: N/A.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [
+        {
+          "param": "Purée keep-warm hold",
+          "designed_value": "Tiger keep-warm 60-min ceiling for purée",
+          "note": "Confirm on first cook: purée keep-warm hold duration and texture."
+        }
+      ],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3e9e0391ce6381078935e7e079fa18ac",
+      "ingredients": [
+        {
+          "name": "potato, yukon gold or russet",
+          "department": "Produce",
+          "qty": 500,
+          "unit": "g",
+          "qty_alt": "1 lb 2 oz",
+          "prep_note": "peeled, 1¼ in / 3 cm chunks",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "unsalted butter",
+          "department": "Dairy",
+          "qty": 50,
+          "unit": "g",
+          "qty_alt": "3½ tbsp",
+          "prep_note": "cubed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "whole milk",
+          "department": "Dairy",
+          "qty": 120,
+          "unit": "ml",
+          "qty_alt": "½ cup",
+          "prep_note": "warm",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "whole milk",
+          "department": "Dairy",
+          "qty": 60,
+          "unit": "ml",
+          "qty_alt": "¼ cup",
+          "prep_note": "for loosening",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "kosher salt, diamond crystal",
+          "department": "Seasoning",
+          "qty": 15,
+          "unit": "g",
+          "qty_alt": "~15 g per 1.5 L",
+          "prep_note": "1% salted cooking water",
+          "pantry_check": true,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "coq-au-vin-haricots-verts",
+      "name": "Haricots Verts, Dijon–Red Wine Vinaigrette",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family"
+      ],
+      "status": "designed",
+      "source": "Adapted from Melissa Clark, NYT Cooking ([cooking.nytimes.com/recipes/1018529-coq-au-vin](http://cooking.nytimes.com/recipes/1018529-coq-au-vin)). Rebuilt under governance v3.5 (2026-07-20); Claude build, GPT cross-checked and reconciled 29 Sep 2026.",
+      "governance_version": "v3.5",
+      "summary": "Snapping blanched haricots verts in a mild Dijon–red wine vinaigrette, served at room temperature as the meal's crisp-fresh counterweight.",
+      "method_md": "# 3. Haricots Verts, Dijon–Red Wine Vinaigrette\n*Serves 3 · \\~15 min + fridge hold · Active \\~10 min*\n- Overview: snapping beans, mild mustard vinaigrette, room temperature — the meal's crisp-fresh counterweight. Meal-level carve-out: provides the meal's crisp-fresh contrast; no internal contrast required.\n- Ingredients: 9 oz / 250 g haricots verts, trimmed; 1 tsp Dijon; 2 tsp red wine vinegar; 2 tbsp / 25 g extra-virgin olive oil; ¼ tsp Diamond Crystal; pepper.\n- Flavor architecture: base olive oil; primary Dijon; acid vinegar (added at T-5 only — holding greys the beans); finish pepper.\n- Method: blanch in 1% salted boiling water 3–4 min. Taste one — bends with a clean snap and no squeak → shock; squeaks → 30 s more. Ice bath 2 min; dry thoroughly.\n- Holding: fridge undressed; out at T-30; dress T-5.\n- CCP: Major (b) — overcooked, olive-drab, limp. Unrecoverable for snap; dish serviceable.\n- Adjustment: drop more vinegar if flat against the sauce. Scaling: N/A.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3e9e0391ce6381078935e7e079fa18ac",
+      "ingredients": [
+        {
+          "name": "haricots verts",
+          "department": "Produce",
+          "qty": 250,
+          "unit": "g",
+          "qty_alt": "9 oz",
+          "prep_note": "trimmed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "dijon mustard",
+          "department": "Pantry",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "red wine vinegar",
+          "department": "Oils & Liquids",
+          "qty": 2,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "vinaigrette; add at T-5 only",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "extra-virgin olive oil",
+          "department": "Oils & Liquids",
+          "qty": 25,
+          "unit": "g",
+          "qty_alt": "2 tbsp",
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "kosher salt, diamond crystal",
+          "department": "Seasoning",
+          "qty": 0.25,
+          "unit": "tsp",
+          "qty_alt": "+ ~15 g for 1% blanching water",
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "to taste",
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "cooks": []
+}

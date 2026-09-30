@@ -1,0 +1,210 @@
+{
+  "assignment_key": "lemon-olive-oil-cake",
+  "source_page_ids": [
+    "308e0391ce6380588fd8e79092da2a7d"
+  ],
+  "meal": null,
+  "dishes": [
+    {
+      "slug": "lemon-olive-oil-cake-18cm",
+      "name": "Lemon Olive Oil Cake (7-Inch / 18 cm)",
+      "protein": null,
+      "category": [
+        "Dessert"
+      ],
+      "cuisine": [
+        "Modern"
+      ],
+      "difficulty": "Easy",
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Chatgpt",
+      "governance_version": null,
+      "summary": "A lemon olive oil cake baked in a 7-inch / 18 cm tin, yielding 4–6 servings, optionally brushed with lemon syrup.",
+      "method_md": "# 🍋 Lemon Olive Oil Cake (7-Inch / 18 cm)\n\n**Yield:** 4–6 servings\n**Bake Time:** 45–50 minutes\n**Oven:** 175°C / 350°F\n\n## 🧾 Ingredients\n\n**Dry**\n- 150 g (1¼ cups) all-purpose flour\n- 1¼ tsp baking powder\n- ½ tsp fine sea salt\n\n**Wet**\n- 160 g (¾ cup + 1 tbsp) granulated sugar\n- Zest of 2 lemons\n- 2 large eggs + 1 egg yolk (room temp)\n- 100 ml (⅓ cup + 1 tbsp) mild extra-virgin olive oil\n- 65 ml (¼ cup) whole milk\n- 45 ml (3 tbsp) fresh lemon juice\n- ¾ tsp vanilla extract\n\n**Optional Lemon Syrup**\n- 25 ml (1½ tbsp) fresh lemon juice\n- 20 g (1½ tbsp) granulated sugar\n\n**Optional Garnish**\n- Powdered sugar\n- Lightly whipped cream (very lightly sweetened)\n\n## 🔧 Equipment\n- 7-inch (18 cm) round cake tin\n- Parchment paper\n- Mixing bowls\n- Whisk\n- Rubber spatula\n- Digital thermometer (recommended)\n\n## 👨‍🍳 Method\n\n**1️⃣ Prep**\n- Preheat oven to 175°C / 350°F\n- Grease tin lightly\n- Line base with parchment\n- Lightly flour sides\n\n**2️⃣ Infuse Sugar**\n- Combine sugar and lemon zest\n- Rub together with fingers for 60 seconds until fragrant\n\n**3️⃣ Build Wet Base**\n- Add eggs and yolk to sugar mixture\n- Whisk 1–2 minutes until slightly pale\n- Slowly stream in olive oil while whisking\n- Add milk, lemon juice, and vanilla\n- Mix until smooth and glossy\n\n**4️⃣ Add Dry Ingredients**\n- Sift flour, baking powder, and salt\n- Fold gently with spatula\n- Mix only until flour disappears (20–30 folds)—do not overmix\n- Batter should be fluid and smooth, not elastic\n\n**5️⃣ Bake**\n- Pour into prepared tin\n- Tap gently to remove air bubbles\n- Bake 45–50 minutes at 175°C / 350°F\n- Done when internal temp reaches 94–96°C / 201–205°F OR skewer comes out clean with moist crumbs\n\n**6️⃣ Remove from Tin**\n- Rest in tin 10 minutes\n- Run knife around edge\n- Invert onto rack\n- Remove parchment\n- Turn upright\n\n**7️⃣ Lemon Syrup (Optional but Recommended)**\n- Heat lemon juice and sugar on very low until dissolved (2–3 minutes)\n- Cool 2–3 minutes\n- Brush onto warm (not hot) cake in thin layers\n\n**8️⃣ Cool & Store**\n- Cool completely at room temperature\n- Cover loosely\n- Do not refrigerate unless room is very warm\n- Best within 24 hours\n\n## ⚠️ Notes\n- Use mild olive oil—peppery oil causes bitterness\n- Do not overmix\n- Do not overbake\n- Cake improves after 2–3 hours rest\n",
+      "servings": 4,
+      "equipment": [
+        "7-inch (18 cm) round cake tin",
+        "parchment paper",
+        "mixing bowls",
+        "whisk",
+        "rubber spatula",
+        "digital thermometer"
+      ],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "308e0391ce6380588fd8e79092da2a7d",
+      "ingredients": [
+        {
+          "name": "all-purpose flour",
+          "department": "Pantry",
+          "qty": 150,
+          "unit": "g",
+          "qty_alt": "1¼ cups",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "baking powder",
+          "department": "Pantry",
+          "qty": 1.25,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine sea salt",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "granulated sugar",
+          "department": "Pantry",
+          "qty": 160,
+          "unit": "g",
+          "qty_alt": "¾ cup + 1 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "zest only",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "egg",
+          "department": "Dairy",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "large, room temp",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "egg yolk",
+          "department": "Dairy",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "room temp",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "extra-virgin olive oil, mild",
+          "department": "Oils & Liquids",
+          "qty": 100,
+          "unit": "ml",
+          "qty_alt": "⅓ cup + 1 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "whole milk",
+          "department": "Dairy",
+          "qty": 65,
+          "unit": "ml",
+          "qty_alt": "¼ cup",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon juice, fresh",
+          "department": "Produce",
+          "qty": 45,
+          "unit": "ml",
+          "qty_alt": "3 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "vanilla extract",
+          "department": "Pantry",
+          "qty": 0.75,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon juice, fresh",
+          "department": "Produce",
+          "qty": 25,
+          "unit": "ml",
+          "qty_alt": "1½ tbsp",
+          "prep_note": "for optional lemon syrup",
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "granulated sugar",
+          "department": "Pantry",
+          "qty": 20,
+          "unit": "g",
+          "qty_alt": "1½ tbsp",
+          "prep_note": "for optional lemon syrup",
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "powdered sugar",
+          "department": "Pantry",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "optional garnish, for dusting",
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "heavy cream",
+          "department": "Dairy",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "optional garnish; lightly whipped, very lightly sweetened",
+          "pantry_check": false,
+          "optional": true
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "dish",
+      "dish_slug": "lemon-olive-oil-cake-18cm",
+      "cooked_on": "2026-02-15",
+      "rating": 9.5,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": null,
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    }
+  ]
+}

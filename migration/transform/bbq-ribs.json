@@ -1,0 +1,372 @@
+{
+  "assignment_key": "bbq-ribs",
+  "source_page_ids": [
+    "3a2e0391ce63816080effe24adcef838"
+  ],
+  "meal": {
+    "slug": "bbq-ribs-dinner",
+    "name": "St. Louis Ribs, Sealed-Roasted in Foil with Vinegar-Forward BBQ Sauce",
+    "planned_date": "2026-07-19",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": null,
+    "shared_prep_md": null,
+    "wine_pairing": "Beer preferred over wine for this dish - amber ale, Vienna lager, or Marzen. Malt meets the glaze, carbonation cuts the fat, moderate hopping avoids amplifying chilli heat and vinegar sharpness. Avoid hop-forward IPAs. If wine: fruit-forward, low tannin, moderate alcohol - Zinfandel, Grenache, Cotes du Rhone, Beaujolais cru, or dry rose. Avoid mature claret and high-tannin reds, which turn metallic against the vinegar-forward glaze.",
+    "legacy_notion_id": "3a2e0391ce63816080effe24adcef838",
+    "components": [
+      {
+        "dish_slug": "bbq-st-louis-ribs-vinegar-bbq-sauce",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "bbq-cabbage-carrot-slaw",
+        "role": "salad",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "bbq-charred-corn",
+        "role": "side",
+        "service_order": 3
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "bbq-st-louis-ribs-vinegar-bbq-sauce",
+      "name": "St. Louis Ribs, Sealed-Roasted in Foil with Vinegar-Forward BBQ Sauce",
+      "protein": "Pork",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "Modern"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Make-Ahead"
+      ],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": "Adapted from NYT Cooking - Balsamic-Glazed Oven-Baked Ribs (recipe from Animal, adapted by Steven Raichlen). Balsamic glaze replaced with vinegar-forward BBQ sauce; method restructured to governance standard.",
+      "governance_version": null,
+      "summary": "Dry-brined, dry-rubbed St. Louis ribs sealed-roasted in foil at 300°F / 150°C to probe-tender clean-bite texture, then lacquered meat-side under the broiler with a vinegar-forward tomato-based BBQ sauce.",
+      "method_md": "# Method summary\nDry-brine 8–24 hr (7 g Diamond Crystal per rack) → smoky dry rub (smoked + sweet paprika, garlic/onion powder, cumin, pepper, optional cayenne) → double-wrap each rack in heavy-duty foil, packets side by side → sealed-roast 300°F / 150°C, 2 hr 30 min–3 hr 30 min to probe-tender → hold sealed at 170–180°F / 75–80°C → open, bank rack 2 un-glazed, switch oven to broil → taste and adjust sauce against the pork → dry surface 5–10 min → two thin meat-side glaze coats under the broiler → rest 5 min uncovered → slice.\nDoneness governed by probe tenderness, not internal temperature. Target texture is clean-bite, not fall-apart.",
+      "servings": 3,
+      "equipment": [
+        "heavy-duty foil",
+        "broiler"
+      ],
+      "designed_unvalidated": [
+        {
+          "param": "Banked rack: un-glazed storage plus fresh re-lacquer",
+          "designed_value": "Reheat 300°F / 150°C covered, then broil 2–3 min",
+          "note": "Second rack was banked un-broiled for leftovers; the un-glazed storage and fresh re-lacquer path remains unconfirmed. Confirm on reheat."
+        }
+      ],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3a2e0391ce63816080effe24adcef838",
+      "ingredients": [
+        {
+          "name": "st. louis pork ribs",
+          "department": "Protein",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": "2 racks",
+          "prep_note": "dry-brined 8–24 hr; double-wrapped in heavy-duty foil",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 7,
+          "unit": "g",
+          "qty_alt": "7 g per rack",
+          "prep_note": "dry brine",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "smoked paprika",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "dry rub",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "sweet paprika",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "dry rub",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic powder",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "dry rub",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "onion powder",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "dry rub",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "ground cumin",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "dry rub",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "dry rub",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "cayenne",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "dry rub",
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "molasses",
+          "department": "Pantry",
+          "qty": 2,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "BBQ sauce; cook 1 substituted dark soy sauce 2 tsp",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "hot sauce",
+          "department": "Pantry",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "BBQ sauce; cook 1 used Tabasco",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "worcestershire sauce",
+          "department": "Pantry",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "BBQ sauce; Lea & Perrins as specified",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "vinegar",
+          "department": "Oils & Liquids",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "BBQ sauce, staged into reduced and finishing portions",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "tomato",
+          "department": "Pantry",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "tomato base for the BBQ sauce",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "bbq-cabbage-carrot-slaw",
+      "name": "Lightly Creamy Cabbage-Carrot Slaw",
+      "protein": "Veg",
+      "category": [
+        "Salad"
+      ],
+      "cuisine": [
+        "Modern"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": "Adapted from NYT Cooking - Balsamic-Glazed Oven-Baked Ribs (recipe from Animal, adapted by Steven Raichlen). Balsamic glaze replaced with vinegar-forward BBQ sauce; method restructured to governance standard.",
+      "governance_version": null,
+      "summary": "Lightly creamy cabbage-carrot slaw, made ahead and served cold as the relieving component.",
+      "method_md": null,
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3a2e0391ce63816080effe24adcef838",
+      "ingredients": [
+        {
+          "name": "cabbage",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "carrot",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "buttermilk",
+          "department": "Dairy",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "slaw dressing; cook 1 substituted Greek yogurt thinned with milk",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "bbq-charred-corn",
+      "name": "Stovetop Charred Corn with Butter and Lime",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "Modern"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": "Adapted from NYT Cooking - Balsamic-Glazed Oven-Baked Ribs (recipe from Animal, adapted by Steven Raichlen). Balsamic glaze replaced with vinegar-forward BBQ sauce; method restructured to governance standard.",
+      "governance_version": null,
+      "summary": "Stovetop charred corn with butter and lime — the selective carb (full portion for Lukas, spoonful or none for adults).",
+      "method_md": null,
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3a2e0391ce63816080effe24adcef838",
+      "ingredients": [
+        {
+          "name": "corn",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "butter",
+          "department": "Dairy",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lime",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2026-07-19",
+      "rating": 8.5,
+      "execution_rating": 9.5,
+      "repeat": "yes",
+      "cook_notes": "Rated 8.5 flavour / 9.5 execution on first cook. Sealed-roast held clean-bite texture as targeted; the two-coat meat-side broil produced the intended lacquer and supplied the plate's only textural contrast. Three substitutions were made and all performed: dark soy sauce for molasses (matched the dark, viscous, faintly bitter quality but contributes salt — season the sauce last), Greek yogurt thinned with milk for buttermilk in the slaw dressing, and Tabasco as the hot sauce. The reduced sauce read too vinegar-forward before service; corrected by extending the reduction rather than adding sugar, and by withholding part of the reserved finishing vinegar. Next time, reduce the sauce 5 minutes longer by default. Two designed parameters were confirmed by this cook: the 60-minute sealed hold at 170-180F/75-80C performed as intended with no drift toward fall-apart, and the broiler-transition-from-warm-cavity approach (gate the glaze on visible element heat, dry the surface in parallel) held up in execution. Both may be relabelled validated. Second rack was banked un-broiled for leftovers; the un-glazed storage and fresh re-lacquer path remains unconfirmed.\n\n# Actual deviations\n<table header-row=\"true\">\n<tr>\n<td>Specified</td>\n<td>Used</td>\n<td>Effect</td>\n</tr>\n<tr>\n<td>Molasses, 2 tsp</td>\n<td>Dark soy sauce, 2 tsp</td>\n<td>Matched the viscous, dark, faintly bitter quality; added salt, so sauce salting was held back. Successful substitution.</td>\n</tr>\n<tr>\n<td>Buttermilk, 2 tbsp</td>\n<td>Greek yogurt thinned with milk</td>\n<td>Thicker and more lactic than buttermilk; dressing loosened to pourable before use. Successful.</td>\n</tr>\n<tr>\n<td>Hot sauce, unspecified</td>\n<td>Tabasco</td>\n<td>Vinegar-forward, no added sugar — correct fit for a low-sweet sauce. Lingham's sweet chilli sauce was considered and rejected on sugar grounds.</td>\n</tr>\n<tr>\n<td>Worcestershire</td>\n<td>Lea & Perrins (as specified)</td>\n<td>Original ingredient sourced; no compensation needed.</td>\n</tr>\n</table>\n**Sauce correction during the cook:** the reduced sauce read too vinegar-forward before service. Corrected by extending the reduction rather than adding sugar, and by withholding part of the reserved finishing vinegar. Sweetness was not the problem; acidity was.\n# Designed-parameter confirmation\nTwo parameters carried into this cook as *planned* rather than validated (per Core \"Designed ≠ tested\"):\n- **60-minute sealed hold at 170–180°F / 75–80°C** — held sealed roughly as planned and performed as intended. Meat remained at clean-bite; no drift toward fall-apart observed. **Confirmed — may be relabelled validated in the recipe.**\n- **Broiler transition from a warm cavity** — the parallel-dry approach (switch to broil at packet-open, dry surface while the element heats, gate the glaze on visible heat rather than a stated duration) held up in execution. No blocking wait observed. **Confirmed in practice.**\n# Next time\n- Sauce ran vinegar-forward at the reduction stage. Consider reducing 5 minutes longer by default, or holding back a larger share of the finishing vinegar until the taste-against-pork step.\n- Dark soy is a viable standing substitute for molasses; note the salt contribution and season the sauce last.\n- Banked rack: confirm on reheat whether the un-glazed storage plus fresh re-lacquer performs as designed (300°F / 150°C covered, then broil 2–3 min).",
+      "deviations": [
+        "Molasses, 2 tsp → dark soy sauce, 2 tsp: matched the viscous, dark, faintly bitter quality; added salt, so sauce salting was held back. Successful substitution.",
+        "Buttermilk, 2 tbsp → Greek yogurt thinned with milk: thicker and more lactic; dressing loosened to pourable before use. Successful.",
+        "Hot sauce, unspecified → Tabasco: vinegar-forward, no added sugar — correct fit for a low-sweet sauce.",
+        "Worcestershire → Lea & Perrins (as specified): original ingredient sourced; no compensation needed.",
+        "Sauce correction during the cook: reduced sauce read too vinegar-forward before service; corrected by extending the reduction rather than adding sugar, and by withholding part of the reserved finishing vinegar.",
+        "Second rack banked un-broiled for leftovers."
+      ],
+      "parameter_confirmations": [
+        {
+          "param": "60-minute sealed hold at 170–180°F / 75–80°C",
+          "designed": "60 min sealed hold, meat stays clean-bite",
+          "observed": "Held sealed roughly as planned; meat remained at clean-bite, no drift toward fall-apart",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Broiler transition from a warm cavity (parallel-dry, gate glaze on visible element heat)",
+          "designed": "Switch to broil at packet-open, dry surface while element heats, glaze when element visibly hot",
+          "observed": "Held up in execution; no blocking wait observed",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Banked rack: un-glazed storage plus fresh re-lacquer",
+          "designed": "300°F / 150°C covered, then broil 2–3 min",
+          "observed": "Not yet reheated",
+          "verdict": "unresolved"
+        }
+      ],
+      "household_split": "3 adults (2 carb-moderate + 1 full portion). Corn: full portion for Lukas, spoonful/none for adults.",
+      "wine_outcome": null
+    }
+  ]
+}

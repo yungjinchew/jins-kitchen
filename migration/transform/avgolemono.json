@@ -1,0 +1,288 @@
+{
+  "assignment_key": "avgolemono",
+  "source_page_ids": [
+    "35ce0391ce6381e89a6ef797f0f5ccf9"
+  ],
+  "meal": {
+    "slug": "avgolemono-supper",
+    "name": "Greek Lemon Chicken Avgolemono Soup with Toasted Pita",
+    "planned_date": "2026-05-10",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": "## Meal Workflow\n### Critical Path\nThe avgolemono finish governs service timing. Once the egg-lemon mixture is added, the soup must not boil and should be served immediately.\n### Timeline\n- T-75 min — Start broth and chicken\n- T-45 min — Prep greens, herbs, lemon, eggs, pita\n- T-35 min — Preheat oven to 375°F / 190°C\n- T-20 min — Remove chicken; shred\n- T-15 min — Bake pita\n- T-10 min — Return chicken and greens\n- T-5 min — Temper avgolemono\n- T-0 — Serve immediately\n### Holding Chain\n- Soup before avgolemono: hold covered over very low heat up to 30 minutes.\n- Soup after avgolemono: hold off heat up to 10 minutes. Do not boil.\n- Reheating after avgolemono: low heat only; stop before simmering.\n- Pita: hold uncovered at room temperature.",
+    "shared_prep_md": null,
+    "wine_pairing": "2024 Hans Greyl Sauvignon Blanc Marlborough",
+    "legacy_notion_id": "35ce0391ce6381e89a6ef797f0f5ccf9",
+    "components": [
+      {
+        "dish_slug": "avgolemono-soup",
+        "role": "soup",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "avgolemono-toasted-pita",
+        "role": "bread",
+        "service_order": 2
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "avgolemono-soup",
+      "name": "Greek Lemon Chicken Avgolemono Soup",
+      "protein": "Chicken",
+      "category": [
+        "Soup"
+      ],
+      "cuisine": [
+        "European"
+      ],
+      "difficulty": "Easy",
+      "tags": [
+        "One-Pan"
+      ],
+      "occasion": [
+        "Healthy",
+        "Family",
+        "Weeknight"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT / Cooking Project",
+      "governance_version": null,
+      "summary": "A bright, restorative Greek lemon chicken soup built around silky avgolemono broth, tender shredded chicken, greens, dill, and parsley — intentionally soft throughout, with toasted pita for crisp contrast.",
+      "method_md": "# Dish 1: Greek Lemon Chicken Avgolemono Soup\n## Dish Overview\nA bright, restorative Greek lemon chicken soup built around silky avgolemono broth, tender shredded chicken, greens, dill, and parsley. The soup is intentionally soft throughout; toasted pita provides the required crisp contrast.\n## Yield & Timing\nServes: 4\nTotal time: 55–65 minutes\nActive time: 20–25 minutes\n## Ingredient List\n### Soup Base\n- 900 g / 2 lb bone-in, skin-on chicken thighs\n- 1.5 L / 6¼ cups chicken stock\n- 240 ml / 1 cup water\n- 1 medium onion, halved\n- 1 large carrot, diced\n- 1 celery rib, diced\n- 2 garlic cloves, lightly crushed\n- 1 bay leaf\n- 1½ tsp Diamond Crystal kosher salt\n- ½ tsp black pepper\n### Greens & Finish\n- 100–150 g spinach, kale, or Swiss chard\n- 2 tbsp chopped fresh dill\n- 2 tbsp chopped fresh parsley\n### Avgolemono\n- 3 large eggs\n- 60 ml / ¼ cup fresh lemon juice\n## Flavor Architecture\n<table header-row=\"true\">\n<tr>\n<td>Element</td>\n<td>Function</td>\n</tr>\n<tr>\n<td>Base</td>\n<td>Chicken stock, chicken thighs, onion, carrot, celery, garlic</td>\n</tr>\n<tr>\n<td>Primary flavor driver</td>\n<td>Lemon-chicken broth</td>\n</tr>\n<tr>\n<td>Acid component</td>\n<td>Lemon juice added through avgolemono finish; single-stage acid is intentional because the egg-lemon emulsion should not boil</td>\n</tr>\n<tr>\n<td>Aromatic / finish</td>\n<td>Dill and parsley off heat</td>\n</tr>\n</table>\n## Texture Architecture\nThis soup is intentionally broth-forward and soft: silky broth, tender chicken, wilted greens. Toasted pita provides the required crisp contrast.\n## Prep Phase\n1. Rinse and prep greens.\n2. Juice lemons.\n3. Whisk eggs separately.\n4. Chop dill and parsley.\n5. Cut pita into wedges.\n## Active Cooking\n### 1. Build Broth\n1. Combine chicken, stock, water, onion, carrot, celery, garlic, bay, salt, and pepper.\n2. Bring to gentle simmer over medium-high heat.\n3. Reduce to low / medium-low.\n4. Simmer:\n\t- Bone-in thighs: 35–45 minutes\n\t- Boneless thighs: 22–28 minutes\n### Doneness Rule — Chicken\nStop when the thickest part reaches 175–185°F / 79–85°C and the meat pulls cleanly from the bone with no resistance.\n1. Remove chicken to plate. Rest uncovered 10 minutes.\n2. Discard skin, bones, onion, garlic, and bay.\n3. Shred chicken.\n### 2. Add Chicken and Greens\n1. Bring broth back to simmer.\n2. Return chicken.\n3. Add greens.\n4. Simmer until greens are tender but still visibly green.\n### 3. Temper Avgolemono\n1. Whisk eggs and lemon juice.\n2. Slowly whisk in 480 ml / 2 cups hot broth.\n3. Turn heat off.\n4. Stir tempered mixture into soup.\n5. Do not boil.\n## Holding & Assembly\n1. Hold off heat up to 10 minutes after avgolemono.\n2. Reheat only over low heat if necessary.\n3. Stir in dill and parsley immediately before serving.\n4. Serve with toasted pita alongside.\n## Critical Control Points\n<table header-row=\"true\">\n<tr>\n<td>Severity</td>\n<td>Failure Mode</td>\n<td>Cue</td>\n<td>Recovery</td>\n<td>Outcome</td>\n</tr>\n<tr>\n<td>Critical</td>\n<td>Avgolemono curdles</td>\n<td>Grainy texture or egg strands</td>\n<td>Unrecoverable</td>\n<td>Loss of silky texture</td>\n</tr>\n<tr>\n<td>Major</td>\n<td>Hard broth boil</td>\n<td>Cloudy broth, tightened chicken</td>\n<td>Reduce heat immediately</td>\n<td>Tougher chicken</td>\n</tr>\n<tr>\n<td>Major</td>\n<td>Greens overcook</td>\n<td>Olive-colored greens</td>\n<td>Stop earlier next time</td>\n<td>Dull flavor and appearance</td>\n</tr>\n</table>\n## Adjustment Notes\n<table header-row=\"true\">\n<tr>\n<td>Adjustment</td>\n<td>Guidance</td>\n</tr>\n<tr>\n<td>Salt</td>\n<td>Adjust after avgolemono incorporation</td>\n</tr>\n<tr>\n<td>Acid</td>\n<td>Add small extra lemon only bowl-by-bowl if needed</td>\n</tr>\n<tr>\n<td>Texture</td>\n<td>Loosen with hot stock if broth thickens</td>\n</tr>\n</table>\n## Scaling Notes\nFor 6–8 servings, use a wider pot and add greens in batches.",
+      "servings": 4,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "35ce0391ce6381e89a6ef797f0f5ccf9",
+      "ingredients": [
+        {
+          "name": "chicken thigh, bone-in, skin-on",
+          "department": "Protein",
+          "qty": 900,
+          "unit": "g",
+          "qty_alt": "2 lb",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "chicken stock",
+          "department": "Pantry",
+          "qty": 1500,
+          "unit": "ml",
+          "qty_alt": "6¼ cups",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "water",
+          "department": "Pantry",
+          "qty": 240,
+          "unit": "ml",
+          "qty_alt": "1 cup",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "onion",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "medium, halved",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "carrot",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "large, diced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "celery rib",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "diced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "lightly crushed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "bay leaf",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "kosher salt, diamond crystal",
+          "department": "Seasoning",
+          "qty": 1.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "spinach, kale, or swiss chard",
+          "department": "Produce",
+          "qty": 100,
+          "unit": "g",
+          "qty_alt": "100–150 g",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fresh dill",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "chopped",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fresh parsley",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "chopped",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "egg",
+          "department": "Dairy",
+          "qty": 3,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "large",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fresh lemon juice",
+          "department": "Produce",
+          "qty": 60,
+          "unit": "ml",
+          "qty_alt": "¼ cup",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "avgolemono-toasted-pita",
+      "name": "Toasted Pita Wedges",
+      "protein": null,
+      "category": [
+        "Bread"
+      ],
+      "cuisine": [
+        "European"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Healthy",
+        "Family",
+        "Weeknight"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT / Cooking Project",
+      "governance_version": null,
+      "summary": "Light crisp pita wedges providing dry crunch contrast to the soft soup.",
+      "method_md": "# Dish 2: Toasted Pita Wedges\n## Dish Overview\nLight crisp pita wedges providing dry crunch contrast to the soft soup.\n## Yield & Timing\nServes: 4\nTotal time: 8–10 minutes\n## Ingredient List\n- 2 pita rounds\n- 10 ml / 2 tsp olive oil\n- Fine sea salt\n## Active Cooking\n1. Heat oven to 375°F / 190°C.\n2. Brush pita lightly with olive oil.\n3. Bake 6–8 minutes, flipping once.\n### Doneness Rule\nStop when edges are crisp and lightly golden. Continue if still flexible.\n## Holding & Assembly\nHold uncovered at room temperature.\n## Critical Control Points\n<table header-row=\"true\">\n<tr>\n<td>Severity</td>\n<td>Failure Mode</td>\n<td>Cue</td>\n<td>Recovery</td>\n<td>Outcome</td>\n</tr>\n<tr>\n<td>Major</td>\n<td>Under-toasted pita</td>\n<td>Flexible throughout</td>\n<td>Return to oven briefly</td>\n<td>Weak texture contrast</td>\n</tr>\n</table>",
+      "servings": 4,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "35ce0391ce6381e89a6ef797f0f5ccf9",
+      "ingredients": [
+        {
+          "name": "pita round",
+          "department": "Bread",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 10,
+          "unit": "ml",
+          "qty_alt": "2 tsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine sea salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2026-05-10",
+      "rating": 9.5,
+      "execution_rating": 9,
+      "repeat": "yes",
+      "cook_notes": "Avgolemono temper is the single critical execution point — remove from heat fully before adding the mixture. Bone-in thighs at 35 min was correct. Greens added at end retained colour well. Pita needs to be watched; 6 min was sufficient in this oven.",
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    }
+  ]
+}

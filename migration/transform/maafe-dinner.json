@@ -1,0 +1,706 @@
+{
+  "assignment_key": "maafe-dinner",
+  "source_page_ids": [
+    "362e0391ce6381dbb0fadf943507132d"
+  ],
+  "meal": {
+    "slug": "west-african-peanut-stew-dinner",
+    "name": "West African Peanut Stew Dinner (Maafe)",
+    "planned_date": "2026-09-13",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": "## Meal Workflow\n**Critical Path:** Final 10 minutes of stew — spinach → lime → cilantro → seasoning → immediate service. Everything else complete or holding before T-10.\n**Heat:** Burner 1 → Stew \\| Burner 2 → Rice. No oven required.\n**Failure priority:** Stew texture → Rice texture → Salad freshness → Condiments → Pineapple. Do not delay stew service for any other component.\n### Holding Chain\n<table header-row=\"true\">\n<tr>\n<td>Component</td>\n<td>Hold</td>\n<td>Max</td>\n<td>Drift Fix</td>\n</tr>\n<tr>\n<td>Stew</td>\n<td>Very low heat, uncovered</td>\n<td>15 min</td>\n<td>Hot water 50 ml increments</td>\n</tr>\n<tr>\n<td>Rice</td>\n<td>Covered, off heat</td>\n<td>25 min</td>\n<td>15 ml water, re-cover, re-fluff</td>\n</tr>\n<tr>\n<td>Salad</td>\n<td>Room temp</td>\n<td>30 min</td>\n<td>Drain; re-season lime + salt</td>\n</tr>\n<tr>\n<td>Chilli paste</td>\n<td>Ambient, covered</td>\n<td>4 hrs</td>\n<td>None</td>\n</tr>\n<tr>\n<td>Peanuts</td>\n<td>Dry bowl</td>\n<td>Stable</td>\n<td>None</td>\n</tr>\n<tr>\n<td>Pineapple</td>\n<td>Chilled</td>\n<td>2 hrs</td>\n<td>Re-dress with lime before serving</td>\n</tr>\n</table>\n### T-Minus Timeline\n<table header-row=\"true\">\n<tr>\n<td>Time</td>\n<td>Task</td>\n</tr>\n<tr>\n<td>T-65</td>\n<td>Chicken sear begins</td>\n</tr>\n<tr>\n<td>T-55</td>\n<td>Aromatic base</td>\n</tr>\n<tr>\n<td>T-46</td>\n<td>Tomato development</td>\n</tr>\n<tr>\n<td>T-40</td>\n<td>Peanut emulsification + braise begins; start rice</td>\n</tr>\n<tr>\n<td>T-30</td>\n<td>Salad, chilli paste, peanuts, pineapple</td>\n</tr>\n<tr>\n<td>T-15</td>\n<td>Rice holding; check sweet potato doneness</td>\n</tr>\n<tr>\n<td>T-10</td>\n<td>Final stew finish — uninterrupted</td>\n</tr>\n<tr>\n<td>T-2</td>\n<td>Plate rice</td>\n</tr>\n<tr>\n<td>T-0</td>\n<td>Stew over rice; garnish; serve</td>\n</tr>\n</table>\n**Plating window:** Rice → stew over rice → peanuts + cilantro. 3–4 min from first plate to service. First failure: stew temperature drops, spinach overtenders, rice surface dries.\n**Salad note:** Interleave with stew bites — within reach at every place setting, not a separate course.",
+    "shared_prep_md": null,
+    "wine_pairing": "Cook 2: Alheit Vineyards Hereafter Here Chenin Blanc 2022 (opened — paired well). Cook 1: Felton Road Bannockburn Pinot Noir 2022 (opened — went well). Chenin Blanc confirmed across both as the stronger style match.",
+    "legacy_notion_id": "362e0391ce6381dbb0fadf943507132d",
+    "components": [
+      {
+        "dish_slug": "maafe-chicken-peanut-stew",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "maafe-steamed-rice",
+        "role": "side",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "maafe-tomato-cucumber-lime-salad",
+        "role": "salad",
+        "service_order": 3
+      },
+      {
+        "dish_slug": "maafe-birds-eye-chilli-paste",
+        "role": "sauce",
+        "service_order": 4
+      },
+      {
+        "dish_slug": "maafe-crushed-roasted-peanuts",
+        "role": "side",
+        "service_order": 5
+      },
+      {
+        "dish_slug": "maafe-chilled-pineapple-lime-flaky-salt",
+        "role": "dessert",
+        "service_order": 6
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "maafe-chicken-peanut-stew",
+      "name": "Chicken Peanut Stew (Maafe)",
+      "protein": "Chicken",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [],
+      "difficulty": "Medium",
+      "tags": [
+        "Make-Ahead",
+        "Freezer Friendly"
+      ],
+      "occasion": [
+        "Family",
+        "Weeknight",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Claude / Cooking Project — May 2026",
+      "governance_version": "v3.5",
+      "summary": "Rich peanut-tomato braise of bone-in chicken thighs with sweet potato, staged acidity and a fresh cilantro finish.",
+      "method_md": "## Dish 1 — Chicken Peanut Stew (Maafe)\nRich peanut-tomato braise with staged acidity and fresh cilantro finish. Texture targets: tender chicken, intact sweet potato, glossy sauce, crunchy peanut garnish.\n**Trade-off:** Deep fond development requires aggressive searing and additional time.\n**Yield:** 4–5 servings \\| **Active:** 30 min \\| **Total:** 65 min \\| **Hold:** 15 min max\n### Ingredients\n<table header-row=\"true\">\n<tr>\n<td>Ingredient</td>\n<td>Amount</td>\n</tr>\n<tr>\n<td>Bone-in chicken thighs, skin-on</td>\n<td>600–700 g</td>\n</tr>\n<tr>\n<td>Neutral oil</td>\n<td>28 ml / 2 tbsp</td>\n</tr>\n<tr>\n<td>Onion, diced</td>\n<td>1 large</td>\n</tr>\n<tr>\n<td>Garlic cloves, minced</td>\n<td>4</td>\n</tr>\n<tr>\n<td>Fresh ginger, grated</td>\n<td>15 ml / 1 tbsp</td>\n</tr>\n<tr>\n<td>Tomato paste</td>\n<td>30 g / 2 tbsp</td>\n</tr>\n<tr>\n<td>Crushed tomatoes</td>\n<td>400 g</td>\n</tr>\n<tr>\n<td>Ground cumin</td>\n<td>5 g / 1 tsp</td>\n</tr>\n<tr>\n<td>Ground coriander</td>\n<td>4 g / 1 tsp</td>\n</tr>\n<tr>\n<td>Chilli flakes</td>\n<td>1–2 g / ½–1 tsp</td>\n</tr>\n<tr>\n<td>Natural peanut butter, unsweetened</td>\n<td>130–160 g / 8–10 tbsp</td>\n</tr>\n<tr>\n<td>Chicken stock</td>\n<td>900 ml / 3¾ cups</td>\n</tr>\n<tr>\n<td>Sweet potato, 3 cm chunks</td>\n<td>260–330 g</td>\n</tr>\n<tr>\n<td>Baby spinach</td>\n<td>60 g / 2 packed cups</td>\n</tr>\n<tr>\n<td>Fresh cilantro</td>\n<td>8–10 g / ¼ cup loosely packed</td>\n</tr>\n<tr>\n<td>Diamond Crystal kosher salt</td>\n<td>5–7 g / 1–1½ tsp</td>\n</tr>\n<tr>\n<td>Lime juice</td>\n<td>30–45 ml / 2–3 tbsp</td>\n</tr>\n</table>\n### Flavor Architecture\n<table header-row=\"true\">\n<tr>\n<td>Element</td>\n<td>Definition</td>\n</tr>\n<tr>\n<td>Base</td>\n<td>Neutral oil + onion + garlic + ginger</td>\n</tr>\n<tr>\n<td>Primary driver</td>\n<td>Peanut butter</td>\n</tr>\n<tr>\n<td>Acid</td>\n<td>Tomato during reduction (Stage 1); lime off heat (Stage 2)</td>\n</tr>\n<tr>\n<td>Finish</td>\n<td>Cilantro off heat; crushed peanuts at plating</td>\n</tr>\n</table>\n### Method\n**Prep:** Pat chicken completely dry. Dice onion; mince garlic; grate ginger. Cut sweet potato into uniform 3 cm chunks. Measure peanut butter separately.\n**Step 1 — Sear (high):** Heat oil until shimmering. Sear skin-side down 4–5 min until deeply browned. Flip; 2 min. Remove. Remove skin before braising and discard. Do not leave skin in stew.\n**Step 2 — Aromatic base (medium):** Onion + 2 g / ½ tsp salt. Cook 6–8 min until softened with light golden edges. Add garlic + ginger → 1 min.\n**Step 3 — Tomato development (medium):** Tomato paste → 2–3 min until darkened. Add cumin, coriander, chilli flakes → bloom 30 sec. Add tomatoes → 3–4 min, scraping fond.\n**Step 4 — Peanut emulsification:** Add stock; bring to low simmer. Ladle 120 ml / ½ cup hot liquid into peanut butter; whisk smooth. Return slowly while stirring.\n**Step 5 — Braise (low):** Return chicken. Add sweet potato. Gentle simmer 25–30 min, partially covered. Chicken remains submerged to service — no formal rest. **Doneness:** Flesh alongside bone separates cleanly under firm thumb pressure → stop. Resists or tears → continue 5 min.\n**Step 6 — Finish (low → off heat):** Spinach → 2–3 min until wilted. Lime juice; adjust incrementally. Cilantro off heat. Reserve some for plating.\n### Critical Control Points\n**Critical — Sweet potato collapse:** Cue: edges rounding and splitting. Outcome: muddy texture. Recovery: unrecoverable.\n**Critical — Broken emulsion:** Cue: oil pooling after stirring. Outcome: greasy grainy sauce. Recovery: whisk fresh peanut butter with cooler liquid separately; reintegrate.\n**Major — Weak fond:** Cue: pale chicken, clean pan base. Outcome: flat stew. Recovery: 5–10 ml fish sauce or soy sauce off heat.\n### Adjustment Notes\n<table header-row=\"true\">\n<tr>\n<td>Adjustment</td>\n<td>Guidance</td>\n</tr>\n<tr>\n<td>Salt</td>\n<td>Stew body only</td>\n</tr>\n<tr>\n<td>Acid</td>\n<td>Lime in 5 ml / 1 tsp increments</td>\n</tr>\n<tr>\n<td>Texture</td>\n<td>Thin with hot water</td>\n</tr>\n<tr>\n<td>Ginger / spice</td>\n<td>If spice-forward rather than peanut-forward: add 15–30 ml stock + 1 tbsp peanut butter over low heat</td>\n</tr>\n</table>\n**Scaling:** Sear in batches. Larger batches extend braise \\~5–8 min. Add peanut butter incrementally, not by formula.",
+      "servings": 4,
+      "equipment": [],
+      "designed_unvalidated": [
+        {
+          "param": "Kabocha time from entry to doneness cue",
+          "designed_value": "Not specified — designed for the 2x kabocha + okra variant",
+          "note": "Cook 2 (13 Sep 2026): not captured. Remains designed; carries forward to cook 3."
+        },
+        {
+          "param": "Okra exposure, active and residual; acceptability of firm-at-service",
+          "designed_value": "Whole small pods, cap trimmed without breaching the pod, added late",
+          "note": "Cook 2 (13 Sep 2026): not captured. All okra was consumed with no adverse comment on texture; firm-at-service evidently acceptable, though the okra was not separately assessed. Remains designed; carries forward to cook 3."
+        },
+        {
+          "param": "2x evaporation in the wide vessel; reserved stock add-back",
+          "designed_value": "Reserved stock held back as a correction reserve",
+          "note": "Cook 2 (13 Sep 2026): not captured. Remains designed; carries forward to cook 3."
+        },
+        {
+          "param": "Freezer hold for a vegetable-free reserve",
+          "designed_value": "Diversion of half the batch before vegetables/finish",
+          "note": "RETIRED. Never tested; diversion removed from the design at Jin's direction, 14 Sep 2026. Does not carry forward."
+        },
+        {
+          "param": "Skin-on sear value versus skin-off-first",
+          "designed_value": "Sear skin-on, remove skin before braising",
+          "note": "Cook 2 (13 Sep 2026): not captured. Remains designed; carries forward to cook 3."
+        },
+        {
+          "param": "Lime multiplicity — coherent or repetitive across four components",
+          "designed_value": "Lime in stew, salad, chilli paste and pineapple",
+          "note": "Cook 2 (13 Sep 2026): not captured. Remains designed; carries forward to cook 3."
+        }
+      ],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "362e0391ce6381dbb0fadf943507132d",
+      "ingredients": [
+        {
+          "name": "chicken thigh, bone-in, skin-on",
+          "department": "Protein",
+          "qty": 600,
+          "unit": "g",
+          "qty_alt": "600–700 g",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "neutral oil",
+          "department": "Oils & Liquids",
+          "qty": 28,
+          "unit": "ml",
+          "qty_alt": "2 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "onion",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": "1 large",
+          "prep_note": "diced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 4,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "minced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "ginger, fresh",
+          "department": "Produce",
+          "qty": 15,
+          "unit": "ml",
+          "qty_alt": "1 tbsp",
+          "prep_note": "grated",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "tomato paste",
+          "department": "Pantry",
+          "qty": 30,
+          "unit": "g",
+          "qty_alt": "2 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "crushed tomatoes, tinned",
+          "department": "Pantry",
+          "qty": 400,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "ground cumin",
+          "department": "Seasoning",
+          "qty": 5,
+          "unit": "g",
+          "qty_alt": "1 tsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "ground coriander",
+          "department": "Seasoning",
+          "qty": 4,
+          "unit": "g",
+          "qty_alt": "1 tsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "chilli flakes",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "g",
+          "qty_alt": "1–2 g / ½–1 tsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "peanut butter, natural unsweetened",
+          "department": "Pantry",
+          "qty": 130,
+          "unit": "g",
+          "qty_alt": "130–160 g / 8–10 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "chicken stock",
+          "department": "Oils & Liquids",
+          "qty": 900,
+          "unit": "ml",
+          "qty_alt": "3¾ cups",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "sweet potato",
+          "department": "Produce",
+          "qty": 260,
+          "unit": "g",
+          "qty_alt": "260–330 g",
+          "prep_note": "3 cm chunks",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "baby spinach",
+          "department": "Produce",
+          "qty": 60,
+          "unit": "g",
+          "qty_alt": "2 packed cups",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "cilantro, fresh",
+          "department": "Produce",
+          "qty": 8,
+          "unit": "g",
+          "qty_alt": "8–10 g / ¼ cup loosely packed",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 5,
+          "unit": "g",
+          "qty_alt": "5–7 g / 1–1½ tsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lime juice",
+          "department": "Produce",
+          "qty": 30,
+          "unit": "ml",
+          "qty_alt": "30–45 ml / 2–3 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "maafe-steamed-rice",
+      "name": "Steamed Rice",
+      "protein": null,
+      "category": [
+        "Side"
+      ],
+      "cuisine": [],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Weeknight",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Claude / Cooking Project — May 2026",
+      "governance_version": null,
+      "summary": "Neutral fluffy long-grain rice as the soft starch carrier under the stew.",
+      "method_md": "## Dish 2 — Steamed Rice\nNeutral fluffy starch carrier. Meal carve-out: soft neutral contrast against rich stew.\n**Yield:** 4 servings \\| **Active:** 5 min \\| **Total:** 25 min \\| **Hold:** 25 min covered off heat\n<table header-row=\"true\">\n<tr>\n<td>Ingredient</td>\n<td>Amount</td>\n</tr>\n<tr>\n<td>Long-grain white rice</td>\n<td>200 g</td>\n</tr>\n<tr>\n<td>Water</td>\n<td>240 ml / 1 cup</td>\n</tr>\n<tr>\n<td>Diamond Crystal kosher salt</td>\n<td>1 g / ¼ tsp</td>\n</tr>\n</table>\n**Method:** Rinse until mostly clear. Combine rice, water, salt. Boil (high). Cover → very low, 12–15 min. Rest covered 10 min. Do not lift lid during rest. Fluff before serving.\n**Doneness:** Chalky center → continue. Fully tender grain → stop.\n**CCPs:** Lifting lid early (steam breaks → uneven texture; re-cover immediately). Insufficient rinsing (sticky texture; unrecoverable).\n**Scaling:** At 800 g+, increase water ratio slightly; extend low-heat phase 3–5 min.",
+      "servings": 4,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "362e0391ce6381dbb0fadf943507132d",
+      "ingredients": [
+        {
+          "name": "long-grain white rice",
+          "department": "Pantry",
+          "qty": 200,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "water",
+          "department": "Oils & Liquids",
+          "qty": 240,
+          "unit": "ml",
+          "qty_alt": "1 cup",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "g",
+          "qty_alt": "¼ tsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "maafe-tomato-cucumber-lime-salad",
+      "name": "Tomato–Cucumber Lime Salad",
+      "protein": "Veg",
+      "category": [
+        "Salad"
+      ],
+      "cuisine": [],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Weeknight",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Claude / Cooking Project — May 2026",
+      "governance_version": null,
+      "summary": "Fresh acidic palate reset of soft tomato and crisp cucumber dressed with lime.",
+      "method_md": "## Dish 3 — Tomato–Cucumber Lime Salad\nFresh acidic palate reset. Textures: soft tomato + crisp cucumber.\n**Yield:** 4 servings \\| **Active:** 15 min \\| **Total:** 25 min \\| **Hold:** 30 min room temp\n<table header-row=\"true\">\n<tr>\n<td>Ingredient</td>\n<td>Amount</td>\n</tr>\n<tr>\n<td>Tomatoes</td>\n<td>2 medium</td>\n</tr>\n<tr>\n<td>Cucumber</td>\n<td>1 medium</td>\n</tr>\n<tr>\n<td>Red onion</td>\n<td>¼</td>\n</tr>\n<tr>\n<td>Lime juice</td>\n<td>22 ml / 1½ tbsp</td>\n</tr>\n<tr>\n<td>Diamond Crystal kosher salt</td>\n<td>2–3 g / ½–¾ tsp</td>\n</tr>\n<tr>\n<td>Olive oil (optional)</td>\n<td>15 ml / 1 tbsp</td>\n</tr>\n</table>\n**Method:** Cut tomatoes into wedges. Slice cucumber and onion thinly. Toss. Rest 10–15 min. Drain pooled liquid; re-season with lime and salt before serving.",
+      "servings": 4,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "362e0391ce6381dbb0fadf943507132d",
+      "ingredients": [
+        {
+          "name": "tomato",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": "2 medium",
+          "prep_note": "cut into wedges",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "cucumber",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": "1 medium",
+          "prep_note": "sliced thinly",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "red onion",
+          "department": "Produce",
+          "qty": 0.25,
+          "unit": "piece",
+          "qty_alt": "¼",
+          "prep_note": "sliced thinly",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lime juice",
+          "department": "Produce",
+          "qty": 22,
+          "unit": "ml",
+          "qty_alt": "1½ tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 2,
+          "unit": "g",
+          "qty_alt": "2–3 g / ½–¾ tsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 15,
+          "unit": "ml",
+          "qty_alt": "1 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": true
+        }
+      ]
+    },
+    {
+      "slug": "maafe-birds-eye-chilli-paste",
+      "name": "Bird's Eye Chilli Paste",
+      "protein": "Veg",
+      "category": [
+        "Sauce"
+      ],
+      "cuisine": [],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Weeknight",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Claude / Cooking Project — May 2026",
+      "governance_version": null,
+      "summary": "Coarse pounded bird's eye chilli paste for external heat control against the smooth stew.",
+      "method_md": "## Dish 4 — Bird's Eye Chilli Paste\nCoarse-textured external heat control. Meal carve-out: heat + texture contrast against smooth stew.\n**Yield:** \\~60 ml \\| **Active:** 5 min \\| **Hold:** 4 hrs ambient\n<table header-row=\"true\">\n<tr>\n<td>Ingredient</td>\n<td>Amount</td>\n</tr>\n<tr>\n<td>Bird's eye chillies</td>\n<td>4–6</td>\n</tr>\n<tr>\n<td>Shallot</td>\n<td>1 small</td>\n</tr>\n<tr>\n<td>Garlic clove</td>\n<td>1</td>\n</tr>\n<tr>\n<td>Diamond Crystal kosher salt</td>\n<td>1–2 g / ¼–½ tsp</td>\n</tr>\n<tr>\n<td>Neutral oil</td>\n<td>15 ml / 1 tbsp</td>\n</tr>\n<tr>\n<td>Lime juice</td>\n<td>10–15 ml / 2–3 tsp</td>\n</tr>\n</table>\n**Method:** Remove stems; rough chop shallot and garlic. Pound into coarse paste. Stir in oil + lime. Do not blend smooth.",
+      "servings": null,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "362e0391ce6381dbb0fadf943507132d",
+      "ingredients": [
+        {
+          "name": "bird's eye chilli",
+          "department": "Produce",
+          "qty": 4,
+          "unit": "piece",
+          "qty_alt": "4–6",
+          "prep_note": "stems removed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "shallot",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": "1 small",
+          "prep_note": "rough chopped",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "rough chopped",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "g",
+          "qty_alt": "1–2 g / ¼–½ tsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "neutral oil",
+          "department": "Oils & Liquids",
+          "qty": 15,
+          "unit": "ml",
+          "qty_alt": "1 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lime juice",
+          "department": "Produce",
+          "qty": 10,
+          "unit": "ml",
+          "qty_alt": "10–15 ml / 2–3 tsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "maafe-crushed-roasted-peanuts",
+      "name": "Crushed Roasted Peanuts",
+      "protein": null,
+      "category": [
+        "Side"
+      ],
+      "cuisine": [],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Weeknight",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Claude / Cooking Project — May 2026",
+      "governance_version": null,
+      "summary": "Crushed roasted peanut garnish — the meal's primary crunch axis.",
+      "method_md": "## Dish 5 — Crushed Roasted Peanuts\nCrunch garnish. Meal carve-out: primary crunch axis for the meal.\n**Yield:** 80–100 g \\| **Active:** 2 min \\| **Hold:** Stable\n- Roasted unsalted peanuts: 80–100 g\n**Method:** Crush into rough irregular pieces. Do not pulverize. Apply immediately before serving — moisture softens within 2–3 min of plating.",
+      "servings": null,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "362e0391ce6381dbb0fadf943507132d",
+      "ingredients": [
+        {
+          "name": "roasted unsalted peanuts",
+          "department": "Pantry",
+          "qty": 80,
+          "unit": "g",
+          "qty_alt": "80–100 g",
+          "prep_note": "crushed into rough irregular pieces",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "maafe-chilled-pineapple-lime-flaky-salt",
+      "name": "Chilled Pineapple with Lime & Flaky Salt",
+      "protein": null,
+      "category": [
+        "Dessert"
+      ],
+      "cuisine": [],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Weeknight",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Claude / Cooking Project — May 2026",
+      "governance_version": null,
+      "summary": "Cold acidic finish of chilled pineapple with lime and flaky salt, functioning as a palate cleanse.",
+      "method_md": "## Dish 6 — Chilled Pineapple with Lime & Flaky Salt\nCold acidic finish. Textures: cold yielding fruit + crystalline flaky salt crunch. Functions as palate cleanse, not richness escalation.\n**Yield:** 4 servings \\| **Active:** 10 min \\| **Chill:** 20–30 min \\| **Hold:** 2 hrs chilled\n<table header-row=\"true\">\n<tr>\n<td>Ingredient</td>\n<td>Amount</td>\n</tr>\n<tr>\n<td>Ripe pineapple</td>\n<td>1</td>\n</tr>\n<tr>\n<td>Lime juice</td>\n<td>15–22 ml / 1–1½ tbsp</td>\n</tr>\n<tr>\n<td>Flaky sea salt</td>\n<td>Small pinch</td>\n</tr>\n<tr>\n<td>Chilli flakes (optional)</td>\n<td>Micro pinch</td>\n</tr>\n</table>\n**Method:** Peel fully; remove eyes; cut into spears or chunks. Toss with lime juice. Chill 20–30 min. Remove 10 min before serving if over-chilled. Flaky salt immediately before serving.\n**CCP:** Over-chilling (muted aroma → flat dessert; rest 10–15 min at room temp).",
+      "servings": 4,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "362e0391ce6381dbb0fadf943507132d",
+      "ingredients": [
+        {
+          "name": "pineapple, ripe",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "peeled, eyes removed, cut into spears or chunks",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lime juice",
+          "department": "Produce",
+          "qty": 15,
+          "unit": "ml",
+          "qty_alt": "15–22 ml / 1–1½ tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "flaky sea salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": "pinch",
+          "qty_alt": "small pinch",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "chilli flakes",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": "pinch",
+          "qty_alt": "micro pinch",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": true
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2026-05-17",
+      "rating": null,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": "## Post-Cook Update — 17 May 2026\n- **Last Made:** 17 May 2026\n- **Rating:** 9.5 / 10\n- **Execution Rating:** 9 / 10\n- **Repeat?:** Yes\n- **Cook Notes:** All family liked it. Chilli paste quite spicy but adds a nice kick to the stew. Chicken skin crisping adds complexity without sufficient depth payoff — eliminated; discard only. Rice portion too large given how filling the stew is — reduced to 200g / 4 servings. Opened Felton Road Bannockburn Pinot Noir 2022 — went quite well.\n- **Wine pairing outcome:** Felton Road Bannockburn Pinot Noir 2022 — went quite well with the meal.\n- **Household split:** None — unanimous",
+      "deviations": [
+        "Chicken skin crisping eliminated — skin discarded after sear rather than crisped",
+        "Rice portion reduced to 200 g / 4 servings"
+      ],
+      "parameter_confirmations": [],
+      "household_split": "None — unanimous",
+      "wine_outcome": "Felton Road Bannockburn Pinot Noir 2022 — went quite well with the meal."
+    },
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2026-09-13",
+      "rating": 9.5,
+      "execution_rating": 8.5,
+      "repeat": "yes",
+      "cook_notes": "Cook 2 (13 Sep 2026) — 2x batch, kabocha (Beibei mini-kabocha) replacing sweet potato, whole okra added. Rating 9.5/10, matching cook 1. Noted as slightly less filling than the sweet potato version. Alheit Hereafter Here Chenin Blanc 2022 paired well. Primary execution defect: the Step 5 chicken doneness cue (firm thumb pressure on flesh alongside the bone) is not performable — the thigh is too hot to touch straight from the braise. Cue requires replacement with a tool-based test. Cook 1 (17 May 2026) — Rating 9.5/10, Execution 9/10, unanimous. Chicken skin crisping eliminated; rice reduced to 200 g / 4 servings. See dated Post-Cook Update sections for full evidence.\n\n## Post-Cook Update — 13 September 2026\n**Recipe version used:** Claude / Cooking Project — Sep 2026 reconciled build (2x batch, kabocha + okra variant). Governance snapshot v3.5 / 2026-07-20. Distinct from the cook 1 recipe above; this variant replaces sweet potato with kabocha and adds whole okra.\n- **Last Made:** 13 September 2026\n- **Times Made:** 2\n- **Rating:** 9.5 / 10\n- **Execution Rating:** 8.5 / 10 (down from 9.0 at cook 1 — attributable to the unperformable doneness cue)\n- **Repeat?:** Yes\n### Cook Notes\nSecond rendition rated 9.5/10, matching cook 1 despite a materially different vegetable architecture. Noted as slightly less filling than the sweet potato version — kabocha is lighter in the bowl than sweet potato at comparable volume, which is a point in the variant's favour given the cook 1 finding that the stew was over-filling relative to its rice portion. The kabocha-and-okra variant is therefore not merely an equal substitute but a plausible improvement on the meal's overall weight.\nPrincipal execution defect was the Step 5 chicken doneness cue. Retained from cook 1, it directs firm thumb pressure on the flesh alongside the bone. In practice the thigh comes straight out of a simmering braise and is too hot to touch, making the cue unperformable as written. This is a recipe defect rather than a cook error: the cue was never validated against the physical conditions in which it must be executed. Replacement cue proposed below.\n### Actual Deviations\n- **Squash:** Beibei mini-kabocha (贝贝南瓜) in place of standard kabocha. Denser, sweeter, drier flesh than ordinary kabocha. Portion of skin carried brown corky patching and was pared off; flesh beneath confirmed firm and sound. Peeled chunks cut larger to compensate for lost structural binding.\n- **Tomatoes:** canned whole peeled, hand-crushed, in place of canned crushed. Tomato development step extended to compensate for higher free-water content.\n- **Peanuts:** blanched raw peanuts roasted in-house at 160°C rather than bought pre-roasted.\n- **Rice:** Japanese short-grain in the Tiger rice cooker, cooked without salt, replacing stovetop long-grain. Removed rice from the critical path entirely — the cooker's hold function eliminates the timing window that could previously be missed.\n- **Spinach:** frozen chopped, thawed and squeezed, in place of fresh baby spinach.\n- **Okra:** whole small pods, cap trimmed without breaching the pod, added late.\n### Wine Pairing Outcome\nAlheit Vineyards Hereafter Here Chenin Blanc 2022 — paired well. Confirms the cook 1 finding that high-acid Chenin is the stronger style match for this dish than a red: the acid cuts peanut fat without the tannin penalty that lime and squash sweetness impose on structured reds. Chenin Blanc should be treated as the default pairing for this dish going forward.\n### Designed-Parameter Confirmation\nSix parameters were carried into this cook labelled designed rather than validated. Measurements were not captured during service and remain outstanding:\n<table header-row=\"true\">\n<tr>\n<td>#</td>\n<td>Parameter</td>\n<td>Status</td>\n</tr>\n<tr>\n<td>1</td>\n<td>Kabocha time from entry to doneness cue</td>\n<td>Not captured</td>\n</tr>\n<tr>\n<td>2</td>\n<td>Okra exposure, active and residual; acceptability of firm-at-service</td>\n<td>Not captured</td>\n</tr>\n<tr>\n<td>3</td>\n<td>2x evaporation in the wide vessel; reserved stock add-back</td>\n<td>Not captured</td>\n</tr>\n<tr>\n<td>4</td>\n<td>Freezer hold for a vegetable-free reserve — RETIRED. Never tested; diversion removed from the design at Jin's direction, 14 Sep 2026. Does not carry forward.</td>\n<td>Not captured</td>\n</tr>\n<tr>\n<td>5</td>\n<td>Skin-on sear value versus skin-off-first</td>\n<td>Not captured</td>\n</tr>\n<tr>\n<td>6</td>\n<td>Lime multiplicity — coherent or repetitive across four components</td>\n<td>Not captured</td>\n</tr>\n</table>\nPer governance, a designed parameter not checked against a real cook stays designed. Parameters 1, 2, 3, 5 and 6 remain designed and carry forward to cook 3. Parameter 4 is retired rather than carried — see below.\n### Recipe Defects Identified — Carried to Governance Change Queue\n1. **Chicken doneness cue unperformable.** Thumb-pressure test cannot be executed on braise-hot protein. Replacement: tongs-based bone-twist as primary cue, skewer-resistance as confirmation.\n2. **Body salt never placed in the method.** The ingredient table splits salt between the aromatic base and the stew body, but no step directs when the body salt is added. Fix: place it at the stock addition, with the balance held back for a final off-heat taste before lime.\n3. **Reserve cooling instruction self-contradictory.** The standing household rule against cooling to room temperature invited sealing hot stew into containers. Fix: separate the cooling trajectory requirement from the covering instruction.\n4. **Salt given in grams only.** Unusable without a scale. Fix: dual units with an explicit brand caveat, as lime already carries.\n5. **Squash skin condition assumed uniform.** No triage instruction for corky or damaged skin, and no adjustment for peeled chunks. Fix: add skin triage plus a larger chunk size and earlier check for any chunk peeled.\n6. **Reserved stock purpose unstated.** Held-back stock appears in the ingredient table with no explanation of its role as a correction reserve rather than a scheduled addition.\n7. **Cilantro preparation unspecified.** No chop instruction, and no split between the portion cooked into the stew and the portion reserved for plating.\n8. **Crushed tomatoes assumed available.** Frequently out of stock. Hand-crushed whole peeled should become the stated default rather than a substitution.\n9. **Peanut roasting not addressed.** Self-roasting from blanched raw is better than bought pre-roasted and is a day-before task that should sit outside the cook-day timeline.\n10. **Rice method superseded.** Rice cooker is better than stovetop for this meal and removes a component from the critical path.\n### Reserve Diversion — Not Performed, Then Retired\nNo reserve was diverted. The full 2x batch was finished in one pot with kabocha, okra, spinach, lime, and cilantro applied to the whole volume.\n**Retired from the design, 14 Sep 2026, at Jin's direction.** The diversion architecture is removed from this recipe and is not carried forward to cook 3. The dish scored 9.5 cooked as a single pot, matching cook 1, so the architecture cannot be shown to have been necessary. The record below is retained as evidence of what was designed and what happened; it is no longer a prescription.\nWhat the cook establishes, and what it does not:\n- The diversion architecture was never exercised, so nothing is known about whether it would have worked. It is retired unvalidated rather than rejected on evidence.\n- Leftovers therefore carried finished vegetables and herbs, which degrade in storage. Kabocha softens, okra deteriorates within a day, lime brightness fades. With the diversion retired, this becomes the expected leftover profile for this dish rather than a shortfall against a better alternative — the finish is rebuilt fresh at reheat instead.\n- Kabocha and spinach quantities were specified for a diverted half and were therefore proportionally light against the full volume. This may have contributed to the dish reading less filling than the sweet potato version — the observation could be a vegetable-density effect rather than a kabocha-versus-sweet-potato effect. Not separable from this cook's evidence. **Action for cook 3: specify kabocha and spinach against the full batch volume, since there is no longer a diverted half to size for.**\n### Portion Consumption — First Recorded Split\nBatch built on 9 bone-in thighs. Consumption at the served meal:\n<table header-row=\"true\">\n<tr>\n<td>Diner</td>\n<td>Thighs</td>\n</tr>\n<tr>\n<td>Lukas</td>\n<td>3</td>\n</tr>\n<tr>\n<td>Hui Fong</td>\n<td>1</td>\n</tr>\n<tr>\n<td>Jin</td>\n<td>1</td>\n</tr>\n<tr>\n<td>**Consumed**</td>\n<td>**5 of 9**</td>\n</tr>\n<tr>\n<td>**Left over**</td>\n<td>**4**</td>\n</tr>\n</table>\nAll okra was consumed — no portion returned to the pot, and no adverse comment on texture. Firm-at-service was evidently acceptable, though the okra was not separately assessed.\n**Scaling implication.** The 2x batch was sized on an implicit assumption of roughly equal adult-scale portions across three diners. Actual intake is strongly asymmetric: Lukas consumed three times either adult's share and is the volume driver for this dish. At 9 thighs the batch yields one family dinner plus roughly a Lukas portion and one adult portion — a modest remainder, not the substantial reserve the 2x scale was designed to produce. With the diversion retired, batch size is the only lever left: 9 thighs for one dinner with light leftovers, 12–14 for a genuine second meal.\nThis is the first cook at which per-diner consumption has been recorded. Treat as a single data point until confirmed at cook 3 — a growing child's intake is not a stable parameter.\n### Leftover Handling — 14 September 2026\nRemainder refrigerated promptly after service; cooling requirement met. Reheated as finished stew. The diversion architecture was not used and has since been retired, so this is the standing leftover method for the dish.\n- Reheated low, lid off, loosened with hot stock in 50 ml increments — the stew tightens materially overnight as the peanut emulsion and kabocha starch both set cold.\n- Finish rebuilt at reheat: fresh lime off heat, fresh cilantro, fresh crushed peanuts at the bowl. Overnight storage dulls lime brightness noticeably, and this version already ran at the upper end of the lime range.\n- Spinach flat on reheat — no corrective available.\n- Kabocha expected at or past the collapse point after overnight storage. With the diversion retired, this is simply the accepted leftover profile for the dish — softened squash in a reheated stew, with the finish rebuilt fresh at the bowl.\n### Household Split\nNone on the dish itself — unanimous, as at cook 1. Portion split recorded above is appetite, not preference.",
+      "deviations": [
+        "Squash: Beibei mini-kabocha (贝贝南瓜) in place of standard kabocha; corky skin pared off, peeled chunks cut larger",
+        "Tomatoes: canned whole peeled, hand-crushed, in place of canned crushed; tomato development step extended",
+        "Peanuts: blanched raw peanuts roasted in-house at 160°C rather than bought pre-roasted",
+        "Rice: Japanese short-grain in the Tiger rice cooker, cooked without salt, replacing stovetop long-grain",
+        "Spinach: frozen chopped, thawed and squeezed, in place of fresh baby spinach",
+        "Okra: whole small pods, cap trimmed without breaching the pod, added late",
+        "2x batch; kabocha replacing sweet potato; whole okra added (Sep 2026 reconciled build variant)",
+        "Reserve diversion designed but not performed — full 2x batch finished in one pot; diversion retired 14 Sep 2026"
+      ],
+      "parameter_confirmations": [
+        {
+          "param": "Kabocha time from entry to doneness cue",
+          "designed": "Designed, not validated",
+          "observed": "Not captured",
+          "verdict": "unresolved"
+        },
+        {
+          "param": "Okra exposure, active and residual; acceptability of firm-at-service",
+          "designed": "Designed, not validated",
+          "observed": "Not captured; all okra consumed, no adverse comment",
+          "verdict": "unresolved"
+        },
+        {
+          "param": "2x evaporation in the wide vessel; reserved stock add-back",
+          "designed": "Designed, not validated",
+          "observed": "Not captured",
+          "verdict": "unresolved"
+        },
+        {
+          "param": "Freezer hold for a vegetable-free reserve",
+          "designed": "Designed, not validated",
+          "observed": "Not captured — retired 14 Sep 2026, never tested",
+          "verdict": "unresolved"
+        },
+        {
+          "param": "Skin-on sear value versus skin-off-first",
+          "designed": "Designed, not validated",
+          "observed": "Not captured",
+          "verdict": "unresolved"
+        },
+        {
+          "param": "Lime multiplicity — coherent or repetitive across four components",
+          "designed": "Designed, not validated",
+          "observed": "Not captured",
+          "verdict": "unresolved"
+        },
+        {
+          "param": "Step 5 chicken doneness cue (firm thumb pressure on flesh alongside the bone)",
+          "designed": "Performable at braise end",
+          "observed": "Not performable — thigh too hot to touch straight from the braise",
+          "verdict": "diverged"
+        }
+      ],
+      "household_split": "None on the dish itself — unanimous, as at cook 1. Portion split recorded above is appetite, not preference. (Thighs consumed: Lukas 3, Hui Fong 1, Jin 1 — 5 of 9; 4 left over.)",
+      "wine_outcome": "Alheit Vineyards Hereafter Here Chenin Blanc 2022 — paired well. Confirms the cook 1 finding that high-acid Chenin is the stronger style match for this dish than a red; Chenin Blanc should be treated as the default pairing going forward."
+    }
+  ]
+}

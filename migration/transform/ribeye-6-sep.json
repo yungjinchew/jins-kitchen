@@ -1,0 +1,120 @@
+{
+  "assignment_key": "ribeye-6-sep",
+  "source_page_ids": [
+    "3d3e0391ce6381919e93f2cea72d6640"
+  ],
+  "meal": null,
+  "dishes": [
+    {
+      "slug": "little-joe-bone-in-ribeye",
+      "name": "Reverse-Seared Little Joe Bone-In Ribeye",
+      "protein": "Beef",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "European"
+      ],
+      "difficulty": "Special",
+      "tags": [],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": "Governance Framework v3.5 — sunday-ribeye.docx, 2026-09-05. Butcher Box Singapore, Little Joe Grass Fed MB4+ Rib Eye On Bone.",
+      "governance_version": "v3.5",
+      "summary": "Reverse-seared Little Joe grass-fed MB4+ bone-in ribeye (1.160 kg, 5.5 cm), dry-brined overnight, low-roasted at 225°F/107°C and seared, served with salsa verde, pommes purée, sautéed mushrooms and rocket salad.",
+      "method_md": null,
+      "servings": 3,
+      "equipment": [
+        "rack",
+        "225°F oven",
+        "warmed plates"
+      ],
+      "designed_unvalidated": [
+        {
+          "param": "Oven pull temperature",
+          "designed_value": "110°F / 43°C (revision hypothesis; was 120°F)",
+          "note": "Derived by working backwards from a +21°F total rise. Rests on a single data point at a single mass — a hypothesis, not a validated specification."
+        },
+        {
+          "param": "Low-roast thickness-to-duration model",
+          "designed_value": "60–85 min band",
+          "note": "Two data points in opposite directions; model requires rebuilding rather than incremental adjustment."
+        },
+        {
+          "param": "8-minute pre-sear rest for large pieces",
+          "designed_value": "8 min rack rest",
+          "note": "Consider whether it earns its place now that it is known to add heat rather than shed it at this mass; may be shortened or removed."
+        }
+      ],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3d3e0391ce6381919e93f2cea72d6640",
+      "ingredients": []
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "dish",
+      "dish_slug": "little-joe-bone-in-ribeye",
+      "cooked_on": "2026-09-06",
+      "rating": 9,
+      "execution_rating": 8,
+      "repeat": "with_modifications",
+      "cook_notes": "First cook, and the primary objective was the four-point measurement series — all four captured. Pre-sear rest added 6°F rather than losing 2–3°F: at 1.160 kg the rack rest continues cooking rather than shedding heat. Total A-to-D rise was +21°F against a predicted +13°F, overshooting to 141°F / 61°C — medium rather than medium-rare. Low-roast band failed badly: approximately 120 min actual against 60–85 min specified. Exit-anchored floating service absorbed the miss without downstream failure. Household preference remains with Tender Valley MB3+ grain-fed over this grass-fed cut.\n\n## Cook record — 2026-09-06\n**Recipe version:** Governance Framework v3.5, docx generated 2026-09-05 (`sunday-ribeye.docx`), calibrated to the actual cut.\n**Ratings:** Flavour 9 · Execution 8 · Repeat: With Modifications\n### What was actually cooked\nLittle Joe Grass Fed MB4+ Rib Eye On Bone, Butcher Box Singapore. 1.160 kg, 5.5 cm thick, S\\$89.90/kg, S\\$104.28. Overnight dry brine at 9 g (\\~0.8% gross), uncovered on a rack in the fridge, approximately 30 hours.\nServed to 3. Menu: ribeye, salsa verde, pommes purée, sautéed mushrooms, rocket salad. Watercress unavailable — rocket substituted with vinegar reduced to 10 ml and served undressed at the table.\n### The four-point measurement series — primary objective\nThis cook existed to close two parameters carried as designed since the salmon cook. All four points were captured.\n<table header-row=\"true\">\n<tr>\n<td>Point</td>\n<td>Reading</td>\n<td>Description</td>\n</tr>\n<tr>\n<td>A</td>\n<td>120°F / 49°C</td>\n<td>Oven exit</td>\n</tr>\n<tr>\n<td>B</td>\n<td>126°F / 52°C</td>\n<td>After 8-minute pre-sear rack rest</td>\n</tr>\n<tr>\n<td>C</td>\n<td>131°F / 55°C</td>\n<td>Immediately off the pan</td>\n</tr>\n<tr>\n<td>D</td>\n<td>141°F / 61°C</td>\n<td>After 10-minute post-sear rest, warmed plates</td>\n</tr>\n</table>\n**Three deltas, all against prediction:**\n<table header-row=\"true\">\n<tr>\n<td>Delta</td>\n<td>Predicted</td>\n<td>Actual</td>\n<td>Result</td>\n</tr>\n<tr>\n<td>Pre-sear drift (B−A)</td>\n<td>−2 to −3°F</td>\n<td>**+6°F**</td>\n<td>Wrong direction</td>\n</tr>\n<tr>\n<td>Sear gain (C−B)</td>\n<td>+10 to +14°F</td>\n<td>**+5°F**</td>\n<td>Well under</td>\n</tr>\n<tr>\n<td>Carryover (D−C)</td>\n<td>+2 to +4°F</td>\n<td>**+10°F**</td>\n<td>Well over</td>\n</tr>\n<tr>\n<td>Total A→D</td>\n<td>\\~+13°F</td>\n<td>**+21°F**</td>\n<td>8°F over</td>\n</tr>\n</table>\n### Findings\n**1. The pre-sear rest is not a rest at this mass — it continues cooking.** The 8-minute rack rest added 6°F rather than losing 2–3°F. At 1.160 kg with a steep gradient out of a 225°F oven, the surface keeps driving heat inward well past eight minutes. This is the most generalisable finding of the cook and it was predicted backwards. Confirmed only for this mass and geometry; smaller pieces should drift less at every stage.\n**2. C and D are not independent measurements.** Reading C is taken before the sear's energy has migrated off the surface, so much of the +10°F recorded as carryover is the sear arriving late. The +5°F sear gain understates the pan's actual contribution. **The honest combined figure is that sear plus post-sear rest is worth approximately +15°F**; splitting them at the C boundary is somewhat artificial for a piece this size.\n**3. Carryover on beef is strongly positive onto warmed plates.** This resolves, for a seared whole muscle at this mass, the question left open by the salmon cook — where carryover was negative onto room-temperature plates. The two results are not in conflict: mass and plate temperature both differ materially.\n**4. Result overshot to 141°F / 61°C — medium, not medium-rare.** Approximately 10°F past target. Still rated 9 for flavour, and the additional rendering was not damaging on a well-marbled cut, but the endpoint was missed.\n**Revision hypothesis for the next cook: pull at 110°F / 43°C rather than 120°F.** Derived by working backwards from a +21°F total rise. This rests on a single data point at a single mass and is a hypothesis, not a validated specification.\n### Low-roast band — failed badly\n**Specified 60–85 min. Actual approximately 120 min** to reach 120°F from fridge-cold at 225°F / 107°C. Intermediate reading: 110°F at 105 minutes, confirming the final 10°F is the slowest stretch.\nThe allowance was wrong by roughly 40%. Notably this is the **opposite direction** to the pork cook of 2026-08-30, where the projection ran long and was corrected downward. That correction overshot. Two data points now exist in opposite directions, which indicates the thickness-to-duration model requires rebuilding rather than incremental adjustment.\nThe steak was loaded at 5:00 pm against a plan of 5:15 pm and still ran late. Service moved to approximately 7:40 pm. **The exit-anchored floating-service architecture absorbed a 35-minute miss without any downstream failure** — this is the second consecutive cook where that architecture has held against a materially wrong roast projection, and it is the reason a bad estimate did not become a bad dinner.\n### Live compressions applied\nSalsa verde tempered 20 min rather than 45. Purée mid-hold check skipped. Mushrooms reduced to 8 min. Rocket served undressed. **The 29-minute convergence sequence was not compressed** — correctly, since every step in it protects the protein or carries a measurement.\n### Household verdict — split from the rating\nFlavour rated 9, but **Jin stated a continued preference for Tender Valley MB3+ grain-fed over this Little Joe MB4+ grass-fed.** This is the substantive outcome for future beef sourcing and should not be read as a criticism of the cook.\nThe grass-fed experiment is therefore concluded as: technically successful, genuinely enjoyed, not preferred. The additional mineral and savoury character that distinguishes Little Joe is not what this household wants from a ribeye. **Future ribeye purchases should default back to Tender Valley grain-fed**, or trial W. Black MB5+ if a step up is wanted — a richer grain-fed profile rather than a leaner grass-fed one.\nPrice is relevant context: S\\$89.90/kg against Tender Valley at roughly S\\$29.70 for a comparable boneless steak.\n### Purchase-day reconciliation\nSalting was scheduled for Saturday on purchase and completed correctly. A restatement of the salting instruction was issued on Sunday evening in error — the salt was already on. No effect on the cook.\n### Next time\n1. **Pull at 110°F / 43°C** and re-measure all four points. The revision is a hypothesis from one observation.\n2. **Rebuild the low-roast model.** Two data points, opposite directions. Consider treating the final 10°F as a distinct slow phase rather than extrapolating a single curve.\n3. **Consider whether the 8-minute pre-sear rest earns its place** now that it is known to add heat rather than shed it at this mass. It may be shortened or removed for large pieces.\n4. **Record C and D with a stated caveat** that they are not independent at this mass.\n5. Default back to Tender Valley grain-fed for ribeye.",
+      "deviations": [
+        "Watercress unavailable — rocket substituted with vinegar reduced to 10 ml and served undressed at the table.",
+        "Low-roast ran approximately 120 min against a 60–85 min specification; steak loaded at 5:00 pm against a plan of 5:15 pm and still ran late. Service moved to approximately 7:40 pm.",
+        "Live compressions applied: salsa verde tempered 20 min rather than 45; purée mid-hold check skipped; mushrooms reduced to 8 min; rocket served undressed. The 29-minute convergence sequence was not compressed.",
+        "Result overshot to 141°F / 61°C — medium, not medium-rare. Approximately 10°F past target.",
+        "A restatement of the salting instruction was issued on Sunday evening in error — the salt was already on. No effect on the cook."
+      ],
+      "parameter_confirmations": [
+        {
+          "param": "Pre-sear drift (B−A): 8-minute pre-sear rack rest",
+          "designed": "−2 to −3°F",
+          "observed": "+6°F (A 120°F / 49°C oven exit → B 126°F / 52°C) — wrong direction",
+          "verdict": "diverged"
+        },
+        {
+          "param": "Sear gain (C−B)",
+          "designed": "+10 to +14°F",
+          "observed": "+5°F (B 126°F / 52°C → C 131°F / 55°C immediately off the pan) — well under",
+          "verdict": "diverged"
+        },
+        {
+          "param": "Carryover (D−C): 10-minute post-sear rest, warmed plates",
+          "designed": "+2 to +4°F",
+          "observed": "+10°F (C 131°F / 55°C → D 141°F / 61°C) — well over",
+          "verdict": "diverged"
+        },
+        {
+          "param": "Total A→D rise",
+          "designed": "~+13°F",
+          "observed": "+21°F (120°F → 141°F / 61°C) — 8°F over; medium rather than medium-rare",
+          "verdict": "diverged"
+        },
+        {
+          "param": "Low-roast band to 120°F from fridge-cold at 225°F / 107°C (1.160 kg, 5.5 cm)",
+          "designed": "60–85 min",
+          "observed": "approximately 120 min (110°F at 105 min) — allowance wrong by roughly 40%",
+          "verdict": "diverged"
+        },
+        {
+          "param": "Exit-anchored floating-service architecture",
+          "designed": "absorbs roast projection misses",
+          "observed": "absorbed a 35-minute miss without any downstream failure",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Overnight dry brine, 9 g (~0.8% gross), uncovered on a rack, approx. 30 hours",
+          "designed": "0.8% dry brine",
+          "observed": "completed correctly on Saturday",
+          "verdict": "confirmed"
+        }
+      ],
+      "household_split": "Flavour rated 9, but Jin stated a continued preference for Tender Valley MB3+ grain-fed over this Little Joe MB4+ grass-fed. The grass-fed experiment is concluded as: technically successful, genuinely enjoyed, not preferred. Future ribeye purchases should default back to Tender Valley grain-fed, or trial W. Black MB5+ if a step up is wanted. Price is relevant context: S$89.90/kg against Tender Valley at roughly S$29.70 for a comparable boneless steak.",
+      "wine_outcome": "Cellar record required physical verification before selection; 2018 Château Moulin Riche recommended as primary, 2019 Il Poggione Brunello as fallback."
+    }
+  ]
+}

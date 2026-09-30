@@ -1,0 +1,546 @@
+{
+  "assignment_key": "picanha",
+  "source_page_ids": [
+    "31de0391ce63804e86f1c762b6823ce2"
+  ],
+  "meal": {
+    "slug": "brazilian-picanha-dinner",
+    "name": "Brazilian Picanha Dinner (3 Pax)",
+    "planned_date": "2026-03-08",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": null,
+    "shared_prep_md": null,
+    "wine_pairing": null,
+    "legacy_notion_id": "31de0391ce63804e86f1c762b6823ce2",
+    "components": [
+      {
+        "dish_slug": "picanha-reverse-seared",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "picanha-chimichurri",
+        "role": "sauce",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "picanha-tomato-vinaigrette",
+        "role": "sauce",
+        "service_order": 3
+      },
+      {
+        "dish_slug": "picanha-panko-farofa",
+        "role": "side",
+        "service_order": 4
+      },
+      {
+        "dish_slug": "picanha-pan-seared-broccolini",
+        "role": "side",
+        "service_order": 5
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "picanha-reverse-seared",
+      "name": "Reverse-Seared Picanha",
+      "protein": "Beef",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "Latin"
+      ],
+      "difficulty": "Medium",
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Chatgpt",
+      "governance_version": null,
+      "summary": "Dry-brined picanha (rump cap) slow-roasted at 120°C, rested, then seared hard in cast iron and sliced thin against the grain.",
+      "method_md": "**Reverse-Seared Picanha**<br><br>**Ingredients**\n\t- 1.5 kg picanha (rump cap)<br> 15–18 g kosher salt<br> 1 tbsp neutral oil<br> Flaky sea salt for finishing\n\t**Day Before**<br>1. Score fat cap lightly in a crosshatch pattern.<br>2. Salt evenly.<br>3. Place uncovered in refrigerator for 12–24 hours.<br><br>**Cooking**<br><br>*Low Roast*<br>1. Preheat oven to 120°C / 250°F.<br>2. Place meat on rack, fat cap up.<br>3. Roast until internal temp reaches 48–50°C / 118–122°F (approximately 45–70 minutes).<br>4. Rest 15 minutes.<br><br>*Final Sear*<br>1. Preheat cast iron on high heat for 4–6 minutes.<br>2. Add oil and sear:<br>   • Fat cap — 60–90 sec<br>   • First side — 60 sec<br>   • Second side — 45–60 sec<br>   • Edges — \\~20 sec<br>3. Remove at 52–54°C / 125–130°F.<br>4. Rest 8–10 minutes.<br><br>*Slice*<br>1. Cut roast into thick steaks with the grain.<br>2. Rotate steaks 90°.<br>3. Slice thin against the grain.<br>4. Finish with flaky salt.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "31de0391ce63804e86f1c762b6823ce2",
+      "ingredients": [
+        {
+          "name": "picanha (rump cap)",
+          "department": "Protein",
+          "qty": 1500,
+          "unit": "g",
+          "qty_alt": "1.5 kg",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "kosher salt",
+          "department": "Seasoning",
+          "qty": 15,
+          "unit": "g",
+          "qty_alt": "15–18 g",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "neutral oil",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "flaky sea salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "for finishing",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "picanha-chimichurri",
+      "name": "Chimichurri",
+      "protein": null,
+      "category": [
+        "Sauce"
+      ],
+      "cuisine": [
+        "Latin"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Chatgpt",
+      "governance_version": null,
+      "summary": "Parsley, garlic and oregano chimichurri with red wine vinegar and olive oil, rested before serving.",
+      "method_md": "**Chimichurri**<br><br>**Ingredients**\n\t- 1 cup flat-leaf parsley, finely chopped<br> 2 cloves garlic, minced<br> 1 tsp dried oregano<br> 2 tbsp red wine vinegar<br> ½ cup extra virgin olive oil<br> ¾ tsp fine sea salt<br> ½ tsp black pepper<br> Pinch chili flakes (optional)\n\t**Method**<br>1. Combine all ingredients in a bowl and stir well.<br>2. Rest 1–2 hours before serving.<br>3. Storage: keeps 3–4 days refrigerated.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "31de0391ce63804e86f1c762b6823ce2",
+      "ingredients": [
+        {
+          "name": "flat-leaf parsley",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "cup",
+          "qty_alt": null,
+          "prep_note": "finely chopped",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "minced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "dried oregano",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "red wine vinegar",
+          "department": "Oils & Liquids",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "extra virgin olive oil",
+          "department": "Oils & Liquids",
+          "qty": 0.5,
+          "unit": "cup",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine sea salt",
+          "department": "Seasoning",
+          "qty": 0.75,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "chili flake",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": "pinch",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": true
+        }
+      ]
+    },
+    {
+      "slug": "picanha-tomato-vinaigrette",
+      "name": "Brazilian Tomato Vinaigrette",
+      "protein": null,
+      "category": [
+        "Sauce"
+      ],
+      "cuisine": [
+        "Latin"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Chatgpt",
+      "governance_version": null,
+      "summary": "Brazilian-style diced tomato and red onion vinaigrette with parsley, red wine vinegar and olive oil, served at room temperature.",
+      "method_md": "**Brazilian Tomato Vinaigrette**<br><br>**Ingredients**\n\t- 2 tomatoes, small dice<br> ¼ small red onion, very finely diced<br> 1 tbsp parsley, chopped<br> 1 tbsp red wine vinegar<br> 1 tbsp olive oil<br> ¼ tsp fine sea salt<br> Black pepper\n\t**Method**<br>1. Salt diced onion lightly and rest 10 minutes.<br>2. Combine all ingredients.<br>3. Rest 30–60 minutes before serving.<br>4. Serve at room temperature.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "31de0391ce63804e86f1c762b6823ce2",
+      "ingredients": [
+        {
+          "name": "tomato",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "small dice",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "red onion",
+          "department": "Produce",
+          "qty": 0.25,
+          "unit": "piece",
+          "qty_alt": "¼ small onion",
+          "prep_note": "small, very finely diced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "parsley",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "chopped",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "red wine vinegar",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine sea salt",
+          "department": "Seasoning",
+          "qty": 0.25,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "picanha-panko-farofa",
+      "name": "Panko Farofa",
+      "protein": null,
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "Latin"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Chatgpt",
+      "governance_version": null,
+      "summary": "Panko toasted in rendered bacon fat and butter with onion, garlic, orange zest and parsley — a dry, crumbly farofa.",
+      "method_md": "**Panko Farofa**<br><br>**Ingredients**\n\t- ¾ cup panko breadcrumbs<br> 40 g bacon, diced<br> ½ tbsp unsalted butter<br> ½ small onion or shallot, diced<br> ½ clove garlic, minced<br> ¼ tsp orange zest<br> ¼ tsp kosher salt<br> Black pepper<br> 2 tsp parsley, chopped\n\t*Optional:* 15 g toasted nuts (almonds or cashews)<br><br>**Method**<br>1. Render bacon on medium heat (\\~5 min).<br>2. Add butter and onion. Cook 3 minutes.<br>3. Add garlic for 30 seconds.<br>4. Add panko and toast 3–4 minutes until golden.<br>5. Stir in orange zest and parsley.<br>6. Texture goal: dry and crumbly.<br>7. Serve warm.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "31de0391ce63804e86f1c762b6823ce2",
+      "ingredients": [
+        {
+          "name": "panko breadcrumb",
+          "department": "Pantry",
+          "qty": 0.75,
+          "unit": "cup",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "bacon",
+          "department": "Protein",
+          "qty": 40,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "diced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "unsalted butter",
+          "department": "Dairy",
+          "qty": 0.5,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "onion or shallot",
+          "department": "Produce",
+          "qty": 0.5,
+          "unit": "piece",
+          "qty_alt": "½ small onion",
+          "prep_note": "small, diced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 0.5,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "minced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "orange zest",
+          "department": "Produce",
+          "qty": 0.25,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "kosher salt",
+          "department": "Seasoning",
+          "qty": 0.25,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "parsley",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "chopped",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "toasted nut",
+          "department": "Pantry",
+          "qty": 15,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "almonds or cashews",
+          "pantry_check": false,
+          "optional": true
+        }
+      ]
+    },
+    {
+      "slug": "picanha-pan-seared-broccolini",
+      "name": "Pan-Seared Broccolini",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "Latin"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "Chatgpt",
+      "governance_version": null,
+      "summary": "Broccolini seared in the steak pan's beef fat until blistered, finished with lemon and salt.",
+      "method_md": "**Pan-Seared Broccolini**<br><br>**Ingredients**\n\t- 200–250 g broccolini<br> 1 tsp olive oil (if needed)<br> ¼ tsp kosher salt<br> Black pepper<br> Lemon wedge\n\t**Method**<br>1. Cook after searing the steak, using the same pan.<br>2. Reduce heat to medium.<br>3. Add broccolini in a single layer.<br>4. Cook 3–4 minutes, turning occasionally, until lightly blistered with tender stems.<br>5. Finish with lemon juice and salt.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "31de0391ce63804e86f1c762b6823ce2",
+      "ingredients": [
+        {
+          "name": "broccolini",
+          "department": "Produce",
+          "qty": 200,
+          "unit": "g",
+          "qty_alt": "200–250 g",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "if needed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "kosher salt",
+          "department": "Seasoning",
+          "qty": 0.25,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon wedge",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2026-03-08",
+      "rating": 9.5,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": null,
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    }
+  ]
+}

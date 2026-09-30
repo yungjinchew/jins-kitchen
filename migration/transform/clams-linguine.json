@@ -1,0 +1,266 @@
+{
+  "assignment_key": "clams-linguine",
+  "source_page_ids": [
+    "2d9e0391ce6380d49624cf9593d4eb80"
+  ],
+  "meal": {
+    "slug": "noilly-prat-clams-dinner",
+    "name": "Noilly Prat Clams with Linguine and Brocollini",
+    "planned_date": "2025-12-29",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": null,
+    "shared_prep_md": null,
+    "wine_pairing": "Sauvignon Blanc — Cloudy Bay Sauvignon Blanc",
+    "legacy_notion_id": "2d9e0391ce6380d49624cf9593d4eb80",
+    "components": [
+      {
+        "dish_slug": "clams-noilly-prat-linguine",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "clams-garlicky-broccolini",
+        "role": "side",
+        "service_order": 2
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "clams-noilly-prat-linguine",
+      "name": "Noilly Prat Clams with Linguine",
+      "protein": "Shellfish",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "Italian",
+        "French"
+      ],
+      "difficulty": "Easy",
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT",
+      "governance_version": null,
+      "summary": "Light coastal trattoria-style Manila clams steamed in Noilly Prat vermouth with garlic and chilli, tossed with linguine and emulsified with pasta water.",
+      "method_md": "# 🍝 Noilly Prat Clams with Linguine\n**Light Coastal Trattoria Style (For 3, lighter eaters)**\n---\n## Ingredients\n### Clams & Pasta\n- **1 kg Manila clams**, scrubbed\n- **240–260 g linguine or spaghetti**\n### Sauce\n- 3½ tbsp extra-virgin olive oil\n- 2 garlic cloves, thinly sliced\n- Tiny pinch chilli flakes\n- **½ cup Noilly Prat dry vermouth**\n- **3–4 tbsp pasta cooking water**\n- Zest of ½ lemon\n- ½ cup flat-leaf parsley, chopped\n- Fresh black pepper\n- Optional: **1 tbsp cold unsalted butter**\n---\n## Method\n1. Bring a large pot of well-salted water to a rolling boil.\n2. Cook pasta **2 minutes shy of al dente**.\n3. Heat olive oil in a wide pan over medium.\n4. Add garlic + chilli; gently sizzle until fragrant (do not brown).\n5. Add clams, turn heat to high.\n6. Add vermouth, cover immediately.\n7. Steam **3–4 minutes** until clams just open.\n8. Transfer pasta into the clam pan.\n9. Add pasta water and toss hard **30–45 seconds** to emulsify sauce.\n10. Off heat: add butter (if using), lemon zest, parsley, and black pepper.\n11. Taste, adjust salt only if needed.\n12. Serve immediately with plenty of bread.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2d9e0391ce6380d49624cf9593d4eb80",
+      "ingredients": [
+        {
+          "name": "manila clam",
+          "department": "Protein",
+          "qty": 1000,
+          "unit": "g",
+          "qty_alt": "1 kg",
+          "prep_note": "scrubbed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "linguine or spaghetti",
+          "department": "Pantry",
+          "qty": 240,
+          "unit": "g",
+          "qty_alt": "240–260 g",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "extra-virgin olive oil",
+          "department": "Oils & Liquids",
+          "qty": 3.5,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "thinly sliced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "chilli flake",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": "pinch",
+          "qty_alt": "tiny pinch",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "noilly prat dry vermouth",
+          "department": "Alcohol",
+          "qty": 0.5,
+          "unit": "cup",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "pasta cooking water",
+          "department": "Pantry",
+          "qty": 3,
+          "unit": "tbsp",
+          "qty_alt": "3–4 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon zest",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "zest of ½ lemon",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "flat-leaf parsley",
+          "department": "Produce",
+          "qty": 0.5,
+          "unit": "cup",
+          "qty_alt": null,
+          "prep_note": "chopped",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "fresh",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "unsalted butter",
+          "department": "Dairy",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "cold",
+          "pantry_check": false,
+          "optional": true
+        }
+      ]
+    },
+    {
+      "slug": "clams-garlicky-broccolini",
+      "name": "Garlicky Broccolini Side",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "Italian",
+        "French"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT",
+      "governance_version": null,
+      "summary": "Blanched broccolini tossed in garlic-infused olive oil and finished with salt and lemon zest.",
+      "method_md": "# 🥬 Garlicky Broccolini Side\n## Ingredients\n- 2 bunches broccolini\n- 1½–2 tbsp olive oil\n- 1 garlic clove, thinly sliced\n- Pinch fine salt\n- Tiny pinch lemon zest\n## Method\n1. Blanch broccolini in salted boiling water **90 seconds**.\n2. Drain very well.\n3. Heat olive oil in pan over medium, add garlic 15–20 sec.\n4. Add broccolini, toss **1–2 minutes**.\n5. Finish with salt and lemon zest.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2d9e0391ce6380d49624cf9593d4eb80",
+      "ingredients": [
+        {
+          "name": "broccolini",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "bunch",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 1.5,
+          "unit": "tbsp",
+          "qty_alt": "1½–2 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "thinly sliced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": "pinch",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon zest",
+          "department": "Produce",
+          "qty": null,
+          "unit": "pinch",
+          "qty_alt": "tiny pinch",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2025-12-29",
+      "rating": 8.5,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": null,
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    }
+  ]
+}

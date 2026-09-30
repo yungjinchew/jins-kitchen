@@ -1,0 +1,288 @@
+{
+  "assignment_key": "nordic-salmon",
+  "source_page_ids": [
+    "2d9e0391ce6380a5a4e2c1d758c47e46"
+  ],
+  "meal": {
+    "slug": "nordic-salmon-dinner",
+    "name": "Nordic Oven-Roasted Salmon with Dill Potatoes & Pickled Cucumber",
+    "planned_date": "2025-12-30",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": "### 🕒 TIMING\nPrep: 10 min\nCook: 15 min\nTotal: 25 min",
+    "shared_prep_md": null,
+    "wine_pairing": "Chablis, Grüner Veltliner, or Junmai Ginjo sake.",
+    "legacy_notion_id": "2d9e0391ce6380a5a4e2c1d758c47e46",
+    "components": [
+      {
+        "dish_slug": "nordic-oven-roasted-salmon",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "nordic-dill-potatoes",
+        "role": "side",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "nordic-pickled-cucumber",
+        "role": "salad",
+        "service_order": 3
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "nordic-oven-roasted-salmon",
+      "name": "Nordic Oven-Roasted Salmon",
+      "protein": "Fish",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "Nordic"
+      ],
+      "difficulty": "Easy",
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Healthy"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT",
+      "governance_version": null,
+      "summary": "Clean, buttery Nordic-style salmon fillets seasoned with lemon zest and roasted to 48–50°C.",
+      "method_md": "### 🍽 DESCRIPTION\nClean, buttery Nordic-style salmon with fresh dill potatoes and bright cucumber pickle. Elegant but effortless.\n---\n### 🥕 INGREDIENTS\n**Salmon**\n- 2 × 160 g salmon fillets\n- 1 tbsp olive oil\n- ¾ tsp **fine sea salt**\n- ¼ tsp freshly ground black pepper\n- Zest of ½ lemon\n---\n### 🔥 METHOD\n**Salmon**\n1. Heat oven to **190°C / 375°F**.\n2. Season salmon with oil, salt, pepper, lemon zest.\n3. Roast 9–11 min until internal temp hits **48–50°C / 118–122°F**.\n4. Rest 2 minutes before serving.",
+      "servings": null,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2d9e0391ce6380a5a4e2c1d758c47e46",
+      "ingredients": [
+        {
+          "name": "salmon fillet",
+          "department": "Protein",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": "2 × 160 g",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine sea salt",
+          "department": "Seasoning",
+          "qty": 0.75,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": 0.25,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "freshly ground",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon zest",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": "zest of ½ lemon",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "nordic-dill-potatoes",
+      "name": "Dill Potatoes",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "Nordic"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Healthy"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT",
+      "governance_version": null,
+      "summary": "Boiled baby potatoes tossed with butter, olive oil and fresh dill.",
+      "method_md": "### 🥕 INGREDIENTS\n**Dill Potatoes**\n- 500 g baby potatoes\n- ¾ tsp **kosher salt**\n- 1 tbsp butter\n- 1 tbsp olive oil\n- 1½ tbsp fresh dill, finely chopped\n---\n### 🔥 METHOD\n**Potatoes**\n1. Boil in salted water until just tender.\n2. Toss with butter, oil, dill, salt.",
+      "servings": null,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2d9e0391ce6380a5a4e2c1d758c47e46",
+      "ingredients": [
+        {
+          "name": "baby potato",
+          "department": "Produce",
+          "qty": 500,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "kosher salt",
+          "department": "Seasoning",
+          "qty": 0.75,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "butter",
+          "department": "Dairy",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fresh dill",
+          "department": "Produce",
+          "qty": 1.5,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "finely chopped",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "nordic-pickled-cucumber",
+      "name": "Pickled Cucumber",
+      "protein": "Veg",
+      "category": [
+        "Salad"
+      ],
+      "cuisine": [
+        "Nordic"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Healthy"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT",
+      "governance_version": null,
+      "summary": "Bright quick-pickled English cucumber with rice vinegar, sugar and dill.",
+      "method_md": "### 🥕 INGREDIENTS\n**Pickled Cucumber**\n- 1 English cucumber, thinly sliced\n- ½ tsp **fine sea salt**\n- 3 tbsp rice vinegar\n- 1½ tbsp sugar\n- 2 tbsp chopped dill\n---\n### 🔥 METHOD\n**Cucumber**\n1. Massage cucumber with salt 10 min.\n2. Drain, then toss with vinegar, sugar, dill. Chill 15 min.",
+      "servings": null,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2d9e0391ce6380a5a4e2c1d758c47e46",
+      "ingredients": [
+        {
+          "name": "english cucumber",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "thinly sliced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine sea salt",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "rice vinegar",
+          "department": "Oils & Liquids",
+          "qty": 3,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "sugar",
+          "department": "Pantry",
+          "qty": 1.5,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "dill",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "chopped",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2025-12-30",
+      "rating": 8,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": null,
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    }
+  ]
+}

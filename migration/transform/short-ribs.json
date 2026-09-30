@@ -1,0 +1,566 @@
+{
+  "assignment_key": "short-ribs",
+  "source_page_ids": [
+    "301e0391ce6380dfb7e8e8f4ef9fdeb1"
+  ],
+  "meal": {
+    "slug": "short-ribs-dinner",
+    "name": "Red Wine Braised Short Ribs Dinner",
+    "planned_date": "2026-02-01",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": null,
+    "shared_prep_md": null,
+    "wine_pairing": null,
+    "legacy_notion_id": "301e0391ce6380dfb7e8e8f4ef9fdeb1",
+    "components": [
+      {
+        "dish_slug": "short-ribs-red-wine-braised",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "short-ribs-soft-polenta",
+        "role": "side",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "short-ribs-french-glazed-carrots",
+        "role": "side",
+        "service_order": 3
+      },
+      {
+        "dish_slug": "short-ribs-parsley-lemon-gremolata",
+        "role": "sauce",
+        "service_order": 4
+      },
+      {
+        "dish_slug": "short-ribs-arugula-salad",
+        "role": "salad",
+        "service_order": 5
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "short-ribs-red-wine-braised",
+      "name": "Red Wine Braised Short Ribs",
+      "protein": "Beef",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": "Medium",
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": null,
+      "governance_version": null,
+      "summary": "Dry-brined bone-in short ribs seared and braised in red wine and beef stock on a mirepoix base, finished with a glossy butter-mounted sauce.",
+      "method_md": "**🥩 Red Wine Braised Short Ribs**\n**Ingredients**<br>☐ 1.2–1.4 kg bone-in short ribs<br>☐ Kosher salt<br>☐ Black pepper<br>☐ 1 tbsp neutral oil (if needed)\n*Aromatics*<br>☐ 1 large onion, diced<br>☐ 1 medium carrot, diced<br>☐ 2 celery stalks, diced<br>☐ 5 garlic cloves, smashed\n*Umami Base*<br>☐ 2 tbsp tomato paste<br>☐ 2 anchovy fillets (optional)\n*Liquids*<br>☐ 750 ml dry red wine<br>☐ 500 ml beef stock\n*Herbs*<br>☐ 2 sprigs thyme<br>☐ 1 bay leaf<br>☐ 1 tsp black peppercorns\n*Finish*<br>☐ 1 tbsp cold unsalted butter<br>☐ 1 tsp sherry or red wine vinegar\n**Method**\n*Dry Brine (Ahead)*<br>☐ Salt ribs lightly (≈1 tsp per kg)<br>☐ Refrigerate uncovered 8–24 hrs\n*Sear*<br>☐ Preheat oven to 160°C / 320°F<br>☐ Pat ribs dry<br>☐ Sear deeply on all sides over medium-high heat<br>☐ Remove ribs\n*Build Base*<br>☐ Reduce heat to medium<br>☐ Cook onion, carrot, and celery 6–8 min<br>☐ Add garlic and anchovy (1 min)<br>☐ Stir in tomato paste until brick red\n*Deglaze & Braise*<br>☐ Add wine and scrape fond<br>☐ Simmer 5–7 min<br>☐ Add stock and herbs<br>☐ Return ribs (liquid ⅔ up sides)<br>☐ Cover and braise 2½–3 hrs\n*Finish Sauce*<br>☐ Remove ribs<br>☐ Strain liquid<br>☐ Reduce until glossy<br>☐ Whisk in butter<br>☐ Add vinegar<br>☐ Adjust salt<br>☐ Return ribs to sauce and hold warm",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "301e0391ce6380dfb7e8e8f4ef9fdeb1",
+      "ingredients": [
+        {
+          "name": "short rib, bone-in",
+          "department": "Protein",
+          "qty": 1200,
+          "unit": "g",
+          "qty_alt": "1.2–1.4 kg",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "kosher salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "neutral oil",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "if needed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "onion",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "large, diced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "carrot",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "medium, diced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "celery stalk",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "diced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 5,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "smashed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "tomato paste",
+          "department": "Pantry",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "anchovy fillet",
+          "department": "Pantry",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "dry red wine",
+          "department": "Alcohol",
+          "qty": 750,
+          "unit": "ml",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "beef stock",
+          "department": "Pantry",
+          "qty": 500,
+          "unit": "ml",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "thyme",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "sprig",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "bay leaf",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black peppercorn",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "unsalted butter",
+          "department": "Dairy",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "cold",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "sherry or red wine vinegar",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "short-ribs-soft-polenta",
+      "name": "Soft Polenta",
+      "protein": null,
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": null,
+      "governance_version": null,
+      "summary": "Slow-cooked soft polenta enriched with butter and grated Parmigiano-Reggiano.",
+      "method_md": "**🌽 Soft Polenta**\n**Ingredients**<br>☐ 1 cup (170 g) polenta<br>☐ 5 cups (1.2 L) water or light stock<br>☐ 1¼ tsp fine sea salt<br>☐ 3 tbsp butter<br>☐ ½ cup grated Parmigiano-Reggiano\n**Method**<br>☐ Bring liquid and salt to simmer<br>☐ Whisk in polenta slowly<br>☐ Cook on low 30–35 min, stirring often<br>☐ Stir in butter and cheese<br>☐ Loosen with hot water if needed",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "301e0391ce6380dfb7e8e8f4ef9fdeb1",
+      "ingredients": [
+        {
+          "name": "polenta",
+          "department": "Pantry",
+          "qty": 170,
+          "unit": "g",
+          "qty_alt": "1 cup",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "water or light stock",
+          "department": "Pantry",
+          "qty": 1200,
+          "unit": "ml",
+          "qty_alt": "5 cups",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine sea salt",
+          "department": "Seasoning",
+          "qty": 1.25,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "butter",
+          "department": "Dairy",
+          "qty": 3,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "parmigiano-reggiano",
+          "department": "Dairy",
+          "qty": 0.5,
+          "unit": "cup",
+          "qty_alt": null,
+          "prep_note": "grated",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "short-ribs-french-glazed-carrots",
+      "name": "French Glazed Carrots",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": null,
+      "governance_version": null,
+      "summary": "Carrot batons cooked covered in butter, water and sugar, then reduced to a glaze.",
+      "method_md": "**🥕 French Glazed Carrots**\n**Ingredients**<br>☐ 400 g carrots, cut into batons<br>☐ 20 g butter<br>☐ 120 ml water<br>☐ 1½ tsp sugar<br>☐ ½ tsp kosher salt\n**Method**<br>☐ Combine all in sauté pan<br>☐ Bring to boil, then cover<br>☐ Cook 6–8 min until tender<br>☐ Remove lid and reduce to glaze",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "301e0391ce6380dfb7e8e8f4ef9fdeb1",
+      "ingredients": [
+        {
+          "name": "carrot",
+          "department": "Produce",
+          "qty": 400,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "cut into batons",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "butter",
+          "department": "Dairy",
+          "qty": 20,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "water",
+          "department": "Pantry",
+          "qty": 120,
+          "unit": "ml",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "sugar",
+          "department": "Pantry",
+          "qty": 1.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "kosher salt",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "short-ribs-parsley-lemon-gremolata",
+      "name": "Parsley–Lemon Gremolata",
+      "protein": null,
+      "category": [
+        "Sauce"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": null,
+      "governance_version": null,
+      "summary": "Parsley, lemon zest and grated garlic gremolata mixed just before serving.",
+      "method_md": "**🌿 Parsley–Lemon Gremolata**\n**Ingredients**<br>☐ 2 tbsp finely chopped parsley<br>☐ ½ tsp lemon zest<br>☐ ¼ small garlic clove, grated<br>☐ ½ tsp olive oil<br>☐ Pinch salt\n☐ Mix just before serving",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "301e0391ce6380dfb7e8e8f4ef9fdeb1",
+      "ingredients": [
+        {
+          "name": "parsley",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "finely chopped",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon zest",
+          "department": "Produce",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 0.25,
+          "unit": "clove",
+          "qty_alt": "¼ small clove",
+          "prep_note": "small, grated",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": "pinch",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "short-ribs-arugula-salad",
+      "name": "Arugula Salad",
+      "protein": "Veg",
+      "category": [
+        "Salad"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": null,
+      "governance_version": null,
+      "summary": "Arugula tossed with olive oil, lemon juice or sherry vinegar and salt just before plating.",
+      "method_md": "**🥗 Arugula Salad**\n**Ingredients**<br>☐ 2 handfuls arugula<br>☐ 1 tbsp olive oil<br>☐ 1 tsp lemon juice or sherry vinegar<br>☐ Pinch salt\n☐ Toss just before plating",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "301e0391ce6380dfb7e8e8f4ef9fdeb1",
+      "ingredients": [
+        {
+          "name": "arugula",
+          "department": "Produce",
+          "qty": 2,
+          "unit": null,
+          "qty_alt": "2 handfuls",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon juice or sherry vinegar",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": "pinch",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2026-02-01",
+      "rating": 9.5,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": null,
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    }
+  ]
+}

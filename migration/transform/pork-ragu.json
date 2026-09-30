@@ -1,0 +1,62 @@
+{
+  "assignment_key": "pork-ragu",
+  "source_page_ids": [
+    "37fe0391ce6381a88a56e79d20cd84f3"
+  ],
+  "meal": null,
+  "dishes": [
+    {
+      "slug": "pork-fennel-lemon-ragu-pappardelle",
+      "name": "Pork, Fennel & Lemon Ragù with Pappardelle",
+      "protein": "Pork",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "Italian"
+      ],
+      "difficulty": "Special",
+      "tags": [],
+      "occasion": [],
+      "status": "cooked",
+      "source": "ATK (heavily modified — white wine, moderate pork sear, longer lower braise, finish-stage cream, split Pecorino, reserved lemon zest)",
+      "governance_version": null,
+      "summary": "Pork shoulder, fennel and lemon ragù served with pappardelle.",
+      "method_md": null,
+      "servings": null,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "37fe0391ce6381a88a56e79d20cd84f3",
+      "ingredients": []
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "dish",
+      "dish_slug": "pork-fennel-lemon-ragu-pappardelle",
+      "cooked_on": "2026-06-14",
+      "rating": 9,
+      "execution_rating": 8.5,
+      "repeat": "yes",
+      "cook_notes": "Pork shoulder was extremely tender after 2½ hours at 300°F / 150°C. All modifications to the ATK original performed as expected — white wine layered acidity earlier in the cook, finish-stage cream gave better richness control, and the pre-pasta consistency check was critical. Sauce tightened quickly once pasta entered; reserved pasta water used aggressively. Reserved lemon zest at plating noticeably lifted the aromatic finish. No adjustments required post-cook.",
+      "deviations": [],
+      "parameter_confirmations": [
+        {
+          "param": "Pork shoulder braise",
+          "designed": "2½ hours at 300°F / 150°C",
+          "observed": "Extremely tender",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Pre-pasta consistency check",
+          "designed": "Check sauce consistency before pasta enters",
+          "observed": "Critical — sauce tightened quickly once pasta entered; reserved pasta water used aggressively",
+          "verdict": "confirmed"
+        }
+      ],
+      "household_split": null,
+      "wine_outcome": "Ca' Marcanda (Gaja) Promis Toscana IGT 2022 — worked well. Merlot/Syrah/Sangiovese bridge suits the lemon-forward acidity and pork richness."
+    }
+  ]
+}

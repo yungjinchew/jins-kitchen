@@ -1,0 +1,524 @@
+{
+  "assignment_key": "aegean-salmon",
+  "source_page_ids": [
+    "3b0e0391ce638127bff5fc133f4ad901"
+  ],
+  "meal": {
+    "slug": "aegean-salmon-dinner",
+    "name": "Aegean Roasted Salmon with Pearl Barley, Broccolini & Cucumber Salad",
+    "planned_date": "2026-08-02",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": "## Meal workflow\n**Critical path: the oven, specifically the salmon's exit.** Barley is a secondary path that must clear before T-15.\n**Failure prioritisation:** protect the salmon. Barley holds covered and loosens with reserved cooking water, broccolini holds uncovered, the salad is not dressed until T-3. Nothing waits on the fish.\n**Oven sequencing:** single state throughout — 425°F / 218°C conventional, lower-middle rack, no transitions. One half-sheet carries both roasted components, staggered: broccolini enters at T-20, the tray comes out briefly at T-15 to receive the salmon, then returns. Work with the tray on the stovetop, not on the open door. Oven on at T-40; the Bosch needs roughly 15 minutes from cold, and anything later puts the broccolini into a cavity near 300°F where it steams rather than blisters. On convection, drop to 400°F / 205°C and expect the salmon at the short end of its band.\n**Heat resources:** electric kettle boils the barley water. One induction hob owns the barley pot from T-65 to T-22, plus a brief garlic infusion at T-45. The Bosch owns both roasted components from T-20. Second hob, outdoor gas and binchotan idle. No conflict at any point.\n## T-minus timeline\n<table header-row=\"true\">\n<tr>\n<td>T-minus</td>\n<td>Action</td>\n</tr>\n<tr>\n<td>T-65 (4:25)</td>\n<td>Kettle on. Shared prep: zest both lemons, juice one, wedge the other. Chop parsley and dill.</td>\n</tr>\n<tr>\n<td>T-63</td>\n<td>Kettle water into a large pot, 1 tbsp salt, induction on high to return to a rolling boil.</td>\n</tr>\n<tr>\n<td>T-60 (4:30)</td>\n<td>Barley in. Simmer uncovered 32–40 min. Start tasting at 28, then every 2–3 min.</td>\n</tr>\n<tr>\n<td>T-48</td>\n<td>Slice cucumbers, halve tomatoes. Into the fridge undressed.</td>\n</tr>\n<tr>\n<td>T-45</td>\n<td>Warm the olive oil with the grated garlic 60–90 sec on very low heat, just until fragrant, then strain the solids out. Stir zest, oregano and pepper into the strained oil. Rinse capers, pat dry, chop.</td>\n</tr>\n<tr>\n<td>T-40 (4:50)</td>\n<td>Oven to 425°F / 218°C, rack lower-middle. \\~15 min to temperature.</td>\n</tr>\n<tr>\n<td>T-38</td>\n<td>Line half-sheet with parchment. Trim and toss broccolini; spread across one end only, leaving the other clear.</td>\n</tr>\n<tr>\n<td>T-28 to T-20</td>\n<td>Barley done. Drain, reserving 3 tbsp cooking water. Dress with oil, zest, pepper, parsley while hot. Cover.</td>\n</tr>\n<tr>\n<td>T-25 (5:05)</td>\n<td>Salmon out of fridge, pat both faces dry, brush with the oil. Salt the flesh now if not already salted earlier today.</td>\n</tr>\n<tr>\n<td>T-20 (5:10)</td>\n<td>Tray into oven.</td>\n</tr>\n<tr>\n<td>T-15 (5:15)</td>\n<td>Tray out onto stovetop. Salmon skin-down on the clear end. Straight back in. Salmon 9–11 min.</td>\n</tr>\n<tr>\n<td>T-6 to T-4</td>\n<td>Tray out. Salmon at 122°F / 50°C onto warm plates. Broccolini into a warm bowl, 1 tsp lemon juice through it.</td>\n</tr>\n<tr>\n<td>T-6 to T-4</td>\n<td>Salmon rests uncovered, 3–4 min.</td>\n</tr>\n<tr>\n<td>T-3</td>\n<td>Dress the salad. Loosen the barley if tight. Crumble feta into a small bowl.</td>\n</tr>\n<tr>\n<td>T-0</td>\n<td>Lift each portion off its skin with a fish slice. Capers and dill over. Lemon wedges and feta to the table.</td>\n</tr>\n</table>\n**Variance-band closure.** Salmon earliest finish T-6 gives a 4-minute rest, plating at T-2 and a 2-minute hold — inside the designed 5–8 minute window. Latest finish T-4 gives a 4-minute rest to T-0 and immediate plating; realistic service 5:32 with no plating buffer. The late edge has no slack, which is why every other component absorbs slip and the salmon never does. Barley at T-60 finishes T-28 to T-20, clearing the board before the oven sequence begins — this is the correction from cook 1, where a T-52 start put completion at T-14, inside the salmon window.\n## Holding chain\n<table header-row=\"true\">\n<tr>\n<td>Component</td>\n<td>Hold</td>\n<td>Designed max</td>\n<td>Drift</td>\n<td>Corrective</td>\n</tr>\n<tr>\n<td>Barley</td>\n<td>Covered pot or bowl, off heat</td>\n<td>\\~25 min</td>\n<td>Tightens and clumps as it cools</td>\n<td>Loosen with the reserved cooking water; hot plain water also works but carries no seasoning</td>\n</tr>\n<tr>\n<td>Broccolini</td>\n<td>Warm bowl, uncovered</td>\n<td>\\~15–20 min</td>\n<td>Softens if covered</td>\n<td>Never cover</td>\n</tr>\n<tr>\n<td>Salad</td>\n<td>Components sealed in fridge, undressed</td>\n<td>\\~2 hr</td>\n<td>Low risk, not zero — cut tomatoes weep a little</td>\n<td>Pour off pooled liquid before dressing at T-3</td>\n</tr>\n<tr>\n<td>Salmon</td>\n<td>Warm plate, uncovered</td>\n<td>\\~5–8 min</td>\n<td>Surface dries, flesh firms</td>\n<td>None — plate it</td>\n</tr>\n</table>\nHold windows remain designed, not validated. Cook 1 observed no drift but measured none.",
+    "shared_prep_md": "## Shopping list\n<table header-row=\"true\">\n<tr>\n<td>Ingredient</td>\n<td>Total</td>\n<td>Salmon</td>\n<td>Broccolini</td>\n<td>Barley</td>\n<td>Salad</td>\n</tr>\n<tr>\n<td>Salmon, centre section of a side, skin-on</td>\n<td>1¼ lb / 570 g purchased</td>\n<td>✓</td>\n<td>—</td>\n<td>—</td>\n<td>—</td>\n</tr>\n<tr>\n<td>Broccolini</td>\n<td>12 oz / 340 g</td>\n<td>—</td>\n<td>12 oz / 340 g</td>\n<td>—</td>\n<td>—</td>\n</tr>\n<tr>\n<td>Cucumbers, Japanese or Persian</td>\n<td>2</td>\n<td>—</td>\n<td>—</td>\n<td>—</td>\n<td>2</td>\n</tr>\n<tr>\n<td>Dill, fresh</td>\n<td>1 tbsp chopped</td>\n<td>1 tbsp</td>\n<td>—</td>\n<td>—</td>\n<td>—</td>\n</tr>\n<tr>\n<td>Garlic</td>\n<td>1 small clove</td>\n<td>1 clove</td>\n<td>—</td>\n<td>—</td>\n<td>—</td>\n</tr>\n<tr>\n<td>Lemons</td>\n<td>2</td>\n<td>1 tsp zest + wedges</td>\n<td>1 tsp juice</td>\n<td>1 tsp zest</td>\n<td>—</td>\n</tr>\n<tr>\n<td>Parsley, flat-leaf</td>\n<td>2 tbsp chopped</td>\n<td>—</td>\n<td>—</td>\n<td>1 tbsp</td>\n<td>1 tbsp</td>\n</tr>\n<tr>\n<td>Tomatoes, cherry</td>\n<td>200 g</td>\n<td>—</td>\n<td>—</td>\n<td>—</td>\n<td>200 g</td>\n</tr>\n<tr>\n<td>Barley, pearl</td>\n<td>¾ cup / 135 g dry</td>\n<td>—</td>\n<td>—</td>\n<td>✓</td>\n<td>—</td>\n</tr>\n<tr>\n<td>Capers, in brine</td>\n<td>1 tbsp</td>\n<td>1 tbsp</td>\n<td>—</td>\n<td>—</td>\n<td>—</td>\n</tr>\n<tr>\n<td>Oregano, dried Greek</td>\n<td>¾ tsp</td>\n<td>¾ tsp</td>\n<td>—</td>\n<td>—</td>\n<td>—</td>\n</tr>\n<tr>\n<td>Pepper, black</td>\n<td>½ tsp</td>\n<td>¼ tsp</td>\n<td>—</td>\n<td>¼ tsp</td>\n<td>—</td>\n</tr>\n<tr>\n<td>Feta</td>\n<td>1 oz / 30 g</td>\n<td>—</td>\n<td>1 oz (table)</td>\n<td>—</td>\n<td>—</td>\n</tr>\n<tr>\n<td>Olive oil, extra-virgin</td>\n<td>3 tbsp / \\~40 g</td>\n<td>2 tsp</td>\n<td>1 tbsp</td>\n<td>1 tbsp</td>\n<td>1 tsp</td>\n</tr>\n<tr>\n<td>Vinegar, red wine</td>\n<td>1 tbsp</td>\n<td>—</td>\n<td>—</td>\n<td>—</td>\n<td>1 tbsp</td>\n</tr>\n<tr>\n<td>Salt, Diamond Crystal kosher</td>\n<td>1¼ tsp + 1 tbsp for barley water</td>\n<td>½ tsp</td>\n<td>½ tsp</td>\n<td>1 tbsp (water)</td>\n<td>¼ tsp</td>\n</tr>\n</table>\n**Shared prep.** Lemons: zest both (1 tsp → Salmon, 1 tsp → Barley), then juice one (1 tsp → Broccolini) and wedge the second. Zest before juicing or cutting. Parsley: chop 2 tbsp total — 1 tbsp → Barley, 1 tbsp → Salad.\n**Sourcing.** Buy the centre section of a side, not pre-cut fillets — counters routinely portion across the whole side, so one of three pre-cut pieces is often quietly a tail, and cut selection is the single biggest lever on richness. Ask for roughly 1¼ lb / 570 g off the middle, skin on; expect 450–510 g after trimming the belly and squaring the geometry. Skin-on strongly preferred for handling and clean release. Buy pearl barley, not pot or hulled — pot barley runs 50+ minutes and breaks the timeline. Feta as a small block. Japanese or Persian cucumbers only.",
+    "wine_pairing": "2023 Famille Grossot Chablis — paired well. Cool-climate acidity and minerality held against lemon, capers, feta and vinegar. Household finding: the Chardonnay aversion is style-specific (ripe/oaky/warm-climate), not varietal; lean unoaked Chablis was well received. No sparkling for household-only meals.",
+    "legacy_notion_id": "3b0e0391ce638127bff5fc133f4ad901",
+    "components": [
+      {
+        "dish_slug": "aegean-roasted-salmon",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "aegean-roasted-broccolini",
+        "role": "side",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "aegean-pearl-barley",
+        "role": "side",
+        "service_order": 3
+      },
+      {
+        "dish_slug": "aegean-cucumber-tomato-salad",
+        "role": "salad",
+        "service_order": 4
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "aegean-roasted-salmon",
+      "name": "Aegean Roasted Salmon",
+      "protein": "Fish",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "European"
+      ],
+      "difficulty": "Easy",
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Healthy"
+      ],
+      "status": "cooked",
+      "source": "Claude / Jin — governance framework v3.5; sunday-aegean-salmon-dinner.docx (1 Aug 2026 build)",
+      "governance_version": "v3.5",
+      "summary": "Centre-cut salmon under a thin lemon-and-oregano garlic oil, roasted hot and fast at 425°F / 218°C and finished off-heat with capers and dill.",
+      "method_md": "## Ahead of the day\nPortion the salmon the night before or Sunday morning, not at 4:30. Cut the trimmed centre section into three portions of **equal thickness rather than equal weight** — a side tapers, so cut narrower from the thick end and wider from the thin end so all three finish at the same height. Thickness, not weight, drives the cooking band and the probe reading. Pull the pin bones with tweezers, following the direction they lean. Trim the belly flap and square the geometry.\n**Do not salt at this stage.** Lay the portions skin-down on a rack over a tray, uncovered, in the fridge, unsalted. The overnight air-dry sets up the surface for the oil, and airflow does that without salt.\n## Salting — Sunday, not the night before\nSalt on the day, any point from about an hour before the cook: ½ tsp Diamond Crystal kosher, **on the flesh only — the top face and the cut sides. Nothing on the skin side**, which comes off at plating and which salt barely crosses in any case.\nAt ½ tsp on roughly 480 g of trimmed fish (\\~0.3% by weight) this is well below curing territory, so an overnight rest would not turn the fish into gravlax. But over 12–18 hours even a light salt firms the outer few millimetres, and on the thin tapered edges of a portioned side that reads dense rather than silky — with no compensating gain, since at this dose salt does not penetrate meaningfully further in sixteen hours than in one. Overnight salting earns its keep on a thick roast where salt must migrate through centimetres of muscle; a 3 cm salmon portion is not that problem.\n# 1 · Aegean roasted salmon\nYield 3 · Total \\~40 min · Active \\~12 min · Oven 425°F / 218°C\nCentre-cut salmon under a thin lemon-and-oregano oil, roasted hot and fast, finished off-heat with capers and dill. Saline, herbal and sharp rather than sweet — the fish is the only rich thing on the plate and everything else is built to cut it.\n**Flavour architecture.** Base: garlic-infused olive oil. Primary driver: lemon zest and dried oregano. Acid: staged — zest is aromatic, not acid; the only acid is lemon juice squeezed at the table, a per-diner brightness control. Finish: capers, dill.\n**Ingredients**\n- Salmon, centre-cut, skin-on, cut to equal thickness — 3 portions, 5–6 oz / 140–170 g each\n- Salt, Diamond Crystal kosher, on the flesh only — ½ tsp\n- Extra-virgin olive oil — 2 tsp / 10 g\n- Garlic, finely grated, infused and strained out — 1 small clove\n- Lemon zest, finely grated — 1 tsp\n- Dried Greek oregano — ¾ tsp\n- Black pepper — ¼ tsp\n- Capers in brine, rinsed, patted dry, roughly chopped — 1 tbsp\n- Dill, chopped — 1 tbsp\n- Lemon wedges — from 1 lemon\n**Prep**\n1. Salt lightly — ½ tsp on the flesh: the top face and the cut sides. Nothing on the skin side, which is discarded at plating. The capers carry the remaining salt load; do not add more.\n2. Garlic oil. Warm the olive oil with the grated garlic over very low heat for 60–90 seconds, just until fragrant and not coloured — longer heating suppresses the oil's bright grassy notes, and the oil carries finished flavour here rather than acting as a cooking medium. Strain the solids out and discard them: no garlic particle should reach the fish. Stir the zest, oregano and pepper into the strained oil. *Confirmed at cook 1 — sufficient garlic presence, no scorching. Retain this method; the ¼ tsp garlic-powder fallback is not required.*\n3. Rinse the capers and pat dry. Brine-wet capers stack salt against the fish, and the brine flavour is coarser than the caper itself.\n4. Line the sheet pan with parchment.\n**Active cooking**\n1. Blot both faces dry. The surface must read matte, not beaded.\n2. Brush the oil thinly over top and sides. Do not add lemon juice — it wets the surface and turns the flesh prematurely opaque.\n3. At T-15, lay skin-down on the clear end of the tray alongside the broccolini. Roast 9–11 minutes.\n4. **Pull at 122°F / 50°C** at the thickest point, probed horizontally into the centre of the thickest portion. **This is the finished temperature, not a pull point to be adjusted downward.** Cook 1 measured a net loss of 5–7°F / 3–4°C across a 2-minute rest on room-temperature plates — the portion cools rather than carries. A thin, low-mass, high-moisture portion out of a short roast holds no meaningful thermal reserve.\n*Corroborative only:* the portion gives slightly under light pressure without separating. Do not pull it open — translucency varies with species and fat.\n**Holding and assembly**\n1. Rest uncovered, 3–4 minutes. The rest does no thermal work; its job is letting the surface set and giving a clean release from the skin.\n2. Slide a fish slice between flesh and skin and lift. Scatter the capers and dill over the flesh — both go on after roasting: exposed capers dry and turn harsh in the oven, and roasting dulls dill's fresh aroma. Lemon wedges to the table.\n**Critical control points**\n<table header-row=\"true\">\n<tr>\n<td>Class</td>\n<td>Failure mode</td>\n<td>Sensory cue</td>\n<td>Recovery</td>\n</tr>\n<tr>\n<td>Major (b)</td>\n<td>Garlic scorches — any solid particle sitting proud of the oil film blackens at 425°F</td>\n<td>Dark specks on the surface; sharp burnt-bitter smell distinct from the oregano</td>\n<td>Unrecoverable for those portions. Prevent: strain the infusion. Oil suspension alone does not shield garlic at this temperature</td>\n</tr>\n<tr>\n<td>Major (b)</td>\n<td>Overcooked — pulled past 122°F / 50°C</td>\n<td>White albumin beading heavily across the surface</td>\n<td>Unrecoverable for texture; dish remains serviceable. Lemon compensates for lost moisture perception</td>\n</tr>\n<tr>\n<td>Major</td>\n<td>Portion tears on lift — flesh grips the pan</td>\n<td>Fish slice meets resistance and the flesh shears rather than releases</td>\n<td>Prevented by parchment. Without it, serve the torn portion to yourself</td>\n</tr>\n</table>\n*Adjust: if the plated fish reads flat, lemon first — the capers already carry the salt. If it reads too saline, more lemon and skip the feta on that plate.*",
+      "servings": 3,
+      "equipment": [
+        "half-sheet pan",
+        "parchment",
+        "fish slice",
+        "Bosch oven"
+      ],
+      "designed_unvalidated": [
+        {
+          "param": "Salmon hold window",
+          "designed_value": "Warm plate, uncovered, ~5–8 min",
+          "note": "Remains designed, not validated — cook 1 observed no drift but measured none. Open question for cook 2: repeat the two-reading probe on warm plates to isolate plate mass."
+        }
+      ],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3b0e0391ce638127bff5fc133f4ad901",
+      "ingredients": [
+        {
+          "name": "salmon, centre-cut, skin-on",
+          "department": "Protein",
+          "qty": 3,
+          "unit": "piece",
+          "qty_alt": "3 portions, 5–6 oz / 140–170 g each",
+          "prep_note": "cut to equal thickness; pin bones pulled, belly flap trimmed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "on the flesh only",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "extra-virgin olive oil",
+          "department": "Oils & Liquids",
+          "qty": 10,
+          "unit": "g",
+          "qty_alt": "2 tsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "clove",
+          "qty_alt": "1 small clove",
+          "prep_note": "finely grated, infused and strained out",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon zest",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "finely grated",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "dried greek oregano",
+          "department": "Seasoning",
+          "qty": 0.75,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": 0.25,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "capers in brine",
+          "department": "Pantry",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "rinsed, patted dry, roughly chopped",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "dill, fresh",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "chopped",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "cut into wedges",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "aegean-roasted-broccolini",
+      "name": "Roasted Broccolini, Lemon",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "European"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Healthy"
+      ],
+      "status": "cooked",
+      "source": "Claude / Jin — governance framework v3.5; sunday-aegean-salmon-dinner.docx (1 Aug 2026 build)",
+      "governance_version": "v3.5",
+      "summary": "Blistered broccolini with charred floret tips, lifted with lemon juice off-heat; feta passed at the table.",
+      "method_md": "# 2 · Roasted broccolini, lemon\nYield 3 · Total \\~18 min · Active \\~5 min · Oven 425°F / 218°C\nBlistered stems with charred floret tips — the firm counterweight to the soft salmon and the chewy barley.\n**Flavour architecture.** Base: olive oil, salt. Primary driver: char. Acid: lemon juice off-heat, lifting against the char. Finish: feta, passed at the table rather than tossed through, so richness stays a per-diner choice.\n**Ingredients**\n- Broccolini, unpeeled, ½ in / 1 cm of woody stem trimmed — 12 oz / 340 g\n- Extra-virgin olive oil — 1 tbsp / 14 g\n- Salt, Diamond Crystal kosher — ½ tsp\n- Lemon juice — 1 tsp\n- Feta, crumbled, in a separate bowl — 1 oz / 30 g\n**Method**\n1. Trim the woody ends. Leave unpeeled — the skins are tender at this thickness and hold the char. Halve any stem thicker than ½ in / 1 cm lengthwise.\n2. Toss with oil and salt on the parchment-lined half-sheet. Spread across one end in as close to a single layer as the space allows, leaving the other end clear for the salmon. Parchment is the default: it costs a little contact char and buys much easier cleanup and no stuck florets. For maximum char, use a second bare pan.\n3. In at T-20. Total 14–16 minutes, including the brief T-15 tray-out.\n4. *Primary cue:* the thickest stem can be pierced easily with the tip of a knife while still holding slight resistance, and floret tips are blackened at the edges. Still rigid at 16 minutes means the end was crowded — give it 3 more.\n5. Into a warm bowl, lemon juice through it while hot. Hold uncovered, \\~15–20 minutes. Covering steams the char away. Feta to the table in its own bowl, never tossed through.\n**CCP — Major:** crowded end, broccolini steams rather than roasts. Cue: reads wet and dull green rather than blistered at 12 minutes. Recoverable: spread onto a second pan and continue 4 minutes.\n*Adjust: if under-seasoned, a pinch of salt while hot — but taste after the feta is on, since it carries salt of its own.*",
+      "servings": 3,
+      "equipment": [
+        "half-sheet pan",
+        "parchment"
+      ],
+      "designed_unvalidated": [
+        {
+          "param": "Broccolini hold window",
+          "designed_value": "Warm bowl, uncovered, ~15–20 min",
+          "note": "Remains designed, not validated — cook 1 observed no drift but measured none."
+        }
+      ],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3b0e0391ce638127bff5fc133f4ad901",
+      "ingredients": [
+        {
+          "name": "broccolini",
+          "department": "Produce",
+          "qty": 340,
+          "unit": "g",
+          "qty_alt": "12 oz",
+          "prep_note": "unpeeled, ½ in / 1 cm of woody stem trimmed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "extra-virgin olive oil",
+          "department": "Oils & Liquids",
+          "qty": 14,
+          "unit": "g",
+          "qty_alt": "1 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon juice",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "feta",
+          "department": "Dairy",
+          "qty": 30,
+          "unit": "g",
+          "qty_alt": "1 oz",
+          "prep_note": "crumbled, in a separate bowl",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "aegean-pearl-barley",
+      "name": "Pearl Barley, Olive Oil and Lemon",
+      "protein": null,
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "European"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Healthy"
+      ],
+      "status": "cooked",
+      "source": "Claude / Jin — governance framework v3.5; sunday-aegean-salmon-dinner.docx (1 Aug 2026 build)",
+      "governance_version": "v3.5",
+      "summary": "Firm, nutty pearl barley boiled like pasta and dressed hot with olive oil, lemon zest, pepper and parsley.",
+      "method_md": "# 3 · Pearl barley, olive oil and lemon\nYield 3 with minimal surplus · Total \\~45 min · Active \\~5 min\nFirm, nutty grains with distinct chew — dressed rather than plain, so it works as a component instead of a filler. Chosen over rice because it holds its texture against oil and lemon without going soft or sticky.\n**Flavour architecture.** Base: barley, olive oil. Primary driver: the grain's own nuttiness. Acid: none — zest is aromatic only. Finish: parsley, cracked pepper.\n**Ingredients**\n- Barley, pearl — ¾ cup / 135 g dry\n- Water, kettle-boiled — \\~2 L\n- Salt, Diamond Crystal kosher, for the water — 1 tbsp\n- Extra-virgin olive oil — 1 tbsp / 14 g\n- Lemon zest, finely grated — 1 tsp\n- Black pepper, cracked — ¼ tsp\n- Parsley, chopped — 1 tbsp\n**Method**\n1. Fill the pot from the electric kettle at T-63 and return it to a rolling boil on high. This removes an unvalidated stovetop boil time from the schedule. Salt the water.\n2. Boil the barley in plenty of water like pasta, uncovered. Absorption cooking is unreliable with pearl barley; the drained method gives a far more consistent grain. **In at T-60**, 32–40 minutes.\n3. **Start tasting at 28 minutes, then every 2–3 minutes.** Pearl barley varies by brand and age. Primary cue: tender with a distinct chew at the centre, grains still separate. Done at the first point it stops being chalky. *Cook 1 ran \\~38 minutes — expect the long end of the band.*\n4. Drain, reserving 3 tbsp of the cooking water. Toss immediately with the oil, zest, pepper and parsley while hot, so the grains absorb the oil rather than sit in it.\n5. Hold covered, off heat, \\~25 minutes. It tightens as it cools; loosen with the reserved water at T-3.\n**Critical control points**\n<table header-row=\"true\">\n<tr>\n<td>Class</td>\n<td>Failure mode</td>\n<td>Sensory cue</td>\n<td>Recovery</td>\n</tr>\n<tr>\n<td>Major</td>\n<td>Overcooked to porridge — pearl barley goes from chewy to blown in about five minutes past done</td>\n<td>Grains split open, the water turns cloudy and thick, grains stop separating</td>\n<td>Unrecoverable for texture. Prevent: taste from 28 minutes</td>\n</tr>\n<tr>\n<td>Minor</td>\n<td>Under-salted water — no amount of finishing oil fixes it</td>\n<td>The grain reads bland against a dressed, seasoned plate</td>\n<td>Recoverable: salt while hot and toss, though it seasons the surface rather than the grain</td>\n</tr>\n</table>\n*Adjust: if it reads oily, more lemon zest and pepper rather than less oil — the fault is usually flatness, not fat.*",
+      "servings": 3,
+      "equipment": [
+        "electric kettle",
+        "induction hob"
+      ],
+      "designed_unvalidated": [
+        {
+          "param": "Barley start time",
+          "designed_value": "Barley in at T-60, water on at T-65 (kettle on), pot back to a rolling boil at T-63",
+          "note": "Correction from cook 1 (2 Aug 2026), where a T-52 to T-50 start with a ~38 min cook put completion at T-14 to T-12 — inside the salmon window. Designed so barley finishes T-28 to T-20 and clears the board before the oven sequence; not yet validated by a cook."
+        },
+        {
+          "param": "Barley cook band",
+          "designed_value": "32–40 min, taste from 28 then every 2–3 min",
+          "note": "Revised upward from the designed 30–35 min after cook 1 ran ~38 min; the revised band has not yet been validated by a cook."
+        },
+        {
+          "param": "Barley hold window",
+          "designed_value": "Covered pot or bowl, off heat, ~25 min",
+          "note": "Remains designed, not validated — cook 1 observed no drift but measured none."
+        }
+      ],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3b0e0391ce638127bff5fc133f4ad901",
+      "ingredients": [
+        {
+          "name": "pearl barley",
+          "department": "Pantry",
+          "qty": 135,
+          "unit": "g",
+          "qty_alt": "¾ cup dry",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "water",
+          "department": "Oils & Liquids",
+          "qty": 2000,
+          "unit": "ml",
+          "qty_alt": "~2 L",
+          "prep_note": "kettle-boiled",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "for the water",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "extra-virgin olive oil",
+          "department": "Oils & Liquids",
+          "qty": 14,
+          "unit": "g",
+          "qty_alt": "1 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon zest",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "finely grated",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": 0.25,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "cracked",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "parsley, flat-leaf",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "chopped",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "aegean-cucumber-tomato-salad",
+      "name": "Cucumber and Tomato Salad",
+      "protein": "Veg",
+      "category": [
+        "Salad"
+      ],
+      "cuisine": [
+        "European"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Healthy"
+      ],
+      "status": "cooked",
+      "source": "Claude / Jin — governance framework v3.5; sunday-aegean-salmon-dinner.docx (1 Aug 2026 build)",
+      "governance_version": "v3.5",
+      "summary": "Cold, sharp, crisp cucumber and cherry tomato salad dressed at the last minute with red wine vinegar — the plate's palate reset.",
+      "method_md": "# 4 · Cucumber and tomato salad\nYield 3 · Total \\~10 min · Active \\~5 min · No heat\nCold, sharp, crisp — the palate reset, and the only component that resets between rich mouthfuls. Not optional.\n**Flavour architecture.** Base: none. Primary driver: red wine vinegar. Acid: single-stage — a no-cook preparation where the acid is the dressing. Finish: parsley.\n**Ingredients**\n- Cucumbers, Japanese or Persian, unpeeled, sliced 3 mm — 2\n- Tomatoes, cherry, halved — 200 g\n- Red wine vinegar — 1 tbsp\n- Extra-virgin olive oil — 1 tsp\n- Salt, Diamond Crystal kosher — ¼ tsp\n- Parsley, chopped — 1 tbsp\n**Method**\n1. Slice the cucumbers 3 mm, unpeeled — the thin skin supplies the snap and colour. Halve the tomatoes.\n2. Hold the components sealed in the fridge, undressed. This is a deliberate departure from a salted-and-drained sunomono, which needs a squeeze, a timed hold and a mandatory drain. Dressing at the table's edge removes every one of those failure modes.\n3. At T-3, pour off any pooled liquid, then dress with the vinegar, oil, salt and parsley and toss once. Serve within a few minutes.\n**Validated substitution — no cherry tomatoes.** Use 3 cucumbers in place of 2 cucumbers plus the tomatoes, and dissolve **½ tsp sugar** into the red wine vinegar before dressing. The tomatoes are the only source of sweetness on the entire plate; without compensation the salad reads flat-sharp against a menu already built on lemon, capers and vinegar. Hold the salt at ¼ tsp despite the greater volume. Confirmed at cook 1 with no adverse effect. **Do not substitute tinned tomatoes** — soft, wet and cooked-tasting, they remove the cold raw crunch that is the salad's whole purpose here. Olives are thematically apt but push the plate over on salt, which is this menu's accumulation risk.\n*CCPs: not applicable — no heat, no irreversible step. The one drift risk, weeping, is designed out by dressing at T-3.*\n*Adjust: if flat, salt before more vinegar — under-salted tomato reads sour rather than sharp.*",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [
+        {
+          "param": "Salad hold window",
+          "designed_value": "Components sealed in fridge, undressed, ~2 hr",
+          "note": "Remains designed, not validated — cook 1 observed no drift but measured none."
+        }
+      ],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3b0e0391ce638127bff5fc133f4ad901",
+      "ingredients": [
+        {
+          "name": "cucumber, japanese or persian",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "unpeeled, sliced 3 mm",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "cherry tomato",
+          "department": "Produce",
+          "qty": 200,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "halved",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "red wine vinegar",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "extra-virgin olive oil",
+          "department": "Oils & Liquids",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 0.25,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "parsley, flat-leaf",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "chopped",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2026-08-02",
+      "rating": 9,
+      "execution_rating": 10,
+      "repeat": "yes",
+      "cook_notes": "Cook 1, 2 Aug 2026. Flavour 9, execution 10, no recovery actions required; the menu ran as written under a 4:30 arrival. One deviation: cherry tomatoes were not purchased, substituted a third cucumber plus 1/2 tsp sugar dissolved into the red wine vinegar to replace the plate's only source of sweetness — no adverse effect, treat as a validated fallback. Two designed parameters resolved against the cook: the salmon showed no carryover and instead lost 5-7F/3-4C on room-temperature plates (pulled 122F, read 115-117F at \\~2 min), so 122F/50C is the finished temperature and must not be adjusted downward; and pearl barley ran \\~38 min against a designed 30-35 band, which places completion inside the salmon window — start barley at T-60, not T-52. Strained garlic oil confirmed; retain the infusion, do not test the powder fallback.\n\n## Cook 1 — 2 August 2026\n**Recipe source:** Governance framework v3.5 · `sunday-aegean-salmon-dinner.docx`, 1 Aug 2026 build (post-salting-correction, post-Post-Cook-Logging relocation)\n**Serves:** 3 (Jin, Hui Fong — moderate carb; Lukas — full portion) · Arrival 4:15–4:30, service 5:30\n**Rating:** 9 · **Execution:** 10 · **Repeat?** Yes\n### Menu as cooked\n- Aegean roasted salmon — lemon zest, oregano, strained garlic oil, capers, dill\n- Roasted broccolini, lemon; feta passed at the table\n- Pearl barley with olive oil, lemon zest and parsley\n- Cucumber salad, red wine vinegar *(deviation — see below)*\n### Actual deviations\n**Cherry tomatoes omitted — not purchased.** Substituted a third cucumber (3 total, unchanged method) plus ½ tsp sugar dissolved into the red wine vinegar. The sugar was added because the tomatoes were the only source of sweetness on the entire plate; without compensation the salad would have read flat-sharp against a menu already built on lemon, capers and vinegar. Salt held at ¼ tsp despite the increased volume, since capers and feta already carry the plate's salt load. The substitution effectively reverts the salad toward the sunomono of the earlier miso menu, which performed the same relieving function. Outcome: no adverse effect recorded; execution rated 10 with the substitution in place.\nNo other deviations. Tinned tomatoes were considered and rejected — soft, wet and cooked-tasting, they would have removed the cold raw crunch that is the salad's entire purpose on this plate.\n### Designed-parameter confirmation\n**1. Salmon carryover — FAILED. Designed figure falsified; direction reversed.**\n<table header-row=\"true\">\n<tr>\n<td></td>\n<td></td>\n</tr>\n<tr>\n<td>Designed</td>\n<td>Pull 122°F / 50°C, carries **+3°F / +2°C** to a finished 125°F / 52°C</td>\n</tr>\n<tr>\n<td>Observed</td>\n<td>Pulled 122°F / 50°C; **115–117°F / 46–47°C** at \\~2 minutes. Net **loss of 5–7°F / 3–4°C**</td>\n</tr>\n<tr>\n<td>Verdict</td>\n<td>No carryover occurred. The portion cooled throughout the rest.</td>\n</tr>\n</table>\n**Observed configuration (the finding is valid only for these conditions):** 5–6 oz / 140–170 g centre-cut salmon portion cut to uniform thickness (\\~3 cm); 425°F / 218°C conventional, lower-middle rack, parchment-lined half-sheet shared with broccolini; rested uncovered on **room-temperature** plates; reading taken \\~2 minutes after removal.\n**Interpretation.** The room-temperature plate was a deliberate experimental control, adopted so plate mass would not contaminate the measurement — and it is very likely amplifying the loss. A warm plate would reduce it, possibly to near zero, but would not plausibly turn it positive. The underlying cause is mass: a thin, low-mass, high-moisture portion out of a short roast holds no meaningful thermal reserve, and applying steak-derived carryover reasoning to it was the original error.\n**Consequence for the next cook — do not pull below 122°F expecting carryover.** The fish was recorded as perfectly cooked, which means 122°F / 50°C is functioning as the *finished* temperature, not as a pre-carryover pull point. Treat the rest as thermally neutral-to-negative. Its stated job — letting the surface set and giving clean release from the skin — is unchanged and was confirmed by a clean lift.\n**Open question for cook 2:** repeat on warm plates and record both readings. That isolates plate mass as the single variable and establishes whether the practical loss is 5–7°F or closer to zero under normal service conditions.\n**2. Pearl barley timing — DRIFTED. Band revised upward.**\n<table header-row=\"true\">\n<tr>\n<td></td>\n<td></td>\n</tr>\n<tr>\n<td>Designed</td>\n<td>30–35 min, taste from 25, then every 2–3 min</td>\n</tr>\n<tr>\n<td>Observed</td>\n<td>**\\~38 min** to done</td>\n</tr>\n<tr>\n<td>Revised</td>\n<td>**32–40 min**, continue tasting from 28</td>\n</tr>\n</table>\n**Workflow consequence, and the more important half of this finding.** The timeline placed barley in the pot at T-52 to T-50. At 38 minutes that puts completion at T-14 to T-12 — inside the salmon window, and after the T-15 tray-out that the schedule assumes is clear. It did not bite this time (execution 10), but the margin was consumed rather than held. **Next cook: barley in at T-60, water on at T-65.** The barley then finishes at T-22 and clears the board before the oven sequence begins, which is what the design intended.\n**3. Strained garlic oil — CONFIRMED.** 60–90 seconds on very low heat, solids strained out. Sufficient garlic presence; no scorching, no dark specks. Retain the infusion method. The ¼ tsp garlic-powder fallback is not required and should not be tested.\n**4. Hold windows — no drift reported.** Barley (covered, \\~25 min ceiling), broccolini (uncovered), salad (undressed to T-3), salmon (\\~5–8 min). All remain designed rather than validated; nothing was observed to contradict them, but nothing was measured either.\n### Wine pairing outcome\n**2023 Famille Grossot Chablis** — paired well. Cool-climate acidity and minerality held against lemon, capers, feta and the vinegar salad, which is the pairing predicted throughout the design conversation but blocked until the day of the cook by the standing Chardonnay exclusion.\n**Household finding, and the reason this matters beyond one dinner:** the Chardonnay aversion is style-specific, not varietal. Ripe, oaky, warm-climate Chardonnay remains the thing being avoided; lean unoaked Chablis is not that wine and was well received. This is the evidence behind the governance change loosening the exclusion for bottles held in the cellar. Buying guidance is unaffected — Chardonnay stays low-priority against Chenin Blanc, Riesling and Sauvignon/Sémillon when advising purchases.\nSparkling remains excluded for household-only meals: no Coravin for sparkling means the bottle must be finished.\n### Key success\nMenu architecture and one-tray oven sequence both held under a 4:30 arrival; execution 10 with no recovery actions required.\n### Key failure\nNone at the dish level. The failures were in the *documented parameters*, not the cooking: carryover falsified, barley band short, and the barley start time consequently too late.\n### Next time\n1. Barley in at T-60 (water on at T-65), not T-52 to T-50.\n2. Revise barley band to 32–40 min; keep tasting from 28.\n3. Pull salmon at 122°F / 50°C and treat that as final — no downward adjustment for carryover.\n4. Repeat the two-reading probe on **warm** plates to isolate plate mass.\n5. Buy the cherry tomatoes — but the 3-cucumber-plus-sugar salad is a validated fallback, not a compromise.\n### Schema gap\nNo Greek / Mediterranean option under Cuisine; tagged European, which is accurate but low-signal. Tags left blank deliberately: One-Pan is misleading (a half-sheet plus a barley pot plus a no-cook salad), 30 Min is wrong (\\~60 min door to table), and Make-Ahead overstates what is genuinely only an ahead-of-day protein prep. Worth adding a Mediterranean cuisine option and possibly a \"Weeknight-Fast\" or \"Under 60 Min\" tag.",
+      "deviations": [
+        "Cherry tomatoes omitted — not purchased. Substituted a third cucumber (3 total, unchanged method) plus ½ tsp sugar dissolved into the red wine vinegar; salt held at ¼ tsp. No adverse effect — treat as a validated fallback."
+      ],
+      "parameter_confirmations": [
+        {
+          "param": "Salmon carryover",
+          "designed": "Pull 122°F / 50°C, carries +3°F / +2°C to a finished 125°F / 52°C",
+          "observed": "Pulled 122°F / 50°C; 115–117°F / 46–47°C at ~2 minutes on room-temperature plates — net loss of 5–7°F / 3–4°C; no carryover occurred",
+          "verdict": "diverged"
+        },
+        {
+          "param": "Pearl barley timing",
+          "designed": "30–35 min, taste from 25, then every 2–3 min",
+          "observed": "~38 min to done; band revised to 32–40 min, tasting from 28; start moved to T-60",
+          "verdict": "diverged"
+        },
+        {
+          "param": "Strained garlic oil",
+          "designed": "60–90 seconds on very low heat, solids strained out",
+          "observed": "Sufficient garlic presence; no scorching, no dark specks — retain the infusion; garlic-powder fallback not required",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Hold windows (barley ~25 min covered; broccolini uncovered; salad undressed to T-3; salmon ~5–8 min)",
+          "designed": "As designed",
+          "observed": "No drift reported; nothing measured",
+          "verdict": "unresolved"
+        }
+      ],
+      "household_split": "Serves 3 (Jin, Hui Fong — moderate carb; Lukas — full portion). Household finding: the Chardonnay aversion is style-specific (ripe/oaky/warm-climate), not varietal — lean unoaked Chablis was well received.",
+      "wine_outcome": "**2023 Famille Grossot Chablis** — paired well. Cool-climate acidity and minerality held against lemon, capers, feta and the vinegar salad, which is the pairing predicted throughout the design conversation but blocked until the day of the cook by the standing Chardonnay exclusion.\n**Household finding, and the reason this matters beyond one dinner:** the Chardonnay aversion is style-specific, not varietal. Ripe, oaky, warm-climate Chardonnay remains the thing being avoided; lean unoaked Chablis is not that wine and was well received. This is the evidence behind the governance change loosening the exclusion for bottles held in the cellar. Buying guidance is unaffected — Chardonnay stays low-priority against Chenin Blanc, Riesling and Sauvignon/Sémillon when advising purchases.\nSparkling remains excluded for household-only meals: no Coravin for sparkling means the bottle must be finished."
+    }
+  ]
+}

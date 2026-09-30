@@ -1,0 +1,383 @@
+{
+  "assignment_key": "roast-chicken",
+  "source_page_ids": [
+    "394e0391ce63810fb3b7cb97ca3a57c0"
+  ],
+  "meal": {
+    "slug": "roast-chicken-sunday",
+    "name": "Roast Chicken Menu",
+    "planned_date": "2026-07-06",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": null,
+    "shared_prep_md": null,
+    "wine_pairing": "Two-way choice from cellar (live-fetched): 2021 Jean-Marie Fourrier Bourgogne (Pinot Noir) as the cleaner food pairing / Hui Fong's preference; 2004 Château Léoville Barton (mature Left Bank Bordeaux, drink-soon) as the plush-preference option, viable given softened vinaigrette and restrained pasta lemon.",
+    "legacy_notion_id": "394e0391ce63810fb3b7cb97ca3a57c0",
+    "components": [
+      {
+        "dish_slug": "roast-chicken-keller-method",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "roast-chicken-anchovy-spaghetti",
+        "role": "side",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "roast-chicken-bitter-leaf-salad",
+        "role": "salad",
+        "service_order": 3
+      },
+      {
+        "dish_slug": "roast-chicken-torched-sugar-yogurt-pots",
+        "role": "dessert",
+        "service_order": 4
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "roast-chicken-keller-method",
+      "name": "Roast Chicken (Keller Method, Dry-Brined)",
+      "protein": "Chicken",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": "Medium",
+      "tags": [
+        "Make-Ahead"
+      ],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": "Thomas Keller roast chicken (dry-brine adapted); anchovy spaghetti (Bon Appétit, Mar 1990); bitter salad + torched-sugar yogurt pots original to project",
+      "governance_version": null,
+      "summary": "Keller-method roast chicken: two ~1.07 kg birds dry-brined overnight, roasted at 450°F / 232°C on wire racks and pulled on breast temperature.",
+      "method_md": "## Roast Chicken\nTwo birds \\~1.07 kg each · dry-brine 0.8–1.0% by weight (\\~9–10 g/bird), 18–24 hr uncovered · temper 60 min · roast 450°F / 232°C, \\~40–55 min · rest 15 min uncovered.\n- **Pull gate = breast** 150–152°F / 66–67°C (carries to \\~155°F). Thighs 165–175°F by then. This replaced clock/thigh timing and was the single biggest reliability gain.\n- Wire rack over tray, birds side by side with a gap for airflow. No basting, no added butter in-roast. Butter and pan jus on the carved meat, not the skin.\n- Monitored with the ThermoWorks leave-in probe (breast, alarm \\~150°F) plus Thermapen spot-check on the second bird.",
+      "servings": 3,
+      "equipment": [
+        "wire rack",
+        "ThermoWorks leave-in probe",
+        "Thermapen"
+      ],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "394e0391ce63810fb3b7cb97ca3a57c0",
+      "ingredients": [
+        {
+          "name": "whole chicken",
+          "department": "Protein",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": "2 × ~1.07 kg",
+          "prep_note": "Huber's cage-free; dry-brined 18–24 hr uncovered",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 9,
+          "unit": "g",
+          "qty_alt": "0.8–1.0% by weight (~9–10 g/bird)",
+          "prep_note": "dry brine",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "butter",
+          "department": "Dairy",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "on the carved meat, not in-roast",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "roast-chicken-anchovy-spaghetti",
+      "name": "Anchovy Spaghetti",
+      "protein": null,
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "Italian"
+      ],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": "Thomas Keller roast chicken (dry-brine adapted); anchovy spaghetti (Bon Appétit, Mar 1990); bitter salad + torched-sugar yogurt pots original to project",
+      "governance_version": null,
+      "summary": "Spaghetti with garlic, olive oil, anchovy, lemon and doubled parsley, finished in the off-heat anchovy skillet.",
+      "method_md": "## Anchovy Spaghetti\n4 tbsp olive oil · 4 garlic cloves · 6–8 anchovy fillets · 12 oz / 340 g spaghetti · 1½ tsp lemon juice + zest of ½ · \\~6 tbsp parsley. Finish pasta in the off-heat anchovy skillet; reserve ¼ cup pasta water. No sauce salt, no Parmesan (salt-stacking control against the salted birds).",
+      "servings": 3,
+      "equipment": [
+        "skillet"
+      ],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "394e0391ce63810fb3b7cb97ca3a57c0",
+      "ingredients": [
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 4,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 4,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "anchovy fillet",
+          "department": "Pantry",
+          "qty": 6,
+          "unit": "piece",
+          "qty_alt": "6–8 fillets",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "spaghetti",
+          "department": "Pantry",
+          "qty": 340,
+          "unit": "g",
+          "qty_alt": "12 oz",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon juice",
+          "department": "Produce",
+          "qty": 1.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon zest",
+          "department": "Produce",
+          "qty": 0.5,
+          "unit": "piece",
+          "qty_alt": "zest of ½ lemon",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "parsley",
+          "department": "Produce",
+          "qty": 6,
+          "unit": "tbsp",
+          "qty_alt": "~6 tbsp",
+          "prep_note": "doubled",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "roast-chicken-bitter-leaf-salad",
+      "name": "Bitter Leaf Salad",
+      "protein": "Veg",
+      "category": [
+        "Salad"
+      ],
+      "cuisine": [],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": "Thomas Keller roast chicken (dry-brine adapted); anchovy spaghetti (Bon Appétit, Mar 1990); bitter salad + torched-sugar yogurt pots original to project",
+      "governance_version": null,
+      "summary": "Little gem, frisée and endive with a softened lemon-Dijon vinaigrette, dressed at the table.",
+      "method_md": "## Bitter Leaf Salad\nLittle gem + frisée + endive (endive as accent, substituted for radicchio). Vinaigrette 1½ tbsp lemon : 4 tbsp EVOO : 1 tbsp Dijon, softened to manage acid-stacking. Dress at the table; reserve a little to spoon beside the chicken.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "394e0391ce63810fb3b7cb97ca3a57c0",
+      "ingredients": [
+        {
+          "name": "little gem lettuce",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "frisée",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "endive",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "accent, substituted for radicchio",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon juice",
+          "department": "Produce",
+          "qty": 1.5,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "vinaigrette",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "extra-virgin olive oil",
+          "department": "Oils & Liquids",
+          "qty": 4,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "vinaigrette",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "dijon mustard",
+          "department": "Pantry",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "vinaigrette",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "roast-chicken-torched-sugar-yogurt-pots",
+      "name": "Torched-Sugar Yogurt Pots",
+      "protein": null,
+      "category": [
+        "Dessert"
+      ],
+      "cuisine": [],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": "Thomas Keller roast chicken (dry-brine adapted); anchovy spaghetti (Bon Appétit, Mar 1990); bitter salad + torched-sugar yogurt pots original to project",
+      "governance_version": null,
+      "summary": "Chilled lightly sweetened Greek yogurt over dark-fruit jam with a brûléed sugar lid cracked at the table.",
+      "method_md": "## Torched-Sugar Yogurt Pots\n350 g full-fat Greek yogurt lightly sweetened, over 2 tsp jam per pot, \\~1 tsp caster sugar torched to amber per pot. Assemble and chill up to 4 hr ahead; torch to order (crust weeps within \\~15 min). A cool tart-sweet reset after the rich savoury meal.",
+      "servings": 3,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "394e0391ce63810fb3b7cb97ca3a57c0",
+      "ingredients": [
+        {
+          "name": "greek yogurt, full-fat",
+          "department": "Dairy",
+          "qty": 350,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "lightly sweetened",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "dark-fruit jam",
+          "department": "Pantry",
+          "qty": 2,
+          "unit": "tsp",
+          "qty_alt": "2 tsp per pot",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "caster sugar",
+          "department": "Pantry",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": "~1 tsp per pot",
+          "prep_note": "torched to amber",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2026-07-06",
+      "rating": 9.5,
+      "execution_rating": 9,
+      "repeat": "yes",
+      "cook_notes": "Four-component menu: Keller-method roast chicken (two \\~1.07 kg Huber's birds, overnight dry-brine at 0.8–1.0%, breast-temp pull 150–152°F), anchovy spaghetti finished in the skillet, bitter leaf salad (little gem/frisée/endive, lemon-Dijon vinaigrette), torched-sugar yogurt pots over jam. Breast-temp pull replaced clock/thigh timing as the key reliability improvement. Salt-stacking managed across the salted birds, anchovy, and light pasta water; acid-stacking managed by softening the vinaigrette. Endive substituted for radicchio (gentler, easier alongside the chicken). Two birds roasted side by side on wire racks over trays with an airflow gap; one carved for dinner, one reserved for next-day lunch.\n\n## Post-Cook Notes\n- **Rating:** 9.5 · **Execution:** 9 · **Repeat:** Yes · **Times Made:** 1 · **Last Made:** 6 Jul 2026\n- Breast-temp pull is the method's key reliability lever; keep it as the gate on any repeat.\n- Salt-stacking and acid-stacking were the two managed risks — light pasta water, no sauce salt, no Parmesan, softened vinaigrette. Held up well.\n- Endive worked as a cleaner accent than radicchio; retain.\n- Two-bird side-by-side roast on racks over trays worked; one bird carried next-day lunch.",
+      "deviations": [
+        "Endive substituted for radicchio in the bitter leaf salad (gentler, easier alongside the chicken)"
+      ],
+      "parameter_confirmations": [
+        {
+          "param": "Breast-temp pull gate",
+          "designed": "Pull at breast 150–152°F / 66–67°C (carries to ~155°F)",
+          "observed": "Replaced clock/thigh timing; the single biggest reliability gain — keep as the gate on any repeat",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Salt-stacking and acid-stacking controls",
+          "designed": "Light pasta water, no sauce salt, no Parmesan, softened vinaigrette",
+          "observed": "Held up well",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Two-bird side-by-side roast on racks over trays with airflow gap",
+          "designed": "Two birds, one for dinner, one for next-day lunch",
+          "observed": "Worked; one bird carried next-day lunch",
+          "verdict": "confirmed"
+        }
+      ],
+      "household_split": null,
+      "wine_outcome": null
+    }
+  ]
+}

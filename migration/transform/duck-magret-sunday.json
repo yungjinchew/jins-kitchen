@@ -1,0 +1,329 @@
+{
+  "assignment_key": "duck-magret-sunday",
+  "source_page_ids": [
+    "3e1e0391ce6381e4b44dec4e14ddceb7",
+    "3e1e0391ce6381b0a42ee475ef1a4ee0",
+    "3e1e0391ce63817c9e97d860b372e8a2"
+  ],
+  "meal": {
+    "slug": "duck-magret-sunday",
+    "name": "Duck Magret Sunday",
+    "planned_date": "2026-09-20",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": null,
+    "shared_prep_md": null,
+    "wine_pairing": "2022 Domaine du Vieux Télégraphe Châteauneuf-du-Pape Télégramme — worked well. Moderate tannin held up against the radicchio's bitterness and the staged vinegar; bridge logic for duck with a savoury jus is confirmed for this household.",
+    "legacy_notion_id": null,
+    "components": [
+      {
+        "dish_slug": "duck-magret-seared-duck-breast",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "duck-magret-shallot-vermouth-jus",
+        "role": "sauce",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "duck-magret-roasted-radicchio-hazelnuts",
+        "role": "side",
+        "service_order": 3
+      },
+      {
+        "dish_slug": "duck-fat-roast-potatoes",
+        "role": "side",
+        "service_order": 4
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "duck-magret-seared-duck-breast",
+      "name": "Seared Duck Breast — Continuous Cold-Pan Render",
+      "protein": "Duck",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": "Medium",
+      "tags": [],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": "Governance Framework v3.5 — generated 2026-09-11, docx duck-magret-sunday.docx. Cook #1, designed as a measured baseline for the continuous cold-pan render.",
+      "governance_version": "v3.5",
+      "summary": "Seared duck breast cooked by a continuous cold-pan render on induction with progressive pour-offs, flipped on the skin cue and rested 8 minutes skin-up on a rack.",
+      "method_md": null,
+      "servings": null,
+      "equipment": [
+        "induction",
+        "rack",
+        "Thermapen"
+      ],
+      "designed_unvalidated": [
+        {
+          "param": "Gates A, B, C and D (internal temperature trajectory)",
+          "designed_value": "four planned temperature gates",
+          "note": "Not recorded — no leave-in probe was available; Gate B (internal temperature at the flip) remains unanswered."
+        },
+        {
+          "param": "Post-sear carryover",
+          "designed_value": "+3 to +5°F",
+          "note": "Remains designed, not validated."
+        },
+        {
+          "param": "Split-render versus continuous-render",
+          "designed_value": "continuous cold-pan render (cook #1 baseline)",
+          "note": "Unresolved; cannot be resolved without a leave-in probe. Carry to cook #2."
+        }
+      ],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3e1e0391ce6381e4b44dec4e14ddceb7",
+      "ingredients": []
+    },
+    {
+      "slug": "duck-magret-shallot-vermouth-jus",
+      "name": "Shallot and Vermouth Jus",
+      "protein": "Duck",
+      "category": [
+        "Sauce"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": "Medium",
+      "tags": [],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": "Governance Framework v3.5 — generated 2026-09-11 as the sour cherry and red wine jus for the duck menu; rebuilt on the day as a savoury vermouth reduction.",
+      "governance_version": "v3.5",
+      "summary": "Savoury jus of shallot sweated in duck fat, 120 ml dry vermouth reduced nearly dry, 300 ml unsalted stock with thyme, bay and staged red wine vinegar, mounted off heat with cold butter.",
+      "method_md": null,
+      "servings": null,
+      "equipment": [],
+      "designed_unvalidated": [
+        {
+          "param": "Sour cherry and red wine jus (fruited version)",
+          "designed_value": "original design in duck-magret-sunday.docx",
+          "note": "Now the untested variant rather than the default; worth cooking to find out whether it is actually better."
+        }
+      ],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3e1e0391ce6381b0a42ee475ef1a4ee0",
+      "ingredients": []
+    },
+    {
+      "slug": "duck-magret-roasted-radicchio-hazelnuts",
+      "name": "Roasted Radicchio with Hazelnuts",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "European"
+      ],
+      "difficulty": "Easy",
+      "tags": [],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": "Governance Framework v3.5 — generated 2026-09-11 as the bitter-axis component of the duck menu.",
+      "governance_version": "v3.5",
+      "summary": "Radicchio quartered through the root, roasted cut-side down on a preheated tray at 425°F for 15 minutes, finished off heat with red wine vinegar and coarse-chopped toasted hazelnuts.",
+      "method_md": null,
+      "servings": null,
+      "equipment": [
+        "preheated tray"
+      ],
+      "designed_unvalidated": [
+        {
+          "param": "Roast time at 425°F / 220°C",
+          "designed_value": "15 minutes",
+          "note": "Set from wedge geometry rather than from any logged cook; the least-evidenced parameter."
+        },
+        {
+          "param": "Bitterness balance lever",
+          "designed_value": "further 5 ml vinegar at the plate",
+          "note": "Whether it was used is unrecorded."
+        }
+      ],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3e1e0391ce63817c9e97d860b372e8a2",
+      "ingredients": []
+    },
+    {
+      "slug": "duck-fat-roast-potatoes",
+      "name": "Duck-Fat Roast Potatoes",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [],
+      "status": "cooked",
+      "source": null,
+      "governance_version": null,
+      "summary": "Served with the 20 Sep 2026 duck menu; never filed in the Vault",
+      "method_md": null,
+      "servings": null,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": null,
+      "ingredients": []
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2026-09-20",
+      "rating": null,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": "Menu: duck breast · duck-fat roast potatoes · roasted radicchio with hazelnuts · shallot and vermouth jus. Menu rated 9.5 flavour / 9.0 execution overall.",
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": "2022 Domaine du Vieux Télégraphe Châteauneuf-du-Pape Télégramme — worked well. Moderate tannin held up against the radicchio's bitterness and the staged vinegar; bridge logic for duck with a savoury jus is confirmed for this household."
+    },
+    {
+      "owner": "dish",
+      "dish_slug": "duck-magret-seared-duck-breast",
+      "cooked_on": "2026-09-20",
+      "rating": 9.5,
+      "execution_rating": 9,
+      "repeat": "yes",
+      "cook_notes": "Cooked with Malaysian Muscovy/Barbary breasts (2 × 348 g) rather than the planned French Moulard magret, and with a savoury vermouth jus after sour cherries and red wine proved unavailable. Skin endpoint cue performed as intended — no flash re-crisp was needed after the 8-minute uncovered rest on a rack. Fat yield was materially lower than a magret would give, confirming that buying the potato fat rather than depending on the render was the correct design decision. The four planned temperature gates were not captured: no leave-in probe was available and a Thermapen was used for occasional spot checks only, so the split-render question remains open.\n\n## Cook record — 2026-09-20\n**Recipe version:** Governance Framework v3.5, docx `duck-magret-sunday.docx` generated 2026-09-11.\n**Ratings:** Flavour 9.5 · Execution 9.0 · Repeat: Yes\n**Menu:** duck breast · duck-fat roast potatoes · roasted radicchio with hazelnuts · shallot and vermouth jus.\n### What was actually cooked\nTwo Malaysian duck breasts from Butcher Box Singapore, 348 g each (696 g total), at S\\$36.90/kg. Almost certainly Muscovy or Barbary rather than the Moulard magret the recipe was written for. Continuous cold-pan render on induction, dry pan, medium-low, progressive pour-offs, flipped on the skin cue, meat side finished to a probe reading, 8-minute rest skin-up on a rack, uncovered.\n### Material deviations from the written plan\n1. **Protein substituted.** Moulard magret (2 × 400 g) was unavailable. Muscovy/Barbary at 2 × 348 g. Salt scaled to 5.6 g total (0.8% of 696 g).\n2. **Jus rebuilt.** Sour cherries and red wine were both unavailable. Replaced with 120 ml dry vermouth on the same shallot–stock–staged-vinegar spine. No fruit, no added sugar.\n3. **Thaw method changed.** Cold-water thaw rather than the specified 24–36 hr fridge thaw, because the purchase fell the day before the cook. The 12–24 hr uncovered fridge air-dry was preserved.\n4. **Potato hold moved.** The oven stayed at 425°F for the radicchio, so the potatoes could not hold in a switched-off cavity as written. Held on their tray on the stovetop, uncovered.\n### Designed-parameter confirmation\n**Confirmed:**\n- **Skin endpoint cue (thin amber cap, breast lifts free, knife tip meets a brittle crust).** No flash re-crisp was required after the rest. The cue is a sufficient flip trigger without a timer.\n- **8-minute rest, skin up, uncovered, on a rack.** The crust survived the rest intact. Confirmed for this configuration: 348 g Muscovy/Barbary breast, ambient Singapore kitchen.\n- **Buying the 90 ml of potato fat rather than depending on render yield.** Fat yield from Malaysian duck was low. Had the potatoes been made dependent on the first pour-off, as the earlier draft specified, the side would have failed.\n- **118°F / 48°C contingency did not fire.** Weak evidence only — see below.\n**Not captured:**\n- **Gates A, B, C and D were not recorded.** No leave-in probe was available; a Thermapen was used for occasional spot checks. Gate B — internal temperature at the flip — was the cook's primary question and remains unanswered.\n- Because monitoring was intermittent rather than continuous, the non-firing of the 118°F contingency is not a clean negative. A transient excursion could have been missed. Treat as *probably did not fire* rather than *did not fire*.\n**Open:**\n- The split-render versus continuous-render question is unresolved and cannot be resolved without a leave-in probe. Carry it to cook #2.\n- Planned carryover of +3 to +5°F remains designed, not validated.\n### New findings\n1. **Malaysian duck is a legitimate substitute, not a compromise.** Good eating quality at materially better value than French magret. Worth defaulting to for future duck cooks unless a thick fat cap is specifically wanted.\n2. **Low fat yield is a property of the cut, not an execution failure.** Plan any duck-fat side around bought fat.\n3. **Equipment gap identified: a leave-in probe.** Without one, no duck cook can answer a thermal-trajectory question, however well the recipe is designed. This is the binding constraint on cook #2, not the recipe.\n### Next time\n1. Acquire a leave-in probe before attempting the measurement set again.\n2. Repeat with Malaysian duck. Weigh the breasts and scale salt to 0.8%.\n3. The vermouth jus is worth keeping on its own merits — see whether the fruited version is actually an improvement or just a different sauce.\n4. Plan the potato hold on the stovetop from the outset; the switched-off-oven instruction conflicts with the radicchio owning the cavity at service.",
+      "deviations": [
+        "Protein substituted. Moulard magret (2 × 400 g) was unavailable. Muscovy/Barbary at 2 × 348 g. Salt scaled to 5.6 g total (0.8% of 696 g).",
+        "Jus rebuilt. Sour cherries and red wine were both unavailable. Replaced with 120 ml dry vermouth on the same shallot–stock–staged-vinegar spine. No fruit, no added sugar.",
+        "Thaw method changed. Cold-water thaw rather than the specified 24–36 hr fridge thaw, because the purchase fell the day before the cook. The 12–24 hr uncovered fridge air-dry was preserved.",
+        "Potato hold moved. The oven stayed at 425°F for the radicchio, so the potatoes could not hold in a switched-off cavity as written. Held on their tray on the stovetop, uncovered."
+      ],
+      "parameter_confirmations": [
+        {
+          "param": "Skin endpoint cue (thin amber cap, breast lifts free, knife tip meets a brittle crust)",
+          "designed": "sufficient flip trigger without a timer",
+          "observed": "no flash re-crisp required after the rest",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "8-minute rest, skin up, uncovered, on a rack",
+          "designed": "crust survives the rest",
+          "observed": "crust survived intact (348 g Muscovy/Barbary breast, ambient Singapore kitchen)",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Potato fat sourcing",
+          "designed": "buy 90 ml of potato fat rather than depend on render yield",
+          "observed": "fat yield from Malaysian duck was low; bought fat was the correct decision",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "118°F / 48°C contingency",
+          "designed": "fires on early internal temperature",
+          "observed": "probably did not fire — monitoring was intermittent, so not a clean negative",
+          "verdict": "unresolved"
+        },
+        {
+          "param": "Gates A, B, C and D",
+          "designed": "four planned temperature gates",
+          "observed": "not recorded (no leave-in probe; Thermapen spot checks only)",
+          "verdict": "unresolved"
+        },
+        {
+          "param": "Post-sear carryover",
+          "designed": "+3 to +5°F",
+          "observed": "not measured",
+          "verdict": "unresolved"
+        },
+        {
+          "param": "Split-render versus continuous-render",
+          "designed": "continuous cold-pan render",
+          "observed": "unresolved without a leave-in probe",
+          "verdict": "unresolved"
+        }
+      ],
+      "household_split": null,
+      "wine_outcome": "2022 Domaine du Vieux Télégraphe Châteauneuf-du-Pape Télégramme — worked well. Moderate tannin held up against the radicchio's bitterness and the staged vinegar; bridge logic for duck with a savoury jus is confirmed for this household."
+    },
+    {
+      "owner": "dish",
+      "dish_slug": "duck-magret-shallot-vermouth-jus",
+      "cooked_on": "2026-09-20",
+      "rating": 9.5,
+      "execution_rating": null,
+      "repeat": "yes",
+      "cook_notes": "Built on dry vermouth (120 ml) rather than the specified red wine, after sour cherries, sweet cherries, blackberries and red wine all proved unavailable. Staged vinegar retained as written — 5 ml into the reduction, 5 ml held for the finish — with the closing reserve taken in 2 ml steps because vermouth's botanical bitterness already supplies part of that lift. Mounted off heat after the duck was carved, seasoned against a slice rather than off a spoon; no broken emulsion. Rated 9.5 on its first outing, so the fruited version is now the untested variant rather than the default. Correction to the source recipe: its instruction to cut the opening wine by 20 ml when using sweeter fruit is wrong — wine is the acid and tannin spine, and cutting it makes a sweet version sweeter. Execution not scored separately.\n\n## Cook record — 2026-09-20\n**Recipe version:** Governance Framework v3.5, docx `duck-magret-sunday.docx` generated 2026-09-11, jus rebuilt in conversation on the day.\n**Ratings:** Flavour 9.5 · Execution not separately scored · Repeat: Yes\n**Served with:** seared duck breast, duck-fat roast potatoes, roasted radicchio with hazelnuts. Menu rated 9.5 flavour / 9.0 execution overall.\n### What was actually cooked\nShallot sweated in duck fat, 120 ml dry vermouth reduced to nearly dry, then 300 ml unsalted stock with thyme, bay and 5 ml red wine vinegar, reduced by roughly two-thirds. Strained and held off heat. Duck-pan fond lifted with a splash of the held jus and strained back in after the duck came out. Mounted off heat with 25 g cold cubed butter, then tasted against a carved slice with the closing 5 ml vinegar held in reserve.\n### Why vermouth\nThe recipe was written around a sour cherry and red wine jus. Neither sour cherries, sweet cherries nor blackberries were available, and there was no red wine in the house. Dry vermouth was substituted at 120 ml rather than the wine's 150 ml, because it is more concentrated and carries residual sugar. **This is not a degraded version of the cherry jus — it is a different sauce, and it rated 9.5 on its first outing.**\n### Design notes that held\n- **No added sugar anywhere in the menu.** With the fruit gone, the jus carries no sweetness at all. This suited the meal, which already had bitterness from the radicchio and two separate vinegar points.\n- **Vermouth's botanical bitterness substitutes for part of the closing vinegar's job.** The reserve was held tighter than the recipe specified, in 2 ml steps rather than 2–3, on the expectation that it might not be needed at all.\n- **Staged vinegar retained despite the base change.** The opening 5 ml went in with the stock as written. Volatile acidity from the vermouth is largely gone by then, so the opening vinegar is seasoning the long reduction rather than adding sharpness — that job is independent of which alcohol was used.\n- **Mounting held off heat and after carving.** No broken emulsion. Seasoning judged against the duck itself rather than off a spoon.\n### Correction to the original recipe\nThe docx shopping-list note said that with sweeter fruit the opening wine should be cut by 20 ml. **That instruction is wrong and should not be followed.** Wine is the jus's acid and tannin spine; cutting it makes a sweeter version sweeter. The correct lever for excess sweetness is fruit quantity, then vinegar.\n### Next time\n1. Worth cooking the cherry version at some point purely to find out whether it is actually better, rather than assuming it is because it was the original design.\n2. Reusable beyond duck. A savoury vermouth reduction suits pork, guinea fowl and roast chicken equally.\n3. Execution was not scored separately — add a figure if the distinction matters on a future comparison.",
+      "deviations": [
+        "Built on dry vermouth (120 ml) rather than the specified red wine (150 ml), after sour cherries, sweet cherries, blackberries and red wine all proved unavailable. No fruit, no added sugar.",
+        "Closing vinegar reserve taken in 2 ml steps rather than 2–3, because vermouth's botanical bitterness already supplies part of that lift."
+      ],
+      "parameter_confirmations": [
+        {
+          "param": "Staged vinegar",
+          "designed": "5 ml into the reduction, 5 ml held for the finish",
+          "observed": "retained as written; opening 5 ml in with the stock, closing 5 ml held in reserve",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Mounting",
+          "designed": "off heat, after carving, 25 g cold cubed butter",
+          "observed": "no broken emulsion; seasoned against a carved slice",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Opening wine cut by 20 ml when using sweeter fruit (docx shopping-list note)",
+          "designed": "cut wine by 20 ml",
+          "observed": "instruction judged wrong — wine is the acid and tannin spine; correct lever is fruit quantity, then vinegar",
+          "verdict": "diverged"
+        }
+      ],
+      "household_split": null,
+      "wine_outcome": "Served with 2022 Domaine du Vieux Télégraphe Châteauneuf-du-Pape Télégramme — worked well. A savoury jus rather than a fruited one is part of why moderate tannin was the right call."
+    },
+    {
+      "owner": "dish",
+      "dish_slug": "duck-magret-roasted-radicchio-hazelnuts",
+      "cooked_on": "2026-09-20",
+      "rating": 8.5,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": "Quartered through the root with cores attached, roasted cut-side down on a preheated tray at 425°F for 15 minutes, finished off heat with red wine vinegar and coarse-chopped toasted hazelnuts. Added to the duck menu specifically to supply a bitter axis the braised red cabbage does not provide, and dressed in olive oil rather than duck fat by design, to hold rendered fat to two of four components. Rated 8.5, a full point below the menu — cause not recorded, and the 15-minute roast was set from wedge geometry rather than from any logged cook, so it remains the least-evidenced parameter. Repeat? deliberately left unset until the gap is understood. Execution not scored separately.\n\n## Cook record — 2026-09-20\n**Recipe version:** Governance Framework v3.5, docx `duck-magret-sunday.docx` generated 2026-09-11.\n**Ratings:** Flavour 8.5 · Execution not separately scored · Repeat: not yet set — see below.\n**Served with:** seared duck breast, duck-fat roast potatoes, shallot and vermouth jus. Menu rated 9.5 flavour / 9.0 execution overall.\n### What was actually cooked\nTwo heads quartered through the root with the cores left attached, tossed in 30 ml olive oil, salt and pepper. Roasted cut-side down on a preheated tray at 425°F / 220°C for 15 minutes without turning. Finished off heat with 15 ml red wine vinegar and 40 g blanched hazelnuts toasted 8 minutes and chopped coarse.\n### Role in the menu\nThis component was added to solve a specific structural gap. The menu originally paired duck with braised red cabbage, which supplied acid but no bitterness, leaving duck plus a fruit sauce plus roast potatoes with nothing to push back against the richness. Radicchio supplies the bitter axis and the palate reset between bites.\n**Deliberately dressed in olive oil rather than duck fat**, to keep rendered duck fat to two of four components. That decision should carry forward to any future duck menu.\n### Rating gap worth noting\nAt 8.5 this sat a full point below the menu. The cause was not recorded at the time. Candidates for the next cook to discriminate between:\n- **15 minutes may not be the right roast time.** The figure was set from wedge geometry rather than from any logged cook, and was flagged as the least-evidenced number in the recipe.\n- **Bitterness balance.** The adjustment note offered a further 5 ml of vinegar at the plate as the lever; whether it was used is unrecorded.\n- **It may simply be a component that supports the plate without being memorable on its own** — in which case 8.5 is the correct standing score and nothing needs changing.\n### Next time\n1. Record which of the three causes above applies before changing anything.\n2. Set Repeat? once that is known. An 8.5 on a structurally necessary component is not the same verdict as an 8.5 on an optional one.\n3. Reusable beyond duck. The bitter-plus-acid profile suits pork belly, rich poultry and anything where the plate needs a reset rather than more sweetness — it is the complement to the braised red cabbage, not a replacement for it.\n4. **Method naming:** this is roasted radicchio, not charred. A 425°F oven browns the cut faces; it does not char them. Actual char would need the binchotan and its own heat-resource schedule.",
+      "deviations": [],
+      "parameter_confirmations": [
+        {
+          "param": "Roast time, cut-side down on a preheated tray at 425°F / 220°C",
+          "designed": "15 minutes without turning",
+          "observed": "15 minutes; rated 8.5, a full point below the menu — cause not recorded",
+          "verdict": "unresolved"
+        },
+        {
+          "param": "Dressing fat",
+          "designed": "olive oil rather than duck fat, to hold rendered duck fat to two of four components",
+          "observed": "dressed in 30 ml olive oil as designed",
+          "verdict": "confirmed"
+        },
+        {
+          "param": "Bitterness balance lever (further 5 ml vinegar at the plate)",
+          "designed": "optional 5 ml vinegar at the plate",
+          "observed": "whether it was used is unrecorded",
+          "verdict": "unresolved"
+        }
+      ],
+      "household_split": null,
+      "wine_outcome": null
+    }
+  ]
+}

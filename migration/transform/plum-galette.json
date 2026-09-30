@@ -1,0 +1,147 @@
+{
+  "assignment_key": "plum-galette",
+  "source_page_ids": [
+    "2dbe0391ce63804f9755fa6a9721427f"
+  ],
+  "meal": null,
+  "dishes": [
+    {
+      "slug": "plum-galette",
+      "name": "Plum Galette",
+      "protein": null,
+      "category": [
+        "Dessert"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": "Easy",
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "NYTimes / ChatGPT",
+      "governance_version": null,
+      "summary": "A free-form plum galette on a sweet tart crust, finished with an apricot jam glaze.",
+      "method_md": "**Best With:** Duck, pork belly, braised beef, lamb shanks\n\n---\n## Ingredients\n- 1 disk **sweet tart crust**, chilled\n- **5–6 medium plums** (≈450–500 g), ripe but firm\n- **¼ cup (50 g) sugar**, plus more for sprinkling\n- **1/16 tsp ground nutmeg** *(small pinch)*\n- **1–1½ tsp cornstarch**\n- **2 tbsp cold salted butter**, diced\n- **2 tbsp heavy cream**\n- **2 tbsp apricot jam**\n- Flour, for rolling\n---\n## Method\n1. **Preheat oven to 200°C / 400°F.**\n2. Halve and pit plums. Cut into **thick wedges**.\n3. In a bowl, toss plums with:\n\t- sugar\n\t- nutmeg\n\t- cornstarch\n4. Roll dough on a lightly floured surface into an **11-inch circle**. Transfer to a parchment-lined baking tray.\n5. Arrange plums on dough, cut-side up, leaving a **2-inch border**.\n6. Dot fruit with butter.\n7. Fold edges up over fruit. Brush crust with cream and sprinkle lightly with sugar.\n8. Bake **35–40 minutes**, until crust is deeply golden and juices are bubbling.\n9. Warm apricot jam and strain. Brush lightly over fruit.\n10. Cool **15 minutes** before slicing.\n---\n## Serving\n- Serve **warm or room temperature**\n- Best with **crème fraîche** or lightly whipped cream\n- Avoid ice cream (too heavy for this style)\n---\n## Notes\n- Add **orange zest** if you want a brighter finish\n- Keeps well refrigerated for **2 days**\n- Reheat briefly at 160°C / 325°F\n",
+      "servings": null,
+      "equipment": [
+        "parchment-lined baking tray"
+      ],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2dbe0391ce63804f9755fa6a9721427f",
+      "ingredients": [
+        {
+          "name": "sweet tart crust",
+          "department": "Bread",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "1 disk, chilled",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "plum",
+          "department": "Produce",
+          "qty": 5,
+          "unit": "piece",
+          "qty_alt": "≈450–500 g",
+          "prep_note": "5–6 medium, ripe but firm; halved, pitted, cut into thick wedges",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "sugar",
+          "department": "Pantry",
+          "qty": 50,
+          "unit": "g",
+          "qty_alt": "¼ cup",
+          "prep_note": "plus more for sprinkling",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "ground nutmeg",
+          "department": "Seasoning",
+          "qty": 0.0625,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "1/16 tsp, small pinch",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "cornstarch",
+          "department": "Pantry",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": "1–1½ tsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "salted butter",
+          "department": "Dairy",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "cold, diced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "heavy cream",
+          "department": "Dairy",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "apricot jam",
+          "department": "Pantry",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "flour",
+          "department": "Pantry",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "for rolling",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "dish",
+      "dish_slug": "plum-galette",
+      "cooked_on": "2026-01-01",
+      "rating": 9,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": null,
+      "deviations": [
+        "cook date unknown — page creation date used"
+      ],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    }
+  ]
+}

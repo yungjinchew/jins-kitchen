@@ -1,0 +1,118 @@
+{
+  "assignment_key": "creme-brulee",
+  "source_page_ids": [
+    "301e0391ce6380c4a692edfa464590a9"
+  ],
+  "meal": null,
+  "dishes": [
+    {
+      "slug": "vanilla-creme-brulee",
+      "name": "Vanilla Creme Brulee",
+      "protein": null,
+      "category": [
+        "Dessert"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": "Easy",
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Weeknight"
+      ],
+      "status": "cooked",
+      "source": null,
+      "governance_version": null,
+      "summary": "A classic French vanilla crème brûlée baked in a water bath and torched before serving; serves 3.",
+      "method_md": "# Vanilla Crème Brûlée\n\nServes 3\n\n**Course:** Dessert\n**Cuisine:** French\n**Prep Time:** 20 min\n**Cook Time:** 30–40 min\n**Chill Time:** 4+ hours\n\n## Ingredients\n- 360 ml heavy cream\n- 4 large egg yolks (room temperature preferred)\n- 55 g caster sugar (for custard)\n- 1 vanilla bean (split and scraped) or 1½ tsp pure vanilla extract\n- Pinch of fine sea salt\n- 15–20 g sugar (for brûlée tops, about 1–1½ tsp per ramekin)\n\n## Instructions\n\n**1. Infuse the cream**\nHeat cream with vanilla seeds and pod over medium heat until steaming, with small bubbles forming at the edges (about 70–75 °C / 158–167 °F). Do not boil.\nRemove from heat, cover, and steep for 10 minutes. Remove the pod.\n\n**2. Prepare the yolks**\nIn a bowl, gently whisk egg yolks, sugar, and salt until just combined. Do not over-whisk or aerate.\n\n**3. Temper**\nSlowly pour about one-quarter of the warm cream into the yolks while whisking constantly. Then whisk the yolk mixture back into the remaining cream.\n\n**4. Strain**\nStrain the mixture through a fine sieve into a jug to remove any bubbles and solids.\n\n**5. Fill the ramekins**\nDivide the mixture evenly among 3 shallow ramekins.\n\n**6. Bake (water bath)**\nPlace ramekins in a baking dish. Pour hot tap water into the dish until it reaches halfway up the sides of the ramekins.\nBake at 150 °C / 300 °F for 30–40 minutes, until the edges are set and the centers wobble like soft gelatin.\n\n**7. Cool properly**\nLeave ramekins in the water bath for 10–15 minutes.\nRemove and cool at room temperature for 30–45 minutes.\nRefrigerate uncovered for 1 hour, then cover and chill for at least 4 hours or overnight.\n\n**8. Caramelize before serving**\nRemove from the fridge 15–20 minutes before serving.\nBlot any condensation from the surface. Sprinkle 1–1½ tsp sugar evenly over each custard.\nTorch until you achieve a deep amber caramel. Rest for 1 minute to let the crust harden.\nServe cool.\n\n## Notes\n- Proper doneness temperature: 80–82 °C (176–180 °F) internal\n- Do not boil the cream\n- Do not overbake—the center should still wobble when removed from the oven\n",
+      "servings": 3,
+      "equipment": [
+        "shallow ramekins (3)",
+        "baking dish",
+        "fine sieve",
+        "kitchen torch"
+      ],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "301e0391ce6380c4a692edfa464590a9",
+      "ingredients": [
+        {
+          "name": "heavy cream",
+          "department": "Dairy",
+          "qty": 360,
+          "unit": "ml",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "egg yolk",
+          "department": "Dairy",
+          "qty": 4,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "large, room temperature preferred",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "caster sugar",
+          "department": "Pantry",
+          "qty": 55,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "for custard",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "vanilla bean",
+          "department": "Pantry",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "split and scraped; or 1½ tsp pure vanilla extract",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine sea salt",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "pinch",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "sugar",
+          "department": "Pantry",
+          "qty": 15,
+          "unit": "g",
+          "qty_alt": "15–20 g",
+          "prep_note": "for brûlée tops, about 1–1½ tsp per ramekin",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "dish",
+      "dish_slug": "vanilla-creme-brulee",
+      "cooked_on": "2026-02-08",
+      "rating": 9.5,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": null,
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    }
+  ]
+}

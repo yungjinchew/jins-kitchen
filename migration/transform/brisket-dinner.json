@@ -1,0 +1,579 @@
+{
+  "assignment_key": "brisket-dinner",
+  "source_page_ids": [
+    "2dbe0391ce6380479acee4a414184e51",
+    "2dbe0391ce638052897ccef33f07352e",
+    "2dbe0391ce638080980cee332555b009",
+    "2dbe0391ce63809cbc83e14ddfdf0992"
+  ],
+  "meal": {
+    "slug": "brisket-dinner-new-year",
+    "name": "Brisket Dinner (New Year 2026)",
+    "planned_date": "2026-01-01",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": null,
+    "shared_prep_md": null,
+    "wine_pairing": null,
+    "legacy_notion_id": null,
+    "components": [
+      {
+        "dish_slug": "brisket-main-unfiled",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "brisket-creme-fraiche-dijon-sauce",
+        "role": "sauce",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "brisket-garlic-mushroom-green-bean-skillet",
+        "role": "side",
+        "service_order": 3
+      },
+      {
+        "dish_slug": "brisket-parsley-carrot-celery-slaw",
+        "role": "salad",
+        "service_order": 4
+      },
+      {
+        "dish_slug": "brisket-pumpkin-custard-galette",
+        "role": "dessert",
+        "service_order": 5
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "brisket-main-unfiled",
+      "name": "Brisket (unfiled)",
+      "protein": "Beef",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [],
+      "status": "cooked",
+      "source": null,
+      "governance_version": null,
+      "summary": "The brisket main for the 1 Jan 2026 dinner was never filed in the Vault; placeholder for the menu record",
+      "method_md": null,
+      "servings": null,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": null,
+      "ingredients": []
+    },
+    {
+      "slug": "brisket-creme-fraiche-dijon-sauce",
+      "name": "Crème Fraîche Dijon Brisket Sauce",
+      "protein": null,
+      "category": [
+        "Sauce"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": "Easy",
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT",
+      "governance_version": null,
+      "summary": "A warm crème fraîche and Dijon mustard sauce loosened with brisket jus, served with brisket.",
+      "method_md": "**Ingredients**\n3½ tbsp crème fraîche\n1¼ tsp Dijon mustard\n1–2 tbsp brisket jus (optional but recommended)\n1–2 tbsp heavy cream (to loosen, optional)\nFreshly cracked black pepper\nFine sea salt, only if needed\n\n**Method**\nCombine all ingredients in a small saucepan.\nWarm over very low heat, whisking, until silky and pourable—do not boil.\nTaste and adjust salt lightly if needed.\n\n**Notes**\nOptional brightener: ½ tsp sherry vinegar at the end.\nRemove from heat when warm and glossy; overheating will cause the sauce to split.\n",
+      "servings": null,
+      "equipment": [
+        "small saucepan"
+      ],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2dbe0391ce6380479acee4a414184e51",
+      "ingredients": [
+        {
+          "name": "crème fraîche",
+          "department": "Dairy",
+          "qty": 3.5,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "dijon mustard",
+          "department": "Pantry",
+          "qty": 1.25,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "brisket jus",
+          "department": "Pantry",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": "1–2 tbsp",
+          "prep_note": "from the brisket; optional but recommended",
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "heavy cream",
+          "department": "Dairy",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": "1–2 tbsp",
+          "prep_note": "to loosen",
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "freshly cracked",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine sea salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "only if needed",
+          "pantry_check": false,
+          "optional": true
+        },
+        {
+          "name": "sherry vinegar",
+          "department": "Oils & Liquids",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "optional brightener, added at the end",
+          "pantry_check": false,
+          "optional": true
+        }
+      ]
+    },
+    {
+      "slug": "brisket-parsley-carrot-celery-slaw",
+      "name": "Bright Parsley Carrot–Celery Slaw",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": "Easy",
+      "tags": [],
+      "occasion": [
+        "Family"
+      ],
+      "status": "cooked",
+      "source": null,
+      "governance_version": null,
+      "summary": "A crunchy raw slaw of grated carrot, bias-cut celery and parsley dressed with olive oil and sherry vinegar.",
+      "method_md": "**Ingredients**\n2 medium carrots, grated on the largest holes\n2 celery stalks, sliced very thin on the bias (1–2 mm)\n2 tbsp Italian parsley, finely chopped\n2½ tbsp olive oil\n1½ tbsp sherry vinegar (or apple cider vinegar)\n¼ tsp fine sea salt\nFreshly cracked black pepper\n\n**Method**\nCombine carrots, celery, and parsley in a bowl.\nWhisk together olive oil, vinegar, salt, and pepper in a separate bowl.\nToss just before serving.\nLet rest 5–10 minutes to lightly soften while retaining crunch.\n\n**Notes**\nLarge-hole grating prevents the carrots from weeping and preserves their crunch.\nThin bias-cut celery avoids fibrous chew.\n",
+      "servings": null,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2dbe0391ce638052897ccef33f07352e",
+      "ingredients": [
+        {
+          "name": "carrot",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "medium, grated on the largest holes",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "celery stalk",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "sliced very thin on the bias (1–2 mm)",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "italian parsley",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "finely chopped",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 2.5,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "sherry vinegar",
+          "department": "Oils & Liquids",
+          "qty": 1.5,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "or apple cider vinegar",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine sea salt",
+          "department": "Seasoning",
+          "qty": 0.25,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "freshly cracked",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "brisket-pumpkin-custard-galette",
+      "name": "Pumpkin Custard Galette",
+      "protein": null,
+      "category": [
+        "Dessert"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": "Easy",
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Date Night",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "NYTimes, ChatGPT",
+      "governance_version": null,
+      "summary": "A free-form galette with a spiced pumpkin custard filling on a sweet tart crust.",
+      "method_md": "# 🎃 Pumpkin Custard Galette\n\n**Ingredients**\n- 1 disk sweet tart crust\n- ¾ cup (180 g) pumpkin purée\n- 50 g light brown sugar\n- 1 large egg\n- ¼ cup (60 ml) heavy cream\n- ¼ tsp vanilla extract\n- ⅛ tsp nutmeg\n- Pinch of salt\n- Zest of ½ orange\n- 1 tbsp melted butter\n- ½–1 tsp fine white sugar (for crust)\n\n**Method**\nPreheat oven to 190°C / 375°F\nRoll crust to 11 in / 28 cm.\nWhisk filling until smooth.\nFill centre, leave 2½ in border.\nFold edges. Brush butter. Sprinkle sugar.\nBake 40–45 min until deep golden and just set.\nRest 20 minutes before slicing.\n\n**Serve with**\nCrème fraîche or lightly whipped cream.\n",
+      "servings": null,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2dbe0391ce638080980cee332555b009",
+      "ingredients": [
+        {
+          "name": "sweet tart crust",
+          "department": "Bread",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "1 disk",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "pumpkin purée",
+          "department": "Pantry",
+          "qty": 180,
+          "unit": "g",
+          "qty_alt": "¾ cup",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "light brown sugar",
+          "department": "Pantry",
+          "qty": 50,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "egg",
+          "department": "Dairy",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "large",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "heavy cream",
+          "department": "Dairy",
+          "qty": 60,
+          "unit": "ml",
+          "qty_alt": "¼ cup",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "vanilla extract",
+          "department": "Pantry",
+          "qty": 0.25,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "nutmeg",
+          "department": "Seasoning",
+          "qty": 0.125,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "salt",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "pinch",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "orange",
+          "department": "Produce",
+          "qty": 0.5,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "zest only",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "butter",
+          "department": "Dairy",
+          "qty": 1,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "melted",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine white sugar",
+          "department": "Pantry",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": "½–1 tsp",
+          "prep_note": "for crust",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "brisket-garlic-mushroom-green-bean-skillet",
+      "name": "Charred Garlic Mushroom & Green Bean Skillet",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": "Easy",
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "ChatGPT",
+      "governance_version": null,
+      "summary": "Thawed frozen mushrooms and green beans charred in brisket fat with garlic and a splash of sherry vinegar.",
+      "method_md": "**Ingredients**\n230 g frozen green beans, fully thawed and patted very dry\n180 g frozen mushrooms, fully thawed and patted very dry\n2 tbsp brisket fat or unsalted butter\n2 cloves garlic, minced\n1½ tsp sherry vinegar\nFine sea salt to taste\nFreshly cracked black pepper\n\n**Method**\nHeat a wide pan over medium-high heat.\nAdd fat. Add mushrooms in a single layer. Do not move for 2–3 minutes until deeply browned.\nAdd green beans. Toss occasionally until blistered and lightly charred, 3–4 minutes.\nReduce heat to medium-low. Add garlic and cook for 30 seconds.\nSplash with vinegar, season with salt and pepper. Serve immediately.\n\n**Notes**\nDrying the vegetables thoroughly is essential for a proper char.\n",
+      "servings": null,
+      "equipment": [
+        "wide pan"
+      ],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "2dbe0391ce63809cbc83e14ddfdf0992",
+      "ingredients": [
+        {
+          "name": "green bean, frozen",
+          "department": "Frozen",
+          "qty": 230,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "fully thawed and patted very dry",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "mushroom, frozen",
+          "department": "Frozen",
+          "qty": 180,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "fully thawed and patted very dry",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "brisket fat",
+          "department": "Oils & Liquids",
+          "qty": 2,
+          "unit": "tbsp",
+          "qty_alt": null,
+          "prep_note": "or unsalted butter",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "minced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "sherry vinegar",
+          "department": "Oils & Liquids",
+          "qty": 1.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine sea salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "to taste",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "freshly cracked",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2026-01-01",
+      "rating": null,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": null,
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    },
+    {
+      "owner": "dish",
+      "dish_slug": "brisket-creme-fraiche-dijon-sauce",
+      "cooked_on": "2026-01-01",
+      "rating": 9,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": null,
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    },
+    {
+      "owner": "dish",
+      "dish_slug": "brisket-parsley-carrot-celery-slaw",
+      "cooked_on": "2026-01-01",
+      "rating": 8,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": null,
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    },
+    {
+      "owner": "dish",
+      "dish_slug": "brisket-pumpkin-custard-galette",
+      "cooked_on": "2026-01-01",
+      "rating": null,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": null,
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    },
+    {
+      "owner": "dish",
+      "dish_slug": "brisket-garlic-mushroom-green-bean-skillet",
+      "cooked_on": "2026-01-01",
+      "rating": 8.5,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": null,
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    }
+  ]
+}

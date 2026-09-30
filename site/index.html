@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jin's Kitchen</title>
+<meta name="description" content="Dishes, meals, cook history and shopping lists for Sunday dinners.">
+<meta name="theme-color" content="#1B5E7B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Kitchen">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{
+  --bg:#f6f4ef; --bg2:#ffffff; --ink:#1d1d1b; --ink2:#5c5b56; --ink3:#8d8b84; --line:#e4e1d9;
+  --accent:#1B5E7B; --accent2:#D0E8F0; --accent-ink:#0f3f54; --ok:#2e7d4f; --warn:#b26a00; --bad:#a33a2f;
+  --chip:#ecebe5; --chip-on:#1B5E7B; --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.05);
+  --r:14px; --tab:64px;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#141513; --bg2:#1e201d; --ink:#ecebe6; --ink2:#b8b6ae; --ink3:#83817a; --line:#2c2e2a;
+  --accent:#6fb6d4; --accent2:#173a4a; --accent-ink:#cfe7f1; --chip:#272925; --chip-on:#6fb6d4; --shadow:none;
+}}
+*{box-sizing:border-box} html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;padding-bottom:calc(var(--tab) + env(safe-area-inset-bottom))}
+a{color:var(--accent);text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+input,select,textarea{font:inherit;color:inherit} textarea.search{resize:vertical}
+h1,h2,h3{margin:0;font-weight:650;letter-spacing:-.01em}
+h1{font-size:24px} h2{font-size:18px} h3{font-size:15px;color:var(--ink2);text-transform:uppercase;letter-spacing:.06em;font-weight:600;font-size:12px}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+header.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:12px;min-height:56px;padding-top:env(safe-area-inset-top)}
+header.top h1{font-size:19px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.back{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:var(--accent);font-size:22px;margin-left:-8px}
+.muted{color:var(--ink2)} .dim{color:var(--ink3)} .small{font-size:13px}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;box-shadow:var(--shadow)}
+.stack>*+*{margin-top:12px}
+.section{margin:22px 0 10px}
+.list{display:flex;flex-direction:column;gap:10px}
+.row{display:flex;align-items:center;gap:12px}
+.row .grow{flex:1;min-width:0}
+.title{font-weight:600;line-height:1.3}
+.sub{color:var(--ink2);font-size:13px;margin-top:2px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{background:var(--chip);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--ink2);white-space:nowrap;border:1px solid transparent}
+.chip.on{background:var(--chip-on);color:#fff;border-color:var(--chip-on)}
+@media (prefers-color-scheme:dark){.chip.on{color:#0c1a20}}
+.chip.mini{padding:2px 8px;font-size:11px}
+.scrollx{display:flex;gap:8px;overflow-x:auto;padding:4px 0 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch} .scrollx::-webkit-scrollbar{display:none}
+.scrollx .chip{flex:0 0 auto}
+.rating{font-variant-numeric:tabular-nums;font-weight:650;color:var(--accent-ink);background:var(--accent2);border-radius:8px;padding:4px 8px;font-size:14px;min-width:44px;text-align:center}
+.rating.none{background:var(--chip);color:var(--ink3);font-weight:500}
+.tag{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);font-weight:600}
+.tag.ok{color:var(--ok)} .tag.warn{color:var(--warn)} .tag.bad{color:var(--bad)}
+.search{width:100%;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg2);outline:none}
+.search:focus{border-color:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;border-radius:11px;padding:10px 14px;font-weight:600;font-size:14px}
+@media (prefers-color-scheme:dark){.btn{color:#0c1a20}}
+.btn.ghost{background:var(--chip);color:var(--ink)}
+.btn.sm{padding:7px 11px;font-size:13px}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px}
+.kv dt{color:var(--ink3)} .kv dd{margin:0}
+.md{font-size:15px;line-height:1.55;overflow-wrap:anywhere}
+.md h1,.md h2,.md h3,.md h4{margin:18px 0 8px;font-size:15px;text-transform:none;letter-spacing:0;color:var(--ink);font-weight:700}
+.md h1{font-size:17px} .md p{margin:8px 0} .md ul,.md ol{padding-left:22px;margin:6px 0} .md li{margin:3px 0}
+.md blockquote{margin:8px 0;padding:6px 12px;border-left:3px solid var(--accent);color:var(--ink2);background:var(--chip);border-radius:0 8px 8px 0}
+.md table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0;display:block;overflow-x:auto}
+.md th,.md td{border:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}
+.md code{background:var(--chip);padding:1px 5px;border-radius:5px;font-size:13px}
+.md hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+.ing{display:grid;grid-template-columns:88px 1fr;gap:4px 12px;font-size:14px}
+.ing .q{color:var(--ink2);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ing .opt{color:var(--ink3);font-style:italic}
+details summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"›";margin-left:auto;color:var(--ink3);font-size:20px;transition:transform .15s}
+details[open] summary::after{transform:rotate(90deg)}
+.empty{text-align:center;color:var(--ink3);padding:40px 12px;font-size:14px}
+.tabs{position:fixed;bottom:0;left:0;right:0;height:calc(var(--tab) + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);background:var(--bg2);border-top:1px solid var(--line);display:flex;z-index:6}
+.tabs a{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--ink3);font-size:11px;font-weight:600;letter-spacing:.02em}
+.tabs a.on{color:var(--accent)}
+.tabs svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.shop-dept{margin-top:18px}
+.shop-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.shop-item:last-child{border-bottom:0}
+.shop-item .box{width:24px;height:24px;border-radius:7px;border:2px solid var(--ink3);flex:0 0 auto;margin-top:1px;display:grid;place-items:center;color:#fff;font-size:15px}
+.shop-item.done .box{background:var(--accent);border-color:var(--accent)}
+.shop-item.done .lbl{text-decoration:line-through;color:var(--ink3)}
+.shop-item .lbl{flex:1} .shop-item .attr{font-size:12px;color:var(--ink3);margin-top:2px}
+.pill{display:inline-block;font-size:11px;padding:2px 7px;border-radius:6px;background:var(--accent2);color:var(--accent-ink);font-weight:600;vertical-align:middle}
+.banner{background:var(--accent2);color:var(--accent-ink);border-radius:10px;padding:8px 12px;font-size:13px}
+.spin{display:inline-block;width:16px;height:16px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:sp .8s linear infinite;vertical-align:middle}
+@keyframes sp{to{transform:rotate(360deg)}}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.stat b{display:block;font-size:20px;font-weight:650} .stat span{font-size:12px;color:var(--ink3)}
+.toast{position:fixed;left:50%;bottom:calc(var(--tab) + 16px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;z-index:9;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.show{opacity:1}
+@media print{header.top,.tabs,.btnrow,.search,.scrollx{display:none!important} body{padding:0;background:#fff;color:#000} .card{border:0;box-shadow:none;padding:0}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap" id="hdr"></div></header>
+<main class="wrap" id="app"><div class="empty"><span class="spin"></span> Loading…</div></main>
+<nav class="tabs" id="tabs"></nav>
+<div class="toast" id="toast"></div>
+
+<script>
+// ---------------------------------------------------------------- config
+const SB_URL = 'https://umqkgxsypcgvzkfjkzpc.supabase.co';
+const SB_KEY = 'sb_publishable_fsZ1rHHpObb4vFDmfqGSkQ_J8c64TUy';
+const DOCS_BASE = SB_URL + '/storage/v1/object/public/kitchen-docs/';
+const DEPT_ORDER = ['Protein','Produce','Dairy','Bread','Frozen','Pantry','Oils & Liquids','Alcohol','Seasoning'];
+const ROLE_ORDER = {starter:0,soup:1,main:2,side:3,salad:4,sauce:5,bread:6,dessert:7};
+
+// ---------------------------------------------------------------- data
+const DB = {dish:[],meal:[],meal_dish:[],cook:[],document:[],dish_ingredient:[],rollup:[],validations:[],measurement:[],loadedAt:null,fromCache:false};
+const IDX = {dish:{},dishBySlug:{},meal:{},mealBySlug:{}};
+
+async function sb(path){
+  const r = await fetch(SB_URL + '/rest/v1/' + path, {headers:{apikey:SB_KEY, Authorization:'Bearer '+SB_KEY}});
+  if(!r.ok) throw new Error(path+' '+r.status);
+  return r.json();
+}
+async function loadAll(){
+  try{
+    const [dish,meal,meal_dish,cook,document,dish_ingredient,rollup,validations,measurement] = await Promise.all([
+      sb('dish?select=*&order=name'),
+      sb('meal?select=*&order=planned_date.desc.nullslast'),
+      sb('meal_dish?select=*'),
+      sb('cook?select=*&order=cooked_on.desc'),
+      sb('document?select=*&order=generated_at.desc'),
+      sb('dish_ingredient?select=*,ingredient(*)&order=sort_order'),
+      sb('dish_rating_rollup?select=*'),
+      sb('open_validations?select=*'),
+      sb('measurement?select=*&order=sort_order')
+    ]);
+    Object.assign(DB,{dish,meal,meal_dish,cook,document,dish_ingredient,rollup,validations,measurement,loadedAt:Date.now(),fromCache:false});
+    try{localStorage.setItem('kitchen:db',JSON.stringify(DB));}catch(e){}
+    return true;
+  }catch(e){
+    console.warn('load failed',e);
+    try{const c=localStorage.getItem('kitchen:db'); if(c){Object.assign(DB,JSON.parse(c)); DB.fromCache=true; return true;}}catch(e2){}
+    return false;
+  }
+}
+function index(){
+  IDX.dish={};IDX.dishBySlug={};IDX.meal={};IDX.mealBySlug={};
+  const rl={}; DB.rollup.forEach(r=>rl[r.dish_id]=r);
+  DB.dish.forEach(d=>{d.r=rl[d.id]||{times_made:0}; d.ings=[]; d.meals=[]; d.cooks=[]; d.docs=[]; IDX.dish[d.id]=d; IDX.dishBySlug[d.slug]=d;});
+  DB.meal.forEach(m=>{m.dishes=[]; m.cooks=[]; m.docs=[]; IDX.meal[m.id]=m; IDX.mealBySlug[m.slug]=m;});
+  DB.meal_dish.forEach(md=>{const m=IDX.meal[md.meal_id], d=IDX.dish[md.dish_id]; if(m&&d){m.dishes.push({...md,dish:d}); d.meals.push(m);}});
+  DB.meal.forEach(m=>m.dishes.sort((a,b)=>(a.service_order-b.service_order)||(ROLE_ORDER[a.role]-ROLE_ORDER[b.role])));
+  DB.dish_ingredient.forEach(di=>{const d=IDX.dish[di.dish_id]; if(d) d.ings.push(di);});
+  DB.cook.forEach(c=>{if(c.dish_id&&IDX.dish[c.dish_id]) IDX.dish[c.dish_id].cooks.push(c); if(c.meal_id&&IDX.meal[c.meal_id]) IDX.meal[c.meal_id].cooks.push(c);});
+  DB.document.forEach(x=>{const o=x.owner_type==='meal'?IDX.meal[x.owner_id]:IDX.dish[x.owner_id]; if(o) o.docs.push(x);});
+  DB.dish.forEach(d=>{d.open=[];d.meas=[];}); (DB.validations||[]).forEach(v=>{const d=IDX.dish[v.dish_id]; if(d) d.open.push(v);});
+  (DB.measurement||[]).forEach(x=>{const d=IDX.dish[x.dish_id]; if(d) d.meas.push(x);});
+  // meal-level last made / rating
+  DB.meal.forEach(m=>{const c=m.cooks[0]; m.last=c?c.cooked_on:m.planned_date; m.rating=c&&c.rating!=null?c.rating:null;
+    m.dishes.forEach(x=>{const d=x.dish; if(m.status==='cooked'&&m.last&&(!d.served||m.last>d.served)){d.served=m.last;d.servedIn=m;d.mealRating=m.rating;}});
+    const dishRated=m.dishes.map(x=>x.dish.r.latest_rating).filter(v=>v!=null);
+    m.dishAvg=dishRated.length?(dishRated.reduce((a,b)=>a+ +b,0)/dishRated.length):null;});
+}
+
+// ---------------------------------------------------------------- utils
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmtDate=d=>{if(!d)return '';const x=new Date(d+'T00:00:00');return x.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});};
+const daysAgo=d=>d?Math.round((Date.now()-new Date(d+'T00:00:00'))/86400000):null;
+const ago=d=>{const n=daysAgo(d);if(n==null)return 'never';if(n<1)return 'today';if(n<30)return n+'d ago';if(n<365)return Math.round(n/30)+'mo ago';return (n/365).toFixed(1)+'y ago';};
+const num=v=>v==null?null:(+v%1===0?String(+v):String(+v));
+const rep=v=>({yes:'Repeat',with_modifications:'Repeat w/ mods',no:'No repeat'}[v]||'');
+const repCls=v=>({yes:'ok',with_modifications:'warn',no:'bad'}[v]||'');
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),1800);}
+function md(src){ // minimal markdown → html, permissive of inline html the pages already contain
+  if(!src) return '';
+  let s=src.replace(/\r/g,'').replace(/\\([~*_#>\-])/g,'$1');
+  const lines=s.split('\n'); let out=[], inList=null, para=[];
+  const flushP=()=>{if(para.length){out.push('<p>'+inline(para.join(' '))+'</p>');para=[];}};
+  const closeList=()=>{if(inList){out.push('</'+inList+'>');inList=null;}};
+  const inline=t=>t.replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/(^|[^*])\*([^*\n]+?)\*/g,'$1<i>$2</i>').replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\[([^\]]+)\]\((https?:[^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+  for(let raw of lines){
+    const l=raw.replace(/^\t+/,'');
+    if(/^\s*$/.test(l)){flushP();closeList();continue;}
+    if(/^<(table|tr|td|th|tbody|thead|\/table|div|ul|ol|li|br)/i.test(l.trim())){flushP();closeList();out.push(l);continue;}
+    let m;
+    if((m=l.match(/^(#{1,6})\s+(.*)/))){flushP();closeList();const n=Math.min(m[1].length+1,4);out.push(`<h${n}>${inline(m[2])}</h${n}>`);continue;}
+    if((m=l.match(/^>\s?(.*)/))){flushP();closeList();out.push('<blockquote>'+inline(m[1])+'</blockquote>');continue;}
+    if(/^(---|\*\*\*)\s*$/.test(l)){flushP();closeList();out.push('<hr>');continue;}
+    if((m=l.match(/^\s*[-*•☐]\s+(.*)/))){flushP();if(inList!=='ul'){closeList();out.push('<ul>');inList='ul';}out.push('<li>'+inline(m[1])+'</li>');continue;}
+    if((m=l.match(/^\s*\d+[.)]\s+(.*)/))){flushP();if(inList!=='ol'){closeList();out.push('<ol>');inList='ol';}out.push('<li>'+inline(m[1])+'</li>');continue;}
+    if(/^\|/.test(l)){flushP();closeList();out.push(tableBlock(l));continue;}
+    para.push(l);
+  }
+  flushP();closeList();
+  return out.join('\n').replace(/<\/ul>\n<ul>/g,'').replace(/<\/ol>\n<ol>/g,'');
+  function tableBlock(l){ // single-line table rows handled row by row
+    if(/^\|\s*:?-+/.test(l)) return '';
+    const cells=l.split('|').slice(1,-1).map(c=>c.trim());
+    const tag=/^\|\s*\*\*/.test(l)?'th':'td';
+    return '<table><tr>'+cells.map(c=>`<${tag}>${inline(c)}</${tag}>`).join('')+'</tr></table>';
+  }
+}
+function qtyText(di){
+  const q=num(di.qty), u=di.unit||''; const sep=/^(g|ml|kg|l)$/.test(u)?'':' '; let s=q?(q+(u?sep+u:'')):(u||'');
+  if(!s && di.qty_alt) return di.qty_alt;
+  return s;
+}
+function ingName(di){return di.ingredient?di.ingredient.name:'';}
+
+// ---------------------------------------------------------------- router
+const routes={};
+function nav(h){location.hash=h;}
+window.addEventListener('hashchange',()=>render());
+function parse(){const h=location.hash.replace(/^#\/?/,'')||'library';const p=h.split('/');return {view:p[0],arg:decodeURIComponent(p[1]||''),arg2:decodeURIComponent(p[2]||'')};}
+function setHeader(title,back){document.getElementById('hdr').innerHTML=(back?`<button class="back" onclick="history.length>1?history.back():nav('${back}')" aria-label="Back">‹</button>`:'')+`<h1>${esc(title)}</h1>`+(DB.fromCache?'<span class="tag warn">offline</span>':'');}
+function tabs(active){
+  const t=[['library','Library','<svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg>'],
+           ['meals','Meals','<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>'],
+           ['shopping','Shopping','<svg viewBox="0 0 24 24"><path d="M3 4h2l2.5 11h11L21 7H6.5"/><circle cx="9" cy="19" r="1.3"/><circle cx="17" cy="19" r="1.3"/></svg>'],
+           ['validations','Validate','<svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>'],
+           ['docs','Docs','<svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg>']];
+  document.getElementById('tabs').innerHTML=t.map(([k,l,i])=>`<a href="#/${k}" class="${active===k?'on':''}">${i}${l}</a>`).join('');
+}
+function render(){
+  const {view,arg,arg2}=parse(); window.scrollTo(0,0);
+  const app=document.getElementById('app');
+  const fn=routes[view]||routes.library;
+  try{app.innerHTML=fn(arg,arg2);}catch(e){console.error(e);app.innerHTML=`<div class="empty">Something went wrong rendering this page.<br><span class="small">${esc(e.message)}</span></div>`;}
+}
+
+// ---------------------------------------------------------------- library
+const F={q:'',protein:'',category:'',status:'',repeat:'',stale:false,equip:'',sort:'last'};
+const EQ=[['le creuset','Le Creuset'],['konro','Konro'],['binchotan','Konro'],['tempspike','TempSpike'],['thermapen','Thermapen'],['probe','Probe'],['tiger','Tiger'],['torch','Torch'],['cast iron','Cast iron'],['dutch oven','Le Creuset'],['oven','Oven'],['induction','Induction']];
+function eqKey(e){const l=String(e).toLowerCase(); for(const [k,v] of EQ){if(l.includes(k)) return v;} return null;}
+routes.library=()=>{
+  setHeader("Jin's Kitchen"); tabs('library');
+  const proteins=[...new Set(DB.dish.map(d=>d.protein).filter(Boolean))].sort();
+  const eqCount={}; DB.dish.forEach(d=>(d.equipment||[]).forEach(e=>{const k=eqKey(e); if(k) eqCount[k]=(eqCount[k]||0)+1;}));
+  const equip=Object.entries(eqCount).filter(([k,n])=>n>=2).sort((a,b)=>b[1]-a[1]).map(([k])=>k);
+  const cats=['Main','Side','Sauce','Salad','Soup','Bread','Dessert'];
+  let list=DB.dish.filter(d=>d.slug!=='brisket-main-unfiled');
+  if(F.q){const q=F.q.toLowerCase();list=list.filter(d=>(d.name+' '+(d.summary||'')+' '+(d.cuisine||[]).join(' ')+' '+d.ings.map(ingName).join(' ')).toLowerCase().includes(q));}
+  if(F.protein)list=list.filter(d=>d.protein===F.protein);
+  if(F.category)list=list.filter(d=>(d.category||[]).includes(F.category));
+  if(F.status==='backlog')list=list.filter(d=>d.status==='designed'||d.status==='idea');
+  if(F.status==='rated')list=list.filter(d=>d.r.latest_rating!=null||d.mealRating!=null);
+  if(F.repeat)list=list.filter(d=>d.r.latest_repeat===F.repeat);
+  if(F.stale)list=list.filter(d=>(d.r.last_made||d.served)&&daysAgo(d.r.last_made||d.served)>90);
+  if(F.equip)list=list.filter(d=>(d.equipment||[]).some(e=>eqKey(e)===F.equip));
+  const eff=d=>d.r.last_made||d.served||''; const effR=d=>d.r.latest_rating!=null?+d.r.latest_rating:(d.mealRating!=null?+d.mealRating:0);
+  const sorters={last:(a,b)=>eff(b).localeCompare(eff(a)),rating:(a,b)=>effR(b)-effR(a),name:(a,b)=>a.name.localeCompare(b.name)};
+  list.sort(sorters[F.sort]);
+  const chip=(k,v,l)=>`<button class="chip ${F[k]===v?'on':''}" onclick="F.${k}=F.${k}==='${v}'?'':'${v}';render()">${l}</button>`;
+  const cooked=DB.dish.filter(d=>d.r.times_made>0||d.served).length, meals=DB.meal.filter(m=>m.status==='cooked').length;
+  return `
+  <div class="stack" style="padding-top:12px">
+    <input class="search" placeholder="Search dishes, ingredients…" value="${esc(F.q)}" oninput="F.q=this.value;renderListOnly()">
+    <div class="scrollx">${proteins.map(p=>chip('protein',p,p)).join('')}</div>
+    <div class="scrollx">${cats.map(c=>chip('category',c,c)).join('')}<span style="width:6px"></span>${chip('status','backlog','Not yet cooked')}${chip('repeat','yes','Repeat: yes')}${chip('repeat','with_modifications','With mods')}<button class="chip ${F.stale?'on':''}" onclick="F.stale=!F.stale;render()">Not made in 90d</button></div>
+    ${equip.length?`<div class="scrollx"><span class="chip" style="background:transparent;color:var(--ink3);padding-left:0">Kit</span>${equip.map(e=>`<button class="chip ${F.equip===e?'on':''}" onclick="F.equip=F.equip==='${e}'?'':'${e}';render()">${e}</button>`).join('')}</div>`:''}
+    <div class="row small muted"><span class="grow" id="count"></span><label>Sort <select onchange="F.sort=this.value;render()" style="background:transparent;border:0;color:var(--accent);font-weight:600">${[['last','Last made'],['rating','Rating'],['name','Name']].map(([k,l])=>`<option value="${k}" ${F.sort===k?'selected':''}>${l}</option>`).join('')}</select></label></div>
+    <div class="list" id="dishlist"></div>
+    <p class="dim small" style="text-align:center;margin-top:24px">${cooked} dishes cooked · ${meals} meals · data ${DB.fromCache?'from device cache':'live'}</p>
+  </div>
+  <script>window._list=${JSON.stringify(list.map(d=>d.slug))}<\/script>`;
+};
+function dishCard(d){
+  const r=d.r; const rating=r.latest_rating!=null?`<div class="rating">${num(r.latest_rating)}</div>`:(d.mealRating!=null?`<div class="rating" style="opacity:.75" title="meal rating">${num(d.mealRating)}<div style="font-size:9px;font-weight:500;line-height:1">meal</div></div>`:`<div class="rating none">${d.status==='designed'?'plan':'–'}</div>`);
+  const meta=[d.protein,(d.category||[]).join('/'),(d.cuisine||[])[0]].filter(Boolean).join(' · ');
+  const when=r.last_made?`Last made ${ago(r.last_made)}${r.times_made>1?' · ×'+r.times_made:''}`:(d.served?`Served ${ago(d.served)}`:(d.status==='designed'?'Designed, not yet cooked':''));
+  return `<a class="card row" href="#/dish/${d.slug}"><div class="grow"><div class="title">${esc(d.name)}</div><div class="sub">${esc(meta)}${meta&&when?' · ':''}${esc(when)}</div>${r.latest_repeat?`<div class="tag ${repCls(r.latest_repeat)}" style="margin-top:4px">${rep(r.latest_repeat)}</div>`:''}</div>${rating}</a>`;
+}
+function renderListOnly(){ // keep keyboard focus while typing
+  const {view}=parse(); if(view!=='library')return;
+  const tmp=document.createElement('div'); tmp.innerHTML=routes.library();
+  const src=tmp.querySelector('#dishlist'); const c=tmp.querySelector('#count');
+  const list=JSON.parse(tmp.querySelector('script').textContent.replace('window._list=',''));
+  document.getElementById('dishlist').innerHTML=list.map(s=>dishCard(IDX.dishBySlug[s])).join('');
+  document.getElementById('count').textContent=list.length+' dishes';
+}
+// after render of library fill the list (so search input keeps its DOM identity)
+const _render=render; render=function(){_render(); if(parse().view==='library'){renderListOnly();}};
+
+// ---------------------------------------------------------------- dish
+routes.dish=(slug)=>{
+  const d=IDX.dishBySlug[slug]; if(!d)return '<div class="empty">Dish not found.</div>';
+  setHeader(d.name,'#/library'); tabs('library');
+  const r=d.r;
+  const openVal=(d.designed_unvalidated||[]).filter(p=>!d.cooks.some(c=>(c.parameter_confirmations||[]).some(pc=>pc.param===p.param&&pc.verdict==='confirmed')));
+  return `<div class="stack" style="padding-top:14px">
+    <div class="card">
+      <div class="row"><div class="grow"><h1 style="font-size:21px">${esc(d.name)}</h1><div class="sub">${esc([d.protein,(d.category||[]).join('/'),(d.cuisine||[]).join(', '),d.difficulty].filter(Boolean).join(' · '))}</div></div>
+      ${r.latest_rating!=null?`<div class="rating" style="font-size:18px;padding:8px 10px">${num(r.latest_rating)}</div>`:''}</div>
+      ${d.summary?`<p class="muted" style="margin:10px 0 0">${esc(d.summary)}</p>`:''}
+      <dl class="kv" style="margin-top:12px">
+        <dt>Status</dt><dd>${d.status==='cooked'?(r.times_made>0?`Cooked ×${r.times_made}${r.last_made?', last '+fmtDate(r.last_made):''}`:(d.served?`Served ${fmtDate(d.served)}${d.servedIn?' in '+esc(d.servedIn.name):''}${d.mealRating!=null?' · meal rated '+num(d.mealRating):''}`:'Cooked')):esc(d.status)}</dd>
+        ${r.latest_execution!=null?`<dt>Execution</dt><dd>${num(r.latest_execution)}/10</dd>`:''}
+        ${r.latest_repeat?`<dt>Verdict</dt><dd class="tag ${repCls(r.latest_repeat)}" style="align-self:center">${rep(r.latest_repeat)}</dd>`:''}
+        ${d.servings?`<dt>Serves</dt><dd>${num(d.servings)}</dd>`:''}
+        ${(d.equipment||[]).length?`<dt>Equipment</dt><dd>${esc(d.equipment.join(', '))}</dd>`:''}
+        ${d.source?`<dt>Source</dt><dd class="small">${esc(d.source)}</dd>`:''}
+      </dl>
+      ${(d.tags||[]).length||(d.occasion||[]).length?`<div class="chips" style="margin-top:10px">${[...(d.tags||[]),...(d.occasion||[])].map(t=>`<span class="chip mini">${esc(t)}</span>`).join('')}</div>`:''}
+    </div>
+    ${d.meals.length?`<h3 class="section">Part of</h3><div class="list">${d.meals.map(m=>`<a class="card row" href="#/meal/${m.slug}"><div class="grow"><div class="title">${esc(m.name)}</div><div class="sub">${m.last?fmtDate(m.last):'Backlog'} · ${m.dishes.length} dishes</div></div><span class="dim">›</span></a>`).join('')}</div>`:''}
+    <div class="btnrow" style="margin-top:14px">${d.ings.length?`<a class="btn sm" href="#/shopping/dish/${d.slug}">Shopping list</a>`:''}<button class="btn ghost sm" onclick="window.print()">Print</button></div>
+    ${d.ings.length?`<h3 class="section">Ingredients</h3><div class="card"><div class="ing">${d.ings.map(di=>`<div class="q">${esc(qtyText(di))}</div><div>${esc(ingName(di))}${di.prep_note?` <span class="dim">— ${esc(di.prep_note)}</span>`:''}${di.optional?' <span class="opt">optional</span>':''}${di.pantry_check?' <span class="pill">pantry</span>':''}</div>`).join('')}</div></div>`:''}
+    ${d.method_md?`<h3 class="section">Recipe</h3><div class="card md">${md(d.method_md)}</div>`:`<h3 class="section">Recipe</h3><div class="card muted small">No structured recipe body for this dish yet — it was filed as a cook record. It will be populated when the dish is next regenerated under the data protocol.</div>`}
+    ${openVal.length?`<h3 class="section">Open validations <span class="pill">${openVal.length}</span></h3><div class="card"><ul style="margin:0;padding-left:18px;font-size:14px">${openVal.map(p=>`<li><b>${esc(p.param)}</b>${p.designed_value?` — ${esc(p.designed_value)}`:''}${p.note?`<div class="dim small">${esc(p.note)}</div>`:''}</li>`).join('')}</ul></div>`:''}
+    ${d.meas.length?`<h3 class="section">Measurements</h3><div class="card"><table style="width:100%;border-collapse:collapse;font-size:13px">${d.meas.map(x=>`<tr style="border-bottom:1px solid var(--line)"><td style="padding:6px 6px 6px 0;vertical-align:top"><b>${esc(x.gate)}</b>${x.predicted?`<div class="dim">designed: ${esc(x.predicted)}</div>`:''}</td><td style="padding:6px 0;vertical-align:top;text-align:right;white-space:nowrap"><b>${x.value_num!=null?num(x.value_num)+' '+esc(x.unit||''):''}</b>${x.probe?`<div class="dim">${esc(x.probe)}</div>`:''}</td></tr>${x.observed&&(x.value_num==null||x.observed.length>12)?`<tr><td colspan="2" class="dim" style="padding:0 0 6px;font-size:12px">${esc(x.observed)}${x.notes?' · '+esc(x.notes):''}</td></tr>`:''}`).join('')}</table></div>`:''}
+    ${d.cooks.length?`<h3 class="section">Cook history</h3><div class="list">${d.cooks.map(cookCard).join('')}</div>`:''}
+    ${docsBlock(d.docs)}
+    <div class="btnrow" style="margin-top:18px"><a class="btn ghost sm" href="#/postcook/dish/${d.slug}">Log a cook of this dish</a></div>
+  </div>`;
+};
+function cookCard(c){
+  const conf=(c.parameter_confirmations||[]);
+  return `<details class="card"><summary><div class="grow"><div class="title">${fmtDate(c.cooked_on)}</div><div class="sub">${[c.rating!=null?'Flavour '+num(c.rating):null,c.execution_rating!=null?'Execution '+num(c.execution_rating):null,rep(c.repeat)||null].filter(Boolean).join(' · ')||'No rating recorded'}</div></div></summary>
+    <div class="stack small" style="margin-top:12px">
+      ${c.cook_notes?`<div class="md">${md(c.cook_notes)}</div>`:'<div class="dim">No cook notes.</div>'}
+      ${(c.deviations||[]).length?`<div><b>Deviations</b><ul style="margin:4px 0;padding-left:18px">${c.deviations.map(x=>`<li>${esc(typeof x==='string'?x:JSON.stringify(x))}</li>`).join('')}</ul></div>`:''}
+      ${conf.length?`<div><b>Parameter confirmations</b><table style="width:100%;font-size:12px;border-collapse:collapse;margin-top:4px">${conf.map(p=>`<tr><td style="padding:3px 6px 3px 0;vertical-align:top"><span class="tag ${p.verdict==='confirmed'?'ok':p.verdict==='diverged'?'bad':'warn'}">${esc(p.verdict||'')}</span></td><td style="padding:3px 0;vertical-align:top"><b>${esc(p.param)}</b>${p.designed?`<div class="dim">designed: ${esc(p.designed)}</div>`:''}${p.observed?`<div>observed: ${esc(p.observed)}</div>`:''}</td></tr>`).join('')}</table></div>`:''}
+      ${c.household_split?`<div><b>Household</b> ${esc(c.household_split)}</div>`:''}
+      ${c.wine_outcome?`<div><b>Wine</b> ${esc(c.wine_outcome)}</div>`:''}
+    </div></details>`;
+}
+function docsBlock(docs){
+  if(!docs.length) return '';
+  return `<h3 class="section">Documents</h3><div class="list">${docs.map(x=>`<a class="card row" href="${DOCS_BASE+x.storage_path}" target="_blank" rel="noopener"><div class="grow"><div class="title">${esc(x.file_name)}</div><div class="sub">${x.kind.toUpperCase()} · v${x.version}${x.governance_version?' · governance '+esc(x.governance_version):''} · ${fmtDate(x.generated_at.slice(0,10))}${x.is_latest?' · <span class="pill">latest</span>':''}</div></div><span class="btn sm ${x.kind==='pdf'?'':'ghost'}">${x.kind==='pdf'?'Open / print':'Download'}</span></a>`).join('')}</div>`;
+}
+
+// ---------------------------------------------------------------- meals
+const MF={tab:'cooked'};
+routes.meals=()=>{
+  setHeader('Meals'); tabs('meals');
+  const list=DB.meal.filter(m=>MF.tab==='backlog'?m.status!=='cooked':m.status==='cooked');
+  list.sort((a,b)=>(b.last||'').localeCompare(a.last||''));
+  const recent=DB.meal.filter(m=>m.status==='cooked'&&m.last).sort((a,b)=>b.last.localeCompare(a.last)).slice(0,8);
+  const rot=recent.map(m=>{const main=m.dishes.find(x=>x.role==='main')||m.dishes.find(x=>x.dish.protein); return {p:main?main.dish.protein||'—':'—',m};});
+  const tally={}; rot.forEach(x=>tally[x.p]=(tally[x.p]||0)+1);
+  const rotation=rot.length?`<div class="card" style="padding:10px 14px"><div class="row"><div class="tag">Last ${rot.length} mains</div><div class="grow small dim" style="text-align:right">${Object.entries(tally).sort((a,b)=>b[1]-a[1]).map(([p,n])=>`${p} ×${n}`).join(' · ')}</div></div><div class="scrollx" style="padding-top:8px;padding-bottom:0">${rot.slice().reverse().map(x=>`<a class="chip ${(tally[x.p]||0)>=3?'on':''}" href="#/meal/${x.m.slug}" title="${esc(x.m.name)}">${esc(x.p)}</a>`).join('')}</div></div>`:'';
+  return `<div class="stack" style="padding-top:12px">
+    ${rotation}
+    <div class="chips"><button class="chip ${MF.tab==='cooked'?'on':''}" onclick="MF.tab='cooked';render()">Cooked</button><button class="chip ${MF.tab==='backlog'?'on':''}" onclick="MF.tab='backlog';render()">Next time <span style="opacity:.7">${DB.meal.filter(m=>m.status!=='cooked').length}</span></button></div>
+    ${list.length?`<div class="list">${list.map(mealCard).join('')}</div>`:'<div class="empty">Nothing here yet. Ask Cowork to "save this meal for next time" and it will appear.</div>'}
+  </div>`;
+};
+function mealCard(m){
+  const rating=m.rating!=null?num(m.rating):(m.dishAvg!=null?m.dishAvg.toFixed(1):null);
+  const menu=m.dishes.map(x=>x.dish.name).join(' · ');
+  return `<a class="card row" href="#/meal/${m.slug}"><div class="grow"><div class="title">${esc(m.name)}</div><div class="sub">${m.status==='cooked'?fmtDate(m.last):'<span class="tag warn">'+esc(m.status)+'</span>'}${m.pax?' · '+m.pax+' pax':''}</div><div class="sub" style="color:var(--ink3)">${esc(menu)}</div></div>${rating?`<div class="rating">${rating}</div>`:''}</a>`;
+}
+routes.meal=(slug)=>{
+  const m=IDX.mealBySlug[slug]; if(!m)return '<div class="empty">Meal not found.</div>';
+  setHeader(m.name,'#/meals'); tabs('meals');
+  const hasIngs=m.dishes.some(x=>x.dish.ings.length);
+  return `<div class="stack" style="padding-top:14px">
+    <div class="card">
+      <div class="row"><div class="grow"><h1 style="font-size:21px">${esc(m.name)}</h1><div class="sub">${m.status==='cooked'?'Cooked '+fmtDate(m.last):'<span class="tag warn">'+esc(m.status)+'</span>'} · ${m.pax} pax · service ${(m.service_time||'18:00').slice(0,5)}</div></div>${m.rating!=null?`<div class="rating" style="font-size:18px;padding:8px 10px">${num(m.rating)}</div>`:''}</div>
+      ${m.wine_pairing?`<p class="small" style="margin:10px 0 0"><b>Wine</b> ${esc(m.wine_pairing)}</p>`:''}
+    </div>
+    <div class="btnrow">${m.workflow_md?`<a class="btn sm" href="#/cook/${m.slug}">Start cook</a>`:''}${hasIngs?`<a class="btn ${m.workflow_md?'ghost ':''}sm" href="#/shopping/meal/${m.slug}">Shopping list</a>`:''}<a class="btn ghost sm" href="#/postcook/meal/${m.slug}">Log cook</a><button class="btn ghost sm" onclick="window.print()">Print</button></div>
+    <h3 class="section">Menu</h3>
+    <div class="list">${m.dishes.map(x=>{const d=x.dish;return `<a class="card row" href="#/dish/${d.slug}"><div class="grow"><div class="tag">${esc(x.role)}</div><div class="title">${esc(d.name)}</div>${d.r.latest_repeat?`<div class="tag ${repCls(d.r.latest_repeat)}" style="margin-top:2px">${rep(d.r.latest_repeat)}</div>`:''}</div>${d.r.latest_rating!=null?`<div class="rating">${num(d.r.latest_rating)}</div>`:'<span class="dim">›</span>'}</a>`;}).join('')}</div>
+    ${m.workflow_md?`<h3 class="section">Meal workflow</h3><details class="card"><summary><span class="title">Critical path, timeline, holding</span></summary><div class="md" style="margin-top:10px">${md(m.workflow_md)}</div></details>`:''}
+    ${m.shared_prep_md?`<h3 class="section">Shared prep</h3><div class="card md">${md(m.shared_prep_md)}</div>`:''}
+    ${m.cooks.length?`<h3 class="section">Cook history</h3><div class="list">${m.cooks.map(cookCard).join('')}</div>`:''}
+    ${docsBlock(m.docs)}
+  </div>`;
+};
+
+// ---------------------------------------------------------------- shopping
+routes.shopping=(kind,slug)=>{
+  setHeader('Shopping'); tabs('shopping');
+  if(!kind){ // picker
+    const recent=[...DB.meal].sort((a,b)=>(b.last||'').localeCompare(a.last||''));
+    const backlog=DB.meal.filter(m=>m.status!=='cooked');
+    const mk=m=>`<a class="card row" href="#/shopping/meal/${m.slug}"><div class="grow"><div class="title">${esc(m.name)}</div><div class="sub">${m.status==='cooked'?fmtDate(m.last):esc(m.status)} · ${m.dishes.length} dishes${m.dishes.some(x=>x.dish.ings.length)?'':' · <span class="tag warn">no ingredient data</span>'}</div></div><span class="dim">›</span></a>`;
+    const open=Object.keys(localStorage).filter(k=>k.startsWith('shop:')).map(k=>k.slice(5));
+    return `<div class="stack" style="padding-top:12px">
+      <p class="muted small">Pick a meal to build its list. Ticks are saved on this phone and the list works offline.</p>
+      ${open.length?`<h3 class="section">In progress</h3><div class="list">${open.map(k=>{const [t,s]=k.split('/');const o=t==='meal'?IDX.mealBySlug[s]:IDX.dishBySlug[s];return o?`<a class="card row" href="#/shopping/${t}/${s}"><div class="grow"><div class="title">${esc(o.name)}</div><div class="sub">${shopProgress(k)}</div></div><span class="dim">›</span></a>`:''}).join('')}</div>`:''}
+      ${backlog.length?`<h3 class="section">Next time</h3><div class="list">${backlog.map(mk).join('')}</div>`:''}
+      <h3 class="section">Meals</h3><div class="list">${recent.filter(m=>m.status==='cooked').map(mk).join('')}</div>
+    </div>`;
+  }
+  const owner=kind==='meal'?IDX.mealBySlug[slug]:IDX.dishBySlug[slug]; if(!owner)return '<div class="empty">Not found.</div>';
+  setHeader(owner.name,'#/shopping');
+  const dishes=kind==='meal'?owner.dishes.map(x=>x.dish):[owner];
+  const items=aggregate(dishes);
+  const key='shop:'+kind+'/'+slug; const state=JSON.parse(localStorage.getItem(key)||'{}');
+  window._shop={key,items,state,name:owner.name};
+  const depts=DEPT_ORDER.filter(dp=>items.some(i=>i.dept===dp&&!i.pantry)).concat(items.some(i=>!DEPT_ORDER.includes(i.dept)&&!i.pantry)?['Other']:[]);
+  const pantry=items.filter(i=>i.pantry);
+  const done=items.filter(i=>state[i.id]).length;
+  const line=i=>`<div class="shop-item ${state[i.id]?'done':''}" onclick="toggleShop('${i.id}')"><div class="box">${state[i.id]?'✓':''}</div><div class="lbl"><div>${esc(i.label)}${i.orderAhead?' <span class="pill">order ahead</span>':''}${i.optional?' <span class="opt small">optional</span>':''}</div><div class="attr">${esc(i.qty)}${i.attr?' · '+esc(i.attr):''}</div></div></div>`;
+  return `<div class="stack" style="padding-top:12px">
+    <div class="row"><div class="grow small muted">${done}/${items.length} ticked</div><div class="btnrow"><button class="btn sm" onclick="shareShop()">Share</button><button class="btn ghost sm" onclick="clearShop()">Reset</button></div></div>
+    ${depts.map(dp=>`<div class="shop-dept"><h3>${esc(dp)}</h3><div class="card" style="padding:2px 16px">${items.filter(i=>!i.pantry&&(DEPT_ORDER.includes(i.dept)?i.dept===dp:dp==='Other')).map(line).join('')}</div></div>`).join('')}
+    ${pantry.length?`<div class="shop-dept"><details><summary><h3 style="margin:0">Pantry check <span class="pill">${pantry.length}</span></h3></summary><div class="card" style="padding:2px 16px;margin-top:8px">${pantry.map(line).join('')}</div></details></div>`:''}
+    ${!items.length?'<div class="empty">No ingredient data for this selection yet.</div>':''}
+  </div>`;
+};
+function aggregate(dishes){
+  const map={};
+  dishes.forEach(d=>d.ings.forEach(di=>{
+    const nm=ingName(di); if(!nm)return; const k=nm;
+    const e=map[k]||(map[k]={id:k.replace(/[^a-z0-9]+/g,'-'),label:nm.replace(/^./,c=>c.toUpperCase()),dept:di.ingredient.department,pantry:!!di.pantry_check||!!di.ingredient.pantry_default,optional:true,orderAhead:false,parts:[]});
+    e.pantry=e.pantry&&(!!di.pantry_check||!!di.ingredient.pantry_default);
+    e.optional=e.optional&&!!di.optional;
+    if(di.ingredient.department==='Protein'||/butcher/i.test(di.ingredient.supplier_hint||''))e.orderAhead=true;
+    e.parts.push({dish:d.name,qty:di.qty!=null?+di.qty:null,unit:di.unit||'',alt:di.qty_alt||'',prep:di.prep_note||''});
+  }));
+  return Object.values(map).map(e=>{
+    const byUnit={}; e.parts.forEach(p=>{if(p.qty!=null){byUnit[p.unit]=(byUnit[p.unit]||0)+p.qty;}});
+    const sums=Object.entries(byUnit).map(([u,q])=>{const n=Math.round(q*100)/100;return n+(/^(g|ml|kg|l)$/.test(u)?'':' ')+u;});
+    const alts=e.parts.filter(p=>p.qty==null&&p.alt).map(p=>p.alt);
+    e.qty=[...sums,...alts].join(' + ')||'as needed';
+    e.attr=dishes.length>1?e.parts.map(p=>shortName(p.dish)+(p.qty!=null?' '+ (Math.round(p.qty*100)/100)+(/^(g|ml|kg|l)$/.test(p.unit)?'':' ')+p.unit:(p.alt?' '+p.alt:''))).join(' · '):(e.parts[0].prep||'');
+    return e;
+  }).sort((a,b)=>a.label.localeCompare(b.label));
+}
+function shortName(n){return n.split(/[—(,:]/)[0].trim().split(' ').slice(0,3).join(' ');}
+function shopProgress(k){const s=JSON.parse(localStorage.getItem('shop:'+k)||'{}');const n=Object.values(s).filter(Boolean).length;return n+' ticked';}
+function toggleShop(id){const s=window._shop;s.state[id]=!s.state[id];localStorage.setItem(s.key,JSON.stringify(s.state));render();}
+function clearShop(){const s=window._shop;localStorage.removeItem(s.key);render();}
+function shareShop(){
+  const s=window._shop; const groups={};
+  s.items.filter(i=>!s.state[i.id]).forEach(i=>{(groups[i.pantry?'Pantry check':i.dept]=groups[i.pantry?'Pantry check':i.dept]||[]).push(i);});
+  const text='Shopping — '+s.name+'\n'+Object.entries(groups).map(([d,l])=>'\n'+d.toUpperCase()+'\n'+l.map(i=>'☐ '+i.label+' — '+i.qty).join('\n')).join('\n');
+  if(navigator.share){navigator.share({title:'Shopping — '+s.name,text}).catch(()=>{});}
+  else{navigator.clipboard.writeText(text).then(()=>toast('Copied to clipboard'));}
+}
+
+// ---------------------------------------------------------------- validations
+routes.validations=()=>{
+  setHeader('Open validations'); tabs('validations');
+  const groups=DB.dish.filter(d=>d.open.length).map(d=>({d,items:d.open}));
+  groups.sort((a,b)=>b.items.length-a.items.length||a.d.name.localeCompare(b.d.name));
+  const total=groups.reduce((n,g)=>n+g.items.length,0);
+  const backlog=new Set(DB.meal.filter(m=>m.status!=='cooked').flatMap(m=>m.dishes.map(x=>x.dish.id)));
+  return `<div class="stack" style="padding-top:12px">
+    <p class="muted small">${total} designed-but-unvalidated parameters across ${groups.length} dishes. Each closes when its dish is next cooked and the observed value is logged. Open items shape <i>how</i> a dish is cooked, not which dish gets picked.</p>
+    ${groups.map(({d,items})=>`<details class="card" ${backlog.has(d.id)?'open':''}><summary><div class="grow"><div class="title">${esc(d.name)}</div><div class="sub">${esc([d.protein,(d.category||[]).join('/')].filter(Boolean).join(' · '))}${d.r.last_made?' · last cooked '+ago(d.r.last_made):(d.served?' · served '+ago(d.served):'')}${backlog.has(d.id)?' · <span class="pill">in backlog</span>':''}</div></div><span class="rating" style="min-width:32px">${items.length}</span></summary>
+      <ul style="margin:10px 0 0;padding-left:18px;font-size:14px">${items.map(p=>`<li style="margin:6px 0"><b>${esc(p.param)}</b>${p.designed_value?` — ${esc(p.designed_value)}`:''}${p.note?`<div class="dim small">${esc(p.note)}</div>`:''}</li>`).join('')}</ul>
+      <div class="btnrow" style="margin-top:12px"><a class="btn ghost sm" href="#/dish/${d.slug}">Open dish</a>${d.meals[0]?`<a class="btn ghost sm" href="#/meal/${d.meals[0].slug}">${esc(shortName(d.meals[0].name))}</a>`:''}</div>
+    </details>`).join('')}
+    ${!groups.length?'<div class="empty">Nothing open — every designed parameter has been confirmed.</div>':''}
+  </div>`;
+};
+
+
+// ---------------------------------------------------------------- cook mode
+function parseTm(str){ // "T-65", "T−1:15", "T-2 hr 45 min", "T-24h", "T-75 min", "T-0", "T0" → minutes (null if not a T-expression)
+  const m=String(str).trim().match(/^T\s?(?:[-−–]\s?)?(\d+(?::\d{2})?(?:\s*(?:hr|h|hours?|min|m))?(?:\s*\d+\s*(?:min|m))?)\b/i);
+  if(!m) return null; const x=m[1].toLowerCase();
+  let h=x.match(/^(\d+):(\d{2})$/); if(h) return +h[1]*60+ +h[2];
+  h=x.match(/^(\d+)\s*(?:hr|h|hours?)(?:\s*(\d+)\s*(?:min|m))?/); if(h) return +h[1]*60+(+h[2]||0);
+  h=x.match(/^(\d+)/); return h?+h[1]:null;
+}
+const TTOK='T\\s?(?:[-−–]\\s?)?\\d+(?::\\d{2})?(?:\\s*(?:hr|h|hours?|min|m)\\b)?(?:\\s*\\d+\\s*(?:min|m)\\b)?';
+const TRE=new RegExp('^\\s*(?:[-*•☐]\\s*)?(?:\\*\\*)?('+TTOK+')(?:\\s*(?:to|→|–|-)\\s*('+TTOK+'))?(?:\\*\\*)?\\s*[:：—–-]?\\s*(.*)$','i');
+function parseTimeline(mdText){
+  if(!mdText) return {steps:[],other:[]};
+  const steps=[]; const other=[]; let section='';
+  // 1. HTML table rows: first cell is the T-expression
+  const html=mdText.replace(/\r/g,'');
+  const trs=[...html.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)];
+  trs.forEach(tr=>{const cells=[...tr[1].matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)].map(c=>c[1].replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').trim());
+    if(cells.length>=2){let tm=parseTm(cells[0]);
+      if(tm==null){const c=cells[0].replace(/\(.*?\)/g,'').trim(); const r=c.match(/^(\d+)(?:\s*[–-]\s*\d+)?\s*(min|m|hr|h)\b/i); if(r) tm=+r[1]*(/^h/i.test(r[2])?60:1); else if(/^(serve|service|t-?0)\b/i.test(c)) tm=0;}
+      if(tm!=null){steps.push({tm,text:cells.slice(1).filter(Boolean).join(' — '),section:'table'});}}});
+  // 2. markdown lines
+  const noTables=html.replace(/<table[\s\S]*?<\/table>/gi,'');
+  for(const raw of noTables.split('\n')){
+    const l=raw.replace(/^\t+/,'');
+    const h=l.match(/^#{1,6}\s+(.*)/); if(h){section=h[1].trim(); continue;}
+    const m=l.match(TRE);
+    if(m){const tm=parseTm(m[1]); if(tm!=null){const tmEnd=m[2]?parseTm(m[2]):null; const text=m[3].replace(/\*\*/g,'').trim(); if(text) steps.push({tm,tmEnd,text,section}); continue;}}
+    if(/^\s*(?:[-*•☐]\s*)?(?:\*\*)?(Sunday|Saturday|Friday|Morning|Day before|Eve|Night before)\b/i.test(l)){steps.push({tm:null,text:l.replace(/^\s*[-*•☐]\s*/,'').replace(/\*\*/g,'').trim(),section,pre:true});continue;}
+    if(l.trim()) other.push({text:l,section});
+  }
+  const pre=steps.filter(x=>x.pre), timed=steps.filter(x=>!x.pre).sort((a,b)=>b.tm-a.tm);
+  // very large T-minus (≥ 12 h) are day-before items
+  timed.forEach(x=>{if(x.tm>=720){x.pre=true;x.preLabel='T−'+Math.round(x.tm/60)+' h';}});
+  return {steps:[...pre,...timed.filter(x=>x.pre),...timed.filter(x=>!x.pre)],other};
+}
+const clock=(t0,minus)=>{const d=new Date(t0-minus*60000);return d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});};
+routes.cook=(slug)=>{
+  const m=IDX.mealBySlug[slug]; if(!m)return '<div class="empty">Meal not found.</div>';
+  setHeader('Cook · '+m.name,'#/meal/'+m.slug); tabs('meals');
+  const key='cook:'+m.slug; let st={}; try{st=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}
+  const today=new Date(); const defT0=new Date(today.getFullYear(),today.getMonth(),today.getDate(),18,0).getTime();
+  if(!st.t0){st.t0=defT0; st.ticks={}; localStorage.setItem(key,JSON.stringify(st));}
+  window._cook={key,st,m};
+  const {steps,other}=parseTimeline(m.workflow_md);
+  const now=Date.now(); const t0=st.t0; const minsToT0=Math.round((t0-now)/60000);
+  const t0d=new Date(t0); const t0str=`${String(t0d.getHours()).padStart(2,'0')}:${String(t0d.getMinutes()).padStart(2,'0')}`;
+  const cur=steps.find(x=>!x.pre&&!st.ticks[stepId(x)]&&(t0-x.tm*60000)<=now+5*60000)||steps.find(x=>!x.pre&&!st.ticks[stepId(x)]);
+  const stepRow=x=>{const id=stepId(x); const done=!!st.ticks[id]; const at=x.pre?null:t0-x.tm*60000; const late=at&&!done&&at<now-2*60000&&x!==cur; const isCur=x===cur;
+    return `<div class="shop-item ${done?'done':''}" style="${isCur?'background:var(--accent2);margin:0 -16px;padding:10px 16px;border-radius:10px':''}" onclick="tickStep('${id}')"><div class="box">${done?'✓':''}</div><div class="lbl"><div class="row" style="align-items:baseline;gap:8px"><b style="font-variant-numeric:tabular-nums;min-width:52px;color:${late?'var(--bad)':'var(--accent-ink)'}">${x.pre?(x.preLabel||'before'):clock(t0,x.tm)}</b><span class="dim small">${x.pre?'':'T−'+x.tm+(x.tmEnd!=null?' → T−'+x.tmEnd:'')}</span>${isCur?'<span class="pill">now</span>':''}</div><div>${esc(x.text)}</div></div></div>`;};
+  const doneN=steps.filter(x=>st.ticks[stepId(x)]).length;
+  const holding=other.filter(o=>/hold/i.test(o.section)||/max\s*\d+\s*min|ceiling/i.test(o.text));
+  return `<div class="stack" style="padding-top:12px">
+    <div class="card"><div class="row"><div class="grow"><div class="tag">Service T-0</div><input type="time" value="${t0str}" onchange="setT0(this.value)" style="font:inherit;font-size:22px;font-weight:650;border:0;background:transparent;color:var(--ink);padding:0"></div><div style="text-align:right"><div class="tag">${minsToT0>=0?'to service':'since service'}</div><div style="font-size:22px;font-weight:650;font-variant-numeric:tabular-nums">${Math.abs(minsToT0)>=60?Math.floor(Math.abs(minsToT0)/60)+'h '+String(Math.abs(minsToT0)%60).padStart(2,'0'):Math.abs(minsToT0)+' min'}</div></div></div>
+      <div class="row small muted" style="margin-top:8px"><span class="grow">${doneN}/${steps.length} steps · ticks saved on this phone</span><button class="btn ghost sm" onclick="resetCook()">Reset</button></div></div>
+    ${steps.length?`<div class="card" style="padding:2px 16px">${steps.map(stepRow).join('')}</div>`:'<div class="empty">No T-minus timeline found in this meal’s workflow.</div>'}
+    ${holding.length?`<h3 class="section">Holding chain</h3><div class="card md small">${md(holding.map(o=>o.text).join('\n'))}</div>`:''}
+    <details class="card"><summary><span class="title">Full workflow</span></summary><div class="md" style="margin-top:10px">${md(m.workflow_md)}</div></details>
+    <div class="btnrow" style="margin-top:8px"><a class="btn" href="#/postcook/meal/${m.slug}">Finish → log the cook</a></div>
+  </div>`;
+};
+function stepId(x){return (x.tm==null?'pre':x.tm)+':'+x.text.slice(0,40).replace(/[^a-z0-9]+/gi,'-');}
+function tickStep(id){const c=window._cook; c.st.ticks[id]=!c.st.ticks[id]; localStorage.setItem(c.key,JSON.stringify(c.st)); render();}
+function setT0(v){const c=window._cook; const [h,mi]=v.split(':').map(Number); const d=new Date(); d.setHours(h,mi,0,0); c.st.t0=d.getTime(); localStorage.setItem(c.key,JSON.stringify(c.st)); render();}
+function resetCook(){localStorage.removeItem(window._cook.key); render();}
+setInterval(()=>{if(parse().view==='cook') render();},60000);
+
+// ---------------------------------------------------------------- post-cook form (composes a block for Cowork)
+routes.postcook=(kind,slug)=>{
+  const owner=kind==='meal'?IDX.mealBySlug[slug]:IDX.dishBySlug[slug]; if(!owner)return '<div class="empty">Not found.</div>';
+  setHeader('Log cook','#/'+kind+'/'+slug); tabs('meals');
+  const key='post:'+kind+'/'+slug; let f={}; try{f=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}
+  const dishes=kind==='meal'?owner.dishes.map(x=>x.dish):[owner];
+  const open=dishes.flatMap(d=>d.open.map(v=>({...v,dish:d})));
+  const today=new Date().toISOString().slice(0,10);
+  window._post={key,f,owner,kind,dishes,open};
+  const inp=(k,ph,type='text',extra='')=>`<input class="search" type="${type}" placeholder="${ph}" value="${esc(f[k]??'')}" oninput="pf('${k}',this.value)" ${extra}>`;
+  const sel=(k,opts)=>`<select class="search" onchange="pf('${k}',this.value)"><option value="">—</option>${opts.map(o=>`<option value="${o[0]}" ${f[k]===o[0]?'selected':''}>${o[1]}</option>`).join('')}</select>`;
+  const ratingOpts=[...Array(21)].map((_,i)=>[String(i/2),String(i/2)]).reverse().slice(0,15);
+  const repOpts=[['yes','Repeat — yes'],['with_modifications','Repeat — with modifications'],['no','Repeat — no']];
+  const verOpts=[['confirmed','Confirmed'],['diverged','Diverged'],['unresolved','Unresolved']];
+  const measN=+(f.measN||3);
+  return `<div class="stack" style="padding-top:12px">
+    <p class="muted small">Fill what you know; leave the rest. "Compose" builds a block you paste into Cowork, which writes the cook record under the data protocol. Nothing is written from the phone.</p>
+    <div class="card stack">
+      <h3>${esc(owner.name)}</h3>
+      <div class="grid2"><div><div class="tag">Cooked on</div>${inp('date','',  'date')}</div><div><div class="tag">Pax</div>${inp('pax','3','number')}</div></div>
+      <div class="grid2"><div><div class="tag">Flavour /10</div>${sel('rating',ratingOpts)}</div><div><div class="tag">Execution /10</div>${sel('execution',ratingOpts)}</div></div>
+      <div><div class="tag">Verdict</div>${sel('repeat',repOpts)}</div>
+      <div><div class="tag">Cook notes (2–3 sentences, measured language)</div><textarea class="search" rows="4" oninput="pf('notes',this.value)" placeholder="What performed as intended; what was adjusted; what to change next time.">${esc(f.notes||'')}</textarea></div>
+      <div><div class="tag">Deviations (one per line)</div><textarea class="search" rows="3" oninput="pf('dev',this.value)" placeholder="Substitutions, timing changes…">${esc(f.dev||'')}</textarea></div>
+      <div class="grid2"><div><div class="tag">Household split</div>${inp('house','e.g. HF found it too beefy')}</div><div><div class="tag">Wine outcome</div>${inp('wine','bottle · verdict')}</div></div>
+    </div>
+    ${kind==='meal'&&dishes.length>1?`<h3 class="section">Per-dish verdicts <span class="dim small" style="text-transform:none;letter-spacing:0">(optional)</span></h3><div class="list">${dishes.map(d=>`<details class="card"><summary><span class="title">${esc(d.name)}</span>${f['d:'+d.slug+':rating']?`<span class="rating" style="margin-left:auto;margin-right:8px">${esc(f['d:'+d.slug+':rating'])}</span>`:''}</summary><div class="grid2" style="margin-top:10px"><div><div class="tag">Flavour</div>${sel('d:'+d.slug+':rating',ratingOpts)}</div><div><div class="tag">Execution</div>${sel('d:'+d.slug+':execution',ratingOpts)}</div></div><div style="margin-top:8px"><div class="tag">Verdict</div>${sel('d:'+d.slug+':repeat',repOpts)}</div><div style="margin-top:8px"><div class="tag">Note</div>${inp('d:'+d.slug+':note','')}</div></details>`).join('')}</div>`:''}
+    ${open.length?`<h3 class="section">Open validations <span class="pill">${open.length}</span></h3><div class="list">${open.map((v,i)=>`<div class="card"><div class="small dim">${esc(v.dish.name)}</div><div class="title" style="font-size:14px">${esc(v.param)}</div>${v.designed_value?`<div class="small muted">designed: ${esc(v.designed_value)}</div>`:''}<div class="grid2" style="margin-top:8px"><div>${sel('v:'+i+':verdict',verOpts)}</div><div>${inp('v:'+i+':observed','observed value')}</div></div></div>`).join('')}</div>`:''}
+    <h3 class="section">Measurements</h3>
+    <div class="card stack">${[...Array(measN)].map((_,i)=>`<div class="grid2" style="grid-template-columns:1fr 1fr"><div>${inp('m:'+i+':gate','gate (e.g. oven exit, post-sear)')}</div><div>${inp('m:'+i+':obs','reading (e.g. 126°F Thermapen)')}</div></div>`).join('')}<button class="btn ghost sm" onclick="pf('measN',${measN+2});render()">+ more rows</button></div>
+    <div class="btnrow" style="margin-top:8px"><button class="btn" onclick="composePost()">Compose for Cowork</button><button class="btn ghost" onclick="localStorage.removeItem('${key}');render()">Clear</button></div>
+    <pre id="postout" class="card small" style="white-space:pre-wrap;display:none"></pre>
+  </div>`;
+};
+function pf(k,v){const p=window._post; p.f[k]=v; localStorage.setItem(p.key,JSON.stringify(p.f)); if(k==='measN')return; /* no re-render on typing */}
+function composePost(){
+  const p=window._post, f=p.f; const L=[];
+  L.push(`POST-COOK LOG — ${p.owner.name}`);
+  L.push(`kind: ${p.kind}   slug: ${p.owner.slug}`);
+  L.push(`cooked_on: ${f.date||new Date().toISOString().slice(0,10)}   pax: ${f.pax||3}`);
+  L.push(`rating: ${f.rating||'—'}   execution_rating: ${f.execution||'—'}   repeat: ${f.repeat||'—'}`);
+  L.push(`cook_notes: ${(f.notes||'').trim()||'—'}`);
+  const dev=(f.dev||'').split('\n').map(x=>x.trim()).filter(Boolean); if(dev.length){L.push('deviations:'); dev.forEach(x=>L.push('  - '+x));}
+  if(f.house) L.push(`household_split: ${f.house}`); if(f.wine) L.push(`wine_outcome: ${f.wine}`);
+  const per=p.dishes.filter(d=>f['d:'+d.slug+':rating']||f['d:'+d.slug+':execution']||f['d:'+d.slug+':repeat']||f['d:'+d.slug+':note']);
+  if(per.length){L.push('dish_cooks:'); per.forEach(d=>L.push(`  - ${d.slug}: rating ${f['d:'+d.slug+':rating']||'—'} · execution ${f['d:'+d.slug+':execution']||'—'} · repeat ${f['d:'+d.slug+':repeat']||'—'}${f['d:'+d.slug+':note']?' · '+f['d:'+d.slug+':note']:''}`));}
+  const pc=p.open.map((v,i)=>({v,verdict:f['v:'+i+':verdict'],obs:f['v:'+i+':observed']})).filter(x=>x.verdict||x.obs);
+  if(pc.length){L.push('parameter_confirmations:'); pc.forEach(x=>L.push(`  - [${x.v.dish.slug}] ${x.v.param} → ${x.verdict||'unresolved'}${x.obs?' · observed: '+x.obs:''}`));}
+  const ms=[...Array(+(f.measN||3)+10)].map((_,i)=>({g:f['m:'+i+':gate'],o:f['m:'+i+':obs']})).filter(x=>x.g||x.o);
+  if(ms.length){L.push('measurements:'); ms.forEach(x=>L.push(`  - ${x.g||'?'}: ${x.o||'?'}`));}
+  L.push('— Write this per recipe_output_data_protocol §5 (cook row; parameter confirmations close validations; measurements to the measurement table). Show me the rows first.');
+  const text=L.join('\n'); const out=document.getElementById('postout'); out.style.display='block'; out.textContent=text;
+  if(navigator.share){navigator.share({title:'Post-cook log',text}).catch(()=>{});} else {navigator.clipboard.writeText(text).then(()=>toast('Copied — paste into Cowork'));}
+}
+
+// ---------------------------------------------------------------- docs
+routes.docs=()=>{
+  setHeader('Documents'); tabs('docs');
+  const docs=DB.document.map(x=>({...x,owner:x.owner_type==='meal'?IDX.meal[x.owner_id]:IDX.dish[x.owner_id]})).filter(x=>x.owner);
+  const latest=docs.filter(x=>x.is_latest);
+  return `<div class="stack" style="padding-top:12px">
+    <p class="muted small">Stored renders of each recipe. "Open / print" shows the PDF in the browser so you can print without regenerating; the Word file is the editable master.</p>
+    ${latest.length?`<div class="list">${latest.map(x=>`<a class="card row" href="${DOCS_BASE+x.storage_path}" target="_blank" rel="noopener"><div class="grow"><div class="title">${esc(x.owner.name)}</div><div class="sub">${x.kind.toUpperCase()} · v${x.version} · ${fmtDate(x.generated_at.slice(0,10))}${x.governance_version?' · governance '+esc(x.governance_version):''}</div></div><span class="btn sm ${x.kind==='pdf'?'':'ghost'}">${x.kind==='pdf'?'Open':'Download'}</span></a>`).join('')}</div>`:
+    `<div class="empty">No documents stored yet.<br><br><span class="small">From now on, every recipe Cowork generates is saved here as Word + PDF. The Coq au Vin build is the first candidate.</span></div>`}
+  </div>`;
+};
+
+// ---------------------------------------------------------------- boot
+(async()=>{
+  const ok=await loadAll();
+  if(!ok){document.getElementById('app').innerHTML='<div class="empty">Could not reach the kitchen database and nothing is cached yet. Check your connection and reload.</div>';return;}
+  index(); render();
+  if(DB.fromCache) toast('Offline — showing cached data');
+  if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
+})();
+</script>
+</body>
+</html>

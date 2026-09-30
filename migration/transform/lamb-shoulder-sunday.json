@@ -1,0 +1,532 @@
+{
+  "assignment_key": "lamb-shoulder-sunday",
+  "source_page_ids": [
+    "30fe0391ce638047a3b3ccdb9cd24eb8",
+    "30fe0391ce63805493b8f91569db09c6",
+    "30fe0391ce6380ed8c94fcb96ccbeca5"
+  ],
+  "meal": {
+    "slug": "lamb-shoulder-sunday",
+    "name": "Lamb Shoulder Sunday",
+    "planned_date": "2026-02-22",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": null,
+    "shared_prep_md": null,
+    "wine_pairing": null,
+    "legacy_notion_id": null,
+    "components": [
+      {
+        "dish_slug": "lamb-shoulder-slow-roasted-bone-in",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "lamb-shoulder-anchovy-garlic-roast-potatoes",
+        "role": "side",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "lamb-shoulder-creme-caramel",
+        "role": "dessert",
+        "service_order": 3
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "lamb-shoulder-slow-roasted-bone-in",
+      "name": "Slow-Roasted Bone-In Lamb Shoulder",
+      "protein": "Lamb",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "Modern"
+      ],
+      "difficulty": "Medium",
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "chatgpt",
+      "governance_version": null,
+      "summary": "Slow-roasted bone-in lamb shoulder, mature Bordeaux–optimised: dry-brined with a cumin, coriander, fennel, lemon zest, garlic and anchovy rub, braised covered at 150°C for 3 hours over an aromatic bed, browned at 230°C to 92–94°C internal, served with a reduced pan jus.",
+      "method_md": "# 🥩 Slow-Roasted Bone-In Lamb Shoulder\n*Mature Bordeaux–Optimised Version*\n**Serves:** 3 + light leftovers\n**Total Cook Time:** \\~5 hours\n**Active Time:** \\~30 minutes\n**Target Internal Temp:** 92–94°C / 198–201°F\n---\n## 🛒 Ingredients\n### Lamb\n- 1.2–1.3 kg bone-in lamb shoulder\n- 14 g kosher salt *(10 g if using fine sea salt)*\n- 1 tsp ground cumin\n- 1 tsp ground coriander\n- ½ tsp dried thyme\n- ½ tsp fennel seed, lightly crushed\n- ½ tsp freshly ground black pepper\n- Zest of ½ lemon (no juice)\n- 4 cloves garlic, finely grated\n- 1 anchovy fillet, mashed to paste\n- 2 tbsp olive oil (30 ml)\n---\n### Braising Bed\n- 1 large onion, thick slices\n- 1 carrot, large chunks\n- 1 celery stalk, chunks\n- ½ bulb garlic, halved crosswise\n- 1 bay leaf\n- 120 ml / ½ cup dry white wine\n- 200 ml / \\~¾ cup low-sodium chicken stock\n---\n### Pan Jus\n- Fine sea salt (small pinch only)\n---\n# 📅 Day Before — Dry Brine\n## ☐ Prepare the Rub\nMix:\n- Salt\n- Cumin\n- Coriander\n- Thyme\n- Fennel\n- Black pepper\n- Lemon zest\n- Garlic\n- Anchovy\n- Olive oil\n## ☐ Season Lamb\n- Pat lamb completely dry.\n- Rub thoroughly over entire surface.\n- Place uncovered on rack in fridge for 12–24 hours.\n---\n# 🔥 Cooking Day\n## 1️⃣ Temper the Lamb\n- Remove from fridge 45–60 minutes before cooking.\n---\n## 2️⃣ Collagen Conversion Phase\n**Oven:** 150°C / 300°F\n### ☐ Build Braising Tray\n- Scatter onion, carrot, celery, garlic halves, bay leaf.\n- Add wine + stock.\n- Place lamb fat-side up on top.\n- Cover tightly with foil.\n### ☐ Roast Covered\n- Roast 3 hours.\n- Do not open oven.\n---\n## 3️⃣ Browning Phase\n**Oven:** 230°C / 445°F\n### ☐ Uncover and Roast\n- Remove foil.\n- Roast 10–30 minutes (monitor closely).\n- Stop once surface is deep golden brown.\n**Target Internal Temp:** 92–94°C / 198–201°F\n---\n## 4️⃣ Rest\n### ☐ Rest Uncovered\n- Remove from oven.\n- Rest at least 30 minutes.\n- Tent loosely with foil (do not seal tightly).\n---\n# 🍲 Pan Jus\n### ☐ Strain\n- Pour braising liquid into saucepan.\n- Discard solids.\n### ☐ Reduce\n- Simmer over medium heat.\n- Reduce to spoon-coating (nappe consistency).\n### ☐ Season\n- Add a small pinch of fine sea salt.\n- No butter.\n- No added wine.\n- No acid.\n---\n# 🔪 Carving & Serving\n### ☐ Slice or Pull\n- Slice thickly across grain\n\t**or**\n- Gently pull into large chunks.\n### ☐ Plate\n- Spoon jus lightly over lamb.\n- Avoid flooding plate.\n---\n# ⏱ Holding Strategy (If Done Early)\n- Rest 30 minutes.\n- Hold in 70–80°C / 160–175°F oven (up to 60 minutes).\n- Keep loosely tented.\n---\n# 🧠 Key Notes\n- Do not chase darker browning once internal temp is reached.\n- Shoulder is forgiving — slight overshoot to 203–205°F is acceptable.\n- Do not slice early.\n- Whole roast retains heat better than sliced meat.",
+      "servings": 3,
+      "equipment": [
+        "rack",
+        "braising tray",
+        "foil",
+        "saucepan"
+      ],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "30fe0391ce638047a3b3ccdb9cd24eb8",
+      "ingredients": [
+        {
+          "name": "lamb shoulder, bone-in",
+          "department": "Protein",
+          "qty": 1200,
+          "unit": "g",
+          "qty_alt": "1.2–1.3 kg",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "kosher salt",
+          "department": "Seasoning",
+          "qty": 14,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "10 g if using fine sea salt",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "ground cumin",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "ground coriander",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "dried thyme",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fennel seed",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "lightly crushed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": 0.5,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "freshly ground",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon",
+          "department": "Produce",
+          "qty": 0.5,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "zest only (no juice)",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 4,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "finely grated",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "anchovy fillet",
+          "department": "Pantry",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "mashed to paste",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 30,
+          "unit": "ml",
+          "qty_alt": "2 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "onion",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "large, thick slices (braising bed)",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "carrot",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "large chunks (braising bed)",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "celery stalk",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "chunks (braising bed)",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic bulb",
+          "department": "Produce",
+          "qty": 0.5,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "halved crosswise (braising bed)",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "bay leaf",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "braising bed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "dry white wine",
+          "department": "Alcohol",
+          "qty": 120,
+          "unit": "ml",
+          "qty_alt": "½ cup",
+          "prep_note": "braising bed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "chicken stock, low-sodium",
+          "department": "Pantry",
+          "qty": 200,
+          "unit": "ml",
+          "qty_alt": "~¾ cup",
+          "prep_note": "braising bed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine sea salt",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "pinch",
+          "qty_alt": null,
+          "prep_note": "small pinch only (pan jus)",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "lamb-shoulder-anchovy-garlic-roast-potatoes",
+      "name": "Anchovy–Garlic Roast Potatoes",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "European"
+      ],
+      "difficulty": "Easy",
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "chatgpt",
+      "governance_version": null,
+      "summary": "High-heat roast potatoes with a crisp exterior and fluffy interior: parboiled, steam-dried and roughed up, then roasted at 220°C with olive oil, anchovy paste and crushed garlic.",
+      "method_md": "# 🥔 Anchovy–Garlic Roast Potatoes\n*High-Heat, Crisp Exterior / Fluffy Interior*\n**Serves:** 3\n**Oven Temp:** 220°C / 430°F\n**Total Time:** \\~50–60 minutes\n---\n## 🛒 Ingredients\n- 750 g potatoes *(Holland / Yukon-type preferred; Russet acceptable)*\n- 2 anchovy fillets, mashed to paste\n- 3 cloves garlic, lightly crushed\n- 3 tbsp olive oil (45 ml)\n- Kosher salt (moderate amount for boiling water)\n- Freshly ground black pepper\n---\n# 🔪 Prep\n## ☐ Wash (and Peel if Needed)\n- Scrub well.\n- Leave skin on for Holland/Yukon.\n- Peel Russet if skin is thick.\n## ☐ Cut\n- Cut into 4–5 cm chunks.\n- Irregular edges are good (better crisping).\n---\n# 🔥 Step 1 — Parboil\n## ☐ Start in Cold Water\n- Place potatoes in pot.\n- Cover with cold water.\n- Add moderate kosher salt (not pasta-level).\n## ☐ Simmer\n- Bring to gentle boil.\n- Simmer 10–12 minutes (Holland).\n- 12–14 minutes (Russet).\n- Stop when knife just enters easily.\n---\n# 💨 Step 2 — Steam Dry & Rough\n## ☐ Drain\n- Drain completely.\n## ☐ Steam Dry\n- Leave uncovered 5 minutes.\n## ☐ Rough Up\n- Shake pot firmly.\n- Edges should look fuzzy and starchy.\n- This creates crisp crust later.\n---\n# 🔥 Step 3 — Roast\n**Oven:** 220°C / 430°F\n## ☐ Season\n- Toss with olive oil.\n- Mix in anchovy paste evenly.\n- Add crushed garlic.\n## ☐ Arrange\n- Spread in single layer.\n- Do not crowd.\n- Use heavy sheet pan if possible.\n## ☐ Roast\n- 35–45 minutes total.\n- Turn once halfway.\n- Roast until deep golden and crisp.\n---\n# 🧂 Finish\n## ☐ Season\n- Freshly ground black pepper.\n- Salt only if needed (anchovies already salty).\n---\n# ⏱ Holding Instructions (If Needed)\n- Hold in 80°C / 175°F oven.\n- Keep uncovered.\n- Maximum 20–25 minutes.\n- For best crisp, re-blast at 230°C / 445°F for 5 minutes before serving.\n---\n# 🧠 Key Notes\n<empty-block/>\n- Do not cover while holding.\n- Do not overcrowd pan.\n- Proper steam-dry is critical for crust.",
+      "servings": 3,
+      "equipment": [
+        "heavy sheet pan"
+      ],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "30fe0391ce63805493b8f91569db09c6",
+      "ingredients": [
+        {
+          "name": "potato",
+          "department": "Produce",
+          "qty": 750,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "Holland / Yukon-type preferred; Russet acceptable",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "anchovy fillet",
+          "department": "Pantry",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "mashed to paste",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": 3,
+          "unit": "clove",
+          "qty_alt": null,
+          "prep_note": "lightly crushed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 45,
+          "unit": "ml",
+          "qty_alt": "3 tbsp",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "kosher salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "moderate amount for boiling water",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "freshly ground",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "lamb-shoulder-creme-caramel",
+      "name": "Crème Caramel (Reduced-Sugar, Deep Amber)",
+      "protein": null,
+      "category": [
+        "Dessert"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": "Medium",
+      "tags": [],
+      "occasion": [
+        "Family",
+        "Guests"
+      ],
+      "status": "cooked",
+      "source": "chatgpt",
+      "governance_version": null,
+      "summary": "Reduced-sugar crème caramel with a deep amber, bittersweet caramel, baked in a water bath at 150°C to 80–82°C internal and chilled 6–24 hours before unmolding.",
+      "method_md": "# 🍮 Crème Caramel (Reduced-Sugar, Deep Amber)\n*Balanced, Bittersweet Finish*\n**Yield:** 6 ramekins (150–180 ml each)\n**Bake Temp:** 150°C / 300°F\n**Make Ahead:** 6–24 hours preferred\n**Target Internal Temp:** 80–82°C / 176–180°F\n---\n## 🛒 Ingredients\n### Caramel\n- 120 g granulated sugar\n- 30 ml water (2 tbsp)\n### Custard\n- 500 ml whole milk (2 cups)\n- 120 ml heavy cream (½ cup)\n- 4 large eggs\n- 2 egg yolks\n- 70 g granulated sugar (\\~⅓ cup)\n- 1 tsp vanilla extract\n- Pinch fine sea salt\n---\n# 🔥 Step 1 — Make the Caramel\n## ☐ Combine\n- Add sugar + water to saucepan.\n## ☐ Cook\n- Heat over **medium**.\n- Do not stir once dissolved.\n- Cook until **deep amber** (dark honey color).\n## ☐ Portion\n- Immediately divide among ramekins.\n- Tilt to coat bottoms evenly.\n- Let set at room temperature.\n---\n# 🥛 Step 2 — Heat Dairy\n## ☐ Warm Milk & Cream\n- Combine milk + cream.\n- Heat over **medium-low**.\n- Bring to steaming (70–80°C / 160–175°F).\n- Do not boil.\nRemove from heat.\n---\n# 🥚 Step 3 — Make Custard\n## ☐ Whisk\n- Eggs + yolks + sugar + salt.\n- Whisk gently (do not aerate heavily).\n## ☐ Temper\n- Slowly stream warm dairy into egg mixture while whisking gently.\n## ☐ Finish\n- Stir in vanilla.\n- Strain through fine sieve into jug.\n---\n# 🔥 Step 4 — Bake (Water Bath)\n## ☐ Fill\n- Pour custard into ramekins over set caramel.\n## ☐ Prepare Water Bath\n- Place ramekins in baking dish.\n- Add **hot (not boiling) water** halfway up sides.\n## ☐ Bake\n- 150°C / 300°F\n- 35–45 minutes.\n### Done When:\n- Edges set.\n- Center jiggles like soft gelatin.\n- Internal temp 80–82°C / 176–180°F.\n- No bubbling or puffing.\n---\n# ❄ Step 5 — Cool & Chill\n## ☐ Remove From Water Bath\n- Let sit in bath 2–3 minutes only.\n- Lift onto rack.\n## ☐ Cool\n- Cool uncovered 30–45 minutes at room temperature.\n## ☐ Cover & Refrigerate\n- Cover loosely once fully cool.\n- Chill minimum 6 hours.\n- Ideal: overnight.\n---\n# 🍽 Step 6 — Unmold (Before Serving)\n## ☐ Loosen\n- Run thin knife around edge.\n## ☐ Warm Base\n- Dip ramekin bottom in warm water 5–10 seconds.\n## ☐ Invert\n- Place plate on top.\n- Flip confidently.\n- Let caramel flow naturally.\nOptional: tiny pinch flaky salt.\n---\n# ⏱ Storage\n- Best within 24–48 hours.\n- Maximum 72 hours refrigerated.\n- Do not unmold until serving.\n---\n# 🧠 Key Notes\n- Do not use boiling water in bath.\n- Do not cool in water bath.\n- Do not cover while warm.\n- Sugar reduced for balance after savoury meal.\n- Caramel provides bitterness + sweetness.",
+      "servings": 6,
+      "equipment": [
+        "6 ramekins (150–180 ml each)",
+        "saucepan",
+        "fine sieve",
+        "jug",
+        "baking dish (water bath)"
+      ],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "30fe0391ce6380ed8c94fcb96ccbeca5",
+      "ingredients": [
+        {
+          "name": "granulated sugar",
+          "department": "Pantry",
+          "qty": 120,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "for caramel",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "water",
+          "department": "Oils & Liquids",
+          "qty": 30,
+          "unit": "ml",
+          "qty_alt": "2 tbsp",
+          "prep_note": "for caramel",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "whole milk",
+          "department": "Dairy",
+          "qty": 500,
+          "unit": "ml",
+          "qty_alt": "2 cups",
+          "prep_note": "for custard",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "heavy cream",
+          "department": "Dairy",
+          "qty": 120,
+          "unit": "ml",
+          "qty_alt": "½ cup",
+          "prep_note": "for custard",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "egg",
+          "department": "Dairy",
+          "qty": 4,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "large (for custard)",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "egg yolk",
+          "department": "Dairy",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "for custard",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "granulated sugar",
+          "department": "Pantry",
+          "qty": 70,
+          "unit": "g",
+          "qty_alt": "~⅓ cup",
+          "prep_note": "for custard",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "vanilla extract",
+          "department": "Pantry",
+          "qty": 1,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "for custard",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "fine sea salt",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "pinch",
+          "qty_alt": null,
+          "prep_note": "for custard",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2026-02-22",
+      "rating": null,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": null,
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    },
+    {
+      "owner": "dish",
+      "dish_slug": "lamb-shoulder-slow-roasted-bone-in",
+      "cooked_on": "2026-02-22",
+      "rating": 9.5,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": null,
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    },
+    {
+      "owner": "dish",
+      "dish_slug": "lamb-shoulder-anchovy-garlic-roast-potatoes",
+      "cooked_on": "2026-02-22",
+      "rating": 9.5,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": null,
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    },
+    {
+      "owner": "dish",
+      "dish_slug": "lamb-shoulder-creme-caramel",
+      "cooked_on": "2026-02-22",
+      "rating": 9,
+      "execution_rating": null,
+      "repeat": null,
+      "cook_notes": null,
+      "deviations": [],
+      "parameter_confirmations": [],
+      "household_split": null,
+      "wine_outcome": null
+    }
+  ]
+}

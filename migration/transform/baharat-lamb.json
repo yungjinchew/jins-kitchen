@@ -1,0 +1,411 @@
+{
+  "assignment_key": "baharat-lamb",
+  "source_page_ids": [
+    "3bee0391ce63817b80c5cc7c4b57020c"
+  ],
+  "meal": {
+    "slug": "baharat-lamb-shoulder-dinner",
+    "name": "Baharat Sealed-Roasted Lamb Shoulder Menu (3 pax + reserve)",
+    "planned_date": "2026-08-16",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": null,
+    "shared_prep_md": null,
+    "wine_pairing": "Not recorded. 2021 Château Mont-Redon Châteauneuf-du-Pape was the recommendation (primary), with 2019 La Rioja Alta Viña Ardanza Reserva as backup. Confirm on next cook.",
+    "legacy_notion_id": "3bee0391ce63817b80c5cc7c4b57020c",
+    "components": [
+      {
+        "dish_slug": "baharat-lamb-shoulder-onion-bed",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "baharat-pomegranate-lemon-jus",
+        "role": "sauce",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "baharat-lemon-parsley-couscous",
+        "role": "side",
+        "service_order": 3
+      },
+      {
+        "dish_slug": "baharat-fattoush",
+        "role": "salad",
+        "service_order": 4
+      },
+      {
+        "dish_slug": "baharat-tahini-yogurt-sauce",
+        "role": "sauce",
+        "service_order": 5
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "baharat-lamb-shoulder-onion-bed",
+      "name": "Baharat Sealed-Roasted Bone-In Lamb Shoulder with Jammy Onion Bed",
+      "protein": "Lamb",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [],
+      "difficulty": "Medium",
+      "tags": [],
+      "occasion": [],
+      "status": "cooked",
+      "source": "Claude / Jin — governance framework v3.5; dual-model review loop (Claude + GPT, 3 rounds to stability); baharat-lamb-shoulder-dinner-2piece.docx (15 Aug 2026 build)",
+      "governance_version": "v3.5",
+      "summary": "Two bone-in lamb shoulders dry-brined overnight, rubbed with baharat and sealed-roasted over an onion bed at 300°F / 150°C with no added liquid.",
+      "method_md": null,
+      "servings": null,
+      "equipment": [
+        "roasting tray",
+        "heavy-duty foil",
+        "Bosch single oven"
+      ],
+      "designed_unvalidated": [
+        {
+          "param": "Sealed-roast band",
+          "designed_value": "2½–3½ hr at 1.3 kg per piece",
+          "note": "Unconfirmed at cook 1 (16 Aug 2026) — actual elapsed time and the gap between pieces not recorded. Record elapsed time to endpoint per piece next cook."
+        },
+        {
+          "param": "Sealed hold",
+          "designed_value": "90 min at 170°F / 75°C",
+          "note": "Not exercised / unrecorded at cook 1."
+        },
+        {
+          "param": "Reserve reheat in unfinished jus",
+          "designed_value": "Reheat the reserve piece in the unfinished jus",
+          "note": "Pending — reheat had not occurred at time of logging."
+        }
+      ],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3bee0391ce63817b80c5cc7c4b57020c",
+      "ingredients": [
+        {
+          "name": "lamb shoulder, bone-in",
+          "department": "Protein",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": "2 × 1.316 kg",
+          "prep_note": "White Pyrenees, Butcher Box SG; 1% dry brine overnight uncovered",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 13,
+          "unit": "g",
+          "qty_alt": "13 g per piece (1% dry brine)",
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "brown onion",
+          "department": "Produce",
+          "qty": 3,
+          "unit": "piece",
+          "qty_alt": "3 large",
+          "prep_note": "onion bed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "garlic",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "strained, on the onion bed",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "baharat",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "rub",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "baharat-pomegranate-lemon-jus",
+      "name": "Pomegranate–Lemon Jus",
+      "protein": null,
+      "category": [
+        "Sauce"
+      ],
+      "cuisine": [],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [],
+      "status": "cooked",
+      "source": "Claude / Jin — governance framework v3.5; dual-model review loop (Claude + GPT, 3 rounds to stability); baharat-lamb-shoulder-dinner-2piece.docx (15 Aug 2026 build)",
+      "governance_version": null,
+      "summary": "Sour-sweet jus built from the lamb roasting juices with pomegranate and lemon.",
+      "method_md": null,
+      "servings": null,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3bee0391ce63817b80c5cc7c4b57020c",
+      "ingredients": [
+        {
+          "name": "pomegranate molasses",
+          "department": "Pantry",
+          "qty": 2,
+          "unit": "tsp",
+          "qty_alt": null,
+          "prep_note": "cook 1: substituted with a homemade reduction from ~100 ml pomegranate juice to ~30 ml, lemon at the end",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lamb roasting juices",
+          "department": "Oils & Liquids",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "from the sealed roast",
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "baharat-lemon-parsley-couscous",
+      "name": "Lemon-Parsley Couscous",
+      "protein": null,
+      "category": [
+        "Side"
+      ],
+      "cuisine": [],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [],
+      "status": "cooked",
+      "source": "Claude / Jin — governance framework v3.5; dual-model review loop (Claude + GPT, 3 rounds to stability); baharat-lamb-shoulder-dinner-2piece.docx (15 Aug 2026 build)",
+      "governance_version": null,
+      "summary": "Couscous dressed with lemon zest and parsley (swapped in for the designed lemon-parsley bulgur).",
+      "method_md": null,
+      "servings": null,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3bee0391ce63817b80c5cc7c4b57020c",
+      "ingredients": [
+        {
+          "name": "couscous",
+          "department": "Pantry",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "lemon zest",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "parsley",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "baharat-fattoush",
+      "name": "Cucumber, Tomato and Radish Fattoush",
+      "protein": "Veg",
+      "category": [
+        "Salad"
+      ],
+      "cuisine": [],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [],
+      "status": "cooked",
+      "source": "Claude / Jin — governance framework v3.5; dual-model review loop (Claude + GPT, 3 rounds to stability); baharat-lamb-shoulder-dinner-2piece.docx (15 Aug 2026 build)",
+      "governance_version": null,
+      "summary": "Cucumber, tomato and radish fattoush with vinegar and sumac.",
+      "method_md": null,
+      "servings": null,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3bee0391ce63817b80c5cc7c4b57020c",
+      "ingredients": [
+        {
+          "name": "cucumber",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "tomato",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "radish",
+          "department": "Produce",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "sumac",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "vinegar",
+          "department": "Oils & Liquids",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "baharat-tahini-yogurt-sauce",
+      "name": "Tahini-Yogurt Sauce",
+      "protein": null,
+      "category": [
+        "Sauce"
+      ],
+      "cuisine": [],
+      "difficulty": null,
+      "tags": [],
+      "occasion": [],
+      "status": "cooked",
+      "source": "Claude / Jin — governance framework v3.5; dual-model review loop (Claude + GPT, 3 rounds to stability); baharat-lamb-shoulder-dinner-2piece.docx (15 Aug 2026 build)",
+      "governance_version": null,
+      "summary": "Tahini-yogurt sauce, passed at the table.",
+      "method_md": null,
+      "servings": null,
+      "equipment": [],
+      "designed_unvalidated": [],
+      "nutrition_estimate": null,
+      "legacy_notion_id": "3bee0391ce63817b80c5cc7c4b57020c",
+      "ingredients": [
+        {
+          "name": "tahini",
+          "department": "Pantry",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "yogurt",
+          "department": "Dairy",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "cooks": [
+    {
+      "owner": "meal",
+      "dish_slug": null,
+      "cooked_on": "2026-08-16",
+      "rating": 8.5,
+      "execution_rating": 7,
+      "repeat": "with_modifications",
+      "cook_notes": "First cook. Flavour 8.5, execution 7. Two 1.3 kg bone-in shoulders sealed-roasted over an onion bed at 300F/150C, no added liquid; Sunday's piece blasted at 425F/220C, reserve piece pulled unblasted. Two execution failures: (1) foil seal on the roasting tray failed and juices escaped — a foil crimp will not hold the liquid volume from 2.6 kg of lamb over three hours; next cook requires a lidded vessel, either a roasting pan with a fitted lid or the two Le Creusets split one piece each. (2) Lamb read less tender than the Feb 2026 slow-roasted shoulder. Root cause is the endpoint target, not the technique: this recipe deliberately specified sliceable (probe resistance, shoulder holding together) and explicitly excluded the fork-twist/shreddable test. Jin prefers the softer endpoint — next cook targets shreddable. Deviations: full prep executed in the afternoon rather than the designed morning make-ahead; pomegranate molasses substituted with a homemade reduction from pomegranate juice (\\~100 ml to \\~30 ml, lemon at the end). Bulgur swapped for couscous pre-cook. Schema gap: no Middle Eastern / Levantine option in Cuisine — left blank rather than force-fit to Modern.\n\n## Cook record — 16 August 2026\n**Recipe version:** governance v3.5; `baharat-lamb-shoulder-dinner-2piece.docx`, 15 Aug 2026 build.\n**Configuration:** 2 × 1.316 kg bone-in shoulder (White Pyrenees, Butcher Box SG), 1% dry brine (13 g Diamond Crystal per piece) overnight uncovered. Roasting tray, double-sealed with heavy foil, onion bed of 3 large brown onions plus strained garlic. Bosch single oven.\n**Rating:** 8.5 flavour · **Execution:** 7 · **Repeat?** With Modifications — vessel change and softer endpoint required.\n### Deviations from the designed recipe\n<table header-row=\"true\">\n<tr>\n<td>Designed</td>\n<td>Actual</td>\n</tr>\n<tr>\n<td>Morning make-ahead: rub, tray assembly, sauce; tray refrigerated</td>\n<td>All prep executed in the afternoon</td>\n</tr>\n<tr>\n<td>Pomegranate molasses, 2 tsp</td>\n<td>Homemade reduction from pomegranate juice (\\~100 ml → \\~30 ml, lemon at the end)</td>\n</tr>\n<tr>\n<td>Lemon-parsley bulgur</td>\n<td>Lemon-parsley couscous (swapped pre-cook)</td>\n</tr>\n</table>\n### What performed as intended\nFlavour architecture held at 8.5. The warm baharat spice set over lamb, with the pomegranate-lemon jus as sour-sweet counterweight, produced no palate fatigue across the meal. The homemade pomegranate reduction was an adequate substitute; no flavour deficit attributed to it. Differentiated acid registers (pomegranate-lemon in the jus, lemon zest in the couscous, vinegar and sumac in the fattoush) worked as designed.\n### Failure 1 — foil seal breach (Critical CCP fired)\nJuices escaped the foil seal during the roast. The recipe's Critical CCP for seal failure was written for the case of a dry tray; the observed failure was the inverse — liquid volume exceeding what a crimped foil edge can retain.\n**Root cause:** 2.6 kg of lamb over roughly three hours generates more liquid than a foil crimp will hold. The tray was specified because two pieces would not seal in a single Le Creuset; foil was accepted as the sealing mechanism without accounting for the liquid load at this weight.\n**Correction for next cook:** a vessel with a mechanical lid. Either a roasting pan with a fitted lid, or the wide and narrow Le Creusets split one piece each — the latter also resolves per-piece skewer checks and gives independent control over the two divergent paths.\n### Failure 2 — endpoint target, not execution\nLamb read less tender than the Slow-Roasted Bone-In Lamb Shoulder (22 Feb 2026, 9.5).\n**This is a design decision surfacing, not a cooking error.** The recipe deliberately targeted *sliceable* — probe entering the thickest muscle with very little resistance while the shoulder retains enough structure to carve into thick irregular slices — and explicitly excluded the fork-twist/shreddable test as pushing the endpoint too far. The cook landed where it was aimed.\n**Jin's stated preference: target softer on the next cook.** This changes the recipe's endpoint specification, not the method. Next build should specify the shreddable endpoint and accept the presentation consequence (pulled or chunked rather than sliced).\n**Comparison limitation:** the February entry carries no cook notes, no execution rating and no times made, so there is no recorded parameter set to quantify how much further it was taken. The gap is noted; this entry exists partly to avoid repeating it.\n### Designed parameters — confirmation status\nThree parameters carried the *designed, not validated* label. All three remain unconfirmed from this cook; timings and hold behaviour were not recorded on the night.\n<table header-row=\"true\">\n<tr>\n<td>Parameter</td>\n<td>Status</td>\n</tr>\n<tr>\n<td>Sealed-roast band 2½–3½ hr at 1.3 kg per piece</td>\n<td>**Unconfirmed** — actual elapsed time and the gap between pieces not recorded</td>\n</tr>\n<tr>\n<td>90-min sealed hold at 170°F / 75°C</td>\n<td>**Not exercised / unrecorded**</td>\n</tr>\n<tr>\n<td>Reserve reheat in unfinished jus</td>\n<td>**Pending** — reheat had not occurred at time of logging</td>\n</tr>\n</table>\nNote for the next cook: record elapsed time to endpoint for each piece, and the gap between them. Without it the band stays designed indefinitely.\n### Household\nNo split recorded. Served 3 (Jin, Hui Fong, Lukas); reserve piece banked as two meals for 2.\n### Wine\nNot recorded. 2021 Château Mont-Redon Châteauneuf-du-Pape was the recommendation (primary), with 2019 La Rioja Alta Viña Ardanza Reserva as backup. Confirm on next cook.\n---\n## Next-time changes\n1. **Lidded vessel, not foil.** Roasting pan with a fitted lid, or split across the two Le Creusets, one piece each.\n2. **Target the shreddable endpoint.** Revise the endpoint specification and the associated CCP; accept pulled or chunked presentation.\n3. **Record elapsed time to endpoint per piece** so the 2½–3½ hr band can move from designed to validated.\n4. Morning make-ahead remains available but was not required — the afternoon sequence worked.\n## Schema gap\nCuisine has no Middle Eastern or Levantine option. Left blank rather than force-fit to Modern (the Za'atar Chicken Menu precedent). Same gap class as the West African Peanut Stew entry.\n## Governance note\nOne change may meet the codification threshold on a second occurrence: *sealing mechanism must be matched to expected liquid volume, not only to vessel geometry*. This is adjacent to the existing v3.3 vessel-geometry rule but distinct — geometry governs depth, sealing mechanism governs retention. Single occurrence; deferred, not proposed.",
+      "deviations": [
+        "Morning make-ahead (rub, tray assembly, sauce; tray refrigerated) → all prep executed in the afternoon",
+        "Pomegranate molasses, 2 tsp → homemade reduction from pomegranate juice (~100 ml → ~30 ml, lemon at the end)",
+        "Lemon-parsley bulgur → lemon-parsley couscous (swapped pre-cook)",
+        "Foil seal on the roasting tray failed and juices escaped — a foil crimp will not hold the liquid volume from 2.6 kg of lamb over three hours"
+      ],
+      "parameter_confirmations": [
+        {
+          "param": "Sealed-roast band 2½–3½ hr at 1.3 kg per piece",
+          "designed": "2½–3½ hr",
+          "observed": "Actual elapsed time and the gap between pieces not recorded",
+          "verdict": "unresolved"
+        },
+        {
+          "param": "90-min sealed hold at 170°F / 75°C",
+          "designed": "90 min at 170°F / 75°C",
+          "observed": "Not exercised / unrecorded",
+          "verdict": "unresolved"
+        },
+        {
+          "param": "Reserve reheat in unfinished jus",
+          "designed": "Reheat in unfinished jus",
+          "observed": "Pending — reheat had not occurred at time of logging",
+          "verdict": "unresolved"
+        },
+        {
+          "param": "Endpoint texture",
+          "designed": "Sliceable — probe resistance, shoulder holding together; fork-twist/shreddable test excluded",
+          "observed": "Landed sliceable as aimed, but read less tender than the Feb 2026 slow-roasted shoulder; Jin prefers the softer endpoint — next cook targets shreddable",
+          "verdict": "diverged"
+        }
+      ],
+      "household_split": "No split recorded. Served 3 (Jin, Hui Fong, Lukas); reserve piece banked as two meals for 2.",
+      "wine_outcome": "Not recorded. 2021 Château Mont-Redon Châteauneuf-du-Pape was the recommendation (primary), with 2019 La Rioja Alta Viña Ardanza Reserva as backup. Confirm on next cook."
+    }
+  ]
+}
