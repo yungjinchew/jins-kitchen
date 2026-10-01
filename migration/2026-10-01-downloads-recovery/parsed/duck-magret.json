@@ -1,0 +1,492 @@
+{
+  "assignment_key": "duck-magret",
+  "source_file": "notion:recipe-recovery/3ece0391ce638106a461e96d2b706073",
+  "meal": {
+    "slug": "duck-magret-sunday",
+    "name": "Duck Magret Sunday",
+    "planned_date": "2026-09-20",
+    "status": "cooked",
+    "pax": 3,
+    "workflow_md": "> **Note on versions.** The docx `duck-magret-sunday.docx` was generated 2026-09-11 for 2 × 400 g French Moulard magret with a sour cherry and red wine jus. Two sets of in-chat revisions superseded it before the cook: the protein changed to Malaysian Muscovy/Barbary at 2 × 348 g, with salt, render band and thaw method revised; and the jus was rebuilt as a savoury vermouth reduction after cherries, blackberries and red wine all proved unavailable. The sections below carry the FINAL reconciled state. The docx was not regenerated after these revisions.\n\n**Critical path and anchors.** The duck governs. Three anchors: **D0** = duck into the cold pan, with a fixed clock before it. **E** = the flip, called on the skin cue. **P** = the probe reads 130°F / 54°C and the duck leaves the pan. Service is P+10. Radicchio is anchored to E and stays there; only the duck's own downstream events move with P.\n\n**Failure prioritization.** Do not delay the duck. The potatoes yield. If they run to the top of their band they arrive at the table up to seven minutes behind the duck, and that is the accepted sacrifice, stated in advance. Never hold carved duck.\n\n**Oven sequencing.** One temperature all evening, 425°F / 220°C, owned by the potatoes from D0−32 to their exit. Hazelnuts and radicchio are guests in that cavity and take it at the potatoes' convenience. No transitions to sequence. The door opens three extra times, so plan the potatoes at 48–55 minutes rather than 45.\n\n**Parallel and sequential.** Potato parboil and jus reduction run on induction 2 before D0; the duck owns induction 1 from D0 to P. The only true pinch point is the pour-off at D0+12, which must happen before you touch anything else. No component depends on the render yield — the potato fat is bought, not rendered.\n\n**Heat resource allocation.**\n<table header-row=\"true\">\n<tr>\n<td>Phase</td>\n<td>Induction 1</td>\n<td>Induction 2</td>\n<td>Oven</td>\n</tr>\n<tr>\n<td>D0−40 to D0−15</td>\n<td>—</td>\n<td>Potato parboil</td>\n<td>Preheat, then fat tray</td>\n</tr>\n<tr>\n<td>D0−10 to D0</td>\n<td>—</td>\n<td>Jus reduction</td>\n<td>Potatoes</td>\n</tr>\n<tr>\n<td>D0 to E</td>\n<td>Duck render</td>\n<td>Jus reduction, then held</td>\n<td>Potatoes, hazelnuts</td>\n</tr>\n<tr>\n<td>E to P</td>\n<td>Duck meat-side finish</td>\n<td>Jus held off heat</td>\n<td>Potatoes, radicchio</td>\n</tr>\n<tr>\n<td>P to P+10</td>\n<td>—</td>\n<td>Fond deglaze, then mounting off heat</td>\n<td>Radicchio, then plates warming</td>\n</tr>\n</table>\n\n**Fixed-clock phase — D0 = duck into the cold pan.** Clock times are for a 6:00 pm service.\n<table header-row=\"true\">\n<tr>\n<td>Anchor</td>\n<td>Clock</td>\n<td>Action</td>\n</tr>\n<tr>\n<td>D0−40</td>\n<td>4:25</td>\n<td>Oven on, 425°F / 220°C</td>\n</tr>\n<tr>\n<td>D0−35</td>\n<td>4:30</td>\n<td>Salt the duck — meat sides only, plus coarse pepper. Reserve the skin portion in a ramekin. Back on the rack, skin up</td>\n</tr>\n<tr>\n<td>D0−32</td>\n<td>4:50</td>\n<td>90 ml bought duck fat into the roasting tray; tray into the oven</td>\n</tr>\n<tr>\n<td>D0−30</td>\n<td>4:45</td>\n<td>Potatoes into cold salted water, induction 2 — simmer 8–10 min</td>\n</tr>\n<tr>\n<td>D0−17</td>\n<td>5:02</td>\n<td>Drained, steamed off 3 min, shaken rough</td>\n</tr>\n<tr>\n<td>D0−15</td>\n<td>5:05</td>\n<td>Potatoes into the hot fat — roast 48–55 min, out 5:53–6:00</td>\n</tr>\n<tr>\n<td>D0−10</td>\n<td>5:20</td>\n<td>Jus started, induction 2 — reduce ~25 min</td>\n</tr>\n<tr>\n<td>D0−1</td>\n<td>5:29</td>\n<td>Seat the probe. Reserved salt onto the skin</td>\n</tr>\n<tr>\n<td>D0</td>\n<td>5:30</td>\n<td>Duck skin-down into the cold dry skillet, induction 1, medium-low</td>\n</tr>\n<tr>\n<td>D0+2</td>\n<td>5:32</td>\n<td>Hazelnuts into the oven — 8 min</td>\n</tr>\n<tr>\n<td>D0+10</td>\n<td>5:40</td>\n<td>Hazelnuts out; cool, chop coarse</td>\n</tr>\n<tr>\n<td>D0+12</td>\n<td>5:42</td>\n<td>First fat pour-off — record Gate A</td>\n</tr>\n<tr>\n<td>D0+15</td>\n<td>5:45</td>\n<td>Jus strained, held off heat</td>\n</tr>\n<tr>\n<td>D0+18 on</td>\n<td>—</td>\n<td>Pour off every 6–8 min; steer the heat per Active Cooking step 9</td>\n</tr>\n</table>\n\n**E-anchored — radicchio only.**\n<table header-row=\"true\">\n<tr>\n<td>Anchor</td>\n<td>Expected clock</td>\n<td>Action</td>\n</tr>\n<tr>\n<td>E−10</td>\n<td>5:35–5:42</td>\n<td>Small tray into the oven empty — trigger: skin lifting freely but not yet fully amber</td>\n</tr>\n<tr>\n<td>E−5</td>\n<td>5:40–5:47</td>\n<td>Radicchio cut-side down onto the hot tray — 15 min</td>\n</tr>\n<tr>\n<td>E</td>\n<td>5:45–5:52</td>\n<td>Flip, on the skin cue. Record Gate B. Meat side down, medium</td>\n</tr>\n<tr>\n<td>E+10</td>\n<td>5:55–6:02</td>\n<td>Radicchio out — vinegar and hazelnuts on immediately. Full 15 minutes regardless of how the finish runs</td>\n</tr>\n</table>\n\n**P-anchored — everything after the pull.**\n<table header-row=\"true\">\n<tr>\n<td>Anchor</td>\n<td>Expected clock</td>\n<td>Action</td>\n</tr>\n<tr>\n<td>P</td>\n<td>5:47–5:56</td>\n<td>Probe reads 130°F / 54°C — duck out. Record Gate C. Rack, skin up, uncovered. Rest 8 min, probe left in</td>\n</tr>\n<tr>\n<td>P+2</td>\n<td>—</td>\n<td>Duck pan poured clean, fond lifted with a splash of jus, strained back in</td>\n</tr>\n<tr>\n<td>P+4</td>\n<td>—</td>\n<td>Plates into the cooling oven to warm</td>\n</tr>\n<tr>\n<td>P→P+8</td>\n<td>—</td>\n<td>Watch the probe through the rest — record Gate D: the observed peak and the time after P at which it occurs</td>\n</tr>\n<tr>\n<td>P+8</td>\n<td>—</td>\n<td>Butter mounted into the jus off heat; closing vinegar to taste against a slice; flash re-crisp if the tap sounds dull</td>\n</tr>\n<tr>\n<td>P+9</td>\n<td>—</td>\n<td>Carve</td>\n</tr>\n<tr>\n<td>P+10</td>\n<td>5:57–6:06</td>\n<td>Plate: potatoes, radicchio, duck, jus beside</td>\n</tr>\n</table>\n\n**Timeline arithmetic — service band.** With the Muscovy revision, a 15–22 min render band puts E at D0+15 to D0+22, a 2–4 minute meat-side finish puts P at D0+17 to D0+26, and service between D0+27 and D0+36. Both band edges close, neither to the minute. The original magret figures were a 22–28 min render with service at D0+34 to D0+42, a longest potato hold of 9 minutes against the 15-minute ceiling, and a worst-case potato trail of 7 minutes.\n\n**Holding chain.**\n<table header-row=\"true\">\n<tr>\n<td>Component</td>\n<td>Hold</td>\n<td>Max</td>\n<td>Drift</td>\n<td>Corrective</td>\n</tr>\n<tr>\n<td>Duck, post-rest</td>\n<td>Do not hold</td>\n<td>0</td>\n<td>Cools fast once carved</td>\n<td>Carve at service</td>\n</tr>\n<tr>\n<td>Potatoes</td>\n<td>Tray on the stovetop, uncovered — the oven stays hot for the radicchio, so the switched-off-oven instruction in the docx does not apply</td>\n<td>15 min</td>\n<td>Shell softens</td>\n<td>None — they yield first</td>\n</tr>\n<tr>\n<td>Radicchio</td>\n<td>Switched-off oven, undressed</td>\n<td>5 min</td>\n<td>Cores keep softening</td>\n<td>Dress at the plate, not the tray</td>\n</tr>\n<tr>\n<td>Jus</td>\n<td>Off heat, unmounted</td>\n<td>30 min</td>\n<td>Skins over</td>\n<td>Warm gently before mounting</td>\n</tr>\n</table>\n\n**Plating window.** Radicchio exits at E+10, which falls at P+6 to P+8 depending on whether the meat-side finish took two minutes or four. Either lands inside service at P+10. If plating slips, the potato shell fails first — it softens within about five minutes of leaving the oven.\n\n**Meal balance audit.** Richness sits on one axis — rendered duck fat, carried by the duck and the potatoes only; the radicchio is dressed in olive oil deliberately, to keep the fat axis to two of four components. Bitterness is the primary reliever. Acid appears at two points, functionally distinct: vinegar on the radicchio resets the palate between bites, the closing vinegar in the jus brightens the duck itself. In the final vermouth version no sugar is added anywhere in the menu and there is no fruit at all. Texture runs crisp skin, crisp potato shell, yielding radicchio with browned cut faces, and hazelnut: two crunch sources, distinct in kind. No accumulation gap.\n\n**Method naming.** This is roasted radicchio, not charred. A 425°F oven browns the cut faces; it does not char them. Actual char would need the binchotan and its own heat-resource schedule.",
+    "shared_prep_md": "- **Duck fat: 105 ml / 7 tbsp total** — 90 ml to Potatoes (bought, into the tray at D0−32), 15 ml to Jus. Rendered fat from the breasts replenishes the jar afterwards; no component waits on render yield.\n- **Red wine vinegar: 25 ml / 1⅔ tbsp total** — 15 ml to Radicchio (off heat), 5 ml to Jus (into the reduction), 5 ml to Jus (off heat at service).\n- **Diamond Crystal kosher salt for the duck: 5.6 g total, about 2 tsp** — about 1½ tsp to the meat sides one hour ahead, a scant ½ tsp reserved in a ramekin for the skin at the pan. Weigh both; do not sprinkle. The docx figure of 6.4 g applied to 800 g of magret and was superseded.\n\nNothing else is shared across two or more components. Thyme and bay appear in the jus alone.",
+    "wine_pairing": "2022 Domaine du Vieux Télégraphe Châteauneuf-du-Pape Télégramme — drunk on the night, worked well. Chosen for moderate tannin against the radicchio's bitterness and two staged vinegar points, and as a bridge between Hui Fong's Châteauneuf preference and Jin's preference for plush reds. Backup not used: 2022 Burn Cottage Pinot Noir Moonlight Race.",
+    "components": [
+      {
+        "dish_slug": "duck-magret-seared-duck-breast",
+        "role": "main",
+        "service_order": 1
+      },
+      {
+        "dish_slug": "duck-fat-roast-potatoes",
+        "role": "side",
+        "service_order": 2
+      },
+      {
+        "dish_slug": "duck-magret-roasted-radicchio-hazelnuts",
+        "role": "side",
+        "service_order": 3
+      },
+      {
+        "dish_slug": "duck-magret-shallot-vermouth-jus",
+        "role": "sauce",
+        "service_order": 4
+      }
+    ]
+  },
+  "dishes": [
+    {
+      "slug": "duck-magret-seared-duck-breast",
+      "existing": true,
+      "name": "Seared Duck Magret",
+      "protein": "Duck",
+      "category": [
+        "Main"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": "Medium",
+      "tags": [],
+      "occasion": [],
+      "status": "cooked",
+      "source": "Recovered from notion:recipe-recovery/3ece0391ce638106a461e96d2b706073 (Duck Magret Sunday; docx duck-magret-sunday.docx generated 2026-09-11, superseded by in-chat revisions — Notion record carries the final reconciled state)",
+      "governance_version": "v3.5",
+      "summary": "Duck breast rendered skin-down from a cold pan in a single continuous pass, flipped on a skin endpoint and finished to a probe trigger: brittle fat cap against dense, close-grained meat.",
+      "servings": 3,
+      "equipment": [
+        "heavy tri-ply stainless skillet, 28–30 cm (preferred over cast iron for heat responsiveness during the steered render; cast iron on low with the pan lifted off the hob is the fallback if the stainless is thin)",
+        "leave-in probe thermometer",
+        "wire rack"
+      ],
+      "method_md": "## Dish Overview\nDuck breast rendered skin-down from a cold pan in a single continuous pass, flipped on a skin endpoint, and finished meat-side to a probe trigger. Textures: brittle fat cap against dense, close-grained meat. This cook is a baseline: the method is the familiar one, and the purpose is to establish how this duck, this pan and this hob actually behave.\n\n## Yield & Timing\nServes 3 with leftovers · Thaw 24–36 hr fridge, or 40–50 min cold-water submersion with water changed every 30 min · Air-dry 12–24 hr · Active ~40 min · Render 15–22 min for Muscovy, 22–28 min for magret · No designed hold.\n\n## Flavor Architecture\nBase: the duck's own rendered fat, no added fat at any stage. Primary driver: rendered skin and the Maillard crust on the meat side. Acid: none in this component; carried by the jus and the radicchio. Aromatic/finish: coarse pepper on the meat side, flaky salt on the carved faces. No acid by design, so the single-stage constraint does not apply.\n\n## Prep Phase\n1. **Thaw, 24–36 hr ahead.** Fridge, in packaging, on a rack over a tray. Never on the counter. Discard all purge liquid. If buying the day before, cold-water thaw instead: sealed pack fully submerged, water changed every 30 minutes, about 40–50 minutes for a 348 g breast. Do not use warm water.\n2. **Dry and score, 12–24 hr ahead.** Pat both faces very dry. Crosshatch the fat at ~1 cm intervals, cutting to roughly two-thirds of the cap depth, stopping short of the meat.\n3. **Air-dry.** Uncovered on a rack in the fridge, skin up, 12–24 hr. No salt at this stage. Snap-frozen duck carries extra free moisture from ice damage, so this step matters more here than on fresh. Do not skip it to buy back time.\n4. **Salt, 1 hr before the pan.** Weigh 5.6 g, about 2 tsp. Apply ~1½ tsp to the meat sides, plus coarse pepper. Set the remaining scant ½ tsp aside in a ramekin — it is the skin portion and does not go on now. Back onto the rack, skin up. Pre-cook surface condition: skin dry and slightly tacky, no visible moisture in the score lines.\n5. **Probe placement.** Insert the leave-in probe horizontally from the side of the thickest breast, tip centred in the meat, before the pan goes on. The probe is the instrument for this cook, not a backup.\n6. **Salt the skin at the pan.** The reserved scant ½ tsp, applied immediately before the breasts go in. Measured, not sprinkled — total salt is 0.8% and stays 0.8%.\n\n## Active Cooking\n1. **Render.** Both breasts skin-down in a cold, dry, heavy skillet on induction 1. Turn to medium-low. Do not preheat and do not add fat. Planned band 15–22 minutes for Muscovy. The fat should whisper, not crackle.\n2. **Pour off progressively.** First pour-off at ~12 minutes, then every 6–8 minutes, into a heatproof bowl. Fat pooling above the score lines poaches the skin instead of rendering it. This fat replenishes the jar; nothing in the menu waits on it.\n3. **Steering.** The render band is managed, not observed. If the internal climb is outpacing the skin — probe rising while the cap is still soft — drop to low and lift the pan briefly off the hob. If the skin is lagging with the internal still low, nudge up within medium-low. Do not go above medium at any point. Steering toward the middle of the band is the only lever that moves service without compromising anything.\n4. **Flip trigger (Primary cue).** The fat cap is reduced to a thin shell, the skin is deep amber, the breast lifts free with no tug, and a knife tip meets a brittle crust rather than yielding fat. Flip on that, not on the clock and not on a number. This moment is E.\n5. **Contingency branch.** If the internal reaches 118°F / 48°C while the skin is still visibly far from its endpoint, lift the breasts onto a rack, skin up, and let the gradient relax until the probe falls ~10°F, then return skin-down to finish the render. This is a rescue, not a plan. Reaching 118°F is not a reason to flip — the skin cue still governs the flip. If this triggers, log it: that is the evidence for making the split-render the designed path on cook #2.\n6. **Meat-side finish.** Pour the pan clean, medium, meat-side down. Pull at 130°F / 54°C — the probe is the trigger. Expect 2–4 minutes; the range is an expectation, not a schedule. The moment of pull is P.\n7. **Secondary doneness cue.** Press the thickest part: if it yields softly and the dent lingers, continue; if it rebounds promptly against light resistance, read the probe. This tells you when to read, not what to do instead of reading.\n8. **Rest.** 8 minutes from P, skin up, on a rack, uncovered, probe left in. Rack so no steam collects under the skin; uncovered so the crust does not soften in its own humidity. Planned carryover +3 to +5°F / +2 to +3°C to 133–135°F / 56–57°C — a planned band, recorded at Gate D, not relied upon.\n9. **Flash re-crisp (conditional).** If a knuckle-tap sounds dull after the rest, 45–60 seconds skin-down in the dry hot pan.\n10. **Carve.** Against the grain, slight bias, ~5 mm. Flaky salt on the cut faces.\n\n## Food Safety\nStated separately from the culinary target. There is no designed ambient hold in this method, so no ambient-time control applies to the planned path. Where the contingency branch at step 11 is invoked, the controlling requirement is cumulative time between 40°F / 4°C and 140°F / 60°C across the whole preparation, not a per-step allowance. This is whole-muscle duck: the interior is the low-risk zone and the surface is addressed by the render and the final sear. Keep any contingency hold under an hour and count it toward the cumulative total. This is a safety statement; it is not the culinary limit and has no bearing on when the duck tastes best.\n\n## Holding & Assembly\nCarved slices onto warmed plates immediately. Carve at service, not ahead — a previous cook showed room-temperature plates pulling 5–7°F out of a rested protein, so warm the plates. Jus beside the slices, never over the skin.\n\n## Critical Control Points\n<table header-row=\"true\">\n<tr>\n<td>Class</td>\n<td>Failure Mode</td>\n<td>Sensory Cue</td>\n<td>Recovery</td>\n</tr>\n<tr>\n<td>Critical</td>\n<td>Meat taken past medium during the finish</td>\n<td>Probe above 135°F / 57°C before the rest</td>\n<td>Unrecoverable. Turns grey and livery; the reason to buy the cut is gone</td>\n</tr>\n<tr>\n<td>Major</td>\n<td>Heat too high in the first 5 minutes, skin browns before the fat renders</td>\n<td>Aggressive crackle and visible browning inside 5 minutes</td>\n<td>Drop the heat; the render continues. Unrecoverable for skin colour; dish remains serviceable</td>\n</tr>\n<tr>\n<td>Major</td>\n<td>Flipped on time rather than on the skin, thick fat layer under crisp skin</td>\n<td>Knife tip meets soft yielding fat; breast resists lifting</td>\n<td>Recoverable — return skin-down and continue</td>\n</tr>\n<tr>\n<td>Major</td>\n<td>Scoring cut into the meat, juices bleed through the cuts across a long render</td>\n<td>Pink weeping at the score lines before any heat is applied</td>\n<td>Unrecoverable for that breast's moisture; dish remains serviceable</td>\n</tr>\n<tr>\n<td>Minor</td>\n<td>Probe tip sitting in fat rather than muscle, every reading in the cook is wrong</td>\n<td>Internal reads implausibly high in the first 10 minutes</td>\n<td>Reseat the probe; discard the readings taken before</td>\n</tr>\n</table>\n\n## Adjustment Notes\nFlaky salt goes on the carved faces where it reads immediately — it will not adhere to rendered skin. If the duck eats heavy, more radicchio per plate is the correction, not less jus.\n\n## Scaling Notes\nA third breast crowds one skillet, and crowding traps fat above the score lines. Two pans across both hobs, which then costs you the jus hob — at three breasts, reduce the jus ahead and reheat.\n\n## Nutrition Estimate\nnot stated",
+      "designed_unvalidated": [
+        {
+          "param": "Render band, Muscovy",
+          "designed_value": "15–22 min",
+          "note": "Estimated from cap geometry only, no logged cook. The least-evidenced number in the duck recipe"
+        },
+        {
+          "param": "Carryover during the rest",
+          "designed_value": "+3 to +5°F to 133–135°F / 56–57°C",
+          "note": "Gate D was not captured; remains designed"
+        },
+        {
+          "param": "Pull temperature",
+          "designed_value": "130°F / 54°C",
+          "note": "Held at 130°F for Muscovy on the grounds that it is leaner than magret and punishes overcooking harder. Not validated against a measured peak"
+        },
+        {
+          "param": "Contingency threshold",
+          "designed_value": "118°F / 48°C",
+          "note": "Lowered from an earlier 122°F because 122°F left the rescue branch no room to work. Did not fire on cook #1, but monitoring was intermittent"
+        },
+        {
+          "param": "Split-render versus continuous",
+          "designed_value": "continuous chosen as the cook #1 baseline",
+          "note": "Unresolved. Cannot be settled without a leave-in probe"
+        }
+      ],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "duck breast, muscovy or barbary",
+          "department": "Protein",
+          "qty": 2,
+          "unit": "piece",
+          "qty_alt": "348 g each, 696 g total",
+          "prep_note": "frozen; Butcher Box Singapore, Malaysian, S$36.90/kg. Original docx specified 2 × 400 g French Moulard magret",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 5.6,
+          "unit": "g",
+          "qty_alt": "about 2 tsp total",
+          "prep_note": "0.8% of 696 g: ~1½ tsp to the meat sides 1 hr ahead, a scant ½ tsp reserved for the skin at the pan",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "coarse; meat side only, to taste",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "flaky salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "carved faces, to finish",
+          "pantry_check": true,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "duck-fat-roast-potatoes",
+      "existing": true,
+      "name": "Duck-Fat Roast Potatoes",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "British"
+      ],
+      "difficulty": "Easy",
+      "tags": [],
+      "occasion": [],
+      "status": "cooked",
+      "source": "Recovered from notion:recipe-recovery/3ece0391ce638106a461e96d2b706073 (Duck Magret Sunday; docx duck-magret-sunday.docx generated 2026-09-11, superseded by in-chat revisions — Notion record carries the final reconciled state)",
+      "governance_version": "v3.5",
+      "summary": "Crisp-shelled and floury-centred, roasted in duck fat: the meal's crunch axis against the yielding radicchio.",
+      "servings": 3,
+      "equipment": [
+        "heavy roasting tray"
+      ],
+      "method_md": "## Dish Overview\nCrisp-shelled, floury-centred potatoes roasted in duck fat. Contributes the meal's crunch axis.\n\n## Yield & Timing\nServes 3 · Active ~15 min · Roast 48–55 min · Oven 425°F / 220°C.\n\n## Flavor Architecture\nBase: duck fat. Primary driver: the roasted potato crust itself. Acid: none, carried by the radicchio. Finish: flaky salt at the tray.\n\n## Prep Phase\n1. Cut into ~5 cm chunks. Cold salted water, bring to a boil, simmer 8–10 minutes.\n2. **Parboil endpoint (Primary cue).** A knife tip enters the outer centimetre easily but meets clear resistance at the core. If it passes through the centre without resistance, it has gone too far.\n3. Drain, rest 3 minutes in the colander to steam off, then shake hard until the surfaces go rough and floury.\n\n## Active Cooking\n1. Duck fat into a heavy roasting tray; tray into the oven at D0−32 to preheat.\n2. Potatoes into the hot fat at D0−15, turned once to coat. Roast 48–55 minutes, turning once at 25 minutes.\n\n## Holding & Assembly\nMaximum 15 minutes, uncovered. The docx specifies a switched-off oven with the door ajar, but the oven stays at 425°F for the radicchio, so in practice the tray holds on the stovetop, uncovered. Covering them is the one thing that destroys the shell.\n\n## Critical Control Points\n<table header-row=\"true\">\n<tr>\n<td>Class</td>\n<td>Failure Mode</td>\n<td>Sensory Cue</td>\n<td>Recovery</td>\n</tr>\n<tr>\n<td>Major</td>\n<td>Fat not fully preheated, potatoes absorb rather than sear</td>\n<td>No immediate sizzle as the first potato meets the tray</td>\n<td>Remove, reheat the tray, return — costs 10 minutes</td>\n</tr>\n<tr>\n<td>Major</td>\n<td>Parboil taken too far, chunks collapse on shaking</td>\n<td>Knife tip passes through the centre without resistance</td>\n<td>Unrecoverable for shape; roast anyway, dish remains serviceable</td>\n</tr>\n<tr>\n<td>Minor</td>\n<td>Tray crowded, chunks touch and steam</td>\n<td>Surfaces stay pale and matte past 30 minutes</td>\n<td>Spread across two trays and extend 10 minutes</td>\n</tr>\n</table>\n\n## Adjustment Notes\nFlaky salt straight from the oven, while the surface is still hot enough to hold it.\n\n## Scaling Notes\nAbove 900 g the chunks touch and steam. Two trays, not one deeper tray — a second tray costs nothing at this oven temperature.\n\n## Nutrition Estimate\nnot stated",
+      "designed_unvalidated": [
+        {
+          "param": "Roast time",
+          "designed_value": "48–55 min",
+          "note": "Extended from 45–55 because the oven door opens three extra times for the hazelnuts and radicchio. Not separately timed on cook #1"
+        },
+        {
+          "param": "Stovetop hold",
+          "designed_value": "up to 15 min, uncovered",
+          "note": "Correction made in chat after the oven-conflict was spotted; outcome of the hold not recorded"
+        }
+      ],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "potato, floury (russet or maris piper)",
+          "department": "Produce",
+          "qty": 900,
+          "unit": "g",
+          "qty_alt": "2 lb",
+          "prep_note": "peeled — skin holds moisture against the shell and blunts the crust",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "duck fat",
+          "department": "Oils & Liquids",
+          "qty": 90,
+          "unit": "ml",
+          "qty_alt": "6 tbsp",
+          "prep_note": "bought, not rendered; into the tray at D0−32 to preheat",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "parboil water, to taste",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "flaky salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "straight from the oven, to finish",
+          "pantry_check": true,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "duck-magret-roasted-radicchio-hazelnuts",
+      "existing": true,
+      "name": "Roasted Radicchio with Hazelnuts",
+      "protein": "Veg",
+      "category": [
+        "Side"
+      ],
+      "cuisine": [
+        "Italian"
+      ],
+      "difficulty": "Easy",
+      "tags": [],
+      "occasion": [],
+      "status": "cooked",
+      "source": "Recovered from notion:recipe-recovery/3ece0391ce638106a461e96d2b706073 (Duck Magret Sunday; docx duck-magret-sunday.docx generated 2026-09-11, superseded by in-chat revisions — Notion record carries the final reconciled state)",
+      "governance_version": "v3.5",
+      "summary": "Radicchio wedges roasted cut-side down until the faces brown and the cores soften to a yielding bite, finished off heat with vinegar and toasted hazelnuts — the meal's bitter axis and its palate reset.",
+      "servings": 3,
+      "equipment": [
+        "small roasting tray"
+      ],
+      "method_md": "## Dish Overview\nRadicchio wedges roasted cut-side down until the faces brown and the cores soften to a yielding bite, finished off heat with red wine vinegar and toasted hazelnuts. This is the meal's bitter axis and its palate reset; the hazelnuts give it a crunch distinct in kind from the potato shell.\n\n## Yield & Timing\nServes 3 · Active ~10 min · Roast 15 min · Hazelnuts 8 min · Oven 425°F / 220°C.\n\n## Flavor Architecture\nBase: olive oil, deliberately not duck fat. Primary driver: the radicchio's own bitterness, concentrated by browning. Acid: red wine vinegar, single-stage off heat. Single-stage constraint invoked: the vinegar's job is to cut bitterness at the moment of eating; adding it before or during roasting boils it off and leaves the leaves limp. Aromatic/finish: toasted hazelnuts, chopped coarse.\n\n## Prep Phase\n1. Quarter each head through the root, leaving the core attached so the wedges hold together. Discard any bruised outer leaves.\n2. Toss the wedges in olive oil, salt and pepper, working oil into the cut faces.\n3. **Hazelnuts.** Small tray, 425°F / 220°C, 8 minutes, shaken once (D0+2 to D0+10). Pull when they smell nutty and have gone pale gold in the centre — they keep darkening off the tray. Cool, then chop coarse.\n\n## Active Cooking\n1. Small tray into the oven empty at E−10 to preheat.\n2. Radicchio onto the hot tray, cut faces down, at E−5. Roast 15 minutes without turning. It comes out at E+10 regardless of how the duck's meat-side finish runs.\n3. **Doneness (Primary cue).** A wedge lifts from the tray with the cut face visibly browned, and a knife tip meets soft flesh at the leaf with light resistance still at the core. The target is yielding with structure — if the wedge slumps when lifted, it has gone too far.\n4. Vinegar and hazelnuts on immediately at E+10, off the heat, then to the table.\n\n## Holding & Assembly\nDo not hold dressed. If service slips, leave it undressed in the switched-off oven for up to 5 minutes and dress at the plate.\n\n## Critical Control Points\n<table header-row=\"true\">\n<tr>\n<td>Class</td>\n<td>Failure Mode</td>\n<td>Sensory Cue</td>\n<td>Recovery</td>\n</tr>\n<tr>\n<td>Major</td>\n<td>Vinegar added before or during roasting, leaves steam rather than brown</td>\n<td>Visible liquid on the tray within the first 5 minutes</td>\n<td>Unrecoverable for texture; dish remains serviceable</td>\n</tr>\n<tr>\n<td>Major</td>\n<td>Wedges roasted too long, collapse to limp strands and bitterness turns acrid</td>\n<td>Wedge slumps when lifted with tongs</td>\n<td>Unrecoverable</td>\n</tr>\n<tr>\n<td>Minor</td>\n<td>Cores cut away, wedges fall to loose leaves</td>\n<td>Leaves separating during the oil toss</td>\n<td>Roast as loose leaves and reduce to 10 minutes</td>\n</tr>\n</table>\n\n## Adjustment Notes\nIf bitterness still dominates at the plate, another 5 ml of vinegar over the wedges is the lever. Salt again after the vinegar, lightly — acid makes the first salting read weaker than it is.\n\n## Scaling Notes\nA third head needs a second tray. Crowded wedges steam in their own moisture and will not brown regardless of oven temperature.\n\n## Nutrition Estimate\nnot stated",
+      "designed_unvalidated": [
+        {
+          "param": "Roast time",
+          "designed_value": "15 min at 425°F",
+          "note": "Set from wedge geometry rather than any logged cook. Flagged at design time as the least-evidenced number in this component, and the first candidate cause of its 8.5 rating"
+        }
+      ],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "radicchio",
+          "department": "Produce",
+          "qty": 400,
+          "unit": "g",
+          "qty_alt": "2 heads / 14 oz",
+          "prep_note": "whole heads, quartered through the root with cores attached",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "olive oil",
+          "department": "Oils & Liquids",
+          "qty": 30,
+          "unit": "ml",
+          "qty_alt": "2 tbsp",
+          "prep_note": "deliberately not duck fat, to hold the fat axis to two of four components",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "hazelnut, blanched",
+          "department": "Pantry",
+          "qty": 40,
+          "unit": "g",
+          "qty_alt": "⅓ cup",
+          "prep_note": "toasted 8 min then chopped coarse. Buy blanched — skinning on the day is work with no return",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "red wine vinegar",
+          "department": "Oils & Liquids",
+          "qty": 15,
+          "unit": "ml",
+          "qty_alt": "1 tbsp",
+          "prep_note": "off heat at the finish only",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": 2,
+          "unit": "g",
+          "qty_alt": null,
+          "prep_note": "plus more after the vinegar",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "black pepper",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "to taste",
+          "pantry_check": true,
+          "optional": false
+        }
+      ]
+    },
+    {
+      "slug": "duck-magret-shallot-vermouth-jus",
+      "existing": true,
+      "name": "Shallot and Vermouth Jus",
+      "protein": null,
+      "category": [
+        "Sauce"
+      ],
+      "cuisine": [
+        "French"
+      ],
+      "difficulty": "Medium",
+      "tags": [],
+      "occasion": [],
+      "status": "cooked",
+      "source": "Recovered from notion:recipe-recovery/3ece0391ce638106a461e96d2b706073 (Duck Magret Sunday; docx duck-magret-sunday.docx generated 2026-09-11, superseded by in-chat revisions — Notion record carries the final reconciled state)",
+      "governance_version": "v3.5",
+      "summary": "A shallot, vermouth and stock reduction finished with staged vinegar and mounted butter — dark and savoury, with no fruit and no added sugar.",
+      "servings": 3,
+      "equipment": [
+        "fine strainer"
+      ],
+      "method_md": "## Dish Overview\nA shallot, vermouth and stock reduction carrying no fruit and no added sugar, finished with mounted butter and a reserved closing vinegar. Built independently of the duck pan so its timing is not hostage to the render; the duck's fond is folded in after the duck comes out.\n\n## Yield & Timing\n~150 ml, serves 3 · Active ~10 min · Reduction ~25 min · Induction 2, from D0−10.\n\n## Flavor Architecture\nBase: duck fat and shallot. Primary driver: reduced stock, with vermouth's botanical bitterness as a supporting layer. Acid: vermouth at the opening, 5 ml vinegar into the reduction, 5 ml off heat at the finish. Finish: mounted butter and the closing vinegar. The opening 5 ml is not there for sharpness — the vermouth's volatile acidity is largely gone by the time the stock goes in, so that vinegar is seasoning the long reduction and giving it a backbone that concentrates. That job is independent of which alcohol was used.\n\n## Active Cooking\n1. Shallot in duck fat, medium-low, 4 minutes — translucent without colour.\n2. Vermouth in; reduce until the pan is nearly dry.\n3. Stock, thyme, bay, and the first 5 ml vinegar. Reduce by roughly two-thirds.\n4. **Reduction endpoint (Primary cue).** The sauce coats a spoon and a finger drawn through the back leaves a track that holds its edges. If the track fills in, continue.\n5. Strain, return to the pan, hold warm off heat. Reserve the closing 5 ml vinegar and the butter — neither goes in yet.\n\n## Holding & Assembly\nAt P+2, pour the duck pan clean of fat, lift the fond with a splash of the held jus over low heat, scraping until the browned residue dissolves, and strain it back in. At P+8, off heat, whisk in the cold butter a few cubes at a time, each batch fully incorporated before the next. Taste against a carved slice of duck in front of you and add the closing vinegar in 2 ml steps — tighter than the 2–3 ml the red wine version specifies, because vermouth's botanical bitterness already supplies part of that lift, and it may need none at all. This step cannot move earlier: the duck is the thing being seasoned against, and until it is sliced there is nothing to judge.\n\n## Critical Control Points\n<table header-row=\"true\">\n<tr>\n<td>Class</td>\n<td>Failure Mode</td>\n<td>Sensory Cue</td>\n<td>Recovery</td>\n</tr>\n<tr>\n<td>Major</td>\n<td>Butter mounted over direct heat, emulsion breaks</td>\n<td>Fat separating at the pan edge as you whisk</td>\n<td>Off heat, whisk in a tablespoon of cold stock</td>\n</tr>\n<tr>\n<td>Major</td>\n<td>Reduction taken too far, turns salty and tacky as it cools</td>\n<td>Coats the spoon like syrup rather than cream</td>\n<td>Loosen with stock, not water — water thins the salt but also the body</td>\n</tr>\n<tr>\n<td>Minor</td>\n<td>Shallot browned rather than sweated</td>\n<td>Sauce reads bitter under the vermouth</td>\n<td>Unrecoverable; dish remains serviceable</td>\n</tr>\n</table>\n\n## Adjustment Notes\nSalt only after mounting, and only after tasting against the duck. If it reads heavy next to the duck fat already on the plate, the closing vinegar is the correction, not more butter. If it reads sharp rather than bright, hold the closing vinegar entirely — it is a reserve, not an obligation.\n\n## Scaling Notes\nnot stated\n\n## Nutrition Estimate\nnot stated\n\n## Correction to the superseded version\nThe docx shopping-list note said that with sweeter fruit the opening wine should be cut by 20 ml. That instruction is wrong and should not be followed. Wine is the jus's acid and tannin spine; cutting it makes a sweeter version sweeter. The correct lever for excess sweetness is fruit quantity first, then vinegar.\n\n## Superseded variant — Sour Cherry and Red Wine Jus (never cooked)\nThe docx version used 150 ml dry red wine and 100 g frozen pitted sour cherries in place of the vermouth, with 10 ml staged vinegar and the same shallot, stock, thyme, bay and butter. Identity check for that version: the cherries stay subordinate to the stock; if it reads as fruit sauce rather than jus, the cherry quantity comes down before anything else moves. In-chat substitution ladder recorded for that version, none of which was used: sweet cherries at 70 g with wine held at 150 ml and vinegar raised to 15 ml; blackberries 80 g; cranberries 60 g with vinegar dropped to 5 ml; redcurrants 80 g. Rejected: blueberries, raspberries, tropical fruit, mixed berry packs, balsamic, cooking wine, white wine.",
+      "designed_unvalidated": [
+        {
+          "param": "Vermouth quantity",
+          "designed_value": "120 ml (vs 150 ml red wine)",
+          "note": "Reduced on the reasoning that vermouth is more concentrated and carries residual sugar. Rated 9.5 on first cook, but the 120 ml figure itself was not compared against 150 ml"
+        },
+        {
+          "param": "Closing vinegar step size",
+          "designed_value": "2 ml (vs 2–3 ml)",
+          "note": "Tightened because vermouth's botanicals supply part of the lift. Whether any closing vinegar was used on cook #1 is not recorded"
+        },
+        {
+          "param": "Sour cherry version",
+          "designed_value": "100 g cherries, 150 ml red wine",
+          "note": "Never cooked. The vermouth version's 9.5 makes the fruited version the untested variant rather than the default"
+        }
+      ],
+      "nutrition_estimate": null,
+      "ingredients": [
+        {
+          "name": "shallot",
+          "department": "Produce",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": "large; minced",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "duck fat",
+          "department": "Oils & Liquids",
+          "qty": 15,
+          "unit": "g",
+          "qty_alt": "1 tbsp",
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "noilly prat dry vermouth",
+          "department": "Alcohol",
+          "qty": 120,
+          "unit": "ml",
+          "qty_alt": null,
+          "prep_note": "Noilly Prat or similar. Replaces 150 ml dry red wine; reduced from 150 to 120 ml because vermouth is more concentrated and carries residual sugar",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "chicken stock",
+          "department": "Pantry",
+          "qty": 300,
+          "unit": "ml",
+          "qty_alt": "1¼ cups",
+          "prep_note": "or duck stock; unsalted or low-salt — it reduces by more than two-thirds and is salted at the end",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "thyme",
+          "department": "Produce",
+          "qty": 2,
+          "unit": "sprig",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "bay leaf",
+          "department": "Seasoning",
+          "qty": 1,
+          "unit": "piece",
+          "qty_alt": null,
+          "prep_note": null,
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "red wine vinegar",
+          "department": "Oils & Liquids",
+          "qty": 10,
+          "unit": "ml",
+          "qty_alt": null,
+          "prep_note": "staged: 5 ml into the reduction, 5 ml held for the finish",
+          "pantry_check": true,
+          "optional": false
+        },
+        {
+          "name": "unsalted butter",
+          "department": "Dairy",
+          "qty": 25,
+          "unit": "g",
+          "qty_alt": "2 tbsp",
+          "prep_note": "cold, cubed; mounted off heat",
+          "pantry_check": false,
+          "optional": false
+        },
+        {
+          "name": "diamond crystal kosher salt",
+          "department": "Seasoning",
+          "qty": null,
+          "unit": null,
+          "qty_alt": null,
+          "prep_note": "only after mounting, to taste",
+          "pantry_check": true,
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "measurements": [
+    {
+      "gate": "Gate A — internal at first pour-off, D0+12",
+      "predicted": "not predicted",
+      "observed": "not captured",
+      "probe": null
+    },
+    {
+      "gate": "Gate B — internal at the flip",
+      "predicted": "not predicted",
+      "observed": "not captured",
+      "probe": null
+    },
+    {
+      "gate": "Gate C — pull temp and elapsed meat-side time",
+      "predicted": "130°F / 54°C, 2–4 min",
+      "observed": "not captured",
+      "probe": null
+    },
+    {
+      "gate": "Gate D — observed peak in P→P+8 and time-to-peak",
+      "predicted": "133–135°F / 56–57°C",
+      "observed": "not captured",
+      "probe": null
+    },
+    {
+      "gate": "Total render minutes",
+      "predicted": "15–22 min",
+      "observed": "not captured",
+      "probe": null
+    },
+    {
+      "gate": "Total fat yield",
+      "predicted": "70–120 ml expected",
+      "observed": "\"not much\" — no figure",
+      "probe": null
+    },
+    {
+      "gate": "Flash re-crisp needed",
+      "predicted": "conditional",
+      "observed": "no",
+      "probe": null
+    },
+    {
+      "gate": "Contingency fired",
+      "predicted": "conditional",
+      "observed": "no (intermittent monitoring)",
+      "probe": "Thermapen, spot checks"
+    }
+  ],
+  "notes": "Source is the Notion recipe-recovery record, not a docx: the docx duck-magret-sunday.docx (generated 2026-09-11) described a Moulard magret + sour-cherry/red-wine jus version and was never regenerated; the Notion page carries the final reconciled Muscovy + vermouth state, which is what is encoded here. All four dishes match the existing slugs given in the task; no extra components. Dish name kept as 'Seared Duck Magret' (page property adds the qualifier 'continuous cold-pan render'). Nutrition estimates and jus scaling notes are 'not stated' in the source and kept as such in method_md; nutrition_estimate is null for all dishes. The duck's Food Safety paragraph refers to 'the contingency branch at step 11' although the step is numbered 5 in the Active Cooking list — kept verbatim. Ingredient mapping: 'Flaky sea salt' -> canonical 'flaky salt'; 'Dry vermouth (Noilly Prat or similar)' -> 'noilly prat dry vermouth'; 'Chicken or duck stock' -> 'chicken stock' with 'or duck stock' in prep_note; 'Butter, unsalted' -> 'unsalted butter'; 'Potatoes, floury (Russet or Maris Piper)' -> new 'potato, floury (russet or maris piper)'; 'Hazelnuts, blanched' -> new 'hazelnut, blanched'; 'Duck breast, Muscovy or Barbary, frozen' -> new 'duck breast, muscovy or barbary'. Units: 'whole' -> 'piece', 'sprigs' -> 'sprig'. Jus duck fat is given in grams (15 g) in the dish table while Shared Prep gives 15 ml; kept as g per the ingredient row. Post-cook data beyond measurements (rating 9.5, execution 9.0, repeat yes, per-component jus 9.5 / radicchio 8.5, deviations, parameter_confirmations, wine_outcome, new findings, NOT IN THIS CHAT list) is not part of the schema and was not encoded; see the Notion page POST-COOK section."
+}
