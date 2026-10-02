@@ -1,6 +1,6 @@
-# Recipe Output — Data Protocol (v1.0, 2026-09-30)
+# Recipe Output — Data Protocol (v1.1, 2026-10-02)
 
-**Status:** proposed via Governance Change Queue. Companion to `recipe_output_docx_protocol.md` and `recipe_output_html_protocol.md`. Governs how a finished recipe or meal is **persisted** to the kitchen system of record (Supabase project `jins-kitchen`) so that the front end at jins-kitchen.netlify.app, the shopping list, the cook log and the stored documents all derive from one structured source.
+**Version:** 1.1 (2026-10-02) — adds the Kitchen Inbox write path (§3.0, §8), print-from-data (§4) and the daily audit (§9). Companion to `recipe_output_docx_protocol.md` and `recipe_output_html_protocol.md`. Governs how a finished recipe or meal is **persisted** to the kitchen system of record (Supabase project `jins-kitchen`) so that the front end at jins-kitchen.netlify.app, the shopping list, the cook log and the stored documents all derive from one structured source.
 
 **Principle:** structured data is the master; docx / PDF / HTML are renders of it. A document is never the only copy of a recipe.
 
@@ -47,7 +47,15 @@ Persistence is **not** silent: show Jin the rows (dish names, meal, cook values)
 
 ## 3. Persist a recipe or meal
 
-Write through the Supabase connector (project `umqkgxsypcgvzkfjkzpc`), tables in `public`. Never hardcode ids; resolve by `slug`.
+**3.0 Write path — pick by what the session can reach, and say which one you used.**
+
+| Session has | Do this |
+|---|---|
+| The Supabase connector (Cowork) | Write directly to project `umqkgxsypcgvzkfjkzpc`, tables in `public`, per 3.1–3.4. Never hardcode ids; resolve by `slug`. |
+| Notion but not Supabase (claude.ai project chats, phone) | Create ONE page in the **Kitchen Inbox** database (§8). The daily *Kitchen inbox drain* task loads it into jins-kitchen within 24 hours and ticks **Ingested**. |
+| Neither | Say so plainly and print the §8 entry in chat so Jin can hand it to a session that can write. Do not claim the recipe is saved. |
+
+A turn that declares **Recipe stable / Menu stable**, saves for next time, or logs a cook is not complete until one of these has happened. End the reply with one line: `Saved to jins-kitchen` or `Filed in Kitchen Inbox (loads within a day)`.
 
 **3.1 Dish** — one row per component. Fields:
 
@@ -87,18 +95,22 @@ Write through the Supabase connector (project `umqkgxsypcgvzkfjkzpc`), tables in
 
 ## 4. Store the documents
 
-After the docx passes the docx protocol's render verification:
+**A document is optional.** Every meal and dish prints straight from the database at `jins-kitchen.netlify.app/#/print/meal/<slug>` (or `/print/dish/<slug>`): cooking sheet with ingredients, method, CCP tables, meal workflow and shopping list. "Print the recipe" means opening that view; generate a docx only when Jin asks for one.
+
+When a docx is generated in a session that has the site repo (Cowork), after it passes the docx protocol's render verification:
 
 1. Render PDF: `soffice --headless --convert-to pdf`. Verify page count matches the docx verification pass.
-2. Upload both to Storage bucket `kitchen-docs`, path `<owner-type>/<slug>/v<version>/<file>` (e.g. `meal/coq-au-vin-dinner/v1/coq-au-vin-dinner.pdf`). Version = 1 + highest existing version for that owner and kind.
+2. Copy both into the site at `Cooking/jins-kitchen/site/docs/<owner-slug>/v<version>/<file>` (e.g. `site/docs/coq-au-vin-dinner/v1/coq-au-vin-dinner.pdf`) and run `deploy.sh`. Version = 1 + highest existing version for that owner and kind. `storage_path` is site-relative: `docs/<owner-slug>/v<version>/<file>`.
 3. Insert `document` rows: `owner_type` (meal | dish), `owner_id`, `kind` (docx | pdf), `version`, `governance_version`, `storage_path`, `file_name`, `bytes`, `is_latest = true`; set the previous version's `is_latest = false`.
 4. The PWA shows the PDF under **Open / print** and the docx under **Download**. "Reprint" is opening the stored PDF; "regenerate" is a new version, never an overwrite.
 
-Recipes generated before 2026-09-30 have no stored documents; they gain one the next time they are regenerated.
+A docx generated in a session without the site repo is not stored: name it in the inbox entry's **Documents generated** field and rely on the print view. The data is the record either way.
 
 ---
 
 ## 5. Log a cook
+
+Same write path as §3.0 (a post-cook from a chat surface is an inbox page carrying only a `## POST-COOK` section).
 
 One `cook` row per time a meal or dish is cooked (`cooked_on` required; `meal_id` for a meal-level verdict, `dish_id` for a component verdict, both allowed on the same day):
 
@@ -128,4 +140,65 @@ From 2026-09-30 the Vault is a read-only archive. `recipe_governance_vault_ops.m
 - [ ] Slugs unique; meal components prefixed.
 - [ ] `designed_unvalidated` lists every "designed — not yet validated" item.
 - [ ] Rows shown to Jin in chat and acknowledged before the write.
-- [ ] Documents: docx verified → PDF rendered → both uploaded → `document` rows with correct version and `is_latest`.
+- [ ] Documents (only if generated): docx verified → PDF rendered → both in `site/docs/` and deployed → `document` rows with correct version and `is_latest`.
+- [ ] The reply ends with where it was persisted (`Saved to jins-kitchen` / `Filed in Kitchen Inbox`).
+
+---
+
+## 8. Kitchen Inbox entry format
+
+Database: **Kitchen Inbox** — https://app.notion.com/p/453d20977d4e4d1a9787dd40eed0ccba (data source `collection://1eb1e432-94d9-40df-b668-695e19d968ec`), under Chew Family Recipe Vault. One page per recipe, meal or cook. Leave **Ingested** unticked.
+
+Properties: **Chat title** (title) · **Chat date** · **Meal or dish name** · **Dishes** (component names, comma-separated) · **Recipe status** (`stable` | `draft` | `none in chat` — use `none in chat` for a post-cook-only entry) · **Post-cook logged** (tick when the page has a POST-COOK section) · **Documents generated** (file names, or blank).
+
+Page body, in this order. Omit a section that does not apply; never invent content to fill one.
+
+```
+governance_version: v3.6
+
+## MEAL                         (omit for a single standalone dish)
+name: <menu title>
+planned_or_cooked_date: YYYY-MM-DD   (blank if backlog)
+pax: 3
+status: stable | backlog
+wine_pairing: <text>
+### MEAL WORKFLOW
+<critical path, failure prioritisation, oven sequencing, heat allocation, T-minus timeline table, holding chain, plating window>
+### SHARED PREP
+<aggregated prep lines>
+
+## DISH: <dish name>            (one block per component)
+role: main | side | sauce | salad | soup | bread | starter | dessert
+protein: Beef | Pork | Lamb | Chicken | Duck | Fish | Shellfish | Seafood | Veg | none
+cuisine: <…>   difficulty: Easy | Medium | Special   servings: <n>
+status: stable
+summary: <one sentence>
+equipment: <only what the recipe names>
+### INGREDIENTS                 (one line per ingredient)
+qty | unit | name | note (alt units, prep) | pantry yes/no | optional yes/no
+### RECIPE
+**Dish Overview.** … **Yield & Timing.** … **Flavor Architecture.** … **Prep Phase.** … **Active Cooking.** … **Holding & Assembly.** … **Critical Control Points.** (table) … **Adjustment Notes.** … **Scaling Notes.** … **Nutrition Estimate.** …
+### DESIGNED — NOT YET VALIDATED
+param | designed value | note
+
+## POST-COOK                    (when a cook is being logged)
+cooked_on: YYYY-MM-DD
+rating: <0–10>   execution_rating: <0–10>   repeat: yes | with_modifications | no
+cook_notes: <2–3 sentences; per-component ratings if given>
+deviations:
+<one per line>
+parameter_confirmations:
+param | designed | observed | confirmed / diverged / unresolved
+measurements:
+gate | predicted | observed | probe
+household_split: <text>
+wine_outcome: <text>
+```
+
+A revision to a recipe already in jins-kitchen is a new inbox page with the full current dish block (the drain replaces `method_md` and the ingredient rows for that dish; cook history is never touched). Carry the FINAL reconciled state, not the first draft plus amendments.
+
+---
+
+## 9. Audit
+
+The daily drain also audits jins-kitchen and notifies Jin only when something is wrong: an inbox page it could not load; a dish created or cooked since 2026-10-02 with no `method_md` or no ingredient rows; a meal marked `cooked` with no `cook` row; an inbox page left un-ingested for more than two days. A silent day means everything landed.
