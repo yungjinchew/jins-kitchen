@@ -100,19 +100,39 @@ details[open] summary::after{transform:rotate(90deg)}
 .stat b{display:block;font-size:20px;font-weight:650} .stat span{font-size:12px;color:var(--ink3)}
 .toast{position:fixed;left:50%;bottom:calc(var(--tab) + 16px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;z-index:9;opacity:0;transition:opacity .2s;pointer-events:none}
 .toast.show{opacity:1}
-.sheet{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:18px 18px 22px}
-.sheet h1{font-size:22px;margin:0 0 4px}.sheet h2{font-size:18px;margin:22px 0 6px;padding-top:12px;border-top:2px solid var(--ink)}
-.sheet h3{font-size:15px;margin:16px 0 6px}.sheet h4{font-size:14px;margin:12px 0 4px}
-.sheet .meta{color:var(--ink3);font-size:13px}.sheet p,.sheet li{font-size:14px;line-height:1.45}
-.sheet table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px}.sheet td,.sheet th{border:1px solid var(--line);padding:5px 7px;vertical-align:top;text-align:left}
-.sheet tr:first-child td{font-weight:650}
-.sheet .ingt td{border:0;border-bottom:1px solid var(--line);font-weight:400!important}.sheet .ingt td:first-child{white-space:nowrap;width:1%;padding-right:14px;font-variant-numeric:tabular-nums}
-.sheet .cols{columns:2;column-gap:22px}.sheet .cols>div{break-inside:avoid;margin-bottom:8px}
-.sheet .md h2{border:0;padding:0;font-size:16px;margin:14px 0 4px}
-.sheet .box{display:inline-block;width:11px;height:11px;border:1px solid var(--ink3);border-radius:2px;margin-right:7px;vertical-align:-1px}
-@media print{header.top,.tabs,.btnrow,.search,.scrollx,.noprint,.toast{display:none!important} body{padding:0;background:#fff;color:#000} main.wrap{max-width:none;padding:0} .card{border:0;box-shadow:none;padding:0}
- .sheet{border:0;padding:0;background:#fff;color:#000;border-radius:0}.sheet p,.sheet li{font-size:10.5pt}.sheet table{font-size:9.5pt}.sheet td,.sheet th{border-color:#999}.sheet .meta{color:#444}
- .sheet .md table{display:table} .sheet .md,.sheet .md p,.sheet .md li{font-size:10.5pt;line-height:1.38} .sheet .dish{break-before:page}.sheet h2,.sheet h3,.sheet h4{break-after:avoid}.sheet tr{break-inside:avoid} @page{margin:14mm 13mm}}
+/* print sheet — laid out to the docx-protocol PDF format (teal headings, shaded table headers, running header) */
+.sheet{--pc:#1B5E7B;background:#fff;color:#222;border:1px solid var(--line);border-radius:6px;padding:18px 16px 22px;font-family:Arial,"Liberation Sans",Helvetica,sans-serif;font-size:13px;line-height:1.4;overflow-x:auto}
+.sheet h1{font-size:21px;line-height:1.2;margin:0 0 4px;color:var(--pc);font-weight:700}
+.sheet h2{font-size:17px;line-height:1.25;margin:20px 0 6px;color:var(--pc);font-weight:700;border:0;padding:0}
+.sheet h3,.sheet .md h2{font-size:12.5px;margin:15px 0 5px;color:#222;font-weight:700;text-transform:uppercase;letter-spacing:.02em;border:0;padding:0}
+.sheet h4{font-size:13px;margin:12px 0 4px;color:var(--pc);font-weight:700}
+.sheet p,.sheet li{font-size:13px;line-height:1.4;margin:0 0 6px;color:#222}
+.sheet ul,.sheet ol{margin:0 0 6px;padding-left:20px}
+.sheet a{color:inherit}
+.sheet .meta{color:#666;font-size:12px}
+.sheet p.sub{font-style:italic;color:#555}
+.sheet p.note,.sheet blockquote{background:#F3F4F6;color:#444;font-style:italic;padding:4px 7px;margin:5px 0 7px;border:0}
+.sheet p.note i{font-style:italic}
+.sheet table{width:100%;border-collapse:collapse;margin:5px 0 9px;font-size:12px;line-height:1.35;display:table}
+.sheet .md{font-size:inherit;line-height:inherit;overflow-wrap:break-word}
+.sheet td,.sheet th{border:1px solid #DDD;padding:3px 6px;vertical-align:top;text-align:left;font-weight:400;color:#222;overflow-wrap:normal;word-break:normal}
+.sheet th,.sheet table[header-row] tr:first-child td{background:#D0E8F0;font-weight:700}
+.sheet .md td:first-child{font-weight:700}
+.sheet table.t2 td:first-child{width:22%}
+.sheet tr.c-critical td{background:#FEE2E2}.sheet tr.c-major td{background:#FEF3C7}.sheet tr.c-minor td{background:#F0F0F0}
+.sheet .ingt td:first-child::first-letter{text-transform:uppercase}.sheet .ingt td:last-child,.sheet .ingt th:last-child{width:40%}
+.sheet .shop td.dept{background:#F0F0F0;font-weight:700;text-transform:uppercase;font-size:.9em;letter-spacing:.02em}
+.sheet .shop td:nth-child(n+2),.sheet .shop th:nth-child(n+2){width:13%}
+.sheet .dish{margin-top:26px;padding-top:6px;border-top:1px solid #DDD}.sheet .pb{margin-top:26px;padding-top:6px;border-top:1px solid #DDD}
+@media print{header.top,.tabs,.btnrow,.search,.scrollx,.noprint,.toast{display:none!important}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ html,body{background:#fff!important;color:#000} body{padding:0} main.wrap{max-width:none;padding:0} .card{border:0;box-shadow:none;padding:0} .stack{padding:0!important;gap:0!important}
+ .sheet{border:0;border-radius:0;padding:0;overflow:visible;font-size:9.5pt}
+ .sheet h1{font-size:16pt;margin-bottom:3pt}.sheet h2{font-size:13pt;margin:14pt 0 4pt}.sheet h3,.sheet .md h2{font-size:9.5pt;margin:10pt 0 3pt}.sheet h4{font-size:9.5pt;margin:8pt 0 3pt}
+ .sheet p,.sheet li{font-size:9.5pt;line-height:1.35;margin-bottom:4pt;orphans:3;widows:3}.sheet .meta{font-size:8.5pt}
+ .sheet table{font-size:8.5pt;line-height:1.3;margin:3pt 0 7pt}.sheet td,.sheet th{padding:2pt 4pt}
+ .sheet .dish{break-before:page;margin-top:0;padding-top:0;border-top:0}.sheet .dish>h2:first-child{margin-top:0}.sheet .pb{margin-top:0;padding-top:0;border-top:0}
+ .sheet h1,.sheet h2,.sheet h3,.sheet h4{break-after:avoid}.sheet tr{break-inside:avoid}.sheet thead{display:table-header-group}}
 </style>
 </head>
 <body>
@@ -191,31 +211,34 @@ function toast(t){const e=document.getElementById('toast');e.textContent=t;e.cla
 function md(src){ // minimal markdown → html, permissive of inline html the pages already contain
   if(!src) return '';
   let s=src.replace(/\r/g,'').replace(/\\([~*_#>\-])/g,'$1');
-  const lines=s.split('\n'); let out=[], inList=null, para=[];
-  const flushP=()=>{if(para.length){out.push('<p>'+inline(para.join(' '))+'</p>');para=[];}};
+  const lines=s.split('\n'); let out=[], inList=null, para=[], tbl=[];
+  const flushP=()=>{if(para.length){const t=para.join(' ');out.push((/^\*[^*]+\*$/.test(t.trim())?'<p class="note">':'<p>')+inline(t)+'</p>');para=[];}};
   const closeList=()=>{if(inList){out.push('</'+inList+'>');inList=null;}};
   const inline=t=>t.replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/(^|[^*])\*([^*\n]+?)\*/g,'$1<i>$2</i>').replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\[([^\]]+)\]\((https?:[^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+  // consecutive "| a | b |" lines are ONE table: first row is the header when a |---| separator follows it
+  const flushT=()=>{if(!tbl.length)return;
+    const rows=tbl.map(r=>r.replace(/^\|/,'').replace(/\|\s*$/,'').split('|').map(c=>c.trim())); tbl=[];
+    const isSep=r=>r.length>0&&r.every(c=>/^:?-+:?$/.test(c));
+    let head=null, body=rows; if(rows.length>1&&isSep(rows[1])){head=rows[0];body=rows.slice(2);}
+    body=body.filter(r=>!isSep(r)); const n=Math.max(...rows.map(r=>r.length));
+    out.push(`<table class="t${n}">`+(head?'<thead><tr>'+head.map(c=>`<th>${inline(c)}</th>`).join('')+'</tr></thead>':'')+'<tbody>'
+      +body.map(r=>{const k=(r[0]||'').replace(/\*/g,'').trim().toLowerCase();return `<tr${/^(critical|major|minor)$/.test(k)?` class="c-${k}"`:''}>`+r.map(c=>`<td>${inline(c)}</td>`).join('')+'</tr>';}).join('')+'</tbody></table>');};
   for(let raw of lines){
     const l=raw.replace(/^\t+/,'');
+    if(/^\s*\|/.test(l)){flushP();closeList();tbl.push(l.trim());continue;}
+    flushT();
     if(/^\s*$/.test(l)){flushP();closeList();continue;}
-    if(/^<(table|tr|td|th|tbody|thead|\/table|div|ul|ol|li|br)/i.test(l.trim())){flushP();closeList();out.push(l);continue;}
+    if(/^<(table|tr|td|th|tbody|thead|\/table|div|ul|ol|li|br)/i.test(l.trim())){flushP();closeList();out.push(l.replace(/^(\s*<tr)(>\s*<td>\s*(Critical|Major|Minor)\s*<\/td>)/i,(m,a,b,c)=>`${a} class="c-${c.toLowerCase()}"${b}`));continue;}
     let m;
     if((m=l.match(/^(#{1,6})\s+(.*)/))){flushP();closeList();const n=Math.min(m[1].length+1,4);out.push(`<h${n}>${inline(m[2])}</h${n}>`);continue;}
     if((m=l.match(/^>\s?(.*)/))){flushP();closeList();out.push('<blockquote>'+inline(m[1])+'</blockquote>');continue;}
     if(/^(---|\*\*\*)\s*$/.test(l)){flushP();closeList();out.push('<hr>');continue;}
     if((m=l.match(/^\s*[-*•☐]\s+(.*)/))){flushP();if(inList!=='ul'){closeList();out.push('<ul>');inList='ul';}out.push('<li>'+inline(m[1])+'</li>');continue;}
     if((m=l.match(/^\s*\d+[.)]\s+(.*)/))){flushP();if(inList!=='ol'){closeList();out.push('<ol>');inList='ol';}out.push('<li>'+inline(m[1])+'</li>');continue;}
-    if(/^\|/.test(l)){flushP();closeList();out.push(tableBlock(l));continue;}
     para.push(l);
   }
-  flushP();closeList();
+  flushT();flushP();closeList();
   return out.join('\n').replace(/<\/ul>\n<ul>/g,'').replace(/<\/ol>\n<ol>/g,'');
-  function tableBlock(l){ // single-line table rows handled row by row
-    if(/^\|\s*:?-+/.test(l)) return '';
-    const cells=l.split('|').slice(1,-1).map(c=>c.trim());
-    const tag=/^\|\s*\*\*/.test(l)?'th':'td';
-    return '<table><tr>'+cells.map(c=>`<${tag}>${inline(c)}</${tag}>`).join('')+'</tr></table>';
-  }
 }
 function qtyText(di){
   const q=num(di.qty), u=di.unit||''; const sep=/^(g|ml|kg|l)$/.test(u)?'':' '; let s=q?(q+(u?sep+u:'')):(u||'');
@@ -320,7 +343,7 @@ routes.dish=(slug)=>{
       ${(d.tags||[]).length||(d.occasion||[]).length?`<div class="chips" style="margin-top:10px">${[...(d.tags||[]),...(d.occasion||[])].map(t=>`<span class="chip mini">${esc(t)}</span>`).join('')}</div>`:''}
     </div>
     ${d.meals.length?`<h3 class="section">Part of</h3><div class="list">${d.meals.map(m=>`<a class="card row" href="#/meal/${m.slug}"><div class="grow"><div class="title">${esc(m.name)}</div><div class="sub">${m.last?fmtDate(m.last):'Backlog'} · ${m.dishes.length} dishes</div></div><span class="dim">›</span></a>`).join('')}</div>`:''}
-    <div class="btnrow" style="margin-top:14px">${d.ings.length?`<a class="btn sm" href="#/shopping/dish/${d.slug}">Shopping list</a>`:''}<a class="btn ghost sm" href="#/print/dish/${d.slug}">Print</a></div>
+    <div class="btnrow" style="margin-top:14px">${d.ings.length?`<a class="btn sm" href="#/shopping/dish/${d.slug}">Shopping list</a>`:''}${printBtn('dish',d)}</div>
     ${d.ings.length?`<h3 class="section">Ingredients</h3><div class="card"><div class="ing">${d.ings.map(di=>`<div class="q">${esc(qtyText(di))}</div><div>${esc(ingName(di))}${di.prep_note?` <span class="dim">— ${esc(di.prep_note)}</span>`:''}${di.optional?' <span class="opt">optional</span>':''}${di.pantry_check?' <span class="pill">pantry</span>':''}</div>`).join('')}</div></div>`:''}
     ${d.method_md?`<h3 class="section">Recipe</h3><div class="card md">${md(d.method_md)}</div>`:`<h3 class="section">Recipe</h3><div class="card muted small">No structured recipe body for this dish yet — it was filed as a cook record. It will be populated when the dish is next regenerated under the data protocol.</div>`}
     ${openVal.length?`<h3 class="section">Open validations <span class="pill">${openVal.length}</span></h3><div class="card"><ul style="margin:0;padding-left:18px;font-size:14px">${openVal.map(p=>`<li><b>${esc(p.param)}</b>${p.designed_value?` — ${esc(p.designed_value)}`:''}${p.note?`<div class="dim small">${esc(p.note)}</div>`:''}</li>`).join('')}</ul></div>`:''}
@@ -376,7 +399,7 @@ routes.meal=(slug)=>{
       <div class="row"><div class="grow"><h1 style="font-size:21px">${esc(m.name)}</h1><div class="sub">${m.status==='cooked'?'Cooked '+fmtDate(m.last):'<span class="tag warn">'+esc(m.status)+'</span>'} · ${m.pax} pax · service ${(m.service_time||'18:00').slice(0,5)}</div></div>${m.rating!=null?`<div class="rating" style="font-size:18px;padding:8px 10px">${num(m.rating)}</div>`:''}</div>
       ${m.wine_pairing?`<p class="small" style="margin:10px 0 0"><b>Wine</b> ${esc(m.wine_pairing)}</p>`:''}
     </div>
-    <div class="btnrow">${m.workflow_md?`<a class="btn sm" href="#/cook/${m.slug}">Start cook</a>`:''}${hasIngs?`<a class="btn ${m.workflow_md?'ghost ':''}sm" href="#/shopping/meal/${m.slug}">Shopping list</a>`:''}<a class="btn ghost sm" href="#/postcook/meal/${m.slug}">Log cook</a><a class="btn ghost sm" href="#/print/meal/${m.slug}">Print</a></div>
+    <div class="btnrow">${m.workflow_md?`<a class="btn sm" href="#/cook/${m.slug}">Start cook</a>`:''}${hasIngs?`<a class="btn ${m.workflow_md?'ghost ':''}sm" href="#/shopping/meal/${m.slug}">Shopping list</a>`:''}<a class="btn ghost sm" href="#/postcook/meal/${m.slug}">Log cook</a>${printBtn('meal',m)}</div>
     <h3 class="section">Menu</h3>
     <div class="list">${m.dishes.map(x=>{const d=x.dish;return `<a class="card row" href="#/dish/${d.slug}"><div class="grow"><div class="tag">${esc(x.role)}</div><div class="title">${esc(d.name)}</div>${d.r.latest_repeat?`<div class="tag ${repCls(d.r.latest_repeat)}" style="margin-top:2px">${rep(d.r.latest_repeat)}</div>`:''}</div>${d.r.latest_rating!=null?`<div class="rating">${num(d.r.latest_rating)}</div>`:'<span class="dim">›</span>'}</a>`;}).join('')}</div>
     ${m.workflow_md?`<h3 class="section">Meal workflow</h3><details class="card"><summary><span class="title">Critical path, timeline, holding</span></summary><div class="md" style="margin-top:10px">${md(m.workflow_md)}</div></details>`:''}
@@ -398,11 +421,31 @@ function stripSections(t,names){ // drop "## <name>" blocks (to the next ## head
   }
   return out.join('\n');
 }
+function storedPdf(o){return (o.docs||[]).filter(x=>x.kind==='pdf'&&x.is_latest).sort((p,q)=>q.version-p.version)[0]||null;}
+function pdfIsCurrent(kind,o,pdf){ // a stored PDF counts only while nothing it covers has been edited since it was generated
+  const upd=[o.updated_at,...(kind==='meal'?o.dishes.map(x=>x.dish.updated_at):[])].filter(Boolean).map(t=>+new Date(t));
+  return !upd.length||+new Date(pdf.generated_at)>=Math.max(...upd);
+}
+function printBtn(kind,o){
+  const pdf=storedPdf(o);
+  return pdf&&pdfIsCurrent(kind,o,pdf)
+    ?`<a class="btn ghost sm" href="${DOCS_BASE+pdf.storage_path}" target="_blank" rel="noopener">Print</a>`
+    :`<a class="btn ghost sm" href="#/print/${kind}/${o.slug}">Print</a>`;
+}
+const fmtQ=(q,u)=>(Math.round(q*100)/100)+(/^(g|ml|kg|l)$/.test(u||'')?'':' ')+(u||'');
+function sheetShop(dishes){ // Ingredient | Total | one column per dish, grouped by department — the docx shopping-list layout
+  const items=aggregate(dishes); if(!items.length) return '';
+  const multi=dishes.length>1, cols=multi?dishes.length+2:2;
+  const cell=(e,d)=>{const ps=e.parts.filter(p=>p.dish===d.name); return ps.length?ps.map(p=>p.qty!=null?fmtQ(p.qty,p.unit):(p.alt||'✓')).join(' + '):'—';};
+  const rows=DEPT_ORDER.filter(dp=>items.some(i=>i.dept===dp)).map(dp=>`<tr><td class="dept" colspan="${cols}">${esc(dp)}</td></tr>`
+    +items.filter(i=>i.dept===dp).map(e=>`<tr><td>${esc(e.label)}${e.pantry?' <span class="meta">(pantry check)</span>':''}${e.optional?' <span class="meta">(optional)</span>':''}</td><td>${esc(e.qty)}</td>${multi?dishes.map(d=>`<td>${esc(cell(e,d))}</td>`).join(''):''}</tr>`).join('')).join('');
+  return `<h2>Shopping list</h2><table class="shop"><thead><tr><th>Ingredient</th><th>${multi?'Total':'Amount'}</th>${multi?dishes.map(d=>`<th>${esc(shortName(d.name))}</th>`).join(''):''}</tr></thead><tbody>${rows}</tbody></table>`;
+}
 function sheetDish(d,role){
   const body=PF.full?d.method_md:stripSections(d.method_md,['flavor architecture','flavour architecture','nutrition estimate','correction to the superseded','superseded variant']);
   return `<section class="dish"><h2>${esc(d.name)}</h2>
     <div class="meta">${esc([role,d.servings?'serves '+num(d.servings):null,(d.equipment||[]).length?d.equipment.join(', '):null].filter(Boolean).join(' · '))}</div>
-    ${d.ings.length?`<h3>Ingredients</h3><table class="ingt">${d.ings.map(di=>`<tr><td>${esc(qtyText(di))}${di.qty!=null&&di.qty_alt?` <span class="meta">(${esc(di.qty_alt)})</span>`:''}</td><td>${esc(ingName(di))}${di.prep_note?` <span class="meta">— ${esc(di.prep_note)}</span>`:''}${di.optional?' <span class="meta">(optional)</span>':''}</td></tr>`).join('')}</table>`:''}
+    ${d.ings.length?`<h3>Ingredients</h3><table class="ingt"><thead><tr><th>Ingredient</th><th>Amount</th></tr></thead><tbody>${d.ings.map(di=>`<tr><td>${esc(ingName(di))}${di.prep_note?` <span class="meta">— ${esc(di.prep_note)}</span>`:''}${di.optional?' <span class="meta">(optional)</span>':''}</td><td>${esc(qtyText(di))}${di.qty!=null&&di.qty_alt?` <span class="meta">(${esc(di.qty_alt)})</span>`:''}</td></tr>`).join('')}</tbody></table>`:''}
     ${body?`<div class="md">${md(body)}</div>`:'<p class="meta">No recipe text stored for this dish.</p>'}
     ${PF.full&&(d.designed_unvalidated||[]).length?`<h3>Designed — not yet validated</h3><ul>${d.designed_unvalidated.map(p=>`<li><b>${esc(p.param)}</b>${p.designed_value?' — '+esc(p.designed_value):''}${p.note?` <span class="meta">${esc(p.note)}</span>`:''}</li>`).join('')}</ul>`:''}
   </section>`;
@@ -411,22 +454,27 @@ routes.print=(kind,slug)=>{
   const owner=kind==='meal'?IDX.mealBySlug[slug]:IDX.dishBySlug[slug]; if(!owner)return '<div class="empty">Not found.</div>';
   setHeader('Print',kind==='meal'?'#/meal/'+slug:'#/dish/'+slug); tabs(kind==='meal'?'meals':'library');
   const ds=kind==='meal'?owner.dishes.map(x=>({d:x.dish,role:x.role})):[{d:owner,role:(owner.category||[]).join('/')}];
-  const items=aggregate(ds.map(x=>x.d));
-  const depts=DEPT_ORDER.filter(dp=>items.some(i=>i.dept===dp&&!i.pantry));
-  const pantry=items.filter(i=>i.pantry);
-  const shop=items.length?`<h2>Shopping list</h2><div class="cols">${depts.map(dp=>`<div><h4>${esc(dp)}</h4>${items.filter(i=>i.dept===dp&&!i.pantry).map(i=>`<div><span class="box"></span>${esc(i.label)} <span class="meta">${esc(i.qty)}</span></div>`).join('')}</div>`).join('')}${pantry.length?`<div><h4>Pantry check</h4>${pantry.map(i=>`<div><span class="box"></span>${esc(i.label)} <span class="meta">${esc(i.qty)}</span></div>`).join('')}</div>`:''}</div>`:'';
+  const shop=sheetShop(ds.map(x=>x.d));
+  const long=d=>new Date(d).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  const css=t=>String(t).replace(/[\\"]/g,'\\$&').replace(/[\n\r]/g,' ');
+  const hf='font-family:Arial,Helvetica,sans-serif;vertical-align:bottom;padding-bottom:1.5mm;margin-bottom:3mm;border-bottom:.5pt solid #B9D3DC;';
+  // running header and footer (Chrome 131+; older browsers print the same pages without them)
+  const page=`<style>@page{margin:21mm 19mm 17mm;
+    @top-left{content:"${css(owner.name)}";${hf}font-size:8pt;font-weight:700;color:#1B5E7B}
+    @top-right{content:"Page " counter(page);${hf}font-size:7.5pt;color:#999}
+    @bottom-right{content:"Printed ${long(Date.now())} · jins-kitchen";font-family:Arial,Helvetica,sans-serif;font-size:7pt;color:#999;vertical-align:top;padding-top:2mm}}</style>`;
+  const pdf=storedPdf(owner);
   const head=kind==='meal'
-    ?`<h1>${esc(owner.name)}</h1><div class="meta">${esc([owner.last?fmtDate(owner.last):null,owner.pax?owner.pax+' pax':null,'service '+(owner.service_time||'18:00').slice(0,5)].filter(Boolean).join(' · '))}</div>
+    ?`<h1>${esc(owner.name)}</h1><p class="sub">${esc([owner.last?long(owner.last+'T00:00:00'):null,owner.pax?owner.pax+' pax':null,'service '+(owner.service_time||'18:00').slice(0,5)].filter(Boolean).join(' · '))}</p>
       ${owner.wine_pairing?`<p><b>Wine</b> ${esc(owner.wine_pairing)}</p>`:''}
-      <h3>Menu</h3><ul>${ds.map(x=>`<li>${esc(x.d.name)} <span class="meta">${esc(x.role)}</span></li>`).join('')}</ul>
-      ${owner.workflow_md?`<h2>Meal workflow</h2><div class="md">${md(owner.workflow_md)}</div>`:''}
-      ${owner.shared_prep_md?`<h2>Shared prep</h2><div class="md">${md(owner.shared_prep_md)}</div>`:''}${shop}`
+      <h3>Menu</h3><ul>${ds.map(x=>`<li><b>${esc(x.d.name)}</b> <span class="meta">${esc(x.role)}</span></li>`).join('')}</ul>
+      ${owner.shared_prep_md?`<h3>Shared prep</h3><div class="md">${md(owner.shared_prep_md)}</div>`:''}${shop}
+      ${owner.workflow_md?`<div class="pb"><h2>Meal workflow</h2><div class="md">${md(owner.workflow_md)}</div></div>`:''}`
     :'';
-  return `<div class="stack" style="padding-top:12px">
-    <div class="btnrow noprint"><button class="btn sm" onclick="window.print()">Print / save PDF</button><button class="btn ghost sm" onclick="PF.full=!PF.full;render()">${PF.full?'Cooking sheet':'Full record'}</button></div>
-    <p class="muted small noprint">${PF.full?'Full governance record — every section.':'Cooking sheet — flavour architecture and nutrition are left out. Rendered live from the database, so it is always the current version.'}</p>
-    <div class="sheet">${head}${ds.map((x,i)=>sheetDish(x.d,x.role)).join('')}${kind==='dish'?shop:''}
-      <p class="meta" style="margin-top:18px">jins-kitchen · printed ${new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}</p></div>
+  return `<div class="stack" style="padding-top:12px">${page}
+    <div class="btnrow noprint"><button class="btn sm" onclick="window.print()">Print / save PDF</button><button class="btn ghost sm" onclick="PF.full=!PF.full;render()">${PF.full?'Cooking sheet':'Full record'}</button>${pdf?`<a class="btn ghost sm" href="${DOCS_BASE+pdf.storage_path}" target="_blank" rel="noopener">Stored PDF v${pdf.version}</a>`:''}</div>
+    <p class="muted small noprint">${PF.full?'Full governance record — every section.':'Cooking sheet — flavour architecture and nutrition are left out. Rendered live from the database, so it is always the current version.'}${pdf?` A stored PDF from ${fmtDate(pdf.generated_at.slice(0,10))} is also on file${pdfIsCurrent(kind,owner,pdf)?'.':'; the record has been edited since it was made.'}`:''}</p>
+    <div class="sheet">${head}${ds.map(x=>sheetDish(x.d,x.role)).join('')}${kind==='dish'?shop:''}</div>
   </div>`;
 };
 
