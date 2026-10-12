@@ -92,6 +92,7 @@ details[open] summary::after{transform:rotate(90deg)}
 .shop-item.done .box{background:var(--accent);border-color:var(--accent)}
 .shop-item.done .lbl{text-decoration:line-through;color:var(--ink3)}
 .shop-item .lbl{flex:1} .shop-item .attr{font-size:12px;color:var(--ink3);margin-top:2px}
+.shop-item .buy{font-size:13px;color:var(--ink2);margin-top:2px} .shop-item .buy b{color:var(--bad);font-weight:700}
 .pill{display:inline-block;font-size:11px;padding:2px 7px;border-radius:6px;background:var(--accent2);color:var(--accent-ink);font-weight:600;vertical-align:middle}
 .banner{background:var(--accent2);color:var(--accent-ink);border-radius:10px;padding:8px 12px;font-size:13px}
 .spin{display:inline-block;width:16px;height:16px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:sp .8s linear infinite;vertical-align:middle}
@@ -247,6 +248,8 @@ function qtyText(di){
   return s;
 }
 function ingName(di){return di.ingredient?di.ingredient.name:'';}
+function buyHtml(spec,avoid){return (spec?'Buy '+esc(spec):'')+(avoid?(spec?' · ':'')+'<b>not '+esc(avoid)+'</b>':'');}
+function buyText(spec,avoid){return [spec?'buy '+spec:'',avoid?'NOT '+avoid:''].filter(Boolean).join('; ');}
 
 // ---------------------------------------------------------------- router
 const routes={};
@@ -345,7 +348,7 @@ routes.dish=(slug)=>{
     </div>
     ${d.meals.length?`<h3 class="section">Part of</h3><div class="list">${d.meals.map(m=>`<a class="card row" href="#/meal/${m.slug}"><div class="grow"><div class="title">${esc(m.name)}</div><div class="sub">${m.last?fmtDate(m.last):'Backlog'} · ${m.dishes.length} dishes</div></div><span class="dim">›</span></a>`).join('')}</div>`:''}
     <div class="btnrow" style="margin-top:14px">${d.ings.length?`<a class="btn sm" href="#/shopping/dish/${d.slug}">Shopping list</a>`:''}${printBtn('dish',d)}</div>
-    ${d.ings.length?`<h3 class="section">Ingredients</h3><div class="card"><div class="ing">${d.ings.map(di=>`<div class="q">${esc(qtyText(di))}</div><div>${esc(ingName(di))}${di.prep_note?` <span class="dim">— ${esc(di.prep_note)}</span>`:''}${di.optional?' <span class="opt">optional</span>':''}${di.pantry_check?' <span class="pill">pantry</span>':''}</div>`).join('')}</div></div>`:''}
+    ${d.ings.length?`<h3 class="section">Ingredients</h3><div class="card"><div class="ing">${d.ings.map(di=>`<div class="q">${esc(qtyText(di))}</div><div>${esc(ingName(di))}${di.buy_spec||di.buy_avoid?` <span class="muted">· ${buyHtml(di.buy_spec,di.buy_avoid)}</span>`:''}${di.prep_note?` <span class="dim">— ${esc(di.prep_note)}</span>`:''}${di.optional?' <span class="opt">optional</span>':''}${di.pantry_check?' <span class="pill">pantry</span>':''}</div>`).join('')}</div></div>`:''}
     ${d.method_md?`<h3 class="section">Recipe</h3><div class="card md">${md(d.method_md)}</div>`:`<h3 class="section">Recipe</h3><div class="card muted small">No structured recipe body for this dish yet — it was filed as a cook record. It will be populated when the dish is next regenerated under the data protocol.</div>`}
     ${openVal.length?`<h3 class="section">Open validations <span class="pill">${openVal.length}</span></h3><div class="card"><ul style="margin:0;padding-left:18px;font-size:14px">${openVal.map(p=>`<li><b>${esc(p.param)}</b>${p.designed_value?` — ${esc(p.designed_value)}`:''}${p.note?`<div class="dim small">${esc(p.note)}</div>`:''}</li>`).join('')}</ul></div>`:''}
     ${d.meas.length?`<h3 class="section">Measurements</h3><div class="card"><table style="width:100%;border-collapse:collapse;font-size:13px">${d.meas.map(x=>`<tr style="border-bottom:1px solid var(--line)"><td style="padding:6px 6px 6px 0;vertical-align:top"><b>${esc(x.gate)}</b>${x.predicted?`<div class="dim">designed: ${esc(x.predicted)}</div>`:''}</td><td style="padding:6px 0;vertical-align:top;text-align:right;white-space:nowrap"><b>${x.value_num!=null?num(x.value_num)+' '+esc(x.unit||''):''}</b>${x.probe?`<div class="dim">${esc(x.probe)}</div>`:''}</td></tr>${x.observed&&(x.value_num==null||x.observed.length>12)?`<tr><td colspan="2" class="dim" style="padding:0 0 6px;font-size:12px">${esc(x.observed)}${x.notes?' · '+esc(x.notes):''}</td></tr>`:''}`).join('')}</table></div>`:''}
@@ -448,14 +451,14 @@ function sheetShop(dishes){ // Ingredient | Total | one column per dish, grouped
   const multi=dishes.length>1, cols=multi?dishes.length+2:2;
   const cell=(e,d)=>{const ps=e.parts.filter(p=>p.dish===d.name); return ps.length?ps.map(p=>p.qty!=null?fmtQ(p.qty,p.unit):(p.alt||'✓')).join(' + '):'—';};
   const rows=DEPT_ORDER.filter(dp=>items.some(i=>i.dept===dp)).map(dp=>`<tr><td class="dept" colspan="${cols}">${esc(dp)}</td></tr>`
-    +items.filter(i=>i.dept===dp).map(e=>`<tr><td>${esc(e.label)}${e.pantry?' <span class="meta">(pantry check)</span>':''}${e.optional?' <span class="meta">(optional)</span>':''}</td><td>${esc(e.qty)}</td>${multi?dishes.map(d=>`<td>${esc(cell(e,d))}</td>`).join(''):''}</tr>`).join('')).join('');
+    +items.filter(i=>i.dept===dp).map(e=>`<tr><td>${esc(e.label)}${e.spec||e.avoid?`<br><span class="meta">${buyHtml(e.spec,e.avoid)}</span>`:''}${e.pantry?' <span class="meta">(pantry check)</span>':''}${e.optional?' <span class="meta">(optional)</span>':''}</td><td>${esc(e.qty)}</td>${multi?dishes.map(d=>`<td>${esc(cell(e,d))}</td>`).join(''):''}</tr>`).join('')).join('');
   return `<h2>Shopping list</h2><table class="shop"><thead><tr><th>Ingredient</th><th>${multi?'Total':'Amount'}</th>${multi?dishes.map(d=>`<th>${esc(shortName(d.name))}</th>`).join(''):''}</tr></thead><tbody>${rows}</tbody></table>`;
 }
 function sheetDish(d,role){
   const body=PF.full?d.method_md:stripSections(d.method_md,['flavor architecture','flavour architecture','nutrition estimate','correction to the superseded','superseded variant']);
   return `<section class="dish"><h2>${esc(d.name)}</h2>
     <div class="meta">${esc([role,d.servings?'serves '+num(d.servings):null,(d.equipment||[]).length?d.equipment.join(', '):null].filter(Boolean).join(' · '))}</div>
-    ${d.ings.length?`<h3>Ingredients</h3><table class="ingt"><thead><tr><th>Ingredient</th><th>Amount</th></tr></thead><tbody>${d.ings.map(di=>`<tr><td>${esc(ingName(di))}${di.prep_note?` <span class="meta">— ${esc(di.prep_note)}</span>`:''}${di.optional?' <span class="meta">(optional)</span>':''}</td><td>${esc(qtyText(di))}${di.qty!=null&&di.qty_alt?` <span class="meta">(${esc(di.qty_alt)})</span>`:''}</td></tr>`).join('')}</tbody></table>`:''}
+    ${d.ings.length?`<h3>Ingredients</h3><table class="ingt"><thead><tr><th>Ingredient</th><th>Amount</th></tr></thead><tbody>${d.ings.map(di=>`<tr><td>${esc(ingName(di))}${di.buy_spec||di.buy_avoid?` <span class="meta">· ${buyHtml(di.buy_spec,di.buy_avoid)}</span>`:''}${di.prep_note?` <span class="meta">— ${esc(di.prep_note)}</span>`:''}${di.optional?' <span class="meta">(optional)</span>':''}</td><td>${esc(qtyText(di))}${di.qty!=null&&di.qty_alt?` <span class="meta">(${esc(di.qty_alt)})</span>`:''}</td></tr>`).join('')}</tbody></table>`:''}
     ${body?`<div class="md">${md(body)}</div>`:'<p class="meta">No recipe text stored for this dish.</p>'}
     ${PF.full&&(d.designed_unvalidated||[]).length?`<h3>Designed — not yet validated</h3><ul>${d.designed_unvalidated.map(p=>`<li><b>${esc(p.param)}</b>${p.designed_value?' — '+esc(p.designed_value):''}${p.note?` <span class="meta">${esc(p.note)}</span>`:''}</li>`).join('')}</ul>`:''}
   </section>`;
@@ -512,7 +515,7 @@ routes.shopping=(kind,slug)=>{
   const depts=DEPT_ORDER.filter(dp=>items.some(i=>i.dept===dp&&!i.pantry)).concat(items.some(i=>!DEPT_ORDER.includes(i.dept)&&!i.pantry)?['Other']:[]);
   const pantry=items.filter(i=>i.pantry);
   const done=items.filter(i=>state[i.id]).length;
-  const line=i=>`<div class="shop-item ${state[i.id]?'done':''}" onclick="toggleShop('${i.id}')"><div class="box">${state[i.id]?'✓':''}</div><div class="lbl"><div>${esc(i.label)}${i.orderAhead?' <span class="pill">order ahead</span>':''}${i.optional?' <span class="opt small">optional</span>':''}</div><div class="attr">${esc(i.qty)}${i.attr?' · '+esc(i.attr):''}</div></div></div>`;
+  const line=i=>`<div class="shop-item ${state[i.id]?'done':''}" onclick="toggleShop('${i.id}')"><div class="box">${state[i.id]?'✓':''}</div><div class="lbl"><div>${esc(i.label)}${i.orderAhead?' <span class="pill">order ahead</span>':''}${i.optional?' <span class="opt small">optional</span>':''}</div>${i.spec||i.avoid?`<div class="buy">${buyHtml(i.spec,i.avoid)}</div>`:''}<div class="attr">${esc(i.qty)}${i.attr?' · '+esc(i.attr):''}</div></div></div>`;
   return `<div class="stack" style="padding-top:12px">
     <div class="row"><div class="grow small muted">${done}/${items.length} ticked</div><div class="btnrow"><button class="btn sm" onclick="shareShop()">Share</button><button class="btn ghost sm" onclick="clearShop()">Reset</button></div></div>
     ${depts.map(dp=>`<div class="shop-dept"><h3>${esc(dp)}</h3><div class="card" style="padding:2px 16px">${items.filter(i=>!i.pantry&&(DEPT_ORDER.includes(i.dept)?i.dept===dp:dp==='Other')).map(line).join('')}</div></div>`).join('')}
@@ -523,8 +526,9 @@ routes.shopping=(kind,slug)=>{
 function aggregate(dishes){
   const map={};
   dishes.forEach(d=>d.ings.forEach(di=>{
-    const nm=ingName(di); if(!nm)return; const k=nm;
-    const e=map[k]||(map[k]={id:k.replace(/[^a-z0-9]+/g,'-'),label:nm.replace(/^./,c=>c.toUpperCase()),dept:di.ingredient.department,pantry:!!di.pantry_check||!!di.ingredient.pantry_default,optional:true,orderAhead:false,parts:[]});
+    const nm=ingName(di); if(!nm)return; const sp=(di.buy_spec||'').trim(), av=(di.buy_avoid||'').trim();
+    const k=nm+(sp||av?'|'+sp.toLowerCase()+'|'+av.toLowerCase():''); // never merge lines whose buying spec differs
+    const e=map[k]||(map[k]={id:k.replace(/[^a-z0-9]+/g,'-'),label:nm.replace(/^./,c=>c.toUpperCase()),spec:sp,avoid:av,dept:di.ingredient.department,pantry:!!di.pantry_check||!!di.ingredient.pantry_default,optional:true,orderAhead:false,parts:[]});
     e.pantry=e.pantry&&(!!di.pantry_check||!!di.ingredient.pantry_default);
     e.optional=e.optional&&!!di.optional;
     if(di.ingredient.department==='Protein'||/butcher/i.test(di.ingredient.supplier_hint||''))e.orderAhead=true;
@@ -546,7 +550,7 @@ function clearShop(){const s=window._shop;localStorage.removeItem(s.key);render(
 function shareShop(){
   const s=window._shop; const groups={};
   s.items.filter(i=>!s.state[i.id]).forEach(i=>{(groups[i.pantry?'Pantry check':i.dept]=groups[i.pantry?'Pantry check':i.dept]||[]).push(i);});
-  const text='Shopping — '+s.name+'\n'+Object.entries(groups).map(([d,l])=>'\n'+d.toUpperCase()+'\n'+l.map(i=>'☐ '+i.label+' — '+i.qty).join('\n')).join('\n');
+  const text='Shopping — '+s.name+'\n'+Object.entries(groups).map(([d,l])=>'\n'+d.toUpperCase()+'\n'+l.map(i=>'☐ '+i.label+' — '+i.qty+(i.spec||i.avoid?' ('+buyText(i.spec,i.avoid)+')':'')).join('\n')).join('\n');
   if(navigator.share){navigator.share({title:'Shopping — '+s.name,text}).catch(()=>{});}
   else{navigator.clipboard.writeText(text).then(()=>toast('Copied to clipboard'));}
 }
