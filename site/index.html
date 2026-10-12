@@ -49,6 +49,7 @@ header.top h1{font-size:19px;flex:1;white-space:nowrap;overflow:hidden;text-over
 .chip.on{background:var(--chip-on);color:#fff;border-color:var(--chip-on)}
 @media (prefers-color-scheme:dark){.chip.on{color:#0c1a20}}
 .chip.mini{padding:2px 8px;font-size:11px}
+.chip .hot{color:var(--warn);font-weight:600} .chip.on .hot{color:inherit}
 .scrollx{display:flex;gap:8px;overflow-x:auto;padding:4px 0 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch} .scrollx::-webkit-scrollbar{display:none}
 .scrollx .chip{flex:0 0 auto}
 .rating{font-variant-numeric:tabular-nums;font-weight:650;color:var(--accent-ink);background:var(--accent2);border-radius:8px;padding:4px 8px;font-size:14px;min-width:44px;text-align:center}
@@ -370,19 +371,28 @@ function docsBlock(docs){
 }
 
 // ---------------------------------------------------------------- meals
-const MF={tab:'cooked'};
+const MF={tab:'cooked',protein:null};
+const mainProt=m=>{const x=m.dishes.find(x=>x.role==='main')||m.dishes.find(x=>x.dish.protein); return (x&&x.dish.protein)||null;};
+const agoShort=d=>{const n=daysAgo(d);if(n==null)return 'never';if(n<1)return 'today';if(n<14)return n+'d';if(n<60)return Math.round(n/7)+'w';return Math.round(n/30)+'mo';};
+function mfProt(p){MF.protein=MF.protein===p?null:p;render();}
 routes.meals=()=>{
   setHeader('Meals'); tabs('meals');
-  const list=DB.meal.filter(m=>MF.tab==='backlog'?m.status!=='cooked':m.status==='cooked');
+  const cooked=DB.meal.filter(m=>m.status==='cooked'&&m.last).sort((a,b)=>b.last.localeCompare(a.last));
+  const recent=cooked.slice(0,8);
+  const tally={}; recent.forEach(m=>{const p=mainProt(m)||'—';tally[p]=(tally[p]||0)+1;});
+  // one chip per protein, most overdue first; proteins never cooked as a main go last
+  const lastBy={}; cooked.forEach(m=>{const p=mainProt(m); if(p&&!lastBy[p])lastBy[p]=m.last;});
+  const prots=[...new Set(DB.meal.map(mainProt).filter(Boolean))].sort((a,b)=>(lastBy[a]||'9').localeCompare(lastBy[b]||'9')||a.localeCompare(b));
+  if(MF.protein&&!prots.includes(MF.protein))MF.protein=null;
+  const inProt=m=>!MF.protein||mainProt(m)===MF.protein;
+  const nCooked=DB.meal.filter(m=>m.status==='cooked'&&inProt(m)).length, nNext=DB.meal.filter(m=>m.status!=='cooked'&&inProt(m)).length;
+  const list=DB.meal.filter(m=>(MF.tab==='backlog'?m.status!=='cooked':m.status==='cooked')&&inProt(m));
   list.sort((a,b)=>(b.last||'').localeCompare(a.last||''));
-  const recent=DB.meal.filter(m=>m.status==='cooked'&&m.last).sort((a,b)=>b.last.localeCompare(a.last)).slice(0,8);
-  const rot=recent.map(m=>{const main=m.dishes.find(x=>x.role==='main')||m.dishes.find(x=>x.dish.protein); return {p:main?main.dish.protein||'—':'—',m};});
-  const tally={}; rot.forEach(x=>tally[x.p]=(tally[x.p]||0)+1);
-  const rotation=rot.length?`<div class="card" style="padding:10px 14px"><div class="row"><div class="tag">Last ${rot.length} mains</div><div class="grow small dim" style="text-align:right">${Object.entries(tally).sort((a,b)=>b[1]-a[1]).map(([p,n])=>`${p} ×${n}`).join(' · ')}</div></div><div class="scrollx" style="padding-top:8px;padding-bottom:0">${rot.slice().reverse().map(x=>`<a class="chip ${(tally[x.p]||0)>=3?'on':''}" href="#/meal/${x.m.slug}" title="${esc(x.m.name)}">${esc(x.p)}</a>`).join('')}</div></div>`:'';
+  const rotation=prots.length?`<div class="card" style="padding:10px 14px"><div class="row"><div class="tag">Mains rotation</div><div class="grow small dim" style="text-align:right">${recent.length?`Last ${recent.length}: `+Object.entries(tally).sort((a,b)=>b[1]-a[1]).map(([p,n])=>`${esc(p)} ×${n}`).join(' · '):''}</div></div><div class="chips" style="padding-top:8px">${prots.map(p=>`<button class="chip ${MF.protein===p?'on':''}" onclick="mfProt('${esc(p)}')" title="Last cooked as a main: ${lastBy[p]?fmtDate(lastBy[p]):'never'}">${esc(p)} <span style="opacity:.7">· ${agoShort(lastBy[p])}</span>${(tally[p]||0)>=3?` <b class="hot">×${tally[p]}</b>`:''}</button>`).join('')}</div>${MF.protein?`<div class="small dim" style="padding-top:8px">Showing ${esc(MF.protein.toLowerCase())} mains · <a href="#/meals" onclick="mfProt('${esc(MF.protein)}');return false">show all</a></div>`:''}</div>`:'';
   return `<div class="stack" style="padding-top:12px">
     ${rotation}
-    <div class="chips"><button class="chip ${MF.tab==='cooked'?'on':''}" onclick="MF.tab='cooked';render()">Cooked</button><button class="chip ${MF.tab==='backlog'?'on':''}" onclick="MF.tab='backlog';render()">Next time <span style="opacity:.7">${DB.meal.filter(m=>m.status!=='cooked').length}</span></button></div>
-    ${list.length?`<div class="list">${list.map(mealCard).join('')}</div>`:'<div class="empty">Nothing here yet. Ask Cowork to "save this meal for next time" and it will appear.</div>'}
+    <div class="chips"><button class="chip ${MF.tab==='cooked'?'on':''}" onclick="MF.tab='cooked';render()">Cooked${MF.protein?` <span style="opacity:.7">${nCooked}</span>`:''}</button><button class="chip ${MF.tab==='backlog'?'on':''}" onclick="MF.tab='backlog';render()">Next time <span style="opacity:.7">${nNext}</span></button></div>
+    ${list.length?`<div class="list">${list.map(mealCard).join('')}</div>`:(MF.protein?`<div class="empty">No ${esc(MF.protein.toLowerCase())} meals ${MF.tab==='backlog'?'saved for next time':'cooked yet'}.</div>`:'<div class="empty">Nothing here yet. Ask Cowork to "save this meal for next time" and it will appear.</div>')}
   </div>`;
 };
 function mealCard(m){
