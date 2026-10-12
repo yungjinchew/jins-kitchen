@@ -19,7 +19,7 @@
 <style>
 :root{
   /* Direction A — paper, ink and oxblood (Claude Design, 12 Oct 2026) */
-  --bg:#f6f1e8; --bg2:#fbf8f2; --ink:#2a231d; --ink2:#74685c; --ink3:#9a8c7c; --line:#e2d8c8;
+  --bg:#f6f1e8; --bg2:#fbf8f2; --ink:#2a231d; --ink2:#74685c; --ink3:#8a7c6c; --line:#e2d8c8;
   --accent:oklch(0.47 0.13 32); --on-accent:#fbf8f2; --accent2:#efe6d6; --accent-ink:oklch(0.42 0.12 32);
   --ok:oklch(0.45 0.1 150); --warn:oklch(0.55 0.11 60); --bad:oklch(0.52 0.17 25);
   --chip:#cdbfab; --track:#ece3d5; --tint:#efe6d6; --scrim:rgba(20,16,12,.45);
@@ -29,7 +29,7 @@
   --shadow:none; --r:14px; --tab:62px;
 }
 @media (prefers-color-scheme:dark){:root{
-  --bg:#1b1714; --bg2:#25201b; --ink:#f2eadc; --ink2:#a89a88; --ink3:#7a6d60; --line:#3a322b;
+  --bg:#1b1714; --bg2:#25201b; --ink:#f2eadc; --ink2:#a89a88; --ink3:#8a7d6f; --line:#3a322b;
   --accent:oklch(0.76 0.12 55); --on-accent:#1b1714; --accent2:#2e2722; --accent-ink:oklch(0.8 0.1 55);
   --ok:oklch(0.72 0.12 150); --warn:oklch(0.78 0.11 75); --bad:oklch(0.68 0.16 28);
   --chip:#4d433a; --track:#3a322b; --tint:#2e2722; --scrim:rgba(0,0,0,.6);
@@ -47,6 +47,7 @@ header.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg
 header.top.bare{position:static;border-bottom:0;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
 header.top.bare .wrap{min-height:0}
 header.top .wrap{display:flex;align-items:center;gap:10px;min-height:50px}
+header.top.fade h1{opacity:0;transition:opacity .2s} header.top.fade.scrolled h1{opacity:1}
 header.top h1{font:400 19px/1.1 var(--serif);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:0;text-align:right;color:var(--ink2)}
 .back{min-height:44px;display:flex;align-items:center;gap:4px;color:var(--accent);font:600 15px var(--sans);margin-left:-4px;white-space:nowrap;max-width:55%;overflow:hidden;text-overflow:ellipsis}
 .back span{overflow:hidden;text-overflow:ellipsis}
@@ -55,6 +56,7 @@ header.top h1{font:400 19px/1.1 var(--serif);flex:1;white-space:nowrap;overflow:
 .muted{color:var(--ink2)} .dim{color:var(--ink3)} .small{font-size:13px}
 .serif{font-family:var(--serif);font-weight:400}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+a.card{color:var(--ink)}
 .card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;box-shadow:var(--shadow)}
 .stack>*+*{margin-top:12px}
 .section{margin:22px 0 10px}
@@ -142,7 +144,7 @@ details[open] summary::after{transform:rotate(90deg)}
 .compact .drow .nm i{display:none}
 .compact .drow .mt{font-size:11px;margin-top:1px}
 .compact .drow .sealbox{flex-direction:row-reverse;align-items:center;gap:6px}
-.compact .drow .seal{--s:32px}
+.compact .drow .seal{--s:32px} .compact .seal-note .via{display:none}
 .compact .drow>div:first-child{min-width:0}
 .density{display:flex;border:1px solid var(--chip);border-radius:22px;padding:2px;flex:none}
 .density button{height:40px;width:44px;border-radius:20px;display:grid;place-items:center;color:var(--ink2)}
@@ -405,8 +407,9 @@ function hashLabel(h){
   return {library:'Library',meals:'Meals',more:'More',validations:'Validate',docs:'Docs',cook:'Cook',print:'Print',postcook:'Log cook'}[v]||'Back';
 }
 function goBack(fb){ if(HSTACK.length>1) history.back(); else location.hash=fb; }
-function setHeader(title,back){
+function setHeader(title,back,fade=false){
   const h=document.getElementById('hdr'), top=h.parentElement;
+  top.classList.toggle('fade',!!fade); top.classList.remove('scrolled');
   if(!back){top.classList.add('bare'); h.innerHTML=''; return;}
   top.classList.remove('bare');
   const lbl=HSTACK.length>1?hashLabel(HSTACK[HSTACK.length-2]):hashLabel(back);
@@ -438,12 +441,14 @@ const half=v=>{const x=+v; if(Number.isInteger(x)) return String(x); if(Math.abs
 function seal(r,{size='',note='',none=''}={}){ // 9+ filled, 8–8.5 outlined, below 8 plain
   if(r==null||r==='') return none?`<div class="sealbox"><span class="seal-none${none==='untried'?'':' un'}">${none}</span></div>`:'';
   const v=+r, tier=v>=9?'top':v>=8?'good':'low';
-  return `<div class="sealbox"><div class="seal ${tier} ${size}" role="img" aria-label="Rated ${num(v)} out of 10">${half(v)}</div>${note?`<span class="seal-note">${esc(note)}</span>`:''}</div>`;
+  return `<div class="sealbox"><div class="seal ${tier} ${size}" role="img" aria-label="Rated ${num(v)} out of 10">${half(v)}</div>${note?`<span class="seal-note">${note==='via meal'?'<span class="via">via </span>meal':esc(note)}</span>`:''}</div>`;
 }
+function menuName(n){let w=splitName(n)[0].split(/[,:;]/)[0].trim().split(/\s+/); if(w.length>4){w=w.slice(0,4); while(w.length>1&&/^(&|and|with|in|of|on|the|a)$/i.test(w[w.length-1])) w.pop();} return w.join(' ');}
 const verdictCls=v=>({yes:'',with_modifications:'warn',no:'bad'}[v]??'');
 function openSheet(html){const w=document.getElementById('sheet'); w.innerHTML=`<div class="scrim" onclick="closeSheet()"></div><div class="sheet-panel" role="dialog" aria-modal="true">${html}</div>`; w.hidden=false; document.body.classList.add('locked');}
 function closeSheet(){const w=document.getElementById('sheet'); if(!w||w.hidden) return; w.hidden=true; w.innerHTML=''; document.body.classList.remove('locked');}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet();});
+window.addEventListener('scroll',()=>{const t=document.querySelector('header.top.fade'); if(t) t.classList.toggle('scrolled',window.scrollY>140);},{passive:true});
 const shortDate=d=>{if(!d)return '';const x=new Date(d+'T00:00:00');return x.toLocaleDateString('en-GB',{day:'numeric',month:'short'})+(x.getFullYear()!==new Date().getFullYear()?' '+x.getFullYear():'');};
 
 // ---------------------------------------------------------------- library
@@ -510,7 +515,7 @@ function setDense(on){try{localStorage.setItem('kitchen:density',on?'compact':'c
 routes.library=()=>{
   setHeader("Jin's Kitchen"); tabs('library');
   const dense=getDense(); const total=libBase().length;
-  const cooked=DB.dish.filter(isCooked).length, meals=DB.meal.filter(m=>m.status==='cooked').length;
+  const cooked=libBase().filter(isCooked).length, meals=DB.meal.filter(m=>m.status==='cooked').length;
   const toggle=`<div class="density" role="group" aria-label="Row density"><button class="${dense?'':'on'}" aria-pressed="${!dense}" onclick="setDense(false)" title="Comfortable"><span class="bars"><b></b><b></b></span></button><button class="${dense?'on':''}" aria-pressed="${dense}" onclick="setDense(true)" title="Compact"><span class="bars tight"><b></b><b></b><b></b><b></b></span></button></div>`;
   return `${pageTitle('Library',toggle)}
     <input class="underline-search" type="search" placeholder="Search ${total} dishes, ingredients…" value="${esc(F.q)}" oninput="F.q=this.value;updateLib()" autocomplete="off" enterkeyhint="search" aria-label="Search dishes and ingredients" style="margin-top:12px">
@@ -552,7 +557,7 @@ function clearF(){Object.assign(F,{protein:[],course:[],verdict:[],kit:[],status
 // ---------------------------------------------------------------- dish
 routes.dish=(slug)=>{
   const d=IDX.dishBySlug[slug]; if(!d)return notFound('Dish','#/library');
-  setHeader(d.name,'#/library'); tabs('library');
+  setHeader(d.name,'#/library',true); tabs('library');
   const r=d.r; const [nm,note]=splitName(d.name); const cooked=isCooked(d);
   const openVal=(d.designed_unvalidated||[]).filter(p=>!d.cooks.some(c=>(c.parameter_confirmations||[]).some(pc=>pc.param===p.param&&pc.verdict==='confirmed')));
   const when=r.times_made>0?`Cooked ×${r.times_made}${r.last_made?' · last '+esc(fmtDate(r.last_made)):''}`
@@ -624,7 +629,7 @@ routes.meals=()=>{
 function mealCard(m){
   const s=m.rating!=null?seal(m.rating):(m.dishAvg!=null?seal(m.dishAvg,{note:'dish avg'}):(m.status==='cooked'?seal(null,{none:'unrated'}):''));
   const [nm,note]=splitName(m.name);
-  const menu=m.dishes.map(x=>shortName(x.dish.name)).join(' · ');
+  const menu=m.dishes.map(x=>menuName(x.dish.name)).join(' · ');
   const dt=m.status==='cooked'&&m.last?new Date(m.last+'T00:00:00'):null;
   const yr=dt&&dt.getFullYear()!==new Date().getFullYear()?' ’'+String(dt.getFullYear()).slice(2):'';
   const date=dt?`<div class="dt"><b>${dt.getDate()}</b><span>${dt.toLocaleDateString('en-GB',{month:'short'})}${yr}</span></div>`:'';
@@ -633,7 +638,7 @@ function mealCard(m){
 }
 routes.meal=(slug)=>{
   const m=IDX.mealBySlug[slug]; if(!m)return notFound('Meal','#/meals');
-  setHeader(m.name,'#/meals'); tabs('meals');
+  setHeader(m.name,'#/meals',true); tabs('meals');
   const hasIngs=m.dishes.some(x=>x.dish.ings.length);
   const [nm,note]=splitName(m.name); const c=m.cooks[0];
   const day=m.status==='cooked'&&m.last?new Date(m.last+'T00:00:00').toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'}):'Next time';
@@ -659,14 +664,14 @@ routes.meal=(slug)=>{
 routes.more=()=>{
   setHeader('More'); tabs('more');
   const openN=DB.dish.reduce((n,d)=>n+d.open.length,0), docsN=DB.document.filter(x=>x.is_latest).length;
-  const cooked=DB.dish.filter(isCooked).length, meals=DB.meal.filter(m=>m.status==='cooked').length;
+  const cooked=libBase().filter(isCooked).length, meals=DB.meal.filter(m=>m.status==='cooked').length;
   const at=DB.loadedAt?new Date(DB.loadedAt).toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):'';
   return `${pageTitle('More')}
     <div class="morelist" style="margin-top:10px">
       <a href="#/validations"><div><div class="nm">Open validations</div><div class="mt">Designed parameters still to confirm at the stove</div></div><span class="ct">${openN}</span></a>
       <a href="#/docs"><div><div class="nm">Documents</div><div class="mt">Stored Word and PDF cooking sheets</div></div><span class="ct">${docsN}</span></a>
     </div>
-    <p class="foot">${DB.dish.length} dishes · ${cooked} cooked · ${meals} meals<br>${DB.fromCache?'Offline — showing what this phone saved':'Live data'}${at?' · loaded '+at:''}</p>`;
+    <p class="foot">${libBase().length} dishes · ${cooked} cooked · ${meals} meals<br>${DB.fromCache?'Offline — showing what this phone saved':'Live data'}${at?' · loaded '+at:''}</p>`;
 };
 
 // ---------------------------------------------------------------- print (cooking sheet rendered from the database)
