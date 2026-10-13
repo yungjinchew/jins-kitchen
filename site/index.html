@@ -303,7 +303,7 @@ body.cookmode .tabs,body.cookmode header.top{display:none}
 .readouts{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:12px;margin-top:12px;overflow:hidden;background:var(--bg2)}
 .readouts>*{padding:10px 12px;border-left:1px solid var(--line);text-align:left;min-height:62px;min-width:0} .readouts>:first-child{border-left:0}
 .readouts .k{font:600 9px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
-.readouts .v{font:500 18px/1.3 var(--mono);color:var(--ink);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .readouts .v.acc{color:var(--accent)}
+.readouts .v{font:500 16px/1.35 var(--mono);color:var(--ink);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .readouts .v.acc{color:var(--accent)}
 .segs{display:flex;gap:3px;margin-top:12px} .segs i{flex:1;height:4px;border-radius:2px;background:var(--track)} .segs i.d{background:var(--ink3)} .segs i.c{background:var(--accent)}
 .bigstep{margin-top:20px}
 .bigstep .meta{display:flex;justify-content:space-between;gap:10px;font:600 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
@@ -1058,7 +1058,7 @@ function nominalService(m){ // the service time the workflow's clock times were 
   if(c.length) return c.sort((a,b)=>a[0]-b[0])[0][1];
   const s=String(m.service_time||'18:00').split(':'); return +s[0]*60+(+s[1]||0);
 }
-const cellText=c=>String(c||'').replace(/<br\s*\/?>/gi,' ').replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/\*\*/g,'').trim();
+const cellText=c=>String(c||'').replace(/\\([~*_#>\-<|\[\]])/g,'$1').replace(/<br\s*\/?>/gi,' ').replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/\*\*/g,'').trim();
 function parseWhen(cell,nominal){ // one table cell or line prefix → {kind:'T',tm,tmEnd,label} | {kind:'A',anchor,off,offEnd,label} | {kind:'pre',label} | null
   const c=cellText(cell).replace(/[~≈]/g,'').replace(/\s+/g,' ').trim(); if(!c) return null;
   const ts=[...c.matchAll(TFIND)].map(x=>x[1]!=null?parseTm('T-'+x[1]):0).filter(v=>v!=null);
@@ -1084,6 +1084,8 @@ function parseTimeline(mdText,nominal=1080){
   const steps=[], other=[]; if(!mdText) return {steps,other};
   const src=String(mdText).replace(/\r/g,'');
   const add=(w,text,section)=>{text=cellText(text).replace(/^[:：—–-]\s*/,''); if(!text) return;
+    const rg=text.match(/^\/\s*(T\s?[-−–]\s?\d+(?::\d{2})?)\s*[:：]\s*(.+)$/i); // "T-172 / T-164: batches 2 and 3" is a range
+    if(rg&&w.kind==='T'&&w.tmEnd==null){w={...w,tmEnd:parseTm(rg[1].replace(/\s/g,''))}; text=rg[2];}
     const x={...w,text,section}; if(/^E\b\s*[—–:-]/.test(text)) x.defines='E'; if(x.kind==='A'&&x.off===0&&x.offEnd==null) x.defines=x.anchor; steps.push(x);};
   const labelBefore=pos=>{const head=src.slice(0,pos).split('\n').reverse().find(l=>/^#{1,6}\s+\S/.test(l)||/^\s*\*\*[^*]{3,}\*\*/.test(l)); return head?head.replace(/^#{1,6}\s+/,'').replace(/\*\*/g,'').trim():'';};
   const rowsToSteps=(rows,section,html)=>{
