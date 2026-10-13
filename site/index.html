@@ -1195,9 +1195,9 @@ routes.cook=(slug)=>{
   window._ck={key,st,m,cur,ids:P.steps.map(x=>x.id)};
   const [nm]=splitName(m.name); const svcDay=isoDay(new Date(t0));
   const bar=`<div class="ckbar"><button class="x" onclick="goBack('#/meal/${m.slug}')" aria-label="Exit cook mode">✕ Exit</button><span class="t">${esc(nm)}</span>${'wakeLock' in navigator?`<button class="awake" onclick="toggleAwake()" aria-label="Keep the screen awake"><i></i>Awake</button>`:'<span></span>'}</div>`;
-  const tLabel=x=>x.kind==='T'?(x.label&&!/^T−/.test(x.label)?x.label.replace(/^(\w{3}) /,'$1 '):'T−'+x.tm)+'':x.kind==='A'?x.label:x.kind==='seq'?'':x.label||'';
+  const tLabel=x=>x.kind==='T'?(x.tm>=0?'T−'+x.tm:'T+'+(-x.tm)):x.kind==='A'?x.label:x.kind==='seq'?'':x.label||''; // T-minus moves with the service time
   const timeOf=x=>x.kind==='T'?hm(x.at):x.kind==='A'?(x.at!=null?hm(x.at):x.label):x.kind==='seq'?String(P.steps.filter(s=>s.kind==='seq').indexOf(x)+1).padStart(2,'0'):'—';
-  const subOf=x=>x.kind==='T'?(x.before?new Date(x.at).toLocaleDateString('en-GB',{weekday:'short'}):'T−'+x.tm):x.kind==='A'?(x.at!=null?x.label:x.est!=null?'≈ '+hm(x.est):''):x.kind==='pre'?esc(x.label):'';
+  const subOf=x=>x.kind==='T'?(x.before?new Date(x.at).toLocaleDateString('en-GB',{weekday:'short'}):tLabel(x)):x.kind==='A'?(x.at!=null?x.label:x.est!=null?'≈ '+hm(x.est):''):x.kind==='pre'?esc(x.label):'';
   const isLate=x=>live&&!after&&x.at!=null&&!ticked(x)&&x!==cur&&x.at<now-2*60000;
   const row=(x,isCur)=>`<button class="ckrow ${ticked(x)?'done':''} ${isCur?'cur':''} ${isLate(x)?'late':''}" onclick="ckTap('${x.id}')"><span class="bx" aria-hidden="true">${ticked(x)?'✓':''}</span><span class="tm">${esc(timeOf(x))}<small>${subOf(x)}</small></span><span class="tx">${esc(x.text)}</span></button>`;
   const segs=day.length>1?`<div class="segs" aria-hidden="true">${day.map(x=>`<i class="${ticked(x)?'d':x===cur?'c':''}"></i>`).join('')}</div>`:'';
