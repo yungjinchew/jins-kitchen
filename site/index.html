@@ -1120,8 +1120,8 @@ function parseTimeline(mdText,nominal=1080){
     if(m){const tm=parseTm(m[1]); if(tm!=null){const tmEnd=m[2]?parseTm(m[2]):null; add({kind:'T',tm,tmEnd,label:'T−'+tm},m[3],section); continue;}}
     const dw=l.match(/^\s*(?:[-*•☐]\s*)?(?:\*\*)?(?=(Sunday|Saturday|Friday|Morning|Day before|Eve|Night before)\b)/i);
     if(dw){const rest=l.slice(dw[0].length), sep=rest.search(/[:：](?!\d{2})/); // the separator is the colon that is not inside a clock time
-      if(sep>0&&rest.slice(sep+1).trim()){const pre=rest.slice(0,sep).replace(/\*\*/g,''), w=parseWhen(pre,nominal); add(w&&w.kind!=='A'?w:{kind:'pre',label:cellText(pre).slice(0,24)},rest.slice(sep+1),section); continue;}}
-    if(/^\s*(?:[-*•☐]\s*)?(?:\*\*)?(Sunday|Saturday|Friday|Morning|Day before|Eve|Night before)\b/i.test(l)){add({kind:'pre',label:'before'},l.replace(/^\s*[-*•☐]\s*/,''),section); continue;}
+      if(sep>0&&rest.slice(sep+1).trim()&&rest.slice(sep+1).trim().length<=220){const pre=rest.slice(0,sep).replace(/\*\*/g,''), w=parseWhen(pre,nominal); add(w&&w.kind!=='A'?w:{kind:'pre',label:cellText(pre).slice(0,24)},rest.slice(sep+1),section); continue;}}
+    if(l.length<=240&&/^\s*(?:[-*•☐]\s*)?(?:\*\*)?(Sunday|Saturday|Friday|Morning|Day before|Eve|Night before)\b/i.test(l)){add({kind:'pre',label:'before'},l.replace(/^\s*[-*•☐]\s*/,''),section); continue;}
     if(l.trim()) other.push({text:l,section});
   }
   flushPipe();
@@ -1200,7 +1200,7 @@ routes.cook=(slug)=>{
   const tLabel=x=>x.kind==='T'?(x.tm>=0?'T−'+x.tm:'T+'+(-x.tm)):x.kind==='A'?x.label:x.kind==='seq'?'':x.label||''; // T-minus moves with the service time
   const timeOf=x=>x.kind==='T'?hm(x.at):x.kind==='A'?(x.at!=null?hm(x.at):x.label):x.kind==='seq'?String(P.steps.filter(s=>s.kind==='seq').indexOf(x)+1).padStart(2,'0'):'—';
   const subOf=x=>x.kind==='T'?(x.before?new Date(x.at).toLocaleDateString('en-GB',{weekday:'short'}):tLabel(x)):x.kind==='A'?(x.at!=null?x.label:x.est!=null?'≈ '+hm(x.est):''):x.kind==='pre'?esc(x.label):'';
-  const isLate=x=>live&&!after&&x.at!=null&&!ticked(x)&&x!==cur&&x.at<now-2*60000;
+  const isLate=x=>live&&!after&&!x.before&&x.at!=null&&!ticked(x)&&x!==cur&&x.at<now-2*60000;
   const row=(x,isCur)=>`<button class="ckrow ${ticked(x)?'done':''} ${isCur?'cur':''} ${isLate(x)?'late':''}" onclick="ckTap('${x.id}')"><span class="bx" aria-hidden="true">${ticked(x)?'✓':''}</span><span class="tm">${esc(timeOf(x))}<small>${subOf(x)}</small></span><span class="tx">${esc(x.text)}</span></button>`;
   const segs=day.length>1?`<div class="segs" aria-hidden="true">${day.map(x=>`<i class="${ticked(x)?'d':x===cur?'c':''}"></i>`).join('')}</div>`:'';
   const hasFloat=day.some(x=>x.kind==='A'), anchorsUsed=[...new Set(day.filter(x=>x.kind==='A').map(x=>x.anchor))];
@@ -1232,7 +1232,9 @@ routes.cook=(slug)=>{
   const grp=(title,right,items,curX)=>items.length?`<div class="ckgrp"><div class="gh"><h3>${title}</h3>${right}</div>${items.map(x=>row(x,x===curX)).join('')}</div>`:'';
   const dayT=day.filter(x=>x.kind!=='A'), dayA=day.filter(x=>x.kind==='A');
   const listCur=live?cur:null;
-  let lists=grp('Day before',`<span>${esc(dayLong(isoDay(new Date(t0-86400000))))}</span>`,pre,ahead?preCur:null)
+  const preHead=`<span>${esc(dayLong(isoDay(new Date(t0-86400000))))}</span>`;
+  const preBlock=live&&pre.length?`<details class="ckdet"><summary><span class="title">Day before · ${pre.filter(ticked).length} of ${pre.length} ticked</span></summary>${pre.map(x=>row(x,false)).join('')}</details>`:''; // on the day, yesterday's steps fold away at the end
+  let lists=(live?'':grp('Day before',preHead,pre,ahead?preCur:null))
     +grp(day.some(x=>x.kind==='seq')?'Steps':live?'Cooking day':'Cooking day',`<span>${esc(dayLong(svcDay))}${live?'':' · planned'}</span>`,dayT,listCur);
   anchorsUsed.forEach(a=>{const items=dayA.filter(x=>x.anchor===a), at=st.anchors[a];
     lists+=grp(a==='E'?'After the exit (E)':a==='P'?'After the pull (P)':'From '+a, at!=null?`<button onclick="ckMark('${a}',false)">${esc(a)} at ${esc(hm(at))} · reset</button>`:`<button onclick="ckMark('${a}',true)">Mark ${esc(a)} now</button>`,items,listCur);});
@@ -1240,6 +1242,7 @@ routes.cook=(slug)=>{
   const hold=mdSection(m.workflow_md,/holding/i)||P.other.filter(o=>/hold/i.test(o.section)||/max\s*\d+\s*min|ceiling/i.test(o.text)).map(o=>o.text).join('\n');
   const secs=!P.steps.length?mdSections(m.workflow_md).map(s=>`<div class="cksec">${s.title?`<h3>${esc(s.title)}</h3>`:''}<div class="md">${md(s.body)}</div></div>`).join(''):'';
   const recipes=!P.steps.length&&m.dishes.length?`<div class="ckgrp"><div class="gh"><h3>The recipes</h3></div>${m.dishes.map(x=>`<details class="ckdet"><summary><span class="eyebrow">${esc(x.role)}</span> <span class="title">${esc(splitName(x.dish.name)[0])}</span></summary>${x.dish.method_md?`<div class="md">${md(x.dish.method_md)}</div>`:'<p class="dim small">No recipe body stored for this dish.</p>'}</details>`).join('')}</div>`:'';
+  lists+=preBlock;
   return `${bar}${top}${secs}${lists}${recipes}
     ${hold?`<details class="ckdet"><summary><span class="title">Holding chain</span></summary><div class="md">${md(hold)}</div></details>`:''}
     ${m.workflow_md&&P.steps.length?`<details class="ckdet"><summary><span class="title">Full workflow</span></summary><div class="md">${md(m.workflow_md)}</div></details>`:''}
