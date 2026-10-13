@@ -787,6 +787,8 @@ function leadSplit(t){ // "**Thaw, 24–36 hr ahead.** Fridge…" → ["Thaw, 24
   if(t.length<=110) return [t,''];
   m=t.match(/^(.{12,120}?[.!?])\s+([\s\S]+)$/);
   if(m&&(m[1].match(/\*/g)||[]).length%2===0) return [m[1].replace(/\.$/,''),m[2]];
+  m=t.match(/^(.{12,120}?)\s*[:;—]\s+([\s\S]+)$/); // no short first sentence: break at the first clause instead
+  if(m&&(m[1].match(/\*/g)||[]).length%2===0&&(m[1].match(/\(/g)||[]).length===(m[1].match(/\)/g)||[]).length) return [m[1],m[2]];
   return [t,''];
 }
 const qtyShow=di=>di.qty!=null?qtyText(di).replace(/\s(piece|pieces|whole)$/i,''):'';
@@ -1184,7 +1186,9 @@ routes.shopping=(kind,slug)=>{
   const deptOf=i=>DEPT_ORDER.includes(i.dept)?i.dept:'Other';
   const depts=[...DEPT_ORDER,'Other'].filter(dp=>items.some(i=>!i.pantry&&deptOf(i)===dp));
   const pantry=items.filter(i=>i.pantry), c=shopCount(items,state);
-  const line=i=>`<button class="sitem ${state[i.id]?'done':''}" role="checkbox" aria-checked="${!!state[i.id]}" onclick="toggleShop('${i.id}',this)"><span class="box" aria-hidden="true"></span><span class="lbl"><span class="nm">${esc(i.label)}${i.optional?'<span class="itag">Optional</span>':''}</span>${i.spec||i.avoid?`<span class="buy">${buyLine(i.spec,i.avoid)}</span>`:''}${i.attr?`<span class="attr">${esc(i.attr)}</span>`:''}${i.orderAhead&&!i.pantry?'<span class="oa">Order ahead</span>':''}</span><span class="q">${esc(i.qty)}</span></button>`;
+  const unitless=t=>String(t||'').replace(/(\d)\s(?:piece|pieces)\b/g,'$1'); // "2 piece" reads as "2" on screen (the print sheet keeps its format)
+  const attrOf=i=>dishes.length>1&&i.parts.length===1?shortName(i.parts[0].dish):unitless(i.attr);
+  const line=i=>`<button class="sitem ${state[i.id]?'done':''}" role="checkbox" aria-checked="${!!state[i.id]}" onclick="toggleShop('${i.id}',this)"><span class="box" aria-hidden="true"></span><span class="lbl"><span class="nm">${esc(i.label)}${i.optional?'<span class="itag">Optional</span>':''}</span>${i.spec||i.avoid?`<span class="buy">${buyLine(i.spec,i.avoid)}</span>`:''}${attrOf(i)?`<span class="attr">${esc(attrOf(i))}</span>`:''}${i.orderAhead&&!i.pantry?'<span class="oa">Order ahead</span>':''}</span><span class="q">${esc(unitless(i.qty))}</span></button>`;
   const ct=list=>`${list.filter(i=>state[i.id]).length}/${list.length}`;
   return `${pageTitle('Shopping',items.length?'<button class="btn ghost sm" onclick="shareShop()" style="margin-bottom:4px">Share as text</button>':'')}
     <div class="shsub">${sub}</div>
@@ -1541,7 +1545,7 @@ routes.postcook=(kind,slug)=>{
     ${kind==='meal'&&dishes.length>1?`<h3 class="section">Dish by dish <span class="dim small" style="font-family:var(--sans)">optional</span></h3><div>${dishes.map(d=>{const k='d:'+d.slug+':'; return `<details class="pdish"><summary><span class="nm">${esc(menuName(d.name))}</span><span class="ms" id="ms-${d.slug}">${hasV(f[k+'rating'])?seal(f[k+'rating'],{size:'sm'}):''}</span></summary><div class="bd">${rateCtl(k+'rating','Flavour',f,true)}${rateCtl(k+'execution','Execution',f,true)}<div class="lcf">${vseg(k+'repeat',VERDICTS3,f,'Verdict for '+esc(menuName(d.name)))}</div><div class="lcf"><label><span class="eyebrow">Note</span>${inp(k+'note','')}</label></div></div></details>`;}).join('')}</div>`:''}
     ${open.length?`<h3 class="section">Open validations <span class="pill">${open.length}</span></h3><div>${open.map((v,i)=>`<div class="lval"><div class="eyebrow">${esc(menuName(v.dish.name))}</div><div class="p">${esc(v.param)}</div>${v.designed_value?`<div class="dv">designed: ${esc(v.designed_value)}</div>`:''}${vseg('v:'+i+':verdict',VAL3,f,esc(v.param))}${inp('v:'+i+':observed','observed value')}</div>`).join('')}</div>`:''}
     <h3 class="section">Measurements</h3>
-    <div>${[...Array(measN)].map((_,i)=>`<div class="lmeas">${inp('m:'+i+':gate','gate (e.g. oven exit)')}${inp('m:'+i+':obs','reading (e.g. 126°F Thermapen)')}</div>`).join('')}<button class="btn ghost sm" style="margin-top:10px" onclick="pf('measN',${measN+2});softRender()">+ More rows</button></div>
+    <div>${[...Array(measN)].map((_,i)=>`<div class="lmeas">${inp('m:'+i+':gate','gate, e.g. oven exit')}${inp('m:'+i+':obs','reading, e.g. 126°F')}</div>`).join('')}<button class="btn ghost sm" style="margin-top:10px" onclick="pf('measN',${measN+2});softRender()">+ More rows</button></div>
     <h3 class="section">For Claude</h3>
     <p class="small muted" style="margin:0">Copy this and paste it to Claude, which writes the cook record under the data protocol and shows you the rows first. Nothing is written from the phone.</p>
     <pre id="postout" class="lcpre">${esc(composeText())}</pre>
