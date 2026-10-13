@@ -1116,8 +1116,9 @@ function parseTimeline(mdText,nominal=1080){
     const h=l.match(/^#{1,6}\s+(.*)/); if(h){section=h[1].trim(); continue;}
     const m=l.match(TRE);
     if(m){const tm=parseTm(m[1]); if(tm!=null){const tmEnd=m[2]?parseTm(m[2]):null; add({kind:'T',tm,tmEnd,label:'T−'+tm},m[3],section); continue;}}
-    const dl=l.match(/^\s*(?:[-*•☐]\s*)?(?:\*\*)?((?:Sunday|Saturday|Friday|Morning|Day before|Eve|Night before)\b[^:：]*?)(?:\*\*)?\s*[:：]\s*(.+)$/i);
-    if(dl){const w=parseWhen(dl[1],nominal); add(w&&w.kind!=='A'?w:{kind:'pre',label:cellText(dl[1]).slice(0,24)},dl[2],section); continue;}
+    const dw=l.match(/^\s*(?:[-*•☐]\s*)?(?:\*\*)?(?=(Sunday|Saturday|Friday|Morning|Day before|Eve|Night before)\b)/i);
+    if(dw){const rest=l.slice(dw[0].length), sep=rest.search(/[:：](?!\d{2})/); // the separator is the colon that is not inside a clock time
+      if(sep>0&&rest.slice(sep+1).trim()){const pre=rest.slice(0,sep).replace(/\*\*/g,''), w=parseWhen(pre,nominal); add(w&&w.kind!=='A'?w:{kind:'pre',label:cellText(pre).slice(0,24)},rest.slice(sep+1),section); continue;}}
     if(/^\s*(?:[-*•☐]\s*)?(?:\*\*)?(Sunday|Saturday|Friday|Morning|Day before|Eve|Night before)\b/i.test(l)){add({kind:'pre',label:'before'},l.replace(/^\s*[-*•☐]\s*/,''),section); continue;}
     if(l.trim()) other.push({text:l,section});
   }
