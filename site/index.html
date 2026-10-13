@@ -737,14 +737,28 @@ const M_ING=/ingredient/i;
 const M_PROSE=/^(notes?\b|key notes|tips?\b|food safety|why\b|salting strategy|secondary doneness|pull temperature|storage|banked|holding strategy|serving|to serve|equipment|make ahead)/i;
 const M_SKIP=/^(method|instructions|directions|steps|recipe)$/i;
 const cleanHead=t=>String(t||'').replace(/[\p{Extended_Pictographic}\u{FE0F}\u{20E3}☐]/gu,'').replace(/\*\*/g,'').replace(/\s+/g,' ').trim().replace(/^./,c=>c.toUpperCase());
-function stepBlocks(body){ // [{t:'md',text}|{t:'steps',items:[{text,sub}]}] in source order
+const M_PHASE=/^(prep|active|cooking|cook\b|method|instructions|directions|holding|assembly|finish)/i;
+function stepBlocks(body,title){ // [{t:'md',text}|{t:'steps',items:[{text,sub}]}] in source order
   const L=String(body||'').split('\n'), out=[]; let txt=[], steps=null, last=null;
-  const hasOl=L.some(l=>/^\s{0,3}\d+[.)]\s+\S/.test(l));
-  const itemRe=hasOl?/^\s{0,3}\d+[.)]\s+(.*)$/:/^[-*•]\s+(.*)$/; // bullets count as steps only where the section has no numbered list
   const flushT=()=>{const t=txt.join('\n').trim(); if(t) out.push({t:'md',text:t}); txt=[];};
+  const open=text=>{flushT(); if(!steps){steps={t:'steps',items:[]}; out.push(steps);} last={text,sub:[]}; steps.items.push(last);};
+  const trim=()=>out.forEach(b=>b.t==='steps'&&b.items.forEach(it=>{while(it.sub.length&&!it.sub[it.sub.length-1].trim()) it.sub.pop();}));
+  // "**1. Dry-brine.** Pat dry…", "**2.** Drain well…", "**T-55.** Reduce…" — each bold lead opens a step that runs to the next one
+  const BNUM=/^\s*\*\*\s*\d+[.)]\s*(.*?)\*\*\s*(.*)$/, BTIME=/^\s*\*\*\s*((?:T|E|P|D0)\s?[-−–+]?\s?\d+(?::\d{2})?\b[^*]{0,60}?)\*\*\s*(.*)$/;
+  const lead=l=>{let m=l.match(BNUM); if(m) return m[1].trim()?'**'+m[1].trim()+'**'+(m[2]?' '+m[2].trim():''):m[2].trim(); m=l.match(BTIME); return m?'**'+m[1].trim()+'**'+(m[2]?' '+m[2].trim():''):null;};
+  if(L.some(l=>lead(l)!=null)){
+    for(const l of L){const t=lead(l); if(t!=null&&t){open(t); continue;} if(last) last.sub.push(l); else txt.push(l);}
+    trim(); flushT(); return out;
+  }
+  const hasOl=L.some(l=>/^\s{0,3}\d+[.)]\s+\S/.test(l)), hasUl=L.some(l=>/^[-*•]\s+\S/.test(l));
+  if(!hasOl&&!hasUl&&M_PHASE.test(title||'')&&!/<t[dr]|^\s*\|/m.test(body)){ // a phase written as paragraphs: one step per paragraph, italic asides stay with their step
+    String(body).split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean).forEach(par=>{ if(last&&/^\*[^*][\s\S]*\*$/.test(par)) last.sub.push('',par); else open(par.replace(/\s*\n\s*/g,' ')); });
+    return out;
+  }
+  const itemRe=hasOl?/^\s{0,3}\d+[.)]\s+(.*)$/:/^[-*•]\s+(.*)$/; // bullets count as steps only where the section has no numbered list
   for(const l of L){
     const m=l.match(itemRe);
-    if(m){flushT(); if(!steps){steps={t:'steps',items:[]}; out.push(steps);} last={text:m[1].trim(),sub:[]}; steps.items.push(last); continue;}
+    if(m){open(m[1].trim()); continue;}
     if(last&&/^\s+\S/.test(l)&&!/^\s*\|/.test(l)){last.sub.push(l.replace(/^\s+/,'')); continue;} // indented continuation or sub-bullet
     if(/^\s*$/.test(l)){txt.push(l); continue;}
     last=null; steps=null; txt.push(l);
@@ -762,7 +776,7 @@ function methodModel(src){
     const kind=!s.title?'flow':M_YIELD.test(s.title)?'yield':M_REF.test(s.title)?'ref':M_ING.test(s.title)?'ing':M_PROSE.test(s.title)?'prose':'flow';
     out.push({...s,kind}); if(kind!=='flow') host=out[out.length-1];
   });
-  out.forEach(s=>{s.body=s.lines.join('\n').trim(); s.blocks=s.kind==='flow'?stepBlocks(s.body):null;});
+  out.forEach(s=>{s.body=s.lines.join('\n').trim(); s.blocks=s.kind==='flow'?stepBlocks(s.body,s.title):null;});
   return out.filter(s=>s.body||(s.kind==='flow'&&s.title&&s.lvl<=2&&!M_SKIP.test(s.title)));
 }
 function flatSteps(M){const out=[]; M.filter(s=>s.kind==='flow').forEach(s=>{let k=0; (s.blocks||[]).forEach(b=>{if(b.t==='steps') b.items.forEach(it=>{k++; out.push({phase:s.title,k,text:it.text,sub:it.sub});});});}); return out;}
@@ -858,7 +872,7 @@ routes.steps=(slug,n)=>{
     <div class="stnav"><button class="btn ghost" onclick="stepGo(${N})" aria-label="Back to the last step">‹ Back</button><a class="donebtn" href="#/postcook/dish/${d.slug}">Log a cook</a></div>${all}
     <div class="ckfoot"><a class="btn ghost" href="#/dish/${d.slug}">Back to the dish</a><button class="btn ghost" onclick="stepGo(1)">Start again</button></div>`;}
   window._st=i;
-  const x=S[i-1], nx=S[i], [ttl,det]=leadSplit(x.text), more=[det,...x.sub].filter(Boolean).join('\n');
+  const x=S[i-1], nx=S[i], [ttl,det]=leadSplit(x.text), more=[det,...x.sub].join('\n').trim();
   return `${bar}${prog}<div class="bigstep"><div class="meta"><span>${esc(x.phase||'Method')} · ${x.k}</span><span>${String(i).padStart(2,'0')} / ${String(N).padStart(2,'0')}</span></div>
       <div class="ttl ${ttl.length>200?'xlong':ttl.length>90?'long':''}">${mdInline(ttl)}</div>${more?`<div class="det md">${md(more)}</div>`:''}</div>
     <div class="stnav">${i>1?`<button class="btn ghost" onclick="stepGo(${i-1})" aria-label="Previous step">‹ Back</button>`:''}<button class="donebtn" onclick="stepGo(${i+1})">${nx?'Next step':'Finish'}</button></div>
