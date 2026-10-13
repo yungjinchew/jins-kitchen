@@ -1187,8 +1187,9 @@ routes.shopping=(kind,slug)=>{
   const depts=[...DEPT_ORDER,'Other'].filter(dp=>items.some(i=>!i.pantry&&deptOf(i)===dp));
   const pantry=items.filter(i=>i.pantry), c=shopCount(items,state);
   const unitless=t=>String(t||'').replace(/(\d)\s(?:piece|pieces)\b/g,'$1'); // "2 piece" reads as "2" on screen (the print sheet keeps its format)
-  const attrOf=i=>dishes.length>1&&i.parts.length===1?shortName(i.parts[0].dish):unitless(i.attr);
-  const line=i=>`<button class="sitem ${state[i.id]?'done':''}" role="checkbox" aria-checked="${!!state[i.id]}" onclick="toggleShop('${i.id}',this)"><span class="box" aria-hidden="true"></span><span class="lbl"><span class="nm">${esc(i.label)}${i.optional?'<span class="itag">Optional</span>':''}</span>${i.spec||i.avoid?`<span class="buy">${buyLine(i.spec,i.avoid)}</span>`:''}${attrOf(i)?`<span class="attr">${esc(attrOf(i))}</span>`:''}${i.orderAhead&&!i.pantry?'<span class="oa">Order ahead</span>':''}</span><span class="q">${esc(unitless(i.qty))}</span></button>`;
+  const qSplit=i=>{const ps=unitless(i.qty).split(' + '), long=x=>x.length>12&&!/^[\d½¼¾~]/.test(x); return [ps.filter(x=>!long(x)).join(' + '),ps.filter(long)];}; // wordy amounts ("to slather on carved meat") move under the name
+  const attrOf=i=>{const a=dishes.length>1&&i.parts.length===1?shortName(i.parts[0].dish):unitless(i.attr), w=qSplit(i)[1]; return dishes.length>1?(i.parts.length===1&&w.length?a+' · '+w.join(' · '):a):[a,...w].filter(Boolean).join(' · ');};
+  const line=i=>`<button class="sitem ${state[i.id]?'done':''}" role="checkbox" aria-checked="${!!state[i.id]}" onclick="toggleShop('${i.id}',this)"><span class="box" aria-hidden="true"></span><span class="lbl"><span class="nm">${esc(i.label)}${i.optional?'<span class="itag">Optional</span>':''}</span>${i.spec||i.avoid?`<span class="buy">${buyLine(i.spec,i.avoid)}</span>`:''}${attrOf(i)?`<span class="attr">${esc(attrOf(i))}</span>`:''}${i.orderAhead&&!i.pantry?'<span class="oa">Order ahead</span>':''}</span><span class="q">${esc(qSplit(i)[0])}</span></button>`;
   const ct=list=>`${list.filter(i=>state[i.id]).length}/${list.length}`;
   return `${pageTitle('Shopping',items.length?'<button class="btn ghost sm" onclick="shareShop()" style="margin-bottom:4px">Share as text</button>':'')}
     <div class="shsub">${sub}</div>
