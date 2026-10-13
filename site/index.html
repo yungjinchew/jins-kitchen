@@ -1050,8 +1050,11 @@ function nominalService(m){ // the service time the workflow's clock times were 
   const md=String(m.workflow_md||''), c=[]; let x;
   const re1=/(\d{1,2}):(\d{2})\s*(am|pm)?\s*(?:nominal\s*)?(?:\(T-?0\)\s*)?service\b/gi;
   const re2=/\bservice(?:\s+window)?\s*[:：]?\s*(?:\*\*)?\s*[:：]?\s*(?:at\s+|is\s+)?(\d{1,2}):(\d{2})\s*(am|pm)?(?:\s*[–-]\s*\d{1,2}:\d{2}\s*(am|pm))?/gi;
+  const re3=/\bT\s?-?\s?0\b\s*(?:[·(=:]|at)\s*(\d{1,2}):(\d{2})\s*(am|pm)?/gi; // "T-0 · 6:30", "T-0 (6:00 pm)"
+  const hedged=i=>/(realistic|earliest|latest|early|late|actual|floating)\s*$/i.test(md.slice(Math.max(0,i-22),i)); // "realistic service 5:32" is a band, not the plan
   while((x=re1.exec(md))) c.push([x.index,clockMin(x[1],x[2],x[3])]);
-  while((x=re2.exec(md))) c.push([x.index,clockMin(x[1],x[2],x[3]||x[4])]);
+  while((x=re2.exec(md))) if(!hedged(x.index)) c.push([x.index,clockMin(x[1],x[2],x[3]||x[4])]);
+  while((x=re3.exec(md))) c.push([x.index,clockMin(x[1],x[2],x[3])]);
   if(c.length) return c.sort((a,b)=>a[0]-b[0])[0][1];
   const s=String(m.service_time||'18:00').split(':'); return +s[0]*60+(+s[1]||0);
 }
