@@ -2,7 +2,7 @@
   "name": "Jin's Kitchen",
   "short_name": "Kitchen",
   "description": "Dishes, meals, cook history and shopping lists for Sunday dinners.",
-  "start_url": "./index.html#/library",
+  "start_url": "./index.html#/sunday",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f6f1e8",

@@ -240,6 +240,56 @@ h3.section{font:400 26px/1.1 var(--serif);text-transform:none;letter-spacing:0;c
 .toast{position:fixed;left:50%;bottom:calc(var(--tab) + 16px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;z-index:30;opacity:0;transition:opacity .2s;pointer-events:none}
 .toast.show{opacity:1}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* sunday (home) */
+.homebar{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:20px 0 2px}
+.homebar .wm{font:italic 400 27px/1 var(--serif);color:var(--ink)}
+.homebar .dt{font:600 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);white-space:nowrap}
+.plan{margin-top:14px;background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:18px}
+.plan .top{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:24px}
+.plan .top button{min-height:44px;margin:-10px -8px -10px 0;padding:0 8px;font:500 13px var(--sans);color:var(--ink2)}
+.plan h2{font:400 46px/1 var(--serif);letter-spacing:-.01em;margin-top:8px;text-wrap:balance}
+.plan h2 a{color:var(--ink)}
+.plan .note{font:italic 17px/1.3 var(--serif);color:var(--ink2);margin-top:6px}
+.plan .when{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:16px;padding:2px 0;min-height:48px}
+.plan .when .wd{display:flex;align-items:center;gap:6px;min-height:44px;font:500 14px var(--sans);color:var(--ink)}
+.plan .when .wd b{font:500 14px var(--mono)} .plan .when .wd .chev{color:var(--ink2);font-size:12px}
+.plan .when .cd{font:500 14px var(--mono);color:var(--accent);white-space:nowrap}
+.hmenu{display:grid;grid-template-columns:62px 1fr;gap:7px 12px;align-items:baseline;padding:14px 0 2px}
+.hmenu .eyebrow{font-size:9px}
+.hmenu a{font:400 18px/1.2 var(--serif);color:var(--ink)}
+.shopline{display:flex;justify-content:space-between;gap:12px;font:500 12px var(--sans);color:var(--ink2);margin-top:16px} .shopline b{color:var(--ink);font-weight:600}
+.bar{height:4px;background:var(--track);border-radius:2px;overflow:hidden;margin-top:6px} .bar i{display:block;height:100%;background:var(--accent)}
+.plan .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+.plan .acts .btn{min-height:48px} .plan .acts>:only-child{grid-column:1/-1}
+.plan .src{margin-top:12px;display:flex;justify-content:space-between;align-items:center;gap:8px;font:italic 14px/1.3 var(--serif);color:var(--ink2)}
+.plan .src button{min-height:44px;font:600 13px var(--sans);color:var(--accent);white-space:nowrap}
+.plan.open{background:var(--tint);border:1px dashed var(--chip)}
+.plan.open h2{font-size:38px}
+.plan.open p{margin:10px 0 0;font:15px/1.45 var(--sans);color:var(--ink2)}
+.plan.open p i{font-family:var(--serif);font-size:17px}
+.shead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:30px 0 4px}
+.shead h3{font:400 28px/1.1 var(--serif);color:var(--ink);text-transform:none;letter-spacing:0}
+.shead a{font:600 13px var(--sans);color:var(--accent);min-height:44px;display:flex;align-items:center} .shead span{font:500 13px var(--sans);color:var(--ink2)}
+.ntc{background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:14px 16px;margin-top:10px;color:var(--ink);display:block}
+.ntc .r1{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.ntc .hint{font:italic 14px var(--serif);color:var(--ink2);white-space:nowrap} .ntc .hint.warn{color:var(--accent)} .ntc .hint.ok{color:var(--ok)}
+.ntc .nm{display:block;font:400 24px/1.12 var(--serif);margin-top:6px;color:var(--ink)}
+.ntc .nt{font:italic 15px/1.3 var(--serif);color:var(--ink2)}
+.ntc .mt{font:500 12px/1.4 var(--sans);color:var(--ink2);margin-top:5px}
+.ntc .btn{margin-top:12px}
+.shelf{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;margin:6px -20px 0;padding:4px 20px 6px;scroll-snap-type:x mandatory} .shelf::-webkit-scrollbar{display:none}
+.shelf .ntc{flex:0 0 210px;margin-top:0;scroll-snap-align:start}
+.shelf .ntc .nm{font-size:21px}
+.rotcard{margin-top:12px;padding:14px 16px;border:1px solid var(--line);border-radius:4px}
+.rotcard .row{align-items:baseline}
+.rdots{display:flex;gap:6px;margin-top:10px}
+.rdot{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:700 13px var(--sans);color:#fff;background:var(--pc,#7a6d60);flex:none}
+.rdot.last{box-shadow:0 0 0 2px var(--bg),0 0 0 3px var(--pc,#7a6d60)}
+@media (prefers-color-scheme:dark){.rdot{box-shadow:0 0 0 1px rgba(255,255,255,.22)} .rdot.last{box-shadow:0 0 0 2px var(--bg),0 0 0 3px rgba(255,255,255,.55)}}
+.rlegend{font:500 12px/1.5 var(--sans);color:var(--ink2);margin-top:8px} .rlegend b{color:var(--accent);font-weight:700}
+.sheet-panel .fld{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:8px 0 4px}
+.sheet-panel .fld label{font:600 10px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);display:flex;flex-direction:column;gap:6px}
+.sheet-panel .fld input{min-height:48px;border:1px solid var(--chip);border-radius:10px;background:var(--bg2);padding:0 12px;font:500 16px var(--mono);color:var(--ink);letter-spacing:0;text-transform:none}
 /* print sheet — laid out to the docx-protocol PDF format (teal headings, shaded table headers, running header) */
 .sheet{--pc:#1B5E7B;background:#fff;color:#222;border:1px solid var(--line);border-radius:6px;padding:18px 16px 22px;font-family:Arial,"Liberation Sans",Helvetica,sans-serif;font-size:13px;line-height:1.4;overflow-x:auto}
 .sheet h1{font-size:21px;line-height:1.2;margin:0 0 4px;color:var(--pc);font-weight:700}
@@ -395,16 +445,16 @@ function buyText(spec,avoid){return [spec?'buy '+spec:'',avoid?'NOT '+avoid:''].
 const routes={};
 function nav(h){location.hash=h;}
 window.addEventListener('hashchange',()=>render());
-function parse(){const h=location.hash.replace(/^#\/?/,'')||'library';const p=h.split('/');return {view:p[0],arg:decodeURIComponent(p[1]||''),arg2:decodeURIComponent(p[2]||'')};}
+function parse(){const h=location.hash.replace(/^#\/?/,'')||'sunday';const p=h.split('/');return {view:p[0],arg:decodeURIComponent(p[1]||''),arg2:decodeURIComponent(p[2]||'')};}
 // in-app history, so the back link names the page it actually returns to
 const HSTACK=[];
-function trackHash(h){h=h||'#/library'; const n=HSTACK.length; if(HSTACK[n-1]===h) return; if(n>1&&HSTACK[n-2]===h){HSTACK.pop();return;} HSTACK.push(h); if(HSTACK.length>60)HSTACK.shift();}
+function trackHash(h){h=h||'#/sunday'; const n=HSTACK.length; if(HSTACK[n-1]===h) return; if(n>1&&HSTACK[n-2]===h){HSTACK.pop();return;} HSTACK.push(h); if(HSTACK.length>60)HSTACK.shift();}
 function hashLabel(h){
-  const p=String(h||'').replace(/^#\/?/,'').split('/'); const v=p[0]||'library', a=decodeURIComponent(p[1]||''), b=decodeURIComponent(p[2]||'');
+  const p=String(h||'').replace(/^#\/?/,'').split('/'); const v=p[0]||'sunday', a=decodeURIComponent(p[1]||''), b=decodeURIComponent(p[2]||'');
   if(v==='meal'&&IDX.mealBySlug[a]) return splitName(IDX.mealBySlug[a].name)[0];
   if(v==='dish'&&IDX.dishBySlug[a]) return splitName(IDX.dishBySlug[a].name)[0];
   if(v==='shopping') return a?'Shopping list':'Shopping';
-  return {library:'Library',meals:'Meals',more:'More',validations:'Validate',docs:'Docs',cook:'Cook',print:'Print',postcook:'Log cook'}[v]||'Back';
+  return {sunday:'Sunday',library:'Library',meals:'Meals',more:'More',validations:'Validate',docs:'Docs',cook:'Cook',print:'Print',postcook:'Log cook'}[v]||'Back';
 }
 function goBack(fb){ if(HSTACK.length>1) history.back(); else location.hash=fb; }
 function setHeader(title,back,fade=false){
@@ -418,7 +468,7 @@ function setHeader(title,back,fade=false){
 function pageTitle(title,right=''){return `<div class="ptitle"><h1>${esc(title)}</h1>${DB.fromCache?'<span class="offline" style="margin-bottom:8px">offline</span>':''}${right}</div>`;}
 function notFound(what,back){setHeader(what+' not found',back); return `<div class="empty">${esc(what)} not found.<br><span class="small"><a href="${back}">Go back</a></span></div>`;}
 function tabs(active){
-  const t=[['library','Library'],['meals','Meals'],['shopping','Shop'],['more','More']];
+  const t=[['sunday','Sunday'],['library','Library'],['meals','Meals'],['shopping','Shop'],['more','More']];
   const a={validations:'more',docs:'more'}[active]||active;
   const el=document.getElementById('tabs'); el.style.setProperty('--n',t.length);
   el.innerHTML=t.map(([k,l])=>`<a href="#/${k}" class="${a===k?'on':''}"${a===k?' aria-current="page"':''}>${l}<i></i></a>`).join('');
@@ -427,7 +477,7 @@ function render(){
   const {view,arg,arg2}=parse(); trackHash(location.hash);
   closeSheet(); window.scrollTo(0,0);
   const app=document.getElementById('app');
-  const fn=routes[view]||routes.library;
+  const fn=routes[view]||routes.sunday;
   try{app.innerHTML=fn(arg,arg2); if(fn===routes.library) updateLib();}catch(e){console.error(e);app.innerHTML=`<div class="empty">Something went wrong rendering this page.<br><span class="small">${esc(e.message)}</span></div>`;}
 }
 
@@ -641,9 +691,11 @@ routes.meal=(slug)=>{
   setHeader(m.name,'#/meals',true); tabs('meals');
   const hasIngs=m.dishes.some(x=>x.dish.ings.length);
   const [nm,note]=splitName(m.name); const c=m.cooks[0];
-  const day=m.status==='cooked'&&m.last?new Date(m.last+'T00:00:00').toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'}):'Next time';
+  const pl=m.status!=='cooked'?currentPlan():null, isPl=!!pl&&pl.m===m;
+  const day=m.status==='cooked'&&m.last?new Date(m.last+'T00:00:00').toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'}):(isPl?`Planned · ${dayLong(pl.date)} · ${pl.time}`:'Next time');
   const svc=(m.service_time||'18:00').slice(0,5);
-  const acts=[m.workflow_md?`<a class="btn" href="#/cook/${m.slug}">Start cook</a>`:'',hasIngs?`<a class="btn ${m.workflow_md?'ghost':''}" href="#/shopping/meal/${m.slug}">Shopping list</a>`:'',`<a class="btn ghost" href="#/postcook/meal/${m.slug}">Log cook</a>`,printBtn('meal',m,'btn ghost','Print sheet')].filter(Boolean);
+  const acts=[m.workflow_md?`<a class="btn" href="#/cook/${m.slug}">Start cook</a>`:'',hasIngs?`<a class="btn ${m.workflow_md?'ghost':''}" href="#/shopping/meal/${m.slug}">Shopping list</a>`:'',`<a class="btn ghost" href="#/postcook/meal/${m.slug}">Log cook</a>`,printBtn('meal',m,'btn ghost','Print sheet'),
+    m.status!=='cooked'&&!isPl&&(!pl||pl.src==='phone')?`<button class="btn ghost" onclick="pickPlan('${m.slug}',true)">Cook this Sunday</button>`:''].filter(Boolean);
   return `<div class="hero">
       <div class="eyebrow acc">${esc(day)}${m.pax?' · for '+m.pax:''}</div>
       <div class="ttl"><h1>${esc(nm)}${note?`<i>${esc(note)}</i>`:''}</h1>${m.rating!=null?seal(m.rating,{size:'lg'}):''}</div>
@@ -659,6 +711,110 @@ routes.meal=(slug)=>{
     ${docsBlock(m.docs)}
     <div style="height:12px"></div>`;
 };
+
+// ---------------------------------------------------------------- sunday (home)
+// Which meal is next: a date saved in the database (set with Claude) wins; otherwise this phone's pick (localStorage).
+const PLAN_KEY='kitchen:plan';
+const PROT_COL={Chicken:'#9a6a1f',Pork:'#a8475e',Duck:'#6a558f',Beef:'#9b3030',Lamb:'#4c7346',Fish:'#356a94',Shellfish:'#2c7474',Turkey:'#7f6538',Veg:'#56722f'};
+const isoDay=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const todayISO=()=>isoDay(new Date());
+function comingSunday(weeks=0){const d=new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate()+((7-d.getDay())%7)+7*weeks); return isoDay(d);}
+const dayLong=iso=>new Date(iso+'T00:00:00').toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});
+function getPick(){try{return JSON.parse(localStorage.getItem(PLAN_KEY)||'null');}catch(e){return null;}}
+function setPick(p){try{p?localStorage.setItem(PLAN_KEY,JSON.stringify(p)):localStorage.removeItem(PLAN_KEY);}catch(e){}}
+function currentPlan(){
+  const today=todayISO();
+  const db=DB.meal.filter(m=>m.status!=='cooked'&&m.planned_date&&m.planned_date>=today).sort((a,b)=>a.planned_date.localeCompare(b.planned_date))[0];
+  if(db) return {m:db,date:db.planned_date,time:(db.service_time||'18:00').slice(0,5),src:'db'};
+  const p=getPick(); if(!p) return null;
+  const m=IDX.mealBySlug[p.slug];
+  if(!m||m.status==='cooked'||!p.date||p.date<today){setPick(null);return null;} // cooked, deleted or past: the pick expires
+  return {m,date:p.date,time:p.time||(m.service_time||'18:00').slice(0,5),src:'phone'};
+}
+const planTarget=pl=>new Date(pl.date+'T'+pl.time+':00').getTime();
+function cdText(t){const ms=t-Date.now(); if(ms<0) return 'served?'; const mins=Math.floor(ms/60000), d=Math.floor(mins/1440), h=Math.floor(mins%1440/60), mi=mins%60; return d?`in ${d}d ${String(h).padStart(2,'0')}h`:h?`in ${h}h ${String(mi).padStart(2,'0')}m`:`in ${mi} min`;}
+function pickPlan(slug,go){const m=IDX.mealBySlug[slug]; if(!m) return; const d=comingSunday(); setPick({slug,date:d,time:(m.service_time||'18:00').slice(0,5),at:Date.now()}); toast('Planned for '+dayLong(d)); if(go) nav('#/sunday'); else render();}
+function unplan(){setPick(null); render();}
+function openWhen(){
+  const pl=currentPlan(); if(!pl||pl.src!=='phone') return;
+  const opts=[0,1,2].map(w=>comingSunday(w));
+  openSheet(`<div class="grab"></div><div class="hd"><span>When</span><button onclick="closeSheet()">Done</button></div>
+    <div class="bd"><div class="grp"><div class="eyebrow">Sunday</div><div class="chips">${opts.map(d=>`<button class="chip ${pl.date===d?'on':''}" aria-pressed="${pl.date===d}" onclick="setWhen('${d}','')">${esc(dayLong(d))}</button>`).join('')}</div></div>
+    <div class="fld"><label>Another day<input type="date" value="${pl.date}" min="${todayISO()}" onchange="setWhen(this.value,'')"></label><label>Service<input type="time" value="${pl.time}" onchange="setWhen('',this.value)"></label></div></div>
+    <div class="ft"><button class="btn" onclick="closeSheet()">Done</button></div>`);
+}
+function setWhen(date,time){const p=getPick(); if(!p) return; if(date&&date>=todayISO()) p.date=date; if(time) p.time=time; setPick(p); render(); openWhen();}
+function sharePlan(){
+  const pl=currentPlan(); if(!pl) return;
+  const text=[`PLAN MEAL — ${pl.m.name}`,`slug: ${pl.m.slug}`,`planned_date: ${pl.date}   service_time: ${pl.time}`,'— Set meal.planned_date and service_time for this meal in jins-kitchen. Show me the row first.'].join('\n');
+  if(navigator.share){navigator.share({title:'Plan meal',text}).catch(()=>{});}
+  else if(navigator.clipboard){navigator.clipboard.writeText(text).then(()=>toast('Copied — paste it to Claude'),()=>toast('Could not copy'));}
+}
+function rotation(){ // last 8 cooked mains, oldest → latest
+  const cooked=DB.meal.filter(m=>m.status==='cooked'&&m.last).sort((a,b)=>b.last.localeCompare(a.last));
+  const recent=cooked.slice(0,8), tally={}, lastBy={};
+  recent.forEach(m=>{const p=mainProt(m); if(p) tally[p]=(tally[p]||0)+1;});
+  cooked.forEach(m=>{const p=mainProt(m); if(p&&!lastBy[p]) lastBy[p]=m.last;});
+  return {recent:recent.slice().reverse(),tally,lastBy,n:recent.length};
+}
+function rotHint(p,R){ if(!p||!R.n) return ['',''];
+  const n=R.tally[p]||0;
+  return n>=3?[`${p} ×${n} lately`,'warn']:!n?[`No ${p.toLowerCase()} in last ${R.n}`,'ok']:[`${p} ×${n} in last ${R.n}`,''];
+}
+function ntCard(m,R,choose){
+  const p=mainProt(m), [h,cls]=rotHint(p,R), [nm,note]=splitName(m.name);
+  const top=`<div class="r1"><span class="eyebrow ${choose?'acc':''}">${esc(p||'Next time')}</span>${h?`<span class="hint ${cls}">${esc(h)}</span>`:''}</div>`;
+  if(!choose) return `<a class="ntc" href="#/meal/${m.slug}">${top}<span class="nm">${esc(nm)}</span>${note?`<div class="nt">${esc(note)}</div>`:''}</a>`;
+  return `<div class="ntc">${top}<a class="nm" href="#/meal/${m.slug}">${esc(nm)}</a>${note?`<div class="nt">${esc(note)}</div>`:''}
+    <div class="mt">${esc(m.dishes.map(x=>menuName(x.dish.name)).join(' · '))}</div><button class="btn ghost sm" onclick="pickPlan('${m.slug}')">Cook this Sunday</button></div>`;
+}
+function rotCard(R){
+  if(!R.n) return '';
+  const leg=Object.entries(R.tally).sort((a,b)=>b[1]-a[1]).map(([p,n])=>n>=3?`<b>${esc(p)} ×${n}</b>`:esc(p)+(n>1?' ×'+n:'')).join(' · ');
+  return `<div class="rotcard"><div class="row"><div class="eyebrow grow">Last ${R.n} mains</div><span class="small dim">oldest → latest</span></div>
+    <div class="rdots">${R.recent.map((m,i)=>{const p=mainProt(m)||'—', n=splitName(m.name)[0]; return `<a class="rdot ${i===R.recent.length-1?'last':''}" style="--pc:${PROT_COL[p]||'#7a6d60'}" href="#/meal/${m.slug}" title="${esc(n)} · ${esc(shortDate(m.last))}" aria-label="${esc(p)}: ${esc(n)}, ${esc(shortDate(m.last))}">${esc(p[0])}</a>`;}).join('')}</div>
+    <div class="rlegend">${leg}</div></div>`;
+}
+routes.sunday=()=>{
+  setHeader(''); tabs('sunday');
+  const R=rotation(), pl=currentPlan();
+  const score=m=>{const p=mainProt(m); if(!p) return 1; const n=R.tally[p]||0; return n>=3?3:n?2:0;}; // nudge toward proteins not cooked lately
+  const backlog=DB.meal.filter(m=>m.status!=='cooked'&&(!pl||m!==pl.m)).sort((a,b)=>score(a)-score(b)||(R.lastBy[mainProt(a)]||'').localeCompare(R.lastBy[mainProt(b)]||'')||a.name.localeCompare(b.name));
+  const cookedAll=DB.meal.filter(m=>m.status==='cooked'&&m.last).sort((a,b)=>b.last.localeCompare(a.last));
+  const head=`<div class="homebar"><span class="wm">Jin’s Kitchen</span><span class="dt">${DB.fromCache?'<span class="offline">offline</span> ':''}${esc(new Date().toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'}))}</span></div>`;
+  const recent=cookedAll.length?`<div class="shead"><h3>Recently cooked</h3><a href="#/meals" onclick="MF.tab='cooked';MF.protein=null">All ${cookedAll.length}</a></div><div>${cookedAll.slice(0,3).map(mealCard).join('')}</div>`:'';
+  if(!pl){
+    const sun=comingSunday();
+    return `${head}
+      <div class="plan open"><div class="eyebrow acc">This Sunday · ${esc(new Date(sun+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long'}))}</div>
+        <h2>Nothing planned yet.</h2>
+        <p>Pick one from <i>Next time</i> — it’s saved on this phone. A date you set with Claude shows here by itself.</p></div>
+      ${backlog.length?`<div class="shead"><h3>Next time</h3><span>${backlog.length} waiting</span></div>${backlog.map(m=>ntCard(m,R,true)).join('')}`:'<p class="foot">Nothing saved for next time yet. Ask Claude to “save this meal for next time”.</p>'}
+      ${rotCard(R)}
+      ${recent}
+      <div style="height:12px"></div>`;
+  }
+  const m=pl.m, t=planTarget(pl), past=t<Date.now(), [nm,note]=splitName(m.name);
+  const items=aggregate(m.dishes.map(x=>x.dish)); let st={}; try{st=JSON.parse(localStorage.getItem('shop:meal/'+m.slug)||'{}');}catch(e){}
+  const done=items.filter(i=>st[i.id]).length;
+  const label=pl.date===todayISO()?'Tonight':pl.date===comingSunday()?'This Sunday':pl.date===comingSunday(1)?'Next Sunday':new Date(pl.date+'T00:00:00').toLocaleDateString('en-GB',{weekday:'long'});
+  const acts=[past?`<a class="btn" href="#/postcook/meal/${m.slug}">Log the cook</a>`:(m.workflow_md?`<a class="btn" href="#/cook/${m.slug}">Start cook</a>`:''),items.length?`<a class="btn ghost" href="#/shopping/meal/${m.slug}">Shopping list</a>`:''].filter(Boolean);
+  const when=`${esc(dayLong(pl.date))} · <b>${esc(pl.time)}</b>`;
+  return `${head}
+    <div class="plan"><div class="top"><span class="eyebrow acc">${esc(label)}</span>${pl.src==='phone'?'<button onclick="unplan()" aria-label="Unplan and choose another meal">Change</button>':''}</div>
+      <h2><a href="#/meal/${m.slug}">${esc(nm)}</a></h2>${note?`<div class="note">${esc(note)}</div>`:''}
+      <div class="when">${pl.src==='phone'?`<button class="wd" onclick="openWhen()" aria-label="Change day and service time">${when} <span class="chev" aria-hidden="true">▾</span></button>`:`<span class="wd">${when}</span>`}<span class="cd" data-t="${t}">${cdText(t)}</span></div>
+      <div class="hmenu">${m.dishes.map(x=>`<span class="eyebrow">${esc(x.role)}</span><a href="#/dish/${x.dish.slug}">${esc(splitName(x.dish.name)[0])}</a>`).join('')}</div>
+      ${items.length?`<div class="shopline"><span>Shopping</span><span><b>${done}</b> of ${items.length} bought</span></div><div class="bar"><i style="width:${Math.round(done/items.length*100)}%"></i></div>`:''}
+      ${acts.length?`<div class="acts">${acts.join('')}</div>`:''}
+      <div class="src">${pl.src==='phone'?'<span>Saved on this phone</span><button onclick="sharePlan()">Copy for Claude</button>':'<span>Planned with Claude — saved for every device</span>'}</div>
+    </div>
+    ${recent}
+    ${rotCard(R)}
+    ${backlog.length?`<div class="shead"><h3>Next time</h3><span>${backlog.length} waiting</span></div><div class="shelf">${backlog.map(x=>ntCard(x,R,false)).join('')}</div>`:''}
+    <div style="height:12px"></div>`;
+};
+setInterval(()=>{document.querySelectorAll('.cd[data-t]').forEach(e=>e.textContent=cdText(+e.dataset.t));},30000);
 
 // ---------------------------------------------------------------- more
 routes.more=()=>{
@@ -866,7 +1022,8 @@ routes.cook=(slug)=>{
   setHeader('Cook · '+m.name,'#/meal/'+m.slug); tabs('meals');
   const key='cook:'+m.slug; let st={}; try{st=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}
   const today=new Date(); const defT0=new Date(today.getFullYear(),today.getMonth(),today.getDate(),18,0).getTime();
-  if(!st.t0){st.t0=defT0; st.ticks={}; localStorage.setItem(key,JSON.stringify(st));}
+  const pl=currentPlan(), planT0=pl&&pl.m===m?planTarget(pl):null; // a planned meal counts down to its planned service, not 18:00 today
+  if(!st.t0||(planT0&&st.planT0!==planT0)){st.t0=planT0||defT0; st.planT0=planT0; st.ticks=st.ticks||{}; localStorage.setItem(key,JSON.stringify(st));}
   window._cook={key,st,m};
   const {steps,other}=parseTimeline(m.workflow_md);
   const now=Date.now(); const t0=st.t0; const minsToT0=Math.round((t0-now)/60000);
@@ -877,7 +1034,7 @@ routes.cook=(slug)=>{
   const doneN=steps.filter(x=>st.ticks[stepId(x)]).length;
   const holding=other.filter(o=>/hold/i.test(o.section)||/max\s*\d+\s*min|ceiling/i.test(o.text));
   return `<div class="stack" style="padding-top:12px">
-    <div class="card"><div class="row"><div class="grow"><div class="tag">Service T-0</div><input type="time" value="${t0str}" onchange="setT0(this.value)" style="font:inherit;font-size:22px;font-weight:650;border:0;background:transparent;color:var(--ink);padding:0"></div><div style="text-align:right"><div class="tag">${minsToT0>=0?'to service':'since service'}</div><div style="font-size:22px;font-weight:650;font-variant-numeric:tabular-nums">${Math.abs(minsToT0)>=60?Math.floor(Math.abs(minsToT0)/60)+'h '+String(Math.abs(minsToT0)%60).padStart(2,'0'):Math.abs(minsToT0)+' min'}</div></div></div>
+    <div class="card"><div class="row"><div class="grow"><div class="tag">Service T-0${isoDay(new Date(t0))!==todayISO()?' · '+esc(dayLong(isoDay(new Date(t0)))):''}</div><input type="time" value="${t0str}" onchange="setT0(this.value)" style="font:inherit;font-size:22px;font-weight:650;border:0;background:transparent;color:var(--ink);padding:0"></div><div style="text-align:right"><div class="tag">${minsToT0>=0?'to service':'since service'}</div><div style="font-size:22px;font-weight:650;font-variant-numeric:tabular-nums">${(a=>a>=1440?Math.floor(a/1440)+'d '+String(Math.floor(a%1440/60)).padStart(2,'0')+'h':a>=60?Math.floor(a/60)+'h '+String(a%60).padStart(2,'0'):a+' min')(Math.abs(minsToT0))}</div></div></div>
       <div class="row small muted" style="margin-top:8px"><span class="grow">${doneN}/${steps.length} steps · ticks saved on this phone</span><button class="btn ghost sm" onclick="resetCook()">Reset</button></div></div>
     ${steps.length?`<div class="card" style="padding:2px 16px">${steps.map(stepRow).join('')}</div>`:'<div class="empty">No T-minus timeline found in this meal’s workflow.</div>'}
     ${holding.length?`<h3 class="section">Holding chain</h3><div class="card md small">${md(holding.map(o=>o.text).join('\n'))}</div>`:''}
@@ -887,7 +1044,7 @@ routes.cook=(slug)=>{
 };
 function stepId(x){return (x.tm==null?'pre':x.tm)+':'+x.text.slice(0,40).replace(/[^a-z0-9]+/gi,'-');}
 function tickStep(id){const c=window._cook; c.st.ticks[id]=!c.st.ticks[id]; localStorage.setItem(c.key,JSON.stringify(c.st)); render();}
-function setT0(v){const c=window._cook; const [h,mi]=v.split(':').map(Number); const d=new Date(); d.setHours(h,mi,0,0); c.st.t0=d.getTime(); localStorage.setItem(c.key,JSON.stringify(c.st)); render();}
+function setT0(v){const c=window._cook; const [h,mi]=v.split(':').map(Number); const d=new Date(c.st.t0||Date.now()); d.setHours(h,mi,0,0); /* keep the planned day */ c.st.t0=d.getTime(); localStorage.setItem(c.key,JSON.stringify(c.st)); render();}
 function resetCook(){localStorage.removeItem(window._cook.key); render();}
 setInterval(()=>{if(parse().view==='cook') render();},60000);
 
