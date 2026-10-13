@@ -484,7 +484,8 @@ function render(){
 // ---------------------------------------------------------------- shared pieces: names, seals, bottom sheet
 function splitName(n){ // "Roast Chicken (Keller Method, Dry-Brined)" → ["Roast Chicken","Keller Method, Dry-Brined"]
   n=String(n||''); let m=n.match(/^(.+?)\s*\(([^()]+)\)\s*$/); if(m) return [m[1],m[2]];
-  m=n.match(/^(.+?)\s+[—–]\s+(.+)$/); if(m) return [m[1],m[2]]; return [n,''];
+  m=n.match(/^(.+?)\s+[—–]\s+(.+)$/); if(m) return /^(?:(?:sunday|saturday|friday|weeknight|weekend)\s+)?(?:dinner|menu|supper|lunch|feast)$/i.test(m[1].trim())?[m[2],'']:[m[1],m[2]]; // "Sunday Dinner — Miso-Roasted Salmon" → the dish is the name
+  return [n,''];
 }
 function nameHtml(n){const [a,b]=splitName(n); return esc(a)+(b?`<i>, ${esc(b)}</i>`:'');}
 const half=v=>{const x=+v; if(Number.isInteger(x)) return String(x); if(Math.abs(x*2-Math.round(x*2))<1e-9) return Math.floor(x)+'½'; return x.toFixed(1);};
@@ -804,7 +805,7 @@ routes.sunday=()=>{
     <div class="plan"><div class="top"><span class="eyebrow acc">${esc(label)}</span>${pl.src==='phone'?'<button onclick="unplan()" aria-label="Unplan and choose another meal">Change</button>':''}</div>
       <h2><a href="#/meal/${m.slug}">${esc(nm)}</a></h2>${note?`<div class="note">${esc(note)}</div>`:''}
       <div class="when">${pl.src==='phone'?`<button class="wd" onclick="openWhen()" aria-label="Change day and service time">${when} <span class="chev" aria-hidden="true">▾</span></button>`:`<span class="wd">${when}</span>`}<span class="cd" data-t="${t}">${cdText(t)}</span></div>
-      <div class="hmenu">${m.dishes.map(x=>`<span class="eyebrow">${esc(x.role)}</span><a href="#/dish/${x.dish.slug}">${esc(splitName(x.dish.name)[0])}</a>`).join('')}</div>
+      <div class="hmenu">${m.dishes.map(x=>`<span class="eyebrow">${esc(x.role)}</span><a href="#/dish/${x.dish.slug}">${esc(menuName(x.dish.name))}</a>`).join('')}</div>
       ${items.length?`<div class="shopline"><span>Shopping</span><span><b>${done}</b> of ${items.length} bought</span></div><div class="bar"><i style="width:${Math.round(done/items.length*100)}%"></i></div>`:''}
       ${acts.length?`<div class="acts">${acts.join('')}</div>`:''}
       <div class="src">${pl.src==='phone'?'<span>Saved on this phone</span><button onclick="sharePlan()">Copy for Claude</button>':'<span>Planned with Claude — saved for every device</span>'}</div>
