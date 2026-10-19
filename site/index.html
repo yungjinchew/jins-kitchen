@@ -826,7 +826,7 @@ routes.dish=(slug)=>{
   const d=IDX.dishBySlug[slug]; if(!d)return notFound('Dish','#/library');
   setHeader(d.name,'#/library',true); tabs('library');
   const r=d.r; const [nm,note]=splitName(d.name); const cooked=isCooked(d);
-  const openVal=(d.designed_unvalidated||[]).filter(p=>!d.cooks.some(c=>(c.parameter_confirmations||[]).some(pc=>pc.param===p.param&&pc.verdict==='confirmed')));
+  const openVal=openValOf(d);
   const when=r.times_made>0?`Cooked ×${r.times_made}${r.last_made?' · last '+esc(fmtDate(r.last_made)):''}`
     :(d.served?`Served ${esc(fmtDate(d.served))}${d.servedIn?` in <a href="#/meal/${d.servedIn.slug}">${esc(splitName(d.servedIn.name)[0])}</a>`:''}${d.mealRating!=null?' · meal rated '+num(d.mealRating):''}`
     :(d.status==='cooked'?'Cooked':(d.status==='designed'?'Designed, not yet cooked':esc(d.status||''))));
@@ -1112,13 +1112,15 @@ function sheetShop(dishes){ // Ingredient | Total | one column per dish, grouped
     +items.filter(i=>i.dept===dp).map(e=>`<tr><td>${esc(e.label)}${e.spec||e.avoid?`<br><span class="meta">${buyHtml(e.spec,e.avoid)}</span>`:''}${e.pantry?' <span class="meta">(pantry check)</span>':''}${e.optional?' <span class="meta">(optional)</span>':''}</td><td>${esc(e.qty)}</td>${multi?dishes.map(d=>`<td>${esc(cell(e,d))}</td>`).join(''):''}</tr>`).join('')).join('');
   return `<h2>Shopping list</h2><table class="shop"><thead><tr><th>Ingredient</th><th>${multi?'Total':'Amount'}</th>${multi?dishes.map(d=>`<th>${esc(shortName(d.name))}</th>`).join(''):''}</tr></thead><tbody>${rows}</tbody></table>`;
 }
+// designed parameters still open: a dish-level cook row with verdict 'confirmed' closes one (same rule as the open_validations view)
+const openValOf=d=>(d.designed_unvalidated||[]).filter(p=>!(d.cooks||[]).some(c=>(c.parameter_confirmations||[]).some(pc=>pc.param===p.param&&pc.verdict==='confirmed')));
 function sheetDish(d,role){
   const body=PF.full?d.method_md:stripSections(d.method_md,['flavor architecture','flavour architecture','nutrition estimate','correction to the superseded','superseded variant']);
   return `<section class="dish"><h2>${esc(d.name)}</h2>
     <div class="meta">${esc([role,d.servings?'serves '+num(d.servings):null,(d.equipment||[]).length?d.equipment.join(', '):null].filter(Boolean).join(' · '))}</div>
     ${d.ings.length?`<h3>Ingredients</h3><table class="ingt"><thead><tr><th>Ingredient</th><th>Amount</th></tr></thead><tbody>${d.ings.map(di=>`<tr><td>${esc(ingName(di))}${di.buy_spec||di.buy_avoid?` <span class="meta">· ${buyHtml(di.buy_spec,di.buy_avoid)}</span>`:''}${di.prep_note?` <span class="meta">— ${esc(di.prep_note)}</span>`:''}${di.optional?' <span class="meta">(optional)</span>':''}</td><td>${esc(qtyText(di))}${di.qty!=null&&di.qty_alt?` <span class="meta">(${esc(di.qty_alt)})</span>`:''}</td></tr>`).join('')}</tbody></table>`:''}
     ${body?`<div class="md">${md(body)}</div>`:'<p class="meta">No recipe text stored for this dish.</p>'}
-    ${PF.full&&(d.designed_unvalidated||[]).length?`<h3>Designed — not yet validated</h3><ul>${d.designed_unvalidated.map(p=>`<li><b>${esc(p.param)}</b>${p.designed_value?' — '+esc(p.designed_value):''}${p.note?` <span class="meta">${esc(p.note)}</span>`:''}</li>`).join('')}</ul>`:''}
+    ${PF.full&&openValOf(d).length?`<h3>Designed — not yet validated</h3><ul>${openValOf(d).map(p=>`<li><b>${esc(p.param)}</b>${p.designed_value?' — '+esc(p.designed_value):''}${p.note?` <span class="meta">${esc(p.note)}</span>`:''}</li>`).join('')}</ul>`:''}
   </section>`;
 }
 routes.print=(kind,slug)=>{
