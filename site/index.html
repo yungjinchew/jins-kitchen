@@ -335,6 +335,27 @@ h3.section{font:400 26px/1.1 var(--serif);text-transform:none;letter-spacing:0;c
 .sitem .q{font:500 14px/1.35 var(--mono);text-align:right;max-width:9em;overflow-wrap:anywhere;padding-top:3px}
 .sitem.done .nm{text-decoration:line-through;text-decoration-thickness:1px;color:var(--ink3)} .sitem.done .q,.sitem.done .buy,.sitem.done .attr{color:var(--ink3)} .sitem.done .buy .not{color:var(--ink3)} .sitem.done .oa{opacity:.45}
 .spantry{margin-top:26px;border-top:1px solid var(--line)}
+.shopby{margin-top:14px}
+.sneed{margin:10px 0 0;font:600 13px/1.4 var(--sans);color:var(--accent)}
+.ssub{margin:16px 0 0;font:600 11px/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+.sitem .q .qx{display:block;font:500 11px var(--sans);color:var(--ink2)}
+.shead span.acc{color:var(--accent);font-family:var(--mono);font-size:12px}
+.bsub{margin:0 0 12px;font:13px/1.4 var(--sans);color:var(--ink2)}
+.btl{display:grid;grid-template-columns:54px minmax(0,1fr);gap:12px}
+.btw{display:flex;flex-direction:column;gap:2px;padding-top:13px}
+.btw b{font:700 12px/1.2 var(--mono);color:var(--ink)} .btw span{font:500 11px var(--mono);color:var(--ink2)} .btw.now b{color:var(--accent)}
+.btc{min-width:0;background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:12px 14px;display:flex;flex-direction:column;gap:5px;color:var(--ink)}
+.btc .t{font:600 15px/1.35 var(--sans)} .btc .t .q{font:500 13px var(--mono);color:var(--ink2);white-space:nowrap}
+.btc .d{font:13px/1.4 var(--sans);color:var(--ink2)} .btc .d.nb{color:var(--accent);font-weight:600}
+.btc .oa{align-self:flex-start;padding:0 6px;border:1px solid var(--bad);color:var(--bad);border-radius:3px;font:600 9px/1.7 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.btc .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.btc.done{opacity:.6} .btc.done .t{text-decoration:line-through;text-decoration-thickness:1px}
+.btc.past{border-color:var(--warn)} .btc.past .d.nb{color:var(--warn)}
+.btc.dash{background:none;border-style:dashed;border-color:var(--chip);text-decoration:none}
+.bpan{margin-top:16px;padding-top:12px;border-top:1px solid var(--line)}
+.pchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.pchip{min-height:36px;padding:0 12px;border-radius:18px;background:var(--tint);font:500 13px var(--sans);color:var(--ink)}
+.pchip.on{background:var(--accent);color:var(--on-accent)} .pchip.on::before{content:"✓ "}
 .spantry>summary{min-height:56px;gap:10px} .spantry>summary .t{font:400 24px/1.1 var(--serif)} .spantry>summary .mono{font-size:12px;color:var(--ink2);margin-left:auto}
 .spantry>p{margin:0 0 4px}
 .sfoot{display:flex;justify-content:center;margin:24px 0 8px}
@@ -467,23 +488,29 @@ const ROLE_ORDER = {starter:0,soup:1,main:2,side:3,salad:4,sauce:5,bread:6,desse
 const DB = {dish:[],meal:[],meal_dish:[],cook:[],document:[],dish_ingredient:[],rollup:[],validations:[],measurement:[],loadedAt:null,fromCache:false};
 const IDX = {dish:{},dishBySlug:{},meal:{},mealBySlug:{}};
 
-async function sb(path){
-  const r = await fetch(SB_URL + '/rest/v1/' + path, {headers:{apikey:SB_KEY, Authorization:'Bearer '+SB_KEY}});
-  if(!r.ok) throw new Error(path+' '+r.status);
-  return r.json();
+async function sb(path){ // every row, page by page: the API returns at most 1000 rows per request (dish_ingredient passed 1000 in Oct 2026)
+  const PAGE=1000, out=[]; let total=null;
+  while(true){
+    const r = await fetch(SB_URL + '/rest/v1/' + path + '&limit=' + PAGE + '&offset=' + out.length, {headers:{apikey:SB_KEY, Authorization:'Bearer '+SB_KEY, Prefer:'count=exact'}});
+    if(!r.ok) throw new Error(path+' '+r.status);
+    const rows = await r.json(); out.push(...rows);
+    const cr = (r.headers.get('content-range')||'').match(/\/(\d+)$/); if(cr) total=+cr[1];
+    if(!rows.length || (total!=null ? out.length>=total : rows.length<PAGE) || out.length>=100000) break;
+  }
+  return out;
 }
 async function loadAll(){
   try{
     const [dish,meal,meal_dish,cook,document,dish_ingredient,rollup,validations,measurement] = await Promise.all([
-      sb('dish?select=*&order=name'),
-      sb('meal?select=*&order=planned_date.desc.nullslast'),
-      sb('meal_dish?select=*'),
-      sb('cook?select=*&order=cooked_on.desc'),
-      sb('document?select=*&order=generated_at.desc'),
-      sb('dish_ingredient?select=*,ingredient(*)&order=sort_order'),
-      sb('dish_rating_rollup?select=*'),
-      sb('open_validations?select=*'),
-      sb('measurement?select=*&order=sort_order')
+      sb('dish?select=*&order=name,id'), // a unique last key keeps pages from overlapping
+      sb('meal?select=*&order=planned_date.desc.nullslast,id'),
+      sb('meal_dish?select=*&order=meal_id,dish_id'),
+      sb('cook?select=*&order=cooked_on.desc,id'),
+      sb('document?select=*&order=generated_at.desc,id'),
+      sb('dish_ingredient?select=*,ingredient(*)&order=sort_order,id'),
+      sb('dish_rating_rollup?select=*&order=dish_id'),
+      sb('open_validations?select=*'), // natural order = the recipe's own order; 199 rows today
+      sb('measurement?select=*&order=sort_order,id')
     ]);
     Object.assign(DB,{dish,meal,meal_dish,cook,document,dish_ingredient,rollup,validations,measurement,loadedAt:Date.now(),fromCache:false});
     try{localStorage.setItem('kitchen:db',JSON.stringify(DB));}catch(e){}
@@ -1062,12 +1089,60 @@ routes.sunday=()=>{
       ${acts.length?`<div class="acts">${acts.join('')}</div>`:''}
       <div class="src">${pl.src==='phone'?'<span>Saved on this phone</span><button onclick="sharePlan()">Copy for Claude</button>':'<span>Planned with Claude — saved for every device</span>'}</div>
     </div>
+    ${past?'':beforeBlock(pl,items,st)}
     ${recent}
     ${rotCard(R)}
     ${backlog.length?`<div class="shead"><h3>Next time</h3><span>${backlog.length} waiting</span></div><div class="shelf">${backlog.map(x=>ntCard(x,R,false)).join('')}</div>`:''}
     <div style="height:12px"></div>`;
 };
 setInterval(()=>{document.querySelectorAll('.cd[data-t]').forEach(e=>e.textContent=cdText(+e.dataset.t));},30000);
+function prePlan(pl){ // the plan's steps dated before the cooking day, and its first cooking-day step, as clock times
+  const m=pl.m, t0=planTarget(pl), P=parseTimeline(m.workflow_md,nominalService(m));
+  const pre=P.steps.filter(x=>x.before).map(x=>({x,at:x.kind==='T'?t0-x.tm*60000:null}));
+  const d=P.steps.filter(x=>!x.before&&x.kind==='T').sort((a,b)=>b.tm-a.tm)[0];
+  return {pre,first:d?{x:d,at:t0-d.tm*60000}:null};
+}
+const whenLong=t=>new Date(t).toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'})+', '+hm(t);
+function neededBy(pl,items){ // "In hand by …": the earliest step before the cooking day that names the item, else the earliest one, else the first cooking step
+  const {pre,first}=prePlan(pl), timed=pre.filter(p=>p.at!=null).sort((a,b)=>a.at-b.at);
+  const words=items.flatMap(i=>i.label.toLowerCase().split(/[^a-z]+/).filter(w=>w.length>=4));
+  const hit=timed.find(p=>words.some(w=>p.x.text.toLowerCase().includes(w)));
+  const p=hit||timed[0]; if(p) return `In hand by ${whenLong(p.at)}${hit?', when its first step starts':', the first step before the cooking day'}.`;
+  return first?`In hand before the first cooking step, ${whenLong(first.at)}.`:'';
+}
+function gcalLink(title,t,details){ // opens Google Calendar with the event filled in; nothing is saved until you save it there
+  const f=x=>new Date(x).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
+  return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(title)+'&dates='+f(t)+'/'+f(t+15*60000)+'&details='+encodeURIComponent(details);
+}
+function homeTick(slug,id){const k='shop:meal/'+slug, st=shopState(k); st[id]=!st[id]; try{localStorage.setItem(k,JSON.stringify(st));}catch(e){} softRender();}
+function beforeBlock(pl,items,st){
+  const m=pl.m, now=Date.now(), {pre,first}=prePlan(pl);
+  if(first&&first.at<now) return ''; // the cooking day has started: cook mode takes over
+  const day=new Date(pl.date+'T00:00:00').toLocaleDateString('en-GB',{weekday:'long'});
+  const oa=items.filter(i=>i.orderAhead&&!i.pantry), pantry=items.filter(i=>i.pantry);
+  const need=oa.length?neededBy(pl,oa):'';
+  const dShort=t=>new Date(t).toLocaleDateString('en-GB',{weekday:'short',day:'numeric'});
+  const rows=[];
+  oa.forEach(i=>{const done=!!st[i.id], spec=String(i.spec||'').split(/;\s*/)[0];
+    rows.push(`<div class="btw now"><b>${done?'Done':'Now'}</b><span>${esc(new Date().toLocaleDateString('en-GB',{weekday:'short'}))}</span></div>
+      <div class="btc ${done?'done':''}"><span class="oa">Order ahead${i.shop?' · '+esc(i.shop):''}</span><span class="t">${esc(i.label)} <span class="q">${esc(i.buyQty||i.qty)}</span></span>${spec?`<span class="d">${esc(spec)}</span>`:''}${need&&!done?`<span class="d nb">${esc(need)}</span>`:''}
+      <div class="acts"><button class="btn ghost sm" aria-pressed="${done}" onclick="homeTick('${m.slug}','${i.id}')">${done?'Bought · undo':'Mark bought'}</button></div></div>`);});
+  pre.forEach(({x,at})=>{const [t,d]=stepTitle(x.text), past=at!=null&&at<now;
+    rows.push(`<div class="btw"><b>${at!=null?esc(dShort(at)):esc(x.label||'Before')}</b><span>${at!=null?esc(hm(at)):''}</span></div>
+      <div class="btc ${past?'past':''}"><span class="t">${esc(t)}</span>${d?`<span class="d">${esc(d.length>200?d.slice(0,197)+'…':d)}</span>`:''}${past?'<span class="d nb">This time has passed. Check it was done.</span>':''}
+      ${at!=null&&!past?`<div class="acts"><a class="btn ghost sm" href="${gcalLink(t,at,splitName(m.name)[0]+'\n\n'+x.text)}" target="_blank" rel="noopener">Add to calendar</a></div>`:''}</div>`);});
+  if(!rows.length&&!pantry.length) return '';
+  const todo=oa.filter(i=>!st[i.id]).length+pre.filter(p=>p.at==null||p.at>=now).length;
+  if(first){const [ft]=stepTitle(first.x.text); rows.push(`<div class="btw"><b>${esc(dShort(first.at))}</b><span>${esc(hm(first.at))}</span></div>
+      <a class="btc dash" href="#/cook/${m.slug}"><span class="t">Cooking starts · ${esc(first.x.label)}</span><span class="d">${/^[A-Z0-9]/.test(ft)?esc(ft.length>120?ft.slice(0,117)+'…':ft):'Cook mode has the full timeline.'}</span></a>`);}
+  const pq=i=>i.parts.every(p=>p.qty!=null)&&i.qty.length<=10?' · '+unitlessQ(i.qty):'';
+  return `<div class="shead"><h3>Before ${esc(day)}</h3>${todo?`<span class="acc">${todo} to do</span>`:'<span>All set</span>'}</div>
+    <p class="bsub">Everything in the plan dated before the first cooking step, in order.</p>
+    <div class="btl">${rows.join('')}</div>
+    ${pantry.length?`<div class="bpan"><div class="row"><span class="eyebrow grow">Pantry check before you shop</span><span class="mono small dim">${pantry.filter(i=>st[i.id]).length} / ${pantry.length}</span></div>
+      <div class="pchips">${pantry.map(i=>`<button class="pchip ${st[i.id]?'on':''}" aria-pressed="${!!st[i.id]}" onclick="homeTick('${m.slug}','${i.id}')">${esc(i.label)}${esc(pq(i))}</button>`).join('')}</div></div>`:''}`;
+}
+const unitlessQ=t=>String(t||'').replace(/(\d)\s(?:piece|pieces)\b/g,'$1');
 
 // ---------------------------------------------------------------- more
 routes.more=()=>{
@@ -1110,7 +1185,7 @@ const fmtQ=(q,u)=>(Math.round(q*100)/100)+(/^(g|ml|kg|l)$/.test(u||'')?'':' ')+(
 function sheetShop(dishes){ // Ingredient | Total | one column per dish, grouped by department — the docx shopping-list layout
   const items=aggregate(dishes); if(!items.length) return '';
   const multi=dishes.length>1, cols=multi?dishes.length+2:2;
-  const cell=(e,d)=>{const ps=e.parts.filter(p=>p.dish===d.name); return ps.length?ps.map(p=>p.qty!=null?fmtQ(p.qty,p.unit):(p.alt||'✓')).join(' + '):'—';};
+  const cell=(e,d)=>{const ps=e.parts.filter(p=>p.dish===d.name); return ps.length?ps.map(p=>p.qty!=null?fmtQ(p.qty,p.unit)+(p.use?' '+p.use:''):(p.alt||'✓')).join(' + '):'—';};
   const rows=DEPT_ORDER.filter(dp=>items.some(i=>i.dept===dp)).map(dp=>`<tr><td class="dept" colspan="${cols}">${esc(dp)}</td></tr>`
     +items.filter(i=>i.dept===dp).map(e=>`<tr><td>${esc(e.label)}${e.spec||e.avoid?`<br><span class="meta">${buyHtml(e.spec,e.avoid)}</span>`:''}${e.pantry?' <span class="meta">(pantry check)</span>':''}${e.optional?' <span class="meta">(optional)</span>':''}</td><td>${esc(e.qty)}</td>${multi?dishes.map(d=>`<td>${esc(cell(e,d))}</td>`).join(''):''}</tr>`).join('')).join('');
   return `<h2>Shopping list</h2><table class="shop"><thead><tr><th>Ingredient</th><th>${multi?'Total':'Amount'}</th>${multi?dishes.map(d=>`<th>${esc(shortName(d.name))}</th>`).join(''):''}</tr></thead><tbody>${rows}</tbody></table>`;
@@ -1193,18 +1268,27 @@ routes.shopping=(kind,slug)=>{
   const pantry=items.filter(i=>i.pantry), c=shopCount(items,state);
   const unitless=t=>String(t||'').replace(/(\d)\s(?:piece|pieces)\b/g,'$1'); // "2 piece" reads as "2" on screen (the print sheet keeps its format)
   const qSplit=i=>{const ps=unitless(i.qty).split(' + '), long=x=>x.length>12&&!/^[\d½¼¾~]/.test(x); return [ps.filter(x=>!long(x)).join(' + '),ps.filter(long)];}; // wordy amounts ("to slather on carved meat") move under the name
-  const attrOf=i=>{const a=dishes.length>1&&i.parts.length===1?shortName(i.parts[0].dish):unitless(i.attr), w=qSplit(i)[1]; return dishes.length>1?(i.parts.length===1&&w.length?a+' · '+w.join(' · '):a):[a,...w].filter(Boolean).join(' · ');};
-  const line=i=>`<button class="sitem ${state[i.id]?'done':''}" role="checkbox" aria-checked="${!!state[i.id]}" onclick="toggleShop('${i.id}',this)"><span class="box" aria-hidden="true"></span><span class="lbl"><span class="nm">${esc(i.label)}${i.optional?'<span class="itag">Optional</span>':''}</span>${i.spec||i.avoid?`<span class="buy">${buyLine(i.spec,i.avoid)}</span>`:''}${attrOf(i)?`<span class="attr">${esc(attrOf(i))}</span>`:''}${i.orderAhead&&!i.pantry?'<span class="oa">Order ahead</span>':''}</span><span class="q">${esc(qSplit(i)[0])}</span></button>`;
+  const tags=dishTags(dishes.map(d=>d.name));
+  const attrOf=i=>{const a=dishes.length>1&&i.parts.length===1?tags[i.parts[0].dish]:unitless(i.attr), w=qSplit(i)[1]; return dishes.length>1?(i.parts.length===1&&w.length?a+' · '+w.join(' · '):a):[a,...w].filter(Boolean).join(' · ');};
+  const byShop=shopBy()==='shop';
+  const line=i=>`<button class="sitem ${state[i.id]?'done':''}" role="checkbox" aria-checked="${!!state[i.id]}" onclick="toggleShop('${i.id}',this)"><span class="box" aria-hidden="true"></span><span class="lbl"><span class="nm">${esc(i.label)}${i.optional?'<span class="itag">Optional</span>':''}</span>${i.spec||i.avoid?`<span class="buy">${buyLine(i.spec,i.avoid)}</span>`:''}${attrOf(i)?`<span class="attr">${esc(attrOf(i))}</span>`:''}${i.orderAhead&&!i.pantry&&!byShop?'<span class="oa">Order ahead</span>':''}</span><span class="q">${esc(i.buyQty||qSplit(i)[0])}${i.extraNote?`<span class="qx">${esc(i.extraNote)}</span>`:''}</span></button>`;
   const ct=list=>`${list.filter(i=>state[i.id]).length}/${list.length}`;
+  const oa=items.filter(i=>i.orderAhead&&!i.pantry), rest=items.filter(i=>!i.orderAhead&&!i.pantry);
+  const shops=[...new Set(oa.map(i=>i.shop).filter(Boolean))], need=kind==='meal'&&pl&&pl.m===owner?neededBy(pl,oa):'';
+  const restDepts=[...DEPT_ORDER,'Other'].filter(dp=>rest.some(i=>deptOf(i)===dp));
+  const shopView=`${oa.length?`<section class="sdept"><div class="sdh"><h3>${shops.length===1?esc(shops[0])+' · order ahead':'Order ahead'}</h3><span data-dc>${ct(oa)}</span></div>${need&&oa.some(i=>!state[i.id])?`<p class="sneed">${esc(need)}</p>`:''}${oa.map(line).join('')}</section>`:''}
+    ${rest.length?`<section class="sdept"><div class="sdh"><h3>${oa.length?'Supermarket':'To buy'}</h3><span data-dc>${ct(rest)}</span></div>${restDepts.map(dp=>`<div class="ssub">${esc(dp)}</div>${rest.filter(i=>deptOf(i)===dp).map(line).join('')}`).join('')}</section>`:''}`;
+  const aisleView=depts.map(dp=>{const list=items.filter(i=>!i.pantry&&deptOf(i)===dp); return `<section class="sdept"><div class="sdh"><h3>${esc(dp)}</h3><span data-dc>${ct(list)}</span></div>${list.map(line).join('')}</section>`;}).join('');
   return `${pageTitle('Shopping',items.length?'<button class="btn ghost sm" onclick="shareShop()" style="margin-bottom:4px">Share as text</button>':'')}
     <div class="shsub">${sub}</div>
+    ${items.length?`<div class="seg shopby" role="group" aria-label="Group the list"><button class="${byShop?'on':''}" aria-pressed="${byShop}" onclick="setShopBy('shop')">By shop</button><button class="${byShop?'':'on'}" aria-pressed="${!byShop}" onclick="setShopBy('aisle')">By aisle</button></div>`:''}
     ${items.length?`<div class="sprog"><span class="eyebrow">Bought</span><span id="sprog-n"><b>${c.done}</b> of ${c.total}</span></div><div class="bar"><i id="sprog-bar" style="width:${c.total?Math.round(c.done/c.total*100):0}%"></i></div>`:''}
-    ${depts.map(dp=>{const list=items.filter(i=>!i.pantry&&deptOf(i)===dp); return `<section class="sdept"><div class="sdh"><h3>${esc(dp)}</h3><span data-dc>${ct(list)}</span></div>${list.map(line).join('')}</section>`;}).join('')}
+    ${byShop?shopView:aisleView}
     ${pantry.length?`<details class="spantry"><summary><span class="t">Pantry check</span><span class="mono" data-dc>${ct(pantry)}</span></summary><p class="small dim">Usually in the cupboard — tick each once you’ve checked you have enough.</p>${pantry.map(line).join('')}</details>`:''}
     ${items.length?`<div class="sfoot"><button class="btn ghost sm" onclick="clearShop()">Clear ticks</button></div>`:'<div class="empty">No ingredient data for this selection yet.</div>'}`;
 };
 function aggregate(dishes){
-  const map={};
+  const map={}, tags=dishTags(dishes.map(d=>d.name));
   dishes.forEach(d=>d.ings.forEach(di=>{
     const nm=ingName(di); if(!nm)return; const sp=(di.buy_spec||'').trim(), av=(di.buy_avoid||'').trim();
     const k=nm+(sp||av?'|'+sp.toLowerCase()+'|'+av.toLowerCase():''); // never merge lines whose buying spec differs
@@ -1212,28 +1296,61 @@ function aggregate(dishes){
     e.pantry=e.pantry&&(!!di.pantry_check||!!di.ingredient.pantry_default);
     e.optional=e.optional&&!!di.optional;
     if(di.ingredient.department==='Protein'||/butcher/i.test(di.ingredient.supplier_hint||''))e.orderAhead=true;
+    e.shop=e.shop||shopOf(di.ingredient.supplier_hint,sp);
     e.parts.push({dish:d.name,qty:di.qty!=null?+di.qty:null,unit:di.unit||'',alt:di.qty_alt||'',prep:di.prep_note||''});
   }));
-  return Object.values(map).map(e=>{
+  const list0=Object.values(map).map(e=>{
     const byUnit={}; e.parts.forEach(p=>{if(p.qty!=null){byUnit[p.unit]=(byUnit[p.unit]||0)+p.qty;}});
     const sums=Object.entries(byUnit).map(([u,q])=>{const n=Math.round(q*100)/100;return n+(/^(g|ml|kg|l)$/.test(u)?'':' ')+u;});
     const alts=e.parts.filter(p=>p.qty==null&&p.alt).map(p=>p.alt);
     e.qty=[...sums,...alts].join(' + ')||'as needed';
-    e.attr=dishes.length>1?e.parts.map(p=>shortName(p.dish)+(p.qty!=null?' '+ (Math.round(p.qty*100)/100)+(/^(g|ml|kg|l)$/.test(p.unit)?'':' ')+p.unit:(p.alt?' '+p.alt:''))).join(' · '):(e.parts[0].prep||'');
+    e.attr=dishes.length>1?e.parts.map(p=>tags[p.dish]+(p.qty!=null?' '+ (Math.round(p.qty*100)/100)+(/^(g|ml|kg|l)$/.test(p.unit)?'':' ')+p.unit:(p.alt?' '+p.alt:''))).join(' · '):(e.parts[0].prep||'');
+    buySplit(e);
     return e;
-  }).sort((a,b)=>a.label.localeCompare(b.label));
+  });
+  return rollCitrus(list0,tags).sort((a,b)=>a.label.localeCompare(b.label));
 }
-function shortName(n){return n.split(/[—(,:]/)[0].trim().split(' ').slice(0,3).join(' ');}
+function shortName(n){let s=n.split(/[—(,:]/)[0].trim().split(' ').slice(0,3).join(' '); while(/\s(?:&|and|with|of|in|on|the|a)$/i.test(s)) s=s.replace(/\s\S+$/,''); return s;}
+function dishTags(names){ // one short label per dish for shopping lines: the last word of its name ("Potato–Celeriac Purée" → "Purée"); a clash falls back to shortName
+  const words=n=>n.split(/[—(,:]/)[0].trim().split(/\s+/), last=n=>words(n).slice(-1)[0]||n, out={};
+  names.forEach(n=>{const t=last(n); out[n]=names.some(o=>o!==n&&last(o).toLowerCase()===t.toLowerCase())?shortName(n):t;});
+  return out;
+}
+const JUICE_ML={lemon:30,lime:20,orange:60,grapefruit:120,yuzu:15}; // a conservative yield per fruit
+function rollCitrus(list,tags){ // "lemon juice" / "lemon zest" lines fold into the whole-fruit line when the list already buys that fruit
+  const whole={}; list.forEach(e=>{const m=e.label.toLowerCase().match(/^(lemon|lime|orange|grapefruit|yuzu)e?s?$/); if(m&&!e.pantry&&!whole[m[1]]) whole[m[1]]=e;});
+  return list.filter(e=>{
+    const m=e.label.toLowerCase().match(/^(lemon|lime|orange|grapefruit|yuzu) (juice|zest)$/), w=m&&!e.pantry&&whole[m[1]]; if(!w) return true;
+    e.parts.forEach(p=>w.parts.push({...p,use:m[2]}));
+    const juice=w.parts.filter(p=>p.use==='juice'&&p.unit==='ml'&&p.qty!=null).reduce((a,p)=>a+p.qty,0);
+    const n=w.parts.filter(p=>!p.use&&p.qty!=null&&/^(|piece|pieces|whole)$/.test(p.unit)).reduce((a,p)=>a+p.qty,0);
+    if(n&&juice>n*JUICE_ML[m[1]]){const extra=Math.ceil((juice-n*JUICE_ML[m[1]])/JUICE_ML[m[1]]); w.qty=String(n+extra); w.extraNote='+'+extra+' for juice';}
+    w.attr=w.parts.map(p=>(tags[p.dish]||shortName(p.dish))+(p.use?' '+(p.qty!=null?(Math.round(p.qty*100)/100)+(/^(g|ml)$/.test(p.unit)?'':' ')+p.unit+' ':'')+p.use:(p.qty!=null?' '+num(p.qty):''))).join(' · ');
+    return false;
+  });
+}
+function buySplit(e){ // what to buy vs what the recipe uses: "1 small, ~300 g" in the spec, or "(buy ~500 g …)" in the alt amount
+  if(e.parts.length!==1||!/^(g|kg|ml|l|oz|lb)$/.test(e.parts[0].unit||'')) return;
+  const p=e.parts[0], uses='uses '+e.qty;
+  const c=e.spec.match(/^((?:\d+|one|a|an)\s+(?:small|medium|large|bunch(?:es)?|heads?|bulbs?|whole)\b[^,;]*)(?:[,;]\s*(.*))?$/i);
+  if(c){e.buyQty=c[1].trim(); e.spec=[c[2]||'',uses].filter(Boolean).join(' · '); return;}
+  const b=String(p.alt||'').match(/\bbuy\s+(~?\s?[\d.,½¼¾]+\s*(?:g|kg|ml|l|oz|lb)\b)/i);
+  if(b){e.buyQty=b[1].replace(/\s+/g,' '); e.spec=[e.spec,uses].filter(Boolean).join(' · ');}
+}
+const shopOf=(hint,spec)=>{if(hint) return String(hint).trim(); const m=String(spec||'').match(/\(([^()]*\b(?:butcher|fishmonger|deli|market|box)\b[^()]*)\)/i); return m?m[1].trim():'';};
 function toggleShop(id,el){const s=window._shop; s.state[id]=!s.state[id]; try{localStorage.setItem(s.key,JSON.stringify(s.state));}catch(e){}
   if(!el) return render(); const on=!!s.state[id]; el.classList.toggle('done',on); el.setAttribute('aria-checked',String(on));
   const c=shopCount(s.items,s.state), n=document.getElementById('sprog-n'), b=document.getElementById('sprog-bar'); if(n) n.innerHTML=`<b>${c.done}</b> of ${c.total}`; if(b) b.style.width=(c.total?Math.round(c.done/c.total*100):0)+'%';
   document.querySelectorAll('[data-dc]').forEach(e=>{const its=[...e.closest('.sdept,.spantry').querySelectorAll('.sitem')]; e.textContent=its.filter(x=>x.classList.contains('done')).length+'/'+its.length;});
 }
 function clearShop(){const s=window._shop;localStorage.removeItem(s.key);render();}
+const shopBy=()=>{try{return localStorage.getItem('kitchen:shopby')==='aisle'?'aisle':'shop';}catch(e){return 'shop';}};
+function setShopBy(v){try{localStorage.setItem('kitchen:shopby',v);}catch(e){} softRender();}
 function shareShop(){
   const s=window._shop; const groups={};
-  s.items.filter(i=>!s.state[i.id]).forEach(i=>{(groups[i.pantry?'Pantry check':i.dept]=groups[i.pantry?'Pantry check':i.dept]||[]).push(i);});
-  const text='Shopping — '+s.name+'\n'+Object.entries(groups).map(([d,l])=>'\n'+d.toUpperCase()+'\n'+l.map(i=>'☐ '+i.label+' — '+i.qty+(i.spec||i.avoid?' ('+buyText(i.spec,i.avoid)+')':'')).join('\n')).join('\n');
+  const g=i=>i.pantry?'Pantry check':shopBy()==='shop'?(i.orderAhead?(i.shop?i.shop+' · order ahead':'Order ahead'):'Supermarket'):i.dept;
+  s.items.filter(i=>!s.state[i.id]).forEach(i=>{(groups[g(i)]=groups[g(i)]||[]).push(i);});
+  const text='Shopping — '+s.name+'\n'+Object.entries(groups).map(([d,l])=>'\n'+d.toUpperCase()+'\n'+l.map(i=>'☐ '+i.label+' — '+(i.buyQty||i.qty)+(i.spec||i.avoid?' ('+buyText(i.spec,i.avoid)+')':'')).join('\n')).join('\n');
   if(navigator.share){navigator.share({title:'Shopping — '+s.name,text}).catch(()=>{});}
   else{navigator.clipboard.writeText(text).then(()=>toast('Copied to clipboard'));}
 }
