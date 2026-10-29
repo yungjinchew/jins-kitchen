@@ -644,9 +644,12 @@ function libOptions(){
   const courses=COURSES.filter(c=>base.some(d=>(d.category||[]).includes(c)));
   return {proteins,kit,courses};
 }
+// search: accents, apostrophes and punctuation folded; each query word must start a word in the dish text
+const FOLD_LIG={'ø':'o','æ':'ae','œ':'oe','ß':'ss','ł':'l','đ':'d'};
+function fold(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[øæœßłđ]/g,c=>FOLD_LIG[c]).replace(/['’‘`´]/g,'').replace(/[^a-z0-9]+/g,' ').trim();}
 function libList(){
   let list=libBase();
-  if(F.q){const q=F.q.toLowerCase();list=list.filter(d=>(d.name+' '+(d.summary||'')+' '+(d.cuisine||[]).join(' ')+' '+d.ings.map(ingName).join(' ')).toLowerCase().includes(q));}
+  if(F.q){const t=fold(F.q).split(' ').filter(Boolean); if(t.length) list=list.filter(d=>{const h=' '+fold(d.name+' '+(d.summary||'')+' '+(d.cuisine||[]).join(' ')+' '+d.ings.map(ingName).join(' '))+' '; return t.every(w=>h.includes(' '+w));});}
   if(F.protein.length)list=list.filter(d=>F.protein.includes(d.protein));
   if(F.course.length)list=list.filter(d=>(d.category||[]).some(c=>F.course.includes(c)));
   if(F.verdict.length)list=list.filter(d=>F.verdict.includes(d.r.latest_repeat));
