@@ -528,7 +528,8 @@ body.cookmode .tabs,body.cookmode header.top{display:none}
 .sheet table.meas td:last-child{width:26%}.sheet .meas td.dept{background:#F0F0F0;font-weight:700;font-size:.9em}
 .sheet p.dsub{font-style:italic;color:#555;margin:0 0 2px}.sheet p.ov{margin:4px 0 6px}.sheet p.pantry{margin-top:4px}
 .sheet .md code{background:#ecebe5}.sheet .md hr{border-top-color:#e4e1d9}.sheet .md blockquote{border-radius:0 8px 8px 0}
-.sheet .dish{margin-top:26px;padding-top:6px;border-top:1px solid #DDD}.sheet .pb{margin-top:26px;padding-top:6px;border-top:1px solid #DDD}
+.sheet .dish{margin-top:26px;padding-top:6px;border-top:1px solid #DDD}.sheet .bnotes{margin:6px 0 10px}.sheet .bnotes ul{margin:2px 0 0}.sheet .bnotes .eyebrow{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:#1B5E7B;font-weight:700}
+.bnotes.scr{margin:10px 0;padding:10px 12px;border:1px solid var(--line);border-radius:10px}.bnotes.scr ul{margin:4px 0 0;padding-left:18px}.bnotes.scr li{font:14px/1.4 var(--sans);margin:2px 0}.sheet .pb{margin-top:26px;padding-top:6px;border-top:1px solid #DDD}
 @media print{header.top,.tabs,.btnrow,.search,.scrollx,.noprint,.toast{display:none!important}
  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
  html,body{background:#fff!important;color:#000} body{padding:0} main.wrap{max-width:none;padding:0} .card{border:0;box-shadow:none;padding:0} .stack{padding:0!important;gap:0!important}
@@ -658,8 +659,12 @@ function qtyText(di){
   return s;
 }
 function ingName(di){return di.ingredient?di.ingredient.name:'';}
-function buyHtml(spec,avoid){return (spec?'Buy '+esc(spec):'')+(avoid?(spec?' · ':'')+'<b>not '+esc(avoid)+'</b>':'');}
-function buyText(spec,avoid){return [spec?'buy '+spec:'',avoid?'NOT '+avoid:''].filter(Boolean).join('; ');}
+function buyHtml(spec,avoid){return (spec?(/^(uses|per dish)\b/i.test(spec)?'':'Buy ')+esc(spec):'')+(avoid?(spec?' · ':'')+'<b>not '+esc(avoid)+'</b>':'');}
+function shopNotesHtml(m,cls=''){ // meal.shopping_notes: buy-by timing, sizing, substitutions, one per line
+  const L=String(m&&m.shopping_notes||'').split('\n').map(x=>x.replace(/^\s*[-*•]\s*/,'').trim()).filter(Boolean);
+  return L.length?`<div class="bnotes${cls?' '+cls:''}"><div class="eyebrow">Before you shop</div><ul>${L.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:'';
+}
+function buyText(spec,avoid){return [spec?(/^(uses|per dish)\b/i.test(spec)?spec:'buy '+spec):'',avoid?'NOT '+avoid:''].filter(Boolean).join('; ');}
 
 // ---------------------------------------------------------------- router
 const routes={};
@@ -1243,12 +1248,12 @@ routes.more=()=>{
 };
 
 // ---------------------------------------------------------------- print (cooking sheet rendered from the database)
-// PRINT SPEC 1.0 (2026-10-30). Every printed cooking sheet and dish sheet is built here, so every print follows one method.
+// PRINT SPEC 1.1 (2026-10-30; 1.0 the same day). Every printed cooking sheet and dish sheet is built here, so every print follows one method.
 // The written spec is the print protocol in jins-cooking-governance (recipe_output_print_protocol.md). Change the two
 // together, then open #/printcheck and confirm the totals and that no flags appear.
 const PF={full:false,shop:false};
 const PRINT={
-  spec:'print spec 1.0',
+  spec:'print spec 1.1',
   // meal workflow: planning and verification sections stay in the database and off the cooking sheet
   wfDrop:/^(?:the\s+)?menu\b|^failure\s+priorit|^heat\b|^oven\s+sequenc|^parallel\b|^(?:final\s+)?plating\s+window|^timeline\s+verification|^arithmetic\s+check|^meal\s+balance|^sourcing\s+notes?|^register\b|^nutrition|^flavou?r\s+architecture|^scaling/i,
   // dish: design-record sections; the overview and yield/timing are lifted into the dish header instead
@@ -1300,10 +1305,11 @@ function printBtn(kind,o,cls='btn ghost sm',label='Print'){ // always the live s
 }
 const fmtQ=(q,u)=>(Math.round(q*100)/100)+(/^(g|ml|kg|l)$/.test(u||'')?'':' ')+(u||'');
 function hhmm(min){min=((min%1440)+1440)%1440; return String(Math.floor(min/60)).padStart(2,'0')+':'+String(min%60).padStart(2,'0');}
-function clockOf(cell,svc){ // "T−75" → 16:45 for an 18:00 service; "T−57 to T−50" → 17:03–17:10; E+ / P+ rows and day labels stay blank
+function clockOf(cell,svc){ // "T−75" → 16:45 for an 18:00 service; "T−57 to T−50" → 17:03–17:10; "T−1:15" → 16:45; "T−24 hr" → 18:00 −1 day; E+ / P+ rows and day labels stay blank
   const t=String(cell).replace(/\([^)]*\)/g,'').replace(/[*_]/g,'').trim();
   if(!/^T(?![a-z])/.test(t)) return '';
-  const vs=[...t.matchAll(/T\s*([−–+-])\s*(\d+(?:\.\d+)?)/g)].map(m=>svc+(m[1]==='+'?1:-1)*Math.round(+m[2]));
+  const vs=[...t.matchAll(/\bT\s*([−–+-])\s*(\d+(?:\.\d+|:\d{2})?(?:\s*(?:hr|h|hours?)\b(?:\s*\d+\s*(?:min|m)\b)?|\s*(?:min|m)\b)?)/gi)] // hours and h:mm read as cook mode reads them (parseTm)
+    .map(m=>{const v=/\./.test(m[2])?Math.round(+m[2]):parseTm('T-'+m[2]); return v==null?null:svc+(m[1]==='+'?1:-1)*v;}).filter(v=>v!=null);
   if(!vs.length) return /^T\s*$/.test(t)?hhmm(svc):'';
   const day=vs[0]<0?' −1 day':'';
   return (vs.length>1?hhmm(vs[0])+'–'+hhmm(vs[vs.length-1]):hhmm(vs[0]))+day;
@@ -1326,21 +1332,24 @@ function sheetPost(html,o){ // DOM pass over rendered markdown: T-minus tables g
   return tp.innerHTML;
 }
 const svcMin=t=>{const [h,m]=String(t||'18:00').split(':').map(Number); return (h||0)*60+(m||0);};
-function sheetShop(dishes){ // shopping list (its own page): tick · ingredient with its buying spec · what to buy · used in; pantry checks on one line
+function sheetShop(dishes,m){ // shopping list (its own page): tick · ingredient with its buying spec · what to buy · used in; pantry checks on one line
   const items=aggregate(dishes); if(!items.length) return '';
   const multi=dishes.length>1, buy=items.filter(i=>!i.pantry), pantry=items.filter(i=>i.pantry), cols=multi?4:3;
   const deptOf=i=>DEPT_ORDER.includes(i.dept)?i.dept:'Other';
   const row=e=>`<tr><td class="ck"><span class="tick"></span></td><td>${esc(e.label)}${e.optional?' <span class="meta">(optional)</span>':''}${e.spec||e.avoid?`<br><span class="meta">${buyHtml(e.spec,e.avoid)}</span>`:''}</td><td>${esc(pUnits(e.buyQty||e.qty))}${e.extraNote?` <span class="meta">${esc(e.extraNote)}</span>`:''}</td>${multi?`<td><span class="meta">${esc(pUnits(e.attr||''))}</span></td>`:''}</tr>`;
   const rows=[...DEPT_ORDER,'Other'].filter(dp=>buy.some(i=>deptOf(i)===dp)).map(dp=>`<tr><td class="dept" colspan="${cols}">${esc(dp)}</td></tr>`+buy.filter(i=>deptOf(i)===dp).map(row).join('')).join('');
-  return `<h2>Shopping list</h2>${rows?`<table class="shop shop2${multi?'':' one'}"><thead><tr><th class="ck"></th><th>Ingredient</th><th>Buy</th>${multi?'<th>Used in</th>':''}</tr></thead><tbody>${rows}</tbody></table>`:''}`
+  return `<h2>Shopping list</h2>${m?shopNotesHtml(m):''}${rows?`<table class="shop shop2${multi?'':' one'}"><thead><tr><th class="ck"></th><th>Ingredient</th><th>Buy</th>${multi?'<th>Used in</th>':''}</tr></thead><tbody>${rows}</tbody></table>`:''}`
     +(pantry.length?`<p class="pantry"><b>Pantry check</b> — ${pantry.map(e=>esc(e.label)+' '+esc(pUnits(e.qty))).join(' · ')}</p>`:'');
 }
 // designed parameters still open: a dish-level cook row with verdict 'confirmed' closes one (same rule as the open_validations view)
 const openValOf=d=>(d.designed_unvalidated||[]).filter(p=>!(d.cooks||[]).some(c=>(c.parameter_confirmations||[]).some(pc=>pc.param===p.param&&pc.verdict==='confirmed')));
 function sheetMeasure(ds){ // what to observe and write down for the cook log: one table per sheet, grouped by dish
-  const groups=ds.map(d=>({d,ps:openValOf(d)})).filter(g=>g.ps.length); if(!groups.length) return '';
+  const all=ds.map(d=>({d,ps:openValOf(d)})).filter(g=>g.ps.length); if(!all.length) return '';
+  const isM=p=>!!(p&&p.measure===true), flagged=all.some(g=>g.ps.some(isM)); // readings the recipe marks measure: true lead (print protocol 3.3)
+  const groups=flagged?all.map(g=>({d:g.d,ps:g.ps.filter(isM)})).filter(g=>g.ps.length):all;
+  const rest=flagged?all.reduce((n,g)=>n+g.ps.filter(p=>!isM(p)).length,0):0;
   const tick='<td class="ck"><span class="tick"></span></td>';
-  return `<h3>Measure on the day</h3><table class="meas"><thead><tr><th class="ck"></th><th>Designed value to check</th><th>Observed</th></tr></thead><tbody>${groups.map(g=>(ds.length>1?`<tr><td class="dept" colspan="3">${esc(g.d.name)}</td></tr>`:'')+g.ps.map(p=>`<tr>${tick}<td><b>${esc(p.param)}</b>${p.designed_value?' — '+esc(p.designed_value):''}</td><td></td></tr>`).join('')).join('')}</tbody></table>`;
+  return `<h3>Measure on the day</h3><table class="meas"><thead><tr><th class="ck"></th><th>Designed value to check</th><th>Observed</th></tr></thead><tbody>${groups.map(g=>(ds.length>1?`<tr><td class="dept" colspan="3">${esc(g.d.name)}</td></tr>`:'')+g.ps.map(p=>`<tr>${tick}<td><b>${esc(p.param)}</b>${p.designed_value?' — '+esc(p.designed_value):''}</td><td></td></tr>`).join('')).join('')}</tbody></table>${rest?`<p class="meta">${rest} other open check${rest>1?'s':''}: see Log the cook in the app.</p>`:''}`;
 }
 function sheetIngs(d){
   if(!d.ings.length) return '';
@@ -1373,7 +1382,7 @@ function sheetDish(d,role,first,measure){
 function sheetBody(kind,owner){ // the inside of .sheet: used by the print view and by #/printcheck, so both measure the same thing
   const long=d=>new Date(d).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
   const ds=kind==='meal'?owner.dishes.map(x=>({d:x.dish,role:x.role})):[{d:owner,role:(owner.category||[]).join('/')}];
-  const shop=kind==='meal'&&(PF.shop||PF.full)?sheetShop(ds.map(x=>x.d)):'';
+  const shop=kind==='meal'&&(PF.shop||PF.full)?sheetShop(ds.map(x=>x.d),owner):'';
   const wf=owner.workflow_md?(PF.full?owner.workflow_md:mdCut(owner.workflow_md,PRINT.wfDrop).text):'';
   const cover=kind==='meal'?`<section class="cover${shop?' pg':''}"><h1>${esc(owner.name)}</h1><p class="sub">${esc([owner.last?long(owner.last+'T00:00:00'):null,owner.pax?owner.pax+' pax':null,'service '+(owner.service_time||'18:00').slice(0,5)].filter(Boolean).join(' · '))}</p>
       ${owner.wine_pairing?`<p><b>Wine</b> ${esc(owner.wine_pairing)}</p>`:''}
@@ -1490,7 +1499,7 @@ routes.shopping=(kind,slug)=>{
   setHeader(splitName(owner.name)[0],'#/shopping',true);
   const dishes=shopDishes(kind,owner), items=aggregate(dishes);
   const key='shop:'+kind+'/'+slug, state=shopState(key);
-  window._shop={key,items,state,name:owner.name};
+  window._shop={key,items,state,name:owner.name,notes:kind==='meal'?String(owner.shopping_notes||'').trim():''};
   const pl=currentPlan(), planned=kind==='meal'&&pl&&pl.m===owner?dayLong(pl.date):'';
   const pax=kind==='meal'?owner.pax:owner.servings;
   const sub=[`<i>${esc(splitName(owner.name)[0])}</i>`,planned?esc(planned):'',pax?'for '+num(pax):'',kind==='meal'?dishes.length+' dishes':''].filter(Boolean).join(' · ');
@@ -1512,6 +1521,7 @@ routes.shopping=(kind,slug)=>{
   const aisleView=depts.map(dp=>{const list=items.filter(i=>!i.pantry&&deptOf(i)===dp); return `<section class="sdept"><div class="sdh"><h3>${esc(dp)}</h3><span data-dc>${ct(list)}</span></div>${list.map(line).join('')}</section>`;}).join('');
   return `${pageTitle('Shopping',items.length?'<button class="btn ghost sm" onclick="shareShop()" style="margin-bottom:4px">Share as text</button>':'')}
     <div class="shsub">${sub}</div>
+    ${kind==='meal'?shopNotesHtml(owner,'scr'):''}
     ${items.length?`<div class="seg shopby" role="group" aria-label="Group the list"><button class="${byShop?'on':''}" aria-pressed="${byShop}" onclick="setShopBy('shop')">By shop</button><button class="${byShop?'':'on'}" aria-pressed="${!byShop}" onclick="setShopBy('aisle')">By aisle</button></div>`:''}
     ${items.length?`<div class="sprog"><span class="eyebrow">Bought</span><span id="sprog-n"><b>${c.done}</b> of ${c.total}</span></div><div class="bar"><i id="sprog-bar" style="width:${c.total?Math.round(c.done/c.total*100):0}%"></i></div>`:''}
     ${byShop?shopView:aisleView}
@@ -1528,7 +1538,7 @@ function aggregate(dishes){
     e.optional=e.optional&&!!di.optional;
     if(di.ingredient.department==='Protein'||/butcher/i.test(di.ingredient.supplier_hint||''))e.orderAhead=true;
     e.shop=e.shop||shopOf(di.ingredient.supplier_hint,sp);
-    e.parts.push({dish:d.name,qty:di.qty!=null?+di.qty:null,unit:di.unit||'',alt:di.qty_alt||'',prep:di.prep_note||''});
+    e.parts.push({dish:d.name,qty:di.qty!=null?+di.qty:null,unit:di.unit||'',alt:di.qty_alt||'',prep:di.prep_note||'',buy:(di.buy_note||'').trim()});
   }));
   const list0=Object.values(map).map(e=>{
     const byUnit={}; e.parts.forEach(p=>{if(p.qty!=null){byUnit[p.unit]=(byUnit[p.unit]||0)+p.qty;}});
@@ -1537,6 +1547,9 @@ function aggregate(dishes){
     e.qty=[...sums,...alts].join(' + ')||'as needed';
     e.attr=dishes.length>1?e.parts.map(p=>tags[p.dish]+(p.qty!=null?' '+ (Math.round(p.qty*100)/100)+(/^(g|ml|kg|l)$/.test(p.unit)?'':' ')+p.unit:(p.alt?' '+p.alt:''))).join(' · '):(e.parts[0].prep||'');
     buySplit(e);
+    const bp=e.parts.filter(p=>p.buy); // the purchase unit the recipe states: it stands for the total only when one line uses the item
+    if(bp.length&&e.parts.length===1){e.buyQty=bp[0].buy; if(!/\buses\b/.test(e.spec||'')) e.spec=[e.spec,'uses '+e.qty].filter(Boolean).join(' · ');}
+    else if(bp.length) e.spec=[e.spec,'per dish: '+bp.map(p=>p.buy+' ('+(tags[p.dish]||shortName(p.dish))+')').join(', ')].filter(Boolean).join(' · ');
     return e;
   });
   return rollCitrus(list0,tags).sort((a,b)=>a.label.localeCompare(b.label));
@@ -1581,7 +1594,7 @@ function shareShop(){
   const s=window._shop; const groups={};
   const g=i=>i.pantry?'Pantry check':shopBy()==='shop'?(i.orderAhead?(i.shop?i.shop+' · order ahead':'Order ahead'):'Supermarket'):i.dept;
   s.items.filter(i=>!s.state[i.id]).forEach(i=>{(groups[g(i)]=groups[g(i)]||[]).push(i);});
-  const text='Shopping — '+s.name+'\n'+Object.entries(groups).map(([d,l])=>'\n'+d.toUpperCase()+'\n'+l.map(i=>'☐ '+i.label+' — '+(i.buyQty||i.qty)+(i.spec||i.avoid?' ('+buyText(i.spec,i.avoid)+')':'')).join('\n')).join('\n');
+  const text='Shopping — '+s.name+'\n'+(s.notes?'\nBEFORE YOU SHOP\n'+s.notes.split('\n').map(x=>x.replace(/^\s*[-*•]\s*/,'').trim()).filter(Boolean).map(x=>'· '+x).join('\n')+'\n':'')+Object.entries(groups).map(([d,l])=>'\n'+d.toUpperCase()+'\n'+l.map(i=>'☐ '+i.label+' — '+(i.buyQty||i.qty)+(i.spec||i.avoid?' ('+buyText(i.spec,i.avoid)+')':'')).join('\n')).join('\n');
   if(navigator.share){navigator.share({title:'Shopping — '+s.name,text}).catch(()=>{});}
   else{navigator.clipboard.writeText(text).then(()=>toast('Copied to clipboard'));}
 }
@@ -2076,7 +2089,7 @@ routes.postcook=(kind,slug)=>{
   setHeader('Log the cook','#/'+kind+'/'+slug); tabs('meals');
   const key='post:'+kind+'/'+slug; let f={}; try{f=JSON.parse(localStorage.getItem(key)||'{}')||{};}catch(e){}
   const dishes=kind==='meal'?owner.dishes.map(x=>x.dish):[owner];
-  const open=dishes.flatMap(d=>d.open.map(v=>({...v,dish:d})));
+  const open=dishes.flatMap(d=>{const ms=new Set((d.designed_unvalidated||[]).filter(x=>x&&x.measure===true).map(x=>x.param)); return d.open.map(v=>({...v,dish:d,measure:ms.has(v.param)}));}); // order and keys unchanged
   if(kind==='meal'){ const RR=getReads(owner).r; let ch=false; // readings saved in cook mode fill the checks; anchors and chosen rows fill measurements
     open.forEach((v,i)=>{const rr=RR[v.dish.slug+'|'+v.param]; if(!rr) return; if(!hasV(f['v:'+i+':observed'])){f['v:'+i+':observed']=rr.v; f['v:'+i+':at']=hm(rr.at); ch=true;}
       if(!hasV(f['v:'+i+':verdict'])){const sg=suggestVerdict(v.designed_value,f['v:'+i+':observed']); if(sg){f['v:'+i+':verdict']=sg; f['v:'+i+':sug']='1'; ch=true;}}});
@@ -2096,11 +2109,12 @@ routes.postcook=(kind,slug)=>{
     <div class="lcf grid2"><label><span class="eyebrow">Household split</span>${inp('house','e.g. HF found it too beefy')}</label><label><span class="eyebrow">Wine outcome</span>${inp('wine','bottle · verdict')}</label></div>
     ${kind==='meal'&&dishes.length>1?`<h3 class="section">Dish by dish <span class="dim small" style="font-family:var(--sans)">optional</span></h3><div>${dishes.map(d=>{const k='d:'+d.slug+':'; return `<details class="pdish"><summary><span class="nm">${esc(menuName(d.name))}</span><span class="ms" id="ms-${d.slug}">${hasV(f[k+'rating'])?seal(f[k+'rating'],{size:'sm'}):''}</span></summary><div class="bd">${rateCtl(k+'rating','Flavour',f,true)}${rateCtl(k+'execution','Execution',f,true)}<div class="lcf">${vseg(k+'repeat',VERDICTS3,f,'Verdict for '+esc(menuName(d.name)))}</div><div class="lcf"><label><span class="eyebrow">Note</span>${inp(k+'note','')}</label></div></div></details>`;}).join('')}</div>`:''}
     ${open.length?(()=>{const ans=o=>hasV(f['v:'+o.i+':observed'])||hasV(f['v:'+o.i+':verdict']), O=open.map((v,i)=>({v,i})), A=O.filter(ans), Q=O.filter(o=>!ans(o));
-      const lv=o=>{const i=o.i, v=o.v; return `<div class="lval"><div class="eyebrow">${esc(menuName(v.dish.name))}</div><div class="p">${esc(v.param)}</div>${v.designed_value?`<div class="dv">designed: ${esc(v.designed_value)}</div>`:''}${vseg('v:'+i+':verdict',VAL3,f,esc(v.param))}${f['v:'+i+':sug']?'<span class="sugg">Suggested from the stove reading · check it</span>':''}${inp('v:'+i+':observed','observed value')}${f['v:'+i+':at']?`<div class="at">Saved at the stove, ${esc(f['v:'+i+':at'])}</div>`:''}</div>`;};
-      const byD=dishes.map(d=>({d,items:Q.filter(o=>o.v.dish===d)})).filter(g=>g.items.length);
+      const lv=o=>{const i=o.i, v=o.v; return `<div class="lval"><div class="eyebrow">${esc(menuName(v.dish.name))}</div><div class="p">${esc(v.param)}</div>${v.designed_value?`<div class="dv">designed: ${esc(v.designed_value)}</div>`:''}${v.measure&&v.note?`<div class="dv">${esc(v.note)}</div>`:''}${vseg('v:'+i+':verdict',VAL3,f,esc(v.param))}${f['v:'+i+':sug']?'<span class="sugg">Suggested from the stove reading · check it</span>':''}${inp('v:'+i+':observed','observed value')}${f['v:'+i+':at']?`<div class="at">Saved at the stove, ${esc(f['v:'+i+':at'])}</div>`:''}</div>`;};
+      const M=Q.filter(o=>o.v.measure), byD=dishes.map(d=>({d,items:Q.filter(o=>o.v.dish===d&&!o.v.measure)})).filter(g=>g.items.length);
       return `<h3 class="section">Checks <span class="pill">${A.length} of ${open.length} answered</span></h3>
         ${A.length?`<div>${A.map(lv).join('')}</div>`:'<p class="small muted" style="margin:0">Readings you save in cook mode land here with a suggested verdict.</p>'}
-        ${byD.length?`<div class="eyebrow" style="margin-top:20px">Still to answer · ${Q.length}</div>${byD.map(g=>`<details class="lgrp"><summary><span class="nm">${esc(menuName(g.d.name))}</span><span class="ct">${g.items.length}</span></summary>${g.items.map(lv).join('')}</details>`).join('')}`:''}`;})():''}
+        ${M.length?`<div class="eyebrow" style="margin-top:20px">Write down on the day · ${M.length}</div><div>${M.map(lv).join('')}</div>`:''}
+        ${byD.length?`<div class="eyebrow" style="margin-top:20px">Still to answer · ${Q.length-M.length}</div>${byD.map(g=>`<details class="lgrp"><summary><span class="nm">${esc(menuName(g.d.name))}</span><span class="ct">${g.items.length}</span></summary>${g.items.map(lv).join('')}</details>`).join('')}`:''}`;})():''}
     <h3 class="section">Measurements</h3>
     <div>${[...Array(measN)].map((_,i)=>`<div class="lmeas">${inp('m:'+i+':gate','gate, e.g. oven exit')}${inp('m:'+i+':obs','reading, e.g. 126°F')}</div>`).join('')}<button class="btn ghost sm" style="margin-top:10px" onclick="pf('measN',${measN+2});softRender()">+ More rows</button></div>
     <h3 class="section">For Claude</h3>

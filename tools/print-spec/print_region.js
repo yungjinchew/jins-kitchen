@@ -1,10 +1,10 @@
 // ---------------------------------------------------------------- print (cooking sheet rendered from the database)
-// PRINT SPEC 1.0 (2026-10-30). Every printed cooking sheet and dish sheet is built here, so every print follows one method.
+// PRINT SPEC 1.1 (2026-10-30; 1.0 the same day). Every printed cooking sheet and dish sheet is built here, so every print follows one method.
 // The written spec is the print protocol in jins-cooking-governance (recipe_output_print_protocol.md). Change the two
 // together, then open #/printcheck and confirm the totals and that no flags appear.
 const PF={full:false,shop:false};
 const PRINT={
-  spec:'print spec 1.0',
+  spec:'print spec 1.1',
   // meal workflow: planning and verification sections stay in the database and off the cooking sheet
   wfDrop:/^(?:the\s+)?menu\b|^failure\s+priorit|^heat\b|^oven\s+sequenc|^parallel\b|^(?:final\s+)?plating\s+window|^timeline\s+verification|^arithmetic\s+check|^meal\s+balance|^sourcing\s+notes?|^register\b|^nutrition|^flavou?r\s+architecture|^scaling/i,
   // dish: design-record sections; the overview and yield/timing are lifted into the dish header instead
@@ -56,10 +56,11 @@ function printBtn(kind,o,cls='btn ghost sm',label='Print'){ // always the live s
 }
 const fmtQ=(q,u)=>(Math.round(q*100)/100)+(/^(g|ml|kg|l)$/.test(u||'')?'':' ')+(u||'');
 function hhmm(min){min=((min%1440)+1440)%1440; return String(Math.floor(min/60)).padStart(2,'0')+':'+String(min%60).padStart(2,'0');}
-function clockOf(cell,svc){ // "T−75" → 16:45 for an 18:00 service; "T−57 to T−50" → 17:03–17:10; E+ / P+ rows and day labels stay blank
+function clockOf(cell,svc){ // "T−75" → 16:45 for an 18:00 service; "T−57 to T−50" → 17:03–17:10; "T−1:15" → 16:45; "T−24 hr" → 18:00 −1 day; E+ / P+ rows and day labels stay blank
   const t=String(cell).replace(/\([^)]*\)/g,'').replace(/[*_]/g,'').trim();
   if(!/^T(?![a-z])/.test(t)) return '';
-  const vs=[...t.matchAll(/T\s*([−–+-])\s*(\d+(?:\.\d+)?)/g)].map(m=>svc+(m[1]==='+'?1:-1)*Math.round(+m[2]));
+  const vs=[...t.matchAll(/\bT\s*([−–+-])\s*(\d+(?:\.\d+|:\d{2})?(?:\s*(?:hr|h|hours?)\b(?:\s*\d+\s*(?:min|m)\b)?|\s*(?:min|m)\b)?)/gi)] // hours and h:mm read as cook mode reads them (parseTm)
+    .map(m=>{const v=/\./.test(m[2])?Math.round(+m[2]):parseTm('T-'+m[2]); return v==null?null:svc+(m[1]==='+'?1:-1)*v;}).filter(v=>v!=null);
   if(!vs.length) return /^T\s*$/.test(t)?hhmm(svc):'';
   const day=vs[0]<0?' −1 day':'';
   return (vs.length>1?hhmm(vs[0])+'–'+hhmm(vs[vs.length-1]):hhmm(vs[0]))+day;
@@ -82,21 +83,24 @@ function sheetPost(html,o){ // DOM pass over rendered markdown: T-minus tables g
   return tp.innerHTML;
 }
 const svcMin=t=>{const [h,m]=String(t||'18:00').split(':').map(Number); return (h||0)*60+(m||0);};
-function sheetShop(dishes){ // shopping list (its own page): tick · ingredient with its buying spec · what to buy · used in; pantry checks on one line
+function sheetShop(dishes,m){ // shopping list (its own page): tick · ingredient with its buying spec · what to buy · used in; pantry checks on one line
   const items=aggregate(dishes); if(!items.length) return '';
   const multi=dishes.length>1, buy=items.filter(i=>!i.pantry), pantry=items.filter(i=>i.pantry), cols=multi?4:3;
   const deptOf=i=>DEPT_ORDER.includes(i.dept)?i.dept:'Other';
   const row=e=>`<tr><td class="ck"><span class="tick"></span></td><td>${esc(e.label)}${e.optional?' <span class="meta">(optional)</span>':''}${e.spec||e.avoid?`<br><span class="meta">${buyHtml(e.spec,e.avoid)}</span>`:''}</td><td>${esc(pUnits(e.buyQty||e.qty))}${e.extraNote?` <span class="meta">${esc(e.extraNote)}</span>`:''}</td>${multi?`<td><span class="meta">${esc(pUnits(e.attr||''))}</span></td>`:''}</tr>`;
   const rows=[...DEPT_ORDER,'Other'].filter(dp=>buy.some(i=>deptOf(i)===dp)).map(dp=>`<tr><td class="dept" colspan="${cols}">${esc(dp)}</td></tr>`+buy.filter(i=>deptOf(i)===dp).map(row).join('')).join('');
-  return `<h2>Shopping list</h2>${rows?`<table class="shop shop2${multi?'':' one'}"><thead><tr><th class="ck"></th><th>Ingredient</th><th>Buy</th>${multi?'<th>Used in</th>':''}</tr></thead><tbody>${rows}</tbody></table>`:''}`
+  return `<h2>Shopping list</h2>${m?shopNotesHtml(m):''}${rows?`<table class="shop shop2${multi?'':' one'}"><thead><tr><th class="ck"></th><th>Ingredient</th><th>Buy</th>${multi?'<th>Used in</th>':''}</tr></thead><tbody>${rows}</tbody></table>`:''}`
     +(pantry.length?`<p class="pantry"><b>Pantry check</b> — ${pantry.map(e=>esc(e.label)+' '+esc(pUnits(e.qty))).join(' · ')}</p>`:'');
 }
 // designed parameters still open: a dish-level cook row with verdict 'confirmed' closes one (same rule as the open_validations view)
 const openValOf=d=>(d.designed_unvalidated||[]).filter(p=>!(d.cooks||[]).some(c=>(c.parameter_confirmations||[]).some(pc=>pc.param===p.param&&pc.verdict==='confirmed')));
 function sheetMeasure(ds){ // what to observe and write down for the cook log: one table per sheet, grouped by dish
-  const groups=ds.map(d=>({d,ps:openValOf(d)})).filter(g=>g.ps.length); if(!groups.length) return '';
+  const all=ds.map(d=>({d,ps:openValOf(d)})).filter(g=>g.ps.length); if(!all.length) return '';
+  const isM=p=>!!(p&&p.measure===true), flagged=all.some(g=>g.ps.some(isM)); // readings the recipe marks measure: true lead (print protocol 3.3)
+  const groups=flagged?all.map(g=>({d:g.d,ps:g.ps.filter(isM)})).filter(g=>g.ps.length):all;
+  const rest=flagged?all.reduce((n,g)=>n+g.ps.filter(p=>!isM(p)).length,0):0;
   const tick='<td class="ck"><span class="tick"></span></td>';
-  return `<h3>Measure on the day</h3><table class="meas"><thead><tr><th class="ck"></th><th>Designed value to check</th><th>Observed</th></tr></thead><tbody>${groups.map(g=>(ds.length>1?`<tr><td class="dept" colspan="3">${esc(g.d.name)}</td></tr>`:'')+g.ps.map(p=>`<tr>${tick}<td><b>${esc(p.param)}</b>${p.designed_value?' — '+esc(p.designed_value):''}</td><td></td></tr>`).join('')).join('')}</tbody></table>`;
+  return `<h3>Measure on the day</h3><table class="meas"><thead><tr><th class="ck"></th><th>Designed value to check</th><th>Observed</th></tr></thead><tbody>${groups.map(g=>(ds.length>1?`<tr><td class="dept" colspan="3">${esc(g.d.name)}</td></tr>`:'')+g.ps.map(p=>`<tr>${tick}<td><b>${esc(p.param)}</b>${p.designed_value?' — '+esc(p.designed_value):''}</td><td></td></tr>`).join('')).join('')}</tbody></table>${rest?`<p class="meta">${rest} other open check${rest>1?'s':''}: see Log the cook in the app.</p>`:''}`;
 }
 function sheetIngs(d){
   if(!d.ings.length) return '';
@@ -129,7 +133,7 @@ function sheetDish(d,role,first,measure){
 function sheetBody(kind,owner){ // the inside of .sheet: used by the print view and by #/printcheck, so both measure the same thing
   const long=d=>new Date(d).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
   const ds=kind==='meal'?owner.dishes.map(x=>({d:x.dish,role:x.role})):[{d:owner,role:(owner.category||[]).join('/')}];
-  const shop=kind==='meal'&&(PF.shop||PF.full)?sheetShop(ds.map(x=>x.d)):'';
+  const shop=kind==='meal'&&(PF.shop||PF.full)?sheetShop(ds.map(x=>x.d),owner):'';
   const wf=owner.workflow_md?(PF.full?owner.workflow_md:mdCut(owner.workflow_md,PRINT.wfDrop).text):'';
   const cover=kind==='meal'?`<section class="cover${shop?' pg':''}"><h1>${esc(owner.name)}</h1><p class="sub">${esc([owner.last?long(owner.last+'T00:00:00'):null,owner.pax?owner.pax+' pax':null,'service '+(owner.service_time||'18:00').slice(0,5)].filter(Boolean).join(' · '))}</p>
       ${owner.wine_pairing?`<p><b>Wine</b> ${esc(owner.wine_pairing)}</p>`:''}
