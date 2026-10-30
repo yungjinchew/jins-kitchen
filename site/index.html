@@ -2113,7 +2113,7 @@ routes.postcook=(kind,slug)=>{
       const M=Q.filter(o=>o.v.measure), byD=dishes.map(d=>({d,items:Q.filter(o=>o.v.dish===d&&!o.v.measure)})).filter(g=>g.items.length);
       return `<h3 class="section">Checks <span class="pill">${A.length} of ${open.length} answered</span></h3>
         ${A.length?`<div>${A.map(lv).join('')}</div>`:'<p class="small muted" style="margin:0">Readings you save in cook mode land here with a suggested verdict.</p>'}
-        ${M.length?`<div class="eyebrow" style="margin-top:20px">Write down on the day · ${M.length}</div><div>${M.map(lv).join('')}</div>`:''}
+        ${M.length?`<div class="eyebrow" style="margin-top:20px">Measure on the day · ${M.length}</div><div>${M.map(lv).join('')}</div>`:''}
         ${byD.length?`<div class="eyebrow" style="margin-top:20px">Still to answer · ${Q.length-M.length}</div>${byD.map(g=>`<details class="lgrp"><summary><span class="nm">${esc(menuName(g.d.name))}</span><span class="ct">${g.items.length}</span></summary>${g.items.map(lv).join('')}</details>`).join('')}`:''}`;})():''}
     <h3 class="section">Measurements</h3>
     <div>${[...Array(measN)].map((_,i)=>`<div class="lmeas">${inp('m:'+i+':gate','gate, e.g. oven exit')}${inp('m:'+i+':obs','reading, e.g. 126°F')}</div>`).join('')}<button class="btn ghost sm" style="margin-top:10px" onclick="pf('measN',${measN+2});softRender()">+ More rows</button></div>
