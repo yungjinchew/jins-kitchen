@@ -1473,7 +1473,7 @@ function parseTm(str){ // "T-65", "T−1:15", "T-2 hr 45 min", "T-24h", "T-75 mi
 const TTOK='T\\s?(?:[-−–]\\s?)?\\d+(?::\\d{2})?(?:\\s*(?:hr|h|hours?|min|m)\\b)?(?:\\s*\\d+\\s*(?:min|m)\\b)?';
 const TRE=new RegExp('^\\s*(?:[-*•☐]\\s*)?(?:\\*\\*)?('+TTOK+')(?:\\s*(?:to|→|–|-)\\s*('+TTOK+'))?(?:\\*\\*)?\\s*[:：—–-]?\\s*(.*)$','i');
 const TFIND=/\bT\s?[-−–]\s?(\d+(?::\d{2})?(?:\s*(?:hr|h|hours?)\b(?:\s*\d+\s*(?:min|m)\b)?|\s*(?:min|m)\b)?)|\bT\s?0\b/gi;
-const ANCH=/^(E|P|D0)\s*(?:([+−–-])\s*(\d+)(?::(\d{2}))?)?(?:\s*(?:to|→|–)\s*(?:E|P|D0)?\s*([+−–-])\s*(\d+))?(?:\s+on(?:ward)?)?$/i;
+const ANCH=/^(E|P|D0)\s*(?:([+−–-])\s*(\d+(?:\.\d+)?)(?::(\d{2}))?)?(?:\s*(?:to|→|–)\s*(?:E|P|D0)?\s*([+−–-])\s*(\d+(?:\.\d+)?))?(?:\s+on(?:ward)?)?$/i; // "E+1.5" and "E+5.5 to E+8" too
 const DAYW=/^(sat(?:urday)?|fri(?:day)?|sun(?:day)?|day before|night before|the night before|eve)\b/i;
 const fmtHM=min=>{min=((Math.round(min)%1440)+1440)%1440; return String(Math.floor(min/60)).padStart(2,'0')+':'+String(min%60).padStart(2,'0');};
 function clockMin(h,mi,mer){h=+h;mi=+mi; if(mer){mer=mer.toLowerCase(); if(mer==='pm'&&h<12)h+=12; if(mer==='am'&&h===12)h=0;} else if(h>=1&&h<=11) h+=12; return h*60+mi;} // no am/pm: kitchen afternoon
@@ -1496,8 +1496,9 @@ function parseWhen(cell,nominal){ // one table cell or line prefix → {kind:'T'
   if(ts.length){ if(ts.length>=2&&/T\s?[-−–]\s?\d+\s*\/\s*T\s?[-−–]\s?\d+/.test(c)&&!/\bto\b|→/.test(c)) return {kind:'T',tm:ts[0],tmEnd:null,alts:ts,label:'T−'+ts.join('/')};
     return {kind:'T',tm:ts[0],tmEnd:ts.length>1?ts[1]:null,label:'T−'+ts[0]}; }
   let a=c.match(ANCH);
+  if(!a){ const bare=c.replace(/\s*\([^()]*\)\s*/g,' ').trim(), pm=c.match(/\(([^()]*)\)/); a=bare.match(ANCH)||(pm&&pm[1].trim().match(ANCH)); } // "E+5 to E+6.5 (E+7.5 with the extra minute)", "Asparagus off + 0.5 (E+5.5 to E+8)\"
   if(a){const sg=s=>/[−–-]/.test(s)?-1:1; const off=a[3]!=null?sg(a[2])*(+a[3]+(+a[4]||0)/60):0; const anchor=a[1].toUpperCase();
-    return {kind:'A',anchor,off,offEnd:a[6]!=null?sg(a[5])*+a[6]:null,label:c.replace(/\s+on(ward)?$/i,'')};}
+    return {kind:'A',anchor,off,offEnd:a[6]!=null?sg(a[5])*+a[6]:null,label:a.input.replace(/\s+on(ward)?$/i,'')};}
   const dm=c.match(DAYW), dayOff=dm?(/^fri/i.test(dm[1])?-2:/^sun/i.test(dm[1])?0:-1):0;
   const cl=c.match(/(\d{1,2}):(\d{2})\s*(am|pm)?(?:\s*(?:[–-]|to)\s*(\d{1,2}):(\d{2})\s*(am|pm)?)?/i);
   if(cl&&cl.index<=(dm?dm[0].length+12:3)){ // a clock time at the start (after an optional day word)
