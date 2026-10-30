@@ -433,6 +433,72 @@ body.cookmode .tabs,body.cookmode header.top{display:none}
 .ckdet summary{min-height:28px} .ckdet .md{margin-top:10px}
 .cksec h3{font:400 24px/1.15 var(--serif);color:var(--accent);margin:24px 0 8px;text-transform:none;letter-spacing:0}
 .ckfoot{display:grid;grid-template-columns:1fr auto;gap:8px;margin:26px 0 20px}
+/* round 3 — dish page */
+.actrow{display:grid;gap:8px;margin-top:20px} .actrow .btn{min-height:50px} .dmore{padding:0;font-size:18px;letter-spacing:2px}
+.ipan{margin-top:12px;border-radius:4px;background:var(--tint);padding:0 14px}
+.ipan>summary{min-height:52px;display:grid;grid-template-columns:auto minmax(0,1fr) 14px;gap:10px;align-items:center}
+.ipan .pl{font:13px/1.4 var(--sans);color:var(--ink2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap} .ipan[open] .pl{visibility:hidden}
+.ipan .irow:last-child{border-bottom:0}
+.phase.fold{margin-top:0;border-bottom:1px solid var(--line)} .phase.fold>summary{min-height:52px} .phase.fold>summary .ph{border:0;padding:0;flex:1}
+.phase.fold .pc{font:500 12px var(--mono);color:var(--ink2)} .phase.fold[open]>summary{border-bottom:1px solid var(--line)}
+.lrows{margin-top:4px} .lrow{border-bottom:1px solid var(--line)} .lrow:first-child{border-top:1px solid var(--line)}
+.lrow>summary{min-height:52px;gap:10px} .lrow .t{flex:1;min-width:0;font:400 19px/1.25 var(--serif)} .lrow .m{font:500 12px var(--mono);color:var(--ink2)} .lrow .lbd{padding:0 0 14px}
+.eqlist{margin:0;padding-left:18px;font-size:14px} .eqlist li{margin:4px 0}
+.sheetlinks{display:flex;flex-direction:column;gap:8px}
+/* round 3 — decision tables (cook mode and step-by-step) */
+.choice{margin-top:14px}
+.chh{display:flex;justify-content:space-between;gap:4px 10px;align-items:baseline;flex-wrap:wrap}
+.chrows{display:grid;gap:6px;margin-top:10px}
+.chr{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:8px;align-items:center;width:100%;text-align:left;min-height:48px;padding:8px 10px;border:1px solid var(--chip);border-radius:10px;color:var(--ink);font:500 13px/1.3 var(--sans)}
+.chr span{min-width:0;overflow-wrap:anywhere} .chr span:first-child{font:700 13px/1.3 var(--mono)}
+.chr small{display:block;font:500 11px var(--mono);color:var(--ink2);margin-top:2px}
+.chr.hd{border:0;min-height:0;padding:0 11px;font:600 9.5px/1.3 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)} .chr.hd span:first-child{font:inherit}
+.chr.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)} .chr.on small{color:inherit}
+.chn{margin:8px 2px 0;font:13px/1.4 var(--sans);color:var(--ink2)} .chsel{margin:10px 2px 0;font:14px/1.45 var(--sans);color:var(--ink)}
+.ckdet.chd .choice{margin-top:10px}
+/* round 3 — cook mode: fallbacks, timers, running, readings, stations */
+.ifbox{margin-top:14px;padding:10px 12px;border-radius:10px;background:var(--tint);border:1px solid var(--line)}
+.ifbox .k{display:block;font:600 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--warn);margin-bottom:4px}
+.ifbox p{margin:0;font:15px/1.45 var(--sans);color:var(--ink)} .ifbox p+p{margin-top:6px}
+.tbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px} .tbtns .btn{min-height:46px}
+.running{margin-top:12px} .rchips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:6px}
+.rchip{position:relative;display:flex;flex-direction:column;gap:2px;min-width:0;padding:8px 40px 8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--bg2)}
+.rchip:not(.t){padding-right:10px}
+.rchip b{font:600 12px/1.3 var(--sans);color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rchip span{font:500 14px var(--mono);color:var(--ink2)}
+.rchip.band{border-color:var(--warn)} .rchip.band span{color:var(--warn)} .rchip.over{border-color:var(--bad)} .rchip.over span{color:var(--bad)}
+.rchip button{position:absolute;top:0;right:0;width:40px;height:100%;color:var(--ink3);font-size:20px}
+.rdg{margin-top:14px;display:flex;flex-direction:column;gap:12px}
+.rdf label{display:flex;flex-direction:column;gap:2px} .rdf .k{font:600 14px var(--sans);color:var(--ink)} .rdf .dv{font:500 12px/1.4 var(--mono);color:var(--ink2)}
+.rrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin-top:6px} .rrow .search{min-height:46px;font:500 18px var(--mono)} .rrow .btn{min-height:46px}
+.rdf .sv{font:12px var(--sans);color:var(--ok);margin-top:4px}
+.ckrow .rq{font:600 12px var(--sans);color:var(--accent);white-space:nowrap}
+.lanes{display:grid;grid-template-columns:78px minmax(0,1fr);gap:0 8px;margin-top:8px}
+.lnames div{height:26px;font:600 11px/26px var(--sans);color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ltracks{position:relative;padding-bottom:18px}
+.ltracks .lt{position:relative;height:26px;border-bottom:1px solid var(--line)}
+.lb{position:absolute;top:5px;height:16px;border-radius:3px;background:var(--chip);color:var(--ink);font:600 9.5px/16px var(--sans);padding:0 4px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.lb.on{background:var(--accent);color:var(--on-accent)} .lb.est{background:transparent;border:1px dashed var(--ink3)}
+.lsvc{position:absolute;top:0;bottom:18px;width:0;border-left:1px dashed var(--ink2)}
+.lnow{position:absolute;top:-3px;bottom:16px;width:2px;margin-left:-1px;background:var(--accent)}
+.lax{position:absolute;left:0;right:0;bottom:0;height:16px;font:500 9.5px/16px var(--mono);color:var(--ink3)} .lax span{position:absolute;transform:translateX(-50%)}
+.lleg{margin:6px 0 0;font:12px/1.4 var(--sans);color:var(--ink3)}
+/* round 3 — open checks and the cook log */
+.vg{margin-top:16px;padding:14px 16px;border-radius:4px;background:var(--bg2);border:1px solid var(--line)}
+.vg.now{border:1.5px solid var(--accent)} .vg.dim{background:var(--tint);border-color:transparent} .vg.fold{background:none;border-style:dashed;border-color:var(--chip)}
+.vg.fold>summary{display:block} .vg.fold>summary::after{display:none}
+.vgh{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:baseline}
+.vgh .t{font:400 22px/1.15 var(--serif);color:var(--ink)} .vgh .n{grid-row:1/3;grid-column:2;align-self:center;font:700 26px var(--mono);color:var(--ink)} .vg.now .vgh .n{color:var(--accent)} .vg.dim .vgh .n,.vg.fold .vgh .n{color:var(--ink2)}
+.vg>p{margin:10px 0 0;font:13px/1.45 var(--sans);color:var(--ink2)}
+.vdish{border-top:1px solid var(--line)} .vgh+.vdish{margin-top:10px}
+.vdish>summary{min-height:44px;gap:10px} .vdish .nm{flex:1;min-width:0;font:15px/1.3 var(--sans)} .vdish .ct{font:500 13px var(--mono);color:var(--ink2)}
+.vlist{margin:0 0 10px;padding-left:18px;font-size:14px} .vlist li{margin:6px 0} .vlist .dv{display:block;font:500 12px/1.4 var(--mono);color:var(--ink2)} .vlist .nt{display:block;font:12px/1.4 var(--sans);color:var(--ink3)}
+.vmore{border-top:1px solid var(--line)} .vmore>summary{min-height:44px;font:600 13px var(--sans);color:var(--accent)}
+.ckcard{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;margin-top:18px;padding:14px;border-radius:4px;background:var(--tint);color:var(--ink)}
+.ckcard .t{font:600 15px/1.3 var(--sans)} .ckcard .d{font:13px/1.4 var(--sans);color:var(--ink2)} .ckcard .ar{grid-row:1/3;grid-column:2;font-size:22px;color:var(--accent)}
+.sugg{display:block;margin-top:6px;font:600 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.lval .at{font:12px var(--sans);color:var(--ink2);margin-top:4px}
+.lgrp{border-top:1px solid var(--line)} .lgrp>summary{min-height:52px;gap:10px} .lgrp .nm{flex:1;min-width:0;font:400 19px var(--serif)} .lgrp .ct{font:500 12px var(--mono);color:var(--ink2)}
 /* print sheet — laid out to the docx-protocol PDF format (teal headings, shaded table headers, running header) */
 .sheet{--pc:#1B5E7B;background:#fff;color:#222;border:1px solid var(--line);border-radius:6px;padding:18px 16px 22px;font-family:Arial,"Liberation Sans",Helvetica,sans-serif;font-size:13px;line-height:1.4;overflow-x:auto}
 .sheet h1{font-size:21px;line-height:1.2;margin:0 0 4px;color:var(--pc);font-weight:700}
@@ -603,7 +669,7 @@ function hashLabel(h){
   if(v==='meal'&&IDX.mealBySlug[a]) return splitName(IDX.mealBySlug[a].name)[0];
   if(v==='dish'&&IDX.dishBySlug[a]) return splitName(IDX.dishBySlug[a].name)[0];
   if(v==='shopping') return a?'Shopping list':'Shopping';
-  return {sunday:'Sunday',library:'Library',meals:'Meals',more:'More',validations:'Validate',docs:'Docs',cook:'Cook',steps:'Step-by-step',print:'Print',postcook:'Log cook'}[v]||'Back';
+  return {sunday:'Sunday',library:'Library',meals:'Meals',more:'More',validations:'Checks',docs:'Docs',cook:'Cook',steps:'Step-by-step',print:'Print',postcook:'Log cook'}[v]||'Back';
 }
 function goBack(fb){ if(HSTACK.length>1) history.back(); else location.hash=fb; }
 function setHeader(title,back,fade=false){
@@ -645,7 +711,9 @@ function seal(r,{size='',note='',none=''}={}){ // 9+ filled, 8–8.5 outlined, b
   const v=+r, tier=v>=9?'top':v>=8?'good':'low';
   return `<div class="sealbox"><div class="seal ${tier} ${size}" role="img" aria-label="Rated ${num(v)} out of 10">${half(v)}</div>${note?`<span class="seal-note">${note==='via meal'?'<span class="via">via </span>meal':esc(note)}</span>`:''}</div>`;
 }
-function menuName(n){let w=splitName(n)[0].split(/[,:;]/)[0].trim().split(/\s+/); if(w.length>4){w=w.slice(0,4); while(w.length>1&&/^(&|and|with|in|of|on|the|a)$/i.test(w[w.length-1])) w.pop();} return w.join(' ');}
+function menuName(n){let s=splitName(n)[0].trim(); const c=s.split(/[,:;]/)[0].trim(); if(c.split(/\s+/).length>=2) s=c; // "Pork, Fennel & Lemon Ragù" keeps its list
+  const w0=s.match(/^(.+?)\s+(?:with|over|served with)\s+\S/i); if(w0&&w0[1].split(/\s+/).length>=2) s=w0[1];
+  let w=s.split(/\s+/); if(w.length>6){w=w.slice(0,6); while(w.length>1&&/^(&|and|with|in|of|on|the|a|,)$/i.test(w[w.length-1])) w.pop();} return w.join(' ').replace(/,$/,'');}
 const verdictCls=v=>({yes:'',with_modifications:'warn',no:'bad'}[v]??'');
 function openSheet(html){const w=document.getElementById('sheet'); w.innerHTML=`<div class="scrim" onclick="closeSheet()"></div><div class="sheet-panel" role="dialog" aria-modal="true">${html}</div>`; w.hidden=false; document.body.classList.add('locked');}
 function closeSheet(){const w=document.getElementById('sheet'); if(!w||w.hidden) return; w.hidden=true; w.innerHTML=''; document.body.classList.remove('locked');}
@@ -789,6 +857,7 @@ function stepBlocks(body,title){ // [{t:'md',text}|{t:'steps',items:[{text,sub}]
   for(const l of L){
     const m=l.match(itemRe);
     if(m){open(m[1].trim()); continue;}
+    if(last&&hasOl&&/^\s*\|/.test(l)){last.sub.push(l.trim()); continue;} // a table under a numbered step is part of it (decision tables)
     if(last&&/^\s+\S/.test(l)&&!/^\s*\|/.test(l)){last.sub.push(l.replace(/^\s+/,'')); continue;} // indented continuation or sub-bullet
     if(/^\s*$/.test(l)){txt.push(l); continue;}
     last=null; steps=null; txt.push(l);
@@ -834,23 +903,32 @@ function ingRow(di){
   return `<details class="irow"><summary>${head}</summary><dl class="ibox">${spec?`<dt>Buy</dt><dd>${esc(spec)}</dd>`:''}${avoid?`<dt>Not</dt><dd class="not">${esc(avoid)}</dd>`:''}${prep?`<dt>Prep</dt><dd>${esc(prep)}</dd>`:''}${measure?`<dt>Measure</dt><dd>${esc(measure)}</dd>`:''}</dl></details>`;
 }
 function ingAll(b){const ds=[...document.querySelectorAll('details.irow')]; const open=!ds.every(x=>x.open); ds.forEach(x=>x.open=open); b.textContent=open?'Close all':'Open all';}
-function methodHtml(M){
+function methodHtml(M,fold){
+  const mo=fold&&mOpen();
   return M.filter(s=>s.kind==='flow'||s.kind==='prose').map(s=>{
     if(!s.body) return `<h4 class="part">${esc(s.title)}</h4>`;
-    let n=0; const title=s.title&&!M_SKIP.test(s.title)?`<div class="ph">${esc(s.title)}</div>`:'';
+    let n=0; const has=s.title&&!M_SKIP.test(s.title), title=has?`<div class="ph">${esc(s.title)}</div>`:'';
     const inner=s.kind==='prose'?`<div class="md">${md(s.body)}</div>`:s.blocks.map(b=>b.t==='md'?`<div class="md">${md(b.text)}</div>`
       :`<ol class="msteps">${b.items.map(it=>{n++; return `<li><span class="n" aria-hidden="true">${n}</span><div class="tx">${md([it.text,...it.sub].join('\n'))}</div></li>`;}).join('')}</ol>`).join('');
-    return `<section class="phase">${title}${inner}</section>`;
+    const cnt=s.kind==='flow'?(s.blocks||[]).reduce((k,b)=>k+(b.t==='steps'?b.items.length:0),0):0;
+    return fold&&has?`<details class="phase fold" ${mo?'open':''}><summary><span class="ph">${esc(s.title)}</span><span class="pc">${cnt?cnt+' step'+(cnt>1?'s':''):'notes'}</span></summary>${inner}</details>`:`<section class="phase">${title}${inner}</section>`;
   }).join('');
 }
-function labHtml(d,openVal){
-  if(!openVal.length&&!d.meas.length) return '';
-  const unit=x=>x.value_num!=null?num(x.value_num)+(x.unit?(/^°/.test(x.unit)?'':' ')+x.unit:''):'';
-  return `<h3 class="stitle">Lab notes</h3><div class="lab">
-    ${openVal.length?`<div class="lh"><span>Still to validate · ${openVal.length}</span><a href="#/validations">All open</a></div>${openVal.map(p=>`<div class="lv"><div class="p">${esc(p.param)}</div>${p.designed_value?`<div class="dv">${esc(p.designed_value)}</div>`:''}${p.note?`<div class="nt">${esc(p.note)}</div>`:''}</div>`).join('')}`:''}
-    ${d.meas.length?`<div class="lh"><span>Measured · ${d.meas.length}</span></div>${d.meas.map(x=>{const ob=x.observed&&(x.value_num==null||x.observed.length>12)?x.observed:''; const extra=[ob,x.notes].filter(Boolean).join(' · ');
-      return `<div class="lm"><div><div class="g">${esc(x.gate)}</div>${x.predicted?`<div class="pr">designed: ${esc(x.predicted)}</div>`:''}</div><div class="v">${esc(unit(x))}${x.probe?`<small>${esc(x.probe)}</small>`:''}</div>${extra?`<div class="ob">${esc(extra)}</div>`:''}</div>`;}).join('')}`:''}
-  </div>`;
+function measHtml(d){const unit=x=>x.value_num!=null?num(x.value_num)+(x.unit?(/^°/.test(x.unit)?'':' ')+x.unit:''):'';
+  return d.meas.map(x=>{const ob=x.observed&&(x.value_num==null||x.observed.length>12)?x.observed:''; const extra=[ob,x.notes].filter(Boolean).join(' · ');
+    return `<div class="lm"><div><div class="g">${esc(x.gate)}</div>${x.predicted?`<div class="pr">designed: ${esc(x.predicted)}</div>`:''}</div><div class="v">${esc(unit(x))}${x.probe?`<small>${esc(x.probe)}</small>`:''}</div>${extra?`<div class="ob">${esc(extra)}</div>`:''}</div>`;}).join('');}
+function labRows(d,openVal,notes){
+  const row=(t,meta,body)=>`<details class="lrow"><summary><span class="t">${t}</span><span class="m">${meta}</span></summary><div class="lbd">${body}</div></details>`, r=[];
+  if(d.cooks.length) r.push(row('Cook history',`${d.cooks.length} · ${esc(shortDate(d.cooks[0].cooked_on))}`,d.cooks.map(cookCard).join('')));
+  if(openVal.length) r.push(row('Open checks',String(openVal.length),`<div class="lab">${openVal.map(p=>`<div class="lv"><div class="p">${esc(p.param)}</div>${p.designed_value?`<div class="dv">${esc(p.designed_value)}</div>`:''}${p.note?`<div class="nt">${esc(p.note)}</div>`:''}</div>`).join('')}</div><p class="small" style="margin:10px 0 0"><a href="#/validations">All open checks</a></p>`));
+  if(d.meas.length) r.push(row('Measured',String(d.meas.length),`<div class="lab">${measHtml(d)}</div>`));
+  notes.forEach(x=>r.push(row(esc(x.title),'',`<div class="md">${md(x.body)}</div>`)));
+  if((d.equipment||[]).length) r.push(row('Equipment',`${d.equipment.length} item${d.equipment.length>1?'s':''}`,`<ul class="eqlist">${d.equipment.map(e=>`<li>${esc(e)}</li>`).join('')}</ul>`));
+  if(d.meals.length) r.push(row('Part of',`${d.meals.length} meal${d.meals.length>1?'s':''}`,d.meals.map(mealCard).join('')));
+  if(d.docs.length) r.push(row('Documents',String(d.docs.length),docsBlock(d.docs).replace('<h3 class="stitle">Documents</h3>','')));
+  const tags=[...(d.tags||[]),...(d.occasion||[])];
+  if(d.source||d.governance_version||tags.length) r.push(row('Source and review',d.governance_version?'v'+esc(d.governance_version):'',`${d.source?`<p class="small" style="margin:0">${esc(d.source)}</p>`:''}${d.governance_version?`<p class="small muted" style="margin:6px 0 0">Governance ${esc(d.governance_version)}</p>`:''}${tags.length?`<div class="chips" style="margin-top:10px">${tags.map(t=>`<span class="chip mini">${esc(t)}</span>`).join('')}</div>`:''}`));
+  return r.length?`<h3 class="stitle">Lab notes</h3><div class="lrows">${r.join('')}</div>`:'';
 }
 routes.dish=(slug)=>{
   const d=IDX.dishBySlug[slug]; if(!d)return notFound('Dish','#/library');
@@ -866,26 +944,23 @@ routes.dish=(slug)=>{
   const overview=M.find(s=>s.kind==='ref'&&/overview/i.test(s.title));
   const summary=d.summary||(overview?overview.body.split(/\n\s*\n/)[0].replace(/[*_`#>]/g,'').trim():'');
   const stepBtn=S.length>=2;
-  const acts=[stepBtn?`<a class="btn" href="#/steps/${d.slug}">Step-by-step</a>`:'',d.ings.length?`<a class="btn ${stepBtn?'ghost':''}" href="#/shopping/dish/${d.slug}">Shopping list</a>`:'',printBtn('dish',d,'btn ghost','Print sheet'),`<a class="btn ghost" href="#/postcook/dish/${d.slug}">Log a cook</a>`].filter(Boolean);
+  const acts=[stepBtn?`<a class="btn" href="#/steps/${d.slug}">Step-by-step</a>`:'',d.ings.length?`<a class="btn ${stepBtn?'ghost':''}" href="#/shopping/dish/${d.slug}">Shopping list</a>`:''].filter(Boolean);
   const anyMore=d.ings.some(di=>di.buy_spec||di.buy_avoid||(di.qty_alt&&(di.qty!=null||di.qty_alt.length>9))||(di.prep_note||'').length>40);
+  const main=d.ings.filter(di=>!di.pantry_check), pan=d.ings.filter(di=>di.pantry_check);
+  const fold=M.filter(s=>(s.kind==='flow'||s.kind==='prose')&&s.body&&s.title&&!M_SKIP.test(s.title)).length>=2;
   return `<div class="hero">
       <div class="eyebrow acc">${esc([d.protein,(d.category||[]).join(' / '),(d.cuisine||[]).join(', ')].filter(Boolean).join(' · '))}</div>
       <div class="ttl"><h1>${esc(nm)}${note?`<i>${esc(note)}</i>`:''}</h1>${big}</div>
-      <div class="scores">${r.latest_repeat?`<span class="verdict ${verdictCls(r.latest_repeat)}">${rep(r.latest_repeat)}</span>`:''}${r.latest_rating!=null?`<span>Flavour <b>${num(r.latest_rating)}</b></span>`:''}${r.latest_execution!=null?`<span>Execution <b>${num(r.latest_execution)}</b></span>`:''}<span>${when}</span></div>
+      <div class="scores">${r.latest_repeat?`<span class="verdict ${verdictCls(r.latest_repeat)}">${rep(r.latest_repeat)}</span>`:''}${r.latest_rating!=null?`<span>Flavour <b>${num(r.latest_rating)}</b></span>`:''}${r.latest_execution!=null?`<span>Execution <b>${num(r.latest_execution)}</b></span>`:''}<span>${when}</span>${d.difficulty?`<span>${esc(d.difficulty)}</span>`:''}${d.servings?`<span>Serves <b>${num(d.servings)}</b></span>`:''}</div>
       ${summary?`<p class="summary">${esc(summary)}</p>`:''}
-      ${d.difficulty||d.servings?`<div class="kvline">${d.difficulty?`<span>Difficulty <b>${esc(d.difficulty)}</b></span>`:''}${d.servings?`<span>Serves <b>${num(d.servings)}</b></span>`:''}</div>`:''}
     </div>
-    <div class="actgrid" style="margin-top:20px">${acts.join('')}</div>
-    ${(d.equipment||[]).length||d.source?`<dl class="kv" style="margin-top:20px">${(d.equipment||[]).length?`<dt>Equipment</dt><dd>${esc(d.equipment.join(', '))}</dd>`:''}${d.source?`<dt>Source</dt><dd class="small">${esc(d.source)}</dd>`:''}</dl>`:''}
-    ${(d.tags||[]).length||(d.occasion||[]).length?`<div class="chips" style="margin-top:12px">${[...(d.tags||[]),...(d.occasion||[])].map(t=>`<span class="chip mini">${esc(t)}</span>`).join('')}</div>`:''}
-    ${d.ings.length?`<div class="shead"><h3>Ingredients</h3>${anyMore?'<button onclick="ingAll(this)">Open all</button>':''}</div><div class="small muted" style="margin-top:-2px">${[d.servings?'For '+num(d.servings):'',d.ings.length+' ingredient'+(d.ings.length>1?'s':''),anyMore?'tap a line for prep and buying notes':''].filter(Boolean).join(' · ')}</div><div style="margin-top:8px">${d.ings.map(ingRow).join('')}</div>`
+    <div class="actrow" style="grid-template-columns:${acts.map(()=>'minmax(0,1fr) ').join('')}52px">${acts.join('')}<button class="btn ghost dmore" onclick="dishMore('${d.slug}')" aria-label="More: print sheet, log a cook">···</button></div>
+    ${d.ings.length?`<div class="shead"><h3>Ingredients</h3>${anyMore?'<button onclick="ingAll(this)">Open all</button>':''}</div><div class="small muted" style="margin-top:-2px">${[d.servings?'For '+num(d.servings):'',d.ings.length+' ingredient'+(d.ings.length>1?'s':''),anyMore?'tap a line for prep and buying notes':''].filter(Boolean).join(' · ')}</div>
+      <div style="margin-top:8px">${main.map(ingRow).join('')}</div>
+      ${pan.length?`<details class="ipan" ${main.length?'':'open'}><summary><span class="eyebrow">Pantry · ${pan.length}</span><span class="pl">${esc(pan.map(di=>cap1(ingName(di).split(',')[0])).join(' · '))}</span></summary>${pan.map(ingRow).join('')}</details>`:''}`
       :ingMd.length?`<h3 class="stitle">Ingredients</h3>${ingMd.map(s=>`<div class="md">${md(s.body)}</div>`).join('')}`:''}
-    <h3 class="stitle">Method</h3>${d.method_md?`${yieldS?`<div class="yield">${md(yieldS.body)}</div>`:''}${methodHtml(M)}`:`<div class="card muted small">No structured recipe body for this dish yet — it was filed as a cook record. It will be populated when the dish is next regenerated under the data protocol.</div>`}
-    ${labHtml(d,openVal)}
-    ${notes.length?`<h3 class="stitle">Kitchen notes</h3><div>${notes.map(s=>`<details class="knote"><summary>${esc(s.title)}</summary><div class="md">${md(s.body)}</div></details>`).join('')}</div>`:''}
-    ${d.meals.length?`<h3 class="stitle">Part of</h3><div>${d.meals.map(mealCard).join('')}</div>`:''}
-    ${d.cooks.length?`<h3 class="stitle">Cook history</h3><div>${d.cooks.map(cookCard).join('')}</div>`:''}
-    ${docsBlock(d.docs)}
+    <div class="shead"><h3>Method</h3>${fold?`<button onclick="methodAll(this)">${mOpen()?'Close all':'Open all'}</button>`:''}</div>${d.method_md?`${yieldS?`<div class="yield">${md(yieldS.body)}</div>`:''}${methodHtml(M,fold)}`:`<div class="card muted small">No structured recipe body for this dish yet — it was filed as a cook record. It will be populated when the dish is next regenerated under the data protocol.</div>`}
+    ${labRows(d,openVal,notes)}
     <div style="height:12px"></div>`;
 };
 // step-by-step: one method step at a time, dark and awake like cook mode
@@ -904,9 +979,12 @@ routes.steps=(slug,n)=>{
     <div class="stnav"><button class="btn ghost" onclick="stepGo(${N})" aria-label="Back to the last step">‹ Back</button><a class="donebtn" href="#/postcook/dish/${d.slug}">Log a cook</a></div>${all}
     <div class="ckfoot"><a class="btn ghost" href="#/dish/${d.slug}">Back to the dish</a><button class="btn ghost" onclick="stepGo(1)">Start again</button></div>`;}
   window._st=i;
-  const x=S[i-1], nx=S[i], [ttl,det]=leadSplit(x.text), more=[det,...x.sub].join('\n').trim();
+  const x=S[i-1], nx=S[i], [ttl,det]=leadSplit(x.text);
+  const CT=choiceTables(d), subT=x.sub.join('\n'), here=CT.map((t,ti)=>({t,ti})).filter(o=>subT.includes(o.t.head[0]));
+  const more=[det,...(here.length?x.sub.filter(l=>!/^\s*\|/.test(l)):x.sub)].join('\n').trim();
+  const pl=currentPlan(), ctx=pl&&pl.m.dishes.some(y=>y.dish===d)?{t0:planTarget(pl)}:null;
   return `${bar}${prog}<div class="bigstep"><div class="meta"><span>${esc(x.phase||'Method')} · ${x.k}</span><span>${String(i).padStart(2,'0')} / ${String(N).padStart(2,'0')}</span></div>
-      <div class="ttl ${ttl.length>200?'xlong':ttl.length>90?'long':''}">${mdInline(ttl)}</div>${more?`<div class="det md">${md(more)}</div>`:''}</div>
+      <div class="ttl ${ttl.length>200?'xlong':ttl.length>90?'long':''}">${mdInline(ttl)}</div>${more?`<div class="det md">${md(more)}</div>`:''}${here.map(o=>choiceCard(d,o.ti,o.t,ctx)).join('')}</div>
     <div class="stnav">${i>1?`<button class="btn ghost" onclick="stepGo(${i-1})" aria-label="Previous step">‹ Back</button>`:''}<button class="donebtn" onclick="stepGo(${i+1})">${nx?'Next step':'Finish'}</button></div>
     ${nx?`<div class="nextcard"><div><div class="k">Next · ${esc(nx.phase||'Method')}</div><div class="tx">${mdInline(leadSplit(nx.text)[0])}</div></div></div>`:''}
     ${all}
@@ -1090,6 +1168,7 @@ routes.sunday=()=>{
       <div class="src">${pl.src==='phone'?'<span>Saved on this phone</span><button onclick="sharePlan()">Copy for Claude</button>':'<span>Planned with Claude — saved for every device</span>'}</div>
     </div>
     ${past?'':beforeBlock(pl,items,st)}
+    ${past?'':checksCard(pl)}
     ${recent}
     ${rotCard(R)}
     ${backlog.length?`<div class="shead"><h3>Next time</h3><span>${backlog.length} waiting</span></div><div class="shelf">${backlog.map(x=>ntCard(x,R,false)).join('')}</div>`:''}
@@ -1152,7 +1231,7 @@ routes.more=()=>{
   const at=DB.loadedAt?new Date(DB.loadedAt).toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):'';
   return `${pageTitle('More')}
     <div class="morelist" style="margin-top:10px">
-      <a href="#/validations"><div><div class="nm">Open validations</div><div class="mt">Designed parameters still to confirm at the stove</div></div><span class="ct">${openN}</span></a>
+      <a href="#/validations"><div><div class="nm">Open checks</div><div class="mt">Designed parameters still to confirm, by when you next cook them</div></div><span class="ct">${openN}</span></a>
       <a href="#/docs"><div><div class="nm">Documents</div><div class="mt">Stored Word and PDF cooking sheets</div></div><span class="ct">${docsN}</span></a>
     </div>
     <p class="foot">${libBase().length} dishes · ${cooked} cooked · ${meals} meals<br>${DB.fromCache?'Offline — showing what this phone saved':'Live data'}${at?' · loaded '+at:''}</p>`;
@@ -1357,21 +1436,27 @@ function shareShop(){
 
 // ---------------------------------------------------------------- validations
 routes.validations=()=>{
-  setHeader('Open validations','#/more'); tabs('validations');
-  const groups=DB.dish.filter(d=>d.open.length).map(d=>({d,items:d.open}));
-  groups.sort((a,b)=>b.items.length-a.items.length||a.d.name.localeCompare(b.d.name));
-  const total=groups.reduce((n,g)=>n+g.items.length,0);
-  const backlog=new Set(DB.meal.filter(m=>m.status!=='cooked').flatMap(m=>m.dishes.map(x=>x.dish.id)));
-  return `<div class="stack" style="padding-top:12px">
-    <p class="muted small">${total} designed-but-unvalidated parameters across ${groups.length} dishes. Each closes when its dish is next cooked and the observed value is logged. Open items shape <i>how</i> a dish is cooked, not which dish gets picked.</p>
-    ${groups.map(({d,items})=>`<details class="card" ${backlog.has(d.id)?'open':''}><summary><div class="grow"><div class="title">${esc(d.name)}</div><div class="sub">${esc([d.protein,(d.category||[]).join('/')].filter(Boolean).join(' · '))}${d.r.last_made?' · last cooked '+ago(d.r.last_made):(d.served?' · served '+ago(d.served):'')}${backlog.has(d.id)?' · <span class="pill">in backlog</span>':''}</div></div><span class="rating" style="min-width:32px">${items.length}</span></summary>
-      <ul style="margin:10px 0 0;padding-left:18px;font-size:14px">${items.map(p=>`<li style="margin:6px 0"><b>${esc(p.param)}</b>${p.designed_value?` — ${esc(p.designed_value)}`:''}${p.note?`<div class="dim small">${esc(p.note)}</div>`:''}</li>`).join('')}</ul>
-      <div class="btnrow" style="margin-top:12px"><a class="btn ghost sm" href="#/dish/${d.slug}">Open dish</a>${d.meals[0]?`<a class="btn ghost sm" href="#/meal/${d.meals[0].slug}">${esc(shortName(d.meals[0].name))}</a>`:''}</div>
-    </details>`).join('')}
-    ${!groups.length?'<div class="empty">Nothing open — every designed parameter has been confirmed.</div>':''}
-  </div>`;
+  setHeader('Open checks','#/more',true); tabs('validations');
+  const all=DB.dish.filter(d=>d.open.length), total=all.reduce((n,d)=>n+d.open.length,0);
+  if(!all.length) return `${pageTitle('Open checks')}<div class="empty">Nothing open. Every designed parameter has been confirmed.</div>`;
+  const today=todayISO(), pl=currentPlan();
+  let planned=DB.meal.filter(m=>m.status!=='cooked'&&m.planned_date&&m.planned_date>=today).sort((a,b)=>a.planned_date.localeCompare(b.planned_date));
+  if(pl) planned=[pl.m,...planned.filter(m=>m!==pl.m)]; // the plan first, whether Claude set it or this phone did
+  const seen=new Set(), take=ds=>ds.filter(d=>d.open.length&&!seen.has(d.id)?(seen.add(d.id),true):false), cnt=ds=>ds.reduce((n,d)=>n+d.open.length,0);
+  const row=d=>`<details class="vdish"><summary><span class="nm">${esc(menuName(d.name))}</span><span class="ct">${d.open.length}</span></summary><ul class="vlist">${d.open.map(p=>`<li><b>${esc(p.param)}</b>${p.designed_value?`<span class="dv">${esc(p.designed_value)}</span>`:''}${p.note?`<span class="nt">${esc(p.note)}</span>`:''}</li>`).join('')}</ul><div class="btnrow" style="margin-bottom:12px"><a class="btn ghost sm" href="#/dish/${d.slug}">Open dish</a></div></details>`;
+  const head=(eb,t,n,acc)=>`<div class="vgh"><span class="eyebrow ${acc?'acc':''}">${eb}</span><span class="n">${n}</span><span class="t">${t}</span></div>`;
+  let html='';
+  planned.forEach((m,i)=>{const ds=take(m.dishes.map(x=>x.dish)); if(!ds.length) return; const now=i===0&&pl&&m===pl.m;
+    const lbl=now?(pl.date===today?'Tonight':pl.date===comingSunday()?'This Sunday':pl.date===comingSunday(1)?'Next Sunday':'Planned')+' · '+shortDate(pl.date):'Planned · '+shortDate(m.planned_date);
+    html+=`<section class="vg ${now?'now':''}">${head(esc(lbl),esc(splitName(m.name)[0]),cnt(ds),now)}${ds.map(row).join('')}${now&&m.workflow_md?`<p>Cook mode asks for each reading at the step where it happens. <a href="#/cook/${m.slug}">Open cook mode</a></p>`:''}</section>`;});
+  const nr=take(all.filter(d=>d.r.latest_repeat==='no'));
+  const ck=take(all.filter(isCooked)).sort((a,b)=>b.open.length-a.open.length||a.name.localeCompare(b.name));
+  const nv=take(all).sort((a,b)=>b.open.length-a.open.length||a.name.localeCompare(b.name));
+  if(ck.length) html+=`<section class="vg">${head('Cooked before, still open',`${ck.length} dish${ck.length>1?'es':''} you may repeat`,cnt(ck))}${ck.slice(0,5).map(row).join('')}${ck.length>5?`<details class="vmore"><summary>${ck.length-5} more dishes · ${cnt(ck.slice(5))} checks</summary>${ck.slice(5).map(row).join('')}</details>`:''}</section>`;
+  nr.forEach(d=>{html+=`<section class="vg dim">${head('Verdict: no repeat',esc(menuName(d.name)),d.open.length)}<p>Marked no-repeat${d.r.last_made?' after the '+esc(shortDate(d.r.last_made))+' cook':''}, so these checks will not be tested.</p><div class="btnrow" style="margin-top:10px"><button class="btn ghost sm" onclick="copyRetire('${d.slug}')">Copy “retire these” for Claude</button><a class="btn ghost sm" href="#/dish/${d.slug}">Open dish</a></div></section>`;});
+  if(nv.length) html+=`<details class="vg fold"><summary>${head('Designed, never cooked',`${nv.length} dish${nv.length>1?'es':''}`,cnt(nv))}</summary><p>A dish moves up the moment it goes on a planned meal.</p>${nv.map(row).join('')}</details>`;
+  return `${pageTitle('Open checks',`<span class="mono dim" style="margin-bottom:6px">${total}</span>`)}<p class="muted small" style="margin:8px 0 0">Designed parameters still to confirm at the stove, grouped by when you will next meet them.</p>${html}<div style="height:12px"></div>`;
 };
-
 
 // ---------------------------------------------------------------- cook mode: reading a meal's timeline
 // A meal's workflow writes its timeline several ways; each becomes a step with a time relative to service:
@@ -1408,7 +1493,8 @@ const cellText=c=>String(c||'').replace(/\\([~*_#>\-<|\[\]])/g,'$1').replace(/<b
 function parseWhen(cell,nominal){ // one table cell or line prefix → {kind:'T',tm,tmEnd,label} | {kind:'A',anchor,off,offEnd,label} | {kind:'pre',label} | null
   const c=cellText(cell).replace(/[~≈]/g,'').replace(/\s+/g,' ').trim(); if(!c) return null;
   const ts=[...c.matchAll(TFIND)].map(x=>x[1]!=null?parseTm('T-'+x[1]):0).filter(v=>v!=null);
-  if(ts.length) return {kind:'T',tm:ts[0],tmEnd:ts.length>1?ts[1]:null,label:'T−'+ts[0]};
+  if(ts.length){ if(ts.length>=2&&/T\s?[-−–]\s?\d+\s*\/\s*T\s?[-−–]\s?\d+/.test(c)&&!/\bto\b|→/.test(c)) return {kind:'T',tm:ts[0],tmEnd:null,alts:ts,label:'T−'+ts.join('/')};
+    return {kind:'T',tm:ts[0],tmEnd:ts.length>1?ts[1]:null,label:'T−'+ts[0]}; }
   let a=c.match(ANCH);
   if(a){const sg=s=>/[−–-]/.test(s)?-1:1; const off=a[3]!=null?sg(a[2])*(+a[3]+(+a[4]||0)/60):0; const anchor=a[1].toUpperCase();
     return {kind:'A',anchor,off,offEnd:a[6]!=null?sg(a[5])*+a[6]:null,label:c.replace(/\s+on(ward)?$/i,'')};}
@@ -1426,7 +1512,8 @@ function parseWhen(cell,nominal){ // one table cell or line prefix → {kind:'T'
 const TL_HEAD=/^(time|when|offset|clock|anchor|t\s?[-−–]?\s?minus|step|timing|expected clock)\b/i;
 const TL_SECT=/timeline|t\s?[-−–]?\s?minus|run of show|schedule|fixed-clock|anchored|exit-relative|absolute phase/i;
 const NOT_TL=/^(component|phase|resource|class|adjustment|element|#|parameter|item|dish|ingredient|failure|gate)\b/i;
-function parseTimeline(mdText,nominal=1080){
+const DESC_SECT=/^(?:parallel|attention|critical path|failure|timeline verification|verification|arithmetic|audit|meal balance|balance|contingenc|oven sequencing|heat|resource|holding|final plating|plating window|reserved|to confirm|menu\b|shared prep)/i; // summaries of the timeline, not steps
+function parseTimeline(mdText,nominal=1080,skipDesc=true){
   const steps=[], other=[]; if(!mdText) return {steps,other};
   const src=String(mdText).replace(/\r/g,'');
   const add=(w,text,section)=>{text=cellText(text).replace(/^[:：—–-]\s*/,''); if(!text) return;
@@ -1462,6 +1549,7 @@ function parseTimeline(mdText,nominal=1080){
     if(/^\s*\|/.test(l)){ if(!pipe.length) pipeSec=section; pipe.push(l.trim().replace(/^\|/,'').replace(/\|\s*$/,'').split('|')); continue; }
     flushPipe();
     const h=l.match(/^#{1,6}\s+(.*)/); if(h){section=h[1].trim(); continue;}
+    if(skipDesc&&DESC_SECT.test(section)){ if(l.trim()) other.push({text:l,section}); continue; }
     const m=l.match(TRE);
     if(m){const tm=parseTm(m[1]); if(tm!=null){const tmEnd=m[2]?parseTm(m[2]):null; add({kind:'T',tm,tmEnd,label:'T−'+tm},m[3],section); continue;}}
     const dw=l.match(/^\s*(?:[-*•☐]\s*)?(?:\*\*)?(?=(Sunday|Saturday|Friday|Morning|Day before|Eve|Night before)\b)/i);
@@ -1477,6 +1565,7 @@ function parseTimeline(mdText,nominal=1080){
   const before=uniq.filter(x=>x.before).sort((a,b)=>(a.kind==='pre'?-1:0)-(b.kind==='pre'?-1:0)||(b.tm||0)-(a.tm||0));
   const timed=uniq.filter(x=>!x.before&&x.kind==='T').sort((a,b)=>b.tm-a.tm);
   const floating=uniq.filter(x=>x.kind==='A').sort((a,b)=>a.anchor.localeCompare(b.anchor)||a.off-b.off);
+  if(skipDesc&&!timed.length&&!floating.length) return parseTimeline(mdText,nominal,false); // an old workflow whose only times sit in a summary section
   let out=[...before,...timed,...floating];
   if(!timed.length&&!floating.length){ // no timeline: a numbered method list becomes untimed steps
     const seq=[...src.matchAll(/^\s*\d+[.)]\s+(.+)$/gm)].map(x=>({kind:'seq',text:cellText(x[1]),section:''})).filter(x=>x.text);
@@ -1493,6 +1582,168 @@ function mdSections(mdText){ // [{title, body}] split on ## / ### headings
   return out.map(s=>({title:s.title,body:s.body.join('\n').trim()})).filter(s=>s.body);
 }
 
+// ---------------------------------------------------------------- decision tables: a method step's table whose rows set T-minus times
+const tVals=s=>[...String(s||'').matchAll(TFIND)].map(x=>x[1]!=null?parseTm('T-'+x[1]):0).filter(v=>v!=null);
+const cap1=t=>String(t||'').replace(/^./,c=>c.toUpperCase());
+function choiceTables(d){ // "Thickness at the eye | Gate check | Grill start | Band" under "…measure the thickness and pick the grill start:"
+  const out=[]; if(!d||!d.method_md) return out;
+  const L=String(d.method_md).replace(/\r/g,'').split('\n'); let blk=[], ctx='';
+  const isSep=r=>r.length>0&&r.every(c=>/^:?-+:?$/.test(c));
+  const flush=()=>{ if(blk.length>=4&&/\b(pick|choose|select|measure|depending|by (?:thickness|weight|size)|which row)\b/i.test(ctx)){
+      const rows=blk.map(l=>l.trim().replace(/^\|/,'').replace(/\|\s*$/,'').split('|').map(cellText));
+      if(isSep(rows[1])){ const head=rows[0], body=rows.slice(2).filter(r=>!isSep(r)), tsOf=r=>tVals(r.slice(1).join(' '));
+        const opts=body.filter(r=>tsOf(r).length);
+        if(opts.length>=2&&!tVals(head[0]).length&&!TL_HEAD.test(head[0])&&!NOT_TL.test(head[0])&&opts.every(r=>!tVals(r[0]).length))
+          out.push({title:head[0],head,rows:opts.map(r=>({cells:r,ts:tsOf(r)})),notes:body.filter(r=>!tsOf(r).length).map(r=>r.filter(c=>c&&!/^[—–-]$/.test(c)).join(': ')),tcols:head.filter((h,i)=>i>0&&opts.some(r=>tVals(r[i]||'').length))});
+      } }
+    blk=[]; };
+  L.forEach(l=>{ if(/^\s*\|/.test(l)){blk.push(l); return;} flush(); if(l.trim()) ctx=[ctx,l].join(' ').slice(-400); });
+  flush(); return out;
+}
+const CH_KEY=(d,ti)=>'choice:'+d.slug+':'+ti;
+function getChoice(d,ti){ try{const c=JSON.parse(localStorage.getItem(CH_KEY(d,ti))||'null'); const t=choiceTables(d)[ti];
+  if(c&&t&&t.rows[c.r]&&t.rows[c.r].cells[0]===c.label&&Date.now()-c.at<14*86400000) return {...c,ts:t.rows[c.r].ts};}catch(e){} return null; }
+function setChoice(slug,ti,ri){ const d=IDX.dishBySlug[slug], t=d&&choiceTables(d)[ti]; if(!t||!t.rows[ri]) return; const cur=getChoice(d,ti);
+  try{ if(cur&&cur.r===ri) localStorage.removeItem(CH_KEY(d,ti)); else localStorage.setItem(CH_KEY(d,ti),JSON.stringify({r:ri,label:t.rows[ri].cells[0],at:Date.now()})); }catch(e){}
+  toast(cur&&cur.r===ri?'Choice cleared':'Set: '+t.rows[ri].cells[0]); if(parse().view==='cook') renderSoft(true); else softRender(); }
+function mealChoiceTs(m){ const S=new Set(); (m.dishes||[]).forEach(x=>choiceTables(x.dish).forEach((t,ti)=>{const c=getChoice(x.dish,ti); if(c) c.ts.forEach(v=>S.add(v));})); return S; }
+function choiceCard(d,ti,t,ctx){ // ctx.t0 set when the dish is on the plan: times show as clock times too
+  const c=getChoice(d,ti), sel=c?t.rows[c.r]:null, t0=ctx&&ctx.t0;
+  const sc=sel?t.head.findIndex((h,i)=>i>0&&/start/i.test(h)&&tVals(sel.cells[i]).length):-1;
+  return `<div class="choice"><div class="chh"><span class="eyebrow acc">${esc(t.title)}</span><span class="small dim">sets ${esc(t.tcols.join(' and ').toLowerCase())}</span></div>
+    <div class="chrows" role="group" aria-label="${esc(t.title)}" style="--n:${t.head.length}">
+      <div class="chr hd" aria-hidden="true">${t.head.map(h=>`<span>${esc(h)}</span>`).join('')}</div>
+      ${t.rows.map((r,ri)=>{const on=!!(c&&c.r===ri); return `<button class="chr ${on?'on':''}" aria-pressed="${on}" onclick="setChoice('${d.slug}',${ti},${ri})">${r.cells.map((x,ci)=>`<span>${esc(x)}${ci>0&&t0&&/^T\s?[-−–]/.test(x.trim())&&tVals(x).length===1?`<small>${esc(hm(t0-tVals(x)[0]*60000))}</small>`:''}</span>`).join('')}</button>`;}).join('')}
+    </div>${t.notes.map(n=>`<p class="chn">${esc(n)}</p>`).join('')}
+    ${sel?`<p class="chsel">Chosen: <b>${esc(c.label)}</b>${sc>0?` · ${esc(t.head[sc].toLowerCase())} ${esc(sel.cells[sc])}${t0?' = '+esc(hm(t0-tVals(sel.cells[sc])[0]*60000)):''}`:''}. Cook mode times follow it; tap it again to clear.</p>`:'<p class="chn">Pick a row and cook mode moves those steps to match.</p>'}</div>`;
+}
+// ---------------------------------------------------------------- heat and stations: the workflow's "Resource | window" table as lanes
+function estE(m,t0){const x=String(m.workflow_md||'').match(/\bE\b\**\)?\s*[,(]?\s*(?:about|≈|~)\s*T\s?[-−–]\s?(\d+)\s*(?:to|–|-)\s*T\s?[-−–]\s?(\d+)/); return x?t0-((+x[1]+ +x[2])/2)*60000:null;}
+function laneBars(win,nominal){
+  const out=[];
+  String(win||'').split(/;\s*/).forEach(seg=>{
+    const s=seg.replace(/[−–]/g,'-'), ts=tVals(seg), toEnd=/\bto (?:about )?(?:plating|service|serve|the table)\b|through service|\bonwards?\b/i.test(s);
+    const lab=seg.replace(/\([^()]*\)/g,' ').replace(/\bE\s*(?:\+\s*[\d.]+)?\s*(?:to|-|–)\s*E\s*\+\s*[\d.]+/g,' ').replace(/,?\s*(?:from\s+)?(?:about\s+)?T\s?[-−–]\s?\d+(?::\d{2})?(?:\s*(?:to|-|–)\s*(?:about\s+)?T\s?[-−–]\s?\d+)?/gi,' ').replace(/\b(?:to|from)\s+(?:about\s+)?(?:plating|service|serve|grill start|E|P)\b.*$/i,'').replace(/\s+/g,' ').replace(/[,\s]+$/,'').trim();
+    const e=s.match(/\bE\s*(?:\+\s*([\d.]+))?\s*(?:to|-)\s*E\s*\+\s*([\d.]+)/);
+    if(e){out.push({anchor:'E',a:+(e[1]||0),b:+e[2],label:lab}); return;}
+    if(ts.length>=2&&!toEnd){out.push({s:Math.max(ts[0],ts[1]),e:Math.min(ts[0],ts[1]),label:lab}); return;}
+    if(ts.length&&(toEnd||/\bfrom\b/i.test(s))){out.push({s:Math.max(...ts),e:0,label:lab}); return;}
+    const cl=s.match(/(\d{1,2}):(\d{2})\s*(am|pm)?\s*-\s*(\d{1,2}):(\d{2})\s*(am|pm)?/i);
+    if(cl){const a=nominal-clockMin(cl[1],cl[2],cl[3]||cl[6]), b=nominal-clockMin(cl[4],cl[5],cl[6]||cl[3]); if(a>b&&a-b<600&&b>=0) out.push({s:a,e:b,label:lab}); return;}
+    const fr=s.match(/\bfrom (?:about )?(\d{1,2}):(\d{2})\s*(am|pm)?/i);
+    if(fr){const a=nominal-clockMin(fr[1],fr[2],fr[3]); if(a>0&&a<600) out.push({s:a,e:0,label:lab});}
+  });
+  return out;
+}
+function parseLanes(mdText,nominal){
+  const sec=mdSection(mdText,/^(heat|resource|station|burner)/i); if(!sec) return [];
+  let rows=[...sec.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)].map(tr=>[...tr[1].matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)].map(c=>cellText(c[1])));
+  if(!rows.length) rows=sec.split('\n').filter(l=>/^\s*\|/.test(l)).map(l=>l.trim().replace(/^\|/,'').replace(/\|\s*$/,'').split('|').map(cellText)).filter(r=>!r.every(c=>/^:?-+:?$/.test(c)));
+  if(rows.length<3||rows.some(r=>r.length!==2)) return []; // "Resource | window" tables only; a phase × resource grid is left as written
+  const lanes=rows.slice(1).map(([name,win])=>({name:cap1(name.replace(/\([^()]*\)/g,'').replace(/^outdoor\s+/i,'').replace(/\s+rice cooker$/i,'').trim()),bars:laneBars(win,nominal)})).filter(l=>l.bars.length);
+  return lanes.length>=2?lanes:[];
+}
+function lanesHtml(L,t0,now,live,eAt,eKnown){
+  const clk=b=>b.anchor?(eAt!=null?{s:eAt+b.a*60000,e:eAt+b.b*60000,est:!eKnown}:null):{s:t0-b.s*60000,e:t0-b.e*60000};
+  const all=L.flatMap(l=>l.bars.map(clk).filter(Boolean)); if(!all.length) return '';
+  const H=1800000, a=Math.floor(Math.min(...all.map(x=>x.s))/H)*H, z=Math.ceil(Math.max(t0+5*60000,...all.map(x=>x.e))/(H/2))*(H/2), W=Math.max(z-a,1);
+  const pc=t=>Math.max(0,Math.min(100,(t-a)/W*100)), step=W>4*3600000?3600000:H, ticks=[];
+  for(let t=Math.ceil(a/step)*step;t<=z;t+=step) ticks.push(t);
+  const lab=x=>String(x||'').split(',')[0].replace(/\s+only$/i,'').split(/\s+(?:in|on|with|for|into)\s+/i)[0].trim();
+  const rows=L.map(l=>`<div class="lt">${l.bars.map(b=>{const x=clk(b); if(!x) return ''; const w=pc(x.e)-pc(x.s), on=live&&now>=x.s&&now<x.e, t=lab(b.label);
+    return `<span class="lb ${on?'on':''} ${x.est?'est':''}" style="left:${pc(x.s).toFixed(2)}%;width:${Math.max(w,0.8).toFixed(2)}%">${w>=14?esc(t):''}</span>`;}).join('')}</div>`).join('');
+  const summ=L.map(l=>l.name+': '+l.bars.map(b=>{const x=clk(b); return x?lab(b.label)+' '+hm(x.s)+' to '+hm(x.e):'';}).filter(Boolean).join(', ')).join('; ');
+  return `<div class="lanes" role="img" aria-label="${esc(summ)}"><div class="lnames" aria-hidden="true">${L.map(l=>`<div>${esc(l.name)}</div>`).join('')}</div>
+    <div class="ltracks" aria-hidden="true">${rows}<i class="lsvc" style="left:${pc(t0).toFixed(2)}%"></i>${live&&now>=a&&now<=z?`<i class="lnow" style="left:${pc(now).toFixed(2)}%"></i>`:''}<div class="lax">${ticks.map(t=>`<span style="left:${pc(t).toFixed(2)}%">${esc(hm(t))}</span>`).join('')}</div></div></div>
+    <p class="lleg">Dashed line: service.${all.some(x=>x.est)?' Outlined bars hang on E and sit at its estimate until you mark E.':''}</p>`;
+}
+// ---------------------------------------------------------------- the Now card: fallbacks pulled out, timers from the step's own durations
+const COND=/^(?:if\b|not\b|icy\b|room above|kitchen (?:reads )?above|above \d|below \d|past\b|otherwise\b|too\b|still\b|unless\b|missed\b)/i;
+function splitIfs(t){ // "Not glowing through yet → …", "Icy: …", "(room above 32°C …: …)" become fallbacks under the step
+  const ifs=[]; let s=String(t||'');
+  s=s.replace(/\s*\(([^()]{8,})\)/g,(m0,inner)=>COND.test(inner.trim())&&(/[:→]/.test(inner)||/^if\b/i.test(inner.trim()))?(ifs.push(cap1(inner.trim())),''):m0); // "(not boiling)" stays; "(room above 32°C: …)" moves
+  const segs=[]; let last=0; s.replace(/[.!?]\s+(?=[A-Z])/g,(m0,off)=>{segs.push(s.slice(last,off+1)); last=off+m0.length; return m0;}); segs.push(s.slice(last));
+  const keep=[]; segs.forEach(x=>{const y=x.trim(); if(y) (COND.test(y)?ifs:keep).push(y);});
+  return keep.length?{main:keep.join(' '),ifs}:{main:String(t||''),ifs:[]};
+}
+function stepDurs(t){ // "(10 min)", "45–60 s", "8–10 min" → at most two timers, none over 3 h; "P+60 min" is a ceiling, not a timer
+  const out=[], s=String(t||'').replace(/[−–]/g,'-');
+  for(const x of s.matchAll(/(\d+(?:\.\d+)?)(?:\s*-\s*(\d+(?:\.\d+)?))?\s*(minutes|minute|mins|min|seconds|secs|sec|s|hours|hrs|hr|h)\b/gi)){
+    if(/[\w+.:]/.test(s[x.index-1]||' ')) continue;
+    const u=x[3].toLowerCase(), f=/^h/.test(u)?3600000:/^m/.test(u)?60000:1000, lo=+x[1]*f, hi=(x[2]!=null?+x[2]:+x[1])*f;
+    if(hi>3*3600000||hi<10000||lo>hi) continue;
+    if(!out.some(o=>o.lo===lo&&o.hi===hi)) out.push({lo,hi,txt:x[0].replace(/\s+/g,' ').replace(/-/g,'–')});
+  }
+  return out.slice(0,2);
+}
+function stepTag(t){const s=String(t||'').replace(/\*\*/g,'').trim(), m=s.match(/^(.{3,26}?)\s*[:—–]\s/); if(m&&!/\d$/.test(m[1])) return m[1].trim(); return s.split(/\s+/).slice(0,3).join(' ').replace(/[,.;:]$/,'');}
+let AC=null;
+function audioOn(){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)(); if(AC.state==='suspended') AC.resume();}catch(e){}}
+function beep(n){try{if(AC){const t=AC.currentTime; for(let i=0;i<n;i++){const o=AC.createOscillator(), g=AC.createGain(), s0=t+i*0.4; o.frequency.value=880; g.gain.setValueAtTime(0.0001,s0); g.gain.exponentialRampToValueAtTime(0.35,s0+0.02); g.gain.exponentialRampToValueAtTime(0.0001,s0+0.3); o.connect(g); g.connect(AC.destination); o.start(s0); o.stop(s0+0.32);}}}catch(e){} try{navigator.vibrate&&navigator.vibrate(n>1?[250,120,250,120,250]:[200]);}catch(e){}}
+function ckTimer(j){const c=window._ck; if(!c||!c.cur) return; const d=stepDurs(c.cur.text)[j]; if(!d) return; audioOn(); const now=Date.now();
+  c.st.timers=(c.st.timers||[]).filter(t=>now-t.start<t.hi+15*60000); c.st.timers.push({id:now,label:stepTag(c.cur.text),txt:d.txt,lo:d.lo,hi:d.hi,start:now});
+  saveCook(); toast('Timer started · '+d.txt); renderSoft(true);}
+function ckTimerX(id){const c=window._ck; if(!c) return; c.st.timers=(c.st.timers||[]).filter(t=>t.id!==id); saveCook(); renderSoft(true);}
+function timerText(t,now){const el=now-t.start; if(el>=t.hi) return '+'+mmss(el-t.hi)+' over'; if(t.lo<t.hi&&el>=t.lo) return mmss(t.hi-el)+' left · in band'; return mmss((t.lo<t.hi?t.lo:t.hi)-el)+(t.lo<t.hi?' to the band':' left');}
+function runningHtml(st,now){
+  const tms=(st.timers||[]).filter(t=>now-t.start<t.hi+15*60000), anc=Object.entries(st.anchors||{}).filter(([,at])=>now-at<6*3600000);
+  if(!tms.length&&!anc.length) return '';
+  return `<div class="running"><div class="eyebrow">Running</div><div class="rchips">${anc.map(([a,at])=>`<div class="rchip"><b>Since ${esc(a)} · ${esc(hm(at))}</b><span data-since="${at}">${mmss(now-at)}</span></div>`).join('')}${tms.map(t=>{const el=now-t.start; return `<div class="rchip t ${el>=t.hi?'over':t.lo<t.hi&&el>=t.lo?'band':''}" data-tstart="${t.start}" data-tlo="${t.lo}" data-thi="${t.hi}"><b>${esc(t.label)} · ${esc(t.txt)}</b><span class="tv">${esc(timerText(t,now))}</span><button onclick="ckTimerX(${t.id})" aria-label="Stop the ${esc(t.label)} timer">×</button></div>`;}).join('')}</div></div>`;
+}
+// ---------------------------------------------------------------- readings at the stove: each open check goes to the step that names it
+const RD_KEY=m=>'read:meal/'+m.slug;
+function getReads(m){try{const r=JSON.parse(localStorage.getItem(RD_KEY(m))||'null'); if(r&&r.r&&Date.now()-r.at<4*86400000) return r;}catch(e){} return {at:Date.now(),r:{}};}
+const STOPW=new Set(['with','from','after','before','into','over','under','then','than','that','this','start','time','times','value','designed','planned','about','each','only','used','your']);
+const vKeys=s=>[...new Set(String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').split(/[^a-z]+/).filter(w=>w.length>=4&&!STOPW.has(w)))];
+const kHit=(a,b)=>{const n=Math.min(a.length,b.length,6); return n>=4&&a.slice(0,n)===b.slice(0,n);};
+function vToks(s){ s=String(s||'').replace(/[−–—]/g,'-'); const out=new Set();
+  for(const x of s.matchAll(/(\d+(?:\.\d+)?(?:\s*-\s*\d+(?:\.\d+)?)?)\s*(°F|°C|min\b|s\b|g\b|ml\b|cm\b|%)/gi)) out.add(x[1].replace(/\s/g,'')+x[2].toLowerCase().replace('°',''));
+  for(const x of s.matchAll(/\bT\s?-\s?(\d+)/g)) out.add('t'+x[1]);
+  return out; }
+function stepVals(m,steps){
+  const vals=(m.dishes||[]).flatMap(x=>(x.dish.open||[]).map(v=>({...v,dish:x.dish,k:x.dish.slug+'|'+v.param})));
+  const S=steps.filter(x=>!x.before).map(x=>({x,toks:vToks(x.text+' '+(x.alts?x.alts.map(a=>'T-'+a).join(' '):x.kind==='T'?'T-'+x.tm:'')),keys:vKeys(x.text)}));
+  const by=new Map(), rest=[];
+  vals.forEach(v=>{ const vt=[...vToks(v.designed_value)], vk=vKeys(v.param+' '+String(v.designed_value||'').replace(/[\d.]+/g,' ')), dk=vKeys(menuName(v.dish.name));
+    let best=null, bs=0;
+    S.forEach(s=>{ let ns=0, nt=0; vt.forEach(t=>{ if(s.toks.has(t)){ if(/^t\d|\d[fc]$/.test(t)) ns++; else nt++; } });
+      const pk=vk.filter(k=>s.keys.some(w=>kHit(k,w))).length, dm=dk.some(k=>s.keys.some(w=>kHit(k,w)))?1:0, sc=2*ns+nt+pk+(ns+nt+pk?dm:0);
+      if((ns||pk||nt>=2||(nt&&dm))&&sc>bs){bs=sc; best=s.x;} });
+    if(best&&bs>=2){ if(!by.has(best.id)) by.set(best.id,[]); by.get(best.id).push(v); } else rest.push(v); });
+  return {by,rest,vals};
+}
+function rdField(v,R){const c=window._ck, i=c.vals.push(v)-1, s=R[v.k];
+  return `<div class="rdf"><label for="rd-${i}"><span class="k">${esc(v.param)}</span>${v.designed_value?`<span class="dv">designed ${esc(v.designed_value)}</span>`:''}</label>
+    <div class="rrow"><input id="rd-${i}" class="search" value="${esc(s?s.v:'')}" placeholder="Reading" autocomplete="off" enterkeyhint="done" onkeydown="if(event.key==='Enter'){event.preventDefault();saveReadI(${i})}"><button class="btn sm ${s?'ghost':''}" onclick="saveReadI(${i})">${s?'Update':'Save'}</button></div>
+    ${s?`<div class="sv">Saved ${esc(hm(s.at))} · goes into the cook log</div>`:''}</div>`;}
+function saveReadI(i){const c=window._ck; if(!c) return; const v=c.vals[i], el=document.getElementById('rd-'+i); if(!v||!el) return;
+  const R=getReads(c.m), val=el.value.trim(); if(val) R.r[v.k]={v:val,at:Date.now()}; else delete R.r[v.k]; R.at=Date.now();
+  try{localStorage.setItem(RD_KEY(c.m),JSON.stringify(R));}catch(e){} toast(val?'Reading saved':'Reading cleared'); el.blur(); renderSoft(true);}
+function suggestVerdict(designed,obs){ // a reading inside the one designed band of its unit → confirmed, outside → diverged; anything ambiguous → no suggestion
+  const R=[...String(designed||'').replace(/[−–]/g,'-').matchAll(/(\+?)(\d+(?:\.\d+)?)\s*-\s*(\d+(?:\.\d+)?)\s*(°F|°C|min\b|s\b|g\b|ml\b|cm\b|%)/g)].map(x=>({plus:!!x[1],lo:+x[2],hi:+x[3],u:x[4]}));
+  const o=String(obs||'').replace(/[−–]/g,'-').match(/(\+?)(\d+(?:\.\d+)?)\s*(°F|°C|F\b|C\b|min\b|s\b|g\b|ml\b|cm\b|%)?/); if(!o||!R.length) return '';
+  const u=o[3]?o[3].replace(/^([FC])$/,'°$1'):R[0].u, same=R.filter(r=>r.u===u&&r.plus===!!o[1]); if(same.length!==1) return '';
+  const v=+o[2]; return v>=same[0].lo&&v<=same[0].hi?'confirmed':'diverged';
+}
+function preMeas(m){ // marked anchors and chosen table rows become measurement rows on the cook log
+  const out=[]; let st={}; try{st=JSON.parse(localStorage.getItem('cook:'+m.slug)||'{}')||{};}catch(e){}
+  Object.entries(st.anchors||{}).filter(([,at])=>Date.now()-at<2*86400000).forEach(([a,at])=>out.push({g:a+' marked',o:hm(at)}));
+  (m.dishes||[]).forEach(x=>choiceTables(x.dish).forEach((t,ti)=>{const c=getChoice(x.dish,ti); if(c) out.push({g:menuName(x.dish.name)+' · '+t.title.toLowerCase(),o:c.label+' (row chosen)'});}));
+  return out;
+}
+// ---------------------------------------------------------------- open checks: the home card and "retire these"
+function checksCard(pl){const vs=pl.m.dishes.flatMap(x=>x.dish.open||[]); if(!vs.length) return '';
+  const names=vs.slice(0,3).map(v=>v.param.toLowerCase()).join(', ');
+  return `<a class="ckcard" href="#/validations"><span class="t">${vs.length} check${vs.length>1?'s':''} close on this cook</span><span class="d">${esc(cap1(names))}${vs.length>3?` and ${vs.length-3} more`:''}. Cook mode asks for each reading as you reach it.</span><span class="ar" aria-hidden="true">›</span></a>`;}
+function copyRetire(slug){const d=IDX.dishBySlug[slug]; if(!d) return;
+  const text=[`RETIRE OPEN CHECKS — ${d.name}`,`dish_slug: ${d.slug}`,`latest verdict: no repeat${d.r.last_made?' (cooked '+d.r.last_made+')':''}`,`open checks (${d.open.length}): ${d.open.map(p=>p.param).join('; ')}`,'— This dish will not be cooked again as designed. Clear these from designed_unvalidated with kitchen_save_dish. Show me the change first.'].join('\n');
+  if(navigator.share){navigator.share({title:'Retire open checks',text}).catch(()=>{});} else if(navigator.clipboard){navigator.clipboard.writeText(text).then(()=>toast('Copied — paste it to Claude'),()=>toast('Could not copy'));}}
+// ---------------------------------------------------------------- dish page: more menu, method open/close
+function dishMore(slug){const d=IDX.dishBySlug[slug]; if(!d) return;
+  openSheet(`<div class="grab"></div><div class="hd"><span>${esc(menuName(d.name))}</span><button onclick="closeSheet()">Done</button></div><div class="bd"><div class="sheetlinks">${printBtn('dish',d,'btn ghost block','Print sheet')}<a class="btn ghost block" href="#/postcook/dish/${d.slug}">Log a cook</a>${d.meals.slice(0,2).map(m=>`<a class="btn ghost block" href="#/meal/${m.slug}">Open ${esc(splitName(m.name)[0])}</a>`).join('')}</div></div>`);}
+const mOpen=()=>{try{return localStorage.getItem('kitchen:methodOpen')==='1';}catch(e){return false;}};
+function methodAll(b){const ds=[...document.querySelectorAll('details.phase.fold')]; const open=!ds.every(x=>x.open); ds.forEach(x=>x.open=open); b.textContent=open?'Close all':'Open all'; try{localStorage.setItem('kitchen:methodOpen',open?'1':'0');}catch(e){}}
+
 // ---------------------------------------------------------------- cook mode: state on this phone
 function stepId(x){return (x.kind==='A'?x.anchor+x.off:x.kind==='seq'?'s':x.tm==null?'pre':x.tm)+':'+x.text.slice(0,40).replace(/[^a-z0-9]+/gi,'-');}
 function cookState(m){ // service time (t0), ticks, anchor moments (E…), focus — per meal, on this phone
@@ -1506,12 +1757,14 @@ function cookState(m){ // service time (t0), ticks, anchor moments (E…), focus
 }
 const saveCook=()=>{const c=window._ck; if(c) try{localStorage.setItem(c.key,JSON.stringify(c.st));}catch(e){}};
 function cookModel(m,st){
-  const P=parseTimeline(m.workflow_md,nominalService(m)), t0=st.t0, est={};
+  const P=parseTimeline(m.workflow_md,nominalService(m)), t0=st.t0, est={}, S=mealChoiceTs(m);
+  P.steps.forEach(x=>{ x.id=stepId(x); if(x.alts){const v=x.alts.find(a=>S.has(a)); if(v!=null){x.tm=v; x.chosen=true; x.label='T−'+v;}} }); // ids stay put when a choice moves a step
   P.steps.forEach(x=>{ if(x.defines&&x.kind==='T') est[x.defines]=t0-x.tm*60000; });
-  P.steps.forEach(x=>{ x.id=stepId(x);
+  P.steps.forEach(x=>{
     if(x.kind==='T'){x.at=t0-x.tm*60000;}
     else if(x.kind==='A'){const a=st.anchors[x.anchor]; x.at=a!=null?a+x.off*60000:null; x.est=a==null&&est[x.anchor]!=null?est[x.anchor]+x.off*60000:null;}
     else x.at=null; });
+  if(S.size){const rank=x=>x.before?0:x.kind==='T'?1:x.kind==='A'?2:3, ix=new Map(P.steps.map((x,i)=>[x,i])); P.steps.sort((a,b)=>rank(a)-rank(b)||(rank(a)===1?b.tm-a.tm:0)||ix.get(a)-ix.get(b));}
   return P;
 }
 const hm=t=>new Date(t).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
@@ -1540,16 +1793,18 @@ routes.cook=(slug)=>{
   const cur=(st.focus&&day.find(x=>x.id===st.focus&&!ticked(x)))||day.find(x=>!ticked(x));
   const preCur=pre.find(x=>!ticked(x));
   const next=cur?day.slice(day.indexOf(cur)+1).find(x=>!ticked(x)):null;
-  window._ck={key,st,m,cur,ids:P.steps.map(x=>x.id)};
+  const VM=stepVals(m,P.steps), RD=getReads(m).r;
+  window._ck={key,st,m,cur,ids:P.steps.map(x=>x.id),vals:[]};
   const [nm]=splitName(m.name); const svcDay=isoDay(new Date(t0));
   const bar=`<div class="ckbar"><button class="x" onclick="goBack('#/meal/${m.slug}')" aria-label="Exit cook mode">✕ Exit</button><span class="t">${esc(nm)}</span>${'wakeLock' in navigator?`<button class="awake" onclick="toggleAwake()" aria-label="Keep the screen awake"><i></i>Awake</button>`:'<span></span>'}</div>`;
-  const tLabel=x=>x.kind==='T'?(x.tm>=0?'T−'+x.tm:'T+'+(-x.tm)):x.kind==='A'?x.label:x.kind==='seq'?'':x.label||''; // T-minus moves with the service time
+  const tLabel=x=>x.kind==='T'?(x.alts&&!x.chosen?'T−'+x.alts.join('/'):x.tm>=0?'T−'+x.tm:'T+'+(-x.tm)):x.kind==='A'?x.label:x.kind==='seq'?'':x.label||''; // T-minus moves with the service time
   const timeOf=x=>x.kind==='T'?hm(x.at):x.kind==='A'?(x.at!=null?hm(x.at):x.label):x.kind==='seq'?String(P.steps.filter(s=>s.kind==='seq').indexOf(x)+1).padStart(2,'0'):'—';
   const subOf=x=>x.kind==='T'?(x.before?new Date(x.at).toLocaleDateString('en-GB',{weekday:'short'}):tLabel(x)):x.kind==='A'?(x.at!=null?x.label:x.est!=null?'≈ '+hm(x.est):''):x.kind==='pre'?esc(x.label):'';
   const isLate=x=>live&&!after&&!x.before&&x.at!=null&&!ticked(x)&&x!==cur&&x.at<now-2*60000;
-  const row=(x,isCur)=>`<button class="ckrow ${ticked(x)?'done':''} ${isCur?'cur':''} ${isLate(x)?'late':''}" onclick="ckTap('${x.id}')"><span class="bx" aria-hidden="true">${ticked(x)?'✓':''}</span><span class="tm">${esc(timeOf(x))}<small>${subOf(x)}</small></span><span class="tx">${esc(x.text)}</span></button>`;
+  const rq=x=>{const vs=VM.by.get(x.id); if(!vs) return ''; const n=vs.filter(v=>RD[v.k]).length; return ` <span class="rq">· ${vs.length} reading${vs.length>1?'s':''}${n?` · ${n} saved`:''}</span>`;};
+  const row=(x,isCur)=>`<button class="ckrow ${ticked(x)?'done':''} ${isCur?'cur':''} ${isLate(x)?'late':''}" onclick="ckTap('${x.id}')"><span class="bx" aria-hidden="true">${ticked(x)?'✓':''}</span><span class="tm">${esc(timeOf(x))}<small>${subOf(x)}</small></span><span class="tx">${esc(x.text)}${rq(x)}</span></button>`;
   const segs=day.length>1?`<div class="segs" aria-hidden="true">${day.map(x=>`<i class="${ticked(x)?'d':x===cur?'c':''}"></i>`).join('')}</div>`:'';
-  const hasFloat=day.some(x=>x.kind==='A'), anchorsUsed=[...new Set(day.filter(x=>x.kind==='A').map(x=>x.anchor))];
+  const anchorsUsed=[...new Set(day.filter(x=>x.kind==='A').map(x=>x.anchor))];
   // readouts and the hero
   let top='';
   if(!P.steps.length){
@@ -1561,19 +1816,27 @@ routes.cook=(slug)=>{
       <div class="cknote">${pre.length&&svcDay===isoDay(new Date(now+86400000))?'Cooking day is tomorrow — today is for the day-before steps. ':`Cooking day is ${esc(dayLong(svcDay))}. `}Times below are the plan; nothing counts down or goes late until then.</div>`;
   } else {
     const tmin=Math.round((t0-now)/60000);
-    top=`<div class="readouts"><div><div class="k">Now</div><div class="v" data-now="hms">${esc(new Date().toLocaleTimeString('en-GB'))}</div></div><button onclick="ckWhen()" aria-label="Change service time"><div class="k">Service ▾</div><div class="v">${esc(hm(t0))}</div></button><div><div class="k">${tmin>=0?'T-min':'Since'}</div><div class="v acc" data-tmin="${t0}">${Math.abs(tmin)}</div></div></div>${segs}`;
+    top=`<div class="readouts"><div><div class="k">Now</div><div class="v" data-now="hms">${esc(new Date().toLocaleTimeString('en-GB'))}</div></div><button onclick="ckWhen()" aria-label="Change service time"><div class="k">Service ▾</div><div class="v">${esc(hm(t0))}</div></button><div><div class="k">${tmin>=0?'T-min':'Since'}</div><div class="v acc" data-tmin="${t0}">${Math.abs(tmin)}</div></div></div>${segs}${runningHtml(st,now)}`;
     if(after) top+=`<div class="cknote">Service was at ${esc(hm(t0))}. Log the cook while it’s fresh.<br><a class="btn" href="#/postcook/meal/${m.slug}">Log the cook</a></div>`;
     else if(!cur&&day.length) top+=`<div class="cknote">Every step is done. Enjoy it — then log the cook.<br><a class="btn" href="#/postcook/meal/${m.slug}">Log the cook</a></div>`;
     else if(cur){
-      const [ttl,det]=stepTitle(cur.text); const idx=day.indexOf(cur)+1; const late=cur.at!=null&&cur.at<now-2*60000;
-      const marks=cur.defines&&st.anchors[cur.defines]==null;
-      top+=`<div class="bigstep"><div class="meta"><span>Step ${String(idx).padStart(2,'0')}/${String(day.length).padStart(2,'0')}</span><span>${esc(tLabel(cur))}</span></div>
+      const sp=splitIfs(cur.text), [ttl,det]=stepTitle(sp.main); const idx=day.indexOf(cur)+1; const late=cur.at!=null&&cur.at<now-2*60000;
+      const marks=cur.defines&&st.anchors[cur.defines]==null, durs=stepDurs(cur.text), vs=VM.by.get(cur.id)||[];
+      top+=`<div class="bigstep"><div class="meta"><span>Now · step ${String(idx).padStart(2,'0')}/${String(day.length).padStart(2,'0')}</span><span>${esc(tLabel(cur))}</span></div>
         <div class="clk ${late?'late':''}">${esc(timeOf(cur))}</div><div class="ttl">${esc(ttl)}</div>${det?`<div class="det">${esc(det)}</div>`:''}
+        ${sp.ifs.length?`<div class="ifbox"><span class="k">Fallback</span>${sp.ifs.map(t=>`<p>${esc(t)}</p>`).join('')}</div>`:''}
         ${cur.kind==='A'&&cur.at==null?`<div class="det">Floats on ${esc(cur.anchor)} — ${cur.est!=null?'expected around '+esc(hm(cur.est))+'. ':''}Tap “Mark ${esc(cur.anchor)} now” when it happens.</div>`:''}
+        ${vs.length?`<div class="rdg">${vs.map(v=>rdField(v,RD)).join('')}</div>`:''}
+        ${durs.length?`<div class="tbtns">${durs.map((d,j)=>`<button class="btn ghost" onclick="ckTimer(${j})">Timer · ${esc(d.txt)}</button>`).join('')}</div>`:''}
         <button class="donebtn" onclick="ckDone()">${marks?`Done — mark ${esc(cur.defines)} now`:next?'Done — next step':'Done — finish'}</button></div>
-        ${next?`<div class="nextcard"><div><div class="k">Next${next.at!=null?' · '+esc(hm(next.at)):''} · ${esc(tLabel(next))}</div><div class="tx">${esc(stepTitle(next.text)[0])}</div></div>${next.at!=null&&next.at>now?`<div class="in">In<b data-in="${next.at}">${esc(mmss(next.at-now))}</b></div>`:''}</div>`:''}`;
+        ${next?`<div class="nextcard"><div><div class="k">Next${next.at!=null?' · '+esc(hm(next.at)):''} · ${esc(tLabel(next))}</div><div class="tx">${esc(stepTitle(splitIfs(next.text).main)[0])}</div></div>${next.at!=null&&next.at>now?`<div class="in">In<b data-in="${next.at}">${esc(mmss(next.at-now))}</b></div>`:''}</div>`:''}`;
     }
   }
+  // decisions that move steps, and the stations
+  const CT=m.dishes.flatMap(x=>choiceTables(x.dish).map((t,ti)=>({d:x.dish,t,ti})));
+  const decide=CT.length?`<div class="ckgrp"><div class="gh"><h3>Decide</h3><span>${CT.filter(o=>getChoice(o.d,o.ti)).length} of ${CT.length} set</span></div>${CT.map(o=>{const c=getChoice(o.d,o.ti); return `<details class="ckdet chd" ${c?'':'open'}><summary><span class="title">${esc(o.t.title)}${c?' · '+esc(c.label):''}</span></summary>${choiceCard(o.d,o.ti,o.t,{t0})}</details>`;}).join('')}</div>`:'';
+  const L=parseLanes(m.workflow_md,nominalService(m)), eKnown=st.anchors.E!=null;
+  const lanes=L.length?`<div class="ckgrp"><div class="gh"><h3>Heat and stations</h3><span>Service ${esc(hm(t0))}</span></div>${lanesHtml(L,t0,now,live&&!after,eKnown?st.anchors.E:estE(m,t0),eKnown)}</div>`:'';
   // the lists
   const grp=(title,right,items,curX)=>items.length?`<div class="ckgrp"><div class="gh"><h3>${title}</h3>${right}</div>${items.map(x=>row(x,x===curX)).join('')}</div>`:'';
   const dayT=day.filter(x=>x.kind!=='A'), dayA=day.filter(x=>x.kind==='A');
@@ -1581,15 +1844,16 @@ routes.cook=(slug)=>{
   const preHead=`<span>${esc(dayLong(isoDay(new Date(t0-86400000))))}</span>`;
   const preBlock=live&&pre.length?`<details class="ckdet"><summary><span class="title">Day before · ${pre.filter(ticked).length} of ${pre.length} ticked</span></summary>${pre.map(x=>row(x,false)).join('')}</details>`:''; // on the day, yesterday's steps fold away at the end
   let lists=(live?'':grp('Day before',preHead,pre,ahead?preCur:null))
-    +grp(day.some(x=>x.kind==='seq')?'Steps':live?'Cooking day':'Cooking day',`<span>${esc(dayLong(svcDay))}${live?'':' · planned'}</span>`,dayT,listCur);
+    +grp(day.some(x=>x.kind==='seq')?'Steps':'Cooking day',`<span>${esc(dayLong(svcDay))}${live?'':' · planned'}</span>`,dayT,listCur);
   anchorsUsed.forEach(a=>{const items=dayA.filter(x=>x.anchor===a), at=st.anchors[a];
     lists+=grp(a==='E'?'After the exit (E)':a==='P'?'After the pull (P)':'From '+a, at!=null?`<button onclick="ckMark('${a}',false)">${esc(a)} at ${esc(hm(at))} · reset</button>`:`<button onclick="ckMark('${a}',true)">Mark ${esc(a)} now</button>`,items,listCur);});
+  const restR=live&&VM.rest.length?`<details class="ckdet"><summary><span class="title">Other readings · ${VM.rest.length}</span></summary><p class="small dim" style="margin:8px 0 0">Checks no step names. Save any you take; they go into the cook log.</p><div class="rdg">${VM.rest.map(v=>rdField(v,RD)).join('')}</div></details>`:'';
   // holding chain, the workflow as written, recipes when there is no timeline
   const hold=mdSection(m.workflow_md,/holding/i)||P.other.filter(o=>/hold/i.test(o.section)||/max\s*\d+\s*min|ceiling/i.test(o.text)).map(o=>o.text).join('\n');
   const secs=!P.steps.length?mdSections(m.workflow_md).map(s=>`<div class="cksec">${s.title?`<h3>${esc(s.title)}</h3>`:''}<div class="md">${md(s.body)}</div></div>`).join(''):'';
   const recipes=!P.steps.length&&m.dishes.length?`<div class="ckgrp"><div class="gh"><h3>The recipes</h3></div>${m.dishes.map(x=>`<details class="ckdet"><summary><span class="eyebrow">${esc(x.role)}</span> <span class="title">${esc(splitName(x.dish.name)[0])}</span></summary>${x.dish.method_md?`<div class="md">${md(x.dish.method_md)}</div>`:'<p class="dim small">No recipe body stored for this dish.</p>'}</details>`).join('')}</div>`:'';
   lists+=preBlock;
-  return `${bar}${top}${secs}${lists}${recipes}
+  return `${bar}${top}${decide}${lanes}${secs}${lists}${restR}${recipes}
     ${hold?`<details class="ckdet"><summary><span class="title">Holding chain</span></summary><div class="md">${md(hold)}</div></details>`:''}
     ${m.workflow_md&&P.steps.length?`<details class="ckdet"><summary><span class="title">Full workflow</span></summary><div class="md">${md(m.workflow_md)}</div></details>`:''}
     <div class="ckfoot"><a class="btn ghost" href="#/postcook/meal/${m.slug}">Finish → log the cook</a>${P.steps.length?`<button class="btn ghost" onclick="resetCook()">Reset ticks</button>`:''}</div>`;
@@ -1603,7 +1867,7 @@ function ckDone(){
 }
 function ckTap(id){const c=window._ck; if(!c) return; if(c.st.ticks[id]) delete c.st.ticks[id]; else c.st.focus=id; saveCook(); renderSoft(true);}
 function ckMark(a,on){const c=window._ck; if(!c) return; if(on) c.st.anchors[a]=Date.now(); else delete c.st.anchors[a]; saveCook(); renderSoft(true); if(on) toast(`${a} marked at ${hm(Date.now())}`);}
-function resetCook(){const c=window._ck; if(!c) return; c.st.ticks={}; c.st.anchors={}; c.st.focus=null; saveCook(); renderSoft(true);}
+function resetCook(){const c=window._ck; if(!c) return; c.st.ticks={}; c.st.anchors={}; c.st.focus=null; c.st.timers=[]; saveCook(); renderSoft(true);}
 function ckWhen(){
   const c=window._ck; if(!c) return; const d0=isoDay(new Date(c.st.t0)), t=hm(c.st.t0);
   const opts=[[todayISO(),'Today'],[comingSunday(),comingSunday()===todayISO()?'Today (Sun)':'This Sunday'],[comingSunday(1),'Next Sunday']].filter((o,i,a)=>a.findIndex(z=>z[0]===o[0])===i);
@@ -1622,6 +1886,7 @@ function setCkWhen(date,time){
 }
 function renderSoft(force){ // re-draw cook mode without jumping to the top
   if(parse().view!=='cook') return; const sh=document.getElementById('sheet'); if(!force&&sh&&!sh.hidden) return;
+  const ae=document.activeElement; if(!force&&ae&&ae.matches&&ae.matches('input,textarea,select')) return; // never wipe a reading being typed
   const y=window.scrollY; try{document.getElementById('app').innerHTML=routes.cook(parse().arg);}catch(e){console.error(e);} updAwake(); window.scrollTo(0,y);
 }
 setInterval(()=>{ if(parse().view!=='cook') return; const now=Date.now();
@@ -1629,6 +1894,11 @@ setInterval(()=>{ if(parse().view!=='cook') return; const now=Date.now();
   document.querySelectorAll('[data-now="hm"]').forEach(e=>e.textContent=hm(now));
   document.querySelectorAll('[data-tmin]').forEach(e=>e.textContent=Math.abs(Math.round((+e.dataset.tmin-now)/60000)));
   document.querySelectorAll('[data-in]').forEach(e=>e.textContent=mmss(+e.dataset.in-now));
+  document.querySelectorAll('[data-since]').forEach(e=>e.textContent=mmss(now-(+e.dataset.since)));
+  document.querySelectorAll('.rchip.t').forEach(e=>{const t={start:+e.dataset.tstart,lo:+e.dataset.tlo,hi:+e.dataset.thi}, el=now-t.start; e.classList.toggle('band',t.lo<t.hi&&el>=t.lo&&el<t.hi); e.classList.toggle('over',el>=t.hi); const v=e.querySelector('.tv'); if(v) v.textContent=timerText(t,now);});
+  const c=window._ck; if(c&&c.st&&(c.st.timers||[]).length){ let ch=false;
+    c.st.timers.forEach(t=>{const el=now-t.start; if(t.lo<t.hi&&!t.lf&&el>=t.lo){t.lf=1; ch=true; beep(1); toast(`${t.label}: ${t.txt} — check now`);} if(!t.hf&&el>=t.hi){t.hf=1; ch=true; beep(3); toast(`${t.label}: time is up`);}});
+    if(ch) saveCook(); }
 },1000);
 setInterval(()=>renderSoft(false),60000);
 
@@ -1654,6 +1924,12 @@ routes.postcook=(kind,slug)=>{
   const key='post:'+kind+'/'+slug; let f={}; try{f=JSON.parse(localStorage.getItem(key)||'{}')||{};}catch(e){}
   const dishes=kind==='meal'?owner.dishes.map(x=>x.dish):[owner];
   const open=dishes.flatMap(d=>d.open.map(v=>({...v,dish:d})));
+  if(kind==='meal'){ const RR=getReads(owner).r; let ch=false; // readings saved in cook mode fill the checks; anchors and chosen rows fill measurements
+    open.forEach((v,i)=>{const rr=RR[v.dish.slug+'|'+v.param]; if(!rr) return; if(!hasV(f['v:'+i+':observed'])){f['v:'+i+':observed']=rr.v; f['v:'+i+':at']=hm(rr.at); ch=true;}
+      if(!hasV(f['v:'+i+':verdict'])){const sg=suggestVerdict(v.designed_value,f['v:'+i+':observed']); if(sg){f['v:'+i+':verdict']=sg; f['v:'+i+':sug']='1'; ch=true;}}});
+    const anyM=Object.keys(f).some(k=>/^m:\d+:(gate|obs)$/.test(k)&&hasV(f[k]));
+    if(!anyM){const pm=preMeas(owner); if(pm.length){pm.forEach((x,j)=>{f['m:'+j+':gate']=x.g; f['m:'+j+':obs']=x.o;}); f.measN=Math.max(3,pm.length+1); ch=true;}}
+    if(ch) try{localStorage.setItem(key,JSON.stringify(f));}catch(e){} }
   window._post={key,f,owner,kind,dishes,open};
   const inp=(k,ph,type='text',extra='')=>`<input class="search" type="${type}" placeholder="${ph}" value="${esc(f[k]??'')}" oninput="pf('${esc(k)}',this.value)" ${extra}>`;
   const measN=+(f.measN||3); const [nm,note]=splitName(owner.name);
@@ -1666,7 +1942,12 @@ routes.postcook=(kind,slug)=>{
     <div class="lcf"><label><span class="eyebrow">Deviations · one per line</span><textarea class="search" rows="3" oninput="pf('dev',this.value)" placeholder="Substitutions, timing changes…">${esc(f.dev||'')}</textarea></label></div>
     <div class="lcf grid2"><label><span class="eyebrow">Household split</span>${inp('house','e.g. HF found it too beefy')}</label><label><span class="eyebrow">Wine outcome</span>${inp('wine','bottle · verdict')}</label></div>
     ${kind==='meal'&&dishes.length>1?`<h3 class="section">Dish by dish <span class="dim small" style="font-family:var(--sans)">optional</span></h3><div>${dishes.map(d=>{const k='d:'+d.slug+':'; return `<details class="pdish"><summary><span class="nm">${esc(menuName(d.name))}</span><span class="ms" id="ms-${d.slug}">${hasV(f[k+'rating'])?seal(f[k+'rating'],{size:'sm'}):''}</span></summary><div class="bd">${rateCtl(k+'rating','Flavour',f,true)}${rateCtl(k+'execution','Execution',f,true)}<div class="lcf">${vseg(k+'repeat',VERDICTS3,f,'Verdict for '+esc(menuName(d.name)))}</div><div class="lcf"><label><span class="eyebrow">Note</span>${inp(k+'note','')}</label></div></div></details>`;}).join('')}</div>`:''}
-    ${open.length?`<h3 class="section">Open validations <span class="pill">${open.length}</span></h3><div>${open.map((v,i)=>`<div class="lval"><div class="eyebrow">${esc(menuName(v.dish.name))}</div><div class="p">${esc(v.param)}</div>${v.designed_value?`<div class="dv">designed: ${esc(v.designed_value)}</div>`:''}${vseg('v:'+i+':verdict',VAL3,f,esc(v.param))}${inp('v:'+i+':observed','observed value')}</div>`).join('')}</div>`:''}
+    ${open.length?(()=>{const ans=o=>hasV(f['v:'+o.i+':observed'])||hasV(f['v:'+o.i+':verdict']), O=open.map((v,i)=>({v,i})), A=O.filter(ans), Q=O.filter(o=>!ans(o));
+      const lv=o=>{const i=o.i, v=o.v; return `<div class="lval"><div class="eyebrow">${esc(menuName(v.dish.name))}</div><div class="p">${esc(v.param)}</div>${v.designed_value?`<div class="dv">designed: ${esc(v.designed_value)}</div>`:''}${vseg('v:'+i+':verdict',VAL3,f,esc(v.param))}${f['v:'+i+':sug']?'<span class="sugg">Suggested from the stove reading · check it</span>':''}${inp('v:'+i+':observed','observed value')}${f['v:'+i+':at']?`<div class="at">Saved at the stove, ${esc(f['v:'+i+':at'])}</div>`:''}</div>`;};
+      const byD=dishes.map(d=>({d,items:Q.filter(o=>o.v.dish===d)})).filter(g=>g.items.length);
+      return `<h3 class="section">Checks <span class="pill">${A.length} of ${open.length} answered</span></h3>
+        ${A.length?`<div>${A.map(lv).join('')}</div>`:'<p class="small muted" style="margin:0">Readings you save in cook mode land here with a suggested verdict.</p>'}
+        ${byD.length?`<div class="eyebrow" style="margin-top:20px">Still to answer · ${Q.length}</div>${byD.map(g=>`<details class="lgrp"><summary><span class="nm">${esc(menuName(g.d.name))}</span><span class="ct">${g.items.length}</span></summary>${g.items.map(lv).join('')}</details>`).join('')}`:''}`;})():''}
     <h3 class="section">Measurements</h3>
     <div>${[...Array(measN)].map((_,i)=>`<div class="lmeas">${inp('m:'+i+':gate','gate, e.g. oven exit')}${inp('m:'+i+':obs','reading, e.g. 126°F')}</div>`).join('')}<button class="btn ghost sm" style="margin-top:10px" onclick="pf('measN',${measN+2});softRender()">+ More rows</button></div>
     <h3 class="section">For Claude</h3>
@@ -1686,7 +1967,7 @@ function rVal(k,v){
 }
 function rStep(k,dl){const cur=window._post.f[k]; rVal(k,hasV(cur)?+cur+dl:8);}
 function rSet(k,v){rVal(k,+v);}
-function pick(k,v,el){const p=window._post, nv=p.f[k]===v?'':v; pf(k,nv); el.parentElement.querySelectorAll('button').forEach(b=>{const on=b===el&&nv!==''; b.classList.toggle('on',on); b.setAttribute('aria-pressed',String(on));});}
+function pick(k,v,el){const p=window._post, nv=p.f[k]===v?'':v; if(/:verdict$/.test(k)){delete p.f[k.replace(/:verdict$/,':sug')]; const sg=el.closest('.lval')&&el.closest('.lval').querySelector('.sugg'); if(sg) sg.remove();} pf(k,nv); el.parentElement.querySelectorAll('button').forEach(b=>{const on=b===el&&nv!==''; b.classList.toggle('on',on); b.setAttribute('aria-pressed',String(on));});}
 function composeText(){
   const p=window._post, f=p.f; const L=[];
   L.push(`POST-COOK LOG — ${p.owner.name}`);
@@ -1698,11 +1979,11 @@ function composeText(){
   if(f.house) L.push(`household_split: ${f.house}`); if(f.wine) L.push(`wine_outcome: ${f.wine}`);
   const per=p.dishes.filter(d=>f['d:'+d.slug+':rating']||f['d:'+d.slug+':execution']||f['d:'+d.slug+':repeat']||f['d:'+d.slug+':note']);
   if(per.length){L.push('dish_cooks:'); per.forEach(d=>L.push(`  - ${d.slug}: rating ${f['d:'+d.slug+':rating']||'—'} · execution ${f['d:'+d.slug+':execution']||'—'} · repeat ${f['d:'+d.slug+':repeat']||'—'}${f['d:'+d.slug+':note']?' · '+f['d:'+d.slug+':note']:''}`));}
-  const pc=p.open.map((v,i)=>({v,verdict:f['v:'+i+':verdict'],obs:f['v:'+i+':observed']})).filter(x=>x.verdict||x.obs);
-  if(pc.length){L.push('parameter_confirmations:'); pc.forEach(x=>L.push(`  - [${x.v.dish.slug}] ${x.v.param} → ${x.verdict||'unresolved'}${x.obs?' · observed: '+x.obs:''}`));}
+  const pc=p.open.map((v,i)=>({v,verdict:f['v:'+i+':verdict'],obs:f['v:'+i+':observed'],at:f['v:'+i+':at'],sug:f['v:'+i+':sug']})).filter(x=>x.verdict||x.obs);
+  if(pc.length){L.push('parameter_confirmations:'); pc.forEach(x=>L.push(`  - [${x.v.dish.slug}] ${x.v.param} → ${x.verdict||'unresolved'}${x.sug&&x.verdict?' (suggested)':''}${x.obs?' · observed: '+x.obs+(x.at?' at '+x.at:''):''}`));}
   const ms=[...Array(+(f.measN||3)+10)].map((_,i)=>({g:f['m:'+i+':gate'],o:f['m:'+i+':obs']})).filter(x=>x.g||x.o);
   if(ms.length){L.push('measurements:'); ms.forEach(x=>L.push(`  - ${x.g||'?'}: ${x.o||'?'}`));}
-  L.push('— Write this per recipe_output_data_protocol §5 (cook row; parameter confirmations close validations; measurements to the measurement table). Show me the rows first.');
+  L.push('— Write this per recipe_output_data_protocol §5 (cook row; parameter confirmations close validations; measurements to the measurement table). Verdicts marked (suggested) came from the app: check each against its designed value. Show me the rows first.');
   return L.join('\n');
 }
 function composePost(){
