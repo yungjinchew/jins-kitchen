@@ -1708,7 +1708,7 @@ function stepVals(m,steps){
     let best=null, bs=0;
     S.forEach(s=>{ let ns=0, nt=0; vt.forEach(t=>{ if(s.toks.has(t)){ if(/^t\d|\d[fc]$/.test(t)) ns++; else nt++; } });
       const pk=vk.filter(k=>s.keys.some(w=>kHit(k,w))).length, dm=dk.some(k=>s.keys.some(w=>kHit(k,w)))?1:0, sc=2*ns+nt+pk+(ns+nt+pk?dm:0);
-      if((ns||pk||nt>=2||(nt&&dm))&&sc>bs){bs=sc; best=s.x;} });
+      if((ns||nt>=2||(nt&&(pk||dm))||pk>=3)&&sc>bs){bs=sc; best=s.x;} }); // a number in common, or three words; weaker matches wait under "Other readings"
     if(best&&bs>=2){ if(!by.has(best.id)) by.set(best.id,[]); by.get(best.id).push(v); } else rest.push(v); });
   return {by,rest,vals};
 }
