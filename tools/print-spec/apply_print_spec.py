@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Print spec 1.0 (2026-10-30) for jins-kitchen site/index.html.
+"""Print spec applier for jins-kitchen site/index.html (the version is read from print_region.js).
 
 Re-runnable: replaces the print section (from the "print (cooking sheet" marker to the "shopping" marker) with
 print_region.js and makes three CSS edits in the .sheet block (skipped when already made). Touches nothing else, so it
@@ -13,7 +13,7 @@ import sys, re, io
 path, region_path = sys.argv[1], sys.argv[2]
 src = io.open(path, encoding='utf-8', newline='').read()
 region = io.open(region_path, encoding='utf-8', newline='').read()
-MARK = 'PRINT SPEC 1.0'
+m = re.search(r'PRINT SPEC ([0-9.]+)', region); MARK = 'PRINT SPEC ' + (m.group(1) if m else '?')
 
 START = '// ---------------------------------------------------------------- print (cooking sheet rendered from the database)'
 END = '// ---------------------------------------------------------------- shopping'
