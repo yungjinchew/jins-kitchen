@@ -1,10 +1,10 @@
 // ---------------------------------------------------------------- print (cooking sheet rendered from the database)
-// PRINT SPEC 1.2 (2026-10-30; 1.0 and 1.1 the same day; 1.2 matches print protocol v1.2, whose change is to authoring rules, not to the code). Every printed cooking sheet and dish sheet is built here, so every print follows one method.
+// PRINT SPEC 1.3 (2026-10-31; 1.0–1.2 on 30 Oct). 1.3: stored renders made before print spec 1.0 are an archive, not linked (docCurrent, set at load). Every printed cooking sheet and dish sheet is built here, so every print follows one method.
 // The written spec is the print protocol in jins-cooking-governance (recipe_output_print_protocol.md). Change the two
 // together, then open #/printcheck and confirm the totals and that no flags appear.
 const PF={full:false,shop:false};
 const PRINT={
-  spec:'print spec 1.2',
+  spec:'print spec 1.3',
   // meal workflow: planning and verification sections stay in the database and off the cooking sheet
   wfDrop:/^(?:the\s+)?menu\b|^failure\s+priorit|^heat\b|^oven\s+sequenc|^parallel\b|^(?:final\s+)?plating\s+window|^timeline\s+verification|^arithmetic\s+check|^meal\s+balance|^sourcing\s+notes?|^register\b|^nutrition|^flavou?r\s+architecture|^scaling/i,
   // dish: design-record sections; the overview and yield/timing are lifted into the dish header instead

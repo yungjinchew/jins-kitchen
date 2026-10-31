@@ -553,6 +553,8 @@ body.cookmode .tabs,body.cookmode header.top{display:none}
 const SB_URL = 'https://umqkgxsypcgvzkfjkzpc.supabase.co';
 const SB_KEY = 'sb_publishable_fsZ1rHHpObb4vFDmfqGSkQ_J8c64TUy';
 const DOCS_BASE = ''; // documents are served from this site (site/docs/<owner-slug>/v<n>/<file>); Storage bucket unused
+const DOC_ARCHIVE_BEFORE = '2026-10-30'; // renders made before print spec 1.0 stay in site/docs as an archive and are not listed (print protocol §1)
+const docCurrent=x=>String(x.generated_at||'')>=DOC_ARCHIVE_BEFORE;
 const DEPT_ORDER = ['Protein','Produce','Dairy','Bread','Frozen','Pantry','Oils & Liquids','Alcohol','Seasoning'];
 const ROLE_ORDER = {starter:0,soup:1,main:2,side:3,salad:4,sauce:5,bread:6,dessert:7};
 
@@ -602,7 +604,7 @@ function index(){
   DB.meal.forEach(m=>m.dishes.sort((a,b)=>(a.service_order-b.service_order)||(ROLE_ORDER[a.role]-ROLE_ORDER[b.role])));
   DB.dish_ingredient.forEach(di=>{const d=IDX.dish[di.dish_id]; if(d) d.ings.push(di);});
   DB.cook.forEach(c=>{if(c.dish_id&&IDX.dish[c.dish_id]) IDX.dish[c.dish_id].cooks.push(c); if(c.meal_id&&IDX.meal[c.meal_id]) IDX.meal[c.meal_id].cooks.push(c);});
-  DB.document.forEach(x=>{const o=x.owner_type==='meal'?IDX.meal[x.owner_id]:IDX.dish[x.owner_id]; if(o) o.docs.push(x);});
+  DB.document.filter(docCurrent).forEach(x=>{const o=x.owner_type==='meal'?IDX.meal[x.owner_id]:IDX.dish[x.owner_id]; if(o) o.docs.push(x);});
   DB.dish.forEach(d=>{d.open=[];d.meas=[];}); (DB.validations||[]).forEach(v=>{const d=IDX.dish[v.dish_id]; if(d) d.open.push(v);});
   (DB.measurement||[]).forEach(x=>{const d=IDX.dish[x.dish_id]; if(d) d.meas.push(x);});
   // meal-level last made / rating
@@ -1236,7 +1238,7 @@ const unitlessQ=t=>String(t||'').replace(/(\d)\s(?:piece|pieces)\b/g,'$1');
 // ---------------------------------------------------------------- more
 routes.more=()=>{
   setHeader('More'); tabs('more');
-  const openN=DB.dish.reduce((n,d)=>n+d.open.length,0), docsN=DB.document.filter(x=>x.is_latest).length;
+  const openN=DB.dish.reduce((n,d)=>n+d.open.length,0), docsN=DB.document.filter(x=>x.is_latest&&docCurrent(x)).length;
   const cooked=libBase().filter(isCooked).length, meals=DB.meal.filter(m=>m.status==='cooked').length;
   const at=DB.loadedAt?new Date(DB.loadedAt).toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):'';
   return `${pageTitle('More')}
@@ -1248,12 +1250,12 @@ routes.more=()=>{
 };
 
 // ---------------------------------------------------------------- print (cooking sheet rendered from the database)
-// PRINT SPEC 1.2 (2026-10-30; 1.0 and 1.1 the same day; 1.2 matches print protocol v1.2, whose change is to authoring rules, not to the code). Every printed cooking sheet and dish sheet is built here, so every print follows one method.
+// PRINT SPEC 1.3 (2026-10-31; 1.0–1.2 on 30 Oct). 1.3: stored renders made before print spec 1.0 are an archive, not linked (docCurrent, set at load). Every printed cooking sheet and dish sheet is built here, so every print follows one method.
 // The written spec is the print protocol in jins-cooking-governance (recipe_output_print_protocol.md). Change the two
 // together, then open #/printcheck and confirm the totals and that no flags appear.
 const PF={full:false,shop:false};
 const PRINT={
-  spec:'print spec 1.2',
+  spec:'print spec 1.3',
   // meal workflow: planning and verification sections stay in the database and off the cooking sheet
   wfDrop:/^(?:the\s+)?menu\b|^failure\s+priorit|^heat\b|^oven\s+sequenc|^parallel\b|^(?:final\s+)?plating\s+window|^timeline\s+verification|^arithmetic\s+check|^meal\s+balance|^sourcing\s+notes?|^register\b|^nutrition|^flavou?r\s+architecture|^scaling/i,
   // dish: design-record sections; the overview and yield/timing are lifted into the dish header instead
@@ -2161,12 +2163,12 @@ function composePost(){
 // ---------------------------------------------------------------- docs
 routes.docs=()=>{
   setHeader('Documents','#/more'); tabs('docs');
-  const docs=DB.document.map(x=>({...x,owner:x.owner_type==='meal'?IDX.meal[x.owner_id]:IDX.dish[x.owner_id]})).filter(x=>x.owner);
+  const docs=DB.document.filter(docCurrent).map(x=>({...x,owner:x.owner_type==='meal'?IDX.meal[x.owner_id]:IDX.dish[x.owner_id]})).filter(x=>x.owner);
   const latest=docs.filter(x=>x.is_latest);
   return `<div class="stack" style="padding-top:12px">
-    <p class="muted small">Stored renders of each recipe. "Open / print" shows the PDF in the browser so you can print without regenerating; the Word file is the editable master.</p>
+    <p class="muted small">Word and PDF files generated from a recipe since print spec 1.0 (30 Oct 2026). The database is the master and the print view is the cooking sheet; a Word file is for editing outside the app. Renders made before 30 Oct are kept in the repo as an archive and are not listed.</p>
     ${latest.length?`<div class="list">${latest.map(x=>`<a class="card row" href="${DOCS_BASE+x.storage_path}" target="_blank" rel="noopener"><div class="grow"><div class="title">${esc(x.owner.name)}</div><div class="sub">${x.kind.toUpperCase()} · v${x.version} · ${fmtDate(x.generated_at.slice(0,10))}${x.governance_version?' · governance '+esc(x.governance_version):''}</div></div><span class="btn sm ${x.kind==='pdf'||x.kind==='html'?'':'ghost'}">${x.kind==='pdf'||x.kind==='html'?'Open':'Download'}</span></a>`).join('')}</div>`:
-    `<div class="empty">No documents stored yet.<br><br><span class="small">From now on, every recipe Cowork generates is saved here as Word + PDF. The Coq au Vin build is the first candidate.</span></div>`}
+    `<div class="empty">No documents since print spec 1.0.<br><br><span class="small">Print from a meal's or dish's print view. A Word file appears here when one is generated on request.</span></div>`}
   </div>`;
 };
 
