@@ -499,6 +499,29 @@ body.cookmode .tabs,body.cookmode header.top{display:none}
 .sugg{display:block;margin-top:6px;font:600 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
 .lval .at{font:12px var(--sans);color:var(--ink2);margin-top:4px}
 .lgrp{border-top:1px solid var(--line)} .lgrp>summary{min-height:52px;gap:10px} .lgrp .nm{flex:1;min-width:0;font:400 19px var(--serif)} .lgrp .ct{font:500 12px var(--mono);color:var(--ink2)}
+/* pinned recipes */
+.pins{margin-top:14px;border-radius:4px;background:var(--tint);padding:4px 6px 4px 14px}
+.pinh{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:40px;padding-right:8px}
+.pina{display:flex;gap:14px;align-items:center} .pina a,.pina button{font:600 13px var(--sans);color:var(--accent);min-height:40px;display:flex;align-items:center} .pina button{color:var(--ink2)}
+.pinr{display:grid;grid-template-columns:minmax(0,1fr) 44px;align-items:center;border-top:1px solid var(--line)}
+.pinr a{display:flex;flex-direction:column;gap:1px;min-height:54px;justify-content:center;color:var(--ink);min-width:0}
+.pinr .nm{font:400 19px/1.2 var(--serif);white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .pinr .mt{font:500 12px/1.35 var(--sans);color:var(--ink2)}
+.pinb{width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:var(--ink3);border-radius:50%}
+.pinb.on{color:var(--accent)} .pinb svg{width:18px;height:18px}
+.actrow .apin{padding:0;width:auto;height:auto;border-radius:999px;color:var(--ink)} .actrow .apin svg{width:20px;height:20px}
+.actrow .apin.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.dact .btn{padding-left:8px;padding-right:8px;font-size:14.5px;letter-spacing:-.005em} .dact .dmore{font-size:18px}
+.drw{display:grid;grid-template-columns:minmax(0,1fr) 40px;align-items:center;gap:4px;border-bottom:1px solid var(--line)} .drw .drow{border-bottom:0} .drw .pinb{width:40px}
+.newtag{display:inline-block;margin-left:7px;padding:0 5px;border:1px solid var(--ok);border-radius:3px;font:700 9px/1.6 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ok);vertical-align:3px}
+.compact .newtag{vertical-align:2px}
+.pinsw{display:flex;align-items:center;gap:8px;margin:12px 0 0;min-width:0} .pinsw .eyebrow{flex:none}
+.psw{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 0;min-width:0} .psw::-webkit-scrollbar{display:none}
+.pswc{flex:none;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;min-height:40px;padding:4px 12px;border:1px solid var(--chip);border-radius:999px;color:var(--ink);text-align:left}
+.pswc .n{font:600 13px/1.2 var(--sans);white-space:nowrap} .pswc .p{font:500 10.5px/1.2 var(--mono);color:var(--ink2);white-space:nowrap}
+.pswc.on{background:var(--ink);border-color:var(--ink);color:var(--bg)} .pswc.on .p{color:inherit;opacity:.75}
+.pinsw.steps{margin:10px 0 2px} .pinsw.steps .pswc{border-radius:12px;min-height:46px} .pinsw.steps .pswc.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.pinsw.grid .psw{flex:1;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));overflow:visible}
+.pinsw.grid .pswc{min-width:0;padding:4px 10px} .pinsw.grid .pswc .n,.pinsw.grid .pswc .p{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis}
 /* print sheet — laid out to the docx-protocol PDF format (teal headings, shaded table headers, running header) */
 .sheet{--pc:#1B5E7B;background:#fff;color:#222;border:1px solid var(--line);border-radius:6px;padding:18px 16px 22px;font-family:Arial,"Liberation Sans",Helvetica,sans-serif;font-size:13px;line-height:1.4;overflow-x:auto}
 .sheet h1{font-size:21px;line-height:1.2;margin:0 0 4px;color:var(--pc);font-weight:700}
@@ -706,7 +729,7 @@ function render(){
   const app=document.getElementById('app');
   const fn=routes[view]||routes.sunday;
   const cooking=fn===routes.cook||fn===routes.steps; document.body.classList.toggle('cookmode',cooking);
-  try{app.innerHTML=fn(arg,arg2); if(fn===routes.library) updateLib();}catch(e){console.error(e);app.innerHTML=`<div class="empty">Something went wrong rendering this page.<br><span class="small">${esc(e.message)}</span></div>`;}
+  try{app.innerHTML=fn(arg,arg2); if(fn===routes.library) updateLib(); const pc=app.querySelector('.pswc.on'); if(pc){const sc=pc.parentElement; sc.scrollLeft=Math.max(0,pc.offsetLeft-sc.offsetLeft-(sc.clientWidth-pc.offsetWidth)/2);}}catch(e){console.error(e);app.innerHTML=`<div class="empty">Something went wrong rendering this page.<br><span class="small">${esc(e.message)}</span></div>`;}
   if(cooking&&wakeWanted()) wakeOn(); else if(!cooking) wakeOff(); else updAwake();
 }
 
@@ -737,10 +760,41 @@ const shortDate=d=>{if(!d)return '';const x=new Date(d+'T00:00:00');return x.toL
 const F={q:'',protein:[],course:[],verdict:[],kit:[],status:'all',stale:false,sort:'last'};
 const EQ=[['le creuset','Le Creuset'],['konro','Konro'],['binchotan','Konro'],['tempspike','TempSpike'],['thermapen','Thermapen'],['probe','Probe'],['tiger','Tiger'],['torch','Torch'],['cast iron','Cast iron'],['dutch oven','Le Creuset'],['oven','Oven'],['induction','Induction']];
 function eqKey(e){const l=String(e).toLowerCase(); for(const [k,v] of EQ){if(l.includes(k)) return v;} return null;}
-const COURSES=['Main','Side','Sauce','Salad','Soup','Bread','Dessert'];
+const COURSES=['Main','Side','Sauce','Salad','Soup','Bread','Dessert','Drink'];
+// ---------------------------------------------------------------- pinned recipes: a working set kept on this phone until unpinned
+const PIN_KEY='kitchen:pins';
+function getPins(){try{const p=JSON.parse(localStorage.getItem(PIN_KEY)||'[]'); return Array.isArray(p)?p:[];}catch(e){return [];}}
+function setPins(p){try{localStorage.setItem(PIN_KEY,JSON.stringify(p));}catch(e){}}
+const isPinned=slug=>getPins().includes(slug);
+const pinDishes=()=>getPins().map(s=>IDX.dishBySlug[s]).filter(Boolean);
+const pinName=d=>menuName(d.name);
+const PIN_SVG=on=>`<svg width="20" height="20" viewBox="0 0 24 24" fill="${on?'currentColor':'none'}" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h6l-1 6 3 3v2H7v-2l3-3-1-6z"/><path d="M12 15v6" fill="none" stroke-linecap="round"/></svg>`;
+function pinBtn(d,cls){const on=isPinned(d.slug); return `<button class="pinb ${on?'on':''} ${cls||''}" onclick="togglePin('${d.slug}',event)" aria-pressed="${on}" aria-label="${on?'Unpin':'Pin'} ${esc(pinName(d))}" title="${on?'Unpin':'Pin to the top'}">${PIN_SVG(on)}</button>`;}
+function togglePin(slug,ev){ if(ev){ev.preventDefault(); ev.stopPropagation();}
+  const P=getPins(), i=P.indexOf(slug); if(i>=0) P.splice(i,1); else P.push(slug); setPins(P);
+  toast(i>=0?'Unpinned':`Pinned · ${P.length} pinned`); if(parse().view==='library') updateLib(); else softRender(); }
+function clearPins(){ const n=getPins().length; if(!n||!confirm(`Unpin all ${n} recipe${n>1?'s':''}?`)) return; setPins([]); toast('Pins cleared'); if(parse().view==='library') updateLib(); else softRender(); }
+function stepProg(d){ // "step 3/9" from where step-by-step was left, "9 steps" before it starts
+  const N=flatSteps(methodModel(d.method_md)).length; if(!N) return '';
+  let s=null; try{s=JSON.parse(localStorage.getItem('steps:'+d.slug)||'null');}catch(e){}
+  const win=(isPinned(d.slug)?72:12)*3600000;
+  if(s&&Date.now()-s.at<win&&+s.n>1) return +s.n>N?'done':`step ${s.n}/${N}`;
+  return `${N} steps`;
+}
+function pinShelf(){ const P=pinDishes(); if(!P.length) return '';
+  return `<section class="pins"><div class="pinh"><span class="eyebrow acc">Pinned · ${P.length}</span><span class="pina">${P.some(d=>d.ings.length)?`<a href="#/shopping/pins/all">${P.length>1?'Shop all '+P.length:'Shopping list'}</a>`:''}<button onclick="clearPins()">Clear</button></span></div>
+    ${P.map(d=>{const meta=[(d.category||[]).join(' / ')||d.protein||'',stepProg(d)].filter(Boolean).join(' · '); return `<div class="pinr"><a href="#/dish/${d.slug}"><span class="nm">${esc(pinName(d))}</span><span class="mt">${esc(meta)}</span></a>${pinBtn(d)}</div>`;}).join('')}</section>`;
+}
+function pinGo(h){ history.replaceState(null,'',h); HSTACK[HSTACK.length-1]=h; render(); } // switching between pinned recipes never stacks up Back
+function pinSwitch(d,mode){ const P=pinDishes(); if(P.length<2||!P.includes(d)) return '';
+  const grid=mode==='steps'&&P.length<=3; // up to 3 pinned: all visible side by side while cooking
+  return `<nav class="pinsw ${mode} ${grid?'grid':''}" aria-label="Pinned recipes" ${grid?`style="--n:${P.length}"`:''}>${grid?'':'<span class="eyebrow acc">Pinned</span>'}<div class="psw">${P.map(x=>{const on=x===d, pr=mode==='steps'?stepProg(x):'';
+    return `<button class="pswc ${on?'on':''}" ${on?'aria-current="page"':''} onclick="pinGo('${mode==='steps'?'#/steps/':'#/dish/'}${x.slug}')" title="${esc(pinName(x))}"><span class="n">${esc(pinName(x))}</span>${pr?`<span class="p">${esc(/steps$/.test(pr)?'not started':pr)}</span>`:''}</button>`;}).join('')}</div></nav>`;
+}
+function pinOwner(){const P=pinDishes(); return P.length?{name:'Pinned recipes',slug:'all',list:P}:null;}
 const VERDICTS=[['yes','Repeat'],['with_modifications','Repeat with mods'],['no','No repeat']];
 const STATUSES=[['all','All'],['cooked','Cooked'],['notyet','Not yet cooked']];
-const SORTS=[['last','Last made'],['rating','Rating'],['name','Name']];
+const SORTS=[['last','Last made or saved'],['rating','Rating'],['name','Name']];
 const isCooked=d=>d.status==='cooked'||d.r.times_made>0||!!d.served;
 const libBase=()=>DB.dish.filter(d=>d.slug!=='brisket-main-unfiled');
 function libOptions(){
@@ -764,7 +818,7 @@ function libList(){
   if(F.status==='cooked')list=list.filter(isCooked);
   if(F.status==='notyet')list=list.filter(d=>!isCooked(d));
   if(F.stale)list=list.filter(d=>(d.r.last_made||d.served)&&daysAgo(d.r.last_made||d.served)>90);
-  const eff=d=>d.r.last_made||d.served||''; const effR=d=>d.r.latest_rating!=null?+d.r.latest_rating:(d.mealRating!=null?+d.mealRating:-1);
+  const eff=d=>d.r.last_made||d.served||(!isCooked(d)&&d.created_at?String(d.created_at).slice(0,10):''); // not cooked yet: the day the recipe was saved const effR=d=>d.r.latest_rating!=null?+d.r.latest_rating:(d.mealRating!=null?+d.mealRating:-1);
   const sorters={last:(a,b)=>eff(b).localeCompare(eff(a))||a.name.localeCompare(b.name),rating:(a,b)=>effR(b)-effR(a)||a.name.localeCompare(b.name),name:(a,b)=>a.name.localeCompare(b.name)};
   return list.sort(sorters[F.sort]);
 }
@@ -779,9 +833,10 @@ function activeFilters(){
 function dishCard(d){
   const r=d.r, cooked=isCooked(d);
   const last=r.last_made||d.served;
-  const meta=[(d.category||[]).join(' / '),d.protein,last?shortDate(last)+(r.times_made>1?' · ×'+r.times_made:''):(cooked?'':'not yet cooked')].filter(Boolean).join(' · ');
+  const saved=!cooked&&d.created_at?String(d.created_at).slice(0,10):'', isNew=!!saved&&daysAgo(saved)<=7;
+  const meta=[(d.category||[]).join(' / '),d.protein,last?shortDate(last)+(r.times_made>1?' · ×'+r.times_made:''):(cooked?'':(saved?'saved '+shortDate(saved)+' · ':'')+'not yet cooked')].filter(Boolean).join(' · ');
   const s=r.latest_rating!=null?seal(r.latest_rating):(d.mealRating!=null?seal(d.mealRating,{note:'via meal'}):seal(null,{none:cooked?'unrated':'untried'}));
-  return `<a class="drow" href="#/dish/${d.slug}"><div><div class="nm">${nameHtml(d.name)}</div><div class="mt">${esc(meta)}</div></div>${s}</a>`;
+  return `<div class="drw"><a class="drow" href="#/dish/${d.slug}"><div><div class="nm">${nameHtml(d.name)}${isNew?'<span class="newtag">New</span>':''}</div><div class="mt">${esc(meta)}</div></div>${s}</a>${pinBtn(d)}</div>`;
 }
 function libHead(){
   const act=activeFilters();
@@ -794,6 +849,7 @@ function updateLib(){
   el.innerHTML=n?list.map(dishCard).join(''):'<div class="empty">Nothing matches. Try fewer filters.</div>';
   document.getElementById('count').textContent=`${n} dish${n===1?'':'es'} · by ${SORTS.find(s=>s[0]===F.sort)[1].toLowerCase()}`;
   document.getElementById('libhead').innerHTML=libHead();
+  const ps=document.getElementById('pinshelf'); if(ps) ps.innerHTML=F.q||activeFilters().length?'':pinShelf(); // searching or filtering hides the shelf
 }
 const getDense=()=>{try{return localStorage.getItem('kitchen:density')==='compact';}catch(e){return false;}};
 function setDense(on){try{localStorage.setItem('kitchen:density',on?'compact':'comfortable');}catch(e){} const l=document.getElementById('dishlist'); if(l) l.classList.toggle('compact',on); document.querySelectorAll('.density button').forEach((b,i)=>{b.classList.toggle('on',i===(on?1:0)); b.setAttribute('aria-pressed',String(i===(on?1:0)));});}
@@ -804,6 +860,7 @@ routes.library=()=>{
   const toggle=`<div class="density" role="group" aria-label="Row density"><button class="${dense?'':'on'}" aria-pressed="${!dense}" onclick="setDense(false)" title="Comfortable"><span class="bars"><b></b><b></b></span></button><button class="${dense?'on':''}" aria-pressed="${dense}" onclick="setDense(true)" title="Compact"><span class="bars tight"><b></b><b></b><b></b><b></b></span></button></div>`;
   return `${pageTitle('Library',toggle)}
     <input class="underline-search" type="search" placeholder="Search ${total} dishes, ingredients…" value="${esc(F.q)}" oninput="F.q=this.value;updateLib()" autocomplete="off" enterkeyhint="search" aria-label="Search dishes and ingredients" style="margin-top:12px">
+    <div id="pinshelf"></div>
     <div class="libhead" id="libhead"></div>
     <div class="eyebrow libcount" id="count"></div>
     <div id="dishlist" class="${dense?'compact':''}"></div>
@@ -960,13 +1017,13 @@ routes.dish=(slug)=>{
   const anyMore=d.ings.some(di=>di.buy_spec||di.buy_avoid||(di.qty_alt&&(di.qty!=null||di.qty_alt.length>9))||(di.prep_note||'').length>40);
   const main=d.ings.filter(di=>!di.pantry_check), pan=d.ings.filter(di=>di.pantry_check);
   const fold=M.filter(s=>(s.kind==='flow'||s.kind==='prose')&&s.body&&s.title&&!M_SKIP.test(s.title)).length>=2;
-  return `<div class="hero">
+  return `${pinSwitch(d,'dish')}<div class="hero">
       <div class="eyebrow acc">${esc([d.protein,(d.category||[]).join(' / '),(d.cuisine||[]).join(', ')].filter(Boolean).join(' · '))}</div>
       <div class="ttl"><h1>${esc(nm)}${note?`<i>${esc(note)}</i>`:''}</h1>${big}</div>
       <div class="scores">${r.latest_repeat?`<span class="verdict ${verdictCls(r.latest_repeat)}">${rep(r.latest_repeat)}</span>`:''}${r.latest_rating!=null?`<span>Flavour <b>${num(r.latest_rating)}</b></span>`:''}${r.latest_execution!=null?`<span>Execution <b>${num(r.latest_execution)}</b></span>`:''}<span>${when}</span>${d.difficulty?`<span>${esc(d.difficulty)}</span>`:''}${d.servings?`<span>Serves <b>${num(d.servings)}</b></span>`:''}</div>
       ${summary?`<p class="summary">${esc(summary)}</p>`:''}
     </div>
-    <div class="actrow" style="grid-template-columns:${acts.map(()=>'minmax(0,1fr) ').join('')}52px">${acts.join('')}<button class="btn ghost dmore" onclick="dishMore('${d.slug}')" aria-label="More: print sheet, log a cook">···</button></div>
+    <div class="actrow dact" style="grid-template-columns:${acts.map(()=>'minmax(0,1fr) ').join('')}50px 50px">${acts.join('')}${pinBtn(d,'btn ghost apin')}<button class="btn ghost dmore" onclick="dishMore('${d.slug}')" aria-label="More: print sheet, log a cook">···</button></div>
     ${d.ings.length?`<div class="shead"><h3>Ingredients</h3>${anyMore?'<button onclick="ingAll(this)">Open all</button>':''}</div><div class="small muted" style="margin-top:-2px">${[d.servings?'For '+num(d.servings):'',d.ings.length+' ingredient'+(d.ings.length>1?'s':''),anyMore?'tap a line for prep and buying notes':''].filter(Boolean).join(' · ')}</div>
       <div style="margin-top:8px">${main.map(ingRow).join('')}</div>
       ${pan.length?`<details class="ipan" ${main.length?'':'open'}><summary><span class="eyebrow">Pantry · ${pan.length}</span><span class="pl">${esc(pan.map(di=>cap1(ingName(di).split(',')[0])).join(' · '))}</span></summary>${pan.map(ingRow).join('')}</details>`:''}`
@@ -981,9 +1038,9 @@ routes.steps=(slug,n)=>{
   const d=IDX.dishBySlug[slug]; if(!d) return notFound('Dish','#/library');
   setHeader('',null); tabs('library');
   const S=flatSteps(methodModel(d.method_md)), N=S.length, [nm]=splitName(d.name);
-  const bar=`<div class="ckbar"><button class="x" onclick="goBack('#/dish/${d.slug}')" aria-label="Close step-by-step">✕ Close</button><span class="t">${esc(nm)}</span>${'wakeLock' in navigator?`<button class="awake" onclick="toggleAwake()" aria-label="Keep the screen awake"><i></i>Awake</button>`:'<span></span>'}</div>`;
+  const bar=`<div class="ckbar"><button class="x" onclick="goBack('#/dish/${d.slug}')" aria-label="Close step-by-step">✕ Close</button><span class="t">${esc(nm)}</span>${'wakeLock' in navigator?`<button class="awake" onclick="toggleAwake()" aria-label="Keep the screen awake"><i></i>Awake</button>`:'<span></span>'}</div>`+pinSwitch(d,'steps');
   if(!N) return `${bar}<div class="cknote">This recipe has no numbered steps, so it’s shown as written.</div><div class="md" style="margin-top:16px">${md(d.method_md||'')}</div><div class="ckfoot"><a class="btn ghost" href="#/dish/${d.slug}">Back to the dish</a><span></span></div>`;
-  let i=+n||0; if(!i){try{const s=JSON.parse(localStorage.getItem('steps:'+slug)||'null'); if(s&&Date.now()-s.at<12*3600000) i=+s.n;}catch(e){}}
+  let i=+n||0; if(!i){try{const s=JSON.parse(localStorage.getItem('steps:'+slug)||'null'); if(s&&Date.now()-s.at<(isPinned(slug)?72:12)*3600000) i=+s.n;}catch(e){}}
   i=Math.min(Math.max(i||1,1),N+1);
   const prog=N<=24?`<div class="segs" aria-hidden="true">${S.map((x,k)=>`<i class="${k+1<i?'d':k+1===i?'c':''}"></i>`).join('')}</div>`:`<div class="stbar" aria-hidden="true"><i style="width:${Math.round((i-1)/N*100)}%"></i></div>`;
   const all=`<details class="ckdet"><summary><span class="title">All ${N} steps</span></summary>${S.map((s,k)=>`<button class="ckrow ${k+1<i?'done':k+1===i?'cur':''}" onclick="stepGo(${k+1})"><span class="bx" aria-hidden="true">${k+1<i?'✓':''}</span><span class="tm">${String(k+1).padStart(2,'0')}</span><span class="tx">${mdInline(leadSplit(s.text)[0])}</span></button>`).join('')}</details>`;
@@ -1155,7 +1212,7 @@ routes.sunday=()=>{
   const recent=cookedAll.length?`<div class="shead"><h3>Recently cooked</h3><a href="#/meals" onclick="MF.tab='cooked';MF.protein=null">All ${cookedAll.length}</a></div><div>${cookedAll.slice(0,3).map(mealCard).join('')}</div>`:'';
   if(!pl){
     const sun=comingSunday();
-    return `${head}
+    return `${head}${pinShelf()}
       <div class="plan open"><div class="eyebrow acc">This Sunday · ${esc(new Date(sun+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long'}))}</div>
         <h2>Nothing planned yet.</h2>
         <p>Pick one from <i>Next time</i> — it’s saved on this phone. A date you set with Claude shows here by itself.</p></div>
@@ -1170,7 +1227,7 @@ routes.sunday=()=>{
   const label=pl.date===todayISO()?'Tonight':pl.date===comingSunday()?'This Sunday':pl.date===comingSunday(1)?'Next Sunday':new Date(pl.date+'T00:00:00').toLocaleDateString('en-GB',{weekday:'long'});
   const acts=[past?`<a class="btn" href="#/postcook/meal/${m.slug}">Log the cook</a>`:(m.workflow_md?`<a class="btn" href="#/cook/${m.slug}">Start cook</a>`:''),items.length?`<a class="btn ghost" href="#/shopping/meal/${m.slug}">Shopping list</a>`:''].filter(Boolean);
   const when=`${esc(dayLong(pl.date))} · <b>${esc(pl.time)}</b>`;
-  return `${head}
+  return `${head}${pinShelf()}
     <div class="plan"><div class="top"><span class="eyebrow acc">${esc(label)}</span>${pl.src==='phone'?'<button onclick="unplan()" aria-label="Unplan and choose another meal">Change</button>':''}</div>
       <h2><a href="#/meal/${m.slug}">${esc(nm)}</a></h2>${note?`<div class="note">${esc(note)}</div>`:''}
       <div class="when">${pl.src==='phone'?`<button class="wd" onclick="openWhen()" aria-label="Change day and service time">${when} <span class="chev" aria-hidden="true">▾</span></button>`:`<span class="wd">${when}</span>`}<span class="cd" data-t="${t}">${cdText(t)}</span></div>
@@ -1476,19 +1533,20 @@ function shopCount(items,state){ // "bought" counts what you buy; pantry lines a
   const buy=items.filter(i=>!i.pantry), base=buy.length?buy:items; return {done:base.filter(i=>state[i.id]).length,total:base.length};
 }
 function shopState(key){try{return JSON.parse(localStorage.getItem(key)||'{}')||{};}catch(e){return {};}}
-const shopOwner=(t,s)=>t==='meal'?IDX.mealBySlug[s]:IDX.dishBySlug[s];
-const shopDishes=(t,o)=>t==='meal'?o.dishes.map(x=>x.dish):[o];
+const shopOwner=(t,s)=>t==='pins'?pinOwner():t==='meal'?IDX.mealBySlug[s]:IDX.dishBySlug[s];
+const shopDishes=(t,o)=>t==='pins'?o.list:t==='meal'?o.dishes.map(x=>x.dish):[o];
 function buyLine(spec,avoid){return (spec?esc(spec):'')+(avoid?(spec?' · ':'')+'<b class="not">not '+esc(avoid)+'</b>':'');}
 function shopPicker(){
   const pl=currentPlan();
   const row=(t,o,meta)=>{const items=aggregate(shopDishes(t,o)), c=shopCount(items,shopState('shop:'+t+'/'+o.slug));
     return `<a class="drow" href="#/shopping/${t}/${o.slug}"><div><div class="nm">${nameHtml(o.name)}</div><div class="mt">${!items.length?'<span class="tag warn">no ingredient data</span>':c.done?`${c.done} of ${c.total} bought`:`${c.total} to buy`}${meta?' · '+meta:''}</div>${c.done?`<div class="bar"><i style="width:${Math.round(c.done/c.total*100)}%"></i></div>`:''}</div><span class="dim" aria-hidden="true">›</span></a>`;};
-  const started=Object.keys(localStorage).filter(k=>k.startsWith('shop:')).map(k=>k.slice(5).split('/')).filter(([t,s])=>{const o=shopOwner(t,s); return o&&!(pl&&t==='meal'&&o===pl.m)&&Object.values(shopState('shop:'+t+'/'+s)).some(Boolean);});
+  const started=Object.keys(localStorage).filter(k=>k.startsWith('shop:')).map(k=>k.slice(5).split('/')).filter(([t,s])=>{const o=shopOwner(t,s); return o&&t!=='pins'&&!(pl&&t==='meal'&&o===pl.m)&&Object.values(shopState('shop:'+t+'/'+s)).some(Boolean);});
   const backlog=DB.meal.filter(m=>m.status!=='cooked'&&!(pl&&m===pl.m));
   const cooked=DB.meal.filter(m=>m.status==='cooked').sort((a,b)=>(b.last||'').localeCompare(a.last||''));
   return `${pageTitle('Shopping')}
     <p class="muted small" style="margin:8px 0 0">Pick a meal to build its list. Ticks stay on this phone and the list works offline.</p>
     ${pl?`<div class="shead"><h3>${pl.date===todayISO()?'Tonight':'Planned'}</h3><span>${esc(dayLong(pl.date))}</span></div>${row('meal',pl.m,'')}`:''}
+    ${pinDishes().length?`<div class="shead"><h3>Pinned</h3><span>${pinDishes().length} dish${pinDishes().length>1?'es':''}</span></div>${row('pins',pinOwner(),'')}`:''}
     ${started.length?`<div class="shead"><h3>In progress</h3></div>${started.map(([t,s])=>row(t,shopOwner(t,s),t==='dish'?'one dish':'')).join('')}`:''}
     ${backlog.length?`<div class="shead"><h3>Next time</h3><span>${backlog.length}</span></div>${backlog.map(m=>row('meal',m,m.dishes.length+' dishes')).join('')}`:''}
     <div class="shead"><h3>Cooked before</h3><span>${cooked.length}</span></div>${cooked.map(m=>row('meal',m,esc(shortDate(m.last)))).join('')}
@@ -1497,14 +1555,14 @@ function shopPicker(){
 routes.shopping=(kind,slug)=>{
   setHeader('Shopping'); tabs('shopping');
   if(!kind) return shopPicker();
-  const owner=shopOwner(kind,slug); if(!owner)return notFound(kind==='meal'?'Meal':'Dish','#/shopping');
+  const owner=shopOwner(kind,slug); if(!owner)return kind==='pins'?(setHeader('Pinned recipes','#/shopping'),'<div class="empty">Nothing pinned yet.<br><span class="small">Tap the pin on any recipe to keep it at the top.</span></div>'):notFound(kind==='meal'?'Meal':'Dish','#/shopping');
   setHeader(splitName(owner.name)[0],'#/shopping',true);
   const dishes=shopDishes(kind,owner), items=aggregate(dishes);
   const key='shop:'+kind+'/'+slug, state=shopState(key);
   window._shop={key,items,state,name:owner.name,notes:kind==='meal'?String(owner.shopping_notes||'').trim():''};
   const pl=currentPlan(), planned=kind==='meal'&&pl&&pl.m===owner?dayLong(pl.date):'';
   const pax=kind==='meal'?owner.pax:owner.servings;
-  const sub=[`<i>${esc(splitName(owner.name)[0])}</i>`,planned?esc(planned):'',pax?'for '+num(pax):'',kind==='meal'?dishes.length+' dishes':''].filter(Boolean).join(' · ');
+  const sub=[`<i>${esc(splitName(owner.name)[0])}</i>`,planned?esc(planned):'',pax?'for '+num(pax):'',kind==='meal'||kind==='pins'?dishes.length+' dishes':''].filter(Boolean).join(' · ');
   const deptOf=i=>DEPT_ORDER.includes(i.dept)?i.dept:'Other';
   const depts=[...DEPT_ORDER,'Other'].filter(dp=>items.some(i=>!i.pantry&&deptOf(i)===dp));
   const pantry=items.filter(i=>i.pantry), c=shopCount(items,state);
