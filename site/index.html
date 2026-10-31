@@ -1591,10 +1591,12 @@ routes.shopping=(kind,slug)=>{
     ${pantry.length?`<details class="spantry"><summary><span class="t">Pantry check</span><span class="mono" data-dc>${ct(pantry)}</span></summary><p class="small dim">Usually in the cupboard — tick each once you’ve checked you have enough.</p>${pantry.map(line).join('')}</details>`:''}
     ${items.length?`<div class="sfoot"><button class="btn ghost sm" onclick="clearShop()">Clear ticks</button></div>`:'<div class="empty">No ingredient data for this selection yet.</div>'}`;
 };
+// tap water ("water", "hot water", "pasta cooking water") is never bought or pantry-checked: it stays on the dish page, off the list
+const TAP_WATER=/^(?:(?:hot|cold|warm|boiling|kettle-boiled|tap|filtered)\s+)?water$|\bcooking water$/i;
 function aggregate(dishes){
   const map={}, tags=dishTags(dishes.map(d=>d.name));
   dishes.forEach(d=>d.ings.forEach(di=>{
-    const nm=ingName(di); if(!nm||di.made)return; const sp=(di.buy_spec||'').trim(), av=(di.buy_avoid||'').trim();
+    const nm=ingName(di); if(!nm||di.made||TAP_WATER.test(nm.trim()))return; const sp=(di.buy_spec||'').trim(), av=(di.buy_avoid||'').trim();
     const k=nm+(sp||av?'|'+sp.toLowerCase()+'|'+av.toLowerCase():''); // never merge lines whose buying spec differs
     const e=map[k]||(map[k]={id:k.replace(/[^a-z0-9]+/g,'-'),label:nm.replace(/^./,c=>c.toUpperCase()),spec:sp,avoid:av,dept:di.ingredient.department,pantry:!!di.pantry_check||!!di.ingredient.pantry_default,optional:true,orderAhead:false,parts:[]});
     e.pantry=e.pantry&&(!!di.pantry_check||!!di.ingredient.pantry_default);
