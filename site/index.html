@@ -626,6 +626,9 @@ function index(){
   DB.meal_dish.forEach(md=>{const m=IDX.meal[md.meal_id], d=IDX.dish[md.dish_id]; if(m&&d){m.dishes.push({...md,dish:d}); d.meals.push(m);}});
   DB.meal.forEach(m=>m.dishes.sort((a,b)=>(a.service_order-b.service_order)||(ROLE_ORDER[a.role]-ROLE_ORDER[b.role])));
   DB.dish_ingredient.forEach(di=>{const d=IDX.dish[di.dish_id]; if(d) d.ings.push(di);});
+  // made in the recipe (a spice blend, a syrup, fat reserved from another dish): a line whose prep note says "not a purchase" marks
+  // every line of that name in the dish; those lines stay on the dish page and never reach a shopping list
+  DB.dish.forEach(d=>{const made=new Set(d.ings.filter(di=>/\bnot a purchase\b/i.test(di.prep_note||'')).map(ingName)); d.ings.forEach(di=>{di.made=made.has(ingName(di));});});
   DB.cook.forEach(c=>{if(c.dish_id&&IDX.dish[c.dish_id]) IDX.dish[c.dish_id].cooks.push(c); if(c.meal_id&&IDX.meal[c.meal_id]) IDX.meal[c.meal_id].cooks.push(c);});
   DB.document.filter(docCurrent).forEach(x=>{const o=x.owner_type==='meal'?IDX.meal[x.owner_id]:IDX.dish[x.owner_id]; if(o) o.docs.push(x);});
   DB.dish.forEach(d=>{d.open=[];d.meas=[];}); (DB.validations||[]).forEach(v=>{const d=IDX.dish[v.dish_id]; if(d) d.open.push(v);});
@@ -963,7 +966,7 @@ const qtyShow=di=>di.qty!=null?qtyText(di).replace(/\s(piece|pieces|whole)$/i,''
 function ingRow(di){
   const nm=ingName(di), [a,...b]=nm.split(','), q=qtyShow(di);
   const alt=di.qty_alt||'', altInCol=!q&&alt&&alt.length<=9, prep=di.prep_note||'', spec=di.buy_spec||'', avoid=di.buy_avoid||'';
-  const tags=(di.pantry_check?'<span class="itag">Pantry</span>':'')+(di.optional?'<span class="itag">Optional</span>':'');
+  const tags=(di.made&&!/\bnot a purchase\b/i.test(prep)?'<span class="itag">Made in recipe</span>':'')+(di.pantry_check?'<span class="itag">Pantry</span>':'')+(di.optional?'<span class="itag">Optional</span>':'');
   const sub=prep||(spec?'Buy '+spec:'')||(!q&&!altInCol?alt:'');
   const name=`<span class="inm">${esc(a.replace(/^./,c=>c.toUpperCase()))}${b.length?`<i>, ${esc(b.join(',').trim())}</i>`:''}${tags}${sub?`<span class="isub">${esc(sub)}</span>`:''}</span>`;
   const head=`<span class="iq ${q?'':'alt'}">${esc(q||(altInCol?alt:''))}</span>${name}`;
@@ -1591,7 +1594,7 @@ routes.shopping=(kind,slug)=>{
 function aggregate(dishes){
   const map={}, tags=dishTags(dishes.map(d=>d.name));
   dishes.forEach(d=>d.ings.forEach(di=>{
-    const nm=ingName(di); if(!nm)return; const sp=(di.buy_spec||'').trim(), av=(di.buy_avoid||'').trim();
+    const nm=ingName(di); if(!nm||di.made)return; const sp=(di.buy_spec||'').trim(), av=(di.buy_avoid||'').trim();
     const k=nm+(sp||av?'|'+sp.toLowerCase()+'|'+av.toLowerCase():''); // never merge lines whose buying spec differs
     const e=map[k]||(map[k]={id:k.replace(/[^a-z0-9]+/g,'-'),label:nm.replace(/^./,c=>c.toUpperCase()),spec:sp,avoid:av,dept:di.ingredient.department,pantry:!!di.pantry_check||!!di.ingredient.pantry_default,optional:true,orderAhead:false,parts:[]});
     e.pantry=e.pantry&&(!!di.pantry_check||!!di.ingredient.pantry_default);
