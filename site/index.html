@@ -747,12 +747,30 @@ function buyText(spec,avoid){return [spec?(/^(uses|per dish)\b/i.test(spec)?spec
 
 // ---------------------------------------------------------------- router
 const routes={};
-function nav(h){location.hash=h;}
+function nav(h){UI.link=true; location.hash=h;}
 window.addEventListener('hashchange',()=>render());
 function parse(){const h=location.hash.replace(/^#\/?/,'')||'sunday';const p=h.split('/');return {view:p[0],arg:decodeURIComponent(p[1]||''),arg2:decodeURIComponent(p[2]||'')};}
 // in-app history, so the back link names the page it actually returns to
 const HSTACK=[];
-function trackHash(h){h=h||'#/sunday'; const n=HSTACK.length; if(HSTACK[n-1]===h) return; if(n>1&&HSTACK[n-2]===h){HSTACK.pop();return;} HSTACK.push(h); if(HSTACK.length>60)HSTACK.shift();}
+function trackHash(h){h=h||'#/sunday'; const n=HSTACK.length; if(HSTACK[n-1]===h) return 'same'; if(n>1&&HSTACK[n-2]===h){HSTACK.pop();return 'back';} HSTACK.push(h); if(HSTACK.length>60)HSTACK.shift(); return 'fwd';}
+// ---------------------------------------------------------------- keep each page as you left it: open sections and scroll, per screen, on this phone for 6 h
+const UI_KEY='kitchen:ui', UI={cur:null,boot:true,t:0};
+try{history.scrollRestoration='manual';}catch(e){} // the app puts each screen back itself; the browser's own restore fought it on Back
+document.addEventListener('click',e=>{const a=e.target&&e.target.closest&&e.target.closest('a[href^="#/"]'); if(a) UI.link=true;},true); // a tapped link opens its page at the top
+const uiKey=d=>{const sm=d.querySelector('summary'); return (sm?sm.textContent:'').replace(/\d+/g,'').replace(/\s+/g,' ').trim().slice(0,80);};
+function uiSnap(){const seen={}, det={}; document.querySelectorAll('#app details').forEach(d=>{const t=uiKey(d), k=t+'#'+(seen[t]=(seen[t]||0)+1); det[k]=d.open?1:0;}); return {det,y:Math.round(window.scrollY)};}
+function uiApply(st){ if(!st||!st.det) return; const seen={}; document.querySelectorAll('#app details').forEach(d=>{const t=uiKey(d), k=t+'#'+(seen[t]=(seen[t]||0)+1); if(k in st.det) d.open=!!st.det[k];}); }
+function uiAll(){try{const a=JSON.parse(localStorage.getItem(UI_KEY)||'{}'); return a&&typeof a==='object'?a:{};}catch(e){return {};}}
+function uiSave(h){ h=h||UI.cur; if(!h||!document.getElementById('app')) return; const a=uiAll(), now=Date.now();
+  a[h]={...uiSnap(),at:now}; a._last={h,at:now};
+  Object.keys(a).forEach(k=>{if(k!=='_last'&&now-(a[k].at||0)>6*3600000) delete a[k];});
+  try{localStorage.setItem(UI_KEY,JSON.stringify(a));}catch(e){} }
+const uiLoad=h=>{const s=uiAll()[h]; return s&&Date.now()-(s.at||0)<6*3600000?s:null;};
+function uiSoon(){clearTimeout(UI.t); UI.t=setTimeout(()=>uiSave(),350);}
+window.addEventListener('scroll',uiSoon,{passive:true});
+document.addEventListener('toggle',e=>{ if(e.target&&e.target.closest&&e.target.closest('#app')) uiSoon(); },true);
+document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='hidden') uiSave(); });
+window.addEventListener('pagehide',()=>uiSave());
 function hashLabel(h){
   const p=String(h||'').replace(/^#\/?/,'').split('/'); const v=p[0]||'sunday', a=decodeURIComponent(p[1]||''), b=decodeURIComponent(p[2]||'');
   if(v==='meal'&&IDX.mealBySlug[a]) return splitName(IDX.mealBySlug[a].name)[0];
@@ -778,13 +796,16 @@ function tabs(active){
   el.innerHTML=t.map(([k,l])=>`<a href="#/${k}" class="${a===k?'on':''}"${a===k?' aria-current="page"':''}>${l}<i></i></a>`).join('');
 }
 function render(){
-  const {view,arg,arg2}=parse(); trackHash(location.hash);
+  const {view,arg,arg2}=parse(); if(UI.cur&&!UI.boot) uiSave(UI.cur); const dir=trackHash(location.hash);
   closeSheet(); window.scrollTo(0,0);
   const app=document.getElementById('app');
   const fn=routes[view]||routes.sunday;
   const cooking=fn===routes.cook||fn===routes.steps; document.body.classList.toggle('cookmode',cooking);
   try{app.innerHTML=fn(arg,arg2); if(fn===routes.library) updateLib(); const pc=app.querySelector('.pswc.on'); if(pc){const sc=pc.parentElement; sc.scrollLeft=Math.max(0,pc.offsetLeft-sc.offsetLeft-(sc.clientWidth-pc.offsetWidth)/2);}}catch(e){console.error(e);app.innerHTML=`<div class="empty">Something went wrong rendering this page.<br><span class="small">${esc(e.message)}</span></div>`;}
   if(cooking&&wakeWanted()) wakeOn(); else if(!cooking) wakeOff(); else updAwake();
+  const h=location.hash||'#/sunday', saved=uiLoad(h);
+  if(saved){ uiApply(saved); if(!UI.link) window.scrollTo(0,saved.y||0); } // Back, a redraw, a pinned switch or a restart: where you were
+  UI.cur=h; UI.boot=false; UI.link=false;
 }
 
 // ---------------------------------------------------------------- shared pieces: names, seals, bottom sheet
@@ -1381,7 +1402,8 @@ routes.sunday=()=>{
 };
 setInterval(()=>{document.querySelectorAll('.cd[data-t]').forEach(e=>e.textContent=cdText(+e.dataset.t));},30000);
 let HOME_LIVE=null; // with Sunday left open, the cook-day card comes on, keeps its step current and goes off by itself
-setInterval(()=>{ if(parse().view!=='sunday') return; const pl=currentPlan(), on=!!(pl&&cookDayCard(pl)); if(on||on!==HOME_LIVE){HOME_LIVE=on; freshRedraw();} },60000);
+function homeTick(){ if(parse().view!=='sunday') return; const pl=currentPlan(), on=!!(pl&&cookDayCard(pl)); if(on||(HOME_LIVE!==null&&on!==HOME_LIVE)) freshRedraw(); HOME_LIVE=on; }
+setInterval(homeTick,60000);
 function prePlan(pl){ // the plan's steps dated before the cooking day, and its first cooking-day step, as clock times
   const m=pl.m, t0=planTarget(pl), P=parseTimeline(m.workflow_md,nominalService(m));
   const pre=P.steps.filter(x=>x.before).map(x=>({x,at:x.kind==='T'?t0-x.tm*60000:null}));
@@ -2253,7 +2275,7 @@ function setCkWhen(date,time){
 function renderSoft(force){ // re-draw cook mode without jumping to the top
   if(parse().view!=='cook') return; const sh=document.getElementById('sheet'); if(!force&&sh&&!sh.hidden) return;
   const ae=document.activeElement; if(!force&&ae&&ae.matches&&ae.matches('input,textarea,select')) return; // never wipe a reading being typed
-  const y=window.scrollY; try{document.getElementById('app').innerHTML=routes.cook(parse().arg);}catch(e){console.error(e);} updAwake(); window.scrollTo(0,y);
+  const y=window.scrollY, ui=uiSnap(); try{document.getElementById('app').innerHTML=routes.cook(parse().arg);}catch(e){console.error(e);} uiApply(ui); updAwake(); window.scrollTo(0,y);
 }
 setInterval(()=>{ if(parse().view!=='cook') return; const now=Date.now();
   document.querySelectorAll('[data-now="hms"]').forEach(e=>e.textContent=new Date().toLocaleTimeString('en-GB'));
@@ -2323,7 +2345,7 @@ routes.postcook=(kind,slug)=>{
     <div class="lcacts"><button class="btn" onclick="composePost()">Copy for Claude</button><button class="btn ghost" onclick="localStorage.removeItem('${key}');softRender()">Clear</button></div>
     <div style="height:16px"></div>`;
 };
-function softRender(){const y=window.scrollY; render(); window.scrollTo(0,y);}
+function softRender(){const y=window.scrollY; uiSave(); render(); window.scrollTo(0,y);} // the redraw keeps open sections (render restores them) and the scroll
 function pf(k,v){const p=window._post; p.f[k]=v; try{localStorage.setItem(p.key,JSON.stringify(p.f));}catch(e){} if(k==='measN') return; const o=document.getElementById('postout'); if(o) o.textContent=composeText(); /* no re-render on typing */}
 function updWhen(){const e=document.getElementById('lc-when'); if(e) e.textContent=lcWhen();}
 function rVal(k,v){
@@ -2383,11 +2405,11 @@ function freshNote(){const c=FRESH.changes; if(!c||!c.items.length) return '';
     ${c.items.slice(0,4).map(x=>`<a href="${x.href}"><span class="nm">${esc(x.name)}</span><span class="mt">${esc(x.what)}</span></a>`).join('')}${n>4?`<p class="small muted" style="margin:6px 0 4px">and ${n-4} more</p>`:''}</section>`;}
 const ingSig=d=>d.ings.map(di=>[ingName(di),di.qty,di.unit,di.qty_alt,di.prep_note,di.buy_spec,di.buy_avoid,di.buy_note,di.pantry_check,di.optional].join('|')).join('\n');
 async function refreshData(manual){
-  if(FRESH.busy) return; FRESH.busy=true; if(parse().view==='sunday') softRender();
+  if(FRESH.busy) return; FRESH.busy=true; freshPillText();
   const prevAt=DB.loadedAt, wasCache=DB.fromCache;
   const before={dish:new Map(DB.dish.map(d=>[d.id,{u:d.updated_at,m:d.method_md,g:ingSig(d)}])),meal:new Map(DB.meal.map(m=>[m.id,m.updated_at])),cook:new Set(DB.cook.map(c=>c.id))};
   const ok=await loadAll(); FRESH.busy=false;
-  if(!ok||DB.fromCache){ if(manual) toast('Offline — showing what this phone saved'); if(parse().view==='sunday') softRender(); return; }
+  if(!ok||DB.fromCache){ if(manual) toast('Offline — showing what this phone saved'); freshPillText(); return; }
   index();
   const out=[], cooked=new Set();
   if(!wasCache){
@@ -2401,8 +2423,9 @@ async function refreshData(manual){
     FRESH.changes={since:FRESH.changes?FRESH.changes.since:new Date(prevAt).toLocaleDateString('en-GB',{weekday:'short'})+' '+hm(prevAt),items:[...out,...prev.filter(x=>!seen.has(x.href+x.what))]};}
   if(manual&&!out.length) toast('Up to date');
   else if(out.length&&parse().view!=='sunday') toast(`Updated · ${out.length} change${out.length>1?'s':''}`);
-  freshRedraw();
+  if(out.length) freshRedraw(); else freshPillText();
 }
+function freshPillText(){const e=document.querySelector('.homebar .fresh span:last-child'); if(e&&!DB.fromCache) e.textContent=FRESH.busy?'Updating…':'Updated '+hm(DB.loadedAt||Date.now());}
 function freshRedraw(){ // never redraw under the keyboard, over an open sheet or a half-written log
   const v=parse().view, a=document.activeElement, sh=document.getElementById('sheet');
   if(a&&a.matches&&a.matches('input,textarea,select')) return; if(sh&&!sh.hidden) return; if(v==='postcook') return;
@@ -2416,13 +2439,15 @@ async function verCheck(){ // the service worker's cache name changes with every
 function showVerbar(){let b=document.getElementById('verbar'); if(!b){b=document.createElement('div'); b.id='verbar'; b.setAttribute('role','status'); document.body.appendChild(b);}
   b.innerHTML='<span>A new version of the app is ready</span><button class="later" onclick="this.parentNode.hidden=true">Later</button><button class="go" onclick="location.reload()">Reload</button>'; b.hidden=false;}
 document.addEventListener('visibilitychange',()=>{ if(document.visibilityState!=='visible'||!DB.loadedAt) return;
-  verCheck(); if(Date.now()-DB.loadedAt>5*60000) refreshData(false); else if(parse().view==='sunday') freshRedraw(); });
+  verCheck(); if(Date.now()-DB.loadedAt>5*60000) refreshData(false); else homeTick(); });
 window.addEventListener('online',()=>{ if(DB.fromCache) refreshData(false); });
 
 // ---------------------------------------------------------------- boot
 (async()=>{
   const ok=await loadAll();
   if(!ok){document.getElementById('app').innerHTML='<div class="empty">Could not reach the kitchen database and nothing is cached yet. Check your connection and reload.</div>';return;}
+  { const L=uiAll()._last, h0=location.hash||'#/sunday';
+    if(L&&L.h&&L.h!==h0&&h0==='#/sunday'&&Date.now()-L.at<2*3600000) history.replaceState(null,'',L.h); }
   index(); render(); verCheck();
   if(DB.fromCache) toast('Offline — showing cached data');
   if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
