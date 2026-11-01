@@ -562,6 +562,19 @@ body.cookmode #verbar{bottom:calc(env(safe-area-inset-bottom) + 12px)}
 .strun .r .l{font:600 14px/1.3 var(--sans);overflow:hidden;text-overflow:ellipsis} .strun .r .s{font:500 12.5px var(--sans);color:var(--ink2)}
 .strun .r .tmr{font:700 17px var(--mono);color:var(--accent);white-space:nowrap} .strun .r.over .tmr{color:var(--bad)}
 .strun .r button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);color:var(--ink2);font-size:15px}
+.strun .strh{display:flex;justify-content:space-between;align-items:center;gap:8px} .strun .strh .eyebrow{margin:0} .strun .strh+.r{border-top:0}
+.strun .sndt{font:600 12px var(--sans);color:var(--ink2);border:1px solid var(--line);border-radius:999px;padding:6px 12px;min-height:32px}
+.alarm{position:fixed;left:12px;right:12px;top:calc(env(safe-area-inset-top) + 10px);z-index:60;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;background:#a8231b;color:#fff;border-radius:16px;padding:14px 14px 14px 18px;box-shadow:0 12px 32px rgba(0,0,0,.35);animation:alp .9s ease-in-out infinite alternate}
+.alarm .ae{font:700 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;opacity:.92}
+.alarm .at{font:700 17px/1.25 var(--sans);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:2px} .alarm .as{font:500 13px/1.35 var(--sans);opacity:.92}
+.alarm button{min-width:92px;min-height:54px;border-radius:12px;background:#fff;color:#a8231b;font:700 17px var(--sans);border:0}
+.alarm.quiet{animation:none;background:var(--ink);color:var(--bg)} .alarm.quiet button{color:var(--ink);background:var(--bg)}
+@keyframes alp{from{box-shadow:0 12px 32px rgba(0,0,0,.35)}to{box-shadow:0 12px 32px rgba(0,0,0,.35),0 0 0 6px rgba(168,35,27,.35)}}
+@media (prefers-reduced-motion:reduce){.alarm{animation:none}}
+.cis{border-left:3px solid var(--accent);padding:2px 0 2px 12px;font:14px/1.5 var(--sans);color:var(--ink2)} .cis b{color:var(--ink);font-weight:600}
+.cis.ok{border-color:var(--ok)} .cis.warn{border-color:var(--warn)} .cis .r{display:block;margin-top:4px;color:var(--ink)}
+.lcraw{margin-top:14px} .lcraw summary{font:600 14px var(--sans);color:var(--ink2);cursor:pointer;padding:6px 0}
+.lcalt{text-align:center;margin-top:6px} .lcalt button{font:600 14px var(--sans);color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px;padding:10px 8px;min-height:44px}
 .tbtns.st{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px} .tbtns.st .btn{min-height:48px}
 .tbtns.st .btn.on{border-color:var(--accent);color:var(--accent)}
 .cooknow{margin-top:14px;background:#1b1714;color:#f2eadc;border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:12px}
@@ -665,7 +678,7 @@ async function sb(path){ // every row, page by page: the API returns at most 100
 }
 async function loadAll(){
   try{
-    const [dish,meal,meal_dish,cook,document,dish_ingredient,rollup,validations,measurement,wine_pick] = await Promise.all([
+    const [dish,meal,meal_dish,cook,document,dish_ingredient,rollup,validations,measurement,wine_pick,cook_inbox] = await Promise.all([
       sb('dish?select=*&order=name,id'), // a unique last key keeps pages from overlapping
       sb('meal?select=*&order=planned_date.desc.nullslast,id'),
       sb('meal_dish?select=*&order=meal_id,dish_id'),
@@ -675,9 +688,10 @@ async function loadAll(){
       sb('dish_rating_rollup?select=*&order=dish_id'),
       sb('open_validations?select=*'), // natural order = the recipe's own order; 199 rows today
       sb('measurement?select=*&order=sort_order,id'),
-      sb('wine_pick?select=id,created_at,owner_type,slug,nudge,cellar_snapshot,inventory_valid,status,pick,kept,error_detail&order=created_at.desc,id').catch(()=>[])
+      sb('wine_pick?select=id,created_at,owner_type,slug,nudge,cellar_snapshot,inventory_valid,status,pick,kept,error_detail&order=created_at.desc,id').catch(()=>[]),
+      sb('cook_inbox?select=id,created_at,owner_type,slug,client_id,status,handled_at,result&order=created_at.desc,id').catch(()=>[])
     ]);
-    Object.assign(DB,{dish,meal,meal_dish,cook,document,dish_ingredient,rollup,validations,measurement,wine_pick,loadedAt:Date.now(),fromCache:false});
+    Object.assign(DB,{dish,meal,meal_dish,cook,document,dish_ingredient,rollup,validations,measurement,wine_pick,cook_inbox,loadedAt:Date.now(),fromCache:false}); setTimeout(()=>obFlush(),0);
     try{localStorage.setItem('kitchen:db',JSON.stringify(DB));}catch(e){}
     return true;
   }catch(e){
@@ -822,7 +836,7 @@ function render(){
   const fn=routes[view]||routes.sunday;
   const cooking=fn===routes.cook||fn===routes.steps; document.body.classList.toggle('cookmode',cooking);
   try{app.innerHTML=fn(arg,arg2); if(fn===routes.library) updateLib(); const pc=app.querySelector('.pswc.on'); if(pc){const sc=pc.parentElement; sc.scrollLeft=Math.max(0,pc.offsetLeft-sc.offsetLeft-(sc.clientWidth-pc.offsetWidth)/2);}}catch(e){console.error(e);app.innerHTML=`<div class="empty">Something went wrong rendering this page.<br><span class="small">${esc(e.message)}</span></div>`;}
-  if(cooking&&wakeWanted()) wakeOn(); else if(!cooking) wakeOff(); else updAwake();
+  const keep=cooking||liveTimers().length>0; if(keep&&wakeWanted()) wakeOn(); else if(!keep) wakeOff(); else updAwake();
   const h=location.hash||'#/sunday', saved=uiLoad(h);
   if(saved){ uiApply(saved); if(!UI.link) window.scrollTo(0,saved.y||0); } // Back, a redraw, a pinned switch or a restart: where you were
   UI.cur=h; UI.boot=false; UI.link=false;
@@ -978,22 +992,22 @@ function stTimer(slug,n,j){
   const du=stepDurs(x.text)[j]; if(!du) return; audioOn(); const now=Date.now();
   const on=liveTimers().find(t=>t.slug===slug&&t.n===n&&t.j===j);
   const T=liveTimers().filter(t=>t!==on&&!(t.slug===slug&&t.n===n&&t.j===j));
-  if(on){setTimers(T); toast('Timer stopped'); softRender(); return;}
+  if(on){setTimers(T); alarmDrop(on.id); toast('Timer stopped'); softRender(); return;}
   const rep=isEvery(x.text,du);
   T.push({id:now,slug,n,j,label:pinName(d)+' · '+stepTag(x.text),txt:du.txt,lo:du.lo,hi:du.hi,start:now,rep});
   setTimers(T); toast('Timer started · '+(rep?'every ':'')+du.txt); softRender();
 }
-function stTimerX(id){setTimers(getTimers().filter(t=>t.id!==id)); softRender();}
+function stTimerX(id){setTimers(getTimers().filter(t=>t.id!==id)); alarmDrop(id); softRender();}
 const dishTimer=slug=>liveTimers().filter(t=>t.slug===slug).sort((a,b)=>(a.start+a.hi)-(b.start+b.hi))[0];
 function stRunning(){const T=liveTimers(); if(!T.length) return ''; const now=Date.now();
-  return `<section class="strun" aria-label="Running timers"><span class="eyebrow">Running</span>${T.map(t=>`<div class="r ${!t.rep&&now-t.start>=t.hi?'over':''}" data-trow="${t.id}"><div style="min-width:0"><div class="l">${esc(t.label)}</div><div class="s" data-tsub="${t.id}">${esc(tmSub(t,now))}</div></div><span class="tmr" data-tid="${t.id}">${tmLeft(t,now)}</span><button onclick="stTimerX(${t.id})" aria-label="Stop the timer: ${esc(t.label)}">✕</button></div>`).join('')}</section>`;}
+  return `<section class="strun" aria-label="Running timers"><div class="strh"><span class="eyebrow">Running</span><button class="sndt" onclick="sndTest()">Test sound</button></div>${T.map(t=>`<div class="r ${!t.rep&&now-t.start>=t.hi?'over':''}" data-trow="${t.id}"><div style="min-width:0"><div class="l">${esc(t.label)}</div><div class="s" data-tsub="${t.id}">${esc(tmSub(t,now))}</div></div><span class="tmr" data-tid="${t.id}">${tmLeft(t,now)}</span><button onclick="stTimerX(${t.id})" aria-label="Stop the timer: ${esc(t.label)}">✕</button></div>`).join('')}</section>`;}
 setInterval(()=>{ const all=getTimers(); if(!all.length) return; const now=Date.now(); let ch=false;
   const T=all.filter(t=>t.rep?now-t.start<6*3600000:now-t.start<t.hi+15*60000); // a finished timer stays 15 min, a repeating one 6 h
-  if(T.length<all.length){ setTimers(T); if(/^(steps|sunday|library)$/.test(parse().view)) freshRedraw(); }
+  if(T.length<all.length){ setTimers(T); if(/^(steps|sunday|library)$/.test(parse().view)) freshRedraw(); if(!T.length&&!/^(cook|steps)$/.test(parse().view)) wakeOff(); }
   T.forEach(t=>{const el=now-t.start;
-    if(t.rep){const cy=Math.floor(el/t.hi); if(cy>(t.cy||0)&&el<6*3600000){t.cy=cy; ch=true; beep(2); try{navigator.vibrate&&navigator.vibrate([200,100,200]);}catch(e){} toast(`${t.label}: every ${t.txt} — now`);}}
-    else{ if(t.lo<t.hi&&!t.lf&&el>=t.lo){t.lf=1; ch=true; beep(1); toast(`${t.label}: ${t.txt} — check now`);}
-      if(!t.hf&&el>=t.hi){t.hf=1; ch=true; beep(3); try{navigator.vibrate&&navigator.vibrate([300,120,300,120,300]);}catch(e){} toast(`${t.label}: ${t.txt} — time`);} }
+    if(t.rep){const cy=Math.floor(el/t.hi); if(cy>(t.cy||0)&&el<6*3600000){t.cy=cy; ch=true; chime('every'); toast(`${t.label}: every ${t.txt} — now`);}}
+    else{ if(t.lo<t.hi&&!t.lf&&el>=t.lo){t.lf=1; ch=true; chime('check'); toast(`${t.label}: ${t.txt} — check now`);}
+      if(!t.hf&&el>=t.hi){t.hf=1; ch=true; alarmRing(t.id,t.label,t.txt+' · time');} }
     document.querySelectorAll(`[data-tid="${t.id}"]`).forEach(e=>{e.textContent=(e.dataset.pre||'')+tmLeft(t,now);});
     document.querySelectorAll(`[data-tsub="${t.id}"]`).forEach(e=>{e.textContent=tmSub(t,now);});
     document.querySelectorAll(`[data-trow="${t.id}"]`).forEach(e=>e.classList.toggle('over',!t.rep&&el>=t.hi));
@@ -1345,7 +1359,7 @@ routes.meal=(slug)=>{
   const pl=m.status!=='cooked'?currentPlan():null, isPl=!!pl&&pl.m===m;
   const day=m.status==='cooked'&&m.last?new Date(m.last+'T00:00:00').toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'}):(isPl?`Planned · ${dayLong(pl.date)} · ${pl.time}`:'Next time');
   const svc=(m.service_time||'18:00').slice(0,5);
-  const acts=[m.workflow_md?`<a class="btn" href="#/cook/${m.slug}">Start cook</a>`:'',hasIngs?`<a class="btn ${m.workflow_md?'ghost':''}" href="#/shopping/meal/${m.slug}">Shopping list</a>`:'',`<a class="btn ghost" href="#/postcook/meal/${m.slug}">Log cook</a>`,printBtn('meal',m,'btn ghost','Print sheet'),
+  const acts=[m.workflow_md?`<a class="btn" href="#/cook/${m.slug}">Start cook</a>`:'',hasIngs?`<a class="btn ${m.workflow_md?'ghost':''}" href="#/shopping/meal/${m.slug}">Shopping list</a>`:'',`<a class="btn ghost" href="#/postcook/meal/${m.slug}">${ciPend('meal',m.slug)?'Log sent · waiting':'Log cook'}</a>`,printBtn('meal',m,'btn ghost','Print sheet'),
     m.status!=='cooked'&&!isPl&&(!pl||pl.src==='phone')?`<button class="btn ghost" onclick="pickPlan('${m.slug}',true)">Cook this Sunday</button>`:''].filter(Boolean);
   return `<div class="hero">
       <div class="eyebrow acc">${esc(day)}${m.pax?' · for '+m.pax:''}</div>
@@ -1478,7 +1492,7 @@ routes.sunday=()=>{
   const items=aggregate(m.dishes.map(x=>x.dish)); let st={}; try{st=JSON.parse(localStorage.getItem('shop:meal/'+m.slug)||'{}');}catch(e){}
   const sc=shopCount(items,st);
   const label=pl.date===todayISO()?'Tonight':pl.date===comingSunday()?'This Sunday':pl.date===comingSunday(1)?'Next Sunday':new Date(pl.date+'T00:00:00').toLocaleDateString('en-GB',{weekday:'long'});
-  const acts=[past?`<a class="btn" href="#/postcook/meal/${m.slug}">Log the cook</a>`:(m.workflow_md?`<a class="btn" href="#/cook/${m.slug}">Start cook</a>`:''),items.length?`<a class="btn ghost" href="#/shopping/meal/${m.slug}">Shopping list</a>`:''].filter(Boolean);
+  const acts=[past?`<a class="btn" href="#/postcook/meal/${m.slug}">${ciPend('meal',m.slug)?'Log sent · waiting for Claude':'Log the cook'}</a>`:(m.workflow_md?`<a class="btn" href="#/cook/${m.slug}">Start cook</a>`:''),items.length?`<a class="btn ghost" href="#/shopping/meal/${m.slug}">Shopping list</a>`:''].filter(Boolean);
   const when=`${esc(dayLong(pl.date))} · <b>${esc(pl.time)}</b>`;
   return `${head}${freshNote()}${pinShelf()}
     <div class="plan"><div class="top"><span class="eyebrow acc">${esc(label)}</span>${pl.src==='phone'?'<button onclick="unplan()" aria-label="Unplan and choose another meal">Change</button>':''}</div>
@@ -1559,7 +1573,7 @@ routes.more=()=>{
       <a href="#/validations"><div><div class="nm">Open checks</div><div class="mt">Designed parameters still to confirm, by when you next cook them</div></div><span class="ct">${openN}</span></a>
       <a href="#/docs"><div><div class="nm">Documents</div><div class="mt">Stored Word and PDF cooking sheets</div></div><span class="ct">${docsN}</span></a>
     </div>
-    <p class="foot">${libBase().length} dishes · ${cooked} cooked · ${meals} meals<br>${DB.fromCache?'Offline — showing what this phone saved':'Live data'}${at?' · loaded '+at:''}<br><button class="btn ghost sm" style="margin-top:10px" onclick="refreshData(true)">Refresh now</button></p>`;
+    <p class="foot">${libBase().length} dishes · ${cooked} cooked · ${meals} meals<br>${DB.fromCache?'Offline — showing what this phone saved':'Live data'}${at?' · loaded '+at:''}<br><button class="btn ghost sm" style="margin-top:10px" onclick="refreshData(true)">Refresh now</button> <button class="btn ghost sm" style="margin-top:10px" onclick="sndTest()">Test timer sound</button></p>`;
 };
 
 // ---------------------------------------------------------------- print (cooking sheet rendered from the database)
@@ -2164,13 +2178,51 @@ function stepDurs(t){ // "(10 min)", "45–60 s", "8–10 min" → at most two t
   return out.slice(0,2);
 }
 function stepTag(t){const s=String(t||'').replace(/\*\*/g,'').trim(), m=s.match(/^(.{3,26}?)\s*[:—–]\s/); if(m&&!/\d$/.test(m[1])) return m[1].trim(); return s.split(/\s+/).slice(0,3).join(' ').replace(/[,.;:]$/,'');}
-let AC=null;
-function audioOn(){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)(); if(AC.state==='suspended') AC.resume();}catch(e){}}
-function beep(n){try{if(AC){const t=AC.currentTime; for(let i=0;i<n;i++){const o=AC.createOscillator(), g=AC.createGain(), s0=t+i*0.4; o.frequency.value=880; g.gain.setValueAtTime(0.0001,s0); g.gain.exponentialRampToValueAtTime(0.35,s0+0.02); g.gain.exponentialRampToValueAtTime(0.0001,s0+0.3); o.connect(g); g.connect(AC.destination); o.start(s0); o.stop(s0+0.32);}}}catch(e){} try{navigator.vibrate&&navigator.vibrate(n>1?[250,120,250,120,250]:[200]);}catch(e){}}
+// ---------------------------------------------------------------- sound: timer chimes, and an alarm that rings until you stop it
+// A page may only make sound after a tap, so any tap on a cooking page (or while a timer runs) unlocks it. On iPhone the
+// silent switch mutes web sound unless the page asks for playback; the page asks only while a chime or the alarm plays.
+const SND={ac:null,el:null,ring:null,loop:0,off:0,url:{}};
+const PAT={check:[[1760,0,.14],[1760,.2,.14],[1760,.4,.14]], every:[[1568,0,.16],[2093,.22,.26]],
+  alarm:[[1760,0,.16],[1320,.2,.16],[1760,.4,.16],[1320,.6,.16],[1760,.8,.16],[1320,1,.16]]};
+function audioOn(){ try{ const C=window.AudioContext||window.webkitAudioContext; if(!C) return;
+  if(!SND.ac){ SND.ac=new C(); const s0=SND.ac.createBufferSource(); s0.buffer=SND.ac.createBuffer(1,1,22050); s0.connect(SND.ac.destination); s0.start(0); }
+  if(SND.ac.state!=='running') SND.ac.resume().catch(()=>{}); }catch(e){} }
+const sndWanted=()=>/^(cook|steps)$/.test(parse().view)||liveTimers().length>0||!!(window._ck&&window._ck.st&&(window._ck.st.timers||[]).length);
+document.addEventListener('pointerdown',()=>{ if(SND.ring||sndWanted()) audioOn(); },true);
+function sndSession(on){ try{ if(navigator.audioSession) navigator.audioSession.type=on?'playback':'auto'; }catch(e){} }
+function sndTones(kind){ const a=SND.ac; if(!a||a.state!=='running') return false; const t0=a.currentTime+.04;
+  PAT[kind].forEach(([f,s0,d])=>{const o=a.createOscillator(), g=a.createGain(), st=t0+s0; o.type='square'; o.frequency.value=f;
+    g.gain.setValueAtTime(0,st); g.gain.linearRampToValueAtTime(.3,st+.012); g.gain.setValueAtTime(.3,st+d-.02); g.gain.linearRampToValueAtTime(0,st+d);
+    o.connect(g); g.connect(a.destination); o.start(st); o.stop(st+d+.02);}); return true; }
+function sndWav(kind){ if(SND.url[kind]) return SND.url[kind]; // the same pattern as a WAV, for the audio-element fallback
+  const sr=22050, P=PAT[kind], len=Math.ceil((Math.max(...P.map(p=>p[1]+p[2]))+.05)*sr), buf=new ArrayBuffer(44+len*2), v=new DataView(buf);
+  const w=(o,x)=>{for(let i=0;i<x.length;i++) v.setUint8(o+i,x.charCodeAt(i));};
+  w(0,'RIFF'); v.setUint32(4,36+len*2,true); w(8,'WAVE'); w(12,'fmt '); v.setUint32(16,16,true); v.setUint16(20,1,true); v.setUint16(22,1,true);
+  v.setUint32(24,sr,true); v.setUint32(28,sr*2,true); v.setUint16(32,2,true); v.setUint16(34,16,true); w(36,'data'); v.setUint32(40,len*2,true);
+  for(let i=0;i<len;i++){const t=i/sr; let x=0; for(const [f,s0,d] of P){ if(t>=s0&&t<s0+d){ const e=Math.min(1,(t-s0)/.012,(s0+d-t)/.012); x=(Math.sin(2*Math.PI*f*t)>=0?1:-1)*.3*e; } } v.setInt16(44+i*2,Math.round(x*32767),true);}
+  return SND.url[kind]=URL.createObjectURL(new Blob([buf],{type:'audio/wav'})); }
+function sndEl(kind){ try{ const el=SND.el||(SND.el=new Audio()); el.src=sndWav(kind); const p=el.play(); if(p&&p.catch) p.catch(()=>{}); }catch(e){} }
+function sndPlay(kind){ sndSession(true); clearTimeout(SND.off);
+  if(!sndTones(kind)){ if(SND.ac){ Promise.race([SND.ac.resume().catch(()=>{}),new Promise(r=>setTimeout(r,400))]).then(()=>{ if(!sndTones(kind)) sndEl(kind); }); } else sndEl(kind); }
+  SND.off=setTimeout(()=>{ if(!SND.ring) sndSession(false); },2500); }
+const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p);}catch(e){}};
+function chime(kind){ sndPlay(kind); buzz(kind==='check'?[200,100,200]:[250]); }
+function beep(n){ n>=3?sndPlay('alarm'):chime(n===2?'every':'check'); }
+function alarmRing(id,label,sub){ // a finished timer: rings every 2 s until Stop, 2 min at most
+  const R=SND.ring||(SND.ring={items:[]}); R.items=R.items.filter(x=>x.id!==id); R.items.push({id,label,sub}); R.t0=Date.now(); alarmShow();
+  if(!SND.loop){ const go=()=>{ if(!SND.ring) return; if(Date.now()-SND.ring.t0>120000) return alarmStop(true); sndPlay('alarm'); buzz([400,150,400,150,400]); }; go(); SND.loop=setInterval(go,2000); } }
+function alarmShow(){ const R=SND.ring; if(!R||!R.items.length) return; let e=document.getElementById('alarm');
+  if(!e){ e=document.createElement('div'); e.id='alarm'; e.className='alarm'; e.setAttribute('role','alertdialog'); e.setAttribute('aria-live','assertive'); document.body.appendChild(e); }
+  e.classList.remove('quiet'); const x=R.items[R.items.length-1];
+  e.innerHTML=`<div class="al"><div class="ae">Time${R.items.length>1?' · '+R.items.length+' timers':''}</div><div class="at">${esc(x.label)}</div><div class="as">${esc(x.sub)}</div></div><button onclick="alarmStop()">Stop</button>`; }
+function alarmStop(auto){ clearInterval(SND.loop); SND.loop=0; SND.ring=null; sndSession(false); buzz(0); const e=document.getElementById('alarm'); if(!e) return;
+  if(auto===true){ e.classList.add('quiet'); const h=e.querySelector('.ae'); if(h) h.textContent='Time · rang for 2 min'; const bt=e.querySelector('button'); if(bt){bt.textContent='OK'; bt.onclick=()=>e.remove();} } else e.remove(); }
+function alarmDrop(id){ const R=SND.ring; if(!R) return; R.items=R.items.filter(x=>x.id!==id); if(!R.items.length) alarmStop(); else alarmShow(); }
+function sndTest(){ audioOn(); setTimeout(()=>alarmRing('test','Test alarm','This is how a finished timer sounds. Tap Stop.'),150); }
 function ckTimer(j){const c=window._ck; if(!c||!c.cur) return; const d=stepDurs(c.cur.text)[j]; if(!d) return; audioOn(); const now=Date.now();
   c.st.timers=(c.st.timers||[]).filter(t=>now-t.start<t.hi+15*60000); c.st.timers.push({id:now,label:stepTag(c.cur.text),txt:d.txt,lo:d.lo,hi:d.hi,start:now});
   saveCook(); toast('Timer started · '+d.txt); renderSoft(true);}
-function ckTimerX(id){const c=window._ck; if(!c) return; c.st.timers=(c.st.timers||[]).filter(t=>t.id!==id); saveCook(); renderSoft(true);}
+function ckTimerX(id){alarmDrop('ck'+id); const c=window._ck; if(!c) return; c.st.timers=(c.st.timers||[]).filter(t=>t.id!==id); saveCook(); renderSoft(true);}
 function timerText(t,now){const el=now-t.start; if(el>=t.hi) return '+'+mmss(el-t.hi)+' over'; if(t.lo<t.hi&&el>=t.lo) return mmss(t.hi-el)+' left · in band'; return mmss((t.lo<t.hi?t.lo:t.hi)-el)+(t.lo<t.hi?' to the band':' left');}
 function runningHtml(st,now){
   const tms=(st.timers||[]).filter(t=>now-t.start<t.hi+15*60000), anc=Object.entries(st.anchors||{}).filter(([,at])=>now-at<6*3600000);
@@ -2267,7 +2319,8 @@ function updAwake(){document.querySelectorAll('.awake').forEach(b=>{const on=!!W
 async function wakeOn(){ if(WL||!('wakeLock' in navigator)) return updAwake(); try{WL=await navigator.wakeLock.request('screen'); WL.addEventListener('release',()=>{WL=null;updAwake();});}catch(e){WL=null;} updAwake(); }
 function wakeOff(){ try{WL&&WL.release();}catch(e){} WL=null; updAwake(); }
 function toggleAwake(){ const on=!WL; try{localStorage.setItem('kitchen:awake',on?'on':'off');}catch(e){} on?wakeOn():wakeOff(); }
-document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible'&&/^(cook|steps)$/.test(parse().view)&&wakeWanted()) wakeOn(); });
+document.addEventListener('visibilitychange',()=>{ if(document.visibilityState!=='visible') return; const keep=/^(cook|steps)$/.test(parse().view)||liveTimers().length>0;
+  if(keep&&wakeWanted()) wakeOn(); if(SND.ac&&(keep||SND.ring)) SND.ac.resume().catch(()=>{}); });
 
 // ---------------------------------------------------------------- cook mode: the kitchen display
 routes.cook=(slug)=>{
@@ -2384,12 +2437,12 @@ setInterval(()=>{ if(parse().view!=='cook') return; const now=Date.now();
   document.querySelectorAll('[data-since]').forEach(e=>e.textContent=mmss(now-(+e.dataset.since)));
   document.querySelectorAll('.rchip.t').forEach(e=>{const t={start:+e.dataset.tstart,lo:+e.dataset.tlo,hi:+e.dataset.thi}, el=now-t.start; e.classList.toggle('band',t.lo<t.hi&&el>=t.lo&&el<t.hi); e.classList.toggle('over',el>=t.hi); const v=e.querySelector('.tv'); if(v) v.textContent=timerText(t,now);});
   const c=window._ck; if(c&&c.st&&(c.st.timers||[]).length){ let ch=false;
-    c.st.timers.forEach(t=>{const el=now-t.start; if(t.lo<t.hi&&!t.lf&&el>=t.lo){t.lf=1; ch=true; beep(1); toast(`${t.label}: ${t.txt} — check now`);} if(!t.hf&&el>=t.hi){t.hf=1; ch=true; beep(3); toast(`${t.label}: time is up`);}});
+    c.st.timers.forEach(t=>{const el=now-t.start; if(t.lo<t.hi&&!t.lf&&el>=t.lo){t.lf=1; ch=true; chime('check'); toast(`${t.label}: ${t.txt} — check now`);} if(!t.hf&&el>=t.hi){t.hf=1; ch=true; alarmRing('ck'+t.id,t.label,t.txt+' · time is up');}});
     if(ch) saveCook(); }
 },1000);
 setInterval(()=>renderSoft(false),60000);
 
-// ---------------------------------------------------------------- log the cook (composes a block for Claude; nothing is written from the phone)
+// ---------------------------------------------------------------- log the cook (sends the block to Claude, who writes the cook record; the phone writes no kitchen table)
 const RWORD=v=>v>=10?'Perfect':v>=9.5?'Outstanding':v>=9?'Excellent':v>=8?'Very good':v>=7?'Good':v>=6?'Fine':v>=5?'Middling':'Off';
 const hasV=v=>v!=null&&v!=='';
 function bigSeal(v){
@@ -2438,14 +2491,14 @@ routes.postcook=(kind,slug)=>{
         ${byD.length?`<div class="eyebrow" style="margin-top:20px">Still to answer · ${Q.length-M.length}</div>${byD.map(g=>`<details class="lgrp"><summary><span class="nm">${esc(menuName(g.d.name))}</span><span class="ct">${g.items.length}</span></summary>${g.items.map(lv).join('')}</details>`).join('')}`:''}`;})():''}
     <h3 class="section">Measurements</h3>
     <div>${[...Array(measN)].map((_,i)=>`<div class="lmeas">${inp('m:'+i+':gate','gate, e.g. oven exit')}${inp('m:'+i+':obs','reading, e.g. 126°F')}</div>`).join('')}<button class="btn ghost sm" style="margin-top:10px" onclick="pf('measN',${measN+2});softRender()">+ More rows</button></div>
-    <h3 class="section">For Claude</h3>
-    <p class="small muted" style="margin:0">Copy this and paste it to Claude, which writes the cook record under the data protocol and shows you the rows first. Nothing is written from the phone.</p>
-    <pre id="postout" class="lcpre">${esc(composeText())}</pre>
-    <div class="lcacts"><button class="btn" onclick="composePost()">Copy for Claude</button><button class="btn ghost" onclick="localStorage.removeItem('${key}');softRender()">Clear</button></div>
+    <h3 class="section">Send to Claude</h3>
+    <div id="cooksend">${cookSendBox()}</div>
+    <details class="lcraw"><summary>What Claude gets</summary><pre id="postout" class="lcpre">${esc(composeText(true))}</pre></details>
+    <div class="lcalt"><button onclick="composePost()">Copy it for a chat instead</button></div>
     <div style="height:16px"></div>`;
 };
 function softRender(){const y=window.scrollY; uiSave(); render(); window.scrollTo(0,y);} // the redraw keeps open sections (render restores them) and the scroll
-function pf(k,v){const p=window._post; p.f[k]=v; try{localStorage.setItem(p.key,JSON.stringify(p.f));}catch(e){} if(k==='measN') return; const o=document.getElementById('postout'); if(o) o.textContent=composeText(); /* no re-render on typing */}
+function pf(k,v){const p=window._post; p.f[k]=v; if(k!=='measN'&&p.f.sentAt) p.f.editedAt=Date.now(); try{localStorage.setItem(p.key,JSON.stringify(p.f));}catch(e){} if(k==='measN') return; const o=document.getElementById('postout'); if(o) o.textContent=composeText(true); if(p.f.sentAt) cookSendRedraw(); /* no re-render on typing */}
 function updWhen(){const e=document.getElementById('lc-when'); if(e) e.textContent=lcWhen();}
 function rVal(k,v){
   const p=window._post; v=Math.min(10,Math.max(0,Math.round(v*2)/2)); pf(k,String(v));
@@ -2456,7 +2509,7 @@ function rVal(k,v){
 function rStep(k,dl){const cur=window._post.f[k]; rVal(k,hasV(cur)?+cur+dl:8);}
 function rSet(k,v){rVal(k,+v);}
 function pick(k,v,el){const p=window._post, nv=p.f[k]===v?'':v; if(/:verdict$/.test(k)){delete p.f[k.replace(/:verdict$/,':sug')]; const sg=el.closest('.lval')&&el.closest('.lval').querySelector('.sugg'); if(sg) sg.remove();} pf(k,nv); el.parentElement.querySelectorAll('button').forEach(b=>{const on=b===el&&nv!==''; b.classList.toggle('on',on); b.setAttribute('aria-pressed',String(on));});}
-function composeText(){
+function composeText(sent){
   const p=window._post, f=p.f; const L=[];
   L.push(`POST-COOK LOG — ${p.owner.name}`);
   L.push(`kind: ${p.kind}   slug: ${p.owner.slug}`);
@@ -2471,13 +2524,53 @@ function composeText(){
   if(pc.length){L.push('parameter_confirmations:'); pc.forEach(x=>L.push(`  - [${x.v.dish.slug}] ${x.v.param} → ${x.verdict||'unresolved'}${x.sug&&x.verdict?' (suggested)':''}${x.obs?' · observed: '+x.obs+(x.at?' at '+x.at:''):''}`));}
   const ms=[...Array(+(f.measN||3)+10)].map((_,i)=>({g:f['m:'+i+':gate'],o:f['m:'+i+':obs']})).filter(x=>x.g||x.o);
   if(ms.length){L.push('measurements:'); ms.forEach(x=>L.push(`  - ${x.g||'?'}: ${x.o||'?'}`));}
-  L.push('— Write this per recipe_output_data_protocol §5 (cook row; parameter confirmations close validations; measurements to the measurement table). Verdicts marked (suggested) came from the app: check each against its designed value. Show me the rows first.');
+  L.push(sent?'— Sent from the app. Write it per recipe_output_data_protocol §5 (dish rows carry the evidence; parameter confirmations close validations; measurements to the measurement table; mark_cooked). Verdicts marked (suggested) came from the app: check each against its designed value.'
+    :'— Write this per recipe_output_data_protocol §5 (cook row; parameter confirmations close validations; measurements to the measurement table). Verdicts marked (suggested) came from the app: check each against its designed value. Show me the rows first.');
   return L.join('\n');
 }
 function composePost(){
-  const text=composeText(); const out=document.getElementById('postout'); if(out) out.textContent=text;
+  const text=composeText();
   if(navigator.share){navigator.share({title:'Post-cook log',text}).catch(()=>{});} else if(navigator.clipboard){navigator.clipboard.writeText(text).then(()=>toast('Copied — paste it to Claude'),()=>toast('Could not copy'));}
 }
+// ---------------------------------------------------------------- send the log to Claude (cook_inbox, migration 0013): Claude loads it with kitchen_save_cook
+// in the morning drain or at the start of a cooking chat; a log that cannot go out waits on this phone and goes when it can
+const CI={busy:false,err:null,local:{}}, OB_KEY='kitchen:outbox';
+const obGet=()=>{try{const a=JSON.parse(localStorage.getItem(OB_KEY)||'[]'); return Array.isArray(a)?a:[];}catch(e){return [];}};
+const obSet=a=>{try{localStorage.setItem(OB_KEY,JSON.stringify(a));}catch(e){}};
+function postMut(key,fn){const live=window._post&&window._post.key===key; let f=live?window._post.f:null; if(!f){try{f=JSON.parse(localStorage.getItem(key)||'{}')||{};}catch(e){f={};}} fn(f); try{localStorage.setItem(key,JSON.stringify(f));}catch(e){}}
+const ciRow=f=>f&&f.cid?((DB.cook_inbox||[]).find(r=>r.client_id===f.cid)||CI.local[f.cid]||null):null;
+const ciPend=(kind,slug)=>(DB.cook_inbox||[]).some(r=>r.owner_type===kind&&r.slug===slug&&r.status==='new');
+const ciWhen=t=>new Date(t).toLocaleString('en-GB',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+function postPayload(){const p=window._post, f=p.f, fields={}; Object.keys(f).forEach(k=>{if(!/^(cid|sentAt|pend|editedAt|measN)$/.test(k)&&hasV(f[k])) fields[k]=f[k];});
+  return {kind:p.kind,slug:p.owner.slug,name:p.owner.name,cooked_on:f.date||todayISO(),fields,
+    checks:p.open.map((v,i)=>({i,dish:v.dish.slug,param:v.param,designed:v.designed_value||null,verdict:f['v:'+i+':verdict']||null,observed:f['v:'+i+':observed']||null,suggested:!!f['v:'+i+':sug']})).filter(x=>x.verdict||x.observed)};}
+function cookSendBox(){ const p=window._post; if(!p) return ''; const f=p.f, r=ciRow(f), pend=obGet().some(x=>x.key===p.key);
+  const msg=e=>e==='missing'?'Sending switches on after one database step (the SQL file from Claude). Copy it for a chat for now.':e==='limit'?'20 logs in 24 hours is the cap. Copy it for a chat instead.':'Could not send: '+esc(e)+'. Copy it for a chat instead.';
+  let box, btn=`<button class="btn" onclick="cookSend()" ${CI.busy?'disabled':''}>${CI.busy?'Sending…':'Send to Claude'}</button>`;
+  if(r&&r.status==='loaded'){ box=`<div class="cis ok"><b>Logged by Claude</b>${r.handled_at?' · '+esc(ciWhen(r.handled_at)):''}${r.result?`<span class="r">${esc(r.result)}</span>`:''}${f.editedAt?'<span class="r">Changed since then: tell Claude in a chat.</span>':''}</div>`; btn=''; }
+  else if(r&&r.status==='rejected'){ box=`<div class="cis warn"><b>Claude could not load it</b>${r.result?`<span class="r">${esc(r.result)}</span>`:''}<span class="r">Fix it and send again, or copy it for a chat.</span></div>`; btn=btn.replace('Send to Claude','Send again'); }
+  else if(pend){ box=`<div class="cis warn"><b>Saved on this phone</b> · it goes to Claude as soon as there is a connection.</div>`; }
+  else if(f.sentAt){ box=`<div class="cis"><b>Sent to Claude</b> · ${esc(ciWhen(f.sentAt))}<span class="r">Claude loads it by 6 am, or as soon as you open a Cooking chat.</span>${f.editedAt?'<span class="r">Changed since you sent it. Send again to replace it.</span>':''}</div>`; btn=f.editedAt?btn.replace('Send to Claude','Send again'):''; }
+  else box=`<div class="cis">Claude writes the cook record from this under the data protocol (a row per dish, closed checks, measurements) and marks it cooked: by 6 am, or as soon as you open a Cooking chat. Suggested verdicts are checked against the designed values first.</div>`;
+  if(CI.err&&!(r&&r.status==='loaded')) box+=`<div class="cis warn" style="margin-top:10px">${msg(CI.err)}</div>`;
+  return `${box}<div class="lcacts">${btn||'<span></span>'}<button class="btn ghost" onclick="postClear()">Clear</button></div>`; }
+function cookSendRedraw(){const e=document.getElementById('cooksend'); if(e) e.innerHTML=cookSendBox();}
+function cookSend(){ const p=window._post; if(!p||CI.busy) return; const f=p.f, r=ciRow(f); if(r&&r.status==='loaded') return;
+  if(!f.cid||(r&&r.status==='rejected')) f.cid='pc-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7);
+  try{localStorage.setItem(p.key,JSON.stringify(f));}catch(e){}
+  const it={key:p.key,kind:p.kind,slug:p.owner.slug,cid:f.cid,log:composeText(true),payload:postPayload()};
+  obSet(obGet().filter(x=>x.cid!==it.cid&&x.key!==it.key).concat([it])); CI.err=null; obFlush(true); }
+async function obFlush(fromTap){ if(CI.busy) return; const a=obGet(); if(!a.length) return; CI.busy=true; if(fromTap) cookSendRedraw();
+  for(const it of a){ let r=null;
+    try{ r=await rpc('kitchen_cook_submit',{p_kind:it.kind,p_slug:it.slug,p_payload:it.payload,p_log:it.log,p_client_id:it.cid}); }
+    catch(e){ if(e&&(e.status===404||e.code==='PGRST202')){ obSet(obGet().filter(x=>x.cid!==it.cid)); CI.err='missing'; continue; } if(fromTap) CI.err=null; break; } // no connection: it waits
+    obSet(obGet().filter(x=>x.cid!==it.cid));
+    if(r&&r.status==='sent'){ postMut(it.key,f=>{f.sentAt=Date.now(); f.editedAt=0;}); CI.local[it.cid]={client_id:it.cid,status:'new'}; CI.err=null; toast('Sent to Claude'); }
+    else if(r&&r.status==='already'){ CI.local[it.cid]={client_id:it.cid,status:r.state||'loaded'}; CI.err=null; }
+    else CI.err=r&&r.status==='limit'?'limit':((r&&r.detail)||'no answer from the database'); }
+  CI.busy=false; cookSendRedraw(); }
+window.addEventListener('online',()=>obFlush());
+function postClear(){ const p=window._post; if(!p) return; obSet(obGet().filter(x=>x.key!==p.key)); CI.err=null; localStorage.removeItem(p.key); softRender(); }
 
 // ---------------------------------------------------------------- docs
 routes.docs=()=>{
