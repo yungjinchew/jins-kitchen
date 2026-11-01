@@ -297,9 +297,9 @@ h3.section{font:400 26px/1.1 var(--serif);text-transform:none;letter-spacing:0;c
 .phase{margin-top:22px}
 .ph{font:600 11px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);padding-bottom:8px;border-bottom:1px solid var(--line)}
 .msteps{list-style:none;margin:0;padding:0}
-.msteps li{display:grid;grid-template-columns:30px 1fr;gap:10px;padding:13px 0;border-bottom:1px solid var(--line)}
+.msteps>li{display:grid;grid-template-columns:30px 1fr;gap:10px;padding:13px 0;border-bottom:1px solid var(--line)}
 .msteps .n{font:400 26px/1 var(--serif);color:var(--accent)}
-.msteps .tx{font:16px/1.55 var(--sans);min-width:0;overflow-wrap:anywhere} .msteps .tx p{margin:0} .msteps .tx p+p,.msteps .tx ul{margin:6px 0 0} .msteps .tx ul{padding-left:18px}
+.msteps .tx{font:16px/1.55 var(--sans);min-width:0;overflow-wrap:anywhere} .msteps .tx p{margin:0} .msteps .tx p+p,.msteps .tx ul{margin:6px 0 0} .msteps .tx ul{padding-left:18px;list-style:disc} .msteps .tx li{margin:4px 0}
 .msteps .tx b{font-weight:650}
 .phase>.md{margin-top:10px}
 .lab{background:var(--tint);border-radius:4px;padding:2px 16px 8px;margin-top:10px}
@@ -1193,12 +1193,12 @@ function leadSplit(t){ // "**Thaw, 24–36 hr ahead.** Fridge…" → ["Thaw, 24
 const qtyShow=di=>di.qty!=null?qtyText(di).replace(/\s(piece|pieces|whole)$/i,''):'';
 function ingRow(di){
   const nm=ingName(di), [a,...b]=nm.split(','), q=qtyShow(di);
-  const alt=di.qty_alt||'', altInCol=!q&&alt&&alt.length<=9, prep=prepShow(di.prep_note), spec=di.buy_spec||'', avoid=di.buy_avoid||'';
+  const alt=di.qty_alt||'', spoon=!!q&&/^(ml|l)$/i.test(di.unit||'')&&/\b(tsp|tbsp|cups?)\b/.test(alt)&&alt.length<=7, altInCol=!q&&alt&&alt.length<=9, prep=prepShow(di.prep_note), spec=di.buy_spec||'', avoid=di.buy_avoid||'';
   const tags=(di.made?'<span class="itag">Made in recipe</span>':'')+(di.pantry_check?'<span class="itag">Pantry</span>':'')+(di.optional?'<span class="itag">Optional</span>':'');
   const sub=prep||(spec?'Buy '+spec:'')||(!q&&!altInCol?alt:'');
   const name=`<span class="inm">${esc(a.replace(/^./,c=>c.toUpperCase()))}${b.length?`<i>, ${esc(b.join(',').trim())}</i>`:''}${tags}${sub?`<span class="isub">${esc(sub)}</span>`:''}</span>`;
-  const head=`<span class="iq ${q?'':'alt'}">${esc(q||(altInCol?alt:''))}</span>${name}`;
-  const measure=alt&&!altInCol?alt:'';
+  const head=`<span class="iq ${q?'':'alt'}">${esc(spoon?alt:(q||(altInCol?alt:'')))}</span>${name}`;
+  const measure=spoon?q:(alt&&!altInCol?alt:'');
   if(!(spec||avoid||measure||prep.length>40)) return `<div class="irow"><div class="ih">${head}<span></span></div></div>`;
   return `<details class="irow"><summary>${head}</summary><dl class="ibox">${spec?`<dt>Buy</dt><dd>${esc(spec)}</dd>`:''}${avoid?`<dt>Not</dt><dd class="not">${esc(avoid)}</dd>`:''}${prep?`<dt>Prep</dt><dd>${esc(prep)}</dd>`:''}${measure?`<dt>Measure</dt><dd>${esc(measure)}</dd>`:''}</dl></details>`;
 }
