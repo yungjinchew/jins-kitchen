@@ -1193,7 +1193,7 @@ function leadSplit(t){ // "**Thaw, 24–36 hr ahead.** Fridge…" → ["Thaw, 24
 const qtyShow=di=>di.qty!=null?qtyText(di).replace(/\s(piece|pieces|whole)$/i,''):'';
 function ingRow(di){
   const nm=ingName(di), [a,...b]=nm.split(','), q=qtyShow(di);
-  const alt=di.qty_alt||'', spoon=!!q&&/^(ml|l)$/i.test(di.unit||'')&&/\b(tsp|tbsp|cups?)\b/.test(alt)&&alt.length<=7, altInCol=!q&&alt&&alt.length<=9, prep=prepShow(di.prep_note), spec=di.buy_spec||'', avoid=di.buy_avoid||'';
+  const alt=di.qty_alt||'', spoon=!!q&&/^(ml|l)$/i.test(di.unit||'')&&/\b(tsp|tbsp|cups?)\b/.test(alt)&&alt.length<=14&&alt.split(/\s+/).every(w=>w.length<=7), altInCol=!q&&alt&&alt.length<=9, prep=prepShow(di.prep_note), spec=di.buy_spec||'', avoid=di.buy_avoid||'';
   const tags=(di.made?'<span class="itag">Made in recipe</span>':'')+(di.pantry_check?'<span class="itag">Pantry</span>':'')+(di.optional?'<span class="itag">Optional</span>':'');
   const sub=prep||(spec?'Buy '+spec:'')||(!q&&!altInCol?alt:'');
   const name=`<span class="inm">${esc(a.replace(/^./,c=>c.toUpperCase()))}${b.length?`<i>, ${esc(b.join(',').trim())}</i>`:''}${tags}${sub?`<span class="isub">${esc(sub)}</span>`:''}</span>`;
