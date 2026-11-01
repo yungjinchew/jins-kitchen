@@ -65,7 +65,7 @@ a.card{color:var(--ink)}
 .row .grow{flex:1;min-width:0}
 .title{font-weight:600;line-height:1.3}
 .sub{color:var(--ink2);font-size:13px;margin-top:2px}
-.eyebrow{font:600 10px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.eyebrow{font:600 11px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
 .eyebrow.acc{color:var(--accent)}
 .chips{display:flex;gap:8px;flex-wrap:wrap}
 .chip{display:inline-flex;align-items:center;gap:4px;min-height:36px;background:transparent;border:1px solid var(--chip);border-radius:999px;padding:6px 14px;font:500 14px var(--sans);color:var(--ink);white-space:nowrap}
@@ -127,7 +127,7 @@ details[open] summary::after{transform:rotate(90deg)}
 .tabs a i{display:block;width:18px;height:2px;background:transparent}
 .tabs a.on{color:var(--accent);font-style:italic}
 .tabs a.on i{background:var(--accent)}
-.tabs .n{font:600 10px var(--sans);color:var(--ink3);margin-left:2px;vertical-align:super;font-style:normal}
+.tabs .n{font:600 11px var(--sans);color:var(--ink2);margin-left:2px;vertical-align:super;font-style:normal}
 /* library rows */
 .libhead{display:flex;gap:8px;align-items:center;padding:12px 0 0;overflow-x:auto;scrollbar-width:none} .libhead::-webkit-scrollbar{display:none}
 .libhead .btn,.libhead .chip{flex:none;min-height:44px}
@@ -175,7 +175,7 @@ body.locked{overflow:hidden}
 .mrow.nodate{grid-template-columns:1fr auto}
 .mrow .dt{text-align:center;line-height:1}
 .mrow .dt b{display:block;font:400 28px/1 var(--serif)}
-.mrow .dt span{font:600 10px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.mrow .dt span{font:600 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
 .mrow .nm{font:400 20px/1.15 var(--serif)}
 .mrow .mt{font:500 12px/1.4 var(--sans);color:var(--ink2);margin-top:3px}
 .rot{padding:14px 16px}
@@ -218,7 +218,7 @@ h3.section{font:400 26px/1.1 var(--serif);text-transform:none;letter-spacing:0;c
 .pill{display:inline-block;font:600 11px/1.4 var(--sans);padding:2px 8px;border-radius:999px;background:var(--track);color:var(--ink2);vertical-align:middle;letter-spacing:.02em}
 .pill.acc{background:var(--accent);color:var(--on-accent)}
 .banner{background:var(--tint);color:var(--ink);border-radius:10px;padding:8px 12px;font-size:13px}
-.offline{font:600 10px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--warn);border:1px solid currentColor;border-radius:999px;padding:3px 8px;white-space:nowrap}
+.offline{font:600 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--warn);border:1px solid currentColor;border-radius:999px;padding:3px 8px;white-space:nowrap}
 .spin{display:inline-block;width:16px;height:16px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:sp .8s linear infinite;vertical-align:middle}
 @keyframes sp{to{transform:rotate(360deg)}}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -242,7 +242,7 @@ h3.section{font:400 26px/1.1 var(--serif);text-transform:none;letter-spacing:0;c
 .plan .when .wd b{font:500 14px var(--mono)} .plan .when .wd .chev{color:var(--ink2);font-size:12px}
 .plan .when .cd{font:500 14px var(--mono);color:var(--accent);white-space:nowrap}
 .hmenu{display:grid;grid-template-columns:62px 1fr;gap:7px 12px;align-items:baseline;padding:14px 0 2px}
-.hmenu .eyebrow{font-size:9px}
+.hmenu .eyebrow{font-size:11px;letter-spacing:.08em}
 .hmenu a{font:400 18px/1.2 var(--serif);color:var(--ink)}
 .shopline{display:flex;justify-content:space-between;gap:12px;font:500 12px var(--sans);color:var(--ink2);margin-top:16px} .shopline b{color:var(--ink);font-weight:600}
 .bar{height:4px;background:var(--track);border-radius:2px;overflow:hidden;margin-top:6px} .bar i{display:block;height:100%;background:var(--accent)}
@@ -275,7 +275,7 @@ h3.section{font:400 26px/1.1 var(--serif);text-transform:none;letter-spacing:0;c
 @media (prefers-color-scheme:dark){.rdot{box-shadow:0 0 0 1px rgba(255,255,255,.22)} .rdot.last{box-shadow:0 0 0 2px var(--bg),0 0 0 3px rgba(255,255,255,.55)}}
 .rlegend{font:500 12px/1.5 var(--sans);color:var(--ink2);margin-top:8px} .rlegend b{color:var(--accent);font-weight:700}
 .sheet-panel .fld{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:8px 0 4px}
-.sheet-panel .fld label{font:600 10px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);display:flex;flex-direction:column;gap:6px}
+.sheet-panel .fld label{font:600 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);display:flex;flex-direction:column;gap:6px}
 .sheet-panel .fld input{min-height:48px;border:1px solid var(--chip);border-radius:10px;background:var(--bg2);padding:0 12px;font:500 16px var(--mono);color:var(--ink);letter-spacing:0;text-transform:none}
 /* dish page: ingredients (quantity and name first, details on tap), method as numbered steps, lab notes, kitchen notes */
 .shead button{font:600 13px var(--sans);color:var(--accent);min-height:44px;white-space:nowrap}
@@ -288,13 +288,13 @@ h3.section{font:400 26px/1.1 var(--serif);text-transform:none;letter-spacing:0;c
 .inm i{color:var(--ink2)}
 .isub{display:block;font:13px/1.4 var(--sans);color:var(--ink2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .irow[open] .isub{display:none}
-.itag{display:inline-block;margin-left:8px;padding:0 6px;border:1px solid var(--chip);border-radius:3px;font:600 9px/1.7 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);vertical-align:3px;white-space:nowrap}
+.itag{display:inline-block;margin-left:8px;padding:0 6px;border:1px solid var(--chip);border-radius:3px;font:600 11px/1.7 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);vertical-align:3px;white-space:nowrap}
 .ibox{margin:0 0 12px 76px;padding:10px 12px;background:var(--tint);border-radius:4px;display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font:14px/1.45 var(--sans)}
-.ibox dt{font:600 9px/2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)} .ibox dd{margin:0} .ibox dd.not{color:var(--bad);font-weight:600}
+.ibox dt{font:600 11px/2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)} .ibox dd{margin:0} .ibox dd.not{color:var(--bad);font-weight:600}
 .yield{font:italic 17px/1.45 var(--serif);color:var(--ink2);margin:2px 0 0} .yield p{margin:4px 0} .yield b{font-weight:400;color:var(--ink)}
 .part{font:400 24px/1.15 var(--serif);margin:30px 0 0}
 .phase{margin-top:22px}
-.ph{font:600 10px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);padding-bottom:8px;border-bottom:1px solid var(--line)}
+.ph{font:600 11px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);padding-bottom:8px;border-bottom:1px solid var(--line)}
 .msteps{list-style:none;margin:0;padding:0}
 .msteps li{display:grid;grid-template-columns:30px 1fr;gap:10px;padding:13px 0;border-bottom:1px solid var(--line)}
 .msteps .n{font:400 26px/1 var(--serif);color:var(--accent)}
@@ -302,13 +302,13 @@ h3.section{font:400 26px/1.1 var(--serif);text-transform:none;letter-spacing:0;c
 .msteps .tx b{font-weight:650}
 .phase>.md{margin-top:10px}
 .lab{background:var(--tint);border-radius:4px;padding:2px 16px 8px;margin-top:10px}
-.lab .lh{display:flex;justify-content:space-between;align-items:center;gap:10px;font:600 10px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);min-height:44px;padding-top:6px}
+.lab .lh{display:flex;justify-content:space-between;align-items:center;gap:10px;font:600 11px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);min-height:44px;padding-top:6px}
 .lab .lh a{font:600 13px var(--sans);letter-spacing:0;text-transform:none;min-height:44px;display:flex;align-items:center}
 .lv{padding:10px 0;border-top:1px solid var(--line)}
 .lv .p{font:400 19px/1.25 var(--serif)} .lv .dv{font:500 13px/1.45 var(--mono);margin-top:3px;overflow-wrap:anywhere} .lv .nt{font:13px/1.45 var(--sans);color:var(--ink2);margin-top:3px}
 .lm{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:10px 0;border-top:1px solid var(--line)}
 .lm .g{font:500 14px/1.35 var(--sans)} .lm .pr{font:13px/1.4 var(--sans);color:var(--ink2);margin-top:2px}
-.lm .v{text-align:right;font:500 20px/1.1 var(--mono);white-space:nowrap} .lm .v small{display:block;font:500 10px var(--mono);color:var(--ink2);letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
+.lm .v{text-align:right;font:500 20px/1.1 var(--mono);white-space:nowrap} .lm .v small{display:block;font:500 11px var(--mono);color:var(--ink2);letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
 .lm .ob{grid-column:1/-1;font:12px/1.45 var(--sans);color:var(--ink2)}
 .knote{border-bottom:1px solid var(--line)} .knote:first-of-type{border-top:1px solid var(--line)}
 .knote summary{min-height:52px;font:400 20px/1.2 var(--serif)}
@@ -331,7 +331,7 @@ h3.section{font:400 26px/1.1 var(--serif);text-transform:none;letter-spacing:0;c
 .sitem .nm{display:block;font:400 19px/1.25 var(--serif)}
 .sitem .buy{display:block;font:13px/1.4 var(--sans);color:var(--ink2);margin-top:3px} .sitem .buy .not{color:var(--bad);font-weight:600}
 .sitem .attr{display:block;font:12px/1.4 var(--sans);color:var(--ink2);margin-top:3px}
-.sitem .oa{display:inline-block;margin-top:7px;padding:0 6px;border:1px solid var(--bad);color:var(--bad);border-radius:3px;font:600 9px/1.7 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.sitem .oa{display:inline-block;margin-top:7px;padding:0 6px;border:1px solid var(--bad);color:var(--bad);border-radius:3px;font:600 11px/1.7 var(--mono);letter-spacing:.1em;text-transform:uppercase}
 .sitem .q{font:500 14px/1.35 var(--mono);text-align:right;max-width:9em;overflow-wrap:anywhere;padding-top:3px}
 .sitem.done .nm{text-decoration:line-through;text-decoration-thickness:1px;color:var(--ink3)} .sitem.done .q,.sitem.done .buy,.sitem.done .attr{color:var(--ink3)} .sitem.done .buy .not{color:var(--ink3)} .sitem.done .oa{opacity:.45}
 .spantry{margin-top:26px;border-top:1px solid var(--line)}
@@ -347,7 +347,7 @@ h3.section{font:400 26px/1.1 var(--serif);text-transform:none;letter-spacing:0;c
 .btc{min-width:0;background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:12px 14px;display:flex;flex-direction:column;gap:5px;color:var(--ink)}
 .btc .t{font:600 15px/1.35 var(--sans)} .btc .t .q{font:500 13px var(--mono);color:var(--ink2);white-space:nowrap}
 .btc .d{font:13px/1.4 var(--sans);color:var(--ink2)} .btc .d.nb{color:var(--accent);font-weight:600}
-.btc .oa{align-self:flex-start;padding:0 6px;border:1px solid var(--bad);color:var(--bad);border-radius:3px;font:600 9px/1.7 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.btc .oa{align-self:flex-start;padding:0 6px;border:1px solid var(--bad);color:var(--bad);border-radius:3px;font:600 11px/1.7 var(--mono);letter-spacing:.1em;text-transform:uppercase}
 .btc .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
 .btc.done{opacity:.6} .btc.done .t{text-decoration:line-through;text-decoration-thickness:1px}
 .btc.past{border-color:var(--warn)} .btc.past .d.nb{color:var(--warn)}
@@ -374,8 +374,13 @@ h3.section{font:400 26px/1.1 var(--serif);text-transform:none;letter-spacing:0;c
 .rate .pm button{width:44px;height:44px;border-radius:50%;border:1px solid var(--chip);font:400 22px/1 var(--sans);color:var(--ink);display:grid;place-items:center}
 .rate output{min-width:54px;text-align:center;font:400 32px/1 var(--serif)}
 .rate input{display:block;width:100%;height:32px;margin:6px 0 0;accent-color:var(--accent)}
-.rate input.unset{opacity:.4}
-.rate .scale{display:flex;justify-content:space-between;font:500 10px var(--mono);color:var(--ink2)}
+.rate output.un{font:500 14px var(--sans);color:var(--ink2);min-width:0}
+.rate input.unset{-webkit-appearance:none;appearance:none;background:transparent}
+.rate input.unset::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:repeating-linear-gradient(90deg,var(--chip) 0 6px,transparent 6px 10px)}
+.rate input.unset::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:0;height:0;border:0}
+.rate input.unset::-moz-range-track{height:4px;background:repeating-linear-gradient(90deg,var(--chip) 0 6px,transparent 6px 10px)}
+.rate input.unset::-moz-range-thumb{width:0;height:0;border:0;opacity:0}
+.rate .scale{display:flex;justify-content:space-between;font:500 11px var(--mono);color:var(--ink2)}
 .rate.sm output{font-size:26px;min-width:44px}
 .vseg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
 .vseg button{min-height:44px;border:1px solid var(--chip);border-radius:999px;font:600 13px/1.2 var(--sans);color:var(--ink);padding:4px 6px}
@@ -396,13 +401,13 @@ body.cookmode .tabs,body.cookmode header.top{display:none}
 .ckbar{position:sticky;top:0;z-index:5;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;min-height:56px;margin:0 -20px;padding:env(safe-area-inset-top) 20px 0;background:var(--bg);border-bottom:1px solid var(--line)}
 .ckbar .x{min-height:44px;font:600 15px var(--sans);color:var(--ink2);white-space:nowrap}
 .ckbar .t{font:italic 400 20px var(--serif);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.awake{min-height:34px;border:1px solid var(--chip);border-radius:999px;padding:0 11px;font:600 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);display:flex;align-items:center;gap:6px;white-space:nowrap}
+.awake{min-height:40px;border:1px solid var(--chip);border-radius:999px;padding:0 11px;font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);display:flex;align-items:center;gap:6px;white-space:nowrap}
 .awake i{width:7px;height:7px;border-radius:50%;background:var(--ink3)} .awake.on{color:var(--accent);border-color:var(--accent)} .awake.on i{background:var(--accent)}
 .ckwhen{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:56px;margin-top:14px;padding:0 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg2)}
-.ckwhen .k{font:600 10px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)} .ckwhen .v{font:500 16px var(--sans);color:var(--ink)} .ckwhen .v b{font:500 16px var(--mono)}
+.ckwhen .k{font:600 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)} .ckwhen .v{font:500 16px var(--sans);color:var(--ink)} .ckwhen .v b{font:500 16px var(--mono)}
 .readouts{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:12px;margin-top:12px;overflow:hidden;background:var(--bg2)}
 .readouts>*{padding:10px 12px;border-left:1px solid var(--line);text-align:left;min-height:62px;min-width:0} .readouts>:first-child{border-left:0}
-.readouts .k{font:600 9px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ink2)}
+.readouts .k{font:600 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
 .readouts .v{font:500 16px/1.35 var(--mono);color:var(--ink);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .readouts .v.acc{color:var(--accent)}
 .segs{display:flex;gap:3px;margin-top:12px} .segs i{flex:1;height:4px;border-radius:2px;background:var(--track)} .segs i.d{background:var(--ink3)} .segs i.c{background:var(--accent)}
 .bigstep{margin-top:20px}
@@ -412,19 +417,19 @@ body.cookmode .tabs,body.cookmode header.top{display:none}
 .bigstep .det{font:16px/1.5 var(--sans);color:var(--ink2);margin-top:8px}
 .donebtn{display:flex;align-items:center;justify-content:center;width:100%;min-height:64px;margin-top:20px;border-radius:999px;background:var(--accent);color:var(--on-accent);font:600 18px var(--sans)}
 .nextcard{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;margin-top:12px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg2)}
-.nextcard .k{font:600 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+.nextcard .k{font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
 .nextcard .tx{font:400 18px/1.25 var(--serif);margin-top:4px}
-.nextcard .in{text-align:right;font:600 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)} .nextcard .in b{display:block;font:500 20px var(--mono);color:var(--ink);letter-spacing:0}
+.nextcard .in{text-align:right;font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)} .nextcard .in b{display:block;font:500 20px var(--mono);color:var(--ink);letter-spacing:0}
 .cknote{margin-top:14px;padding:14px 16px;border-radius:12px;background:var(--bg2);border:1px solid var(--line);font:italic 17px/1.4 var(--serif);color:var(--ink2)}
 .cknote .btn{margin-top:12px;font-style:normal}
 .ckgrp{margin-top:28px}
 .ckgrp .gh{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:2px}
 .ckgrp .gh h3{font:400 25px/1.1 var(--serif);color:var(--ink);text-transform:none;letter-spacing:0}
-.ckgrp .gh span,.ckgrp .gh button{font:600 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);white-space:nowrap}
+.ckgrp .gh span,.ckgrp .gh button{font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);white-space:nowrap}
 .ckgrp .gh button{color:var(--accent);min-height:44px}
 .ckrow{display:grid;grid-template-columns:28px 64px 1fr;gap:10px;align-items:start;width:100%;padding:12px 0;border-bottom:1px solid var(--line);text-align:left;color:var(--ink)}
 .ckrow .bx{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--ink3);display:grid;place-items:center;font-size:13px;color:var(--on-accent);margin-top:1px}
-.ckrow .tm{font:500 15px/1.3 var(--mono)} .ckrow .tm small{display:block;font:500 10px/1.4 var(--mono);color:var(--ink3);margin-top:2px;letter-spacing:.02em}
+.ckrow .tm{font:500 15px/1.3 var(--mono)} .ckrow .tm small{display:block;font:500 12px/1.4 var(--mono);color:var(--ink2);margin-top:2px;letter-spacing:.02em}
 .ckrow .tx{font:400 17px/1.3 var(--serif)}
 .ckrow.done .bx{background:var(--ink3);border-color:var(--ink3)} .ckrow.done .tx,.ckrow.done .tm{color:var(--ink3)} .ckrow.done .tx{text-decoration:line-through;text-decoration-thickness:1px}
 .ckrow.cur{border:1px solid var(--accent);border-radius:12px;padding:12px 10px;margin:6px 0;width:calc(100% + 0px)} .ckrow.cur .bx{border-color:var(--accent)} .ckrow.cur .tm{color:var(--accent)}
@@ -452,13 +457,13 @@ body.cookmode .tabs,body.cookmode header.top{display:none}
 .chr{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:8px;align-items:center;width:100%;text-align:left;min-height:48px;padding:8px 10px;border:1px solid var(--chip);border-radius:10px;color:var(--ink);font:500 13px/1.3 var(--sans)}
 .chr span{min-width:0;overflow-wrap:anywhere} .chr span:first-child{font:700 13px/1.3 var(--mono)}
 .chr small{display:block;font:500 11px var(--mono);color:var(--ink2);margin-top:2px}
-.chr.hd{border:0;min-height:0;padding:0 11px;font:600 9.5px/1.3 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)} .chr.hd span:first-child{font:inherit}
+.chr.hd{border:0;min-height:0;padding:0 11px;font:600 11px/1.3 var(--sans);letter-spacing:.02em;text-transform:uppercase;color:var(--ink2)} .chr.hd span:first-child{font:inherit} .chr.hd span{overflow-wrap:normal;-webkit-hyphens:auto;hyphens:auto}
 .chr.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)} .chr.on small{color:inherit}
 .chn{margin:8px 2px 0;font:13px/1.4 var(--sans);color:var(--ink2)} .chsel{margin:10px 2px 0;font:14px/1.45 var(--sans);color:var(--ink)}
 .ckdet.chd .choice{margin-top:10px}
 /* round 3 — cook mode: fallbacks, timers, running, readings, stations */
 .ifbox{margin-top:14px;padding:10px 12px;border-radius:10px;background:var(--tint);border:1px solid var(--line)}
-.ifbox .k{display:block;font:600 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--warn);margin-bottom:4px}
+.ifbox .k{display:block;font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--warn);margin-bottom:4px}
 .ifbox p{margin:0;font:15px/1.45 var(--sans);color:var(--ink)} .ifbox p+p{margin-top:6px}
 .tbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px} .tbtns .btn{min-height:46px}
 .running{margin-top:12px} .rchips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:6px}
@@ -474,15 +479,15 @@ body.cookmode .tabs,body.cookmode header.top{display:none}
 .rdf .sv{font:12px var(--sans);color:var(--ok);margin-top:4px}
 .ckrow .rq{font:600 12px var(--sans);color:var(--accent);white-space:nowrap}
 .lanes{display:grid;grid-template-columns:78px minmax(0,1fr);gap:0 8px;margin-top:8px}
-.lnames div{height:26px;font:600 11px/26px var(--sans);color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lnames div{height:28px;font:600 12px/28px var(--sans);color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ltracks{position:relative;padding-bottom:18px}
-.ltracks .lt{position:relative;height:26px;border-bottom:1px solid var(--line)}
-.lb{position:absolute;top:5px;height:16px;border-radius:3px;background:var(--chip);color:var(--ink);font:600 9.5px/16px var(--sans);padding:0 4px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.ltracks .lt{position:relative;height:28px;border-bottom:1px solid var(--line)}
+.lb{position:absolute;top:5px;height:18px;border-radius:3px;background:var(--chip);color:var(--ink);font:600 11px/18px var(--sans);padding:0 4px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .lb.on{background:var(--accent);color:var(--on-accent)} .lb.est{background:transparent;border:1px dashed var(--ink3)}
 .lsvc{position:absolute;top:0;bottom:18px;width:0;border-left:1px dashed var(--ink2)}
 .lnow{position:absolute;top:-3px;bottom:16px;width:2px;margin-left:-1px;background:var(--accent)}
-.lax{position:absolute;left:0;right:0;bottom:0;height:16px;font:500 9.5px/16px var(--mono);color:var(--ink3)} .lax span{position:absolute;transform:translateX(-50%)}
-.lleg{margin:6px 0 0;font:12px/1.4 var(--sans);color:var(--ink3)}
+.lax{position:absolute;left:0;right:0;bottom:0;height:16px;font:500 11px/16px var(--mono);color:var(--ink2)} .lax span{position:absolute;transform:translateX(-50%)}
+.lleg{margin:6px 0 0;font:12px/1.4 var(--sans);color:var(--ink2)}
 /* round 3 — open checks and the cook log */
 .vg{margin-top:16px;padding:14px 16px;border-radius:4px;background:var(--bg2);border:1px solid var(--line)}
 .vg.now{border:1.5px solid var(--accent)} .vg.dim{background:var(--tint);border-color:transparent} .vg.fold{background:none;border-style:dashed;border-color:var(--chip)}
@@ -496,7 +501,7 @@ body.cookmode .tabs,body.cookmode header.top{display:none}
 .vmore{border-top:1px solid var(--line)} .vmore>summary{min-height:44px;font:600 13px var(--sans);color:var(--accent)}
 .ckcard{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;margin-top:18px;padding:14px;border-radius:4px;background:var(--tint);color:var(--ink)}
 .ckcard .t{font:600 15px/1.3 var(--sans)} .ckcard .d{font:13px/1.4 var(--sans);color:var(--ink2)} .ckcard .ar{grid-row:1/3;grid-column:2;font-size:22px;color:var(--accent)}
-.sugg{display:block;margin-top:6px;font:600 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.sugg{display:block;margin-top:6px;font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
 .lval .at{font:12px var(--sans);color:var(--ink2);margin-top:4px}
 .lgrp{border-top:1px solid var(--line)} .lgrp>summary{min-height:52px;gap:10px} .lgrp .nm{flex:1;min-width:0;font:400 19px var(--serif)} .lgrp .ct{font:500 12px var(--mono);color:var(--ink2)}
 /* pinned recipes */
@@ -512,16 +517,62 @@ body.cookmode .tabs,body.cookmode header.top{display:none}
 .actrow .apin.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .dact .btn{padding-left:8px;padding-right:8px;font-size:14.5px;letter-spacing:-.005em} .dact .dmore{font-size:18px}
 .drw{display:grid;grid-template-columns:minmax(0,1fr) 40px;align-items:center;gap:4px;border-bottom:1px solid var(--line)} .drw .drow{border-bottom:0} .drw .pinb{width:40px}
-.newtag{display:inline-block;margin-left:7px;padding:0 5px;border:1px solid var(--ok);border-radius:3px;font:700 9px/1.6 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ok);vertical-align:3px}
+.newtag{display:inline-block;margin-left:7px;padding:0 5px;border:1px solid var(--ok);border-radius:3px;font:700 11px/1.6 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ok);vertical-align:3px}
 .compact .newtag{vertical-align:2px}
 .pinsw{display:flex;align-items:center;gap:8px;margin:12px 0 0;min-width:0} .pinsw .eyebrow{flex:none}
 .psw{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 0;min-width:0} .psw::-webkit-scrollbar{display:none}
 .pswc{flex:none;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;min-height:40px;padding:4px 12px;border:1px solid var(--chip);border-radius:999px;color:var(--ink);text-align:left}
-.pswc .n{font:600 13px/1.2 var(--sans);white-space:nowrap} .pswc .p{font:500 10.5px/1.2 var(--mono);color:var(--ink2);white-space:nowrap}
+.pswc .n{font:600 13px/1.2 var(--sans);white-space:nowrap} .pswc .p{font:500 11px/1.2 var(--mono);color:var(--ink2);white-space:nowrap}
 .pswc.on{background:var(--ink);border-color:var(--ink);color:var(--bg)} .pswc.on .p{color:inherit;opacity:.75}
 .pinsw.steps{margin:10px 0 2px} .pinsw.steps .pswc{border-radius:12px;min-height:46px} .pinsw.steps .pswc.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .pinsw.grid .psw{flex:1;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));overflow:visible}
 .pinsw.grid .pswc{min-width:0;padding:4px 10px} .pinsw.grid .pswc .n,.pinsw.grid .pswc .p{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+/* round 4 — fresh data, step timers, cook-day card, nutrition */
+.homebar .fresh{display:flex;align-items:center;gap:6px;min-height:36px;padding:0 12px;border:1px solid var(--chip);border-radius:999px;font:500 12px var(--sans);color:var(--ink2);white-space:nowrap}
+.homebar .fresh svg{flex:none}
+.freshnote{margin-top:12px;background:var(--tint);border-radius:6px;padding:8px 14px 6px}
+.freshnote .fh{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.freshnote .fh button{min-height:40px;min-width:44px;font:600 13px var(--sans);color:var(--ink2)}
+.freshnote a{display:flex;flex-direction:column;padding:7px 0;border-top:1px solid var(--line);color:var(--ink)}
+.freshnote a .nm{font:400 18px/1.2 var(--serif)} .freshnote a .mt{font:500 12.5px/1.35 var(--sans);color:var(--ink2)}
+#verbar{position:fixed;left:12px;right:12px;bottom:calc(var(--tab) + env(safe-area-inset-bottom) + 10px);z-index:30;display:flex;align-items:center;gap:8px;padding:6px 6px 6px 16px;border-radius:999px;background:var(--ink);color:var(--bg);box-shadow:0 6px 20px rgba(0,0,0,.25)}
+#verbar[hidden]{display:none} #verbar span{flex:1;font:500 13.5px var(--sans)}
+#verbar .later{min-height:40px;padding:0 10px;font:600 13px var(--sans);color:inherit;opacity:.75}
+#verbar .go{min-height:40px;padding:0 16px;border-radius:999px;background:var(--accent);color:var(--on-accent);font:700 14px var(--sans)}
+body.cookmode #verbar{bottom:calc(env(safe-area-inset-bottom) + 12px)}
+.strun{margin-top:12px;border:1px solid var(--line);border-radius:14px;padding:8px 12px}
+.strun .eyebrow{display:block;margin-bottom:2px}
+.strun .r{display:grid;grid-template-columns:minmax(0,1fr) auto 40px;gap:10px;align-items:center;min-height:48px;border-top:1px solid var(--line)} .strun .eyebrow+.r{border-top:0}
+.strun .r .l{font:600 14px/1.3 var(--sans);overflow:hidden;text-overflow:ellipsis} .strun .r .s{font:500 12.5px var(--sans);color:var(--ink2)}
+.strun .r .tmr{font:700 17px var(--mono);color:var(--accent);white-space:nowrap} .strun .r.over .tmr{color:var(--bad)}
+.strun .r button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);color:var(--ink2);font-size:15px}
+.tbtns.st{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px} .tbtns.st .btn{min-height:48px}
+.tbtns.st .btn.on{border-color:var(--accent);color:var(--accent)}
+.cooknow{margin-top:14px;background:#1b1714;color:#f2eadc;border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.cooknow .eyebrow{color:#a89a88} .cooknow .eyebrow.acc{color:oklch(0.76 0.12 55)}
+.cooknow .r1{display:flex;justify-content:space-between;align-items:baseline;gap:10px} .cooknow .cd{font:600 13px var(--mono);color:#a89a88;white-space:nowrap}
+.cooknow h2{margin:0;font:400 26px/1.08 var(--serif)} .cooknow h2 a{color:inherit}
+.cooknow .segs i{background:#3a322b} .cooknow .segs i.d{background:#8a7d6f} .cooknow .segs i.c{background:oklch(0.76 0.12 55)}
+.cooknow .now{display:grid;grid-template-columns:66px minmax(0,1fr);gap:10px;align-items:start}
+.cooknow .now .ck{display:flex;flex-direction:column} .cooknow .now .ck b{font:700 22px var(--mono);color:oklch(0.76 0.12 55)} .cooknow .now .ck small{font:500 12px var(--mono);color:#a89a88}
+.cooknow .now .tx{font:400 20px/1.22 var(--serif)} .cooknow .late{font:600 12px var(--mono);color:#e8a08a}
+.cooknow .rq{font:600 12px var(--sans);color:oklch(0.76 0.12 55)}
+.cooknow .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cooknow .acts .btn{min-height:50px;background:oklch(0.76 0.12 55);border-color:oklch(0.76 0.12 55);color:#1b1714}
+.cooknow .acts .btn.ghost{background:transparent;border-color:#4d433a;color:#f2eadc}
+.cooknow .nx{display:grid;grid-template-columns:66px minmax(0,1fr);gap:10px;padding-top:10px;border-top:1px solid #3a322b}
+.cooknow .nx b{font:600 15px var(--mono);color:#a89a88} .cooknow .nx span{font-size:14.5px;color:#d9cfc0}
+.nutri{margin-top:14px;border:1px solid var(--line);border-radius:6px;background:var(--bg2);padding:10px 12px 12px}
+.nutri .nh{display:flex;justify-content:space-between;align-items:baseline;gap:10px} .nutri .nh>span:last-child{font-size:12.5px;color:var(--ink2)}
+.nutri .ng{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:8px;margin-top:6px}
+.nutri .ng div{display:flex;flex-direction:column} .nutri .ng b{font:700 22px var(--mono);color:var(--ink)} .nutri .ng b small{font:500 13px var(--mono)}
+.nutri .ng span{font-size:12.5px;color:var(--ink2)} .nutri .ng .c b{color:var(--accent)}
+.nutri .nd{margin-top:10px;border-top:1px solid var(--line)}
+.nutri .nd .r{display:grid;grid-template-columns:minmax(0,1fr) 44px 112px;gap:8px;align-items:center;min-height:34px;border-top:1px solid var(--line)} .nutri .nd .r:first-child{border-top:0}
+.nutri .nd .r.h{min-height:28px;font:600 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+.nutri .nd .n{font:400 16px var(--serif);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink)} .nutri .nd .k{font:500 13px var(--mono);text-align:right}
+.nutri .nd .cb{display:flex;align-items:center;gap:6px;font:500 13px var(--mono)} .nutri .nd .cb i{flex:none;height:8px;border-radius:2px;background:var(--accent)}
+.pinsw.steps .pswc .p{font-size:12px}
 /* print sheet — laid out to the docx-protocol PDF format (teal headings, shaded table headers, running header) */
 .sheet{--pc:#1B5E7B;background:#fff;color:#222;border:1px solid var(--line);border-radius:6px;padding:18px 16px 22px;font-family:Arial,"Liberation Sans",Helvetica,sans-serif;font-size:13px;line-height:1.4;overflow-x:auto}
 .sheet h1{font-size:21px;line-height:1.2;margin:0 0 4px;color:var(--pc);font-weight:700}
@@ -764,6 +815,19 @@ const F={q:'',protein:[],course:[],verdict:[],kit:[],status:'all',stale:false,so
 const EQ=[['le creuset','Le Creuset'],['konro','Konro'],['binchotan','Konro'],['tempspike','TempSpike'],['thermapen','Thermapen'],['probe','Probe'],['tiger','Tiger'],['torch','Torch'],['cast iron','Cast iron'],['dutch oven','Le Creuset'],['oven','Oven'],['induction','Induction']];
 function eqKey(e){const l=String(e).toLowerCase(); for(const [k,v] of EQ){if(l.includes(k)) return v;} return null;}
 const COURSES=['Main','Side','Sauce','Salad','Soup','Bread','Dessert','Drink'];
+// ---------------------------------------------------------------- nutrition estimate (per serving, as saved with the recipe)
+const nutriOf=d=>{const n=d&&d.nutrition_estimate; return n&&typeof n==='object'&&n.kcal!=null?n:null;};
+const nfmt=v=>v==null||v===''?'—':String(Math.round(+v*10)/10);
+function nutriCells(n){return `<div class="ng"><div><b>${nfmt(n.kcal)}</b><span>kcal</span></div><div><b>${nfmt(n.protein_g)}<small> g</small></b><span>protein</span></div><div class="c"><b>${nfmt(n.carbs_g)}<small> g</small></b><span>carbs</span></div><div><b>${nfmt(n.fat_g)}<small> g</small></b><span>fat</span></div></div>`;}
+function dishNutri(d){const n=nutriOf(d); if(!n) return ''; return `<section class="nutri" aria-label="Nutrition per ${esc(n.per||'serving')}, estimate"><div class="nh"><span class="eyebrow">Per ${esc(n.per||'serving')} · estimate</span></div>${nutriCells(n)}</section>`;}
+function mealNutri(m){ // a per-person total only when every dish has a per-serving estimate
+  const ds=m.dishes.map(x=>x.dish); if(!ds.length) return '';
+  const ns=ds.map(nutriOf); if(ns.some(n=>!n||(n.per&&!/^serving$/i.test(n.per)))) return '';
+  const sum=k=>ns.reduce((a,n)=>a+(+n[k]||0),0), tot={kcal:sum('kcal'),protein_g:sum('protein_g'),carbs_g:sum('carbs_g'),fat_g:sum('fat_g')};
+  const maxC=Math.max(1,...ns.map(n=>+n.carbs_g||0));
+  return `<section class="nutri" aria-label="Nutrition per person, estimate"><div class="nh"><span class="eyebrow">Per person · all ${ds.length} dishes · estimate</span></div>${nutriCells(tot)}
+    <div class="nd"><div class="r h"><span>Dish</span><span style="text-align:right">kcal</span><span>Carbs</span></div>${ds.map((d,i)=>`<div class="r"><a class="n" href="#/dish/${d.slug}">${esc(menuName(d.name))}</a><span class="k">${nfmt(ns[i].kcal)}</span><span class="cb"><i style="width:${Math.max(2,Math.round((+ns[i].carbs_g||0)/maxC*60))}px"></i>${nfmt(ns[i].carbs_g)} g</span></div>`).join('')}</div></section>`;
+}
 // ---------------------------------------------------------------- pinned recipes: a working set kept on this phone until unpinned
 const PIN_KEY='kitchen:pins';
 function getPins(){try{const p=JSON.parse(localStorage.getItem(PIN_KEY)||'[]'); return Array.isArray(p)?p:[];}catch(e){return [];}}
@@ -786,13 +850,50 @@ function stepProg(d){ // "step 3/9" from where step-by-step was left, "9 steps" 
 }
 function pinShelf(){ const P=pinDishes(); if(!P.length) return '';
   return `<section class="pins"><div class="pinh"><span class="eyebrow acc">Pinned · ${P.length}</span><span class="pina">${P.some(d=>d.ings.length)?`<a href="#/shopping/pins/all">${P.length>1?'Shop all '+P.length:'Shopping list'}</a>`:''}<button onclick="clearPins()">Clear</button></span></div>
-    ${P.map(d=>{const meta=[(d.category||[]).join(' / ')||d.protein||'',stepProg(d)].filter(Boolean).join(' · '); return `<div class="pinr"><a href="#/dish/${d.slug}"><span class="nm">${esc(pinName(d))}</span><span class="mt">${esc(meta)}</span></a>${pinBtn(d)}</div>`;}).join('')}</section>`;
+    ${P.map(d=>{const tm=dishTimer(d.slug), meta=[(d.category||[]).join(' / ')||d.protein||'',tm?'':stepProg(d)].filter(Boolean).join(' · '); return `<div class="pinr"><a href="#/dish/${d.slug}"><span class="nm">${esc(pinName(d))}</span><span class="mt">${esc(meta)}${tm?` · <span data-tid="${tm.id}" data-pre="⏱ ">⏱ ${tmLeft(tm,Date.now())}</span>`:''}</span></a>${pinBtn(d)}</div>`;}).join('')}</section>`;
 }
+// ---------------------------------------------------------------- step timers: started from a step's own durations; they run across recipes and pages
+const TM_KEY='kitchen:timers';
+function getTimers(){try{const t=JSON.parse(localStorage.getItem(TM_KEY)||'[]'); return Array.isArray(t)?t:[];}catch(e){return [];}}
+function setTimers(t){try{localStorage.setItem(TM_KEY,JSON.stringify(t));}catch(e){}}
+const liveTimers=()=>{const now=Date.now(); return getTimers().filter(t=>t.rep?now-t.start<6*3600000:now-t.start<t.hi+15*60000);};
+const reEsc=x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const isEvery=(text,du)=>new RegExp('\\bevery\\s+(?:about\\s+)?'+reEsc(du.txt).replace(/–/g,'[-–]'),'i').test(String(text).replace(/[−–]/g,'–'));
+function tmLeft(t,now){const el=now-t.start; if(t.rep){return mmss(t.hi-el%t.hi);} if(el>=t.hi) return '+'+mmss(el-t.hi); if(t.lo<t.hi&&el>=t.lo) return mmss(t.hi-el); return mmss((t.lo<t.hi?t.lo:t.hi)-el);}
+function tmSub(t,now){const el=now-t.start; if(t.rep) return 'every '+t.txt; if(el>=t.hi) return t.txt+' · over'; if(t.lo<t.hi) return t.txt+(el>=t.lo?' · in the band':' · to the band'); return t.txt;}
+function stTimer(slug,n,j){
+  const d=IDX.dishBySlug[slug]; if(!d) return; const x=flatSteps(methodModel(d.method_md))[n-1]; if(!x) return;
+  const du=stepDurs(x.text)[j]; if(!du) return; audioOn(); const now=Date.now();
+  const on=liveTimers().find(t=>t.slug===slug&&t.n===n&&t.j===j);
+  const T=liveTimers().filter(t=>t!==on&&!(t.slug===slug&&t.n===n&&t.j===j));
+  if(on){setTimers(T); toast('Timer stopped'); softRender(); return;}
+  const rep=isEvery(x.text,du);
+  T.push({id:now,slug,n,j,label:pinName(d)+' · '+stepTag(x.text),txt:du.txt,lo:du.lo,hi:du.hi,start:now,rep});
+  setTimers(T); toast('Timer started · '+(rep?'every ':'')+du.txt); softRender();
+}
+function stTimerX(id){setTimers(getTimers().filter(t=>t.id!==id)); softRender();}
+const dishTimer=slug=>liveTimers().filter(t=>t.slug===slug).sort((a,b)=>(a.start+a.hi)-(b.start+b.hi))[0];
+function stRunning(){const T=liveTimers(); if(!T.length) return ''; const now=Date.now();
+  return `<section class="strun" aria-label="Running timers"><span class="eyebrow">Running</span>${T.map(t=>`<div class="r ${!t.rep&&now-t.start>=t.hi?'over':''}" data-trow="${t.id}"><div style="min-width:0"><div class="l">${esc(t.label)}</div><div class="s" data-tsub="${t.id}">${esc(tmSub(t,now))}</div></div><span class="tmr" data-tid="${t.id}">${tmLeft(t,now)}</span><button onclick="stTimerX(${t.id})" aria-label="Stop the timer: ${esc(t.label)}">✕</button></div>`).join('')}</section>`;}
+setInterval(()=>{ const all=getTimers(); if(!all.length) return; const now=Date.now(); let ch=false;
+  const T=all.filter(t=>t.rep?now-t.start<6*3600000:now-t.start<t.hi+15*60000); // a finished timer stays 15 min, a repeating one 6 h
+  if(T.length<all.length){ setTimers(T); if(/^(steps|sunday|library)$/.test(parse().view)) freshRedraw(); }
+  T.forEach(t=>{const el=now-t.start;
+    if(t.rep){const cy=Math.floor(el/t.hi); if(cy>(t.cy||0)&&el<6*3600000){t.cy=cy; ch=true; beep(2); try{navigator.vibrate&&navigator.vibrate([200,100,200]);}catch(e){} toast(`${t.label}: every ${t.txt} — now`);}}
+    else{ if(t.lo<t.hi&&!t.lf&&el>=t.lo){t.lf=1; ch=true; beep(1); toast(`${t.label}: ${t.txt} — check now`);}
+      if(!t.hf&&el>=t.hi){t.hf=1; ch=true; beep(3); try{navigator.vibrate&&navigator.vibrate([300,120,300,120,300]);}catch(e){} toast(`${t.label}: ${t.txt} — time`);} }
+    document.querySelectorAll(`[data-tid="${t.id}"]`).forEach(e=>{e.textContent=(e.dataset.pre||'')+tmLeft(t,now);});
+    document.querySelectorAll(`[data-tsub="${t.id}"]`).forEach(e=>{e.textContent=tmSub(t,now);});
+    document.querySelectorAll(`[data-trow="${t.id}"]`).forEach(e=>e.classList.toggle('over',!t.rep&&el>=t.hi));
+  });
+  if(ch) setTimers(T);
+},1000);
 function pinGo(h){ history.replaceState(null,'',h); HSTACK[HSTACK.length-1]=h; render(); } // switching between pinned recipes never stacks up Back
 function pinSwitch(d,mode){ const P=pinDishes(); if(P.length<2||!P.includes(d)) return '';
   const grid=mode==='steps'&&P.length<=3; // up to 3 pinned: all visible side by side while cooking
   return `<nav class="pinsw ${mode} ${grid?'grid':''}" aria-label="Pinned recipes" ${grid?`style="--n:${P.length}"`:''}>${grid?'':'<span class="eyebrow acc">Pinned</span>'}<div class="psw">${P.map(x=>{const on=x===d, pr=mode==='steps'?stepProg(x):'';
-    return `<button class="pswc ${on?'on':''}" ${on?'aria-current="page"':''} onclick="pinGo('${mode==='steps'?'#/steps/':'#/dish/'}${x.slug}')" title="${esc(pinName(x))}"><span class="n">${esc(pinName(x))}</span>${pr?`<span class="p">${esc(/steps$/.test(pr)?'not started':pr)}</span>`:''}</button>`;}).join('')}</div></nav>`;
+    const tm=dishTimer(x.slug), tp=tm?`<span class="p" data-tid="${tm.id}" data-pre="⏱ ">⏱ ${tmLeft(tm,Date.now())}</span>`:'';
+    return `<button class="pswc ${on?'on':''}" ${on?'aria-current="page"':''} onclick="pinGo('${mode==='steps'?'#/steps/':'#/dish/'}${x.slug}')" title="${esc(pinName(x))}"><span class="n">${esc(pinName(x))}</span>${tp||(pr?`<span class="p">${esc(/steps$/.test(pr)?'not started':pr)}</span>`:'')}</button>`;}).join('')}</div></nav>`;
 }
 function pinOwner(){const P=pinDishes(); return P.length?{name:'Pinned recipes',slug:'all',list:P}:null;}
 const VERDICTS=[['yes','Repeat'],['with_modifications','Repeat with mods'],['no','No repeat']];
@@ -999,7 +1100,7 @@ function labRows(d,openVal,notes){
   if(d.meals.length) r.push(row('Part of',`${d.meals.length} meal${d.meals.length>1?'s':''}`,d.meals.map(mealCard).join('')));
   if(d.docs.length) r.push(row('Documents',String(d.docs.length),docsBlock(d.docs).replace('<h3 class="stitle">Documents</h3>','')));
   const tags=[...(d.tags||[]),...(d.occasion||[])];
-  if(d.source||d.governance_version||tags.length) r.push(row('Source and review',d.governance_version?'v'+esc(d.governance_version):'',`${d.source?`<p class="small" style="margin:0">${esc(d.source)}</p>`:''}${d.governance_version?`<p class="small muted" style="margin:6px 0 0">Governance ${esc(d.governance_version)}</p>`:''}${tags.length?`<div class="chips" style="margin-top:10px">${tags.map(t=>`<span class="chip mini">${esc(t)}</span>`).join('')}</div>`:''}`));
+  if(d.source||d.governance_version||tags.length) r.push(row('Source and review',d.governance_version?'v'+esc(String(d.governance_version).replace(/^v/i,'')):'',`${d.source?`<p class="small" style="margin:0">${esc(d.source)}</p>`:''}${d.governance_version?`<p class="small muted" style="margin:6px 0 0">Governance ${esc(d.governance_version)}</p>`:''}${tags.length?`<div class="chips" style="margin-top:10px">${tags.map(t=>`<span class="chip mini">${esc(t)}</span>`).join('')}</div>`:''}`));
   return r.length?`<h3 class="stitle">Lab notes</h3><div class="lrows">${r.join('')}</div>`:'';
 }
 routes.dish=(slug)=>{
@@ -1025,6 +1126,7 @@ routes.dish=(slug)=>{
       <div class="ttl"><h1>${esc(nm)}${note?`<i>${esc(note)}</i>`:''}</h1>${big}</div>
       <div class="scores">${r.latest_repeat?`<span class="verdict ${verdictCls(r.latest_repeat)}">${rep(r.latest_repeat)}</span>`:''}${r.latest_rating!=null?`<span>Flavour <b>${num(r.latest_rating)}</b></span>`:''}${r.latest_execution!=null?`<span>Execution <b>${num(r.latest_execution)}</b></span>`:''}<span>${when}</span>${d.difficulty?`<span>${esc(d.difficulty)}</span>`:''}${d.servings?`<span>Serves <b>${num(d.servings)}</b></span>`:''}</div>
       ${summary?`<p class="summary">${esc(summary)}</p>`:''}
+      ${dishNutri(d)}
     </div>
     <div class="actrow dact" style="grid-template-columns:${acts.map(()=>'minmax(0,1fr) ').join('')}50px 50px">${acts.join('')}${pinBtn(d,'btn ghost apin')}<button class="btn ghost dmore" onclick="dishMore('${d.slug}')" aria-label="More: print sheet, log a cook">···</button></div>
     ${d.ings.length?`<div class="shead"><h3>Ingredients</h3>${anyMore?'<button onclick="ingAll(this)">Open all</button>':''}</div><div class="small muted" style="margin-top:-2px">${[d.servings?'For '+num(d.servings):'',d.ings.length+' ingredient'+(d.ings.length>1?'s':''),anyMore?'tap a line for prep and buying notes':''].filter(Boolean).join(' · ')}</div>
@@ -1047,16 +1149,18 @@ routes.steps=(slug,n)=>{
   i=Math.min(Math.max(i||1,1),N+1);
   const prog=N<=24?`<div class="segs" aria-hidden="true">${S.map((x,k)=>`<i class="${k+1<i?'d':k+1===i?'c':''}"></i>`).join('')}</div>`:`<div class="stbar" aria-hidden="true"><i style="width:${Math.round((i-1)/N*100)}%"></i></div>`;
   const all=`<details class="ckdet"><summary><span class="title">All ${N} steps</span></summary>${S.map((s,k)=>`<button class="ckrow ${k+1<i?'done':k+1===i?'cur':''}" onclick="stepGo(${k+1})"><span class="bx" aria-hidden="true">${k+1<i?'✓':''}</span><span class="tm">${String(k+1).padStart(2,'0')}</span><span class="tx">${mdInline(leadSplit(s.text)[0])}</span></button>`).join('')}</details>`;
-  if(i>N){ window._st=i; return `${bar}${prog}<div class="bigstep"><div class="meta"><span>All ${N} steps</span><span>Done</span></div><div class="ttl">That’s every step.</div><div class="det">Plate it, enjoy it — then log how it went while it’s fresh.</div></div>
+  if(i>N){ window._st=i; return `${bar}${stRunning()}${prog}<div class="bigstep"><div class="meta"><span>All ${N} steps</span><span>Done</span></div><div class="ttl">That’s every step.</div><div class="det">Plate it, enjoy it — then log how it went while it’s fresh.</div></div>
     <div class="stnav"><button class="btn ghost" onclick="stepGo(${N})" aria-label="Back to the last step">‹ Back</button><a class="donebtn" href="#/postcook/dish/${d.slug}">Log a cook</a></div>${all}
     <div class="ckfoot"><a class="btn ghost" href="#/dish/${d.slug}">Back to the dish</a><button class="btn ghost" onclick="stepGo(1)">Start again</button></div>`;}
   window._st=i;
   const x=S[i-1], nx=S[i], [ttl,det]=leadSplit(x.text);
+  const durs=stepDurs(x.text), runs=liveTimers().filter(t=>t.slug===slug&&t.n===i), now0=Date.now();
+  const tbtns=durs.length?`<div class="tbtns st">${durs.map((du,j)=>{const on=runs.find(t=>t.j===j); return on?`<button class="btn ghost on" onclick="stTimer('${d.slug}',${i},${j})" aria-label="Stop this timer">Running · <span data-tid="${on.id}">${tmLeft(on,now0)}</span></button>`:`<button class="btn ghost" onclick="stTimer('${d.slug}',${i},${j})">Timer · ${isEvery(x.text,du)?'every ':''}${esc(du.txt)}</button>`;}).join('')}</div>`:'';
   const CT=choiceTables(d), subT=x.sub.join('\n'), here=CT.map((t,ti)=>({t,ti})).filter(o=>subT.includes(o.t.head[0]));
   const more=[det,...(here.length?x.sub.filter(l=>!/^\s*\|/.test(l)):x.sub)].join('\n').trim();
   const pl=currentPlan(), ctx=pl&&pl.m.dishes.some(y=>y.dish===d)?{t0:planTarget(pl)}:null;
-  return `${bar}${prog}<div class="bigstep"><div class="meta"><span>${esc(x.phase||'Method')} · ${x.k}</span><span>${String(i).padStart(2,'0')} / ${String(N).padStart(2,'0')}</span></div>
-      <div class="ttl ${ttl.length>200?'xlong':ttl.length>90?'long':''}">${mdInline(ttl)}</div>${more?`<div class="det md">${md(more)}</div>`:''}${here.map(o=>choiceCard(d,o.ti,o.t,ctx)).join('')}</div>
+  return `${bar}${stRunning()}${prog}<div class="bigstep"><div class="meta"><span>${esc(x.phase||'Method')} · ${x.k}</span><span>${String(i).padStart(2,'0')} / ${String(N).padStart(2,'0')}</span></div>
+      <div class="ttl ${ttl.length>200?'xlong':ttl.length>90?'long':''}">${mdInline(ttl)}</div>${more?`<div class="det md">${md(more)}</div>`:''}${tbtns}${here.map(o=>choiceCard(d,o.ti,o.t,ctx)).join('')}</div>
     <div class="stnav">${i>1?`<button class="btn ghost" onclick="stepGo(${i-1})" aria-label="Previous step">‹ Back</button>`:''}<button class="donebtn" onclick="stepGo(${i+1})">${nx?'Next step':'Finish'}</button></div>
     ${nx?`<div class="nextcard"><div><div class="k">Next · ${esc(nx.phase||'Method')}</div><div class="tx">${mdInline(leadSplit(nx.text)[0])}</div></div></div>`:''}
     ${all}
@@ -1134,6 +1238,7 @@ routes.meal=(slug)=>{
     <div class="actgrid" style="margin-top:20px">${acts.join('')}</div>
     <div class="rule-title">The menu</div>
     <div>${m.dishes.map(x=>{const d=x.dish; const [dn,dnote]=splitName(d.name); return `<a class="menu-item ${x.role==='main'?'main':''}" href="#/dish/${d.slug}"><div style="min-width:0"><div class="eyebrow ${x.role==='main'?'acc':''}">${esc(x.role)}</div><div class="nm">${esc(dn)}</div>${dnote?`<div class="nt">${esc(dnote)}</div>`:''}</div>${d.r.latest_rating!=null?seal(d.r.latest_rating,{size:'sm'}):'<span class="dim" aria-hidden="true">›</span>'}</a>`;}).join('')}</div>
+    ${mealNutri(m)}
     ${m.wine_pairing?`<div class="glass"><div class="eyebrow">In the glass</div><div class="nm">${esc(m.wine_pairing)}</div></div>`:''}
     ${m.workflow_md?`<h3 class="stitle">The workflow</h3><details class="card"><summary><span class="title">Critical path, timeline, holding</span></summary><div class="md" style="margin-top:10px">${md(m.workflow_md)}</div></details>`:''}
     ${m.shared_prep_md?`<h3 class="stitle">Shared prep</h3><div class="card md">${md(m.shared_prep_md)}</div>`:''}
@@ -1205,17 +1310,43 @@ function rotCard(R){
     <div class="rdots">${R.recent.map((m,i)=>{const p=mainProt(m)||'—', n=splitName(m.name)[0]; return `<a class="rdot ${i===R.recent.length-1?'last':''}" style="--pc:${PROT_COL[p]||'#7a6d60'}" href="#/meal/${m.slug}" title="${esc(n)} · ${esc(shortDate(m.last))}" aria-label="${esc(p)}: ${esc(n)}, ${esc(shortDate(m.last))}">${esc(p[0])}</a>`;}).join('')}</div>
     <div class="rlegend">${leg}</div></div>`;
 }
+function cookDayCard(pl){ // from just before the first cooking-day step until service + 1 h, while steps are left
+  const m=pl.m; if(!m.workflow_md) return '';
+  const {key,st}=cookState(m), P=cookModel(m,st), now=Date.now(), t0=st.t0;
+  if(isoDay(new Date(t0))!==todayISO()) return '';
+  const day=P.steps.filter(x=>!x.before), ats=day.filter(x=>x.at!=null).map(x=>x.at); if(!ats.length) return '';
+  if(now<Math.min(...ats)-15*60000||now>t0+60*60000) return '';
+  const ticked=x=>!!st.ticks[x.id];
+  const cur=(st.focus&&day.find(x=>x.id===st.focus&&!ticked(x)))||day.find(x=>!ticked(x)); if(!cur) return '';
+  const next=day.slice(day.indexOf(cur)+1).find(x=>!ticked(x));
+  window._home={key,st,cur};
+  const clock=x=>x.at!=null?hm(x.at):x.est!=null?'≈'+hm(x.est):(x.label||'—');
+  const tl=x=>x.kind==='T'?(x.tm>=0?'T−'+x.tm:'T+'+(-x.tm)):x.kind==='A'&&x.at!=null?x.label:'';
+  const VM=stepVals(m,P.steps), vs=VM.by.get(cur.id), late=cur.at!=null&&cur.at<now-2*60000?durShort((now-cur.at)/60000)+' behind':'';
+  const segs=day.length>1?`<div class="segs" aria-hidden="true">${day.map(x=>`<i class="${ticked(x)?'d':x===cur?'c':''}"></i>`).join('')}</div>`:'';
+  return `<section class="cooknow" aria-label="Cooking now">
+    <div class="r1"><span class="eyebrow acc">Cooking now</span><span class="cd" data-t="${t0}">${cdText(t0)}</span></div>
+    <h2><a href="#/meal/${m.slug}">${esc(splitName(m.name)[0])}</a></h2>${segs}
+    <div class="now"><div class="ck"><b>${esc(clock(cur))}</b><small>${esc(tl(cur))}</small></div><div><div class="eyebrow">Now · step ${day.indexOf(cur)+1} of ${day.length}${late?` · <span class="late">${esc(late)}</span>`:''}</div><div class="tx">${esc(cur.text)}</div>${vs?`<div class="rq">${vs.length} reading${vs.length>1?'s':''} at this step: cook mode asks for ${vs.length>1?'them':'it'}</div>`:''}</div></div>
+    <div class="acts"><button class="btn" onclick="homeDone()">Done · next</button><a class="btn ghost" href="#/cook/${m.slug}">Open cook mode</a></div>
+    ${next?`<div class="nx"><b>${esc(clock(next))}</b><div><div class="eyebrow">Next</div><span>${esc(next.text)}</span></div></div>`:''}
+  </section>`;
+}
+function homeDone(){const h=window._home; if(!h||!h.cur) return; const x=h.cur; h.st.ticks[x.id]=true;
+  const mark=x.defines||(x.kind==='A'&&x.off===0?x.anchor:null);
+  if(mark&&h.st.anchors[mark]==null){h.st.anchors[mark]=Date.now(); toast(`${mark} marked at ${hm(Date.now())} — the ${mark}+ steps are timed from now`);}
+  h.st.focus=null; try{localStorage.setItem(h.key,JSON.stringify(h.st));}catch(e){} softRender();}
 routes.sunday=()=>{
   setHeader(''); tabs('sunday');
   const R=rotation(), pl=currentPlan();
   const score=m=>{const p=mainProt(m); if(!p) return 1; const n=R.tally[p]||0; return n>=3?3:n?2:0;}; // nudge toward proteins not cooked lately
   const backlog=DB.meal.filter(m=>m.status!=='cooked'&&(!pl||m!==pl.m)).sort((a,b)=>score(a)-score(b)||(R.lastBy[mainProt(a)]||'').localeCompare(R.lastBy[mainProt(b)]||'')||a.name.localeCompare(b.name));
   const cookedAll=DB.meal.filter(m=>m.status==='cooked'&&m.last).sort((a,b)=>b.last.localeCompare(a.last));
-  const head=`<div class="homebar"><span class="wm">Jin’s Kitchen</span><span class="dt">${DB.fromCache?'<span class="offline">offline</span> ':''}${esc(new Date().toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'}))}</span></div>`;
+  const head=`<div class="homebar"><span class="wm">Jin’s Kitchen</span>${freshPill()}</div>`;
   const recent=cookedAll.length?`<div class="shead"><h3>Recently cooked</h3><a href="#/meals" onclick="MF.tab='cooked';MF.protein=null">All ${cookedAll.length}</a></div><div>${cookedAll.slice(0,3).map(mealCard).join('')}</div>`:'';
   if(!pl){
     const sun=comingSunday();
-    return `${head}${pinShelf()}
+    return `${head}${freshNote()}${pinShelf()}
       <div class="plan open"><div class="eyebrow acc">This Sunday · ${esc(new Date(sun+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long'}))}</div>
         <h2>Nothing planned yet.</h2>
         <p>Pick one from <i>Next time</i> — it’s saved on this phone. A date you set with Claude shows here by itself.</p></div>
@@ -1224,13 +1355,15 @@ routes.sunday=()=>{
       ${recent}
       <div style="height:12px"></div>`;
   }
+  const live=cookDayCard(pl);
+  if(live) return `${head}${freshNote()}${live}${pinShelf()}${recent}${rotCard(R)}<div style="height:12px"></div>`;
   const m=pl.m, t=planTarget(pl), past=t<Date.now(), [nm,note]=splitName(m.name);
   const items=aggregate(m.dishes.map(x=>x.dish)); let st={}; try{st=JSON.parse(localStorage.getItem('shop:meal/'+m.slug)||'{}');}catch(e){}
   const sc=shopCount(items,st);
   const label=pl.date===todayISO()?'Tonight':pl.date===comingSunday()?'This Sunday':pl.date===comingSunday(1)?'Next Sunday':new Date(pl.date+'T00:00:00').toLocaleDateString('en-GB',{weekday:'long'});
   const acts=[past?`<a class="btn" href="#/postcook/meal/${m.slug}">Log the cook</a>`:(m.workflow_md?`<a class="btn" href="#/cook/${m.slug}">Start cook</a>`:''),items.length?`<a class="btn ghost" href="#/shopping/meal/${m.slug}">Shopping list</a>`:''].filter(Boolean);
   const when=`${esc(dayLong(pl.date))} · <b>${esc(pl.time)}</b>`;
-  return `${head}${pinShelf()}
+  return `${head}${freshNote()}${pinShelf()}
     <div class="plan"><div class="top"><span class="eyebrow acc">${esc(label)}</span>${pl.src==='phone'?'<button onclick="unplan()" aria-label="Unplan and choose another meal">Change</button>':''}</div>
       <h2><a href="#/meal/${m.slug}">${esc(nm)}</a></h2>${note?`<div class="note">${esc(note)}</div>`:''}
       <div class="when">${pl.src==='phone'?`<button class="wd" onclick="openWhen()" aria-label="Change day and service time">${when} <span class="chev" aria-hidden="true">▾</span></button>`:`<span class="wd">${when}</span>`}<span class="cd" data-t="${t}">${cdText(t)}</span></div>
@@ -1247,6 +1380,8 @@ routes.sunday=()=>{
     <div style="height:12px"></div>`;
 };
 setInterval(()=>{document.querySelectorAll('.cd[data-t]').forEach(e=>e.textContent=cdText(+e.dataset.t));},30000);
+let HOME_LIVE=null; // with Sunday left open, the cook-day card comes on, keeps its step current and goes off by itself
+setInterval(()=>{ if(parse().view!=='sunday') return; const pl=currentPlan(), on=!!(pl&&cookDayCard(pl)); if(on||on!==HOME_LIVE){HOME_LIVE=on; freshRedraw();} },60000);
 function prePlan(pl){ // the plan's steps dated before the cooking day, and its first cooking-day step, as clock times
   const m=pl.m, t0=planTarget(pl), P=parseTimeline(m.workflow_md,nominalService(m));
   const pre=P.steps.filter(x=>x.before).map(x=>({x,at:x.kind==='T'?t0-x.tm*60000:null}));
@@ -1306,7 +1441,7 @@ routes.more=()=>{
       <a href="#/validations"><div><div class="nm">Open checks</div><div class="mt">Designed parameters still to confirm, by when you next cook them</div></div><span class="ct">${openN}</span></a>
       <a href="#/docs"><div><div class="nm">Documents</div><div class="mt">Stored Word and PDF cooking sheets</div></div><span class="ct">${docsN}</span></a>
     </div>
-    <p class="foot">${libBase().length} dishes · ${cooked} cooked · ${meals} meals<br>${DB.fromCache?'Offline — showing what this phone saved':'Live data'}${at?' · loaded '+at:''}</p>`;
+    <p class="foot">${libBase().length} dishes · ${cooked} cooked · ${meals} meals<br>${DB.fromCache?'Offline — showing what this phone saved':'Live data'}${at?' · loaded '+at:''}<br><button class="btn ghost sm" style="margin-top:10px" onclick="refreshData(true)">Refresh now</button></p>`;
 };
 
 // ---------------------------------------------------------------- print (cooking sheet rendered from the database)
@@ -2142,7 +2277,7 @@ function bigSeal(v){
 }
 function rateCtl(k,label,f,sm){ // − value + over a 0–10 half-step scale
   const v=f[k], on=hasV(v);
-  return `<div class="rate ${sm?'sm':''}" data-k="${esc(k)}"><div class="rh"><span class="eyebrow">${label}</span><div class="pm"><button onclick="rStep('${esc(k)}',-0.5)" aria-label="${label} down half a point">−</button><output aria-live="polite">${on?half(v):'—'}</output><button onclick="rStep('${esc(k)}',0.5)" aria-label="${label} up half a point">+</button></div></div>
+  return `<div class="rate ${sm?'sm':''}" data-k="${esc(k)}"><div class="rh"><span class="eyebrow">${label}</span><div class="pm"><button onclick="rStep('${esc(k)}',-0.5)" aria-label="${label} down half a point">−</button><output aria-live="polite" class="${on?'':'un'}">${on?half(v):'Tap a score'}</output><button onclick="rStep('${esc(k)}',0.5)" aria-label="${label} up half a point">+</button></div></div>
     <input type="range" min="0" max="10" step="0.5" value="${on?esc(v):8}" class="${on?'':'unset'}" oninput="rSet('${esc(k)}',this.value)" aria-label="${label} out of 10"><div class="scale" aria-hidden="true"><span>0</span><span>5</span><span>10</span></div></div>`;
 }
 const VERDICTS3=[['yes','Repeat'],['with_modifications','Repeat with mods'],['no','No repeat']];
@@ -2193,7 +2328,7 @@ function pf(k,v){const p=window._post; p.f[k]=v; try{localStorage.setItem(p.key,
 function updWhen(){const e=document.getElementById('lc-when'); if(e) e.textContent=lcWhen();}
 function rVal(k,v){
   const p=window._post; v=Math.min(10,Math.max(0,Math.round(v*2)/2)); pf(k,String(v));
-  const box=document.querySelector(`.rate[data-k="${k}"]`); if(box){box.querySelector('output').textContent=half(v); const r=box.querySelector('input'); r.value=v; r.classList.remove('unset');}
+  const box=document.querySelector(`.rate[data-k="${k}"]`); if(box){const o=box.querySelector('output'); o.textContent=half(v); o.classList.remove('un'); const r=box.querySelector('input'); r.value=v; r.classList.remove('unset');}
   if(k==='rating'){const s=document.getElementById('lc-seal'); if(s) s.innerHTML=bigSeal(v);}
   const m=k.match(/^d:(.+):rating$/); if(m){const e=document.getElementById('ms-'+m[1]); if(e) e.innerHTML=seal(v,{size:'sm'});}
 }
@@ -2235,11 +2370,60 @@ routes.docs=()=>{
   </div>`;
 };
 
+// ---------------------------------------------------------------- fresh on return: reload the recipes when the app comes back after a while, say what changed, offer a new app version
+const FRESH={busy:false,changes:null,ver:null,checked:0};
+const RF_SVG='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v5h-5"/></svg>';
+function freshPill(){
+  if(DB.fromCache&&!FRESH.busy) return `<button class="fresh" onclick="refreshData(true)" aria-label="Offline. Try to refresh the recipes"><span class="offline">offline</span>${RF_SVG}</button>`;
+  return `<button class="fresh" onclick="refreshData(true)" aria-label="Refresh the recipes">${RF_SVG}<span>${FRESH.busy?'Updating…':'Updated '+esc(hm(DB.loadedAt||Date.now()))}</span></button>`;
+}
+function freshNote(){const c=FRESH.changes; if(!c||!c.items.length) return '';
+  const n=c.items.length;
+  return `<section class="freshnote" aria-label="Changes since you last looked"><div class="fh"><span class="eyebrow acc">Updated · ${n} change${n>1?'s':''} since ${esc(c.since)}</span><button onclick="FRESH.changes=null;softRender()">OK</button></div>
+    ${c.items.slice(0,4).map(x=>`<a href="${x.href}"><span class="nm">${esc(x.name)}</span><span class="mt">${esc(x.what)}</span></a>`).join('')}${n>4?`<p class="small muted" style="margin:6px 0 4px">and ${n-4} more</p>`:''}</section>`;}
+const ingSig=d=>d.ings.map(di=>[ingName(di),di.qty,di.unit,di.qty_alt,di.prep_note,di.buy_spec,di.buy_avoid,di.buy_note,di.pantry_check,di.optional].join('|')).join('\n');
+async function refreshData(manual){
+  if(FRESH.busy) return; FRESH.busy=true; if(parse().view==='sunday') softRender();
+  const prevAt=DB.loadedAt, wasCache=DB.fromCache;
+  const before={dish:new Map(DB.dish.map(d=>[d.id,{u:d.updated_at,m:d.method_md,g:ingSig(d)}])),meal:new Map(DB.meal.map(m=>[m.id,m.updated_at])),cook:new Set(DB.cook.map(c=>c.id))};
+  const ok=await loadAll(); FRESH.busy=false;
+  if(!ok||DB.fromCache){ if(manual) toast('Offline — showing what this phone saved'); if(parse().view==='sunday') softRender(); return; }
+  index();
+  const out=[], cooked=new Set();
+  if(!wasCache){
+    DB.cook.forEach(c=>{if(before.cook.has(c.id)) return; const o=c.dish_id?IDX.dish[c.dish_id]:IDX.meal[c.meal_id]; if(!o) return; cooked.add(o.id); out.push({href:(c.dish_id?'#/dish/':'#/meal/')+o.slug,name:c.dish_id?menuName(o.name):splitName(o.name)[0],what:'cook logged · '+shortDate(c.cooked_on)});});
+    DB.dish.forEach(d=>{const b=before.dish.get(d.id); const ml=d.meals[0]?splitName(d.meals[0].name)[0]+' · ':'';
+      if(!b) out.push({href:'#/dish/'+d.slug,name:menuName(d.name),what:ml+'new recipe'});
+      else if(b.u!==d.updated_at&&!cooked.has(d.id)) out.push({href:'#/dish/'+d.slug,name:menuName(d.name),what:ml+(b.g!==ingSig(d)?'ingredients edited':b.m!==d.method_md?'method edited':'details edited')});});
+    DB.meal.forEach(m=>{const b=before.meal.get(m.id); if(b===undefined) out.push({href:'#/meal/'+m.slug,name:splitName(m.name)[0],what:'new meal'}); else if(m.updated_at&&b!==m.updated_at&&!cooked.has(m.id)) out.push({href:'#/meal/'+m.slug,name:splitName(m.name)[0],what:'plan edited'});});
+  }
+  if(out.length){const prev=FRESH.changes?FRESH.changes.items:[]; const seen=new Set(out.map(x=>x.href+x.what));
+    FRESH.changes={since:FRESH.changes?FRESH.changes.since:new Date(prevAt).toLocaleDateString('en-GB',{weekday:'short'})+' '+hm(prevAt),items:[...out,...prev.filter(x=>!seen.has(x.href+x.what))]};}
+  if(manual&&!out.length) toast('Up to date');
+  else if(out.length&&parse().view!=='sunday') toast(`Updated · ${out.length} change${out.length>1?'s':''}`);
+  freshRedraw();
+}
+function freshRedraw(){ // never redraw under the keyboard, over an open sheet or a half-written log
+  const v=parse().view, a=document.activeElement, sh=document.getElementById('sheet');
+  if(a&&a.matches&&a.matches('input,textarea,select')) return; if(sh&&!sh.hidden) return; if(v==='postcook') return;
+  if(v==='cook'){renderSoft(true); return;} softRender();
+}
+async function verCheck(){ // the service worker's cache name changes with every release
+  if(Date.now()-FRESH.checked<60000) return; FRESH.checked=Date.now();
+  try{const t=await (await fetch('sw.js',{cache:'no-store'})).text(); const v=(t.match(/kitchen-shell-v\d+/)||[])[0]; if(!v) return;
+    if(!FRESH.ver){FRESH.ver=v; return;} if(v!==FRESH.ver) showVerbar();}catch(e){}
+}
+function showVerbar(){let b=document.getElementById('verbar'); if(!b){b=document.createElement('div'); b.id='verbar'; b.setAttribute('role','status'); document.body.appendChild(b);}
+  b.innerHTML='<span>A new version of the app is ready</span><button class="later" onclick="this.parentNode.hidden=true">Later</button><button class="go" onclick="location.reload()">Reload</button>'; b.hidden=false;}
+document.addEventListener('visibilitychange',()=>{ if(document.visibilityState!=='visible'||!DB.loadedAt) return;
+  verCheck(); if(Date.now()-DB.loadedAt>5*60000) refreshData(false); else if(parse().view==='sunday') freshRedraw(); });
+window.addEventListener('online',()=>{ if(DB.fromCache) refreshData(false); });
+
 // ---------------------------------------------------------------- boot
 (async()=>{
   const ok=await loadAll();
   if(!ok){document.getElementById('app').innerHTML='<div class="empty">Could not reach the kitchen database and nothing is cached yet. Check your connection and reload.</div>';return;}
-  index(); render();
+  index(); render(); verCheck();
   if(DB.fromCache) toast('Offline — showing cached data');
   if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
 })();
