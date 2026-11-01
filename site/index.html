@@ -528,6 +528,21 @@ body.cookmode .tabs,body.cookmode header.top{display:none}
 .pinsw.steps{margin:10px 0 2px} .pinsw.steps .pswc{border-radius:12px;min-height:46px} .pinsw.steps .pswc.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .pinsw.grid .psw{flex:1;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));overflow:visible}
 .pinsw.grid .pswc{min-width:0;padding:4px 10px} .pinsw.grid .pswc .n,.pinsw.grid .pswc .p{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+/* wine from the cellar */
+.wine .wf{font:500 12.5px/1.4 var(--sans);color:var(--ink2);margin-top:6px}
+.wine .wgo{margin-top:12px;width:100%;min-height:48px}
+.wine .wpick,.wine .wguid{margin-top:10px}
+.wine .wk{font:600 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.wine .wn{font:400 22px/1.2 var(--serif);margin-top:4px;color:var(--ink)} .wine .wm{font:500 12.5px/1.4 var(--sans);color:var(--ink2);margin-top:3px}
+.wine .wd{display:grid;grid-template-columns:88px minmax(0,1fr);gap:6px 10px;margin:10px 0 0} .wine .wd dt{font:600 11px/1.5 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)} .wine .wd dd{margin:0;font:400 14.5px/1.45 var(--sans);color:var(--ink)}
+.wine .wbk{margin-top:10px;border-top:1px solid var(--line);padding-top:6px} .wine .wbk>summary{min-height:44px;font:600 14px var(--sans);color:var(--ink)}
+.wine .wact{margin-top:10px} .wine .wact .btn{min-height:44px}
+.wine .wask{margin-top:12px} .wine .wask .chips{margin-top:6px}
+.wine .werr{margin:10px 0 0;font:500 13.5px/1.4 var(--sans);color:var(--bad)}
+.wine .wbusy{display:flex;align-items:center;gap:10px;margin-top:12px;min-height:44px;font:500 14px var(--sans);color:var(--ink2)}
+.wine .dots{display:inline-flex;gap:4px} .wine .dots i{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:wdot 1.2s infinite ease-in-out} .wine .dots i:nth-child(2){animation-delay:.2s} .wine .dots i:nth-child(3){animation-delay:.4s}
+@keyframes wdot{0%,80%,100%{opacity:.25}40%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.wine .dots i{animation:none;opacity:.7}}
 /* round 4 — fresh data, step timers, cook-day card, nutrition */
 .homebar .fresh{display:flex;align-items:center;gap:6px;min-height:36px;padding:0 12px;border:1px solid var(--chip);border-radius:999px;font:500 12px var(--sans);color:var(--ink2);white-space:nowrap}
 .homebar .fresh svg{flex:none}
@@ -650,7 +665,7 @@ async function sb(path){ // every row, page by page: the API returns at most 100
 }
 async function loadAll(){
   try{
-    const [dish,meal,meal_dish,cook,document,dish_ingredient,rollup,validations,measurement] = await Promise.all([
+    const [dish,meal,meal_dish,cook,document,dish_ingredient,rollup,validations,measurement,wine_pick] = await Promise.all([
       sb('dish?select=*&order=name,id'), // a unique last key keeps pages from overlapping
       sb('meal?select=*&order=planned_date.desc.nullslast,id'),
       sb('meal_dish?select=*&order=meal_id,dish_id'),
@@ -659,9 +674,10 @@ async function loadAll(){
       sb('dish_ingredient?select=*,ingredient(*)&order=sort_order,id'),
       sb('dish_rating_rollup?select=*&order=dish_id'),
       sb('open_validations?select=*'), // natural order = the recipe's own order; 199 rows today
-      sb('measurement?select=*&order=sort_order,id')
+      sb('measurement?select=*&order=sort_order,id'),
+      sb('wine_pick?select=id,created_at,owner_type,slug,nudge,cellar_snapshot,inventory_valid,status,pick,kept,error_detail&order=created_at.desc,id').catch(()=>[])
     ]);
-    Object.assign(DB,{dish,meal,meal_dish,cook,document,dish_ingredient,rollup,validations,measurement,loadedAt:Date.now(),fromCache:false});
+    Object.assign(DB,{dish,meal,meal_dish,cook,document,dish_ingredient,rollup,validations,measurement,wine_pick,loadedAt:Date.now(),fromCache:false});
     try{localStorage.setItem('kitchen:db',JSON.stringify(DB));}catch(e){}
     return true;
   }catch(e){
@@ -840,6 +856,77 @@ const F={q:'',protein:[],course:[],verdict:[],kit:[],status:'all',stale:false,so
 const EQ=[['le creuset','Le Creuset'],['konro','Konro'],['binchotan','Konro'],['tempspike','TempSpike'],['thermapen','Thermapen'],['probe','Probe'],['tiger','Tiger'],['torch','Torch'],['cast iron','Cast iron'],['dutch oven','Le Creuset'],['oven','Oven'],['induction','Induction']];
 function eqKey(e){const l=String(e).toLowerCase(); for(const [k,v] of EQ){if(l.includes(k)) return v;} return null;}
 const COURSES=['Main','Side','Sauce','Salad','Soup','Bread','Dessert','Drink'];
+// ---------------------------------------------------------------- wine from the cellar: one primary pick and a backup, chosen from today's cellar list by the pairing rules
+async function rpc(fn,args){const r=await fetch(SB_URL+'/rest/v1/rpc/'+fn,{method:'POST',headers:{apikey:SB_KEY,Authorization:'Bearer '+SB_KEY,'Content-Type':'application/json'},body:JSON.stringify(args||{})});
+  const t=await r.text(); let j=null; try{j=JSON.parse(t);}catch(e){} if(!r.ok) throw Object.assign(new Error((j&&(j.message||j.hint))||('HTTP '+r.status)),{status:r.status,code:j&&j.code}); return j;}
+const WINE={busy:{},err:{},auto:{},cellar:null,cellarAt:0,checked:{}};
+const NUDGES=[['lighter','Lighter'],['bolder','Bolder'],['white','A white'],['special','Something special'],['everyday','Everyday']];
+const wineKind=(kind,slug)=>(DB.wine_pick||[]).filter(w=>w.owner_type===kind&&w.slug===slug);
+const wineShown=(kind,slug)=>{const P=wineKind(kind,slug); return P.find(w=>w.kept&&w.status==='done')||P[0]||null;};
+const winePlanned=(kind,slug)=>kind==='meal'&&IDX.mealBySlug[slug]?IDX.mealBySlug[slug].wine_pairing||'':'';
+const wineCanAsk=(kind,slug)=>kind==='meal'?(IDX.mealBySlug[slug]||{}).status!=='cooked':!((IDX.dishBySlug[slug]||{}).category||[]).includes('Drink');
+const wineName=p=>[p.vintage,p.wine].filter(Boolean).join(' ');
+function wineBox(kind,slug){ const show=wineCanAsk(kind,slug)||winePlanned(kind,slug)||wineKind(kind,slug).length; if(!show) return '';
+  return `<section class="glass wine" id="wine-${kind}-${slug}" aria-live="polite">${wineInner(kind,slug)}</section>`;}
+function winePickHtml(w,lead){ const p=w.pick||{}, pr=p.primary, bk=p.backup, snap=w.cellar_snapshot?shortDate(w.cellar_snapshot):'';
+  if(!pr) return `<div class="wguid"><div class="wk">Style guidance</div><p>${esc(p.guidance||'No pick came back. Ask again.')}</p><div class="wf">The cellar list could not be read, so no bottle is named.</div></div>`;
+  const c=pr.cellar||{}, meta=[c.producer&&c.producer!==pr.wine?c.producer:'',c.varietal,c.region,c.status,c.ct?'CT '+c.ct:'',c.my10?'you '+c.my10+'/10':''].filter(Boolean).join(' · ');
+  const dl=x=>`<dl class="wd">${x.why_food?`<dt>With food</dt><dd>${esc(x.why_food)}</dd>`:''}${x.why_taste?`<dt>For you</dt><dd>${esc(x.why_taste)}</dd>`:''}${x.serve?`<dt>Serve</dt><dd>${esc(x.serve)}</dd>`:''}${x.tradeoff?`<dt>Trade-off</dt><dd>${esc(x.tradeoff)}</dd>`:''}</dl>`;
+  return `<div class="wpick"><div class="wk">${w.kept?'Your pick':'Cellar pick'}${w.nudge?' · '+esc((NUDGES.find(n=>n[0]===w.nudge)||[,w.nudge])[1].toLowerCase()):''}</div>
+    <div class="wn">${esc(wineName(pr))}</div>${meta?`<div class="wm">${esc(meta)}</div>`:''}${dl(pr)}
+    ${bk?`<details class="wbk"><summary>Backup · ${esc(wineName(bk))}</summary>${(bk.cellar&&[bk.cellar.varietal,bk.cellar.region,bk.cellar.status].filter(Boolean).length)?`<div class="wm">${esc([bk.cellar.varietal,bk.cellar.region,bk.cellar.status].filter(Boolean).join(' · '))}</div>`:''}${dl(bk)}</details>`:''}
+    <div class="wf">${WINE.checked[w.id]==='gone'?'That bottle has left the cellar since. ':''}From the cellar list of ${esc(snap||'today')} · check it is in the rack before you open it.</div>
+    ${lead?`<div class="wact"><button class="btn sm ${w.kept?'ghost':''}" onclick="wineKeep('${w.id}',${!w.kept})" aria-pressed="${!!w.kept}">${w.kept?'Kept ✓':'Keep this pick'}</button></div>`:''}</div>`;}
+function wineInner(kind,slug){
+  const k=kind+'/'+slug, w=wineShown(kind,slug), planned=winePlanned(kind,slug), can=wineCanAsk(kind,slug), busy=WINE.busy[k]||(w&&w.status==='requested');
+  if(w&&w.status==='requested'&&!WINE.busy[k]) setTimeout(()=>winePoll(kind,slug,w.id),0);
+  if(w&&w.status==='done') setTimeout(()=>wineCheck(kind,slug,w),0);
+  let h='<div class="eyebrow">In the glass</div>';
+  if(planned) h+=`<div class="nm">${esc(planned)}</div><div class="wf">Planned with Claude</div>`;
+  if(busy) h+=`<div class="wbusy" role="status"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>Choosing from today’s cellar list… about 20 seconds</div>`;
+  else if(w&&w.status==='done') h+=planned?`<details class="wbk wcmp"><summary>Cellar pick · ${esc(w.pick&&w.pick.primary?wineName(w.pick.primary):'style guidance')}</summary>${winePickHtml(w,true)}</details>`:winePickHtml(w,true);
+  else if(w&&(w.status==='invalid'||w.status==='error')) h+=`<p class="werr">${esc(w.error_detail||'The pick failed. Ask again.')}</p>`;
+  if(WINE.err[k]) h+=`<p class="werr">${esc(WINE.err[k])}</p>`;
+  if(can&&!busy){
+    if(!w||w.status!=='done') h+=`<button class="btn ${planned?'ghost':''} wgo" onclick="wineAsk('${kind}','${slug}','')">${planned?'Ask the cellar too':'Pick a wine from the cellar'}</button><div class="wf">Uses today’s cellar list and your pairing rules · about 20 seconds</div>`;
+    else h+=`<div class="wask"><span class="eyebrow">Ask again</span><div class="chips">${NUDGES.map(([n,l])=>`<button class="chip" onclick="wineAsk('${kind}','${slug}','${n}')">${l}</button>`).join('')}<button class="chip" onclick="wineAsk('${kind}','${slug}','')">Same brief</button></div></div>`;
+  }
+  return h;
+}
+function wineRedraw(kind,slug){const el=document.getElementById('wine-'+kind+'-'+slug); if(el){const ui=uiSnap(); el.innerHTML=wineInner(kind,slug); uiApply(ui);}}
+function wineStore(x){ if(!x||!x.id) return; DB.wine_pick=[x,...(DB.wine_pick||[]).filter(w=>w.id!==x.id)].sort((a,b)=>String(b.created_at).localeCompare(String(a.created_at)));
+  if(x.kept) DB.wine_pick.forEach(w=>{if(w.id!==x.id&&w.slug===x.slug&&w.owner_type===x.owner_type) w.kept=false;});
+  try{localStorage.setItem('kitchen:db',JSON.stringify(DB));}catch(e){} }
+const wineErr=e=>e&&(e.status===404||e.code==='PGRST202')?'Wine picks switch on after one database step (the SQL file from Claude).':'Could not reach the kitchen database. Check the connection and try again.';
+async function wineAsk(kind,slug,nudge){ const k=kind+'/'+slug; if(WINE.busy[k]) return; WINE.busy[k]=1; WINE.err[k]=null; wineRedraw(kind,slug);
+  let id=null;
+  try{ const r=await rpc('kitchen_wine_request',{p_kind:kind,p_slug:slug,p_nudge:nudge||null});
+    if(r.status==='limit') WINE.err[k]=`That is ${r.limit} picks in 24 hours, the daily cap. Try again tomorrow.`;
+    else if(r.status==='no_key') WINE.err[k]='The OpenAI key is missing from the database, so picks are off.';
+    else if(r.status==='not_found') WINE.err[k]='This recipe is not in the database yet.';
+    else if(r.status!=='requested') WINE.err[k]=r.message||'The pick failed. Try again in a minute.';
+    else id=r.id;
+  }catch(e){ WINE.err[k]=wineErr(e); }
+  WINE.busy[k]=0; if(id){ wineStore({id,owner_type:kind,slug,nudge:nudge||null,status:'requested',created_at:new Date().toISOString(),kept:false}); winePoll(kind,slug,id); } else wineRedraw(kind,slug);
+}
+async function winePoll(kind,slug,id){ const k=kind+'/'+slug; if(WINE.busy[k]) return; WINE.busy[k]=1; wineRedraw(kind,slug); const t0=Date.now();
+  try{ while(Date.now()-t0<240000){ await new Promise(r=>setTimeout(r,3000)); const x=await rpc('kitchen_wine_result',{p_id:id});
+      if(x&&x.status==='pending') continue; if(x&&x.status==='not_found'){DB.wine_pick=(DB.wine_pick||[]).filter(w=>w.id!==id); break;} wineStore(x); break; } }
+  catch(e){ WINE.err[k]=wineErr(e); }
+  WINE.busy[k]=0; wineRedraw(kind,slug);
+}
+async function wineKeep(id,keep){ try{const x=await rpc('kitchen_wine_keep',{p_id:id,p_keep:keep}); if(x&&x.id){wineStore(x); toast(keep?'Kept':'No longer kept');}}catch(e){toast('Could not save that');}
+  const w=(DB.wine_pick||[]).find(w=>w.id===id); if(w) wineRedraw(w.owner_type,w.slug); }
+async function wineCheck(kind,slug,w){ // the picked bottle has left the cellar (drunk or moved): ask again once
+  if(WINE.checked[w.id]||!w.pick||!w.pick.primary) return; WINE.checked[w.id]='…';
+  try{ if(!WINE.cellar||Date.now()-WINE.cellarAt>10*60000){ const t=await (await fetch('https://raw.githubusercontent.com/yungjinchew/jins-cellar-data/refs/heads/main/cellar.md',{cache:'no-store'})).text();
+        const cur=(t.split(/\n(?=## )/).find(x=>/^## Current cellar/.test(x))||''); WINE.cellar=cur.split('\n').filter(l=>/^\|\s*(\d{4}|NV)\s*\|/.test(l)).map(l=>l.split('|').map(x=>x.trim())).map(a=>({v:a[1],w:a[2].toLowerCase()})); WINE.cellarAt=Date.now(); }
+    if(!WINE.cellar.length) return; const p=w.pick.primary, pw=String(p.wine||'').toLowerCase();
+    const here=WINE.cellar.some(r=>r.v===String(p.vintage)&&(r.w===pw||r.w.includes(pw)||pw.includes(r.w)));
+    WINE.checked[w.id]=here?'here':'gone';
+    if(!here){ wineRedraw(kind,slug); const k=kind+'/'+slug; if(!WINE.auto[k]&&wineCanAsk(kind,slug)&&!w.kept){WINE.auto[k]=1; toast('The picked bottle has left the cellar, so choosing again'); wineAsk(kind,slug,w.nudge||'');} }
+  }catch(e){ WINE.checked[w.id]=null; }
+}
 // ---------------------------------------------------------------- nutrition estimate (per serving, as saved with the recipe)
 const nutriOf=d=>{const n=d&&d.nutrition_estimate; return n&&typeof n==='object'&&n.kcal!=null?n:null;};
 const nfmt=v=>v==null||v===''?'—':String(Math.round(+v*10)/10);
@@ -1163,6 +1250,7 @@ routes.dish=(slug)=>{
       ${pan.length&&!grouped?`<details class="ipan" ${main.length?'':'open'}><summary><span class="eyebrow">Pantry · ${pan.length}</span><span class="pl">${esc(pan.map(di=>cap1(ingName(di).split(',')[0])).join(' · '))}</span></summary>${pan.map(ingRow).join('')}</details>`:''}`
       :ingMd.length?`<h3 class="stitle">Ingredients</h3>${ingMd.map(s=>`<div class="md">${md(s.body)}</div>`).join('')}`:''}
     <div class="shead"><h3>Method</h3>${fold?`<button onclick="methodAll(this)">${mOpen()?'Close all':'Open all'}</button>`:''}</div>${d.method_md?`${yieldS?`<div class="yield">${md(yieldS.body)}</div>`:''}${methodHtml(M,fold)}`:`<div class="card muted small">No structured recipe body for this dish yet — it was filed as a cook record. It will be populated when the dish is next regenerated under the data protocol.</div>`}
+    ${wineBox('dish',d.slug)}
     ${labRows(d,openVal,notes)}
     <div style="height:12px"></div>`;
 };
@@ -1268,7 +1356,7 @@ routes.meal=(slug)=>{
     <div class="rule-title">The menu</div>
     <div>${m.dishes.map(x=>{const d=x.dish; const [dn,dnote]=splitName(d.name); return `<a class="menu-item ${x.role==='main'?'main':''}" href="#/dish/${d.slug}"><div style="min-width:0"><div class="eyebrow ${x.role==='main'?'acc':''}">${esc(x.role)}</div><div class="nm">${esc(dn)}</div>${dnote?`<div class="nt">${esc(dnote)}</div>`:''}</div>${d.r.latest_rating!=null?seal(d.r.latest_rating,{size:'sm'}):'<span class="dim" aria-hidden="true">›</span>'}</a>`;}).join('')}</div>
     ${mealNutri(m)}
-    ${m.wine_pairing?`<div class="glass"><div class="eyebrow">In the glass</div><div class="nm">${esc(m.wine_pairing)}</div></div>`:''}
+    ${wineBox('meal',m.slug)}
     ${m.workflow_md?`<h3 class="stitle">The workflow</h3><details class="card"><summary><span class="title">Critical path, timeline, holding</span></summary><div class="md" style="margin-top:10px">${md(m.workflow_md)}</div></details>`:''}
     ${m.shared_prep_md?`<h3 class="stitle">Shared prep</h3><div class="card md">${md(m.shared_prep_md)}</div>`:''}
     ${m.cooks.length?`<h3 class="stitle">Cook history</h3><div>${m.cooks.map(cookCard).join('')}</div>`:''}

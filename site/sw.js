@@ -1,5 +1,5 @@
 // jins-kitchen service worker — caches the app shell and its web fonts; data lives in localStorage
-const CACHE = 'kitchen-shell-v25';
+const CACHE = 'kitchen-shell-v26';
 const FONTS = 'kitchen-fonts-v1';
 const SHELL = ['./', './index.html', './manifest.json', './icon.svg', './icon-192.png', './icon-512.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
