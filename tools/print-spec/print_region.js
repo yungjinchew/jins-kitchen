@@ -1,10 +1,10 @@
 // ---------------------------------------------------------------- print (cooking sheet rendered from the database)
-// PRINT SPEC 1.3 (2026-10-31; 1.0–1.2 on 30 Oct). 1.3: stored renders made before print spec 1.0 are an archive, not linked (docCurrent, set at load). Every printed cooking sheet and dish sheet is built here, so every print follows one method.
+// PRINT SPEC 1.4 (2026-11-01; 1.3 on 31 Oct, 1.0–1.2 on 30 Oct). 1.4: the ingredient table prints a heading row for each part of a dish built from parts (dish_ingredient.section), and "not a purchase" stays off the sheet. 1.3: stored renders made before print spec 1.0 are an archive, not linked (docCurrent, set at load). Every printed cooking sheet and dish sheet is built here, so every print follows one method.
 // The written spec is the print protocol in jins-cooking-governance (recipe_output_print_protocol.md). Change the two
 // together, then open #/printcheck and confirm the totals and that no flags appear.
 const PF={full:false,shop:false};
 const PRINT={
-  spec:'print spec 1.3',
+  spec:'print spec 1.4',
   // meal workflow: planning and verification sections stay in the database and off the cooking sheet
   wfDrop:/^(?:the\s+)?menu\b|^failure\s+priorit|^heat\b|^oven\s+sequenc|^parallel\b|^(?:final\s+)?plating\s+window|^timeline\s+verification|^arithmetic\s+check|^meal\s+balance|^sourcing\s+notes?|^register\b|^nutrition|^flavou?r\s+architecture|^scaling/i,
   // dish: design-record sections; the overview and yield/timing are lifted into the dish header instead
@@ -102,10 +102,13 @@ function sheetMeasure(ds){ // what to observe and write down for the cook log: o
   const tick='<td class="ck"><span class="tick"></span></td>';
   return `<h3>Measure on the day</h3><table class="meas"><thead><tr><th class="ck"></th><th>Designed value to check</th><th>Observed</th></tr></thead><tbody>${groups.map(g=>(ds.length>1?`<tr><td class="dept" colspan="3">${esc(g.d.name)}</td></tr>`:'')+g.ps.map(p=>`<tr>${tick}<td><b>${esc(p.param)}</b>${p.designed_value?' — '+esc(p.designed_value):''}</td><td></td></tr>`).join('')).join('')}</tbody></table>${rest?`<p class="meta">${rest} other open check${rest>1?'s':''}: see Log the cook in the app.</p>`:''}`;
 }
+const pPrep=p=>String(p||'').replace(/[\s;,.—–-]*\bnot a purchase\b[.;,]?/i,'').trim();
 function sheetIngs(d){
   if(!d.ings.length) return '';
-  return `<h3>Ingredients</h3><table class="ingt"><thead><tr><th>Ingredient</th><th>Amount</th></tr></thead><tbody>${d.ings.map(di=>{const a=printQty(di), alt=printAlt(di,a);
-    return `<tr><td>${esc(ingName(di))}${di.buy_spec||di.buy_avoid?` <span class="meta">· ${buyHtml(di.buy_spec,di.buy_avoid)}</span>`:''}${di.prep_note?` <span class="meta">— ${esc(di.prep_note)}</span>`:''}${di.optional?' <span class="meta">(optional)</span>':''}</td><td>${esc(a)}${alt?` <span class="meta">(${esc(alt)})</span>`:''}</td></tr>`;}).join('')}</tbody></table>`;
+  let grp=null;
+  return `<h3>Ingredients</h3><table class="ingt"><thead><tr><th>Ingredient</th><th>Amount</th></tr></thead><tbody>${d.ings.map(di=>{const a=printQty(di), alt=printAlt(di,a), pp=pPrep(di.prep_note);
+    const s=(di.section||'').trim(), head=s&&s!==grp?`<tr><td colspan="2" style="background:#F0F0F0;font-weight:700">${esc(s)}</td></tr>`:''; if(s) grp=s;
+    return `${head}<tr><td>${esc(ingName(di))}${di.buy_spec||di.buy_avoid?` <span class="meta">· ${buyHtml(di.buy_spec,di.buy_avoid)}</span>`:''}${pp?` <span class="meta">— ${esc(pp)}</span>`:''}${di.optional?' <span class="meta">(optional)</span>':''}</td><td>${esc(a)}${alt?` <span class="meta">(${esc(alt)})</span>`:''}</td></tr>`;}).join('')}</tbody></table>`;
 }
 function sheetDish(d,role,first,measure){
   const cls='dish'+(first?'':(PF.full||PRINT.pageRoles.test(role||''))?' pg':' side keep');
