@@ -171,6 +171,21 @@ body.locked{overflow:hidden}
 .seg button{min-height:40px;padding:0 16px;border-radius:20px;font:500 14px var(--sans);color:var(--ink)}
 .seg button.on{background:var(--ink);color:var(--bg);font-weight:600}
 .seg .ct{opacity:.65;margin-left:4px;font-family:var(--mono);font-size:12px}
+.seg.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%;border-radius:16px}
+.seg.four button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-height:48px;padding:4px 4px;border-radius:13px;line-height:1.15;white-space:nowrap}
+.seg.four .ct{margin:0;font-size:11px}
+.mrow .dt.rk b{font-size:24px;color:var(--accent)} .mrow .dt.rk span{font-size:10px}
+.qbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:12px 0 2px}
+.qlist{list-style:none;margin:0;padding:0}
+.qrow{display:grid;grid-template-columns:44px minmax(0,1fr) 40px 40px auto;gap:6px;align-items:center;min-height:66px;border-bottom:1px solid var(--line);background:var(--bg)}
+.qrow.drag{box-shadow:0 10px 28px rgba(0,0,0,.2);position:relative;z-index:3;border-radius:12px;border-bottom-color:transparent}
+.qh{touch-action:none;width:44px;height:56px;font-size:24px;line-height:1;color:var(--ink2);cursor:grab;-webkit-user-select:none;user-select:none}
+.qrow .qn{min-width:0} .qrow .nm{font:400 19px/1.2 var(--serif);overflow:hidden;text-overflow:ellipsis} .qrow .mt{font:500 12.5px var(--sans);color:var(--ink2);margin-top:2px}
+.qa{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);color:var(--ink);font-size:16px}
+.qx{min-height:40px;padding:0 12px;border-radius:20px;border:1px solid var(--line);font:600 13px var(--sans);color:var(--ink2)}
+.mrw{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;border-bottom:1px solid var(--line)} .mrw .mrow{border-bottom:0}
+.qadd{min-height:40px;padding:0 12px;border-radius:20px;border:1px solid var(--chip);font:600 13px var(--sans);color:var(--accent-ink);white-space:nowrap}
+.msearch{margin:12px 0 4px}
 .mrow{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);color:var(--ink)}
 .mrow.nodate{grid-template-columns:1fr auto}
 .mrow .dt{text-align:center;line-height:1}
@@ -1348,7 +1363,47 @@ function docsBlock(docs){
 }
 
 // ---------------------------------------------------------------- meals
-const MF={tab:'cooked',protein:null};
+const MF={tab:'cooked',protein:null,q:'',edit:false,rem:[]};
+// ---------------------------------------------------------------- the Next time queue (meal.queue_rank, migration 0015): every meal sits in one list
+const QOK=()=>DB.meal.some(m=>m.queue_rank!==undefined); // false until the database step is in: then Next time = not cooked
+const inQ=m=>QOK()?m.queue_rank!=null:m.status!=='cooked';
+const mState=m=>inQ(m)?'next':m.status==='cooked'?'cooked':'uncooked';
+const qOrd=(a,b)=>QOK()?((a.queue_rank-b.queue_rank)||a.name.localeCompare(b.name)):((a.planned_date||'9').localeCompare(b.planned_date||'9')||a.name.localeCompare(b.name));
+const nextMeals=()=>DB.meal.filter(inQ).sort(qOrd);
+const planDay=m=>m.status==='planned'&&m.planned_date?new Date(m.planned_date+'T00:00:00').toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'}):'';
+function qEditor(list){
+  return `<div class="qbar"><span class="small muted">Drag ≡ or use the arrows. Off moves a meal to Uncooked.</span><button class="btn sm" onclick="qEdit(false)">Done</button></div><ol class="qlist" id="qlist">${list.map(m=>{const [nm]=splitName(m.name), mt=[mainProt(m),planDay(m),m.status==='cooked'?'cook again':''].filter(Boolean).join(' · ');
+    return `<li class="qrow" data-slug="${m.slug}"><button class="qh" aria-label="Drag to move ${esc(nm)}">≡</button><div class="qn"><div class="nm">${esc(nm)}</div>${mt?`<div class="mt">${esc(mt)}</div>`:''}</div><button class="qa" onclick="qMove(this,-1)" aria-label="Move ${esc(nm)} up">↑</button><button class="qa" onclick="qMove(this,1)" aria-label="Move ${esc(nm)} down">↓</button><button class="qx" onclick="qOff(this)" aria-label="Take ${esc(nm)} off Next time">Off</button></li>`;}).join('')}</ol>`;}
+function qEdit(on){ if(!on) qFlush(); MF.edit=on; MF.rem=on?[]:MF.rem; softRender(); }
+function qMove(b,d){ const li=b.closest('li'), sib=d<0?li.previousElementSibling:li.nextElementSibling; if(!sib) return; if(d<0) li.parentNode.insertBefore(li,sib); else li.parentNode.insertBefore(sib,li); b.focus(); qSoon(); }
+function qOff(b){ const li=b.closest('li'); MF.rem.push(li.dataset.slug); li.remove(); toast('Moved to Uncooked'); qSoon(); }
+let QT=0; function qSoon(){ clearTimeout(QT); QT=setTimeout(qFlush,700); }
+function qFlush(){ clearTimeout(QT); const ol=document.getElementById('qlist'); const order=ol?[...ol.children].map(li=>li.dataset.slug):null, rem=MF.rem.splice(0);
+  if(!order&&!rem.length) return;
+  rem.forEach(s=>{const m=IDX.mealBySlug[s]; if(m) m.queue_rank=null;});
+  if(order) order.forEach((s,i)=>{const m=IDX.mealBySlug[s]; if(m) m.queue_rank=i+1;});
+  qPersist(order||nextMeals().map(m=>m.slug), rem); }
+async function qPersist(order,rem){
+  try{ const r=await rpc('kitchen_meal_queue',{p_order:order,p_remove:rem||[]}); if(!r||r.status!=='ok') throw new Error((r&&r.detail)||'not saved');
+    const q=r.queue||[]; DB.meal.forEach(m=>{const i=q.indexOf(m.slug); m.queue_rank=i<0?null:i+1;}); return true; }
+  catch(e){ toast(e&&(e.status===404||e.code==='PGRST202')?'Reordering switches on after one database step':'Could not save the order. Check the connection.'); refreshData(); return false; } }
+function qAdd(slug){ const m=IDX.mealBySlug[slug]; if(!m) return; const order=nextMeals().map(x=>x.slug).filter(x=>x!==slug).concat([slug]);
+  order.forEach((s,i)=>{const x=IDX.mealBySlug[s]; if(x) x.queue_rank=i+1;}); toast(m.status==='cooked'?'Added to Next time: cook again':'Added to Next time'); softRender(); qPersist(order,[]); }
+function qOffSlug(slug){ const m=IDX.mealBySlug[slug]; if(!m) return; m.queue_rank=null; toast(m.status==='cooked'?'Off Next time: back in Cooked':'Off Next time: kept in Uncooked'); softRender(); qPersist(nextMeals().map(x=>x.slug),[slug]); }
+// drag a row by its handle only (scrolling never moves anything)
+const QD={li:null};
+document.addEventListener('pointerdown',e=>{ const h=e.target&&e.target.closest&&e.target.closest('.qh'); if(!h) return; QD.li=h.closest('li'); QD.id=e.pointerId; QD.li.classList.add('drag'); try{h.setPointerCapture(e.pointerId);}catch(_){} e.preventDefault(); });
+document.addEventListener('pointermove',e=>{ if(!QD.li||e.pointerId!==QD.id) return; e.preventDefault(); const y=e.clientY, li=QD.li, prev=li.previousElementSibling, next=li.nextElementSibling;
+  if(prev){const r=prev.getBoundingClientRect(); if(y<r.top+r.height/2){li.parentNode.insertBefore(li,prev); return;}}
+  if(next){const r=next.getBoundingClientRect(); if(y>r.top+r.height/2){li.parentNode.insertBefore(next,li); return;}}
+  if(y<80) window.scrollBy(0,-12); else if(y>window.innerHeight-120) window.scrollBy(0,12); },{passive:false});
+const qEnd=e=>{ if(!QD.li||e.pointerId!==QD.id) return; QD.li.classList.remove('drag'); QD.li=null; qSoon(); };
+document.addEventListener('pointerup',qEnd); document.addEventListener('pointercancel',qEnd);
+const mFold=m=>fold(m.name+' '+m.dishes.map(x=>x.dish.name).join(' '));
+function mealAllList(by){ const t=fold(MF.q||'').split(' ').filter(Boolean), ok=m=>!t.length||t.every(w=>mFold(m).includes(w));
+  const L=[...by.next,...by.uncooked,...by.cooked].filter(ok);
+  return L.length?L.map(m=>mealCard(m,{tag:true,rank:inQ(m)?by.next.indexOf(m)+1:0})).join(''):'<div class="empty">No meal matches.</div>'; }
+function mlRedraw(){ const e=document.getElementById('mlist'); if(e&&MF.tab==='all') e.innerHTML=mealAllList(MF.by); }
 const mainProt=m=>{const x=m.dishes.find(x=>x.role==='main')||m.dishes.find(x=>x.dish.protein); return (x&&x.dish.protein)||null;};
 const agoShort=d=>{const n=daysAgo(d);if(n==null)return 'never';if(n<1)return 'today';if(n<14)return n+'d';if(n<60)return Math.round(n/7)+'w';return Math.round(n/30)+'mo';};
 function mfProt(p){MF.protein=MF.protein===p?null:p;render();}
@@ -1362,25 +1417,33 @@ routes.meals=()=>{
   const prots=[...new Set(DB.meal.map(mainProt).filter(Boolean))].sort((a,b)=>(lastBy[a]||'9').localeCompare(lastBy[b]||'9')||a.localeCompare(b));
   if(MF.protein&&!prots.includes(MF.protein))MF.protein=null;
   const inProt=m=>!MF.protein||mainProt(m)===MF.protein;
-  const nCooked=DB.meal.filter(m=>m.status==='cooked'&&inProt(m)).length, nNext=DB.meal.filter(m=>m.status!=='cooked'&&inProt(m)).length;
-  const list=DB.meal.filter(m=>(MF.tab==='backlog'?m.status!=='cooked':m.status==='cooked')&&inProt(m));
-  list.sort((a,b)=>(b.last||'').localeCompare(a.last||'')||a.name.localeCompare(b.name));
+  const by={cooked:[],next:[],uncooked:[]}; DB.meal.filter(inProt).forEach(m=>by[mState(m)].push(m)); MF.by=by;
+  by.next.sort(qOrd); by.cooked.sort((a,b)=>(b.last||'').localeCompare(a.last||'')||a.name.localeCompare(b.name));
+  by.uncooked.sort((a,b)=>String(b.created_at||'').localeCompare(String(a.created_at||''))||a.name.localeCompare(b.name));
+  if(MF.tab!=='backlog') MF.edit=false;
+  const TABS=[['cooked','Cooked',by.cooked.length],['backlog','Next time',by.next.length],['uncooked','Uncooked',by.uncooked.length],['all','All',by.cooked.length+by.next.length+by.uncooked.length]];
+  const pw=MF.protein?MF.protein.toLowerCase()+' ':'';
+  let body;
+  if(MF.tab==='backlog') body=MF.edit&&by.next.length?qEditor(by.next):by.next.length?`${QOK()&&by.next.length>1?`<div class="qbar"><span class="small muted">In your order</span><button class="btn ghost sm" onclick="qEdit(true)">Reorder</button></div>`:''}<div>${by.next.map((m,i)=>mealCard(m,{rank:QOK()?i+1:0})).join('')}</div>`:`<div class="empty">No ${pw}meals in Next time. Add one from Uncooked or Cooked, or ask Claude to “save this meal for next time”.</div>`;
+  else if(MF.tab==='uncooked') body=by.uncooked.length?`<p class="small muted" style="margin:12px 0 0">Not cooked yet and not in Next time: kept here until you want them back.</p><div>${by.uncooked.map(m=>`<div class="mrw">${mealCard(m)}<button class="qadd" onclick="qAdd('${m.slug}')" aria-label="Add ${esc(splitName(m.name)[0])} to Next time">+ Next time</button></div>`).join('')}</div>`:`<div class="empty">No ${pw}meals parked here. Take a meal off Next time and it waits here, recipes and all.</div>`;
+  else if(MF.tab==='all') body=`<input class="search msearch" type="search" placeholder="Search meals and dishes" value="${esc(MF.q||'')}" oninput="MF.q=this.value;mlRedraw()" aria-label="Search all meals"><div id="mlist">${mealAllList(by)}</div>`;
+  else body=by.cooked.length?`<div>${by.cooked.map(m=>mealCard(m)).join('')}</div>`:`<div class="empty">No ${pw}meals cooked yet.</div>`;
   const rotation=prots.length?`<div class="card rot" style="margin-top:16px"><div class="row" style="align-items:baseline"><div class="eyebrow">Mains rotation</div><div class="grow small dim" style="text-align:right">${recent.length?`Last ${recent.length}: `+Object.entries(tally).sort((a,b)=>b[1]-a[1]).map(([p,n])=>`${esc(p)} ×${n}`).join(' · '):''}</div></div><div class="chips" style="padding-top:10px">${prots.map(p=>`<button class="chip ${MF.protein===p?'on':''}" aria-pressed="${MF.protein===p}" data-v="${esc(p)}" onclick="mfProt(this.dataset.v)" title="Last cooked as a main: ${lastBy[p]?fmtDate(lastBy[p]):'never'}">${esc(p)} <span style="opacity:.7">· ${agoShort(lastBy[p])}</span>${(tally[p]||0)>=3?` <b class="hot">×${tally[p]}</b>`:''}</button>`).join('')}</div>${MF.protein?`<div class="small dim" style="padding-top:8px">Showing ${esc(MF.protein.toLowerCase())} mains · <a href="#/meals" onclick="mfProt(MF.protein);return false">show all</a></div>`:''}</div>`:'';
   return `${pageTitle('Meals')}
     ${rotation}
-    <div style="margin-top:16px"><div class="seg" role="group" aria-label="Meal list"><button class="${MF.tab==='cooked'?'on':''}" aria-pressed="${MF.tab==='cooked'}" onclick="MF.tab='cooked';render()">Cooked<span class="ct">${nCooked}</span></button><button class="${MF.tab==='backlog'?'on':''}" aria-pressed="${MF.tab==='backlog'}" onclick="MF.tab='backlog';render()">Next time<span class="ct">${nNext}</span></button></div></div>
-    ${list.length?`<div style="margin-top:6px">${list.map(mealCard).join('')}</div>`:(MF.protein?`<div class="empty">No ${esc(MF.protein.toLowerCase())} meals ${MF.tab==='backlog'?'saved for next time':'cooked yet'}.</div>`:'<div class="empty">Nothing here yet. Ask Cowork to "save this meal for next time" and it will appear.</div>')}
+    <div style="margin-top:16px"><div class="seg four" role="group" aria-label="Meal list">${TABS.map(([k,l,n])=>`<button class="${MF.tab===k?'on':''}" aria-pressed="${MF.tab===k}" onclick="MF.tab='${k}';MF.edit=false;render()"><span>${l}</span><span class="ct">${n}</span></button>`).join('')}</div></div>
+    <div style="margin-top:6px">${body}</div>
     <div style="height:12px"></div>`;
 };
-function mealCard(m){
+function mealCard(m,o){ o=(o&&typeof o==='object')?o:{}; const st=mState(m);
   const s=m.rating!=null?seal(m.rating):(m.status==='cooked'?seal(null,{none:'unrated'}):''); // the meal's own score only, never an average of its dishes
   const [nm,note]=splitName(m.name);
   const menu=m.dishes.map(x=>menuName(x.dish.name)).join(' · ');
-  const dt=m.status==='cooked'&&m.last?new Date(m.last+'T00:00:00'):null;
+  const dt=st==='cooked'&&m.last?new Date(m.last+'T00:00:00'):null;
   const yr=dt&&dt.getFullYear()!==new Date().getFullYear()?' ’'+String(dt.getFullYear()).slice(2):'';
-  const date=dt?`<div class="dt"><b>${dt.getDate()}</b><span>${dt.toLocaleDateString('en-GB',{month:'short'})}${yr}</span></div>`:'';
-  const eb=!dt?[mainProt(m),m.status&&!['cooked','backlog'].includes(m.status)?m.status:''].filter(Boolean).join(' · ')||'Next time':'';
-  return `<a class="mrow ${dt?'':'nodate'}" href="#/meal/${m.slug}">${date}<div style="min-width:0">${eb?`<div class="eyebrow acc" style="margin-bottom:4px">${esc(eb)}</div>`:''}<div class="nm">${esc(nm)}${note?`<i>, ${esc(note)}</i>`:''}</div><div class="mt">${esc(menu)}${m.pax?' · for '+m.pax:''}</div></div>${s||'<span></span>'}</a>`;
+  const date=dt?`<div class="dt"><b>${dt.getDate()}</b><span>${dt.toLocaleDateString('en-GB',{month:'short'})}${yr}</span></div>`:(o.rank?`<div class="dt rk"><b>${o.rank}</b><span>next</span></div>`:'');
+  const eb=dt?'':[o.tag?(st==='next'?'Next time':'Uncooked'):'',mainProt(m),planDay(m),st==='next'&&m.status==='cooked'?'cook again':''].filter(Boolean).join(' · ')||(st==='next'?'Next time':'Uncooked');
+  return `<a class="mrow ${date?'':'nodate'}" href="#/meal/${m.slug}">${date}<div style="min-width:0">${eb?`<div class="eyebrow acc" style="margin-bottom:4px">${esc(eb)}</div>`:''}<div class="nm">${esc(nm)}${note?`<i>, ${esc(note)}</i>`:''}</div><div class="mt">${esc(menu)}${m.pax?' · for '+m.pax:''}</div></div>${s||'<span></span>'}</a>`;
 }
 routes.meal=(slug)=>{
   const m=IDX.mealBySlug[slug]; if(!m)return notFound('Meal','#/meals');
@@ -1391,7 +1454,8 @@ routes.meal=(slug)=>{
   const day=m.status==='cooked'&&m.last?new Date(m.last+'T00:00:00').toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'}):(isPl?`Planned · ${dayLong(pl.date)} · ${pl.time}`:'Next time');
   const svc=(m.service_time||'18:00').slice(0,5);
   const acts=[m.workflow_md?`<a class="btn" href="#/cook/${m.slug}">Start cook</a>`:'',hasIngs?`<a class="btn ${m.workflow_md?'ghost':''}" href="#/shopping/meal/${m.slug}">Shopping list</a>`:'',`<a class="btn ghost" href="#/postcook/meal/${m.slug}">${ciPend('meal',m.slug)?'Log sent · waiting':'Log cook'}</a>`,printBtn('meal',m,'btn ghost','Print sheet'),
-    m.status!=='cooked'&&!isPl&&(!pl||pl.src==='phone')?`<button class="btn ghost" onclick="pickPlan('${m.slug}',true)">Cook this Sunday</button>`:''].filter(Boolean);
+    m.status!=='cooked'&&!isPl&&(!pl||pl.src==='phone')?`<button class="btn ghost" onclick="pickPlan('${m.slug}',true)">Cook this Sunday</button>`:'',
+    QOK()?(inQ(m)?`<button class="btn ghost" onclick="qOffSlug('${m.slug}')">Off Next time</button>`:`<button class="btn ghost" onclick="qAdd('${m.slug}')">${m.status==='cooked'?'Cook again':'Add to Next time'}</button>`):''].filter(Boolean);
   return `<div class="hero">
       <div class="eyebrow acc">${esc(day)}${m.pax?' · for '+m.pax:''}</div>
       <div class="ttl"><h1>${esc(nm)}${note?`<i>${esc(note)}</i>`:''}</h1>${m.rating!=null?seal(m.rating,{size:'lg'}):''}</div>
@@ -1502,7 +1566,7 @@ routes.sunday=()=>{
   setHeader(''); tabs('sunday');
   const R=rotation(), pl=currentPlan();
   const score=m=>{const p=mainProt(m); if(!p) return 1; const n=R.tally[p]||0; return n>=3?3:n?2:0;}; // nudge toward proteins not cooked lately
-  const backlog=DB.meal.filter(m=>m.status!=='cooked'&&(!pl||m!==pl.m)).sort((a,b)=>score(a)-score(b)||(R.lastBy[mainProt(a)]||'').localeCompare(R.lastBy[mainProt(b)]||'')||a.name.localeCompare(b.name));
+  const backlog=nextMeals().filter(m=>!pl||m!==pl.m); // Jin's Next time order
   const cookedAll=DB.meal.filter(m=>m.status==='cooked'&&m.last).sort((a,b)=>b.last.localeCompare(a.last));
   const head=`<div class="homebar"><span class="wm">Jin’s Kitchen</span>${freshPill()}</div>`;
   const recent=cookedAll.length?`<div class="shead"><h3>Recently cooked</h3><a href="#/meals" onclick="MF.tab='cooked';MF.protein=null">All ${cookedAll.length}</a></div><div>${cookedAll.slice(0,3).map(mealCard).join('')}</div>`:'';
@@ -1845,7 +1909,7 @@ function shopPicker(){
   const row=(t,o,meta)=>{const items=aggregate(shopDishes(t,o)), c=shopCount(items,shopState('shop:'+t+'/'+o.slug));
     return `<a class="drow" href="#/shopping/${t}/${o.slug}"><div><div class="nm">${nameHtml(o.name)}</div><div class="mt">${!items.length?'<span class="tag warn">no ingredient data</span>':c.done?`${c.done} of ${c.total} bought`:`${c.total} to buy`}${meta?' · '+meta:''}</div>${c.done?`<div class="bar"><i style="width:${Math.round(c.done/c.total*100)}%"></i></div>`:''}</div><span class="dim" aria-hidden="true">›</span></a>`;};
   const started=Object.keys(localStorage).filter(k=>k.startsWith('shop:')).map(k=>k.slice(5).split('/')).filter(([t,s])=>{const o=shopOwner(t,s); return o&&t!=='pins'&&!(pl&&t==='meal'&&o===pl.m)&&Object.values(shopState('shop:'+t+'/'+s)).some(Boolean);});
-  const backlog=DB.meal.filter(m=>m.status!=='cooked'&&!(pl&&m===pl.m));
+  const backlog=nextMeals().filter(m=>!(pl&&m===pl.m));
   const cooked=DB.meal.filter(m=>m.status==='cooked').sort((a,b)=>(b.last||'').localeCompare(a.last||''));
   return `${pageTitle('Shopping')}
     <p class="muted small" style="margin:8px 0 0">Pick a meal to build its list. Ticks stay on this phone and the list works offline.</p>
