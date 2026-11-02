@@ -196,6 +196,15 @@ h3.section{font:400 26px/1.1 var(--serif);text-transform:none;letter-spacing:0;c
 .stitle .pill{font-family:var(--sans);vertical-align:middle}
 .menu-item{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);color:var(--ink)}
 .menu-item:last-child{border-bottom:0}
+.menu-item .vt,.vof{font:500 13px/1.4 var(--sans);color:var(--ink2);margin-top:3px} .vof{margin:8px 0 0} .vof a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
+.pinsw.famsw{margin-top:8px;flex-direction:column;align-items:flex-start;gap:4px;text-align:left} .pinsw.famsw .psw{flex-wrap:wrap;overflow:visible;justify-content:flex-start;width:100%} .famsw .pswc{max-width:100%} .famsw .pswc .n,.famsw .pswc .p{max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.vlist{display:grid;gap:8px}
+.vcard{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:12px;color:var(--ink)}
+.vcard.on{border-color:var(--accent)} .vcard .vl{font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
+.vcard .vn{font:400 18px/1.2 var(--serif);margin-top:2px} .vcard .vm{font:500 13px/1.35 var(--sans);color:var(--ink2);margin-top:2px} .vcard .vt{font:13px/1.4 var(--sans);color:var(--ink);margin-top:4px}
+.vgrp{border-bottom:1px solid var(--line);padding:0 0 8px} .drw:has(+.vgrp){border-bottom:0}
+.vtog{font:600 13px var(--sans);color:var(--accent-ink);padding:6px 0;min-height:36px}
+.vsub{border-left:2px solid var(--line);margin:0 0 0 6px;padding-left:12px} .vsub .drw:last-child{border-bottom:0}
 .menu-item .nm{font:400 22px/1.12 var(--serif);margin-top:4px}
 .menu-item.main .nm{font-size:24px}
 .menu-item .nt{font:italic 15px/1.3 var(--serif);color:var(--ink2)}
@@ -708,6 +717,10 @@ function index(){
   DB.meal.forEach(m=>{m.dishes=[]; m.cooks=[]; m.docs=[]; IDX.meal[m.id]=m; IDX.mealBySlug[m.slug]=m;});
   DB.meal_dish.forEach(md=>{const m=IDX.meal[md.meal_id], d=IDX.dish[md.dish_id]; if(m&&d){m.dishes.push({...md,dish:d}); d.meals.push(m);}});
   DB.meal.forEach(m=>m.dishes.sort((a,b)=>(a.service_order-b.service_order)||(ROLE_ORDER[a.role]-ROLE_ORDER[b.role])));
+  // versions: a dish may name the baseline it adapts (dish.base_id, one level); the baseline lists its versions
+  DB.dish.forEach(d=>{d.base=null; d.versions=[];});
+  DB.dish.forEach(d=>{const b=d.base_id&&d.base_id!==d.id?IDX.dish[d.base_id]:null; if(b&&!b.base_id){d.base=b; b.versions.push(d);}});
+  DB.dish.forEach(d=>d.versions.sort((a,b)=>String(a.created_at||'').localeCompare(String(b.created_at||''))));
   DB.dish_ingredient.forEach(di=>{const d=IDX.dish[di.dish_id]; if(d) d.ings.push(di);});
   // made in the recipe (a spice blend, a syrup, fat reserved from another dish): a line whose prep note says "not a purchase" marks
   // every line of that name in the dish; those lines stay on the dish page and never reach a shopping list
@@ -1014,6 +1027,15 @@ setInterval(()=>{ const all=getTimers(); if(!all.length) return; const now=Date.
   if(ch) setTimers(T);
 },1000);
 function pinGo(h){ history.replaceState(null,'',h); HSTACK[HSTACK.length-1]=h; render(); } // switching between pinned recipes never stacks up Back
+// ---------------------------------------------------------------- versions of a dish: the baseline and the dishes that adapt it
+const famOf=d=>{const r=d.base||d; return r.versions.length?[r,...r.versions]:[];};
+const verMeals=d=>d.meals.map(m=>splitName(m.name)[0]).join(' · ');
+const verLabel=d=>d.variant_label||(d.base?(d.meals[0]?splitName(d.meals[0].name)[0]:menuName(d.name)):'Baseline');
+function famSwitch(d){ const F=famOf(d); if(F.length<2) return '';
+  return `<nav class="pinsw dish famsw" aria-label="Versions of ${esc(menuName((d.base||d).name))}"><span class="eyebrow acc">Versions</span><div class="psw">${F.map(x=>{const on=x===d, sub=x.base?(verMeals(x).replace(/\s+(?:Dinner|Sunday|Supper)\b/gi,'')||'version'):'baseline';
+    return `<button class="pswc ${on?'on':''}" ${on?'aria-current="page"':''} onclick="pinGo('#/dish/${x.slug}')" title="${esc(x.name)}"><span class="n">${esc(verLabel(x))}</span><span class="p">${esc(sub)}</span></button>`;}).join('')}</div></nav>`;}
+function verCard(x,cur){ const r=x.r, sc=r.latest_rating!=null?seal(r.latest_rating,{size:'sm'}):seal(null,{none:isCooked(x)?'unrated':'untried'}), mm=verMeals(x);
+  return `<a class="vcard ${x===cur?'on':''}" href="#/dish/${x.slug}" ${x===cur?'aria-current="page"':''}><div style="min-width:0"><div class="vl">${esc(verLabel(x))}${x.base?'':' · baseline'}${x===cur?' · this one':''}</div><div class="vn">${esc(menuName(x.name))}</div><div class="vm">${esc(mm?'In '+mm:'Not in a meal')}</div>${x.variant_note?`<div class="vt">${esc(x.variant_note)}</div>`:''}</div>${sc}</a>`;}
 function pinSwitch(d,mode){ const P=pinDishes(); if(P.length<2||!P.includes(d)) return '';
   const grid=mode==='steps'&&P.length<=3; // up to 3 pinned: all visible side by side while cooking
   return `<nav class="pinsw ${mode} ${grid?'grid':''}" aria-label="Pinned recipes" ${grid?`style="--n:${P.length}"`:''}>${grid?'':'<span class="eyebrow acc">Pinned</span>'}<div class="psw">${P.map(x=>{const on=x===d, pr=mode==='steps'?stepProg(x):'';
@@ -1047,7 +1069,8 @@ function libList(){
   if(F.status==='cooked')list=list.filter(isCooked);
   if(F.status==='notyet')list=list.filter(d=>!isCooked(d));
   if(F.stale)list=list.filter(d=>(d.r.last_made||d.served)&&daysAgo(d.r.last_made||d.served)>90);
-  const eff=d=>d.r.last_made||d.served||(!isCooked(d)&&d.created_at?String(d.created_at).slice(0,10):''); // not cooked yet: the day the recipe was saved const effR=d=>d.r.latest_rating!=null?+d.r.latest_rating:(d.mealRating!=null?+d.mealRating:-1);
+  const eff=d=>d.r.last_made||d.served||(!isCooked(d)&&d.created_at?String(d.created_at).slice(0,10):''); // not cooked yet: the day the recipe was saved
+  const effR=d=>d.r.latest_rating!=null?+d.r.latest_rating:-1;
   const sorters={last:(a,b)=>eff(b).localeCompare(eff(a))||a.name.localeCompare(b.name),rating:(a,b)=>effR(b)-effR(a)||a.name.localeCompare(b.name),name:(a,b)=>a.name.localeCompare(b.name)};
   return list.sort(sorters[F.sort]);
 }
@@ -1059,12 +1082,12 @@ function activeFilters(){
   if(F.stale)a.push(['stale','','Not made in 90 days']);
   return a;
 }
-function dishCard(d){
+function dishCard(d,sub){
   const r=d.r, cooked=isCooked(d);
   const last=r.last_made||d.served;
   const saved=!cooked&&d.created_at?String(d.created_at).slice(0,10):'', isNew=!!saved&&daysAgo(saved)<=7;
-  const meta=[(d.category||[]).join(' / '),d.protein,last?shortDate(last)+(r.times_made>1?' · ×'+r.times_made:''):(cooked?'':(saved?'saved '+shortDate(saved)+' · ':'')+'not yet cooked')].filter(Boolean).join(' · ');
-  const s=r.latest_rating!=null?seal(r.latest_rating):(d.mealRating!=null?seal(d.mealRating,{note:'via meal'}):seal(null,{none:cooked?'unrated':'untried'}));
+  const meta=[d.base?(sub?verLabel(d):'version of '+menuName(d.base.name)):'',(d.category||[]).join(' / '),d.protein,last?shortDate(last)+(r.times_made>1?' · ×'+r.times_made:''):(cooked?'':(saved?'saved '+shortDate(saved)+' · ':'')+'not yet cooked')].filter(Boolean).join(' · ');
+  const s=r.latest_rating!=null?seal(r.latest_rating):seal(null,{none:cooked?'unrated':'untried'});
   return `<div class="drw"><a class="drow" href="#/dish/${d.slug}"><div><div class="nm">${nameHtml(d.name)}${isNew?'<span class="newtag">New</span>':''}</div><div class="mt">${esc(meta)}</div></div>${s}</a>${pinBtn(d)}</div>`;
 }
 function libHead(){
@@ -1072,10 +1095,17 @@ function libHead(){
   return `<button class="btn ink" onclick="openFilters()">Filter &amp; sort${act.length?`<span class="badge">${act.length}</span>`:''}</button>`
     +act.map(([k,v,l])=>`<button class="chip" data-k="${k}" data-v="${esc(v)}" onclick="dropF(this.dataset.k,this.dataset.v)" aria-label="Remove filter ${esc(l)}">${esc(l)} ×</button>`).join('');
 }
+// a baseline's versions fold under its card; a version whose baseline is filtered out stands on its own; a search opens the fold
+const LIBV=new Set();
+function libRows(list){ const inL=new Set(list), open=!!F.q;
+  return list.filter(d=>!(d.base&&inL.has(d.base))).map(d=>{ const vs=d.versions.filter(v=>inL.has(v)); if(!vs.length) return dishCard(d);
+    const ex=open||LIBV.has(d.slug), k=vs.length+' version'+(vs.length>1?'s':'');
+    return dishCard(d)+`<div class="vgrp"><button class="vtog" aria-expanded="${ex}" data-n="${esc(k)}" onclick="verTog('${d.slug}',this)">${ex?'Hide '+k:'+ '+k}</button><div class="vsub" ${ex?'':'hidden'}>${vs.map(v=>dishCard(v,true)).join('')}</div></div>`;}).join(''); }
+function verTog(slug,b){ const s=b.nextElementSibling, ex=s.hidden; s.hidden=!ex; b.setAttribute('aria-expanded',String(ex)); b.textContent=(ex?'Hide ':'+ ')+b.dataset.n; ex?LIBV.add(slug):LIBV.delete(slug); }
 function updateLib(){
   const el=document.getElementById('dishlist'); if(!el) return;
   const list=libList(); const n=list.length;
-  el.innerHTML=n?list.map(dishCard).join(''):'<div class="empty">Nothing matches. Try fewer filters.</div>';
+  el.innerHTML=n?libRows(list):'<div class="empty">Nothing matches. Try fewer filters.</div>';
   document.getElementById('count').textContent=`${n} dish${n===1?'':'es'} · by ${SORTS.find(s=>s[0]===F.sort)[1].toLowerCase()}`;
   document.getElementById('libhead').innerHTML=libHead();
   const ps=document.getElementById('pinshelf'); if(ps) ps.innerHTML=F.q||activeFilters().length?'':pinShelf(); // searching or filtering hides the shelf
@@ -1226,6 +1256,7 @@ function labRows(d,openVal,notes){
   if(d.meas.length) r.push(row('Measured',String(d.meas.length),`<div class="lab">${measHtml(d)}</div>`));
   notes.forEach(x=>r.push(row(esc(x.title),'',`<div class="md">${md(x.body)}</div>`)));
   if((d.equipment||[]).length) r.push(row('Equipment',`${d.equipment.length} item${d.equipment.length>1?'s':''}`,`<ul class="eqlist">${d.equipment.map(e=>`<li>${esc(e)}</li>`).join('')}</ul>`));
+  const fam=famOf(d); if(fam.length) r.push(row('Versions',String(fam.length),`<div class="vlist">${fam.map(x=>verCard(x,d)).join('')}</div>`));
   if(d.meals.length) r.push(row('Part of',`${d.meals.length} meal${d.meals.length>1?'s':''}`,d.meals.map(mealCard).join('')));
   if(d.docs.length) r.push(row('Documents',String(d.docs.length),docsBlock(d.docs).replace('<h3 class="stitle">Documents</h3>','')));
   const tags=[...(d.tags||[]),...(d.occasion||[])];
@@ -1240,7 +1271,7 @@ routes.dish=(slug)=>{
   const when=r.times_made>0?`Cooked ×${r.times_made}${r.last_made?' · last '+esc(fmtDate(r.last_made)):''}`
     :(d.served?`Served ${esc(fmtDate(d.served))}${d.servedIn?` in <a href="#/meal/${d.servedIn.slug}">${esc(splitName(d.servedIn.name)[0])}</a>`:''}${d.mealRating!=null?' · meal rated '+num(d.mealRating):''}`
     :(d.status==='cooked'?'Cooked':(d.status==='designed'?'Designed, not yet cooked':esc(d.status||''))));
-  const big=r.latest_rating!=null?seal(r.latest_rating,{size:'lg'}):(d.mealRating!=null?seal(d.mealRating,{size:'lg',note:'via meal'}):seal(null,{none:cooked?'unrated':'untried'}));
+  const big=r.latest_rating!=null?seal(r.latest_rating,{size:'lg'}):seal(null,{none:cooked?'unrated':'untried'}); // the dish's own score only
   const M=methodModel(d.method_md), S=flatSteps(M), yieldS=M.find(s=>s.kind==='yield');
   const notes=M.filter(s=>s.kind==='ref'||(s.kind==='ing'&&d.ings.length)), ingMd=d.ings.length?[]:M.filter(s=>s.kind==='ing');
   const overview=M.find(s=>s.kind==='ref'&&/overview/i.test(s.title));
@@ -1250,9 +1281,10 @@ routes.dish=(slug)=>{
   const anyMore=d.ings.some(di=>di.buy_spec||di.buy_avoid||(di.qty_alt&&(di.qty!=null||di.qty_alt.length>9))||prepShow(di.prep_note).length>40);
   const grouped=d.ings.some(di=>di.section), main=d.ings.filter(di=>!di.pantry_check), pan=d.ings.filter(di=>di.pantry_check);
   const fold=M.filter(s=>(s.kind==='flow'||s.kind==='prose')&&s.body&&s.title&&!M_SKIP.test(s.title)).length>=2;
-  return `${pinSwitch(d,'dish')}<div class="hero">
+  return `${pinSwitch(d,'dish')}${famSwitch(d)}<div class="hero">
       <div class="eyebrow acc">${esc([d.protein,(d.category||[]).join(' / '),(d.cuisine||[]).join(', ')].filter(Boolean).join(' · '))}</div>
       <div class="ttl"><h1>${esc(nm)}${note?`<i>${esc(note)}</i>`:''}</h1>${big}</div>
+      ${d.base?`<p class="vof">Version of <a href="#/dish/${d.base.slug}">${esc(menuName(d.base.name))}</a>${d.variant_note?` · ${esc(d.variant_note)}`:''}</p>`:''}
       <div class="scores">${r.latest_repeat?`<span class="verdict ${verdictCls(r.latest_repeat)}">${rep(r.latest_repeat)}</span>`:''}${r.latest_rating!=null?`<span>Flavour <b>${num(r.latest_rating)}</b></span>`:''}${r.latest_execution!=null?`<span>Execution <b>${num(r.latest_execution)}</b></span>`:''}<span>${when}</span>${d.difficulty?`<span>${esc(d.difficulty)}</span>`:''}${d.servings?`<span>Serves <b>${num(d.servings)}</b></span>`:''}</div>
       ${summary?`<p class="summary">${esc(summary)}</p>`:''}
       ${dishNutri(d)}
@@ -1367,7 +1399,7 @@ routes.meal=(slug)=>{
     </div>
     <div class="actgrid" style="margin-top:20px">${acts.join('')}</div>
     <div class="rule-title">The menu</div>
-    <div>${m.dishes.map(x=>{const d=x.dish; const [dn,dnote]=splitName(d.name); return `<a class="menu-item ${x.role==='main'?'main':''}" href="#/dish/${d.slug}"><div style="min-width:0"><div class="eyebrow ${x.role==='main'?'acc':''}">${esc(x.role)}</div><div class="nm">${esc(dn)}</div>${dnote?`<div class="nt">${esc(dnote)}</div>`:''}</div>${d.r.latest_rating!=null?seal(d.r.latest_rating,{size:'sm'}):'<span class="dim" aria-hidden="true">›</span>'}</a>`;}).join('')}</div>
+    <div>${m.dishes.map(x=>{const d=x.dish; const [dn,dnote]=splitName(d.name); return `<a class="menu-item ${x.role==='main'?'main':''}" href="#/dish/${d.slug}"><div style="min-width:0"><div class="eyebrow ${x.role==='main'?'acc':''}">${esc(x.role)}</div><div class="nm">${esc(dn)}</div>${dnote?`<div class="nt">${esc(dnote)}</div>`:''}${d.base?`<div class="vt">version of ${esc(menuName(d.base.name))}</div>`:''}</div>${d.r.latest_rating!=null?seal(d.r.latest_rating,{size:'sm'}):'<span class="dim" aria-hidden="true">›</span>'}</a>`;}).join('')}</div>
     ${mealNutri(m)}
     ${wineBox('meal',m.slug)}
     ${m.workflow_md?`<h3 class="stitle">The workflow</h3><details class="card"><summary><span class="title">Critical path, timeline, holding</span></summary><div class="md" style="margin-top:10px">${md(m.workflow_md)}</div></details>`:''}
