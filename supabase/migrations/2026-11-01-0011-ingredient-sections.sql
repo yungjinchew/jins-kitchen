@@ -5,6 +5,7 @@
 --  * kitchen_save_dish: ingredients accept "section"; the ingredients revision snapshot includes it.
 -- Everything else in the function is unchanged from migration 0010.
 -- Run in the Supabase SQL editor (the connector cancels migrations that contain UPDATE).
+-- Applied 2 Nov 2026 by Claude through the SQL editor in Jin's Chrome (it had not been run on 1 Nov); verified by md5 of kitchen_save_dish.
 
 alter table public.dish_ingredient add column if not exists section text;
 comment on column public.dish_ingredient.section is
