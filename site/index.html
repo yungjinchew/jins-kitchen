@@ -718,9 +718,7 @@ function index(){
   (DB.measurement||[]).forEach(x=>{const d=IDX.dish[x.dish_id]; if(d) d.meas.push(x);});
   // meal-level last made / rating
   DB.meal.forEach(m=>{const c=m.cooks[0]; m.last=c?c.cooked_on:m.planned_date; m.rating=c&&c.rating!=null?c.rating:null;
-    m.dishes.forEach(x=>{const d=x.dish; if(m.status==='cooked'&&m.last&&(!d.served||m.last>d.served)){d.served=m.last;d.servedIn=m;d.mealRating=m.rating;}});
-    const dishRated=m.dishes.map(x=>x.dish.r.latest_rating).filter(v=>v!=null);
-    m.dishAvg=dishRated.length?(dishRated.reduce((a,b)=>a+ +b,0)/dishRated.length):null;});
+    m.dishes.forEach(x=>{const d=x.dish; if(m.status==='cooked'&&m.last&&(!d.served||m.last>d.served)){d.served=m.last;d.servedIn=m;d.mealRating=m.rating;}});});
 }
 
 // ---------------------------------------------------------------- utils
@@ -1343,7 +1341,7 @@ routes.meals=()=>{
     <div style="height:12px"></div>`;
 };
 function mealCard(m){
-  const s=m.rating!=null?seal(m.rating):(m.dishAvg!=null?seal(m.dishAvg,{note:'dish avg'}):(m.status==='cooked'?seal(null,{none:'unrated'}):''));
+  const s=m.rating!=null?seal(m.rating):(m.status==='cooked'?seal(null,{none:'unrated'}):''); // the meal's own score only, never an average of its dishes
   const [nm,note]=splitName(m.name);
   const menu=m.dishes.map(x=>menuName(x.dish.name)).join(' · ');
   const dt=m.status==='cooked'&&m.last?new Date(m.last+'T00:00:00'):null;
