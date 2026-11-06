@@ -1,10 +1,10 @@
 // ---------------------------------------------------------------- print (cooking sheet rendered from the database)
-// PRINT SPEC 1.4 (2026-11-01; 1.3 on 31 Oct, 1.0–1.2 on 30 Oct). 1.4: the ingredient table prints a heading row for each part of a dish built from parts (dish_ingredient.section), and "not a purchase" stays off the sheet. 1.3: stored renders made before print spec 1.0 are an archive, not linked (docCurrent, set at load). Every printed cooking sheet and dish sheet is built here, so every print follows one method.
+// PRINT SPEC 1.5 (2026-11-06; 1.4 on 1 Nov, 1.3 on 31 Oct, 1.0–1.2 on 30 Oct). 1.5: equipment (ingredient department Equipment) prints on its own line under the shopping list, never in the pantry check. 1.4: the ingredient table prints a heading row for each part of a dish built from parts (dish_ingredient.section), and "not a purchase" stays off the sheet. 1.3: stored renders made before print spec 1.0 are an archive, not linked (docCurrent, set at load). Every printed cooking sheet and dish sheet is built here, so every print follows one method.
 // The written spec is the print protocol in jins-cooking-governance (recipe_output_print_protocol.md). Change the two
 // together, then open #/printcheck and confirm the totals and that no flags appear.
 const PF={full:false,shop:false};
 const PRINT={
-  spec:'print spec 1.4',
+  spec:'print spec 1.5',
   // meal workflow: planning and verification sections stay in the database and off the cooking sheet
   wfDrop:/^(?:the\s+)?menu\b|^failure\s+priorit|^heat\b|^oven\s+sequenc|^parallel\b|^(?:final\s+)?plating\s+window|^timeline\s+verification|^arithmetic\s+check|^meal\s+balance|^sourcing\s+notes?|^register\b|^nutrition|^flavou?r\s+architecture|^scaling/i,
   // dish: design-record sections; the overview and yield/timing are lifted into the dish header instead
@@ -85,12 +85,13 @@ function sheetPost(html,o){ // DOM pass over rendered markdown: T-minus tables g
 const svcMin=t=>{const [h,m]=String(t||'18:00').split(':').map(Number); return (h||0)*60+(m||0);};
 function sheetShop(dishes,m){ // shopping list (its own page): tick · ingredient with its buying spec · what to buy · used in; pantry checks on one line
   const items=aggregate(dishes); if(!items.length) return '';
-  const multi=dishes.length>1, buy=items.filter(i=>!i.pantry), pantry=items.filter(i=>i.pantry), cols=multi?4:3;
+  const multi=dishes.length>1, buy=items.filter(i=>!i.pantry&&!i.kit), pantry=items.filter(i=>i.pantry), kit=items.filter(i=>i.kit), cols=multi?4:3;
   const deptOf=i=>DEPT_ORDER.includes(i.dept)?i.dept:'Other';
   const row=e=>`<tr><td class="ck"><span class="tick"></span></td><td>${esc(e.label)}${e.optional?' <span class="meta">(optional)</span>':''}${e.spec||e.avoid?`<br><span class="meta">${buyHtml(e.spec,e.avoid)}</span>`:''}</td><td>${esc(pUnits(e.buyQty||e.qty))}${e.extraNote?` <span class="meta">${esc(e.extraNote)}</span>`:''}</td>${multi?`<td><span class="meta">${esc(pUnits(e.attr||''))}</span></td>`:''}</tr>`;
   const rows=[...DEPT_ORDER,'Other'].filter(dp=>buy.some(i=>deptOf(i)===dp)).map(dp=>`<tr><td class="dept" colspan="${cols}">${esc(dp)}</td></tr>`+buy.filter(i=>deptOf(i)===dp).map(row).join('')).join('');
   return `<h2>Shopping list</h2>${m?shopNotesHtml(m):''}${rows?`<table class="shop shop2${multi?'':' one'}"><thead><tr><th class="ck"></th><th>Ingredient</th><th>Buy</th>${multi?'<th>Used in</th>':''}</tr></thead><tbody>${rows}</tbody></table>`:''}`
-    +(pantry.length?`<p class="pantry"><b>Pantry check</b> — ${pantry.map(e=>esc(e.label)+' '+esc(pUnits(e.qty))).join(' · ')}</p>`:'');
+    +(pantry.length?`<p class="pantry"><b>Pantry check</b> — ${pantry.map(e=>esc(e.label)+' '+esc(pUnits(e.qty))).join(' · ')}</p>`:'')
+    +(kit.length?`<p class="pantry"><b>Equipment</b> — ${kit.map(e=>esc(e.label)+' '+esc(pUnits(e.qty))).join(' · ')}</p>`:'');
 }
 // designed parameters still open: a dish-level cook row with verdict 'confirmed' closes one (same rule as the open_validations view)
 const openValOf=d=>(d.designed_unvalidated||[]).filter(p=>!(d.cooks||[]).some(c=>(c.parameter_confirmations||[]).some(pc=>pc.param===p.param&&pc.verdict==='confirmed')));

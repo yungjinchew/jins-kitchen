@@ -444,7 +444,7 @@ body.cookmode .tabs,body.cookmode header.top{display:none}
 .donebtn{display:flex;align-items:center;justify-content:center;width:100%;min-height:64px;margin-top:20px;border-radius:999px;background:var(--accent);color:var(--on-accent);font:600 18px var(--sans)}
 .nextcard{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;margin-top:12px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg2)}
 .nextcard .k{font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
-.nextcard .tx{font:400 18px/1.25 var(--serif);margin-top:4px}
+.nextcard .tx{font:400 18px/1.25 var(--serif);margin-top:4px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .nextcard .in{text-align:right;font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)} .nextcard .in b{display:block;font:500 20px var(--mono);color:var(--ink);letter-spacing:0}
 .cknote{margin-top:14px;padding:14px 16px;border-radius:12px;background:var(--bg2);border:1px solid var(--line);font:italic 17px/1.4 var(--serif);color:var(--ink2)}
 .cknote .btn{margin-top:12px;font-style:normal}
@@ -1223,21 +1223,40 @@ function methodModel(src){
 }
 function flatSteps(M){const out=[]; M.filter(s=>s.kind==='flow').forEach(s=>{let k=0; (s.blocks||[]).forEach(b=>{if(b.t==='steps') b.items.forEach(it=>{k++; out.push({phase:s.title,k,text:it.text,sub:it.sub});});});}); return out;}
 const mdInline=t=>md(t).replace(/^<p[^>]*>/,'').replace(/<\/p>$/,'');
-function leadSplit(t){ // "**Thaw, 24–36 hr ahead.** Fridge…" → ["Thaw, 24–36 hr ahead", "Fridge…"]
-  t=String(t||'').trim(); let m=t.match(/^\*\*(.+?)\*\*\s*[:.—–-]?\s*([\s\S]*)$/);
-  if(m&&m[1].length<=120) return [m[1].replace(/[.:]\s*$/,''),m[2]];
-  if(t.length<=110) return [t,''];
-  m=t.match(/^(.{12,120}?[.!?])\s+([\s\S]+)$/);
-  if(m&&(m[1].match(/\*/g)||[]).length%2===0) return [m[1].replace(/\.$/,''),m[2]];
-  m=t.match(/^(.{12,120}?)\s*[:;—]\s+([\s\S]+)$/); // no short first sentence: break at the first clause instead
-  if(m&&(m[1].match(/\*/g)||[]).length%2===0&&(m[1].match(/\(/g)||[]).length===(m[1].match(/\)/g)||[]).length) return [m[1],m[2]];
-  return [t,''];
+function leadSplit(t){ // a step opens with a bold lead that is the whole instruction (Core §III, 6 Nov 2026): "**Add the butter; …** Why…" → [lead, detail]
+  t=String(t||'').trim(); const m=t.match(/^\*\*(.+?)\*\*\s*[:.—–-]?\s*([\s\S]*)$/);
+  if(m&&m[1].length<=400) return [m[1].replace(/[.:]\s*$/,''),m[2]];
+  return [t,'']; // no bold lead: the step is shown whole, so no action hides in the detail
 }
+// step check (6 Nov 2026): a step hides an action when a sentence after its lead starts with an action (Add, Fold, Tip…). The lead is
+// the bold text, or for a step without one the first sentence, which is all the step list showed before. Target: none. A branch is
+// written "If …" or "X → …", never as a bare instruction after the lead. Same test as the library conversion queries.
+const ACT_START=/(^|[.;:]\s+|\)\s+)(Add|Stir|Fold|Tip|Pour|Transfer|Cover|Bake|Remove|Place|Set|Turn|Whisk|Season|Sprinkle|Scrape|Press|Cut|Roll|Wrap|Refrigerate|Return|Lift|Strain|Flip|Baste|Drain|Toss|Serve|Slice|Pull|Put|Heat|Cook|Simmer|Boil|Reduce|Spoon|Mix|Combine|Chop|Peel|Pat|Brush|Spread|Arrange|Squeeze|Move|Discard|Grate|Mash|Insert|Lower|Lay|Fill|Trim|Score|Rub|Sear|Grill|Torch|Chill|Freeze|Dust|Ease|Rotate|Carry|Stand)\b/;
+function stepIssues(d){
+  const S=d.method_md?flatSteps(methodModel(d.method_md)):[]; let nolead=0; const hid=[];
+  S.forEach(s=>{const t=String(s.text||'').trim(), m=t.match(/^\*\*(.+?)\*\*\s*[:.—–-]?\s*([\s\S]*)$/); let rest;
+    if(m) rest=m[2]; else {nolead++; rest=t.length<=110?'':((t.match(/^.{12,120}?[.!?]\s+([\s\S]+)$/)||[])[1]||'');}
+    if(ACT_START.test(rest)) hid.push(s);});
+  return {n:S.length,nolead,hid};
+}
+const stepDishes=()=>DB.dish.filter(d=>d.method_md&&!/^zz-test/.test(d.slug));
+function stepTotal(){try{return stepDishes().reduce((a,d)=>a+stepIssues(d).hid.length,0);}catch(e){return '';}}
+routes.stepcheck=()=>{
+  setHeader('Step check','#/more'); tabs('more');
+  const next=d=>d.meals.filter(m=>m.planned_date&&m.status!=='cooked').map(m=>m.planned_date).sort()[0]||'';
+  const res=stepDishes().map(d=>({d,...stepIssues(d),next:next(d)}));
+  const steps=res.reduce((a,r)=>a+r.n,0), hid=res.reduce((a,r)=>a+r.hid.length,0), dh=res.filter(r=>r.hid.length).length, nl=res.reduce((a,r)=>a+r.nolead,0);
+  const fl=res.filter(r=>r.hid.length).sort((a,b)=>(a.next||'9999').localeCompare(b.next||'9999')||a.d.name.localeCompare(b.d.name));
+  const cut=t=>{t=String(t).replace(/\*\*/g,''); return t.length>140?t.slice(0,137)+'…':t;};
+  return `<div class="stack" style="padding-top:12px"><p class="muted small">Every step in the library, read the way the step list shows it. A step <b>hides an action</b> when a sentence after its lead starts with one (Add, Fold, Tip…); the target is none. The bold lead holds the whole instruction: the action, the amount, the vessel, the time and the stop cue. Reasons, checks and "If …" branches follow it.</p>
+    <p><b>${res.length} dishes · ${steps} steps · ${hid} hiding an action in ${dh} dish${dh===1?'':'es'} · ${nl} without a bold lead</b></p>
+    ${fl.length?`<div class="md"><table><thead><tr><th>Dish</th><th>Next cook</th><th>Steps hiding an action</th></tr></thead><tbody>${fl.map(r=>`<tr><td><a href="#/steps/${r.d.slug}">${esc(splitName(r.d.name)[0])}</a></td><td>${r.next?esc(r.next):'—'}</td><td>${r.hid.map(x=>esc((x.phase||'Method')+' '+x.k+': '+cut(x.text))).join('<br>')}</td></tr>`).join('')}</tbody></table></div>`:'<p>No step hides an action.</p>'}</div>`;
+};
 const qtyShow=di=>di.qty!=null?qtyText(di).replace(/\s(piece|pieces|whole)$/i,''):'';
 function ingRow(di){
   const nm=ingName(di), [a,...b]=nm.split(','), q=qtyShow(di);
   const alt=di.qty_alt||'', spoon=!!q&&((/^(ml|l)$/i.test(di.unit||'')&&/\b(tsp|tbsp|cups?)\b/.test(alt))||(di.unit==='g'&&(di.ingredient&&di.ingredient.department)==='Seasoning'&&/\b(tsp|tbsp)\b/.test(alt)))&&alt.length<=14&&alt.split(/\s+/).every(w=>w.length<=7), altInCol=!q&&alt&&alt.length<=9, prep=prepShow(di.prep_note), spec=di.buy_spec||'', avoid=di.buy_avoid||'';
-  const tags=(di.made?'<span class="itag">Made in recipe</span>':'')+(di.pantry_check?'<span class="itag">Pantry</span>':'')+(di.optional?'<span class="itag">Optional</span>':'');
+  const tags=(di.made?'<span class="itag">Made in recipe</span>':'')+((di.ingredient&&di.ingredient.department)==='Equipment'?'<span class="itag">Equipment</span>':di.pantry_check?'<span class="itag">Pantry</span>':'')+(di.optional?'<span class="itag">Optional</span>':'');
   const sub=prep||(spec?'Buy '+spec:'')||(!q&&!altInCol?alt:'');
   const name=`<span class="inm">${esc(a.replace(/^./,c=>c.toUpperCase()))}${b.length?`<i>, ${esc(b.join(',').trim())}</i>`:''}${tags}${sub?`<span class="isub">${esc(sub)}</span>`:''}</span>`;
   const head=`<span class="iq ${q?'':'alt'}">${esc(spoon?alt:(q||(altInCol?alt:'')))}</span>${name}`;
@@ -1294,7 +1313,7 @@ routes.dish=(slug)=>{
   const stepBtn=S.length>=2;
   const acts=[stepBtn?`<a class="btn" href="#/steps/${d.slug}">Step-by-step</a>`:'',d.ings.length?`<a class="btn ${stepBtn?'ghost':''}" href="#/shopping/dish/${d.slug}">Shopping list</a>`:''].filter(Boolean);
   const anyMore=d.ings.some(di=>di.buy_spec||di.buy_avoid||(di.qty_alt&&(di.qty!=null||di.qty_alt.length>9))||prepShow(di.prep_note).length>40);
-  const grouped=d.ings.some(di=>di.section), main=d.ings.filter(di=>!di.pantry_check), pan=d.ings.filter(di=>di.pantry_check);
+  const grouped=d.ings.some(di=>di.section), isKit=di=>(di.ingredient&&di.ingredient.department)==='Equipment', main=d.ings.filter(di=>!di.pantry_check&&!isKit(di)), pan=d.ings.filter(di=>di.pantry_check&&!isKit(di)), kit=d.ings.filter(isKit), nI=d.ings.length-kit.length;
   const fold=M.filter(s=>(s.kind==='flow'||s.kind==='prose')&&s.body&&s.title&&!M_SKIP.test(s.title)).length>=2;
   return `${pinSwitch(d,'dish')}${famSwitch(d)}<div class="hero">
       <div class="eyebrow acc">${esc([d.protein,(d.category||[]).join(' / '),(d.cuisine||[]).join(', ')].filter(Boolean).join(' · '))}</div>
@@ -1305,9 +1324,10 @@ routes.dish=(slug)=>{
       ${dishNutri(d)}
     </div>
     <div class="actrow dact" style="grid-template-columns:${acts.map(()=>'minmax(0,1fr) ').join('')}50px 50px">${acts.join('')}${pinBtn(d,'btn ghost apin')}<button class="btn ghost dmore" onclick="dishMore('${d.slug}')" aria-label="More: print sheet, log a cook">···</button></div>
-    ${d.ings.length?`<div class="shead"><h3>Ingredients</h3>${anyMore?'<button onclick="ingAll(this)">Open all</button>':''}</div><div class="small muted" style="margin-top:-2px">${[d.servings?'For '+num(d.servings):'',d.ings.length+' ingredient'+(d.ings.length>1?'s':''),anyMore?'tap a line for prep and buying notes':''].filter(Boolean).join(' · ')}</div>
+    ${d.ings.length?`<div class="shead"><h3>Ingredients</h3>${anyMore?'<button onclick="ingAll(this)">Open all</button>':''}</div><div class="small muted" style="margin-top:-2px">${[d.servings?'For '+num(d.servings):'',nI+' ingredient'+(nI===1?'':'s'),anyMore?'tap a line for prep and buying notes':''].filter(Boolean).join(' · ')}</div>
       ${grouped?`<div style="margin-top:4px">${ingGroups(d.ings)}</div>`:`<div style="margin-top:8px">${main.map(ingRow).join('')}</div>`}
-      ${pan.length&&!grouped?`<details class="ipan" ${main.length?'':'open'}><summary><span class="eyebrow">Pantry · ${pan.length}</span><span class="pl">${esc(pan.map(di=>cap1(ingName(di).split(',')[0])).join(' · '))}</span></summary>${pan.map(ingRow).join('')}</details>`:''}`
+      ${pan.length&&!grouped?`<details class="ipan" ${main.length?'':'open'}><summary><span class="eyebrow">Pantry · ${pan.length}</span><span class="pl">${esc(pan.map(di=>cap1(ingName(di).split(',')[0])).join(' · '))}</span></summary>${pan.map(ingRow).join('')}</details>`:''}
+      ${kit.length&&!grouped?`<details class="ipan"><summary><span class="eyebrow">Equipment · ${kit.length}</span><span class="pl">${esc(kit.map(di=>cap1(ingName(di).split(',')[0])).join(' · '))}</span></summary>${kit.map(ingRow).join('')}</details>`:''}`
       :ingMd.length?`<h3 class="stitle">Ingredients</h3>${ingMd.map(s=>`<div class="md">${md(s.body)}</div>`).join('')}`:''}
     <div class="shead"><h3>Method</h3>${fold?`<button onclick="methodAll(this)">${mOpen()?'Close all':'Open all'}</button>`:''}</div>${d.method_md?`${yieldS?`<div class="yield">${md(yieldS.body)}</div>`:''}${methodHtml(M,fold)}`:`<div class="card muted small">No structured recipe body for this dish yet — it was filed as a cook record. It will be populated when the dish is next regenerated under the data protocol.</div>`}
     ${wineBox('dish',d.slug)}
@@ -1632,7 +1652,7 @@ function beforeBlock(pl,items,st){
   const m=pl.m, now=Date.now(), {pre,first}=prePlan(pl);
   if(first&&first.at<now) return ''; // the cooking day has started: cook mode takes over
   const day=new Date(pl.date+'T00:00:00').toLocaleDateString('en-GB',{weekday:'long'});
-  const oa=items.filter(i=>i.orderAhead&&!i.pantry), pantry=items.filter(i=>i.pantry);
+  const oa=items.filter(i=>i.orderAhead&&!i.pantry&&!i.kit), pantry=items.filter(i=>i.pantry), kit=items.filter(i=>i.kit);
   const need=oa.length?neededBy(pl,oa):'';
   const dShort=t=>new Date(t).toLocaleDateString('en-GB',{weekday:'short',day:'numeric'});
   const rows=[];
@@ -1644,7 +1664,7 @@ function beforeBlock(pl,items,st){
     rows.push(`<div class="btw"><b>${at!=null?esc(dShort(at)):esc(x.label||'Before')}</b><span>${at!=null?esc(hm(at)):''}</span></div>
       <div class="btc ${past?'past':''}"><span class="t">${esc(t)}</span>${d?`<span class="d">${esc(d.length>200?d.slice(0,197)+'…':d)}</span>`:''}${past?'<span class="d nb">This time has passed. Check it was done.</span>':''}
       ${at!=null&&!past?`<div class="acts"><a class="btn ghost sm" href="${gcalLink(t,at,splitName(m.name)[0]+'\n\n'+x.text)}" target="_blank" rel="noopener">Add to calendar</a></div>`:''}</div>`);});
-  if(!rows.length&&!pantry.length) return '';
+  if(!rows.length&&!pantry.length&&!kit.length) return '';
   const todo=oa.filter(i=>!st[i.id]).length+pre.filter(p=>p.at==null||p.at>=now).length;
   if(first){const [ft]=stepTitle(first.x.text); rows.push(`<div class="btw"><b>${esc(dShort(first.at))}</b><span>${esc(hm(first.at))}</span></div>
       <a class="btc dash" href="#/cook/${m.slug}"><span class="t">Cooking starts · ${esc(first.x.label)}</span><span class="d">${/^[A-Z0-9]/.test(ft)?esc(ft.length>120?ft.slice(0,117)+'…':ft):'Cook mode has the full timeline.'}</span></a>`);}
@@ -1653,13 +1673,16 @@ function beforeBlock(pl,items,st){
     <p class="bsub">Everything in the plan dated before the first cooking step, in order.</p>
     <div class="btl">${rows.join('')}</div>
     ${pantry.length?`<div class="bpan"><div class="row"><span class="eyebrow grow">Pantry check before you shop</span><span class="mono small dim">${pantry.filter(i=>st[i.id]).length} / ${pantry.length}</span></div>
-      <div class="pchips">${pantry.map(i=>`<button class="pchip ${st[i.id]?'on':''}" aria-pressed="${!!st[i.id]}" onclick="homeTick('${m.slug}','${i.id}')">${esc(i.label)}${esc(pq(i))}</button>`).join('')}</div></div>`:''}`;
+      <div class="pchips">${pantry.map(i=>`<button class="pchip ${st[i.id]?'on':''}" aria-pressed="${!!st[i.id]}" onclick="homeTick('${m.slug}','${i.id}')">${esc(i.label)}${esc(pq(i))}</button>`).join('')}</div></div>`:''}
+    ${kit.length?`<div class="bpan"><div class="row"><span class="eyebrow grow">Equipment to have ready</span><span class="mono small dim">${kit.filter(i=>st[i.id]).length} / ${kit.length}</span></div>
+      <div class="pchips">${kit.map(i=>`<button class="pchip ${st[i.id]?'on':''}" aria-pressed="${!!st[i.id]}" onclick="homeTick('${m.slug}','${i.id}')">${esc(i.label)}</button>`).join('')}</div></div>`:''}`;
 }
 const unitlessQ=t=>String(t||'').replace(/(\d)\s(?:piece|pieces)\b/g,'$1');
 
 // ---------------------------------------------------------------- more
 routes.more=()=>{
   setHeader('More'); tabs('more');
+  const stepN=stepTotal();
   const openN=DB.dish.reduce((n,d)=>n+d.open.length,0), docsN=DB.document.filter(x=>x.is_latest&&docCurrent(x)).length;
   const cooked=libBase().filter(isCooked).length, meals=DB.meal.filter(m=>m.status==='cooked').length;
   const at=DB.loadedAt?new Date(DB.loadedAt).toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):'';
@@ -1667,17 +1690,18 @@ routes.more=()=>{
     <div class="morelist" style="margin-top:10px">
       <a href="#/validations"><div><div class="nm">Open checks</div><div class="mt">Designed parameters still to confirm, by when you next cook them</div></div><span class="ct">${openN}</span></a>
       <a href="#/docs"><div><div class="nm">Documents</div><div class="mt">Stored Word and PDF cooking sheets</div></div><span class="ct">${docsN}</span></a>
+      <a href="#/stepcheck"><div><div class="nm">Step check</div><div class="mt">Steps that hide an action behind their lead (target: none)</div></div><span class="ct">${stepN}</span></a>
     </div>
     <p class="foot">${libBase().length} dishes · ${cooked} cooked · ${meals} meals<br>${DB.fromCache?'Offline — showing what this phone saved':'Live data'}${at?' · loaded '+at:''}<br><button class="btn ghost sm" style="margin-top:10px" onclick="refreshData(true)">Refresh now</button> <button class="btn ghost sm" style="margin-top:10px" onclick="sndTest()">Test timer sound</button></p>`;
 };
 
 // ---------------------------------------------------------------- print (cooking sheet rendered from the database)
-// PRINT SPEC 1.4 (2026-11-01; 1.3 on 31 Oct, 1.0–1.2 on 30 Oct). 1.4: the ingredient table prints a heading row for each part of a dish built from parts (dish_ingredient.section), and "not a purchase" stays off the sheet. 1.3: stored renders made before print spec 1.0 are an archive, not linked (docCurrent, set at load). Every printed cooking sheet and dish sheet is built here, so every print follows one method.
+// PRINT SPEC 1.5 (2026-11-06; 1.4 on 1 Nov, 1.3 on 31 Oct, 1.0–1.2 on 30 Oct). 1.5: equipment (ingredient department Equipment) prints on its own line under the shopping list, never in the pantry check. 1.4: the ingredient table prints a heading row for each part of a dish built from parts (dish_ingredient.section), and "not a purchase" stays off the sheet. 1.3: stored renders made before print spec 1.0 are an archive, not linked (docCurrent, set at load). Every printed cooking sheet and dish sheet is built here, so every print follows one method.
 // The written spec is the print protocol in jins-cooking-governance (recipe_output_print_protocol.md). Change the two
 // together, then open #/printcheck and confirm the totals and that no flags appear.
 const PF={full:false,shop:false};
 const PRINT={
-  spec:'print spec 1.4',
+  spec:'print spec 1.5',
   // meal workflow: planning and verification sections stay in the database and off the cooking sheet
   wfDrop:/^(?:the\s+)?menu\b|^failure\s+priorit|^heat\b|^oven\s+sequenc|^parallel\b|^(?:final\s+)?plating\s+window|^timeline\s+verification|^arithmetic\s+check|^meal\s+balance|^sourcing\s+notes?|^register\b|^nutrition|^flavou?r\s+architecture|^scaling/i,
   // dish: design-record sections; the overview and yield/timing are lifted into the dish header instead
@@ -1758,12 +1782,13 @@ function sheetPost(html,o){ // DOM pass over rendered markdown: T-minus tables g
 const svcMin=t=>{const [h,m]=String(t||'18:00').split(':').map(Number); return (h||0)*60+(m||0);};
 function sheetShop(dishes,m){ // shopping list (its own page): tick · ingredient with its buying spec · what to buy · used in; pantry checks on one line
   const items=aggregate(dishes); if(!items.length) return '';
-  const multi=dishes.length>1, buy=items.filter(i=>!i.pantry), pantry=items.filter(i=>i.pantry), cols=multi?4:3;
+  const multi=dishes.length>1, buy=items.filter(i=>!i.pantry&&!i.kit), pantry=items.filter(i=>i.pantry), kit=items.filter(i=>i.kit), cols=multi?4:3;
   const deptOf=i=>DEPT_ORDER.includes(i.dept)?i.dept:'Other';
   const row=e=>`<tr><td class="ck"><span class="tick"></span></td><td>${esc(e.label)}${e.optional?' <span class="meta">(optional)</span>':''}${e.spec||e.avoid?`<br><span class="meta">${buyHtml(e.spec,e.avoid)}</span>`:''}</td><td>${esc(pUnits(e.buyQty||e.qty))}${e.extraNote?` <span class="meta">${esc(e.extraNote)}</span>`:''}</td>${multi?`<td><span class="meta">${esc(pUnits(e.attr||''))}</span></td>`:''}</tr>`;
   const rows=[...DEPT_ORDER,'Other'].filter(dp=>buy.some(i=>deptOf(i)===dp)).map(dp=>`<tr><td class="dept" colspan="${cols}">${esc(dp)}</td></tr>`+buy.filter(i=>deptOf(i)===dp).map(row).join('')).join('');
   return `<h2>Shopping list</h2>${m?shopNotesHtml(m):''}${rows?`<table class="shop shop2${multi?'':' one'}"><thead><tr><th class="ck"></th><th>Ingredient</th><th>Buy</th>${multi?'<th>Used in</th>':''}</tr></thead><tbody>${rows}</tbody></table>`:''}`
-    +(pantry.length?`<p class="pantry"><b>Pantry check</b> — ${pantry.map(e=>esc(e.label)+' '+esc(pUnits(e.qty))).join(' · ')}</p>`:'');
+    +(pantry.length?`<p class="pantry"><b>Pantry check</b> — ${pantry.map(e=>esc(e.label)+' '+esc(pUnits(e.qty))).join(' · ')}</p>`:'')
+    +(kit.length?`<p class="pantry"><b>Equipment</b> — ${kit.map(e=>esc(e.label)+' '+esc(pUnits(e.qty))).join(' · ')}</p>`:'');
 }
 // designed parameters still open: a dish-level cook row with verdict 'confirmed' closes one (same rule as the open_validations view)
 const openValOf=d=>(d.designed_unvalidated||[]).filter(p=>!(d.cooks||[]).some(c=>(c.parameter_confirmations||[]).some(pc=>pc.param===p.param&&pc.verdict==='confirmed')));
@@ -1898,7 +1923,7 @@ function printCheck(){
 
 // ---------------------------------------------------------------- shopping
 function shopCount(items,state){ // "bought" counts what you buy; pantry lines are checks, counted on their own
-  const buy=items.filter(i=>!i.pantry), base=buy.length?buy:items; return {done:base.filter(i=>state[i.id]).length,total:base.length};
+  const buy=items.filter(i=>!i.pantry&&!i.kit), base=buy.length?buy:items; return {done:base.filter(i=>state[i.id]).length,total:base.length};
 }
 function shopState(key){try{return JSON.parse(localStorage.getItem(key)||'{}')||{};}catch(e){return {};}}
 const shopOwner=(t,s)=>t==='pins'?pinOwner():t==='meal'?IDX.mealBySlug[s]:IDX.dishBySlug[s];
@@ -1932,8 +1957,8 @@ routes.shopping=(kind,slug)=>{
   const pax=kind==='meal'?owner.pax:owner.servings;
   const sub=[`<i>${esc(splitName(owner.name)[0])}</i>`,planned?esc(planned):'',pax?'for '+num(pax):'',kind==='meal'||kind==='pins'?dishes.length+' dishes':''].filter(Boolean).join(' · ');
   const deptOf=i=>DEPT_ORDER.includes(i.dept)?i.dept:'Other';
-  const depts=[...DEPT_ORDER,'Other'].filter(dp=>items.some(i=>!i.pantry&&deptOf(i)===dp));
-  const pantry=items.filter(i=>i.pantry), c=shopCount(items,state);
+  const depts=[...DEPT_ORDER,'Other'].filter(dp=>items.some(i=>!i.pantry&&!i.kit&&deptOf(i)===dp));
+  const pantry=items.filter(i=>i.pantry), kit=items.filter(i=>i.kit), c=shopCount(items,state);
   const unitless=t=>String(t||'').replace(/(\d)\s(?:piece|pieces)\b/g,'$1'); // "2 piece" reads as "2" on screen (the print sheet keeps its format)
   const qSplit=i=>{const ps=unitless(i.qty).split(' + '), long=x=>x.length>12&&!/^[\d½¼¾~]/.test(x); return [ps.filter(x=>!long(x)).join(' + '),ps.filter(long)];}; // wordy amounts ("to slather on carved meat") move under the name
   const tags=dishTags(dishes.map(d=>d.name));
@@ -1941,12 +1966,12 @@ routes.shopping=(kind,slug)=>{
   const byShop=shopBy()==='shop';
   const line=i=>`<button class="sitem ${state[i.id]?'done':''}" role="checkbox" aria-checked="${!!state[i.id]}" onclick="toggleShop('${i.id}',this)"><span class="box" aria-hidden="true"></span><span class="lbl"><span class="nm">${esc(i.label)}${i.optional?'<span class="itag">Optional</span>':''}</span>${i.spec||i.avoid?`<span class="buy">${buyLine(i.spec,i.avoid)}</span>`:''}${attrOf(i)?`<span class="attr">${esc(attrOf(i))}</span>`:''}${i.orderAhead&&!i.pantry&&!byShop?'<span class="oa">Order ahead</span>':''}</span><span class="q">${esc(i.buyQty||qSplit(i)[0])}${i.extraNote?`<span class="qx">${esc(i.extraNote)}</span>`:''}</span></button>`;
   const ct=list=>`${list.filter(i=>state[i.id]).length}/${list.length}`;
-  const oa=items.filter(i=>i.orderAhead&&!i.pantry), rest=items.filter(i=>!i.orderAhead&&!i.pantry);
+  const oa=items.filter(i=>i.orderAhead&&!i.pantry&&!i.kit), rest=items.filter(i=>!i.orderAhead&&!i.pantry&&!i.kit);
   const shops=[...new Set(oa.map(i=>i.shop).filter(Boolean))], need=kind==='meal'&&pl&&pl.m===owner?neededBy(pl,oa):'';
   const restDepts=[...DEPT_ORDER,'Other'].filter(dp=>rest.some(i=>deptOf(i)===dp));
   const shopView=`${oa.length?`<section class="sdept"><div class="sdh"><h3>${shops.length===1?esc(shops[0])+' · order ahead':'Order ahead'}</h3><span data-dc>${ct(oa)}</span></div>${need&&oa.some(i=>!state[i.id])?`<p class="sneed">${esc(need)}</p>`:''}${oa.map(line).join('')}</section>`:''}
     ${rest.length?`<section class="sdept"><div class="sdh"><h3>${oa.length?'Supermarket':'To buy'}</h3><span data-dc>${ct(rest)}</span></div>${restDepts.map(dp=>`<div class="ssub">${esc(dp)}</div>${rest.filter(i=>deptOf(i)===dp).map(line).join('')}`).join('')}</section>`:''}`;
-  const aisleView=depts.map(dp=>{const list=items.filter(i=>!i.pantry&&deptOf(i)===dp); return `<section class="sdept"><div class="sdh"><h3>${esc(dp)}</h3><span data-dc>${ct(list)}</span></div>${list.map(line).join('')}</section>`;}).join('');
+  const aisleView=depts.map(dp=>{const list=items.filter(i=>!i.pantry&&!i.kit&&deptOf(i)===dp); return `<section class="sdept"><div class="sdh"><h3>${esc(dp)}</h3><span data-dc>${ct(list)}</span></div>${list.map(line).join('')}</section>`;}).join('');
   return `${pageTitle('Shopping',items.length?'<button class="btn ghost sm" onclick="shareShop()" style="margin-bottom:4px">Share as text</button>':'')}
     <div class="shsub">${sub}</div>
     ${kind==='meal'?shopNotesHtml(owner,'scr'):''}
@@ -1954,6 +1979,7 @@ routes.shopping=(kind,slug)=>{
     ${items.length?`<div class="sprog"><span class="eyebrow">Bought</span><span id="sprog-n"><b>${c.done}</b> of ${c.total}</span></div><div class="bar"><i id="sprog-bar" style="width:${c.total?Math.round(c.done/c.total*100):0}%"></i></div>`:''}
     ${byShop?shopView:aisleView}
     ${pantry.length?`<details class="spantry"><summary><span class="t">Pantry check</span><span class="mono" data-dc>${ct(pantry)}</span></summary><p class="small dim">Usually in the cupboard — tick each once you’ve checked you have enough.</p>${pantry.map(line).join('')}</details>`:''}
+    ${kit.length?`<details class="spantry"><summary><span class="t">Equipment</span><span class="mono" data-dc>${ct(kit)}</span></summary><p class="small dim">Not food. Tick each once you know you have it; buy it only where the line says so.</p>${kit.map(line).join('')}</details>`:''}
     ${items.length?`<div class="sfoot"><button class="btn ghost sm" onclick="clearShop()">Clear ticks</button></div>`:'<div class="empty">No ingredient data for this selection yet.</div>'}`;
 };
 // tap water ("water", "hot water", "pasta cooking water") is never bought or pantry-checked: it stays on the dish page, off the list
@@ -1963,8 +1989,8 @@ function aggregate(dishes){
   dishes.forEach(d=>d.ings.forEach(di=>{
     const nm=ingName(di); if(!nm||di.made||TAP_WATER.test(nm.trim()))return; const sp=(di.buy_spec||'').trim(), av=(di.buy_avoid||'').trim();
     const k=nm+(sp||av?'|'+sp.toLowerCase()+'|'+av.toLowerCase():''); // never merge lines whose buying spec differs
-    const e=map[k]||(map[k]={id:k.replace(/[^a-z0-9]+/g,'-'),label:nm.replace(/^./,c=>c.toUpperCase()),spec:sp,avoid:av,dept:di.ingredient.department,pantry:!!di.pantry_check||!!di.ingredient.pantry_default,optional:true,orderAhead:false,parts:[]});
-    e.pantry=e.pantry&&(!!di.pantry_check||!!di.ingredient.pantry_default);
+    const e=map[k]||(map[k]={id:k.replace(/[^a-z0-9]+/g,'-'),label:nm.replace(/^./,c=>c.toUpperCase()),spec:sp,avoid:av,dept:di.ingredient.department,kit:di.ingredient.department==='Equipment',pantry:!!di.pantry_check||!!di.ingredient.pantry_default,optional:true,orderAhead:false,parts:[]});
+    e.pantry=!e.kit&&e.pantry&&(!!di.pantry_check||!!di.ingredient.pantry_default); // equipment (department Equipment) is never a pantry line: it has its own group
     e.optional=e.optional&&!!di.optional;
     if(di.ingredient.department==='Protein'||/butcher/i.test(di.ingredient.supplier_hint||''))e.orderAhead=true;
     e.shop=e.shop||shopOf(di.ingredient.supplier_hint,sp);
@@ -2022,7 +2048,7 @@ const shopBy=()=>{try{return localStorage.getItem('kitchen:shopby')==='aisle'?'a
 function setShopBy(v){try{localStorage.setItem('kitchen:shopby',v);}catch(e){} softRender();}
 function shareShop(){
   const s=window._shop; const groups={};
-  const g=i=>i.pantry?'Pantry check':shopBy()==='shop'?(i.orderAhead?(i.shop?i.shop+' · order ahead':'Order ahead'):'Supermarket'):i.dept;
+  const g=i=>i.kit?'Equipment':i.pantry?'Pantry check':shopBy()==='shop'?(i.orderAhead?(i.shop?i.shop+' · order ahead':'Order ahead'):'Supermarket'):i.dept;
   s.items.filter(i=>!s.state[i.id]).forEach(i=>{(groups[g(i)]=groups[g(i)]||[]).push(i);});
   const text='Shopping — '+s.name+'\n'+(s.notes?'\nBEFORE YOU SHOP\n'+s.notes.split('\n').map(x=>x.replace(/^\s*[-*•]\s*/,'').trim()).filter(Boolean).map(x=>'· '+x).join('\n')+'\n':'')+Object.entries(groups).map(([d,l])=>'\n'+d.toUpperCase()+'\n'+l.map(i=>'☐ '+i.label+' — '+(i.buyQty||i.qty)+(i.spec||i.avoid?' ('+buyText(i.spec,i.avoid)+')':'')).join('\n')).join('\n');
   if(navigator.share){navigator.share({title:'Shopping — '+s.name,text}).catch(()=>{});}
