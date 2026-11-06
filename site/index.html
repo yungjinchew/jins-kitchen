@@ -1225,7 +1225,7 @@ function flatSteps(M){const out=[]; M.filter(s=>s.kind==='flow').forEach(s=>{let
 const mdInline=t=>md(t).replace(/^<p[^>]*>/,'').replace(/<\/p>$/,'');
 function leadSplit(t){ // a step opens with a bold lead that is the whole instruction (Core §III, 6 Nov 2026): "**Add the butter; …** Why…" → [lead, detail]
   t=String(t||'').trim(); const m=t.match(/^\*\*(.+?)\*\*\s*[:.—–-]?\s*([\s\S]*)$/);
-  if(m&&m[1].length<=400) return [m[1].replace(/[.:]\s*$/,''),m[2]];
+  if(m&&m[1].length<=800) return [m[1].replace(/[.:]\s*$/,''),m[2]]; // leads that join several actions run long (6 Nov library pass: up to ~600)
   return [t,'']; // no bold lead: the step is shown whole, so no action hides in the detail
 }
 // step check (6 Nov 2026): a step hides an action when a sentence after its lead starts with an action (Add, Fold, Tip…). The lead is
