@@ -1185,7 +1185,7 @@ function stepBlocks(body,title){ // [{t:'md',text}|{t:'steps',items:[{text,sub}]
   const open=text=>{flushT(); if(!steps){steps={t:'steps',items:[]}; out.push(steps);} last={text,sub:[]}; steps.items.push(last);};
   const trim=()=>out.forEach(b=>b.t==='steps'&&b.items.forEach(it=>{while(it.sub.length&&!it.sub[it.sub.length-1].trim()) it.sub.pop();}));
   // "**1. Dry-brine.** Pat dry…", "**2.** Drain well…", "**T-55.** Reduce…" — each bold lead opens a step that runs to the next one
-  const BNUM=/^\s*\*\*\s*\d+[.)]\s*(.*?)\*\*\s*(.*)$/, BTIME=/^\s*\*\*\s*((?:T|E|P|D0)\s?[-−–+]?\s?\d+(?::\d{2})?\b[^*]{0,60}?)\*\*\s*(.*)$/;
+  const BNUM=/^\s*\*\*\s*\d+[.)]\s*(.*?)\*\*\s*(.*)$/, BTIME=/^\s*\*\*\s*((?:T|E|P|D0)\s?[-−–+]?\s?\d+(?::\d{2})?\b[^*]{0,400}?)\*\*\s*(.*)$/; // a time-labelled bold lead may carry the whole instruction (6 Nov 2026)
   const lead=l=>{let m=l.match(BNUM); if(m) return m[1].trim()?'**'+m[1].trim()+'**'+(m[2]?' '+m[2].trim():''):m[2].trim(); m=l.match(BTIME); return m?'**'+m[1].trim()+'**'+(m[2]?' '+m[2].trim():''):null;};
   if(L.some(l=>lead(l)!=null)){
     for(const l of L){const t=lead(l); if(t!=null&&t){open(t); continue;} if(last) last.sub.push(l); else txt.push(l);}
