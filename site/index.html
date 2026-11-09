@@ -1339,11 +1339,13 @@ routes.dish=(slug)=>{
 // ticks (9 Nov): each step is ticked on its own (steps:<slug>.done); the position n is the step on screen. A record saved before
 // ticks existed counts every step before n as done.
 function stDone(slug,i){let s=null; try{s=JSON.parse(localStorage.getItem('steps:'+slug)||'null');}catch(e){} if(s&&Array.isArray(s.done)) return new Set(s.done.map(Number)); const p=i||(s&&+s.n)||1; return new Set([...Array(Math.max(0,p-1))].map((_,k)=>k+1));}
-function stepGo(n,done){const v=parse(); if(v.view!=='steps') return; const d=done||stDone(v.arg,window._st); const h='#/steps/'+encodeURIComponent(v.arg)+'/'+n; history.replaceState(null,'',h); HSTACK[HSTACK.length-1]=h; try{localStorage.setItem('steps:'+v.arg,JSON.stringify({n,at:Date.now(),done:[...d].sort((a,b)=>a-b)}));}catch(e){} render();}
+function stepGo(n,done){const v=parse(); if(v.view!=='steps') return; const d=done||stDone(v.arg,window._st); const h='#/steps/'+encodeURIComponent(v.arg)+'/'+n; history.replaceState(null,'',h); HSTACK[HSTACK.length-1]=h; try{localStorage.setItem('steps:'+v.arg,JSON.stringify({n,at:Date.now(),done:[...d].sort((a,b)=>a-b)}));}catch(e){} const ui=uiSnap(); render(); uiApply(ui);} // folds stay as they were (9 Nov)
 function stNextFrom(i,d,N){for(let k=i+1;k<=N;k++) if(!d.has(k)) return k; for(let k=1;k<i;k++) if(!d.has(k)) return k; return N+1;} // next unticked step, then any skipped one, then the end
 function stNext(){const v=parse(); if(v.view!=='steps') return; const N=window._stN||0, i=window._st||1, d=stDone(v.arg,i); if(i<=N) d.add(i); stepGo(stNextFrom(i,d,N),d);}
 function stTick(k){const v=parse(); if(v.view!=='steps') return; const N=window._stN||0, i=window._st||1, d=stDone(v.arg,i); // the circle: tick or untick that step where it is
-  if(d.has(k)){d.delete(k); stepGo(i>N?k:i,d);} else {d.add(k); stepGo(k===i?stNextFrom(i,d,N):i,d);}}
+  const rowAt=()=>document.querySelectorAll('.ckdet div.ckrow')[k-1], r0=rowAt(), top=r0?r0.getBoundingClientRect().top:null, y0=window.scrollY;
+  if(d.has(k)){d.delete(k); stepGo(i>N?k:i,d);} else {d.add(k); stepGo(k===i?stNextFrom(i,d,N):i,d);}
+  const r1=rowAt(); window.scrollTo(0, r1&&top!=null&&r1.offsetParent?window.scrollY+r1.getBoundingClientRect().top-top:y0);} // the list stays open and the row stays put
 routes.steps=(slug,n)=>{
   const d=IDX.dishBySlug[slug]; if(!d) return notFound('Dish','#/library');
   setHeader('',null); tabs('library');
