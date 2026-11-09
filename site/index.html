@@ -504,7 +504,7 @@ body.cookmode .tabs,body.cookmode header.top{display:none}
 .rrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin-top:6px} .rrow .search{min-height:46px;font:500 18px var(--mono)} .rrow .btn{min-height:46px}
 .rdf .sv{font:12px var(--sans);color:var(--ok);margin-top:4px}
 .ckrow .rq{font:600 12px var(--sans);color:var(--accent);white-space:nowrap}
-div.ckrow{cursor:pointer;-webkit-tap-highlight-color:transparent} .ckrow button.bx{position:relative;font-size:13px;line-height:1} .ckrow button.bx::after{content:'';position:absolute;inset:-12px;border-radius:50%}
+div.ckrow{cursor:pointer;-webkit-tap-highlight-color:transparent} .ckrow button.bx.tk{background:var(--ink3);border-color:var(--ink3)} .ckrow button.bx{position:relative;font-size:13px;line-height:1} .ckrow button.bx::after{content:'';position:absolute;inset:-12px;border-radius:50%}
 .lanes{display:grid;grid-template-columns:78px minmax(0,1fr);gap:0 8px;margin-top:8px}
 .lnames div{height:28px;font:600 12px/28px var(--sans);color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ltracks{position:relative;padding-bottom:18px}
@@ -1336,7 +1336,14 @@ routes.dish=(slug)=>{
     <div style="height:12px"></div>`;
 };
 // step-by-step: one method step at a time, dark and awake like cook mode
-function stepGo(n){const v=parse(); if(v.view!=='steps') return; const h='#/steps/'+encodeURIComponent(v.arg)+'/'+n; history.replaceState(null,'',h); HSTACK[HSTACK.length-1]=h; try{localStorage.setItem('steps:'+v.arg,JSON.stringify({n,at:Date.now()}));}catch(e){} render();}
+// ticks (9 Nov): each step is ticked on its own (steps:<slug>.done); the position n is the step on screen. A record saved before
+// ticks existed counts every step before n as done.
+function stDone(slug,i){let s=null; try{s=JSON.parse(localStorage.getItem('steps:'+slug)||'null');}catch(e){} if(s&&Array.isArray(s.done)) return new Set(s.done.map(Number)); const p=i||(s&&+s.n)||1; return new Set([...Array(Math.max(0,p-1))].map((_,k)=>k+1));}
+function stepGo(n,done){const v=parse(); if(v.view!=='steps') return; const d=done||stDone(v.arg,window._st); const h='#/steps/'+encodeURIComponent(v.arg)+'/'+n; history.replaceState(null,'',h); HSTACK[HSTACK.length-1]=h; try{localStorage.setItem('steps:'+v.arg,JSON.stringify({n,at:Date.now(),done:[...d].sort((a,b)=>a-b)}));}catch(e){} render();}
+function stNextFrom(i,d,N){for(let k=i+1;k<=N;k++) if(!d.has(k)) return k; for(let k=1;k<i;k++) if(!d.has(k)) return k; return N+1;} // next unticked step, then any skipped one, then the end
+function stNext(){const v=parse(); if(v.view!=='steps') return; const N=window._stN||0, i=window._st||1, d=stDone(v.arg,i); if(i<=N) d.add(i); stepGo(stNextFrom(i,d,N),d);}
+function stTick(k){const v=parse(); if(v.view!=='steps') return; const N=window._stN||0, i=window._st||1, d=stDone(v.arg,i); // the circle: tick or untick that step where it is
+  if(d.has(k)){d.delete(k); stepGo(i>N?k:i,d);} else {d.add(k); stepGo(k===i?stNextFrom(i,d,N):i,d);}}
 routes.steps=(slug,n)=>{
   const d=IDX.dishBySlug[slug]; if(!d) return notFound('Dish','#/library');
   setHeader('',null); tabs('library');
@@ -1344,12 +1351,13 @@ routes.steps=(slug,n)=>{
   const bar=`<div class="ckbar"><button class="x" onclick="goBack('#/dish/${d.slug}')" aria-label="Close step-by-step">✕ Close</button><span class="t">${esc(nm)}</span>${'wakeLock' in navigator?`<button class="awake" onclick="toggleAwake()" aria-label="Keep the screen awake"><i></i>Awake</button>`:'<span></span>'}</div>`+pinSwitch(d,'steps');
   if(!N) return `${bar}<div class="cknote">This recipe has no numbered steps, so it’s shown as written.</div><div class="md" style="margin-top:16px">${md(d.method_md||'')}</div><div class="ckfoot"><a class="btn ghost" href="#/dish/${d.slug}">Back to the dish</a><span></span></div>`;
   let i=+n||0; if(!i){try{const s=JSON.parse(localStorage.getItem('steps:'+slug)||'null'); if(s&&Date.now()-s.at<(isPinned(slug)?72:12)*3600000) i=+s.n;}catch(e){}}
-  i=Math.min(Math.max(i||1,1),N+1);
-  const prog=N<=24?`<div class="segs" aria-hidden="true">${S.map((x,k)=>`<i class="${k+1<i?'d':k+1===i?'c':''}"></i>`).join('')}</div>`:`<div class="stbar" aria-hidden="true"><i style="width:${Math.round((i-1)/N*100)}%"></i></div>`;
-  const all=`<details class="ckdet"><summary><span class="title">All ${N} steps</span></summary>${S.map((s,k)=>`<button class="ckrow ${k+1<i?'done':k+1===i?'cur':''}" onclick="stepGo(${k+1})"><span class="bx" aria-hidden="true">${k+1<i?'✓':''}</span><span class="tm">${String(k+1).padStart(2,'0')}</span><span class="tx">${mdInline(leadSplit(s.text)[0])}</span></button>`).join('')}</details>`;
+  i=Math.min(Math.max(i||1,1),N+1); window._stN=N;
+  const D=stDone(slug,i), isD=k=>D.has(k);
+  const prog=N<=24?`<div class="segs" aria-hidden="true">${S.map((x,k)=>`<i class="${k+1===i?'c':isD(k+1)?'d':''}"></i>`).join('')}</div>`:`<div class="stbar" aria-hidden="true"><i style="width:${Math.round(D.size/N*100)}%"></i></div>`;
+  const all=`<details class="ckdet"><summary><span class="title">All ${N} steps</span></summary>${S.map((s,k)=>`<div class="ckrow ${k+1===i?'cur':isD(k+1)?'done':''}" role="button" tabindex="0" onclick="stepGo(${k+1})"><button class="bx ${isD(k+1)?'tk':''}" onclick="event.stopPropagation();stTick(${k+1})" aria-label="${isD(k+1)?'Mark not done':'Mark done'}">${isD(k+1)?'✓':''}</button><span class="tm">${String(k+1).padStart(2,'0')}</span><span class="tx">${mdInline(leadSplit(s.text)[0])}</span></div>`).join('')}</details>`; // the circle ticks (9 Nov); the row opens the step
   if(i>N){ window._st=i; return `${bar}${stRunning()}${prog}<div class="bigstep"><div class="meta"><span>All ${N} steps</span><span>Done</span></div><div class="ttl">That’s every step.</div><div class="det">Plate it, enjoy it — then log how it went while it’s fresh.</div></div>
     <div class="stnav"><button class="btn ghost" onclick="stepGo(${N})" aria-label="Back to the last step">‹ Back</button><a class="donebtn" href="#/postcook/dish/${d.slug}">Log a cook</a></div>${all}
-    <div class="ckfoot"><a class="btn ghost" href="#/dish/${d.slug}">Back to the dish</a><button class="btn ghost" onclick="stepGo(1)">Start again</button></div>`;}
+    <div class="ckfoot"><a class="btn ghost" href="#/dish/${d.slug}">Back to the dish</a><button class="btn ghost" onclick="stepGo(1,new Set())">Start again</button></div>`;}
   window._st=i;
   const x=S[i-1], nx=S[i], [ttl,det]=leadSplit(x.text);
   const durs=stepDurs(x.text), runs=liveTimers().filter(t=>t.slug===slug&&t.n===i), now0=Date.now();
@@ -1359,13 +1367,13 @@ routes.steps=(slug,n)=>{
   const pl=currentPlan(), ctx=pl&&pl.m.dishes.some(y=>y.dish===d)?{t0:planTarget(pl)}:null;
   return `${bar}${stRunning()}${prog}<div class="bigstep"><div class="meta"><span>${esc(x.phase||'Method')} · ${x.k}</span><span>${String(i).padStart(2,'0')} / ${String(N).padStart(2,'0')}</span></div>
       <div class="ttl ${ttl.length>200?'xlong':ttl.length>90?'long':''}">${mdInline(ttl)}</div>${more?`<div class="det md">${md(more)}</div>`:''}${tbtns}${here.map(o=>choiceCard(d,o.ti,o.t,ctx)).join('')}</div>
-    <div class="stnav">${i>1?`<button class="btn ghost" onclick="stepGo(${i-1})" aria-label="Previous step">‹ Back</button>`:''}<button class="donebtn" onclick="stepGo(${i+1})">${nx?'Next step':'Finish'}</button></div>
+    <div class="stnav">${i>1?`<button class="btn ghost" onclick="stepGo(${i-1})" aria-label="Previous step">‹ Back</button>`:''}<button class="donebtn" onclick="stNext()">${stNextFrom(i,new Set([...D,i]),N)<=N?'Next step':'Finish'}</button></div>
     ${nx?`<div class="nextcard"><div><div class="k">Next · ${esc(nx.phase||'Method')}</div><div class="tx">${mdInline(leadSplit(nx.text)[0])}</div></div></div>`:''}
     ${all}
     <div class="ckfoot"><a class="btn ghost" href="#/dish/${d.slug}">Recipe &amp; ingredients</a><span></span></div>`;
 };
 document.addEventListener('keydown',e=>{ if(parse().view!=='steps'||e.target.closest('input,textarea,select')) return; const n=window._st||1;
-  if(e.key==='ArrowRight'){e.preventDefault(); stepGo(n+1);} else if(e.key==='ArrowLeft'&&n>1){e.preventDefault(); stepGo(n-1);} });
+  if(e.key==='ArrowRight'){e.preventDefault(); stNext();} else if(e.key==='ArrowLeft'&&n>1){e.preventDefault(); stepGo(n-1);} });
 function cookCard(c){
   const conf=(c.parameter_confirmations||[]);
   const sc=[c.rating!=null?'Flavour '+num(c.rating):null,c.execution_rating!=null?'Execution '+num(c.execution_rating):null].filter(Boolean).join(' · ');
