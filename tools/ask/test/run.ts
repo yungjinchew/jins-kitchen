@@ -98,7 +98,7 @@ ok("events: start, deltas, tool, done", ev[0].t === "start" && ev.some((e) => e.
 ok("text streamed in order", ev.filter((e) => e.t === "delta").map((e) => e.text).join("") === "Checking the cellar.\n\nOpen the **2019 Barolo**.");
 ok("two model calls, second carries the tool result", calls.length === 2 && calls[1].body.messages.at(-1).content[0].type === "tool_result" && /Current cellar/.test(calls[1].body.messages.at(-1).content[0].content) && calls[1].body.messages.at(-2).content.some((b: any) => b.type === "tool_use" && b.id === "toolu_1"));
 const b0 = calls[0].body;
-ok("request shape: model, stream, 2 cached system blocks, 3 tools, key header", b0.model === "claude-opus-5-5" && b0.stream === true && b0.system.length === 2 && b0.system.every((s: any) => s.cache_control) && b0.tools.length === 3 && calls[0].headers["x-api-key"] === "sk-test" && calls[0].headers["anthropic-version"] === "2023-06-01", { m: b0.model, t: b0.tools.length });
+ok("request shape: model, stream, 2 cached system blocks, 4 tools, key header", b0.model === "claude-opus-5-5" && b0.stream === true && b0.system.length === 2 && b0.system.every((s: any) => s.cache_control) && b0.tools.length === 4 && calls[0].headers["x-api-key"] === "sk-test" && calls[0].headers["anthropic-version"] === "2023-06-01", { m: b0.model, t: b0.tools.length });
 ok("record is in the prompt without documents", /fish-pie-sunday/.test(b0.system[1].text) && !/documents/.test(b0.system[1].text));
 ok("question carries the Singapore date", /Singapore\]\nWhich wine\?$/.test(b0.messages.at(-1).content), b0.messages.at(-1).content);
 const am = T.assistant_message.find((m) => m.role === "assistant");

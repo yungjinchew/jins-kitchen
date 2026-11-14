@@ -1,5 +1,5 @@
 // in-memory stand-in for supabase-js, just enough for kitchen-assistant's calls
-export const T: Record<string, any[]> = { kitchen_config: [], assistant_device: [], assistant_thread: [], assistant_message: [], dish: [], meal: [] };
+export const T: Record<string, any[]> = { kitchen_config: [], assistant_device: [], assistant_thread: [], assistant_message: [], assistant_change: [], kitchen_comment: [], dish: [], meal: [], dish_ingredient: [], ingredient: [] };
 export const RPC: Record<string, (a: any) => any> = {};
 let seq = 0;
 const uuid = () => `00000000-0000-4000-8000-${String(++seq).padStart(12, "0")}`;
@@ -11,6 +11,8 @@ class Q {
   update(p: any) { this.op = "update"; this.payload = p; return this; }
   eq(k: string, v: any) { this.f.push((r) => r[k] === v); return this; }
   gt(k: string, v: any) { this.f.push((r) => r[k] > v); return this; }
+  neq(k: string, v: any) { this.f.push((r) => r[k] !== v); return this; }
+  in(k: string, v: any[]) { this.f.push((r) => v.includes(r[k])); return this; }
   gte(k: string, v: any) { this.f.push((r) => r[k] >= v); return this; }
   not(k: string, _o: string, _v: any) { this.f.push((r) => r[k] != null); return this; }
   ilike(k: string, v: string) { const re = new RegExp("^" + v.replace(/%/g, ".*") + "$", "i"); this.f.push((r) => re.test(r[k])); return this; }

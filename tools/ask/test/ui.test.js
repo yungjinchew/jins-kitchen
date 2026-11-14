@@ -3,10 +3,10 @@ const fs = require('fs');
 const src = fs.readFileSync(__dirname + '/../ask_region.js', 'utf8');
 const stub = `const SB_URL="x",SB_KEY="k",routes={},IDX={mealBySlug:{},dishBySlug:{}};
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-function parse(){return {view:'ask'}} function toast(){} function nameHtml(n){return esc(n)} function notFound(){return 'nf'} function setHeader(){} function tabs(){}
+function parse(){return {view:'ask'}} function toast(){} const hm=t=>'12:00'; function nameHtml(n){return esc(n)} function notFound(){return 'nf'} function setHeader(){} function tabs(){}
 const document={getElementById:()=>null}, localStorage={getItem:()=>null,setItem(){},removeItem(){}};
 `;
-const m = new Function(stub + src + ';return {askMd,askBody,askMsgHtml,askBox,ASK,routes,askS,askTake,askOff};')();
+const m = new Function(stub + src + ';return {askMd,askBody,askMsgHtml,askBox,ASK,routes,askS,askTake,askOff,askChangeHtml};')();
 let fails = 0;
 const t = (n, c, d) => { if (!c) fails++; console.log((c ? 'PASS ' : 'FAIL ') + n + (c ? '' : ' -> ' + d)); };
 let h = m.askMd('**Pull at 54°C / 130°F.** Rest 10 min.\n\n- one <script>alert(1)</script>\n- two *soft* `code`\n\n1. first\n2. second\n\n## Head\n| a | b |\n|---|---|\n| 1 | 2 |');
@@ -31,4 +31,21 @@ m.askTake({ status: 'paused' }, 'meal', 'x'); t('paused message', /paused by the
 m.askTake({ status: 'revoked' }, 'meal', 'x'); t('revoked offers re-pair', /Pair this device again/.test(m.askBody('meal', 'x')));
 t('ask card links to the page', /href="#\/ask\/dish\/fish-pie"/.test(m.askBox('dish', 'fish-pie')));
 t('live answer shows a waiting line', /Reading the recipe/.test(m.askMsgHtml({ role: 'assistant', content: '', live: true, tools: [] })) && /id="asklive"/.test(m.askMsgHtml({ role: 'assistant', content: '', live: true, tools: [] })));
+// change cards (ASK 1.1)
+m.ASK.cur = 'meal/x';
+const card = (o) => m.askChangeHtml({ id: 'c1', summary: 'Bake 40 min <b>', class: 'minor', class_reason: 'A note.', status: 'proposed', display: [{ where: 'Fish Pie · Method', was: '**Bake 30 min**\nthen rest', now: '**Bake 40 min**' }, { where: 'Meal · Before you shop', was: '', now: 'Buy <i>fish</i>' }], ...o });
+h = card({});
+t('minor card: Apply and Discard, escaped text, bold kept', /askChange\('meal','x','c1','apply'\)/.test(h) && /Discard/.test(h) && /Bake 40 min &lt;b&gt;/.test(h) && /<b>Bake 30 min<\/b><br>then rest/.test(h) && /Buy &lt;i&gt;fish&lt;\/i&gt;/.test(h) && />New</.test(h) && !/Send for review/.test(h), h);
+h = card({ class: 'material', class_reason: 'The bake time changes.' });
+t('material card: Send for review, no Apply', /Send for review/.test(h) && !/'apply'/.test(h) && /needs review/.test(h) && /The bake time changes\./.test(h) && /GPT review/.test(h), h);
+h = card({ status: 'applied', applied_at: '2026-11-14T06:00:00Z' });
+t('applied card: saved line and Undo', /Saved to the recipe/.test(h) && /'undo'/.test(h) && !/'apply'/.test(h), h);
+h = card({ status: 'filed', class: 'material' });
+t('filed card: says it is not saved yet, no buttons', /Not saved yet/.test(h) && !/<button/.test(h), h);
+h = card({ status: 'discarded', note: 'Replaced by a newer proposal' });
+t('closed card folds its detail away', /<details class="askdd">/.test(h) && /Replaced by a newer proposal/.test(h) && !/<button/.test(h), h);
+m.ASK.dev = { st: 'approved' };
+m.askTake({ status: 'ok', has_key: true, used_today: 1, daily_limit: 60, messages: [{ id: 'm1', role: 'user', content: 'q', status: 'ok' }, { id: 'm2', role: 'assistant', content: 'See the card.', status: 'ok', tools: [{ name: 'propose_change', label: 'Proposed a change' }] }], changes: [{ id: 'c9', message_id: 'm2', summary: 'S', class: 'minor', status: 'proposed', display: [] }] }, 'meal', 'x');
+h = m.askBody('meal', 'x');
+t('cards come back with their answer on reopening; no tool chip for them', /askchg proposed/.test(h) && /'c9','apply'/.test(h) && !/Proposed a change<\/span>/.test(h) && /saved only when you tap Apply/.test(h), h);
 console.log(fails ? `\n${fails} FAILED` : '\nall passed'); process.exit(fails ? 1 : 0);

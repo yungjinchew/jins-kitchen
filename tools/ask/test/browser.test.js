@@ -24,7 +24,7 @@ const ANSWER = 'Yes. **Poach the fish and make the mash the day before**; assemb
     const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, colorScheme: scheme, serviceWorkers: 'block' });
     const page = await ctx.newPage();
     const errors = []; page.on('pageerror', (e) => errors.push(String(e))); page.on('console', (m) => { if (m.type() === 'error' && !/Failed to load resource|net::ERR/.test(m.text())) errors.push(m.text()); });
-    const fn = { state: 'unpaired', calls: [], msgs: [], has_key: true };
+    const fn = { state: 'unpaired', calls: [], msgs: [], changes: [], has_key: true };
     await page.route('**/*', async (route) => {
       const u = route.request().url();
       if (u.startsWith('http://localhost:8765')) return route.continue();
@@ -37,6 +37,21 @@ const ANSWER = 'Yes. **Poach the fish and make the mash the day before**; assemb
         if (fn.state !== 'approved') return J(fn.state === 'pending' ? { status: 'pending', code: 'K7M2QX' } : { status: 'unpaired' });
         const lim = { used_today: fn.msgs.filter((m) => m.role === 'user').length, daily_limit: 60, month_usd: 0.4, monthly_usd_cap: 15, spend_mode: 'normal', model: 'claude-opus-5-5' };
         if (b.action === 'open') return J({ status: 'ok', version: 'ASK 1.0', has_key: fn.has_key, thread_id: null, messages: fn.msgs, ...lim });
+        if (b.action === 'change') {
+          const c = fn.changes.find((x) => x.id === b.change_id);
+          if (b.op === 'apply') { if (c.class !== 'minor') return J({ status: 'needs_review', change: c }); c.status = 'applied'; c.applied_at = new Date().toISOString(); return J({ status: 'applied', change: c }); }
+          if (b.op === 'undo') { c.status = 'undone'; return J({ status: 'undone', change: c }); }
+          if (b.op === 'file') { c.status = 'filed'; return J({ status: 'filed', change: c }); }
+          if (b.op === 'discard') { c.status = 'discarded'; return J({ status: 'ok', change: c }); }
+        }
+        if (b.action === 'ask' && /^(Add a note|Bake it)/.test(b.message)) {
+          const mat = /^Bake it/.test(b.message);
+          const c = mat ? { id: 'aaaaaaaa-0000-4000-8000-00000000000' + (fn.changes.length + 1), summary: 'Bake 40 min instead of 30 for a pie baked from cold.', class: 'material', class_reason: 'Marked for review by the app: a number changes in the method of Fish Pie.', status: 'proposed', display: [{ where: 'Fish Pie · Method', was: '**Bake at 200°C / 390°F for 30 min** until the centre reads 75°C / 167°F.', now: '**Bake at 200°C / 390°F for 40 min** until the centre reads 75°C / 167°F.' }, { where: 'Meal · Workflow', was: '- T-40 pie in', now: '- T-50 pie in' }] }
+            : { id: 'aaaaaaaa-0000-4000-8000-00000000000' + (fn.changes.length + 1), summary: 'Note to buy undyed haddock on Saturday.', class: 'minor', class_reason: 'Buying notes only.', status: 'proposed', display: [{ where: 'Fish Pie · Ingredients', was: '400 g smoked haddock', now: '400 g smoked haddock · buy: undyed, skinless' }, { where: 'Meal · Before you shop', was: '', now: 'Buy the haddock on Saturday morning.' }] };
+          fn.changes.push(c);
+          const say = mat ? 'This moves the bake to 40 min, so it goes for review before it is saved.' : 'The card adds two buying notes. Tap Apply to save them.';
+          return route.fulfill({ status: 200, headers: { 'content-type': 'text/event-stream; charset=utf-8' }, body: sse([{ t: 'start' }, { t: 'change', change: c }, { t: 'delta', text: say }, { t: 'done', used_today: 3, daily_limit: 60, month_usd: 0.6, monthly_usd_cap: 15 }]) });
+        }
         if (b.action === 'ask') {
           if (!fn.has_key) return J({ status: 'no_key' });
           fn.msgs.push({ role: 'user', content: b.message, status: 'ok' }, { role: 'assistant', content: ANSWER, status: 'ok', tools: [{ label: 'Read meal workflow rules' }] });
@@ -91,6 +106,24 @@ const ANSWER = 'Yes. **Poach the fish and make the mash the day before**; assemb
     ok(`[${scheme}] New conversation clears the page`, await page.locator('.askm').count() === 0 && await page.locator('.askchips .chip').count() === 3);
     await page.click('.askchips .chip >> nth=2'); await page.waitForFunction(() => document.querySelectorAll('.askm.a').length === 1 && !document.querySelector('#askgo').disabled);
     ok(`[${scheme}] a starter asks its question in a new thread`, fn.calls.at(-1).message === 'Scale this to 5 people' && fn.calls.at(-1).new_thread === true, fn.calls.at(-1));
+    // change cards (ASK 1.1): a minor one applies and undoes; a material one can only be sent for review
+    await page.fill('#askin', 'Add a note to buy undyed haddock on Saturday'); await page.click('#askgo');
+    await page.waitForSelector('.askchg.proposed .askca .btn');
+    ok(`[${scheme}] minor card: before and after, Apply and Discard`, /Was\s*400 g smoked haddock/i.test(await page.locator('.askchg').last().innerText()) && await page.locator('.askchg').last().locator('.askca .btn').allInnerTexts().then((a) => a.join('|')) === 'Apply|Discard', await page.locator('.askchg').last().innerText());
+    await page.locator('.askchg').last().scrollIntoViewIfNeeded(); await page.screenshot({ path: `${SHOTS}/${scheme}-6-card-minor.png` });
+    await page.locator('.askchg').last().locator('.askca .btn').first().click();
+    await page.waitForSelector('.askchg.applied');
+    ok(`[${scheme}] Apply saves and offers Undo`, /Saved to the recipe/i.test(await page.locator('.askchg.applied').innerText()) && await page.locator('.askchg.applied .askca .btn').innerText() === 'Undo' && fn.calls.some((c) => c.action === 'change' && c.op === 'apply'));
+    await page.locator('.askchg.applied .askca .btn').click(); await page.waitForSelector('.askchg.undone');
+    ok(`[${scheme}] Undo closes the card`, await page.locator('.askchg.undone .btn').count() === 0);
+    await page.fill('#askin', 'Bake it for 40 min'); await page.click('#askgo');
+    await page.waitForSelector('.askchg.mat.proposed .askca .btn');
+    const mt = await page.locator('.askchg.mat').innerText();
+    ok(`[${scheme}] material card: Send for review, never Apply`, /needs review/i.test(mt) && /GPT review/.test(mt) && await page.locator('.askchg.mat .askca .btn').allInnerTexts().then((a) => a.join('|')) === 'Send for review|Discard', mt);
+    await page.locator('.askchg.mat').scrollIntoViewIfNeeded(); await page.screenshot({ path: `${SHOTS}/${scheme}-7-card-material.png` });
+    await page.locator('.askchg.mat .askca .btn').first().click(); await page.waitForSelector('.askchg.filed');
+    ok(`[${scheme}] Send for review marks it sent, unsaved`, /Not saved yet/.test(await page.locator('.askchg.filed').innerText()) && await page.locator('.askchg.filed .btn').count() === 0 && fn.calls.at(-1).op === 'file');
+    ok(`[${scheme}] cards do not widen the page`, !(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1)));
     // the dish page has its own card and its own conversation; no key hides the form
     fn.has_key = false; fn.msgs = [];
     await page.goto('http://localhost:8765/#/dish/fish-pie'); await page.waitForSelector('.glass.ask');

@@ -668,7 +668,7 @@ body.cookmode #verbar{bottom:calc(env(safe-area-inset-bottom) + 12px)}
  .sheet table{font-size:8.5pt;line-height:1.3;margin:3pt 0 7pt}.sheet td,.sheet th{padding:2pt 4pt}
  .sheet .pg{break-before:page}.sheet .dish.pg,.sheet .cover.pg,.sheet>.dish:first-child{margin-top:0;padding-top:0;border-top:0}.sheet .dish>h2:first-child{margin-top:0}.sheet .dish.side{margin-top:14pt;padding-top:5pt;border-top:.5pt solid #DDD}.sheet .keep{break-inside:avoid}.sheet .pb{margin-top:0;padding-top:0;border-top:0}.sheet .tick{width:2.6mm;height:2.6mm}
  .sheet h1,.sheet h2,.sheet h3,.sheet h4{break-after:avoid}.sheet tr{break-inside:avoid}.sheet thead{display:table-header-group}}
-/* ASK 1.0 — ask Claude about a meal or dish (2026-11-14) */
+/* ASK 1.1 — ask Claude about a meal or dish; change cards (2026-11-14) */
 .ask .askp{margin:6px 0 12px;font:400 14.5px/1.45 var(--sans);color:var(--ink2)}
 .askv{padding-top:4px} .askv .askt{font:400 28px/1.12 var(--serif);margin:4px 0 6px;letter-spacing:-.005em} .askv .askt i{color:var(--ink2)}
 .askm{margin:16px 0} .askm.u{display:flex;justify-content:flex-end}
@@ -687,6 +687,14 @@ body.cookmode #verbar{bottom:calc(env(safe-area-inset-bottom) + 12px)}
 .askfoot{margin-top:10px;font:500 12.5px/1.45 var(--sans);color:var(--ink2)} .askfoot button{color:var(--accent);font:inherit;text-decoration:underline;margin-left:4px}
 .askpair{margin-top:10px} .askpair p{margin:0 0 12px} .askpair .btn{margin-top:4px}
 .askcode{font:700 34px/1 var(--mono);letter-spacing:.16em;margin:16px 0;user-select:all;-webkit-user-select:all}
+.askchg{margin:14px 0 4px;padding:14px 16px;border:1px solid var(--chip);border-radius:var(--r);background:var(--bg2)} .askchg.mat{border-style:dashed}
+.askchg.discarded,.askchg.undone,.askchg.stale,.askchg.failed,.askchg.declined{opacity:.72}
+.askchg .eyebrow{color:var(--accent-ink)} .askcs{margin:4px 0 10px;font:600 15.5px/1.35 var(--sans)}
+.askd{padding:10px 0;border-top:1px solid var(--line)} .askdw{font:600 12px/1.3 var(--sans);letter-spacing:.04em;color:var(--ink2);margin-bottom:6px}
+.askwas,.asknow{display:grid;grid-template-columns:38px minmax(0,1fr);gap:8px;font:400 14.5px/1.45 var(--sans);overflow-wrap:anywhere} .asknow{margin-top:4px}
+.askwas>span,.asknow>span{font:600 11px/1.9 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)} .askwas>div{color:var(--ink2);text-decoration:line-through;text-decoration-color:var(--chip)}
+.askca{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px} .askca .btn{min-height:46px} .askca .btn[disabled]{opacity:.55}
+.askcn{margin-top:10px;font:500 12.5px/1.45 var(--sans);color:var(--ink2)} .askdd{margin-top:2px} .askdd summary{font:500 13px var(--sans);color:var(--ink2);min-height:32px;display:flex;align-items:center;cursor:pointer}
 /* END ASK */
 </style>
 </head>
@@ -1729,8 +1737,11 @@ routes.more=()=>{
 };
 
 // ---------------------------------------------------------------- ask Claude about one meal or dish
-// ASK 1.0 (2026-11-14). Stage 1: questions only. The page talks to the kitchen-assistant Edge Function, which reads the
-// recipe, its cook history, the governance files and the cellar, and cannot save anything. A device has to be paired
+// ASK 1.1 (2026-11-14; 1.0 the same day). Stage 1: questions. Stage 2 (1.1): Claude can propose a change, shown as a card
+// with the before and after. A minor change (wording, buying and shopping notes) saves on Apply and can be undone; a
+// material one (anything that changes the plate, food safety or the timeline) can only be sent for review, and is saved
+// by the Cooking project after the GPT review. The page talks to the kitchen-assistant Edge Function, which reads the
+// recipe, its cook history, the governance files and the cellar; Claude itself never writes. A device has to be paired
 // once: the phone makes a random key (kept in localStorage, never shown), the function stores only its SHA-256 and
 // answers with a 6-character code that Jin sends to Claude in a chat to approve. Answers are drawn through askMd, which
 // escapes everything first, so nothing the model writes can run as page code. Applied by tools/ask/apply_ask.py.
@@ -1756,18 +1767,35 @@ function askMd(s){ // a small, safe markdown: escape first, then bold, italic, c
 function askBox(kind,slug){ return `<section class="glass ask"><div class="eyebrow">Ask Claude</div><p class="askp">Timing, scaling, substitutions, what to prep ahead: answered from this recipe, its cook history and your kitchen rules.</p><a class="btn ghost" href="#/ask/${kind}/${slug}">Ask about this ${kind}</a></section>`; }
 const ASK_STARTERS={meal:['What can I prep the day before?','Where is this most likely to go wrong?','Scale this to 5 people'],dish:['What can I prep ahead?','Where is this most likely to go wrong?','What should I taste for at the end?']};
 const askDots='<span class="askdots" aria-hidden="true"><i></i><i></i><i></i></span>';
+const ASK_CH={proposed:'Proposed change',applied:'Saved to the recipe',undone:'Undone',discarded:'Discarded',filed:'Sent for review',saved:'Reviewed and saved',declined:'Reviewed, not saved',stale:'Out of date',failed:'Could not be saved'};
+const askTxt=t=>esc(t).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/\n/g,'<br>');
+function askChangeHtml(c){ const a=(ASK.cur||'/').split('/'), kind=a[0], slug=a[1];
+  const open=c.status==='proposed', mat=c.class==='material', busy=c._busy, dis=busy?' disabled':'';
+  const btn=(op,label,cls)=>`<button class="btn ${cls||''}"${dis} onclick="askChange('${kind}','${slug}','${c.id}','${op}')">${label}</button>`;
+  const rows=(c.display||[]).map(d=>`<div class="askd"><div class="askdw">${esc(d.where)}</div>${d.was?`<div class="askwas"><span>Was</span><div>${askTxt(d.was)}</div></div>`:''}<div class="asknow"><span>${d.was?'Now':'New'}</span><div>${askTxt(d.now)}</div></div></div>`).join('');
+  let foot='';
+  if(open&&!mat) foot=`<div class="askca">${btn('apply',busy==='apply'?'Saving…':'Apply')}${btn('discard','Discard','ghost')}</div><div class="askcn">Nothing is saved until you tap Apply. You can undo it afterwards.</div>`;
+  else if(open) foot=`<div class="askcn">${esc(c.class_reason||'This changes the result on the plate, food safety or the timeline.')} It is saved only after the GPT review, which runs in the Cooking project.</div><div class="askca">${btn('file',busy==='file'?'Sending…':'Send for review')}${btn('discard','Discard','ghost')}</div>`;
+  else if(c.status==='applied') foot=`<div class="askcn">Saved${c.applied_at?' at '+hm(c.applied_at):''}. The recipe pages now show it.</div><div class="askca">${btn('undo',busy==='undo'?'Undoing…':'Undo','ghost sm')}</div>`;
+  else if(c.status==='filed') foot=`<div class="askcn">Not saved yet. In the Cooking project, say “review the change I sent from the app”.</div>`;
+  else if(c.status==='stale') foot=`<div class="askcn">The recipe changed after this was proposed. Ask again for a fresh card.</div>`;
+  else if(c.note) foot=`<div class="askcn">${esc(c.note)}</div>`;
+  if(c._err) foot+=`<p class="askerr">${esc(c._err)}</p>`;
+  const closed=!open&&c.status!=='applied'&&c.status!=='filed';
+  return `<div class="askchg ${esc(c.status)}${mat?' mat':''}"><div class="eyebrow">${ASK_CH[c.status]||esc(c.status)}${open&&mat?' · needs review':''}</div><div class="askcs">${esc(c.summary)}</div>${closed?`<details class="askdd"><summary>What it proposed</summary>${rows}</details>`:rows}${foot}</div>`;
+}
 function askMsgHtml(m){
   if(m.role==='user') return `<div class="askm u"><div class="askb">${esc(m.content).replace(/\n/g,'<br>')}</div></div>`;
   const tl=(m.tools||[]).filter(t=>t&&t.label).map(t=>`<span>${esc(t.label)}</span>`).join('');
   const wait=m.live&&!m.content?`<div class="askwait" role="status">${askDots}Reading the recipe…</div>`:'';
-  return `<div class="askm a"${m.live?' id="asklive"':''}>${tl?`<div class="asktl">${tl}</div>`:''}${wait}<div class="askmd">${askMd(m.content)}</div>${m.note?`<p class="asknote">${esc(m.note)}</p>`:''}${m.status&&m.status!=='ok'&&m.error_detail?`<p class="askerr">${esc(m.error_detail)}</p>`:''}</div>`;
+  return `<div class="askm a"${m.live?' id="asklive"':''}>${tl?`<div class="asktl">${tl}</div>`:''}${wait}<div class="askmd">${askMd(m.content)}</div>${(m.changes||[]).map(askChangeHtml).join('')}${m.note?`<p class="asknote">${esc(m.note)}</p>`:''}${m.status&&m.status!=='ok'&&m.error_detail?`<p class="askerr">${esc(m.error_detail)}</p>`:''}</div>`;
 }
 function askMsgsHtml(kind,slug){ const s=askS(kind+'/'+slug);
   if(!s.msgs.length) return `<div class="askchips">${ASK_STARTERS[kind].map(q=>`<button type="button" class="chip" onclick="askSend('${kind}','${slug}',this.textContent)">${esc(q)}</button>`).join('')}</div>`;
   return s.msgs.map(askMsgHtml).join(''); }
 function askFootHtml(kind,slug){ const k=kind+'/'+slug, s=askS(k), i=s.info||{};
   const n=i.daily_limit?` ${i.used_today||0} of ${i.daily_limit} questions today.`:'';
-  return `Reads this ${kind}, its cook history and your kitchen rules. It cannot change the recipe yet.${n}${s.msgs.length&&!ASK.busy[k]?` <button type="button" onclick="askNew('${kind}','${slug}')">New conversation</button>`:''}`; }
+  return `Reads this ${kind}, its cook history and your kitchen rules. A change is saved only when you tap Apply.${n}${s.msgs.length&&!ASK.busy[k]?` <button type="button" onclick="askNew('${kind}','${slug}')">New conversation</button>`:''}`; }
 function askOff(s){ const i=s.info||{}; // why asking is off, if it is
   if(i.has_key===false) return 'Ask switches on when the Anthropic key is added in Supabase (Edge Functions, Secrets, ANTHROPIC_API_KEY).';
   if(i.spend_mode==='paused') return 'Ask is paused by the spend switch (claude_api). Tell Claude “claude_api back to normal” to switch it on.';
@@ -1806,7 +1834,7 @@ function askTake(j,kind,slug){ // a JSON answer from the function: device state,
   if(st==='unpaired'||st==='pending'||st==='revoked'||st==='pair_cap'){ ASK.dev={st,code:j.code||null}; return false; }
   if(st==='bad_key'){ try{localStorage.removeItem('kitchen:ask:key');}catch(e){} ASK.dev={st:'unpaired',code:null}; return false; }
   ASK.dev={st:'approved',code:null};
-  if(st==='ok'){ s.st='ok'; s.info=j; s.err=null; s.at=Date.now(); if(!ASK.busy[k]&&!s.fresh) s.msgs=(j.messages||[]).map(m=>({role:m.role,content:m.content||'',status:m.status,tools:m.tools||[],error_detail:m.error_detail})); return true; }
+  if(st==='ok'){ s.st='ok'; s.info=j; s.err=null; s.at=Date.now(); if(!ASK.busy[k]&&!s.fresh) s.msgs=(j.messages||[]).map(m=>({role:m.role,content:m.content||'',status:m.status,tools:(m.tools||[]).filter(t=>t&&t.name!=='propose_change'),error_detail:m.error_detail,changes:(j.changes||[]).filter(c=>c.message_id===m.id)})); return true; }
   if(st==='no_key'||st==='paused'||st==='limit'||st==='month_cap'){ s.st='ok'; s.info={...(s.info||{}),...j,...(st==='no_key'?{has_key:false}:{}),...(st==='paused'?{spend_mode:'paused'}:{})}; return false; }
   if(st==='not_found'){ s.st='ok'; s.err='This recipe is not in the database yet, so there is nothing to ask about.'; return false; }
   s.err=(j&&j.message)||'The kitchen assistant hit an error. Try again.'; if(s.st==='load') s.st='error'; return false; }
@@ -1828,7 +1856,7 @@ function askNew(kind,slug){ const k=kind+'/'+slug, s=askS(k); if(ASK.busy[k]) re
 async function askSend(kind,slug,text){ const k=kind+'/'+slug, s=askS(k), ta=document.getElementById('askin');
   const q=String(text!=null?text:(ta?ta.value:'')).trim(); if(!q||ASK.busy[k]) return;
   ASK.busy[k]=1; s.err=null; ASK.draft[k]=''; if(ta) ta.value='';
-  const live={role:'assistant',content:'',status:'ok',tools:[],live:true};
+  const live={role:'assistant',content:'',status:'ok',tools:[],changes:[],live:true};
   s.msgs.push({role:'user',content:q,status:'ok'},live); askPaint(kind,slug); askToEnd();
   const drop=()=>{ s.msgs=s.msgs.filter(m=>m!==live); const i=s.msgs.map(m=>m.content).lastIndexOf(q); if(i>=0&&s.msgs[i].role==='user') s.msgs.splice(i,1); if(!ASK.draft[k]){ ASK.draft[k]=q; const t=document.getElementById('askin'); if(t&&askHere(k)&&!t.value) t.value=q; } };
   let frame=0; const soon=()=>{ if(frame) return; frame=requestAnimationFrame(()=>{ frame=0; askLive(k,live); }); };
@@ -1839,12 +1867,28 @@ async function askSend(kind,slug,text){ const k=kind+'/'+slug, s=askS(k), ta=doc
         while((n=buf.indexOf('\n\n'))>=0){ const line=buf.slice(0,n); buf=buf.slice(n+2); if(!line.startsWith('data:')) continue; let ev; try{ev=JSON.parse(line.slice(5));}catch(e){continue;}
           if(ev.t==='delta'){ live.content+=ev.text||''; soon(); }
           else if(ev.t==='tool'){ live.tools.push({label:ev.label}); soon(); }
+          else if(ev.t==='change'){ live.changes.push(ev.change); soon(); }
           else if(ev.t==='note'){ live.note=ev.text; }
           else if(ev.t==='error'){ live.status='error'; live.error_detail=ev.message; }
           else if(ev.t==='done'){ s.info={...(s.info||{}),used_today:ev.used_today,daily_limit:ev.daily_limit,month_usd:ev.month_usd,monthly_usd_cap:ev.monthly_usd_cap}; } } }
-      if(!live.content&&live.status==='ok'){ live.status='error'; live.error_detail='No answer came back. Ask again.'; } }
+      if(!live.content&&!live.changes.length&&live.status==='ok'){ live.status='error'; live.error_detail='No answer came back. Ask again.'; } }
   }catch(e){ if(live.content){ live.status='partial'; live.error_detail='The connection dropped. The full answer may be there when you reopen this page.'; } else { drop(); s.err=navigator.onLine===false?'You are offline. Ask needs a connection.':'Could not reach the kitchen assistant. Check the connection and try again.'; } }
   live.live=false; ASK.busy[k]=0; const stick=askNearEnd(); askPaint(kind,slug); if(stick&&askHere(k)) askToEnd();
+}
+const askRefresh=()=>{ try{ if(typeof refreshData==='function') refreshData(false); }catch(e){} }; // the recipe pages pick up a saved change
+async function askChange(kind,slug,id,op){ const k=kind+'/'+slug, s=askS(k); let c=null; s.msgs.forEach(m=>(m.changes||[]).forEach(x=>{ if(x.id===id) c=x; })); if(!c||c._busy) return;
+  c._busy=op; c._err=null; askPaint(kind,slug);
+  try{ const r=await askCall({action:'change',change_id:id,op}); const j=await r.json();
+    if(j.change) Object.assign(c,j.change);
+    if(j.status==='applied'){ toast('Saved to the recipe'); askRefresh(); }
+    else if(j.status==='undone'){ toast('Undone'); askRefresh(); }
+    else if(j.status==='filed') toast('Sent for review');
+    else if(j.status==='stale'){ if(op==='undo') c._err='The recipe has changed since, so this cannot be undone here. Ask in the Cooking project.'; }
+    else if(j.status==='needs_review') c._err='This one needs the review first.';
+    else if(j.status==='unpaired'||j.status==='pending'||j.status==='revoked'||j.status==='bad_key'){ c._busy=null; askTake(j,kind,slug); askDraw(kind,slug); return; }
+    else if(j.status==='error'||!r.ok) c._err=(j.message?j.message+'. ':'')+'Nothing was changed.';
+  }catch(e){ c._err='Could not reach the kitchen assistant. Nothing was changed.'; }
+  c._busy=null; askPaint(kind,slug);
 }
 routes.ask=(kind,slug)=>{
   kind=kind==='dish'?'dish':'meal'; const o=kind==='meal'?IDX.mealBySlug[slug]:IDX.dishBySlug[slug];
