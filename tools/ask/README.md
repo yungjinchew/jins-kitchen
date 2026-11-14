@@ -23,7 +23,7 @@ Stage 2 adds recipe changes behind an Apply card; stage 3 adds conferring with G
 The app has no sign-in, so Ask is locked to devices Jin approves.
 
 1. On a new phone or browser, Ask shows **Get a pairing code**, then a 6-character code (lasts 24 hours).
-2. Jin sends the code to Claude in any chat with the Supabase connector.
+2. Jin sends the code to Claude in the Cooking project (any chat with the Supabase connector can do step 3).
 3. Claude runs, in project jins-kitchen (`umqkgxsypcgvzkfjkzpc`):
    `select public.kitchen_assistant_pair_approve('<code>', '<label, e.g. Jin''s iPhone>');`
 4. Jin taps **Check**.
