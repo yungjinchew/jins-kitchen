@@ -668,6 +668,26 @@ body.cookmode #verbar{bottom:calc(env(safe-area-inset-bottom) + 12px)}
  .sheet table{font-size:8.5pt;line-height:1.3;margin:3pt 0 7pt}.sheet td,.sheet th{padding:2pt 4pt}
  .sheet .pg{break-before:page}.sheet .dish.pg,.sheet .cover.pg,.sheet>.dish:first-child{margin-top:0;padding-top:0;border-top:0}.sheet .dish>h2:first-child{margin-top:0}.sheet .dish.side{margin-top:14pt;padding-top:5pt;border-top:.5pt solid #DDD}.sheet .keep{break-inside:avoid}.sheet .pb{margin-top:0;padding-top:0;border-top:0}.sheet .tick{width:2.6mm;height:2.6mm}
  .sheet h1,.sheet h2,.sheet h3,.sheet h4{break-after:avoid}.sheet tr{break-inside:avoid}.sheet thead{display:table-header-group}}
+/* ASK 1.0 — ask Claude about a meal or dish (2026-11-14) */
+.ask .askp{margin:6px 0 12px;font:400 14.5px/1.45 var(--sans);color:var(--ink2)}
+.askv{padding-top:4px} .askv .askt{font:400 28px/1.12 var(--serif);margin:4px 0 6px;letter-spacing:-.005em} .askv .askt i{color:var(--ink2)}
+.askm{margin:16px 0} .askm.u{display:flex;justify-content:flex-end}
+.askm.u .askb{max-width:86%;background:var(--tint);border-radius:14px 14px 4px 14px;padding:10px 14px;font:500 15.5px/1.4 var(--sans);overflow-wrap:anywhere}
+.askmd{font:400 16px/1.5 var(--sans);overflow-wrap:anywhere} .askmd p{margin:0 0 10px} .askmd>:last-child{margin-bottom:0}
+.askmd ul,.askmd ol{margin:0 0 10px;padding-left:22px} .askmd li{margin:4px 0} .askmd h4{font:600 15px/1.3 var(--sans);margin:14px 0 6px}
+.askmd code{font:500 14px var(--mono);background:var(--tint);padding:1px 5px;border-radius:4px}
+.asktl{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px} .asktl span{font:500 12px/1.3 var(--sans);color:var(--ink2);border:1px solid var(--line);border-radius:999px;padding:3px 9px}
+.askwait{display:flex;align-items:center;gap:10px;min-height:32px;font:500 14px var(--sans);color:var(--ink2)}
+.askdots{display:inline-flex;gap:4px} .askdots i{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:wdot 1.2s infinite ease-in-out} .askdots i:nth-child(2){animation-delay:.2s} .askdots i:nth-child(3){animation-delay:.4s}
+@media (prefers-reduced-motion:reduce){.askdots i{animation:none;opacity:.7}}
+.askerr{margin:10px 0 0;font:500 13.5px/1.4 var(--sans);color:var(--bad)} .asknote{margin:10px 0 0;font:500 13.5px/1.45 var(--sans);color:var(--ink2)}
+.askchips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0} .askchips .chip{white-space:normal;text-align:left;min-height:42px}
+.askform{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:end;margin-top:18px}
+.askform textarea{min-height:54px;font-size:16px;line-height:1.4} .askform .btn{min-height:54px} .askform .btn[disabled]{opacity:.55}
+.askfoot{margin-top:10px;font:500 12.5px/1.45 var(--sans);color:var(--ink2)} .askfoot button{color:var(--accent);font:inherit;text-decoration:underline;margin-left:4px}
+.askpair{margin-top:10px} .askpair p{margin:0 0 12px} .askpair .btn{margin-top:4px}
+.askcode{font:700 34px/1 var(--mono);letter-spacing:.16em;margin:16px 0;user-select:all;-webkit-user-select:all}
+/* END ASK */
 </style>
 </head>
 <body>
@@ -838,7 +858,7 @@ function hashLabel(h){
   if(v==='meal'&&IDX.mealBySlug[a]) return splitName(IDX.mealBySlug[a].name)[0];
   if(v==='dish'&&IDX.dishBySlug[a]) return splitName(IDX.dishBySlug[a].name)[0];
   if(v==='shopping') return a?'Shopping list':'Shopping';
-  return {sunday:'Sunday',library:'Library',meals:'Meals',more:'More',validations:'Checks',docs:'Docs',cook:'Cook',steps:'Step-by-step',print:'Print',postcook:'Log cook'}[v]||'Back';
+  return {sunday:'Sunday',library:'Library',meals:'Meals',more:'More',validations:'Checks',docs:'Docs',cook:'Cook',steps:'Step-by-step',print:'Print',postcook:'Log cook',ask:'Ask'}[v]||'Back';
 }
 function goBack(fb){ if(HSTACK.length>1) history.back(); else location.hash=fb; }
 function setHeader(title,back,fade=false){
@@ -1332,6 +1352,7 @@ routes.dish=(slug)=>{
       :ingMd.length?`<h3 class="stitle">Ingredients</h3>${ingMd.map(s=>`<div class="md">${md(s.body)}</div>`).join('')}`:''}
     <div class="shead"><h3>Method</h3>${fold?`<button onclick="methodAll(this)">${mOpen()?'Close all':'Open all'}</button>`:''}</div>${d.method_md?`${yieldS?`<div class="yield">${md(yieldS.body)}</div>`:''}${methodHtml(M,fold)}`:`<div class="card muted small">No structured recipe body for this dish yet — it was filed as a cook record. It will be populated when the dish is next regenerated under the data protocol.</div>`}
     ${wineBox('dish',d.slug)}
+    ${askBox('dish',d.slug)}
     ${labRows(d,openVal,notes)}
     <div style="height:12px"></div>`;
 };
@@ -1497,6 +1518,7 @@ routes.meal=(slug)=>{
     <div>${m.dishes.map(x=>{const d=x.dish; const [dn,dnote]=splitName(d.name); return `<a class="menu-item ${x.role==='main'?'main':''}" href="#/dish/${d.slug}"><div style="min-width:0"><div class="eyebrow ${x.role==='main'?'acc':''}">${esc(x.role)}</div><div class="nm">${esc(dn)}</div>${dnote?`<div class="nt">${esc(dnote)}</div>`:''}${d.base?`<div class="vt">version of ${esc(menuName(d.base.name))}</div>`:''}</div>${d.r.latest_rating!=null?seal(d.r.latest_rating,{size:'sm'}):'<span class="dim" aria-hidden="true">›</span>'}</a>`;}).join('')}</div>
     ${mealNutri(m)}
     ${wineBox('meal',m.slug)}
+    ${askBox('meal',m.slug)}
     ${m.workflow_md?`<h3 class="stitle">The workflow</h3><details class="card"><summary><span class="title">Critical path, timeline, holding</span></summary><div class="md" style="margin-top:10px">${md(m.workflow_md)}</div></details>`:''}
     ${m.shared_prep_md?`<h3 class="stitle">Shared prep</h3><div class="card md">${md(m.shared_prep_md)}</div>`:''}
     ${m.cooks.length?`<h3 class="stitle">Cook history</h3><div>${m.cooks.map(cookCard).join('')}</div>`:''}
@@ -1705,6 +1727,134 @@ routes.more=()=>{
     </div>
     <p class="foot">${libBase().length} dishes · ${cooked} cooked · ${meals} meals<br>${DB.fromCache?'Offline — showing what this phone saved':'Live data'}${at?' · loaded '+at:''}<br><button class="btn ghost sm" style="margin-top:10px" onclick="refreshData(true)">Refresh now</button> <button class="btn ghost sm" style="margin-top:10px" onclick="sndTest()">Test timer sound</button></p>`;
 };
+
+// ---------------------------------------------------------------- ask Claude about one meal or dish
+// ASK 1.0 (2026-11-14). Stage 1: questions only. The page talks to the kitchen-assistant Edge Function, which reads the
+// recipe, its cook history, the governance files and the cellar, and cannot save anything. A device has to be paired
+// once: the phone makes a random key (kept in localStorage, never shown), the function stores only its SHA-256 and
+// answers with a 6-character code that Jin sends to Claude in a chat to approve. Answers are drawn through askMd, which
+// escapes everything first, so nothing the model writes can run as page code. Applied by tools/ask/apply_ask.py.
+const ASK={S:{},draft:{},busy:{},dev:{st:'unknown',code:null},cur:null};
+const ASK_URL=SB_URL+'/functions/v1/kitchen-assistant';
+function askKey(make){ let k=null; try{k=localStorage.getItem('kitchen:ask:key');}catch(e){}
+  if(!k&&make){ k=[...crypto.getRandomValues(new Uint8Array(32))].map(b=>b.toString(16).padStart(2,'0')).join(''); try{localStorage.setItem('kitchen:ask:key',k);}catch(e){} }
+  return k; }
+const askCall=body=>fetch(ASK_URL,{method:'POST',headers:{'Content-Type':'application/json',apikey:SB_KEY,'x-device-key':askKey(true)},body:JSON.stringify(body)});
+const askS=k=>ASK.S[k]||(ASK.S[k]={st:'load',msgs:[],info:null,err:null,fresh:false,at:0});
+function askMd(s){ // a small, safe markdown: escape first, then bold, italic, code, headings and lists
+  const inl=t=>esc(t).replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/(^|[\s(])\*([^*\s][^*]*)\*(?=[\s).,;:!?]|$)/g,'$1<i>$2</i>');
+  let h='', list=null, para=[];
+  const fp=()=>{ if(para.length){ h+='<p>'+para.map(inl).join('<br>')+'</p>'; para=[]; } }, fl=()=>{ if(list){ h+='</'+list+'>'; list=null; } };
+  for(const raw of String(s||'').replace(/\r/g,'').split('\n')){ const l=raw.trimEnd(); let m;
+    if(!l.trim()){ fp(); fl(); continue; }
+    if((m=l.match(/^\s*#{1,4}\s+(.*)$/))){ fp(); fl(); h+='<h4>'+inl(m[1])+'</h4>'; continue; }
+    if((m=l.match(/^\s*[-*•]\s+(.*)$/))){ fp(); if(list!=='ul'){ fl(); h+='<ul>'; list='ul'; } h+='<li>'+inl(m[1])+'</li>'; continue; }
+    if((m=l.match(/^\s*(\d{1,3})[.)]\s+(.*)$/))){ fp(); if(list!=='ol'){ fl(); h+='<ol start="'+m[1]+'">'; list='ol'; } h+='<li>'+inl(m[2])+'</li>'; continue; }
+    if(/^\s*\|.*\|\s*$/.test(l)){ if(/^\s*\|[\s:|-]+\|\s*$/.test(l)) continue; fl(); para.push(l.replace(/^\s*\||\|\s*$/g,'').split('|').map(x=>x.trim()).join(' · ')); continue; }
+    fl(); para.push(l.trim()); }
+  fp(); fl(); return h; }
+function askBox(kind,slug){ return `<section class="glass ask"><div class="eyebrow">Ask Claude</div><p class="askp">Timing, scaling, substitutions, what to prep ahead: answered from this recipe, its cook history and your kitchen rules.</p><a class="btn ghost" href="#/ask/${kind}/${slug}">Ask about this ${kind}</a></section>`; }
+const ASK_STARTERS={meal:['What can I prep the day before?','Where is this most likely to go wrong?','Scale this to 5 people'],dish:['What can I prep ahead?','Where is this most likely to go wrong?','What should I taste for at the end?']};
+const askDots='<span class="askdots" aria-hidden="true"><i></i><i></i><i></i></span>';
+function askMsgHtml(m){
+  if(m.role==='user') return `<div class="askm u"><div class="askb">${esc(m.content).replace(/\n/g,'<br>')}</div></div>`;
+  const tl=(m.tools||[]).filter(t=>t&&t.label).map(t=>`<span>${esc(t.label)}</span>`).join('');
+  const wait=m.live&&!m.content?`<div class="askwait" role="status">${askDots}Reading the recipe…</div>`:'';
+  return `<div class="askm a"${m.live?' id="asklive"':''}>${tl?`<div class="asktl">${tl}</div>`:''}${wait}<div class="askmd">${askMd(m.content)}</div>${m.note?`<p class="asknote">${esc(m.note)}</p>`:''}${m.status&&m.status!=='ok'&&m.error_detail?`<p class="askerr">${esc(m.error_detail)}</p>`:''}</div>`;
+}
+function askMsgsHtml(kind,slug){ const s=askS(kind+'/'+slug);
+  if(!s.msgs.length) return `<div class="askchips">${ASK_STARTERS[kind].map(q=>`<button type="button" class="chip" onclick="askSend('${kind}','${slug}',this.textContent)">${esc(q)}</button>`).join('')}</div>`;
+  return s.msgs.map(askMsgHtml).join(''); }
+function askFootHtml(kind,slug){ const k=kind+'/'+slug, s=askS(k), i=s.info||{};
+  const n=i.daily_limit?` ${i.used_today||0} of ${i.daily_limit} questions today.`:'';
+  return `Reads this ${kind}, its cook history and your kitchen rules. It cannot change the recipe yet.${n}${s.msgs.length&&!ASK.busy[k]?` <button type="button" onclick="askNew('${kind}','${slug}')">New conversation</button>`:''}`; }
+function askOff(s){ const i=s.info||{}; // why asking is off, if it is
+  if(i.has_key===false) return 'Ask switches on when the Anthropic key is added in Supabase (Edge Functions, Secrets, ANTHROPIC_API_KEY).';
+  if(i.spend_mode==='paused') return 'Ask is paused by the spend switch (claude_api). Tell Claude “claude_api back to normal” to switch it on.';
+  if(i.daily_limit&&i.used_today>=i.daily_limit) return `That is ${i.daily_limit} questions in 24 hours, the daily cap. Try again later.`;
+  if(i.monthly_usd_cap&&i.month_usd>=i.monthly_usd_cap) return `This month’s ceiling of US$${i.monthly_usd_cap} is reached. Ask Claude in a chat to raise it.`;
+  return ''; }
+function askBody(kind,slug){ const k=kind+'/'+slug, s=askS(k), d=ASK.dev;
+  if(d.st==='unpaired'||d.st==='pending'||d.st==='revoked'||d.st==='pair_cap'){
+    if(d.st==='pending'&&d.code) return `<div class="askpair"><p><b>Pair this device.</b> Send this code to Claude in any chat, for example “pair my kitchen app, code ${esc(d.code)}”.</p><div class="askcode" aria-label="Pairing code">${esc(d.code)}</div><p class="askfoot">The code lasts 24 hours. When Claude says the device is approved, tap Check.</p><button class="btn" onclick="askOpen('${kind}','${slug}',true)">Check</button>${d.msg?`<p class="askerr">${esc(d.msg)}</p>`:''}</div>`;
+    if(d.st==='revoked') return `<div class="askpair"><p><b>This device was switched off.</b> Pair it again to ask.</p><button class="btn" onclick="askPair('${kind}','${slug}',true)">Pair this device again</button></div>`;
+    if(d.st==='pair_cap') return `<div class="askpair"><p class="askerr">Too many pairing codes were asked for today. Tell Claude in a chat and try again.</p></div>`;
+    return `<div class="askpair"><p><b>Pair this device.</b> Ask is locked to the phones and browsers you approve. It takes one code, once.</p><button class="btn" onclick="askPair('${kind}','${slug}')">Get a pairing code</button>${d.msg?`<p class="askerr">${esc(d.msg)}</p>`:''}</div>`;
+  }
+  if(s.st==='load') return `<div class="askwait" role="status">${askDots}Opening…</div>`;
+  if(s.st==='error') return `<p class="askerr">${esc(s.err||'Could not reach the kitchen assistant.')}</p><button class="btn ghost" onclick="askOpen('${kind}','${slug}',true)">Try again</button>`;
+  const off=askOff(s), busy=!!ASK.busy[k];
+  return `<div id="askmsgs" aria-live="polite">${askMsgsHtml(kind,slug)}</div>
+    ${s.err?`<p class="askerr" id="askerr">${esc(s.err)}</p>`:'<p class="askerr" id="askerr" hidden></p>'}
+    ${off?`<p class="asknote">${esc(off)}</p>`:`<form class="askform" onsubmit="event.preventDefault();askSend('${kind}','${slug}')"><textarea class="search" id="askin" rows="2" maxlength="4000" aria-label="Your question" placeholder="Ask about this ${kind}" oninput="ASK.draft['${k}']=this.value" onkeydown="if(event.key==='Enter'&&(event.metaKey||event.ctrlKey)){event.preventDefault();askSend('${kind}','${slug}')}">${esc(ASK.draft[k]||'')}</textarea><button class="btn" id="askgo" type="submit"${busy?' disabled':''}>${busy?'Answering…':'Ask'}</button></form>`}
+    <div class="askfoot" id="askfoot">${askFootHtml(kind,slug)}</div>`;
+}
+const askHere=k=>parse().view==='ask'&&ASK.cur===k;
+function askDraw(kind,slug){ const k=kind+'/'+slug; if(!askHere(k)) return; const el=document.getElementById('askbody'); if(el) el.innerHTML=askBody(kind,slug); }
+function askPaint(kind,slug){ // redraw the conversation without touching the question being typed
+  const k=kind+'/'+slug; if(!askHere(k)) return; const ms=document.getElementById('askmsgs'), ft=document.getElementById('askfoot'), go=document.getElementById('askgo'), er=document.getElementById('askerr'), s=askS(k);
+  if(!ms||!ft||(!go&&!askOff(s))||(go&&askOff(s))){ askDraw(kind,slug); return; }
+  ms.innerHTML=askMsgsHtml(kind,slug); ft.innerHTML=askFootHtml(kind,slug);
+  if(go){ go.disabled=!!ASK.busy[k]; go.textContent=ASK.busy[k]?'Answering…':'Ask'; }
+  if(er){ er.hidden=!s.err; er.textContent=s.err||''; } }
+const askNearEnd=()=>window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-160;
+const askToEnd=()=>window.scrollTo(0,document.documentElement.scrollHeight);
+function askLive(k,m){ if(!askHere(k)) return; const el=document.getElementById('asklive'); if(!el) return; const stick=askNearEnd();
+  el.outerHTML=askMsgHtml(m); if(stick) askToEnd(); }
+function askTake(j,kind,slug){ // a JSON answer from the function: device state, limits, or an error
+  const k=kind+'/'+slug, s=askS(k), st=j&&j.status;
+  if(st==='unpaired'||st==='pending'||st==='revoked'||st==='pair_cap'){ ASK.dev={st,code:j.code||null}; return false; }
+  if(st==='bad_key'){ try{localStorage.removeItem('kitchen:ask:key');}catch(e){} ASK.dev={st:'unpaired',code:null}; return false; }
+  ASK.dev={st:'approved',code:null};
+  if(st==='ok'){ s.st='ok'; s.info=j; s.err=null; s.at=Date.now(); if(!ASK.busy[k]&&!s.fresh) s.msgs=(j.messages||[]).map(m=>({role:m.role,content:m.content||'',status:m.status,tools:m.tools||[],error_detail:m.error_detail})); return true; }
+  if(st==='no_key'||st==='paused'||st==='limit'||st==='month_cap'){ s.st='ok'; s.info={...(s.info||{}),...j,...(st==='no_key'?{has_key:false}:{}),...(st==='paused'?{spend_mode:'paused'}:{})}; return false; }
+  if(st==='not_found'){ s.st='ok'; s.err='This recipe is not in the database yet, so there is nothing to ask about.'; return false; }
+  s.err=(j&&j.message)||'The kitchen assistant hit an error. Try again.'; if(s.st==='load') s.st='error'; return false; }
+async function askOpen(kind,slug,manual){ const k=kind+'/'+slug, s=askS(k);
+  if(manual){ s.st='load'; if(ASK.dev.st!=='pending') askDraw(kind,slug); }
+  try{ const r=await askCall({action:'open',kind,slug}); const j=await r.json(); askTake(j,kind,slug);
+    if(manual&&ASK.dev.st==='pending') ASK.dev.msg='Not approved yet. Send the code to Claude, then check again.'; }
+  catch(e){ s.st='error'; s.err=navigator.onLine===false?'You are offline. Ask needs a connection.':'Could not reach the kitchen assistant. Check the connection and try again.'; }
+  askDraw(kind,slug); }
+async function askPair(kind,slug,again){ const k=kind+'/'+slug;
+  if(again){ try{localStorage.removeItem('kitchen:ask:key');}catch(e){} }
+  const key=askKey(true); if(!key||askKey(false)!==key){ ASK.dev={st:'unpaired',code:null,msg:'This browser will not keep the device key (private browsing?). Open the app normally and try again.'}; askDraw(kind,slug); return; }
+  try{ const r=await askCall({action:'pair'}); const j=await r.json();
+    if(j.status==='approved'){ ASK.dev={st:'approved',code:null}; return askOpen(kind,slug,true); }
+    ASK.dev={st:j.status==='pending'?'pending':(j.status||'unpaired'),code:j.code||null}; }
+  catch(e){ toast('Could not reach the kitchen assistant'); }
+  askDraw(kind,slug); }
+function askNew(kind,slug){ const k=kind+'/'+slug, s=askS(k); if(ASK.busy[k]) return; s.msgs=[]; s.fresh=true; s.err=null; askDraw(kind,slug); const t=document.getElementById('askin'); if(t) t.focus(); }
+async function askSend(kind,slug,text){ const k=kind+'/'+slug, s=askS(k), ta=document.getElementById('askin');
+  const q=String(text!=null?text:(ta?ta.value:'')).trim(); if(!q||ASK.busy[k]) return;
+  ASK.busy[k]=1; s.err=null; ASK.draft[k]=''; if(ta) ta.value='';
+  const live={role:'assistant',content:'',status:'ok',tools:[],live:true};
+  s.msgs.push({role:'user',content:q,status:'ok'},live); askPaint(kind,slug); askToEnd();
+  const drop=()=>{ s.msgs=s.msgs.filter(m=>m!==live); const i=s.msgs.map(m=>m.content).lastIndexOf(q); if(i>=0&&s.msgs[i].role==='user') s.msgs.splice(i,1); if(!ASK.draft[k]){ ASK.draft[k]=q; const t=document.getElementById('askin'); if(t&&askHere(k)&&!t.value) t.value=q; } };
+  let frame=0; const soon=()=>{ if(frame) return; frame=requestAnimationFrame(()=>{ frame=0; askLive(k,live); }); };
+  try{ const r=await askCall({action:'ask',kind,slug,message:q,new_thread:!!s.fresh});
+    if(!(r.headers.get('content-type')||'').startsWith('text/event-stream')){ let j={}; try{j=await r.json();}catch(e){} drop(); askTake(j,kind,slug); }
+    else{ s.fresh=false; const rd=r.body.getReader(), dec=new TextDecoder(); let buf='';
+      for(;;){ const {value,done}=await rd.read(); if(done) break; buf+=dec.decode(value,{stream:true}); let n;
+        while((n=buf.indexOf('\n\n'))>=0){ const line=buf.slice(0,n); buf=buf.slice(n+2); if(!line.startsWith('data:')) continue; let ev; try{ev=JSON.parse(line.slice(5));}catch(e){continue;}
+          if(ev.t==='delta'){ live.content+=ev.text||''; soon(); }
+          else if(ev.t==='tool'){ live.tools.push({label:ev.label}); soon(); }
+          else if(ev.t==='note'){ live.note=ev.text; }
+          else if(ev.t==='error'){ live.status='error'; live.error_detail=ev.message; }
+          else if(ev.t==='done'){ s.info={...(s.info||{}),used_today:ev.used_today,daily_limit:ev.daily_limit,month_usd:ev.month_usd,monthly_usd_cap:ev.monthly_usd_cap}; } } }
+      if(!live.content&&live.status==='ok'){ live.status='error'; live.error_detail='No answer came back. Ask again.'; } }
+  }catch(e){ if(live.content){ live.status='partial'; live.error_detail='The connection dropped. The full answer may be there when you reopen this page.'; } else { drop(); s.err=navigator.onLine===false?'You are offline. Ask needs a connection.':'Could not reach the kitchen assistant. Check the connection and try again.'; } }
+  live.live=false; ASK.busy[k]=0; const stick=askNearEnd(); askPaint(kind,slug); if(stick&&askHere(k)) askToEnd();
+}
+routes.ask=(kind,slug)=>{
+  kind=kind==='dish'?'dish':'meal'; const o=kind==='meal'?IDX.mealBySlug[slug]:IDX.dishBySlug[slug];
+  if(!o) return notFound(kind==='meal'?'Meal':'Dish',kind==='meal'?'#/meals':'#/library');
+  setHeader('Ask','#/'+kind+'/'+slug); tabs(kind==='meal'?'meals':'library');
+  const k=kind+'/'+slug, s=askS(k); ASK.cur=k;
+  if(!ASK.busy[k]&&Date.now()-(s.at||0)>300000&&!s._opening){ s._opening=1; if(!s.msgs.length&&s.st!=='ok') s.st='load'; setTimeout(()=>askOpen(kind,slug).finally(()=>{s._opening=0;}),0); }
+  return `<div class="askv"><div class="eyebrow">Ask Claude</div><h2 class="askt">${nameHtml(o.name)}</h2><div id="askbody">${askBody(kind,slug)}</div></div>`;
+};
+// ---------------------------------------------------------------- end ask
 
 // ---------------------------------------------------------------- print (cooking sheet rendered from the database)
 // PRINT SPEC 1.5 (2026-11-06; 1.4 on 1 Nov, 1.3 on 31 Oct, 1.0–1.2 on 30 Oct). 1.5: equipment (ingredient department Equipment) prints on its own line under the shopping list, never in the pantry check. 1.4: the ingredient table prints a heading row for each part of a dish built from parts (dish_ingredient.section), and "not a purchase" stays off the sheet. 1.3: stored renders made before print spec 1.0 are an archive, not linked (docCurrent, set at load). Every printed cooking sheet and dish sheet is built here, so every print follows one method.
@@ -2781,7 +2931,7 @@ async function refreshData(manual){
 function freshPillText(){const e=document.querySelector('.homebar .fresh span:last-child'); if(e&&!DB.fromCache) e.textContent=FRESH.busy?'Updating…':'Updated '+hm(DB.loadedAt||Date.now());}
 function freshRedraw(){ // never redraw under the keyboard, over an open sheet or a half-written log
   const v=parse().view, a=document.activeElement, sh=document.getElementById('sheet');
-  if(a&&a.matches&&a.matches('input,textarea,select')) return; if(sh&&!sh.hidden) return; if(v==='postcook') return;
+  if(a&&a.matches&&a.matches('input,textarea,select')) return; if(sh&&!sh.hidden) return; if(v==='postcook'||v==='ask') return;
   if(v==='cook'){renderSoft(true); return;} softRender();
 }
 async function verCheck(){ // the service worker's cache name changes with every release

@@ -1,0 +1,34 @@
+// unit test of the Ask panel's rendering and state handling (no browser)
+const fs = require('fs');
+const src = fs.readFileSync(__dirname + '/../ask_region.js', 'utf8');
+const stub = `const SB_URL="x",SB_KEY="k",routes={},IDX={mealBySlug:{},dishBySlug:{}};
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function parse(){return {view:'ask'}} function toast(){} function nameHtml(n){return esc(n)} function notFound(){return 'nf'} function setHeader(){} function tabs(){}
+const document={getElementById:()=>null}, localStorage={getItem:()=>null,setItem(){},removeItem(){}};
+`;
+const m = new Function(stub + src + ';return {askMd,askBody,askMsgHtml,askBox,ASK,routes,askS,askTake,askOff};')();
+let fails = 0;
+const t = (n, c, d) => { if (!c) fails++; console.log((c ? 'PASS ' : 'FAIL ') + n + (c ? '' : ' -> ' + d)); };
+let h = m.askMd('**Pull at 54°C / 130°F.** Rest 10 min.\n\n- one <script>alert(1)</script>\n- two *soft* `code`\n\n1. first\n2. second\n\n## Head\n| a | b |\n|---|---|\n| 1 | 2 |');
+t('escapes html', !/<script>/.test(h) && /&lt;script&gt;/.test(h), h);
+t('bold, italic, code', /<b>Pull at 54°C \/ 130°F\.<\/b>/.test(h) && /<i>soft<\/i>/.test(h) && /<code>code<\/code>/.test(h), h);
+t('lists and heading', /<ul><li>one/.test(h) && /<ol start="1"><li>first<\/li><li>second<\/li><\/ol>/.test(h) && /<h4>Head<\/h4>/.test(h), h);
+t('table flattened', /<p>a · b<br>1 · 2<\/p>/.test(h), h);
+t('img onerror neutralised', !/<img/.test(m.askMd('<img src=x onerror=alert(1)>')));
+t('quantities with asterisks survive', m.askMd('2 * 3 = 6 and 4*5') === '<p>2 * 3 = 6 and 4*5</p>', m.askMd('2 * 3 = 6 and 4*5'));
+m.ASK.cur = 'meal/x';
+m.ASK.dev = { st: 'unpaired', code: null }; t('unpaired shows pairing button', /Get a pairing code/.test(m.askBody('meal', 'x')));
+m.ASK.dev = { st: 'pending', code: 'K7M2QX' }; t('pending shows code', /K7M2QX/.test(m.askBody('meal', 'x')) && /Check/.test(m.askBody('meal', 'x')));
+m.askTake({ status: 'ok', has_key: false, messages: [], used_today: 0, daily_limit: 60 }, 'meal', 'x');
+t('no key hides the form', /Anthropic key/.test(m.askBody('meal', 'x')) && !/askform/.test(m.askBody('meal', 'x')));
+m.askTake({ status: 'ok', has_key: true, spend_mode: 'normal', used_today: 0, daily_limit: 60, messages: [] }, 'meal', 'x');
+h = m.askBody('meal', 'x'); t('empty conversation shows starters and form', /askchips/.test(h) && /askform/.test(h) && /prep the day before/.test(h) && !/New conversation/.test(h), h);
+m.askTake({ status: 'ok', has_key: true, spend_mode: 'normal', used_today: 1, daily_limit: 60, messages: [{ role: 'user', content: 'hi <b>', status: 'ok' }, { role: 'assistant', content: '**yes**', status: 'ok', tools: [{ label: "Read today's cellar list" }] }] }, 'meal', 'x');
+h = m.askBody('meal', 'x'); t('conversation, tool chips, count', /askform/.test(h) && /<b>yes<\/b>/.test(h) && /hi &lt;b&gt;/.test(h) && /cellar list/.test(h) && /1 of 60 questions today/.test(h) && /New conversation/.test(h), h);
+m.askTake({ status: 'limit', used_today: 60, daily_limit: 60 }, 'meal', 'x'); t('limit message', /daily cap/.test(m.askBody('meal', 'x')));
+m.askTake({ status: 'ok', has_key: true, used_today: 1, daily_limit: 60, month_usd: 15.2, monthly_usd_cap: 15, messages: [] }, 'meal', 'x'); t('month ceiling message', /ceiling of US\$15/.test(m.askBody('meal', 'x')));
+m.askTake({ status: 'paused' }, 'meal', 'x'); t('paused message', /paused by the spend switch/.test(m.askBody('meal', 'x')));
+m.askTake({ status: 'revoked' }, 'meal', 'x'); t('revoked offers re-pair', /Pair this device again/.test(m.askBody('meal', 'x')));
+t('ask card links to the page', /href="#\/ask\/dish\/fish-pie"/.test(m.askBox('dish', 'fish-pie')));
+t('live answer shows a waiting line', /Reading the recipe/.test(m.askMsgHtml({ role: 'assistant', content: '', live: true, tools: [] })) && /id="asklive"/.test(m.askMsgHtml({ role: 'assistant', content: '', live: true, tools: [] })));
+console.log(fails ? `\n${fails} FAILED` : '\nall passed'); process.exit(fails ? 1 : 0);
