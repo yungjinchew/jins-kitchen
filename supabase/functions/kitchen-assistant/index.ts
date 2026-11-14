@@ -906,7 +906,7 @@ async function reviewStepLocked(id: string, start: boolean, apiKey: string): Pro
         }
         Object.assign(c, next);
       }
-      decisions = ds.map((x) => ({ finding: String(x.finding).slice(0, 300), material: x.material === true, decision: String(x.decision), detail: String(x.detail).slice(0, 600) }));
+      decisions = ds.map((x) => ({ finding: String(x.finding).slice(0, 400), material: x.material === true, decision: String(x.decision), detail: String(x.detail).slice(0, 2000) }));
     }
     if (!decisions) throw new Error("the findings could not be reconciled");
     const who = rv.reviewer_now === "gpt" ? "GPT" : "Claude critic";
