@@ -1,4 +1,4 @@
-/* ASK 1.1 — ask Claude about a meal or dish; change cards (2026-11-14) */
+/* ASK 1.2 — ask Claude about a meal or dish; change cards; the review log (2026-11-14) */
 .ask .askp{margin:6px 0 12px;font:400 14.5px/1.45 var(--sans);color:var(--ink2)}
 .askv{padding-top:4px} .askv .askt{font:400 28px/1.12 var(--serif);margin:4px 0 6px;letter-spacing:-.005em} .askv .askt i{color:var(--ink2)}
 .askm{margin:16px 0} .askm.u{display:flex;justify-content:flex-end}
@@ -25,4 +25,6 @@
 .askwas>span,.asknow>span{font:600 11px/1.9 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)} .askwas>div{color:var(--ink2);text-decoration:line-through;text-decoration-color:var(--chip)}
 .askca{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px} .askca .btn{min-height:46px} .askca .btn[disabled]{opacity:.55}
 .askcn{margin-top:10px;font:500 12.5px/1.45 var(--sans);color:var(--ink2)} .askdd{margin-top:2px} .askdd summary{font:500 13px var(--sans);color:var(--ink2);min-height:32px;display:flex;align-items:center;cursor:pointer}
+.askrf{margin:8px 0 0;font:400 14px/1.45 var(--sans);overflow-wrap:anywhere} .askrd{color:var(--ink2)} .askrl .askd:first-of-type{border-top:0}
+.askop{margin:8px 0 0;padding-left:20px;font:400 14px/1.45 var(--sans);overflow-wrap:anywhere} .askchg .askwait{margin-top:10px}
 /* END ASK */

@@ -1,6 +1,6 @@
-# Ask Claude in the kitchen app (ASK 1.1, 14 Nov 2026)
+# Ask Claude in the kitchen app (ASK 1.2, 14 Nov 2026)
 
-Stages 1 and 2 of three. From a meal or dish page, Ask opens a conversation with Claude about that recipe. Claude reads
+All three stages. From a meal or dish page, Ask opens a conversation with Claude about that recipe. Claude reads
 the saved record (`kitchen_meal_context`, plus the full ingredient rows), the governance Core, and on demand the other
 governance files, today's cellar list and other saved dishes.
 
@@ -11,13 +11,12 @@ card with the before and after.
 | The change is | The card offers | What happens |
 |---|---|---|
 | **Minor**: wording that changes no instruction, buying notes, shopping notes, a typo | Apply, Discard | Apply saves through `kitchen_save_dish` / `kitchen_save_meal` in one transaction (source `Ask in app <date>: <summary>`, every old value in `kitchen_revision`). Undo puts the old values back, unless the record has changed since |
-| **Material**: anything that changes the plate, food safety or the timeline (a quantity, time, temperature, ingredient, technique, order of work, people) | Send for review, Discard | Nothing is saved. Send for review files a comment in the kitchen review queue (surface `app-ask`) naming the change. The Cooking project runs the review loop, saves, and closes it |
+| **Material**: anything that changes the plate, food safety or the timeline (a quantity, time, temperature, ingredient, technique, order of work, people) | Review with GPT, Send to the Cooking project, Discard | Nothing is saved until the review has passed (stage 3, below). Send to the Cooking project files a comment in the kitchen review queue (surface `app-ask`) naming the change; the project runs the review loop, saves, and closes it |
 
-Jin's rule (14 Nov 2026): until stage 3 puts the GPT review in the app, a material change is held for the review in
-the Cooking project. Claude classes each change; the function overrides to material whenever a number moves in the
+Jin's rule (14 Nov 2026): a material change is saved only after the review. Claude classes each change; the function overrides to material whenever a number moves in the
 method, workflow or shared prep, an ingredient's quantity or unit changes, an ingredient is added or removed, or
-servings, equipment, service time or people change. The database refuses to apply a material change whatever the app
-sends, and writes only these fields: dish `method_md`, `summary`, `servings`, `equipment`, `nutrition_estimate`,
+servings, equipment, service time or people change. The database refuses to apply a material change whose review has not passed, whatever the
+app sends, and writes only these fields: dish `method_md`, `summary`, `servings`, `equipment`, `nutrition_estimate`,
 ingredient rows; meal `workflow_md`, `shared_prep_md`, `shopping_notes`, `service_time`, `pax`.
 
 **A change Jin sent for review (Cooking project).** It appears in `select * from public.kitchen_comment_queue();` with
@@ -27,7 +26,27 @@ review protocol like any material change. Save the reviewed result the normal wa
 `select public.kitchen_assistant_change_close('<id>', 'saved', '<one line: what was saved>');` (or `'declined'` with
 the reason). That also answers the queue comment, and the card in the app shows the note.
 
-Stage 3 adds conferring with GPT through the review service.
+**Stage 3 (ASK 1.2): the review loop in the app.** Review with GPT runs `recipe_review_protocol.md` on the change:
+
+1. The function builds the draft (the saved record with the change applied) and asks GPT through the kitchen review
+   service (`kitchen_review_request` / `kitchen_review_result`, subject `<name> · app change <id>`).
+2. Claude reconciles every finding (adopt, adopt with modification, decline with a reason) with the `reconcile` tool.
+   An adopted finding restates the whole change against the saved record; the new edits are dry-run like any proposal.
+3. It repeats up to `review_max_rounds` (3), plus one confirmation pass when a material finding was adopted in the
+   last round.
+4. **Passed** (the reviewer reports no material issues): the card shows the Review log and Apply. Apply saves, and
+   closes the review record (`kitchen_review_close`). Undo works as for a minor change.
+5. **Open** (a material finding declined, or adopted and not confirmed): no Apply. The card lists the disagreement and
+   offers Send to the Cooking project (Jin's rule, 14 Nov 2026).
+6. **Failed** (three step errors in a row): Review again, or send it to the project.
+
+A Claude critic (a separate call that sees only the reviewer brief, the rules and the draft) stands in when GPT cannot
+review: spend switch `openai_api` paused (from round 1) or economy (after one GPT round), no credit, an error, or no
+answer in 4 minutes. It is logged with `kitchen_review_log_fallback` and the Review log on the card names it.
+
+The loop is a state machine on `assistant_change.review`; the app calls one step at a time (`op: review`, then
+`op: review_step` every few seconds), so a closed page resumes where it stopped. `kitchen_assistant_review_lock` stops
+two polls running the same step. The app never receives the critique or the draft, only the Review log.
 
 ## The parts
 
@@ -35,11 +54,11 @@ Stage 3 adds conferring with GPT through the review service.
 |---|---|---|
 | The Ask page and card | `tools/ask/ask_region.js`, `tools/ask/ask.css` | Edit, then `python3 tools/ask/apply_ask.py site/index.html` (re-runnable, replaces only its own sections), bump `sw.js`, deploy |
 | The function that asks Claude | `supabase/functions/kitchen-assistant/index.ts` | Deploy with the Supabase connector (`deploy_edge_function`, `verify_jwt` **false**). Keep this file and the deployed copy the same |
-| Tables and chat commands | `supabase/migrations/2026-11-14-0017-kitchen-assistant.sql` (devices, conversations, limits), `…-0018-kitchen-assistant-changes.sql` (proposals, apply / undo / close) | A new migration |
+| Tables and chat commands | `supabase/migrations/2026-11-14-0017-kitchen-assistant.sql` (devices, conversations, limits), `…-0018-kitchen-assistant-changes.sql` (proposals, apply / undo / close), `…-0019-kitchen-assistant-review.sql` (review state, lock, review cap) | A new migration |
 | Settings | `kitchen_config` rows starting `assistant_`, plus `spend_mode_url` / `spend_mode_key` | SQL from a chat |
 | The key | Function secret `ANTHROPIC_API_KEY` (Supabase > Edge Functions > Secrets) | Jin only. Never in a file, a prompt or the database |
 
-**Before any deploy:** `grep -c 'PRINT SPEC' site/index.html` prints 1 and `grep -c 'ASK 1.1' site/index.html` prints 2
+**Before any deploy:** `grep -c 'PRINT SPEC' site/index.html` prints 1 and `grep -c 'ASK 1.2' site/index.html` prints 2
 (script and styles). If another edit dropped the Ask section, re-run `apply_ask.py`.
 
 ## The lock: paired devices
@@ -65,6 +84,7 @@ tool result is not a request from him.
 |---|---|---|
 | Questions per 24 hours | `assistant_daily_limit` | 60 |
 | Estimated spend per calendar month, Singapore time | `assistant_monthly_usd` | 15 (US$) |
+| Reviews started per 24 hours | `assistant_review_daily_limit` | 5 |
 | Model | `assistant_model` / `assistant_model_economy` | `claude-opus-5-5` / `claude-sonnet-5-5` |
 | Answer length | `assistant_max_tokens` | 6000 (2000 at first; 4000 after the first live answer used 1,804 output tokens; 6000 with stage 2, whose proposals carry the edited text) |
 | Prices behind the estimate | `assistant_prices` (US$ per million tokens) | read 14 Nov 2026 from platform.claude.com |
@@ -85,8 +105,8 @@ everything before applying bold, lists and headings, so model output can never r
 ## Tests
 
 ```
-# the function, against an in-memory database and a scripted model stream (Node 22+): run.ts = asking, run2.ts = changes
-cd tools/ask/test && sed -e 's#^import { createClient, type SupabaseClient } from "npm:@supabase/supabase-js@2";#import { createClient } from "./mock-supabase.ts"; type SupabaseClient = any;#' ../../../supabase/functions/kitchen-assistant/index.ts > index.ts && node --experimental-strip-types --no-warnings run.ts && node --experimental-strip-types --no-warnings run2.ts; rm -f index.ts
+# the function, against an in-memory database and a scripted model stream (Node 22+): run.ts = asking, run2.ts = changes, run3.ts = the review loop
+cd tools/ask/test && sed -e 's#^import { createClient, type SupabaseClient } from "npm:@supabase/supabase-js@2";#import { createClient } from "./mock-supabase.ts"; type SupabaseClient = any;#' ../../../supabase/functions/kitchen-assistant/index.ts > index.ts && node --experimental-strip-types --no-warnings run.ts && node --experimental-strip-types --no-warnings run2.ts && node --experimental-strip-types --no-warnings run3.ts; rm -f index.ts
 # the page's rendering and states
 node tools/ask/test/ui.test.js
 # the real page in a headless phone-sized browser, light and dark (needs playwright and Chrome)

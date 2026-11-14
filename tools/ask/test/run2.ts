@@ -98,7 +98,7 @@ const c2 = T.assistant_change[1];
 ok("a moved number is material whatever the model said", c2.class === "material" && /Marked for review by the app: a number changes in the method of Fish Pie; a number changes in the workflow/.test(c2.class_reason), c2.class_reason);
 ok("method text is edited in place, nothing else lost", c2.saves[0].p.method_md === METHOD.replace("for 30 min", "for 40 min") && c2.undo[0].p.method_md === METHOD);
 ok("the earlier open card is replaced", c1.status === "discarded" && /newer proposal/.test(c1.note));
-ok("material tool result names the review route", /MATERIAL/.test(calls.at(-1).messages.at(-1).content[0].content) && /Send for review/.test(calls.at(-1).messages.at(-1).content[0].content));
+ok("material tool result names the review route", /MATERIAL/.test(calls.at(-1).messages.at(-1).content[0].content) && /Review with GPT/.test(calls.at(-1).messages.at(-1).content[0].content));
 ok("only one change event for the accepted proposal", ev.filter((e) => e.t === "change").length === 1 && ev.find((e) => e.t === "change").change.id === c2.id);
 
 // --- guards on what a page may touch, and on the ingredient list

@@ -1,8 +1,9 @@
 // ---------------------------------------------------------------- ask Claude about one meal or dish
-// ASK 1.1 (2026-11-14; 1.0 the same day). Stage 1: questions. Stage 2 (1.1): Claude can propose a change, shown as a card
-// with the before and after. A minor change (wording, buying and shopping notes) saves on Apply and can be undone; a
-// material one (anything that changes the plate, food safety or the timeline) can only be sent for review, and is saved
-// by the Cooking project after the GPT review. The page talks to the kitchen-assistant Edge Function, which reads the
+// ASK 1.2 (2026-11-14; 1.0 and 1.1 the same day). Stage 1: questions. Stage 2 (1.1): Claude can propose a change, shown as
+// a card with the before and after. A minor change (wording, buying and shopping notes) saves on Apply and can be undone.
+// Stage 3 (1.2): a material one (anything that changes the plate, food safety or the timeline) gets Review with GPT: the
+// app runs the review protocol step by step (askReviewPoll), shows the Review log, and offers Apply only after a clean
+// review; an open disagreement can only be sent to the Cooking project. The page talks to the kitchen-assistant Edge Function, which reads the
 // recipe, its cook history, the governance files and the cellar; Claude itself never writes. A device has to be paired
 // once: the phone makes a random key (kept in localStorage, never shown), the function stores only its SHA-256 and
 // answers with a 6-character code that Jin sends to Claude in a chat to approve. Answers are drawn through askMd, which
@@ -31,20 +32,31 @@ const ASK_STARTERS={meal:['What can I prep the day before?','Where is this most 
 const askDots='<span class="askdots" aria-hidden="true"><i></i><i></i><i></i></span>';
 const ASK_CH={proposed:'Proposed change',applied:'Saved to the recipe',undone:'Undone',discarded:'Discarded',filed:'Sent for review',saved:'Reviewed and saved',declined:'Reviewed, not saved',stale:'Out of date',failed:'Could not be saved'};
 const askTxt=t=>esc(t).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>').replace(/\n/g,'<br>');
+const ASK_DEC={adopt:'Adopt',adopt_modified:'Adopt with modification',decline:'Decline'};
+function askReviewLog(c){ const rv=c.review||{}, R=rv.rounds||[]; if(!R.length) return '';
+  const who=[...new Set(R.map(r=>r.reviewer+(r.model&&r.reviewer==='GPT'?' ('+r.model+')':'')))].join(' + ');
+  const vd=v=>v==='no_material_issues'?'no material issues':v==='material_issues'?'material issues':'verdict unclear';
+  return `<details class="askdd askrl"><summary>Review log · ${esc(who)} · ${R.length} round${R.length>1?'s':''}</summary>${R.map(r=>`<div class="askd"><div class="askdw">Round ${esc(r.round)}${r.confirm?' · confirmation':''} · ${esc(r.reviewer)}${r.fallback?' · '+esc(r.fallback):''} · ${vd(r.verdict)}</div>${(r.findings||[]).length?r.findings.map(f=>`<div class="askrf"><b>${ASK_DEC[f.decision]||esc(f.decision)}</b>${f.material?' · material':''} · ${esc(f.finding)}<div class="askrd">${esc(f.detail)}</div></div>`).join(''):'<div class="askrf">No findings.</div>'}</div>`).join('')}${rv.framework_note?`<div class="askcn">${esc(rv.framework_note)}</div>`:''}</details>`; }
 function askChangeHtml(c){ const a=(ASK.cur||'/').split('/'), kind=a[0], slug=a[1];
   const open=c.status==='proposed', mat=c.class==='material', busy=c._busy, dis=busy?' disabled':'';
   const btn=(op,label,cls)=>`<button class="btn ${cls||''}"${dis} onclick="askChange('${kind}','${slug}','${c.id}','${op}')">${label}</button>`;
   const rows=(c.display||[]).map(d=>`<div class="askd"><div class="askdw">${esc(d.where)}</div>${d.was?`<div class="askwas"><span>Was</span><div>${askTxt(d.was)}</div></div>`:''}<div class="asknow"><span>${d.was?'Now':'New'}</span><div>${askTxt(d.now)}</div></div></div>`).join('');
+  const rs=c.review_status||'none', rv=c.review||{};
   let foot='';
-  if(open&&!mat) foot=`<div class="askca">${btn('apply',busy==='apply'?'Saving…':'Apply')}${btn('discard','Discard','ghost')}</div><div class="askcn">Nothing is saved until you tap Apply. You can undo it afterwards.</div>`;
-  else if(open) foot=`<div class="askcn">${esc(c.class_reason||'This changes the result on the plate, food safety or the timeline.')} It is saved only after the GPT review, which runs in the Cooking project.</div><div class="askca">${btn('file',busy==='file'?'Sending…':'Send for review')}${btn('discard','Discard','ghost')}</div>`;
-  else if(c.status==='applied') foot=`<div class="askcn">Saved${c.applied_at?' at '+hm(c.applied_at):''}. The recipe pages now show it.</div><div class="askca">${btn('undo',busy==='undo'?'Undoing…':'Undo','ghost sm')}</div>`;
-  else if(c.status==='filed') foot=`<div class="askcn">Not saved yet. In the Cooking project, say “review the change I sent from the app”.</div>`;
+  if(open&&mat&&rs==='running'){ const rd=`Round ${rv.round||1}${rv.confirm?' (confirmation)':''}`;
+    const what=rv.phase==='wait'?'GPT is reading the recipe':rv.phase==='critic'?'a Claude critic is reading the recipe'+(rv.fallback_reason?' ('+rv.fallback_reason+')':''):rv.phase==='reconcile'?'working through the findings':'sending the recipe to the reviewer';
+    foot=`${askReviewLog(c)}<div class="askwait" role="status">${askDots}${esc(rd)} · ${esc(what)}…</div><div class="askcn">Usually one to five minutes. Keep this page open; if you leave, it picks up where it stopped when you come back.${rv.last_error?' Last try: '+esc(rv.last_error):''}</div>`; }
+  else if(open&&mat&&rs==='passed') foot=`${askReviewLog(c)}<div class="askca">${btn('apply',busy==='apply'?'Saving…':'Apply')}${btn('discard','Discard','ghost')}</div><div class="askcn">Reviewed, with nothing left open. Nothing is saved until you tap Apply.</div>`;
+  else if(open&&mat&&rs==='open') foot=`${askReviewLog(c)}<div class="askcn"><b>Open disagreement.</b> The reviewer and Claude did not agree, so this is not saved from the app.</div><ul class="askop">${(rv.open||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><div class="askca">${btn('file',busy==='file'?'Sending…':'Send to the Cooking project')}${btn('discard','Discard','ghost')}</div>`;
+  else if(open&&mat) foot=`<div class="askcn">${esc(c.class_reason||'This changes the result on the plate, food safety or the timeline.')} It is reviewed before it is saved.${rs==='failed'?' The last review could not finish'+(rv.last_error?': '+esc(rv.last_error):'.'):''}</div><div class="askca">${btn('review',busy==='review'?'Starting…':rs==='failed'?'Review again':'Review with GPT')}${btn('file',busy==='file'?'Sending…':'Send to the Cooking project','ghost')}${btn('discard','Discard','ghost')}</div>`;
+  else if(open&&!mat) foot=`<div class="askca">${btn('apply',busy==='apply'?'Saving…':'Apply')}${btn('discard','Discard','ghost')}</div><div class="askcn">Nothing is saved until you tap Apply. You can undo it afterwards.</div>`;
+  else if(c.status==='applied') foot=`${askReviewLog(c)}<div class="askcn">Saved${c.applied_at?' at '+hm(c.applied_at):''}. The recipe pages now show it.</div><div class="askca">${btn('undo',busy==='undo'?'Undoing…':'Undo','ghost sm')}</div>`;
+  else if(c.status==='filed') foot=`${askReviewLog(c)}<div class="askcn">Not saved yet. In the Cooking project, say “review the change I sent from the app”.</div>`;
   else if(c.status==='stale') foot=`<div class="askcn">The recipe changed after this was proposed. Ask again for a fresh card.</div>`;
   else if(c.note) foot=`<div class="askcn">${esc(c.note)}</div>`;
   if(c._err) foot+=`<p class="askerr">${esc(c._err)}</p>`;
   const closed=!open&&c.status!=='applied'&&c.status!=='filed';
-  return `<div class="askchg ${esc(c.status)}${mat?' mat':''}"><div class="eyebrow">${ASK_CH[c.status]||esc(c.status)}${open&&mat?' · needs review':''}</div><div class="askcs">${esc(c.summary)}</div>${closed?`<details class="askdd"><summary>What it proposed</summary>${rows}</details>`:rows}${foot}</div>`;
+  return `<div class="askchg ${esc(c.status)}${mat?' mat':''}"><div class="eyebrow">${ASK_CH[c.status]||esc(c.status)}${open&&mat?(rs==='passed'?' · reviewed':rs==='running'?' · under review':rs==='open'?' · disagreement':' · needs review'):''}</div><div class="askcs">${esc(c.summary)}</div>${closed?`<details class="askdd"><summary>What it proposed</summary>${rows}</details>`:rows}${foot}</div>`;
 }
 function askMsgHtml(m){
   if(m.role==='user') return `<div class="askm u"><div class="askb">${esc(m.content).replace(/\n/g,'<br>')}</div></div>`;
@@ -105,7 +117,7 @@ async function askOpen(kind,slug,manual){ const k=kind+'/'+slug, s=askS(k);
   try{ const r=await askCall({action:'open',kind,slug}); const j=await r.json(); askTake(j,kind,slug);
     if(manual&&ASK.dev.st==='pending') ASK.dev.msg='Not approved yet. Send the code to Claude, then check again.'; }
   catch(e){ s.st='error'; s.err=navigator.onLine===false?'You are offline. Ask needs a connection.':'Could not reach the kitchen assistant. Check the connection and try again.'; }
-  askDraw(kind,slug); }
+  askDraw(kind,slug); askResume(kind,slug); }
 async function askPair(kind,slug,again){ const k=kind+'/'+slug;
   if(again){ try{localStorage.removeItem('kitchen:ask:key');}catch(e){} }
   const key=askKey(true); if(!key||askKey(false)!==key){ ASK.dev={st:'unpaired',code:null,msg:'This browser will not keep the device key (private browsing?). Open the app normally and try again.'}; askDraw(kind,slug); return; }
@@ -138,13 +150,29 @@ async function askSend(kind,slug,text){ const k=kind+'/'+slug, s=askS(k), ta=doc
   live.live=false; ASK.busy[k]=0; const stick=askNearEnd(); askPaint(kind,slug); if(stick&&askHere(k)) askToEnd();
 }
 const askRefresh=()=>{ try{ if(typeof refreshData==='function') refreshData(false); }catch(e){} }; // the recipe pages pick up a saved change
-async function askChange(kind,slug,id,op){ const k=kind+'/'+slug, s=askS(k); let c=null; s.msgs.forEach(m=>(m.changes||[]).forEach(x=>{ if(x.id===id) c=x; })); if(!c||c._busy) return;
+const askFindChange=(k,id)=>{ let c=null; askS(k).msgs.forEach(m=>(m.changes||[]).forEach(x=>{ if(x.id===id) c=x; })); return c; };
+const ASK_RV={}; // one poll loop per change under review
+async function askReviewPoll(kind,slug,id){ if(ASK_RV[id]) return; ASK_RV[id]=1; const k=kind+'/'+slug; let fails=0;
+  try{ for(;;){ const c=askFindChange(k,id); if(!c||c.status!=='proposed'||c.review_status!=='running'||!askHere(k)) break;
+      await new Promise(r=>setTimeout(r,c.review&&c.review.phase==='wait'?5000:1200)); if(!askHere(k)) break;
+      try{ const r=await askCall({action:'change',change_id:id,op:'review_step'}); const j=await r.json(); fails=0;
+        if(j.change){ Object.assign(c,j.change); c._err=null; askPaint(kind,slug); if(c.review_status==='passed') toast('Reviewed · ready to apply'); else if(c.review_status==='open') toast('Review ended with a disagreement'); }
+        if(j.status!=='running'&&j.status!=='busy') break;
+      }catch(e){ if(++fails>=5){ c._err='Lost the connection. The review picks up when you reopen this page.'; askPaint(kind,slug); break; } await new Promise(r=>setTimeout(r,4000)); } } }
+  finally{ delete ASK_RV[id]; } }
+function askResume(kind,slug){ const k=kind+'/'+slug; askS(k).msgs.forEach(m=>(m.changes||[]).forEach(c=>{ if(c.status==='proposed'&&c.review_status==='running') askReviewPoll(kind,slug,c.id); })); }
+async function askChange(kind,slug,id,op){ const k=kind+'/'+slug, s=askS(k); const c=askFindChange(k,id); if(!c||c._busy) return;
   c._busy=op; c._err=null; askPaint(kind,slug);
   try{ const r=await askCall({action:'change',change_id:id,op}); const j=await r.json();
     if(j.change) Object.assign(c,j.change);
     if(j.status==='applied'){ toast('Saved to the recipe'); askRefresh(); }
     else if(j.status==='undone'){ toast('Undone'); askRefresh(); }
-    else if(j.status==='filed') toast('Sent for review');
+    else if(j.status==='filed') toast('Sent to the Cooking project');
+    else if(op==='review'&&(j.status==='running'||j.status==='busy')){ c._busy=null; askPaint(kind,slug); askReviewPoll(kind,slug,id); return; }
+    else if(j.status==='review_limit') c._err=`That is ${j.limit} reviews in 24 hours, the daily cap. Send it to the Cooking project, or try again tomorrow.`;
+    else if(j.status==='month_cap') c._err='This month’s ceiling is reached, so the review cannot run here. Send it to the Cooking project.';
+    else if(j.status==='paused') c._err='Ask is paused by the spend switch, so the review cannot run here.';
+    else if(j.status==='no_key') c._err='The Anthropic key is missing, so the review cannot run.';
     else if(j.status==='stale'){ if(op==='undo') c._err='The recipe has changed since, so this cannot be undone here. Ask in the Cooking project.'; }
     else if(j.status==='needs_review') c._err='This one needs the review first.';
     else if(j.status==='unpaired'||j.status==='pending'||j.status==='revoked'||j.status==='bad_key'){ c._busy=null; askTake(j,kind,slug); askDraw(kind,slug); return; }
@@ -157,6 +185,7 @@ routes.ask=(kind,slug)=>{
   if(!o) return notFound(kind==='meal'?'Meal':'Dish',kind==='meal'?'#/meals':'#/library');
   setHeader('Ask','#/'+kind+'/'+slug); tabs(kind==='meal'?'meals':'library');
   const k=kind+'/'+slug, s=askS(k); ASK.cur=k;
+  setTimeout(()=>askResume(kind,slug),0); // a review left running picks up again
   if(!ASK.busy[k]&&Date.now()-(s.at||0)>300000&&!s._opening){ s._opening=1; if(!s.msgs.length&&s.st!=='ok') s.st='load'; setTimeout(()=>askOpen(kind,slug).finally(()=>{s._opening=0;}),0); }
   return `<div class="askv"><div class="eyebrow">Ask Claude</div><h2 class="askt">${nameHtml(o.name)}</h2><div id="askbody">${askBody(kind,slug)}</div></div>`;
 };

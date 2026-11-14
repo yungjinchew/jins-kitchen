@@ -39,7 +39,12 @@ const ANSWER = 'Yes. **Poach the fish and make the mash the day before**; assemb
         if (b.action === 'open') return J({ status: 'ok', version: 'ASK 1.0', has_key: fn.has_key, thread_id: null, messages: fn.msgs, ...lim });
         if (b.action === 'change') {
           const c = fn.changes.find((x) => x.id === b.change_id);
-          if (b.op === 'apply') { if (c.class !== 'minor') return J({ status: 'needs_review', change: c }); c.status = 'applied'; c.applied_at = new Date().toISOString(); return J({ status: 'applied', change: c }); }
+          if (b.op === 'review') { c.review_status = 'running'; c.review = { round: 1, phase: 'wait', rounds: [], open: [] }; fn.steps = 0; return J({ status: 'running', change: c }); }
+          if (b.op === 'review_step') { fn.steps++;
+            if (fn.steps === 1) { c.review.phase = 'reconcile'; return J({ status: 'running', change: c }); }
+            c.review = { round: 1, phase: 'done', open: [], rounds: [{ round: 1, reviewer: 'GPT', model: 'gpt-6-astra', verdict: 'no_material_issues', findings: [{ finding: 'Cover with foil if it browns early', material: false, decision: 'decline', detail: 'Outside this change; for a full review in the Cooking project.' }] }] };
+            c.review_status = 'passed'; return J({ status: 'ok', change: c }); }
+          if (b.op === 'apply') { if (c.class !== 'minor' && c.review_status !== 'passed') return J({ status: 'needs_review', change: c }); c.status = 'applied'; c.applied_at = new Date().toISOString(); return J({ status: 'applied', change: c }); }
           if (b.op === 'undo') { c.status = 'undone'; return J({ status: 'undone', change: c }); }
           if (b.op === 'file') { c.status = 'filed'; return J({ status: 'filed', change: c }); }
           if (b.op === 'discard') { c.status = 'discarded'; return J({ status: 'ok', change: c }); }
@@ -119,10 +124,20 @@ const ANSWER = 'Yes. **Poach the fish and make the mash the day before**; assemb
     await page.fill('#askin', 'Bake it for 40 min'); await page.click('#askgo');
     await page.waitForSelector('.askchg.mat.proposed .askca .btn');
     const mt = await page.locator('.askchg.mat').innerText();
-    ok(`[${scheme}] material card: Send for review, never Apply`, /needs review/i.test(mt) && /GPT review/.test(mt) && await page.locator('.askchg.mat .askca .btn').allInnerTexts().then((a) => a.join('|')) === 'Send for review|Discard', mt);
+    ok(`[${scheme}] material card: review first, never Apply`, /needs review/i.test(mt) && /reviewed before it is saved/.test(mt) && await page.locator('.askchg.mat .askca .btn').allInnerTexts().then((a) => a.join('|')) === 'Review with GPT|Send to the Cooking project|Discard', mt);
     await page.locator('.askchg.mat').scrollIntoViewIfNeeded(); await page.screenshot({ path: `${SHOTS}/${scheme}-7-card-material.png` });
-    await page.locator('.askchg.mat .askca .btn').first().click(); await page.waitForSelector('.askchg.filed');
-    ok(`[${scheme}] Send for review marks it sent, unsaved`, /Not saved yet/.test(await page.locator('.askchg.filed').innerText()) && await page.locator('.askchg.filed .btn').count() === 0 && fn.calls.at(-1).op === 'file');
+    await page.locator('.askchg.mat .askca .btn').first().click();
+    await page.waitForSelector('.askchg.mat .askwait');
+    ok(`[${scheme}] review running: progress line, no buttons`, /Round 1 · (GPT is reading the recipe|working through the findings)/.test(await page.locator('.askchg.mat .askwait').innerText()) && await page.locator('.askchg.mat .btn').count() === 0, await page.locator('.askchg.mat').innerText());
+    await page.screenshot({ path: `${SHOTS}/${scheme}-8-review-running.png` });
+    await page.waitForFunction(() => [...document.querySelectorAll('.askchg.mat .askca .btn')].some((b) => b.textContent === 'Apply'), null, { timeout: 20000 });
+    const pt = await page.locator('.askchg.mat').innerText();
+    ok(`[${scheme}] review passed: the log and Apply`, /Review log · GPT \(gpt-6-astra\) · 1 round/.test(pt) && /nothing left open/.test(pt) && fn.calls.filter((c) => c.op === 'review_step').length === 2, pt);
+    await page.locator('.askchg.mat .askrl summary').click();
+    await page.locator('.askchg.mat').scrollIntoViewIfNeeded(); await page.screenshot({ path: `${SHOTS}/${scheme}-9-review-passed.png` });
+    ok(`[${scheme}] the log lists each finding and its decision`, /Decline · Cover with foil/.test(await page.locator('.askchg.mat .askrl').innerText()));
+    await page.locator('.askchg.mat .askca .btn').first().click(); await page.waitForSelector('.askchg.mat.applied');
+    ok(`[${scheme}] a reviewed change applies`, /Saved to the recipe/i.test(await page.locator('.askchg.mat.applied').innerText()) && fn.calls.at(-1).op === 'apply');
     ok(`[${scheme}] cards do not widen the page`, !(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1)));
     // the dish page has its own card and its own conversation; no key hides the form
     fn.has_key = false; fn.msgs = [];

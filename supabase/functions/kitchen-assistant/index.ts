@@ -1,7 +1,9 @@
-// jins-kitchen Edge Function: kitchen-assistant (ASK 1.1, 14 Nov 2026) — Ask Claude about one meal or dish, from the app.
+// jins-kitchen Edge Function: kitchen-assistant (ASK 1.2, 14 Nov 2026) — Ask Claude about one meal or dish, from the app.
 // Stage 1: questions. It reads the recipe, its cook history, the governance files and the cellar.
 // Stage 2 (ASK 1.1): changes, as proposals only. Claude proposes edits; Jin applies a minor one with a tap (and can undo it);
-// a material one is sent to the Cooking project for the review loop. The model itself never writes to a recipe.
+// a material one needs the review loop first. The model itself never writes to a recipe.
+// Stage 3 (ASK 1.2): the review loop runs here (GPT through the kitchen review service, Claude reconciling, a Claude critic
+// when GPT cannot review). A clean review unlocks Apply; an open disagreement holds the change for the Cooking project.
 //
 // Who may call it: a paired device. The app keeps a random key on the phone and sends it as x-device-key; only its
 // SHA-256 is stored (assistant_device). A new device gets a 6-character code that Jin sends to Claude in a chat, and
@@ -14,7 +16,7 @@
 // verify_jwt is off: the app's publishable key is not a JWT, and the device key is the real check.
 import { createClient, type SupabaseClient } from "npm:@supabase/supabase-js@2";
 
-const VERSION = "ASK 1.1";
+const VERSION = "ASK 1.2";
 const ANTHROPIC_URL = "https://api.anthropic.com/v1/messages";
 const ORIGINS = [/^https:\/\/jins-kitchen\.netlify\.app$/, /^https:\/\/[a-z0-9-]+--jins-kitchen\.netlify\.app$/];
 const MAX_TURNS = 8; // model calls per question (tool loop)
@@ -90,16 +92,16 @@ async function config(): Promise<Cfg> {
     return c;
   });
 }
-async function spendMode(cfg: Cfg): Promise<string> {
+async function spendMode(cfg: Cfg, service = "claude_api"): Promise<string> {
   if (!cfg.spend_mode_url || !cfg.spend_mode_key) return "normal";
   try {
-    return await cached("spend", 60_000, async () => {
+    return await cached("spend:" + service, 60_000, async () => {
       const c = new AbortController(), t = setTimeout(() => c.abort(), 4000);
       try {
         const r = await fetch(cfg.spend_mode_url, {
           method: "POST", signal: c.signal,
           headers: { apikey: cfg.spend_mode_key, "Content-Type": "application/json" },
-          body: JSON.stringify({ p_service: "claude_api" }),
+          body: JSON.stringify({ p_service: service }),
         });
         const m = await r.json();
         return m === "economy" || m === "paused" ? m : "normal";
@@ -141,7 +143,7 @@ async function deviceFor(req: Request, create: boolean): Promise<{ device: Devic
   d = made as Device;
   return { device: d };
 }
-type Gate = { used: number; limit: number; monthUsd: number; monthCap: number; mode: string; model: string; maxTokens: number };
+type Gate = { used: number; limit: number; monthUsd: number; monthCap: number; mode: string; model: string; maxTokens: number; reviews: number; reviewLimit: number };
 async function gate(cfg: Cfg): Promise<Gate> {
   const mode = await spendMode(cfg);
   // counted in the database (kitchen_assistant_usage), so a long month is never cut at the API's 1,000-row page
@@ -157,6 +159,8 @@ async function gate(cfg: Cfg): Promise<Gate> {
     mode,
     model: mode === "economy" ? (cfg.assistant_model_economy || cfg.assistant_model || "claude-sonnet-5-5") : (cfg.assistant_model || "claude-opus-5-5"),
     maxTokens: Math.min(8000, parseInt(cfg.assistant_max_tokens ?? "2000", 10) || 2000),
+    reviews: Number((u as Json)?.reviews_24h ?? 0),
+    reviewLimit: parseInt(cfg.assistant_review_daily_limit ?? "5", 10) || 5,
   };
 }
 const gateJson = (g: Gate) => ({ used_today: g.used, daily_limit: g.limit, month_usd: g.monthUsd, monthly_usd_cap: g.monthCap, spend_mode: g.mode, model: g.model });
@@ -192,7 +196,7 @@ You cannot write to a recipe. When Jin asks for a change, or says yes to one you
 - Edits are small and exact. Text: "find" is copied character for character from the record (the bold asterisks, the degree signs, the line breaks) and long enough to occur once; "replace" is the new text. Ingredients: name the record's line number and the ingredient's name.
 - Anything you write follows the Core: a numbered step opens with a bold lead that is the whole instruction; temperatures in °F and °C; weights in both units where the record has both; doneness as a stop or continue test.
 - Class it honestly. "material" is anything that would change the result on the plate, the safety of the food, or whether the timeline can be executed: a quantity, a time, a temperature, an ingredient, a technique, the order of work, the number of people. "minor" is wording that changes no instruction, a buying note, a shopping note, a typo. The app also marks a change material when a number moves.
-- A minor change gets an Apply button. A material change gets Send for review instead: under Jin's review protocol it is saved only after the GPT review, which runs in the Cooking project. Say which it is in one line. Never say or imply a recipe has been changed: it changes only when he taps Apply.
+- A minor change gets an Apply button. A material change gets Review with GPT instead: when he taps it the app runs his review protocol on the change (an independent reviewer, then a reconciliation of every finding), which takes a few minutes and may adjust the change, and it offers Apply only after a clean review. Say which it is in one line. Never say or imply a recipe has been changed: it changes only when he taps Apply.
 - If propose_change returns an error, fix the edit it names and call it again. Do not paste the edits into the chat instead.
 - Out of reach here: a new dish or meal, a dish's name, linking or removing dishes, cook logs, open validations, wine, governance files. Say so and point him to the Cooking project.
 - After the card is shown, answer in one to three lines. Do not repeat the edits.
@@ -243,7 +247,7 @@ function tools(man: Manifest): Json[] {
     },
     {
       name: "propose_change",
-      description: "Propose a change to this page's recipe for Jin to approve. Nothing is saved by this call: the app shows a before/after card, and he taps Apply (minor) or Send for review (material). Call it once per change, with every edit that belongs to it. Only when Jin has asked for the change. On a meal page you can change the meal's workflow, shared prep, shopping notes, service time and number of people, and any of its dishes; on a dish page, that dish only.",
+      description: "Propose a change to this page's recipe for Jin to approve. Nothing is saved by this call: the app shows a before/after card, and he taps Apply (minor) or Review with GPT (material). Call it once per change, with every edit that belongs to it. Only when Jin has asked for the change. On a meal page you can change the meal's workflow, shared prep, shopping notes, service time and number of people, and any of its dishes; on a dish page, that dish only.",
       input_schema: {
         type: "object",
         properties: {
@@ -337,7 +341,7 @@ const UNITS = ["g", "ml", "tsp", "tbsp", "piece", "clove", "bunch", "sprig", "sl
 const DEPTS = ["Protein", "Produce", "Dairy", "Bread", "Frozen", "Pantry", "Oils & Liquids", "Alcohol", "Seasoning", "Equipment"];
 const ING_FIELDS = ["qty", "unit", "qty_alt", "buy_spec", "buy_avoid", "buy_note", "prep_note", "pantry_check", "optional", "section"];
 const ING_NOTE_ONLY = new Set(["buy_spec", "buy_avoid", "buy_note", "prep_note", "pantry_check"]);
-const CH_SEL = "id,thread_id,message_id,summary,class,class_reason,status,display,note,applied_at,created_at";
+const CH_SEL = "id,thread_id,message_id,summary,class,class_reason,status,display,note,applied_at,created_at,review_status,review";
 type Ing = Json & { name: string };
 type DishNow = { id: string; slug: string; name: string; summary: string | null; servings: number | null; equipment: string[] | null; nutrition_estimate: Json | null; method_md: string | null; updated_at: string; ingredients: Ing[] };
 type MealNow = { id: string; slug: string; name: string; service_time: string | null; pax: number | null; workflow_md: string | null; shared_prep_md: string | null; shopping_notes: string | null; updated_at: string };
@@ -551,7 +555,14 @@ async function buildChange(kind: string, slug: string, rec: Json, input: Json): 
   }
 }
 // what the app may see of a change: the card, never the payloads
-const pub = (c: Json): Json => Object.fromEntries(CH_SEL.split(",").map((k) => [k, c[k] ?? null]));
+const pub = (c: Json): Json => {
+  const o: Json = Object.fromEntries(CH_SEL.split(",").map((k) => [k, c[k] ?? null]));
+  const r = c.review as Json | null; // the Review log and where the loop stands; never the critique or the draft
+  o.review = r ? { round: r.round ?? null, phase: r.phase ?? null, confirm: !!r.confirm, reviewer_now: r.reviewer_now ?? null, rounds: r.rounds ?? [], open: r.open ?? [],
+    fallback_reason: r.fallback_reason ?? null, framework_note: r.framework_note ?? null, last_error: r.last_error ?? null, started_at: r.started_at ?? null } : null;
+  o.review_status = c.review_status ?? "none";
+  return o;
+};
 async function changeById(id: string): Promise<Json | null> {
   const { data } = await db().from("assistant_change").select(CH_SEL).eq("id", id).maybeSingle();
   return data ? pub(data as Json) : null;
@@ -560,7 +571,7 @@ async function proposeChange(kind: string, slug: string, rec: Json, input: Json,
   const b = await buildChange(kind, slug, rec, input);
   if (b.error || !b.row) return { text: "The proposal was not accepted. " + b.error + " Fix it and call propose_change again.", label: "Change needed fixing", error: true };
   await db().from("assistant_change").update({ status: "discarded", note: "Replaced by a newer proposal" }).eq("thread_id", threadId).eq("status", "proposed");
-  const { data: row, error } = await db().from("assistant_change").insert({ ...b.row, thread_id: threadId, device_id: deviceId, status: "proposed" }).select(CH_SEL).single();
+  const { data: row, error } = await db().from("assistant_change").insert({ ...b.row, edits: input, thread_id: threadId, device_id: deviceId, status: "proposed" }).select(CH_SEL).single();
   if (error) throw new Error("assistant_change: " + error.message);
   const { data: chk, error: ce } = await db().rpc("kitchen_assistant_change_apply", { p_change: row.id, p_mode: "check" });
   const c = (chk ?? {}) as Json;
@@ -571,16 +582,17 @@ async function proposeChange(kind: string, slug: string, rec: Json, input: Json,
   }
   const text = row.class === "minor"
     ? "Accepted. The app now shows Jin a card with the before and after and an Apply button. It is NOT saved until he taps Apply. Reply in one to three lines: what the card changes and anything he should check first. Do not repeat the edits."
-    : `Accepted as a MATERIAL change (${row.class_reason ?? "it changes the plate, the safety or the timeline"}). The card shows the before and after with a Send for review button and no Apply: under Jin's review protocol it is saved only after the GPT review, which runs in the Cooking project. Tell him that in one or two lines. Do not repeat the edits.`;
+    : `Accepted as a MATERIAL change (${row.class_reason ?? "it changes the plate, the safety or the timeline"}). The card shows the before and after with a Review with GPT button and no Apply yet: under Jin's review protocol it is saved only after the review, which the app runs when he taps the button (a few minutes; the review may adjust the change). Tell him that in one or two lines. Do not repeat the edits.`;
   return { text, label: "Proposed a change", change: pub(row as Json) };
 }
 async function fileChange(id: string): Promise<Json> {
-  const { data: c } = await db().from("assistant_change").select("id,owner_type,slug,summary,class_reason,status").eq("id", id).maybeSingle();
+  const { data: c } = await db().from("assistant_change").select("id,owner_type,slug,summary,class_reason,status,review_status,review").eq("id", id).maybeSingle();
   if (!c) return { status: "not_found" };
   if (c.status !== "proposed") return { status: "not_open", change: await changeById(id) };
   const { data: o } = await db().from(c.owner_type === "meal" ? "meal" : "dish").select("id").eq("slug", c.slug).maybeSingle();
   if (!o) return { status: "not_found" };
   const comment = (`Jin asked for this change in the app (Ask) and sent it for review: ${c.summary} ` + (c.class_reason ? `Why it needs review: ${c.class_reason} ` : "") +
+    (c.review_status === "open" ? `The in-app review ended with open disagreements: ${(((c.review as Json)?.open ?? []) as string[]).join(" | ").slice(0, 700)} Its decision log is in assistant_change.review. ` : c.review_status === "failed" ? "The in-app review could not finish. " : "") +
     `Exact before and after: select summary, display, saves from public.assistant_change where id = '${c.id}'; ` +
     `After the review and the save, close it: select public.kitchen_assistant_change_close('${c.id}', 'saved', '<one line>'); (or 'declined').`).slice(0, 2000);
   const { data: k, error } = await db().from("kitchen_comment").insert({
@@ -643,6 +655,282 @@ export async function readStream(body: ReadableStream<Uint8Array>, onText: (t: s
   return { blocks: blocks.filter(Boolean), stop, usage };
 }
 
+// ---------------------------------------------------------------- the review loop in the app (ASK 1.2)
+// A material change is saved only after Jin's review protocol has run on it (recipe_review_protocol.md): an independent
+// reviewer reads the revised recipe, Claude sorts every finding (adopt, adopt with modification, decline with a reason),
+// and the loop repeats up to review_max_rounds, plus one confirmation pass. The reviewer is GPT through the kitchen
+// review service; a separate Claude call with the same brief stands in when GPT cannot review (spend switch, no credit,
+// no answer in four minutes) and the Review log says so. The loop is a state machine kept on the change row (review):
+// the app calls one short step at a time, so nothing runs longer than one model call, and a closed page resumes later.
+// A clean result sets review_status = passed and the card offers Apply; an open disagreement holds it for the project.
+const REVIEW_WAIT_S = 240;
+type Review = Json & { round: number; phase: string; rounds: Json[]; decision_log: string; subject: string; multi: boolean; started_at: string; cost_usd: number; gpt_rounds: number; confirm: boolean };
+const iso = () => new Date().toISOString();
+
+async function claudeOnce(apiKey: string, model: string, body: Json): Promise<{ blocks: Block[]; stop: string | null; usage: Usage; text: string }> {
+  const c = new AbortController(), timer = setTimeout(() => c.abort(), 125_000);
+  try {
+    const r = await fetch(ANTHROPIC_URL, {
+      method: "POST", signal: c.signal,
+      headers: { "x-api-key": apiKey, "anthropic-version": "2023-06-01", "content-type": "application/json" },
+      body: JSON.stringify({ model, stream: true, ...body }),
+    });
+    if (!r.ok || !r.body) {
+      let detail = ""; try { const j = await r.json(); detail = String(j?.error?.message ?? ""); } catch (_) { /* no body */ }
+      throw new Error(`${r.status} ${detail}`.trim());
+    }
+    let text = "";
+    const out = await readStream(r.body, (d) => { text += d; });
+    return { ...out, text };
+  } finally { clearTimeout(timer); }
+}
+// The text the reviewer reads: the saved record with the change applied, quantities exactly as stored.
+async function draftFor(c: Json): Promise<{ draft: string; multi: boolean; subject: string; rec: Json }> {
+  const kind = String(c.owner_type), slug = String(c.slug), saves = (c.saves ?? []) as Json[];
+  const pOf = (entity: string, s: string) => ((saves.find((x) => x.entity === entity && x.slug === s)?.p ?? {}) as Json);
+  const rec = await record(slug);
+  const list = kind === "meal" ? ((rec.dishes as Json[]) ?? []).map((d) => ({ slug: String(d.slug), role: d.role as string | null })) : [{ slug, role: null }];
+  const out: string[] = [];
+  out.push("REVISION OF A SAVED RECIPE. The change under review: " + c.summary);
+  out.push("What changes (before -> after):\n" + ((c.display ?? []) as Json[]).map((d) => `- ${d.where}: ${d.was ? JSON.stringify(d.was) : "(new)"} -> ${JSON.stringify(d.now)}`).join("\n"));
+  out.push("Review the change and everything it touches. The rest of this record was saved earlier: raise a point outside the change only if the change causes it, or if it is a food-safety problem.");
+  let title = slug;
+  if (kind === "meal") {
+    const m = await mealNow(slug);
+    if (!m) throw new Error("the meal was not found");
+    const v = { ...m, ...pOf("meal", slug) } as Json;
+    title = m.name;
+    out.push(`Diner profile as saved: ${v.pax ?? 3} people at home (the household default is three adults: Jin, Hui Fong, Lukas), unless the record below says otherwise.`);
+    out.push(`# MEAL: ${m.name}\nService ${String(v.service_time ?? "18:00").slice(0, 5)} · ${v.pax ?? 3} people`);
+    if (v.workflow_md) out.push("## Meal workflow\n" + v.workflow_md);
+    if (v.shared_prep_md) out.push("## Shared prep\n" + v.shared_prep_md);
+    if (v.shopping_notes) out.push("## Before you shop\n" + v.shopping_notes);
+  } else out.push("Diner profile as saved: the household default of three adults (Jin, Hui Fong, Lukas), unless the record below says otherwise.");
+  for (const it of list) {
+    const d = await dishNow(it.slug);
+    if (!d) continue;
+    const v = { ...d, ...pOf("dish", it.slug) } as Json;
+    if (kind !== "meal") title = d.name;
+    const n = v.nutrition_estimate as Json | null;
+    out.push(`# DISH: ${d.name}${it.role ? ` (${it.role})` : ""}\nServings: ${v.servings ?? "not set"}` + (v.summary ? `\n${v.summary}` : "") + (Array.isArray(v.equipment) && v.equipment.length ? `\nEquipment: ${(v.equipment as string[]).join(", ")}` : ""));
+    if (((v.ingredients ?? []) as Json[]).length) out.push("## Ingredient list (the stored rows)\n" + ((v.ingredients as Json[]).map((x) => "- " + fmtIng(x)).join("\n")));
+    out.push("## Recipe\n" + (v.method_md ?? "(no structured recipe body)"));
+    if (n) out.push(`## Nutrition estimate (an estimate)\n${n.kcal} kcal · ${n.protein_g} g protein · ${n.carbs_g} g carbs · ${n.fat_g} g fat${n.per ? " · per " + n.per : ""}`);
+  }
+  return { draft: out.join("\n\n"), multi: kind === "meal" && list.length > 1, subject: `${title} · app change ${String(c.id).slice(0, 8)}`, rec };
+}
+function reconcileInstructions(core: string): string {
+  return `You are Claude inside Jin's Kitchen. You proposed a change to one of Jin's saved recipes, at his request. An independent reviewer has now read the revised recipe. Your job in this turn is the reconcile step of Jin's review protocol: decide what to do with every finding, and restate the change if any finding is adopted. You answer only by calling the reconcile tool.
+
+# Sort every finding into exactly one
+- adopt: the reviewer is right. Change the draft as proposed.
+- adopt_modified: the problem is real, and a different fix suits this household, equipment or framework better. Say which fix.
+- decline: with a stated reason: a framework rule, a household constraint, a preference Jin has stated, a culinary reason, or cook evidence in the record (a logged cook that validates the current choice is the strongest reason).
+Precedence when they conflict: the Core's safety rules, then the change Jin asked for, then the framework, then the reviewer. A [MATERIAL] finding is never dropped: it gets a decision and a reason like any other. Mark each finding material exactly as the reviewer did.
+
+# Scope
+This is a revision of a saved recipe, not a new one. A finding about a part the change does not touch and does not cause is declined with the reason "outside this change; for a full review in the Cooking project", unless it is a food-safety problem, which you adopt.
+
+# If you adopt anything
+Give "revised": the COMPLETE edit list for the change, against the SAVED record in the next block (not against the revised draft): every edit of the original change that still stands, plus the edits the adopted findings need. Same rules as before: "find" is copied character for character from the saved record and occurs once; ingredients by the record's line number and name.
+Propagation check, before you answer: trace every adopted change through each place the component appears: ingredient line, method, the workflow timeline at both ends of every band, holding chain, CCPs, storage, nutrition estimate. A safety control it adds must sit where the sheet prints it: the method, a CCP, the holding chain or a timeline row. Prefer bounding the input (buy a 2–3 cm steak) over adding a branch.
+Anything you write follows the Core: a numbered step opens with a bold lead that is the whole instruction; temperatures in °F and °C; doneness as a stop or continue test.
+
+# Each decision
+"finding": the reviewer's point in one short line. "detail": what changed, with the numbers, or why it is declined. Measured language.
+
+# GOVERNANCE CORE
+${core}`;
+}
+function reconcileTool(man: Manifest): Json {
+  const pc = (tools(man).find((t) => t.name === "propose_change")!.input_schema as Json).properties as Json;
+  return {
+    name: "reconcile",
+    description: "Record the decision on every finding of this review round and, if any finding is adopted, the complete revised edit list for the change.",
+    input_schema: {
+      type: "object",
+      properties: {
+        decisions: { type: "array", items: { type: "object", properties: {
+          finding: { type: "string", description: "The reviewer's point, one short line." },
+          material: { type: "boolean", description: "True if the reviewer marked it [MATERIAL]." },
+          decision: { type: "string", enum: ["adopt", "adopt_modified", "decline"] },
+          detail: { type: "string", description: "What changed, with numbers; or the reason it is declined." },
+        }, required: ["finding", "material", "decision", "detail"] } },
+        revised: { type: "object", description: "Required when any finding is adopted: the complete edit list against the saved record.", properties: { summary: pc.summary, dishes: pc.dishes, meal: pc.meal } },
+      },
+      required: ["decisions"],
+    },
+  };
+}
+const DECISION: Record<string, string> = { adopt: "Adopt", adopt_modified: "Adopt with modification", decline: "Decline" };
+const verdictOf = (t: string) => /VERDICT:\s*NO MATERIAL ISSUES/i.test(t) ? "no_material_issues" : /VERDICT:\s*MATERIAL ISSUES/i.test(t) ? "material_issues" : "unclear";
+
+async function reviewStep(id: string, start: boolean): Promise<Json> {
+  const apiKey = (Deno.env.get("ANTHROPIC_API_KEY") ?? "").trim();
+  if (!apiKey) return { status: "no_key" };
+  const { data: got } = await db().rpc("kitchen_assistant_review_lock", { p_change: id, p_seconds: 150 });
+  if (!got) return { status: "busy", change: await changeById(id) };
+  try {
+    return await reviewStepLocked(id, start, apiKey);
+  } catch (e) {
+    // a failed step is retried by the next poll; three failures in a row end the review as failed
+    const msg = friendly(e);
+    console.error("review step failed:", e instanceof Error ? e.message : String(e));
+    const { data: c } = await db().from("assistant_change").select("review,review_status").eq("id", id).maybeSingle();
+    if (c && c.review_status === "running") {
+      const rv = (c.review ?? {}) as Review;
+      rv.errors = Number(rv.errors ?? 0) + 1; rv.last_error = msg;
+      const dead = Number(rv.errors) >= 3;
+      if (dead) rv.phase = "failed";
+      await db().from("assistant_change").update({ review: rv, review_status: dead ? "failed" : "running" }).eq("id", id);
+    }
+    return { status: "running", message: msg, change: await changeById(id) };
+  } finally {
+    await db().rpc("kitchen_assistant_review_lock", { p_change: id, p_seconds: 0 });
+  }
+}
+async function reviewStepLocked(id: string, start: boolean, apiKey: string): Promise<Json> {
+  const { data: c0 } = await db().from("assistant_change").select("*").eq("id", id).maybeSingle();
+  const c = c0 as Json | null;
+  if (!c) return { status: "not_found" };
+  if (c.status !== "proposed") return { status: "not_open", change: pub(c) };
+  if (c.class !== "material") return { status: "error", message: "Only a material change needs the review.", change: pub(c) };
+  const cfg = await config(), g = await gate(cfg);
+  let rv = (c.review ?? null) as Review | null;
+  const save = async (status: string) => { await db().from("assistant_change").update({ review: rv, review_status: status }).eq("id", id); c.review = rv; c.review_status = status; };
+  if (start && c.review_status !== "running") {
+    if (c.review_status === "passed" || c.review_status === "open") return { status: "ok", change: pub(c) };
+    if (g.mode === "paused") return { status: "paused", change: pub(c) };
+    if (g.monthUsd >= g.monthCap) return { status: "month_cap", ...gateJson(g), change: pub(c) };
+    if (g.reviews >= g.reviewLimit) return { status: "review_limit", limit: g.reviewLimit, change: pub(c) };
+    const d = await draftFor(c);
+    rv = { started_at: iso(), round: 1, phase: "request", rounds: [], decision_log: "", subject: d.subject, multi: d.multi, confirm: false, cost_usd: 0, gpt_rounds: 0 };
+    await save("running");
+  }
+  if (c.review_status !== "running" || !rv) return { status: "ok", change: pub(c) };
+  const spend = (u: Usage) => { rv!.cost_usd = Math.round((Number(rv!.cost_usd ?? 0) + costUsd(u, g.model, cfg.assistant_prices)) * 100000) / 100000; };
+  const max = parseInt(cfg.review_max_rounds ?? "3", 10) || 3;
+
+  if (rv.phase === "request") { // ask the reviewer for this round
+    const d = await draftFor(c);
+    const om = await spendMode(cfg, "openai_api");
+    const gpt = om !== "paused" && (om !== "economy" || !(Number(rv.gpt_rounds) > 0));
+    if (gpt) {
+      const { data: rq, error } = await db().rpc("kitchen_review_request", { p_subject: rv.subject, p_round: rv.round, p_draft: d.draft, p_decision_log: rv.decision_log || null, p_multi_component: d.multi, p_meal_slug: c.slug, p_confirm: !!rv.confirm });
+      const q = (rq ?? {}) as Json;
+      if (!error && q.status === "requested") {
+        rv.review_id = q.review_id; rv.requested_at = iso(); rv.phase = "wait"; rv.model = q.model ?? null; rv.gpt_rounds = Number(rv.gpt_rounds ?? 0) + 1;
+        if (q.framework_loaded === false) rv.framework_note = "The reviewer could not load the governance framework and judged on culinary merits only.";
+        await save("running");
+        return { status: "running", change: pub(c) };
+      }
+      rv.fallback_reason = "GPT review unavailable: " + String(error ? error.message : (q.message ?? q.status)).slice(0, 160);
+    } else rv.fallback_reason = om === "paused" ? "spend switch paused" : "spend switch on economy: one GPT round, then the Claude critic";
+    rv.phase = "critic";
+    await save("running");
+    return { status: "running", change: pub(c) };
+  }
+  if (rv.phase === "wait") { // collect GPT's critique
+    const { data: rs, error } = await db().rpc("kitchen_review_result", { p_review_id: rv.review_id });
+    const r = (rs ?? {}) as Json;
+    if (!error && r.status === "pending") {
+      if ((Date.now() - Date.parse(String(rv.requested_at))) / 1000 > REVIEW_WAIT_S) { rv.fallback_reason = "GPT did not answer in 4 minutes"; rv.phase = "critic"; await save("running"); }
+      return { status: "running", change: pub(c) };
+    }
+    if (!error && r.status === "done" && String(r.critique ?? "").trim()) {
+      rv.critique = r.critique; rv.verdict = r.verdict; rv.model = r.model ?? rv.model; rv.reviewer_now = "gpt"; rv.phase = "reconcile";
+    } else {
+      const why = String(error ? error.message : (r.error ?? r.message ?? r.status));
+      rv.fallback_reason = /credit|billing|quota/i.test(why) ? "the OpenAI account is out of credit" : "GPT review failed";
+      rv.phase = "critic";
+    }
+    await save("running");
+    return { status: "running", change: pub(c) };
+  }
+  const man = await manifest(cfg);
+  const core = await governanceFile(cfg, (man.files ?? []).find((f) => f.always)?.file ?? "recipe_governance_core.md");
+  if (rv.phase === "critic") { // the fallback reviewer: a separate Claude call that sees only the brief, the rules and the draft
+    const d = await draftFor(c);
+    const file = (i: string) => (man.files ?? []).find((f) => f.id === i)?.file;
+    let brief = "";
+    try { brief = ((await governanceFile(cfg, file("review_protocol") ?? "recipe_review_protocol.md")).match(/<!-- reviewer-brief:start -->([\s\S]*)<!-- reviewer-brief:end -->/)?.[1] ?? "").trim(); } catch (_) { brief = ""; }
+    if (brief.length < 500) brief = cfg.review_brief_fallback ?? "";
+    if (brief.length < 500) throw new Error("the reviewer brief could not be read");
+    const wf = d.multi ? await governanceFile(cfg, file("meal_workflow") ?? "recipe_governance_meal_workflow.md").catch(() => "") : "";
+    const input = (rv.confirm ? `CONFIRMATION PASS (round ${rv.round})` : `REVIEW ROUND ${rv.round}`) + `\nSUBJECT: ${rv.subject}\n\n=== GOVERNANCE FRAMEWORK (Core v${man.framework_version ?? "?"}) ===\n${core}\n\n`
+      + (wf ? `=== MEAL WORKFLOW MODULE ===\n${wf}\n\n` : "")
+      + (rv.decision_log ? `=== PRIOR DECISION LOG (what the author did with earlier findings) ===\n${rv.decision_log}\n\n` : "")
+      + `=== DRAFT TO REVIEW ===\n${d.draft}`;
+    const out = await claudeOnce(apiKey, g.model, { max_tokens: 4000, system: [{ type: "text", text: brief }], messages: [{ role: "user", content: input }] });
+    spend(out.usage);
+    if (out.text.trim().length < 20) throw new Error("the critic returned nothing");
+    await db().rpc("kitchen_review_log_fallback", { p_subject: rv.subject, p_round: rv.round, p_draft: d.draft, p_critique: out.text, p_decision_log: rv.decision_log || null, p_meal_slug: c.slug, p_reason: rv.fallback_reason ?? "not stated" });
+    rv.critique = out.text; rv.verdict = verdictOf(out.text); rv.reviewer_now = "claude-critic"; rv.model = g.model; rv.phase = "reconcile";
+    await save("running");
+    return { status: "running", change: pub(c) };
+  }
+  if (rv.phase === "reconcile") { // Claude sorts every finding, and restates the change if any is adopted
+    const rec = await record(String(c.slug));
+    const tool = reconcileTool(man);
+    const system = [
+      { type: "text", text: reconcileInstructions(core), cache_control: { type: "ephemeral" } },
+      { type: "text", text: `# THE SAVED RECORD (${c.owner_type}: ${c.slug}; read just now, without the change)\n` + JSON.stringify(rec), cache_control: { type: "ephemeral" } },
+    ];
+    const msgs: Json[] = [{ role: "user", content: `# THE CHANGE UNDER REVIEW\nSummary: ${c.summary}\nIts edits against the saved record, as last stated:\n${JSON.stringify(c.edits ?? {})}\n\n# ${rv.confirm ? "CONFIRMATION PASS" : "REVIEW ROUND"} ${rv.round} · reviewer: ${rv.reviewer_now === "gpt" ? "GPT" : "Claude critic"}\n${rv.critique}\n\n# DECISION LOG SO FAR\n${rv.decision_log || "(none)"}\n\nCall reconcile now, with a decision for every finding above.` }];
+    let decisions: Json[] | null = null;
+    for (let turn = 0; turn < 3 && !decisions; turn++) {
+      const out = await claudeOnce(apiKey, g.model, { max_tokens: g.maxTokens, system, tools: [tool], messages: msgs });
+      spend(out.usage);
+      const call = out.blocks.find((b) => b.type === "tool_use" && b.name === "reconcile");
+      msgs.push({ role: "assistant", content: out.blocks });
+      if (!call) { msgs.push({ role: "user", content: "Answer by calling the reconcile tool." }); continue; }
+      const inp = (call.input ?? {}) as Json;
+      const fail = (m: string) => { msgs.push({ role: "user", content: [{ type: "tool_result", tool_use_id: call.id, content: m + " Call reconcile again.", is_error: true }] }); };
+      const ds = Array.isArray(inp.decisions) ? (inp.decisions as Json[]) : null;
+      if (!ds || ds.some((x) => !DECISION[String(x.decision)] || !String(x.finding ?? "").trim() || !String(x.detail ?? "").trim())) { fail("Every decision needs finding, material, decision (adopt, adopt_modified or decline) and detail."); continue; }
+      const adopted = ds.some((x) => x.decision !== "decline");
+      const revised = (inp.revised && typeof inp.revised === "object" && Object.keys(inp.revised as Json).length ? inp.revised : null) as Json | null;
+      if (adopted && !revised) { fail("You adopted a finding, so \"revised\" is required: the complete edit list for the change against the saved record."); continue; }
+      if (adopted && revised) {
+        const edits = { ...revised, summary: String(revised.summary ?? c.summary), class: "material", class_reason: c.class_reason };
+        const b = await buildChange(String(c.owner_type), String(c.slug), rec, edits);
+        if (b.error || !b.row) { fail("The revised edits were not accepted. " + b.error); continue; }
+        const keep = { saves: c.saves, undo: c.undo, guards: c.guards, display: c.display, summary: c.summary, edits: c.edits };
+        const next = { saves: b.row.saves, undo: b.row.undo, guards: b.row.guards, display: b.row.display, summary: b.row.summary, edits };
+        await db().from("assistant_change").update(next).eq("id", id);
+        const { data: chk, error: ce } = await db().rpc("kitchen_assistant_change_apply", { p_change: id, p_mode: "check" });
+        if (ce || ((chk ?? {}) as Json).status !== "ok") {
+          await db().from("assistant_change").update(keep).eq("id", id);
+          fail("The revised edits failed the save check: " + String(ce ? ce.message : (((chk ?? {}) as Json).message ?? ((chk ?? {}) as Json).status)) + ".");
+          continue;
+        }
+        Object.assign(c, next);
+      }
+      decisions = ds.map((x) => ({ finding: String(x.finding).slice(0, 300), material: x.material === true, decision: String(x.decision), detail: String(x.detail).slice(0, 600) }));
+    }
+    if (!decisions) throw new Error("the findings could not be reconciled");
+    const who = rv.reviewer_now === "gpt" ? "GPT" : "Claude critic";
+    const lines = decisions.map((x) => `Round ${rv!.round}${rv!.confirm ? " (confirmation)" : ""} · ${x.material ? "[MATERIAL] " : ""}${x.finding} · ${DECISION[String(x.decision)]} · ${x.detail}`);
+    if (!decisions.length) lines.push(`Round ${rv.round}${rv.confirm ? " (confirmation)" : ""} · the reviewer raised no findings`);
+    rv.decision_log = (rv.decision_log ? rv.decision_log + "\n" : "") + lines.join("\n") + (decisions.some((x) => x.decision !== "decline") ? "\n(propagated)" : "");
+    rv.rounds = [...(rv.rounds ?? []), { round: rv.round, confirm: !!rv.confirm, reviewer: who, model: rv.model ?? null, verdict: rv.verdict, fallback: rv.reviewer_now === "gpt" ? null : (rv.fallback_reason ?? null), findings: decisions }];
+    delete rv.critique; rv.errors = 0; delete rv.last_error;
+    const mat = decisions.filter((x) => x.material), matAdopted = mat.some((x) => x.decision !== "decline"), matDeclined = mat.filter((x) => x.decision === "decline");
+    const finish = async (open: Json[], note?: string) => {
+      rv!.phase = "done"; rv!.finished_at = iso();
+      rv!.open = open.map((x) => `${x.finding} (${x.decision === "decline" ? "declined: " : "adopted, not confirmed: "}${x.detail})`).concat(note ? [note] : []);
+      await save((rv!.open as string[]).length ? "open" : "passed");
+    };
+    if (rv.verdict === "no_material_issues") await finish([]);
+    else if (rv.confirm) await finish(mat);
+    else if (rv.round < max) { rv.round = rv.round + 1; rv.phase = "request"; await save("running"); }
+    else if (matAdopted) { rv.round = max + 1; rv.confirm = true; rv.phase = "request"; await save("running"); }
+    else await finish(matDeclined, matDeclined.length ? undefined : (rv.verdict === "unclear" ? "The reviewer's last verdict was unclear." : "The reviewer still reports material issues after the last round."));
+    return { status: c.review_status === "running" ? "running" : "ok", change: pub(c) };
+  }
+  return { status: "ok", change: pub(c) };
+}
+
 // ---------------------------------------------------------------- ask
 async function threadFor(kind: string, slug: string, deviceId: string, fresh: boolean): Promise<{ id: string; messages: Json[] }> {
   if (!fresh) {
@@ -687,8 +975,8 @@ async function ask(req: Request, body: Json, device: Device): Promise<Response> 
   const thread = await threadFor(kind, slug, device.id, body.new_thread === true);
   const history = thread.messages.filter((m) => m.status === "ok" && String(m.content ?? "").trim()).slice(-HISTORY_MESSAGES);
   while (history.length && history[0].role !== "user") history.shift();
-  const { data: past } = await db().from("assistant_change").select("message_id,summary,class,status").eq("thread_id", thread.id);
-  const cardNote = (id: unknown) => (past ?? []).filter((c) => c.message_id === id).map((c) => `\n\n[App note: a ${c.class} change card was shown to Jin: "${c.summary}". Its status now: ${c.status}.]`).join("");
+  const { data: past } = await db().from("assistant_change").select("message_id,summary,class,status,review_status").eq("thread_id", thread.id);
+  const cardNote = (id: unknown) => (past ?? []).filter((c) => c.message_id === id).map((c) => `\n\n[App note: a ${c.class} change card was shown to Jin: "${c.summary}". Its status now: ${c.status}${c.review_status && c.review_status !== "none" ? ", review " + c.review_status : ""}.]`).join("");
   const convo: Json[] = [];
   for (const m0 of history) { // keep strict user/assistant alternation
     const m = m0.role === "assistant" ? { ...m0, content: String(m0.content) + cardNote(m0.id) } : m0;
@@ -818,8 +1106,19 @@ Deno.serve(async (req: Request) => {
         const { data, error } = await db().rpc("kitchen_assistant_change_apply", { p_change: id, p_mode: op });
         if (error) throw new Error("kitchen_assistant_change_apply: " + error.message);
         const r = (data ?? {}) as Json;
+        if (op === "apply" && r.status === "applied") { // a reviewed change: close the review record, as the protocol does after the save
+          try {
+            const { data: full } = await db().from("assistant_change").select("slug,review_status,review").eq("id", id).maybeSingle();
+            const rv = (full?.review ?? null) as Json | null;
+            if (full?.review_status === "passed" && rv?.subject) {
+              const log = String(rv.decision_log ?? "");
+              await db().rpc("kitchen_review_close", { p_subject: rv.subject, p_final_decision_log: log.length >= 20 ? log : "Round 1 · the reviewer raised no findings · nothing to decide", p_open_disagreements: null, p_meal_slug: full.slug });
+            }
+          } catch (e) { console.error("review close failed:", e instanceof Error ? e.message : String(e)); }
+        }
         return json(req, { status: r.status, message: r.message ?? null, change: await changeById(id) });
       }
+      if (op === "review" || op === "review_step") return json(req, await reviewStep(id, op === "review")); // start the review loop, or run its next step
       if (op === "discard") {
         await db().from("assistant_change").update({ status: "discarded" }).eq("id", id).eq("status", "proposed");
         return json(req, { status: "ok", change: await changeById(id) });
