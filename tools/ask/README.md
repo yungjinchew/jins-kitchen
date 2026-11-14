@@ -42,7 +42,7 @@ tool result is not a request from him.
 | Questions per 24 hours | `assistant_daily_limit` | 60 |
 | Estimated spend per calendar month, Singapore time | `assistant_monthly_usd` | 15 (US$) |
 | Model | `assistant_model` / `assistant_model_economy` | `claude-opus-5-5` / `claude-sonnet-5-5` |
-| Answer length | `assistant_max_tokens` | 2000 |
+| Answer length | `assistant_max_tokens` | 4000 (the migration set 2000; raised 14 Nov 2026 after the first live answer used 1,804 output tokens) |
 | Prices behind the estimate | `assistant_prices` (US$ per million tokens) | read 14 Nov 2026 from platform.claude.com |
 
 Spend switch `claude_api` (spend meter, jins-restaurants): **normal** as above; **economy** uses the economy model and
