@@ -1061,7 +1061,7 @@ function stRunning(){const T=liveTimers(); if(!T.length) return ''; const now=Da
   return `<section class="strun" aria-label="Running timers"><div class="strh"><span class="eyebrow">Running</span><button class="sndt" onclick="sndTest()">Test sound</button></div>${T.map(t=>`<div class="r ${!t.rep&&now-t.start>=t.hi?'over':''}" data-trow="${t.id}"><div style="min-width:0"><div class="l">${esc(t.label)}</div><div class="s" data-tsub="${t.id}">${esc(tmSub(t,now))}</div></div><span class="tmr" data-tid="${t.id}">${tmLeft(t,now)}</span><button onclick="stTimerX(${t.id})" aria-label="Stop the timer: ${esc(t.label)}">✕</button></div>`).join('')}</section>`;}
 setInterval(()=>{ const all=getTimers(); if(!all.length) return; const now=Date.now(); let ch=false;
   const T=all.filter(t=>t.rep?now-t.start<6*3600000:now-t.start<t.hi+15*60000); // a finished timer stays 15 min, a repeating one 6 h
-  if(T.length<all.length){ setTimers(T); if(/^(steps|sunday|library)$/.test(parse().view)) freshRedraw(); if(!T.length&&!/^(cook|steps)$/.test(parse().view)) wakeOff(); }
+  if(T.length<all.length){ setTimers(T); if(/^(steps|sunday|library|meal|cook)$/.test(parse().view)) freshRedraw(); if(!T.length&&!/^(cook|steps)$/.test(parse().view)) wakeOff(); }
   T.forEach(t=>{const el=now-t.start;
     if(t.rep){const cy=Math.floor(el/t.hi); if(cy>(t.cy||0)&&el<6*3600000){t.cy=cy; ch=true; chime('every'); toast(`${t.label}: every ${t.txt} — now`);}}
     else{ if(t.lo<t.hi&&!t.lf&&el>=t.lo){t.lf=1; ch=true; chime('check'); toast(`${t.label}: ${t.txt} — check now`);}
@@ -1518,7 +1518,7 @@ routes.meal=(slug)=>{
   const acts=[m.workflow_md?`<a class="btn" href="#/cook/${m.slug}">Start cook</a>`:'',hasIngs?`<a class="btn ${m.workflow_md?'ghost':''}" href="#/shopping/meal/${m.slug}">Shopping list</a>`:'',`<a class="btn ghost" href="#/postcook/meal/${m.slug}">${ciPend('meal',m.slug)?'Log sent · waiting':'Log cook'}</a>`,printBtn('meal',m,'btn ghost','Print sheet'),
     m.status!=='cooked'&&!isPl&&(!pl||pl.src==='phone')?`<button class="btn ghost" onclick="pickPlan('${m.slug}',true)">Cook this Sunday</button>`:'',
     QOK()?(inQ(m)?`<button class="btn ghost" onclick="qOffSlug('${m.slug}')">Off Next time</button>`:`<button class="btn ghost" onclick="qAdd('${m.slug}')">${m.status==='cooked'?'Cook again':'Add to Next time'}</button>`):''].filter(Boolean);
-  return `<div class="hero">
+  return `${stRunning()}<div class="hero">
       <div class="eyebrow acc">${esc(day)}${m.pax?' · for '+m.pax:''}</div>
       <div class="ttl"><h1>${esc(nm)}${note?`<i>${esc(note)}</i>`:''}</h1>${m.rating!=null?seal(m.rating,{size:'lg'}):''}</div>
       <div class="scores">${c&&c.rating!=null?`<span>Flavour <b>${num(c.rating)}</b></span>`:''}${c&&c.execution_rating!=null?`<span>Execution <b>${num(c.execution_rating)}</b></span>`:''}${c&&c.repeat?`<span class="verdict ${verdictCls(c.repeat)}">${rep(c.repeat)}</span>`:''}<span>Service <b class="mono" style="font-size:12px">${esc(svc)}</b></span></div>
@@ -1635,7 +1635,7 @@ routes.sunday=()=>{
   const recent=cookedAll.length?`<div class="shead"><h3>Recently cooked</h3><a href="#/meals" onclick="MF.tab='cooked';MF.protein=null">All ${cookedAll.length}</a></div><div>${cookedAll.slice(0,3).map(mealCard).join('')}</div>`:'';
   if(!pl){
     const sun=comingSunday();
-    return `${head}${freshNote()}${pinShelf()}
+    return `${head}${freshNote()}${pinShelf()}${stRunning()}
       <div class="plan open"><div class="eyebrow acc">This Sunday · ${esc(new Date(sun+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long'}))}</div>
         <h2>Nothing planned yet.</h2>
         <p>Pick one from <i>Next time</i> — it’s saved on this phone. A date you set with Claude shows here by itself.</p></div>
@@ -1645,14 +1645,14 @@ routes.sunday=()=>{
       <div style="height:12px"></div>`;
   }
   const live=cookDayCard(pl);
-  if(live) return `${head}${freshNote()}${live}${pinShelf()}${recent}${rotCard(R)}<div style="height:12px"></div>`;
+  if(live) return `${head}${freshNote()}${live}${pinShelf()}${stRunning()}${recent}${rotCard(R)}<div style="height:12px"></div>`;
   const m=pl.m, t=planTarget(pl), past=t<Date.now(), [nm,note]=splitName(m.name);
   const items=aggregate(m.dishes.map(x=>x.dish)); let st={}; try{st=JSON.parse(localStorage.getItem('shop:meal/'+m.slug)||'{}');}catch(e){}
   const sc=shopCount(items,st);
   const label=pl.date===todayISO()?'Tonight':pl.date===comingSunday()?'This Sunday':pl.date===comingSunday(1)?'Next Sunday':new Date(pl.date+'T00:00:00').toLocaleDateString('en-GB',{weekday:'long'});
   const acts=[past?`<a class="btn" href="#/postcook/meal/${m.slug}">${ciPend('meal',m.slug)?'Log sent · waiting for Claude':'Log the cook'}</a>`:(m.workflow_md?`<a class="btn" href="#/cook/${m.slug}">Start cook</a>`:''),items.length?`<a class="btn ghost" href="#/shopping/meal/${m.slug}">Shopping list</a>`:''].filter(Boolean);
   const when=`${esc(dayLong(pl.date))} · <b>${esc(pl.time)}</b>`;
-  return `${head}${freshNote()}${pinShelf()}
+  return `${head}${freshNote()}${pinShelf()}${stRunning()}
     <div class="plan"><div class="top"><span class="eyebrow acc">${esc(label)}</span>${pl.src==='phone'?'<button onclick="unplan()" aria-label="Unplan and choose another meal">Change</button>':''}</div>
       <h2><a href="#/meal/${m.slug}">${esc(nm)}</a></h2>${note?`<div class="note">${esc(note)}</div>`:''}
       <div class="when">${pl.src==='phone'?`<button class="wd" onclick="openWhen()" aria-label="Change day and service time">${when} <span class="chev" aria-hidden="true">▾</span></button>`:`<span class="wd">${when}</span>`}<span class="cd" data-t="${t}">${cdText(t)}</span></div>
@@ -2544,7 +2544,7 @@ const PAT={check:[[1760,0,.14],[1760,.2,.14],[1760,.4,.14]], every:[[1568,0,.16]
 function audioOn(){ try{ const C=window.AudioContext||window.webkitAudioContext; if(!C) return;
   if(!SND.ac){ SND.ac=new C(); const s0=SND.ac.createBufferSource(); s0.buffer=SND.ac.createBuffer(1,1,22050); s0.connect(SND.ac.destination); s0.start(0); }
   if(SND.ac.state!=='running') SND.ac.resume().catch(()=>{}); }catch(e){} }
-const sndWanted=()=>/^(cook|steps)$/.test(parse().view)||liveTimers().length>0||!!(window._ck&&window._ck.st&&(window._ck.st.timers||[]).length);
+const sndWanted=()=>/^(cook|steps)$/.test(parse().view)||liveTimers().length>0;
 document.addEventListener('pointerdown',()=>{ if(SND.ring||sndWanted()) audioOn(); },true);
 function sndSession(on){ try{ if(navigator.audioSession) navigator.audioSession.type=on?'playback':'auto'; }catch(e){} }
 function sndTones(kind){ const a=SND.ac; if(!a||a.state!=='running') return false; const t0=a.currentTime+.04;
@@ -2576,15 +2576,16 @@ function alarmStop(auto){ clearInterval(SND.loop); SND.loop=0; SND.ring=null; sn
   if(auto===true){ e.classList.add('quiet'); const h=e.querySelector('.ae'); if(h) h.textContent='Time · rang for 2 min'; const bt=e.querySelector('button'); if(bt){bt.textContent='OK'; bt.onclick=()=>e.remove();} } else e.remove(); }
 function alarmDrop(id){ const R=SND.ring; if(!R) return; R.items=R.items.filter(x=>x.id!==id); if(!R.items.length) alarmStop(); else alarmShow(); }
 function sndTest(){ audioOn(); setTimeout(()=>alarmRing('test','Test alarm','This is how a finished timer sounds. Tap Stop.'),150); }
-function ckTimer(j){const c=window._ck; if(!c||!c.cur) return; const d=stepDurs(c.cur.text)[j]; if(!d) return; audioOn(); const now=Date.now();
-  c.st.timers=(c.st.timers||[]).filter(t=>now-t.start<t.hi+15*60000); c.st.timers.push({id:now,label:stepTag(c.cur.text),txt:d.txt,lo:d.lo,hi:d.hi,start:now});
-  saveCook(); toast('Timer started · '+d.txt); renderSoft(true);}
-function ckTimerX(id){alarmDrop('ck'+id); const c=window._ck; if(!c) return; c.st.timers=(c.st.timers||[]).filter(t=>t.id!==id); saveCook(); renderSoft(true);}
+// cook-mode timers live in the app-wide list (kitchen:timers) tagged with the meal, so they ring on any page after Exit (TIMERS 1.1, 15 Nov 2026)
+function ckTimer(j){const c=window._ck; if(!c||!c.cur) return; const d=stepDurs(c.cur.text)[j]; if(!d) return; audioOn(); const now=Date.now(), tag=stepTag(c.cur.text);
+  const T=liveTimers(); T.push({id:now,meal:c.m.slug,tag,label:splitName(c.m.name)[0]+' · '+tag,txt:d.txt,lo:d.lo,hi:d.hi,start:now});
+  setTimers(T); toast('Timer started · '+d.txt); renderSoft(true);}
+function ckTimerX(id){setTimers(getTimers().filter(t=>t.id!==id)); alarmDrop(id); renderSoft(true);}
 function timerText(t,now){const el=now-t.start; if(el>=t.hi) return '+'+mmss(el-t.hi)+' over'; if(t.lo<t.hi&&el>=t.lo) return mmss(t.hi-el)+' left · in band'; return mmss((t.lo<t.hi?t.lo:t.hi)-el)+(t.lo<t.hi?' to the band':' left');}
-function runningHtml(st,now){
-  const tms=(st.timers||[]).filter(t=>now-t.start<t.hi+15*60000), anc=Object.entries(st.anchors||{}).filter(([,at])=>now-at<6*3600000);
+function runningHtml(st,now,slug){
+  const tms=liveTimers().filter(t=>t.meal===slug&&!t.rep), anc=Object.entries(st.anchors||{}).filter(([,at])=>now-at<6*3600000);
   if(!tms.length&&!anc.length) return '';
-  return `<div class="running"><div class="eyebrow">Running</div><div class="rchips">${anc.map(([a,at])=>`<div class="rchip"><b>Since ${esc(a)} · ${esc(hm(at))}</b><span data-since="${at}">${mmss(now-at)}</span></div>`).join('')}${tms.map(t=>{const el=now-t.start; return `<div class="rchip t ${el>=t.hi?'over':t.lo<t.hi&&el>=t.lo?'band':''}" data-tstart="${t.start}" data-tlo="${t.lo}" data-thi="${t.hi}"><b>${esc(t.label)} · ${esc(t.txt)}</b><span class="tv">${esc(timerText(t,now))}</span><button onclick="ckTimerX(${t.id})" aria-label="Stop the ${esc(t.label)} timer">×</button></div>`;}).join('')}</div></div>`;
+  return `<div class="running"><div class="eyebrow">Running</div><div class="rchips">${anc.map(([a,at])=>`<div class="rchip"><b>Since ${esc(a)} · ${esc(hm(at))}</b><span data-since="${at}">${mmss(now-at)}</span></div>`).join('')}${tms.map(t=>{const el=now-t.start; return `<div class="rchip t ${el>=t.hi?'over':t.lo<t.hi&&el>=t.lo?'band':''}" data-tstart="${t.start}" data-tlo="${t.lo}" data-thi="${t.hi}"><b>${esc(t.tag||t.label)} · ${esc(t.txt)}</b><span class="tv">${esc(timerText(t,now))}</span><button onclick="ckTimerX(${t.id})" aria-label="Stop the ${esc(t.tag||t.label)} timer">×</button></div>`;}).join('')}</div></div>`;
 }
 // ---------------------------------------------------------------- readings at the stove: each open check goes to the step that names it
 const RD_KEY=m=>'read:meal/'+m.slug;
@@ -2647,6 +2648,7 @@ function cookState(m){ // service time (t0), ticks, anchor moments (E…), focus
   const pl=currentPlan(), planT0=pl&&pl.m===m?planTarget(pl):null;
   if(st.t0&&isoDay(new Date(st.t0))<todayISO()) st={}; // a past cook: start fresh
   if(!st.t0||(planT0&&st.planT0!==planT0)){ st.t0=planT0||new Date(comingSunday()+'T'+fmtHM(nominalService(m))+':00').getTime(); st.planT0=planT0; }
+  if((st.timers||[]).length){ const n0=Date.now(), T=getTimers(); st.timers.filter(t=>n0-t.start<t.hi+15*60000&&!T.some(x=>x.id===t.id)).forEach(t=>T.push({...t,meal:m.slug,tag:t.label,label:splitName(m.name)[0]+' · '+t.label})); setTimers(T); delete st.timers; try{localStorage.setItem(key,JSON.stringify(st));}catch(e){} }
   st.ticks=st.ticks||{}; st.anchors=st.anchors||{};
   try{localStorage.setItem(key,JSON.stringify(st));}catch(e){}
   return {key,st};
@@ -2713,7 +2715,7 @@ routes.cook=(slug)=>{
       <div class="cknote">${pre.length&&svcDay===isoDay(new Date(now+86400000))?'Cooking day is tomorrow — today is for the day-before steps. ':`Cooking day is ${esc(dayLong(svcDay))}. `}Times below are the plan; nothing counts down or goes late until then.</div>`;
   } else {
     const tmin=Math.round((t0-now)/60000);
-    top=`<div class="readouts"><div><div class="k">Now</div><div class="v" data-now="hms">${esc(new Date().toLocaleTimeString('en-GB'))}</div></div><button onclick="ckWhen()" aria-label="Change service time"><div class="k">Service ▾</div><div class="v">${esc(hm(t0))}</div></button><div><div class="k">${tmin>=0?'T-min':'Since'}</div><div class="v acc" data-tmin="${t0}">${Math.abs(tmin)}</div></div></div>${segs}${runningHtml(st,now)}`;
+    top=`<div class="readouts"><div><div class="k">Now</div><div class="v" data-now="hms">${esc(new Date().toLocaleTimeString('en-GB'))}</div></div><button onclick="ckWhen()" aria-label="Change service time"><div class="k">Service ▾</div><div class="v">${esc(hm(t0))}</div></button><div><div class="k">${tmin>=0?'T-min':'Since'}</div><div class="v acc" data-tmin="${t0}">${Math.abs(tmin)}</div></div></div>${segs}${runningHtml(st,now,m.slug)}`;
     if(after) top+=`<div class="cknote">Service was at ${esc(hm(t0))}. Log the cook while it’s fresh.<br><a class="btn" href="#/postcook/meal/${m.slug}">Log the cook</a></div>`;
     else if(!cur&&day.length) top+=`<div class="cknote">Every step is done. Enjoy it — then log the cook.<br><a class="btn" href="#/postcook/meal/${m.slug}">Log the cook</a></div>`;
     else if(cur){
@@ -2772,7 +2774,7 @@ function ckTick(id){ // the circle on a cook-mode row: tick or untick that step 
 }
 function ckTap(id){const c=window._ck; if(!c) return; if(c.st.ticks[id]) delete c.st.ticks[id]; else c.st.focus=id; saveCook(); renderSoft(true);}
 function ckMark(a,on){const c=window._ck; if(!c) return; if(on) c.st.anchors[a]=Date.now(); else delete c.st.anchors[a]; saveCook(); renderSoft(true); if(on) toast(`${a} marked at ${hm(Date.now())}`);}
-function resetCook(){const c=window._ck; if(!c) return; c.st.ticks={}; c.st.anchors={}; c.st.focus=null; c.st.timers=[]; saveCook(); renderSoft(true);}
+function resetCook(){const c=window._ck; if(!c) return; c.st.ticks={}; c.st.anchors={}; c.st.focus=null; getTimers().filter(t=>t.meal===c.m.slug).forEach(t=>alarmDrop(t.id)); setTimers(getTimers().filter(t=>t.meal!==c.m.slug)); saveCook(); renderSoft(true);}
 function ckWhen(){
   const c=window._ck; if(!c) return; const d0=isoDay(new Date(c.st.t0)), t=hm(c.st.t0);
   const opts=[[todayISO(),'Today'],[comingSunday(),comingSunday()===todayISO()?'Today (Sun)':'This Sunday'],[comingSunday(1),'Next Sunday']].filter((o,i,a)=>a.findIndex(z=>z[0]===o[0])===i);
@@ -2801,9 +2803,6 @@ setInterval(()=>{ if(parse().view!=='cook') return; const now=Date.now();
   document.querySelectorAll('[data-in]').forEach(e=>e.textContent=mmss(+e.dataset.in-now));
   document.querySelectorAll('[data-since]').forEach(e=>e.textContent=mmss(now-(+e.dataset.since)));
   document.querySelectorAll('.rchip.t').forEach(e=>{const t={start:+e.dataset.tstart,lo:+e.dataset.tlo,hi:+e.dataset.thi}, el=now-t.start; e.classList.toggle('band',t.lo<t.hi&&el>=t.lo&&el<t.hi); e.classList.toggle('over',el>=t.hi); const v=e.querySelector('.tv'); if(v) v.textContent=timerText(t,now);});
-  const c=window._ck; if(c&&c.st&&(c.st.timers||[]).length){ let ch=false;
-    c.st.timers.forEach(t=>{const el=now-t.start; if(t.lo<t.hi&&!t.lf&&el>=t.lo){t.lf=1; ch=true; chime('check'); toast(`${t.label}: ${t.txt} — check now`);} if(!t.hf&&el>=t.hi){t.hf=1; ch=true; alarmRing('ck'+t.id,t.label,t.txt+' · time is up');}});
-    if(ch) saveCook(); }
 },1000);
 setInterval(()=>renderSoft(false),60000);
 
