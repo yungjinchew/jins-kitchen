@@ -59,4 +59,13 @@ m.ASK.dev = { st: 'approved' };
 m.askTake({ status: 'ok', has_key: true, used_today: 1, daily_limit: 60, messages: [{ id: 'm1', role: 'user', content: 'q', status: 'ok' }, { id: 'm2', role: 'assistant', content: 'See the card.', status: 'ok', tools: [{ name: 'propose_change', label: 'Proposed a change' }] }], changes: [{ id: 'c9', message_id: 'm2', summary: 'S', class: 'minor', status: 'proposed', display: [] }] }, 'meal', 'x');
 h = m.askBody('meal', 'x');
 t('cards come back with their answer on reopening; no tool chip for them', /askchg proposed/.test(h) && /'c9','apply'/.test(h) && !/Proposed a change<\/span>/.test(h) && /saved only when you tap Apply/.test(h), h);
+// dishes in and out (ASK 1.3)
+h = m.askChangeHtml({ id: 'c10', summary: 'Swap the dessert for a mango sorbet.', class: 'material', class_reason: 'A dish changes.', status: 'proposed', review_status: 'none', display: [
+  { where: 'Meal · Dishes', was: 'Chocolate Mandarins (dessert)', now: '(taken off the meal; stays in the Library)' },
+  { where: 'Meal · Dishes', was: '', now: 'Add a new dish: Mango Sorbet <x> (dessert)' },
+  { where: 'Mango Sorbet · Ingredients', was: '', now: '500 ml mango sorbet\n200 g strawberry' },
+  { where: 'Mango Sorbet · Method', was: '', now: '## Method\n\n1. **Hull the berries.**\n2. **Scoop <img src=x onerror=alert(1)>.**' }] });
+t('swap card: dish out struck through, dish in as New, escaped', /<span>Was<\/span><div>Chocolate Mandarins \(dessert\)<\/div>/.test(h) && /stays in the Library/.test(h) && /Add a new dish: Mango Sorbet &lt;x&gt; \(dessert\)/.test(h) && /500 ml mango sorbet<br>200 g strawberry/.test(h) && /'review'\)">Review with GPT/.test(h) && !/'apply'/.test(h), h);
+t('a new dish method reads as numbered steps, safely', /<div class="askmd"><h4>Method<\/h4><ol start="1"><li><b>Hull the berries\.<\/b><\/li>/.test(h) && !/<img/.test(h), h);
+t('the meal card mentions swapping a dish; the dish card does not', /swapping a dish/.test(m.askBox('meal', 'x')) && !/swapping a dish/.test(m.askBox('dish', 'x')));
 console.log(fails ? `\n${fails} FAILED` : '\nall passed'); process.exit(fails ? 1 : 0);

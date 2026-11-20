@@ -1,6 +1,6 @@
-# Ask Claude in the kitchen app (ASK 1.2, 14 Nov 2026)
+# Ask Claude in the kitchen app (ASK 1.3, 20 Nov 2026; 1.0 to 1.2 on 14 Nov)
 
-All three stages. From a meal or dish page, Ask opens a conversation with Claude about that recipe. Claude reads
+All four stages. From a meal or dish page, Ask opens a conversation with Claude about that recipe. Claude reads
 the saved record (`kitchen_meal_context`, plus the full ingredient rows), the governance Core, and on demand the other
 governance files, today's cellar list and other saved dishes.
 
@@ -17,7 +17,8 @@ Jin's rule (14 Nov 2026): a material change is saved only after the review. Clau
 method, workflow or shared prep, an ingredient's quantity or unit changes, an ingredient is added or removed, or
 servings, equipment, service time or people change. The database refuses to apply a material change whose review has not passed, whatever the
 app sends, and writes only these fields: dish `method_md`, `summary`, `servings`, `equipment`, `nutrition_estimate`,
-ingredient rows; meal `workflow_md`, `shared_prep_md`, `shopping_notes`, `service_time`, `pax`.
+ingredient rows; meal `workflow_md`, `shared_prep_md`, `shopping_notes`, `service_time`, `pax`; and, in a stage 4
+change only, dish links, unlinks and a new dish (below).
 
 **A change Jin sent for review (Cooking project).** It appears in `select * from public.kitchen_comment_queue();` with
 surface `app-ask`. Read the exact proposal: `select summary, class_reason, display, saves from public.assistant_change
@@ -48,17 +49,43 @@ The loop is a state machine on `assistant_change.review`; the app calls one step
 `op: review_step` every few seconds), so a closed page resumes where it stopped. `kitchen_assistant_review_lock` stops
 two polls running the same step. The app never receives the critique or the draft, only the Review log.
 
+**Stage 4 (ASK 1.3, 20 Nov 2026): which dishes are on a meal.** Jin asked for the in-app chat to swap dishes, not
+only edit them. On a meal page `propose_change` takes `meal.dishes_out` (dishes to take off) and `meal.dishes_in`
+(a saved dish by slug, or a simple new dish given in full in `new`). A swap is one change.
+
+- **Always material**, so always reviewed (the function forces it, and the database refuses a dish link, unlink or
+  new dish in a change classed minor). The review draft shows the meal as it will be, the new dish marked new.
+- **Saved dishes first:** the model finds one with `read_dish`; a dish used unchanged in another meal is linked, not
+  copied (data protocol §3.8). **A new dish** is a simple component only: at most 12 ingredient lines and 8 numbered
+  steps, each step opening with a bold lead (Core §III), a Nutrition Estimate, a slug with the meal's prefix; status
+  `designed`, `governance_version` from the manifest, source `Ask in app <date>: made for <meal>`. Bigger recipes go
+  to the Cooking project.
+- **Place in the order:** a dish put on takes the place of a removed dish with the same role, otherwise it goes last.
+- **How it saves** (migration 0020): saves of type `dish_new` (`kitchen_save_dish`), `link` (`kitchen_save_meal`
+  `dishes`) and `unlink` (`kitchen_meal_unlink`, which logs the removed link as `unlink_dish` in `kitchen_revision`
+  and refuses to leave a meal with no dishes). Links run before unlinks, so a one-dish meal can swap its dish. A guard
+  `dish_new` checks that the new slug is still free at Apply.
+- **Undo** puts removed dishes back with their old role and place first, then takes added dishes off, then restores
+  the text. Dishes are never deleted: a dish taken off, or created and then undone, stays in the Library.
+- Still out of reach in the app: a new meal, renaming, open validations, governance files (the Cooking project). The
+  model points cook logs to the meal's Log the cook page and wine to its In the glass card.
+- **Checked 20 Nov 2026** on Bolognese Sunday from a test device (revoked after): pineapple swapped for the fish-pie
+  strawberries with the workflow and shopping notes carried through; GPT reviewed it in one round (one timing point,
+  adopted with modification, so the change was restated and re-checked); applied; undone; the meal's text, dishes and
+  order matched the snapshot taken before. A new dish was checked by the database's dry run only, so no test dish was
+  left in the Library.
+
 ## The parts
 
 | Part | Where | Changed how |
 |---|---|---|
 | The Ask page and card | `tools/ask/ask_region.js`, `tools/ask/ask.css` | Edit, then `python3 tools/ask/apply_ask.py site/index.html` (re-runnable, replaces only its own sections), bump `sw.js`, deploy |
 | The function that asks Claude | `supabase/functions/kitchen-assistant/index.ts` | Deploy with the Supabase connector (`deploy_edge_function`, `verify_jwt` **false**). Keep this file and the deployed copy the same |
-| Tables and chat commands | `supabase/migrations/2026-11-14-0017-kitchen-assistant.sql` (devices, conversations, limits), `…-0018-kitchen-assistant-changes.sql` (proposals, apply / undo / close), `…-0019-kitchen-assistant-review.sql` (review state, lock, review cap) | A new migration |
+| Tables and chat commands | `supabase/migrations/2026-11-14-0017-kitchen-assistant.sql` (devices, conversations, limits), `…-0018-kitchen-assistant-changes.sql` (proposals, apply / undo / close), `…-0019-kitchen-assistant-review.sql` (review state, lock, review cap), `2026-11-20-0020-kitchen-meal-dishes.sql` (dish links, unlinks and new dishes; `kitchen_meal_unlink`) | A new migration |
 | Settings | `kitchen_config` rows starting `assistant_`, plus `spend_mode_url` / `spend_mode_key` | SQL from a chat |
 | The key | Function secret `ANTHROPIC_API_KEY` (Supabase > Edge Functions > Secrets) | Jin only. Never in a file, a prompt or the database |
 
-**Before any deploy:** `grep -c 'PRINT SPEC' site/index.html` prints 1 and `grep -c 'ASK 1.2' site/index.html` prints 2
+**Before any deploy:** `grep -c 'PRINT SPEC' site/index.html` prints 1 and `grep -c 'ASK 1.3' site/index.html` prints 2
 (script and styles). If another edit dropped the Ask section, re-run `apply_ask.py`.
 
 ## The lock: paired devices
@@ -105,8 +132,8 @@ everything before applying bold, lists and headings, so model output can never r
 ## Tests
 
 ```
-# the function, against an in-memory database and a scripted model stream (Node 22+): run.ts = asking, run2.ts = changes, run3.ts = the review loop
-cd tools/ask/test && sed -e 's#^import { createClient, type SupabaseClient } from "npm:@supabase/supabase-js@2";#import { createClient } from "./mock-supabase.ts"; type SupabaseClient = any;#' ../../../supabase/functions/kitchen-assistant/index.ts > index.ts && node --experimental-strip-types --no-warnings run.ts && node --experimental-strip-types --no-warnings run2.ts && node --experimental-strip-types --no-warnings run3.ts; rm -f index.ts
+# the function, against an in-memory database and a scripted model stream (Node 22+): run.ts = asking, run2.ts = changes, run3.ts = the review loop, run4.ts = dishes in and out
+cd tools/ask/test && sed -e 's#^import { createClient, type SupabaseClient } from "npm:@supabase/supabase-js@2";#import { createClient } from "./mock-supabase.ts"; type SupabaseClient = any;#' ../../../supabase/functions/kitchen-assistant/index.ts > index.ts && node --experimental-strip-types --no-warnings run.ts && node --experimental-strip-types --no-warnings run2.ts && node --experimental-strip-types --no-warnings run3.ts && node --experimental-strip-types --no-warnings run4.ts; rm -f index.ts
 # the page's rendering and states
 node tools/ask/test/ui.test.js
 # the real page in a headless phone-sized browser, light and dark (needs playwright and Chrome)

@@ -1,9 +1,13 @@
-// jins-kitchen Edge Function: kitchen-assistant (ASK 1.2, 14 Nov 2026) — Ask Claude about one meal or dish, from the app.
+// jins-kitchen Edge Function: kitchen-assistant (ASK 1.3, 20 Nov 2026) — Ask Claude about one meal or dish, from the app.
 // Stage 1: questions. It reads the recipe, its cook history, the governance files and the cellar.
 // Stage 2 (ASK 1.1): changes, as proposals only. Claude proposes edits; Jin applies a minor one with a tap (and can undo it);
 // a material one needs the review loop first. The model itself never writes to a recipe.
 // Stage 3 (ASK 1.2): the review loop runs here (GPT through the kitchen review service, Claude reconciling, a Claude critic
 // when GPT cannot review). A clean review unlocks Apply; an open disagreement holds the change for the Cooking project.
+// Stage 4 (ASK 1.3): which dishes are in a meal. On a meal page a change can take a dish off the meal, put a saved dish on,
+// or create a simple new dish (12 ingredient lines, 8 steps at most) and put it on. Always material, so always reviewed;
+// the database (migration 0020) applies it through kitchen_save_dish, kitchen_save_meal and kitchen_meal_unlink, and Undo
+// puts the meal back. A dish taken off, or created and then undone, stays in the Library: dishes are never deleted.
 //
 // Who may call it: a paired device. The app keeps a random key on the phone and sends it as x-device-key; only its
 // SHA-256 is stored (assistant_device). A new device gets a 6-character code that Jin sends to Claude in a chat, and
@@ -16,7 +20,7 @@
 // verify_jwt is off: the app's publishable key is not a JWT, and the device key is the real check.
 import { createClient, type SupabaseClient } from "npm:@supabase/supabase-js@2";
 
-const VERSION = "ASK 1.2";
+const VERSION = "ASK 1.3";
 const ANTHROPIC_URL = "https://api.anthropic.com/v1/messages";
 const ORIGINS = [/^https:\/\/jins-kitchen\.netlify\.app$/, /^https:\/\/[a-z0-9-]+--jins-kitchen\.netlify\.app$/];
 const MAX_TURNS = 8; // model calls per question (tool loop)
@@ -198,8 +202,16 @@ You cannot write to a recipe. When Jin asks for a change, or says yes to one you
 - Class it honestly. "material" is anything that would change the result on the plate, the safety of the food, or whether the timeline can be executed: a quantity, a time, a temperature, an ingredient, a technique, the order of work, the number of people. "minor" is wording that changes no instruction, a buying note, a shopping note, a typo. The app also marks a change material when a number moves.
 - A minor change gets an Apply button. A material change gets Review with GPT instead: when he taps it the app runs his review protocol on the change (an independent reviewer, then a reconciliation of every finding), which takes a few minutes and may adjust the change, and it offers Apply only after a clean review. Say which it is in one line. Never say or imply a recipe has been changed: it changes only when he taps Apply.
 - If propose_change returns an error, fix the edit it names and call it again. Do not paste the edits into the chat instead.
-- Out of reach here: a new dish or meal, a dish's name, linking or removing dishes, cook logs, open validations, wine, governance files. Say so and point him to the Cooking project.
+- Out of reach here: a new meal, renaming a dish or meal, open validations and governance files: say so and point him to the Cooking project. A cook is logged on the meal's Log the cook page, and a wine pick is made in its In the glass card, both in this app: point him there.
 - After the card is shown, answer in one to three lines. Do not repeat the edits.
+
+# Changing which dishes are in the meal (meal pages only)
+On a meal page a change can also take a dish off the meal (meal.dishes_out) and put one on (meal.dishes_in). To swap a dish, take the old one out and put the new one in, in one change. It is always material.
+- A saved dish: find it with read_dish and give its exact slug. If a saved dish fits, use it rather than writing a new one: a dish used unchanged in another meal is linked, not copied.
+- A new dish: only a simple component, such as a bought dessert with fruit, a plain salad or a dip: at most 12 ingredient lines and 8 method steps. Give it in full in "new" (name, category, servings, method_md, ingredients, nutrition_estimate), written to the Core like any recipe: numbered steps that each open with a bold lead, both units, a Nutrition Estimate per serving. Its slug carries the meal's short prefix, as the other dishes' slugs do. Anything bigger is a recipe for the Cooking project: say so.
+- Give each dish put on the meal its role (main, side, sauce, salad, soup, bread, starter or dessert). It takes the place in the order of a removed dish with the same role, otherwise it goes last.
+- A dish taken off stays in his Library. Nothing is deleted, and Undo puts the meal back.
+- Carry the swap through the meal in the same change: every line of the workflow, shared prep and shopping notes that names the old dish, its oven or hob slot, or its timing is edited or removed, and the new dish gets what it needs (a chill, a purchase, a slot in the timeline). Check the timeline at both ends.
 
 # How to answer
 - Lead with the answer. One strong recommendation, not a menu of options, unless he asks for options.
@@ -212,8 +224,9 @@ You cannot write to a recipe. When Jin asks for a change, or says yes to one you
 
 # Standing household rules (apply without being asked)
 - Household of three adults by default: Jin, Hui Fong and Lukas. If the meal's pax differs, use the record.
-- Carbohydrate moderation is Jin's standing preference: slightly smaller starch portions, no added carb component unless the dish needs it.
-- Conservative salt and sugar, adjustable at the table where the dish allows. The low-sodium default is a rule, not a nicety.
+- Starch: a modest portion of rice, noodles or bread most nights (household rule, 15 Nov 2026; it replaced carbohydrate moderation).
+- Conservative salt, adjustable at the table where the dish allows. The low-sodium default is a rule, not a nicety. Sugar stays conservative in savoury dishes; desserts are balanced: properly sweet but below American levels, never cut until the dessert suffers.
+- Cooking for three: cook with chilli to medium heat (don't leave it out), with extra chilli on the side; beef medium. Hui Fong and Lukas prefer lighter, cleaner food; richness depends on the dish. A dish one of them avoids is flagged for Jin to decide (Hui Fong: sweetbreads, snake, gorgonzola, raw or barely cooked meat; Lukas: liver, tripe, intestines, strong cheese, durian, bitter gourd, slimy textures; Jin: tripe, intestines, sweetbreads, slimy or gelatinous textures). No allergies in the household (household palate profile, 16 Nov 2026).
 - Food safety follows the Core's food-safety floor. Never relax it to make a plan fit; say what would have to change instead.
 - Never state an ability, tolerance, preference or limit of Jin's or his family's that is not in the record or the Core. Ask instead.
 - Wine: only when asked. Call read_cellar and read_governance_module("wine_pairing") first, check the snapshot date on the cellar's first line, and recommend only bottles in its Current cellar table. If the cellar cannot be read, give style guidance and say no bottle is named.
@@ -247,7 +260,7 @@ function tools(man: Manifest): Json[] {
     },
     {
       name: "propose_change",
-      description: "Propose a change to this page's recipe for Jin to approve. Nothing is saved by this call: the app shows a before/after card, and he taps Apply (minor) or Review with GPT (material). Call it once per change, with every edit that belongs to it. Only when Jin has asked for the change. On a meal page you can change the meal's workflow, shared prep, shopping notes, service time and number of people, and any of its dishes; on a dish page, that dish only.",
+      description: "Propose a change to this page's recipe for Jin to approve. Nothing is saved by this call: the app shows a before/after card, and he taps Apply (minor) or Review with GPT (material). Call it once per change, with every edit that belongs to it. Only when Jin has asked for the change. On a meal page you can change the meal's workflow, shared prep, shopping notes, service time and number of people, any of its dishes, and which dishes are on it (meal.dishes_out, meal.dishes_in); on a dish page, that dish only.",
       input_schema: {
         type: "object",
         properties: {
@@ -286,6 +299,38 @@ function tools(man: Manifest): Json[] {
             properties: {
               text_edits: { type: "array", items: { type: "object", properties: { field: { type: "string", enum: ["workflow_md", "shared_prep_md", "shopping_notes"] }, find: { type: "string" }, replace: { type: "string" }, append: { type: "string", description: "shopping_notes only: a new note added on its own line, instead of find/replace." } }, required: ["field"] } },
               set: { type: "object", description: "service_time (HH:MM), pax (people)." },
+              dishes_out: { type: "array", description: "Dishes to take off this meal. They stay in the Library.", items: { type: "object", properties: { slug: { type: "string", description: "The slug of a dish on this meal." } }, required: ["slug"] } },
+              dishes_in: {
+                type: "array",
+                description: "Dishes to put on this meal: a saved dish by its exact slug (find it with read_dish), or a simple new dish given in full in \"new\".",
+                items: {
+                  type: "object",
+                  properties: {
+                    slug: { type: "string", description: "A saved dish's exact slug; or, for a new dish, its new slug (lower-case kebab-case, the meal's short prefix, at most 60 characters)." },
+                    role: { type: "string", enum: ROLES },
+                    service_order: { type: "integer", description: "Optional. Default: the place of a removed dish with the same role, otherwise last." },
+                    new: {
+                      type: "object",
+                      description: "Only for a new dish: a simple component, at most 12 ingredient lines and 8 method steps.",
+                      properties: {
+                        name: { type: "string" },
+                        category: { type: "array", items: { type: "string", enum: CATEGORIES } },
+                        protein: { type: "string", enum: PROTEINS, description: "Only when the dish carries the protein; Veg for a vegetable-led side." },
+                        cuisine: { type: "array", items: { type: "string" } },
+                        difficulty: { type: "string", enum: ["Easy", "Medium", "Special"] },
+                        servings: { type: "number" },
+                        summary: { type: "string" },
+                        equipment: { type: "array", items: { type: "string" } },
+                        method_md: { type: "string", description: "The recipe body in markdown: numbered steps, each opening with a bold lead that is the whole instruction." },
+                        ingredients: { type: "array", items: { type: "object", description: "One line: name (canonical, lower-case, reuse an existing name where one fits), qty, unit, qty_alt, buy_spec, buy_avoid, buy_note, prep_note, pantry_check, optional, section; department only for a name the kitchen does not have yet." } },
+                        nutrition_estimate: { type: "object", description: "{kcal, protein_g, carbs_g, fat_g, per}, per serving." },
+                      },
+                      required: ["name", "category", "servings", "method_md", "ingredients", "nutrition_estimate"],
+                    },
+                  },
+                  required: ["slug", "role"],
+                },
+              },
             },
           },
         },
@@ -338,6 +383,11 @@ async function runTool(cfg: Cfg, man: Manifest, name: string, input: Json): Prom
 // (kitchen_assistant_change_apply, mode check). Jin applies a minor change with a tap; a material one (anything that
 // changes the plate, food safety or the timeline) can only be sent to the Cooking project for the review loop.
 const UNITS = ["g", "ml", "tsp", "tbsp", "piece", "clove", "bunch", "sprig", "slice", "cup", "pinch"];
+// stage 4 (ASK 1.3): the dish roles of meal_dish, and the data protocol's category and protein lists (§3.1, §3.3)
+const ROLES = ["main", "side", "sauce", "salad", "soup", "bread", "starter", "dessert"];
+const CATEGORIES = ["Main", "Side", "Sauce", "Salad", "Soup", "Bread", "Dessert"];
+const PROTEINS = ["Beef", "Pork", "Lamb", "Chicken", "Duck", "Fish", "Shellfish", "Seafood", "Veg"];
+const NEW_DISH_MAX_LINES = 12, NEW_DISH_MAX_STEPS = 8; // a dish made from the app is a simple component
 const DEPTS = ["Protein", "Produce", "Dairy", "Bread", "Frozen", "Pantry", "Oils & Liquids", "Alcohol", "Seasoning", "Equipment"];
 const ING_FIELDS = ["qty", "unit", "qty_alt", "buy_spec", "buy_avoid", "buy_note", "prep_note", "pantry_check", "optional", "section"];
 const ING_NOTE_ONLY = new Set(["buy_spec", "buy_avoid", "buy_note", "prep_note", "pantry_check"]);
@@ -399,6 +449,82 @@ export function applyEdits(label: string, text: string | null, edits: Json[], al
   return { text: t, numeric };
 }
 const short = (name: string) => name.replace(/\s*\([^()]*\)\s*$/, "");
+const sgDate = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Singapore" }).format(new Date());
+
+// Ingredient names must exist in the kitchen or come with a department (data protocol §3.2). Returns the names to create.
+async function checkNames(out: Ing[], newIng: { name: string; department: string }[]): Promise<{ name: string; department: string }[]> {
+  const names = [...new Set(out.map((x) => x.name))];
+  const { data: have, error } = await db().from("ingredient").select("name").in("name", names);
+  if (error) throw new Error("ingredient: " + error.message);
+  const haveSet = new Set((have ?? []).map((x) => x.name as string));
+  const missing = names.filter((n) => !haveSet.has(n) && !newIng.some((x) => x.name === n));
+  if (missing.length) {
+    const first = missing[0].split(/[ ,]/)[0].replace(/[%_]/g, "");
+    const { data: near } = await db().from("ingredient").select("name").ilike("name", `%${first}%`).limit(8);
+    throw new Bad(`"${missing[0]}" is not an ingredient name in the kitchen. Reuse a canonical name${near && near.length ? " (close: " + near.map((x) => x.name).join("; ") + ")" : ""}, or give "department" on that line to create it.`);
+  }
+  return newIng.filter((x) => !haveSet.has(x.name));
+}
+// A new dish from the app (ASK 1.3): a simple component, checked against the data protocol and Core §III before the
+// save functions see it. Returns the kitchen_save_dish payload and the card rows that show it in full.
+async function newDish(s: string, n: Json, mealSlug: string): Promise<{ p: Json; display: Json[] }> {
+  const name = String(n.name ?? "").trim();
+  if (name.length < 3 || name.length > 120) throw new Bad(`The new dish "${s}" needs a name.`);
+  const cats = Array.isArray(n.category) ? (n.category as unknown[]).map(String) : [];
+  if (!cats.length || cats.some((c) => !CATEGORIES.includes(c))) throw new Bad(`category is a list from ${CATEGORIES.join(", ")}.`);
+  const protein = n.protein == null || n.protein === "" ? null : String(n.protein);
+  if (protein && !PROTEINS.includes(protein)) throw new Bad(`protein is one of ${PROTEINS.join(", ")}, or left out.`);
+  const servings = Number(n.servings);
+  if (!(servings > 0)) throw new Bad("servings must be a positive number.");
+  const method = String(n.method_md ?? "").trim();
+  const steps = method.split(/\r?\n/).filter((l) => /^\s*\d+\.\s/.test(l));
+  if (!steps.length) throw new Bad(`The method of ${name} needs numbered steps.`);
+  if (steps.length > NEW_DISH_MAX_STEPS) throw new Bad(`${name} has ${steps.length} steps; a dish made from the app has at most ${NEW_DISH_MAX_STEPS}. Tell Jin a bigger recipe is written in the Cooking project.`);
+  const bare = steps.find((l) => !/^\s*\d+\.\s+\*\*[^*]+\*\*/.test(l));
+  if (bare) throw new Bad(`Every numbered step opens with a bold lead that is the whole instruction (Core §III): ${clip(bare.trim(), 120)}`);
+  const raw = Array.isArray(n.ingredients) ? (n.ingredients as Json[]) : [];
+  if (!raw.length) throw new Bad(`${name} needs its ingredient lines.`);
+  if (raw.length > NEW_DISH_MAX_LINES) throw new Bad(`${name} has ${raw.length} ingredient lines; a dish made from the app has at most ${NEW_DISH_MAX_LINES}. Tell Jin a bigger recipe is written in the Cooking project.`);
+  const ings: Ing[] = [], newIng: { name: string; department: string }[] = [];
+  for (const x of raw) {
+    const nm = String(x?.name ?? "").trim();
+    if (!nm || nm !== nm.toLowerCase()) throw new Bad(`Each ingredient of ${name} needs a canonical lower-case name.`);
+    const bad = Object.keys(x).find((k) => k !== "name" && k !== "department" && !ING_FIELDS.includes(k));
+    if (bad) throw new Bad(`${name}, ${nm}: "${bad}" is not an ingredient field (${ING_FIELDS.join(", ")}).`);
+    const it = cleanIng({ ...x, name: nm });
+    if (it.unit && !UNITS.includes(String(it.unit))) throw new Bad(`Unit "${it.unit}" is not allowed (${UNITS.join(", ")}). Put any other measure in qty_alt or prep_note.`);
+    ings.push(it);
+    if (x.department) {
+      const dep = String(x.department);
+      if (!DEPTS.includes(dep)) throw new Bad(`Department "${dep}" is not allowed (${DEPTS.join(", ")}).`);
+      newIng.push({ name: nm, department: dep });
+    }
+  }
+  const fresh = await checkNames(ings, newIng);
+  const ne = n.nutrition_estimate as Json;
+  if (!ne || typeof ne !== "object" || ["kcal", "protein_g", "carbs_g", "fat_g"].some((f) => !Number.isFinite(Number(ne[f])))) throw new Bad(`The nutrition_estimate of ${name} needs kcal, protein_g, carbs_g, fat_g (numbers) and per.`);
+  let gv = "v?";
+  try { const m = await manifest(await config()); if (m.framework_version) gv = "v" + m.framework_version; } catch (_) { /* keep v? */ }
+  const p: Json = { name, category: cats, servings, method_md: method, ingredients: ings, nutrition_estimate: ne, status: "designed", governance_version: gv, source: `Ask in app ${sgDate()}: made for ${mealSlug}` };
+  if (protein) p.protein = protein;
+  if (txt(n.summary)) p.summary = txt(n.summary);
+  if (txt(n.difficulty)) {
+    if (!["Easy", "Medium", "Special"].includes(String(txt(n.difficulty)))) throw new Bad("difficulty is Easy, Medium or Special.");
+    p.difficulty = txt(n.difficulty);
+  }
+  for (const k of ["cuisine", "equipment"]) {
+    if (!Array.isArray(n[k]) || !(n[k] as unknown[]).length) continue;
+    if ((n[k] as unknown[]).some((v) => typeof v !== "string")) throw new Bad(`${k} must be a list of names.`);
+    p[k] = n[k];
+  }
+  if (fresh.length) p.new_ingredients = fresh;
+  const f = `${ne.kcal} kcal · ${ne.protein_g} g protein · ${ne.carbs_g} g carbs · ${ne.fat_g} g fat${ne.per ? " · per " + ne.per : ""}`;
+  return { p, display: [
+    { where: `${name} · Ingredients`, was: "", now: ings.map((x) => fmtIng(x)).join("\n") },
+    { where: `${name} · Method`, was: "", now: clip(method, 1500) },
+    { where: `${name} · Nutrition estimate`, was: "", now: f },
+  ] };
+}
 
 // Turns the model's edits into save payloads. Throws nothing to the caller for a bad proposal: returns { error } so the model can fix it.
 async function buildChange(kind: string, slug: string, rec: Json, input: Json): Promise<{ row?: Json; error?: string }> {
@@ -542,6 +668,67 @@ async function buildChange(kind: string, slug: string, rec: Json, input: Json): 
       }
       if (!Object.keys(p).length) throw new Bad("Nothing changes in the meal.");
       saves.push({ entity: "meal", slug, p }); undo.push({ entity: "meal", slug, p: old }); guards.push({ entity: "meal", slug, updated_at: now.updated_at });
+    }
+    // Stage 4 (ASK 1.3): which dishes are on the meal. In the saves, links come before unlinks, so a swap on a one-dish
+    // meal never leaves it empty; Undo puts removed dishes back first (old role and place), then takes added ones off.
+    const dOut = Array.isArray(mi.dishes_out) ? (mi.dishes_out as Json[]) : [], dIn = Array.isArray(mi.dishes_in) ? (mi.dishes_in as Json[]) : [];
+    if (dOut.length || dIn.length) {
+      if (kind !== "meal") throw new Bad("This is a dish page. Dishes are put on or taken off a meal from the meal's own page.");
+      const onMeal = ((rec.dishes as Json[]) ?? []).map((d) => ({ slug: String(d.slug), name: short(String(d.name ?? d.slug)), role: String(d.role ?? ""), order: Number(d.service_order ?? 0) }));
+      const outSlugs = new Set<string>();
+      for (const o of dOut) {
+        const s = String(o.slug ?? "");
+        const d = onMeal.find((x) => x.slug === s);
+        if (!d) throw new Bad(`Dish "${s}" is not on this meal. On it: ${onMeal.map((x) => x.slug).join(", ")}.`);
+        if (outSlugs.has(s)) throw new Bad(`Dish "${s}" is taken off twice.`);
+        if (seen.has(s)) throw new Bad(`Dish "${s}" is taken off the meal, so do not edit it in the same change.`);
+        outSlugs.add(s);
+        display.push({ where: "Meal · Dishes", was: `${d.name} (${d.role})`, now: "(taken off the meal; stays in the Library)" });
+        why.push("a dish is taken off the meal");
+      }
+      const freed = new Map<string, number[]>(); // role -> places in the order freed by the dishes taken off
+      for (const d of onMeal.filter((x) => outSlugs.has(x.slug))) freed.set(d.role, [...(freed.get(d.role) ?? []), d.order]);
+      let nextOrder = Math.max(0, ...onMeal.map((x) => x.order)) + 1;
+      const links: Json[] = [], news: Json[] = [], inSlugs = new Set<string>();
+      for (const it of dIn) {
+        const s = String(it.slug ?? "").trim(), role = String(it.role ?? "");
+        if (!ROLES.includes(role)) throw new Bad(`"${role}" is not a dish role (${ROLES.join(", ")}).`);
+        if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(s) || s.length > 60) throw new Bad(`"${s}" is not a dish slug (lower-case kebab-case, at most 60 characters).`);
+        if (inSlugs.has(s)) throw new Bad(`Dish "${s}" is put on twice.`);
+        if (outSlugs.has(s)) throw new Bad(`Dish "${s}" is both taken off and put on.`);
+        if (onMeal.some((x) => x.slug === s)) throw new Bad(`Dish "${s}" is already on this meal.`);
+        inSlugs.add(s);
+        let order: number;
+        if (it.service_order != null && it.service_order !== "") {
+          order = Number(it.service_order);
+          if (!Number.isInteger(order) || order < 0 || order > 99) throw new Bad("service_order is a whole number from 0 to 99.");
+        } else { const f = freed.get(role); order = f && f.length ? f.shift()! : nextOrder++; }
+        const existing = await dishNow(s);
+        if (it.new && typeof it.new === "object") {
+          if (existing) throw new Bad(`A dish with the slug "${s}" is already saved (${existing.name}). To put that dish on the meal, leave out "new"; for a new dish, choose another slug.`);
+          const nd = await newDish(s, it.new as Json, slug);
+          news.push({ entity: "dish_new", slug: s, p: nd.p });
+          display.push({ where: "Meal · Dishes", was: "", now: `Add a new dish: ${nd.p.name} (${role})` }, ...nd.display);
+          why.push("a new dish is added to the meal");
+        } else {
+          if (!existing) throw new Bad(`No saved dish has the slug "${s}". Find it with read_dish, or give the dish in full in "new".`);
+          display.push({ where: "Meal · Dishes", was: "", now: `Add: ${short(existing.name)} (${role})` });
+          why.push("a dish is added to the meal");
+        }
+        links.push({ entity: "link", slug, dish: s, role, service_order: order });
+      }
+      if (onMeal.length - outSlugs.size + inSlugs.size < 1) throw new Bad("A meal keeps at least one dish.");
+      if (!guards.some((g) => g.entity === "meal")) {
+        const m = await mealNow(slug);
+        if (!m) throw new Bad("The meal was not found.");
+        guards.push({ entity: "meal", slug, updated_at: m.updated_at });
+      }
+      for (const n of news) guards.push({ entity: "dish_new", slug: n.slug });
+      saves.push(...news, ...links, ...[...outSlugs].map((s) => ({ entity: "unlink", slug, dish: s })));
+      undo.unshift(
+        ...onMeal.filter((x) => outSlugs.has(x.slug)).map((x) => ({ entity: "link", slug, dish: x.slug, role: x.role, service_order: x.order })),
+        ...links.map((l) => ({ entity: "unlink", slug, dish: l.dish })),
+      );
     }
     if (!saves.length) throw new Bad("The proposal changes nothing. Include at least one edit.");
     if (display.length > 40) throw new Bad("That is more than 40 separate edits. Split it into smaller changes, or tell Jin to ask in the Cooking project for a full revision.");
@@ -689,7 +876,13 @@ async function draftFor(c: Json): Promise<{ draft: string; multi: boolean; subje
   const kind = String(c.owner_type), slug = String(c.slug), saves = (c.saves ?? []) as Json[];
   const pOf = (entity: string, s: string) => ((saves.find((x) => x.entity === entity && x.slug === s)?.p ?? {}) as Json);
   const rec = await record(slug);
-  const list = kind === "meal" ? ((rec.dishes as Json[]) ?? []).map((d) => ({ slug: String(d.slug), role: d.role as string | null })) : [{ slug, role: null }];
+  // the meal as it will be after the change (ASK 1.3): dishes taken off are left out, dishes put on are added in their place
+  const gone = new Set(saves.filter((x) => x.entity === "unlink").map((x) => String(x.dish)));
+  const added = saves.filter((x) => x.entity === "link").map((x) => ({ slug: String(x.dish), role: (x.role as string) ?? null, order: Number(x.service_order ?? 0) }));
+  const list = kind === "meal"
+    ? [...((rec.dishes as Json[]) ?? []).filter((d) => !gone.has(String(d.slug))).map((d) => ({ slug: String(d.slug), role: d.role as string | null, order: Number(d.service_order ?? 0) })), ...added]
+        .sort((a, b) => a.order - b.order)
+    : [{ slug, role: null, order: 0 }];
   const out: string[] = [];
   out.push("REVISION OF A SAVED RECIPE. The change under review: " + c.summary);
   out.push("What changes (before -> after):\n" + ((c.display ?? []) as Json[]).map((d) => `- ${d.where}: ${d.was ? JSON.stringify(d.was) : "(new)"} -> ${JSON.stringify(d.now)}`).join("\n"));
@@ -707,12 +900,13 @@ async function draftFor(c: Json): Promise<{ draft: string; multi: boolean; subje
     if (v.shopping_notes) out.push("## Before you shop\n" + v.shopping_notes);
   } else out.push("Diner profile as saved: the household default of three adults (Jin, Hui Fong, Lukas), unless the record below says otherwise.");
   for (const it of list) {
-    const d = await dishNow(it.slug);
-    if (!d) continue;
-    const v = { ...d, ...pOf("dish", it.slug) } as Json;
-    if (kind !== "meal") title = d.name;
+    const d = await dishNow(it.slug), made = pOf("dish_new", it.slug);
+    if (!d && !Object.keys(made).length) continue;
+    const v = (d ? { ...d, ...pOf("dish", it.slug) } : made) as Json;
+    const dname = d ? d.name : `${made.name} (NEW DISH, made by this change)`;
+    if (kind !== "meal") title = String(dname);
     const n = v.nutrition_estimate as Json | null;
-    out.push(`# DISH: ${d.name}${it.role ? ` (${it.role})` : ""}\nServings: ${v.servings ?? "not set"}` + (v.summary ? `\n${v.summary}` : "") + (Array.isArray(v.equipment) && v.equipment.length ? `\nEquipment: ${(v.equipment as string[]).join(", ")}` : ""));
+    out.push(`# DISH: ${dname}${it.role ? ` (${it.role})` : ""}\nServings: ${v.servings ?? "not set"}` + (v.summary ? `\n${v.summary}` : "") + (Array.isArray(v.equipment) && v.equipment.length ? `\nEquipment: ${(v.equipment as string[]).join(", ")}` : ""));
     if (((v.ingredients ?? []) as Json[]).length) out.push("## Ingredient list (the stored rows)\n" + ((v.ingredients as Json[]).map((x) => "- " + fmtIng(x)).join("\n")));
     out.push("## Recipe\n" + (v.method_md ?? "(no structured recipe body)"));
     if (n) out.push(`## Nutrition estimate (an estimate)\n${n.kcal} kcal · ${n.protein_g} g protein · ${n.carbs_g} g carbs · ${n.fat_g} g fat${n.per ? " · per " + n.per : ""}`);
@@ -732,7 +926,7 @@ Precedence when they conflict: the Core's safety rules, then the change Jin aske
 This is a revision of a saved recipe, not a new one. A finding about a part the change does not touch and does not cause is declined with the reason "outside this change; for a full review in the Cooking project", unless it is a food-safety problem, which you adopt.
 
 # If you adopt anything
-Give "revised": the COMPLETE edit list for the change, against the SAVED record in the next block (not against the revised draft): every edit of the original change that still stands, plus the edits the adopted findings need. Same rules as before: "find" is copied character for character from the saved record and occurs once; ingredients by the record's line number and name.
+Give "revised": the COMPLETE edit list for the change, against the SAVED record in the next block (not against the revised draft): every edit of the original change that still stands, plus the edits the adopted findings need. Same rules as before: "find" is copied character for character from the saved record and occurs once; ingredients by the record's line number and name. Dishes put on or taken off the meal (meal.dishes_in, meal.dishes_out) are part of that list. A new dish is not in the saved record yet, so restate it in full in its "new", with any adopted fix written into it.
 Propagation check, before you answer: trace every adopted change through each place the component appears: ingredient line, method, the workflow timeline at both ends of every band, holding chain, CCPs, storage, nutrition estimate. A safety control it adds must sit where the sheet prints it: the method, a CCP, the holding chain or a timeline row. Prefer bounding the input (buy a 2–3 cm steak) over adding a branch.
 Anything you write follows the Core: a numbered step opens with a bold lead that is the whole instruction; temperatures in °F and °C; doneness as a stop or continue test.
 

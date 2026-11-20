@@ -1,9 +1,10 @@
 // ---------------------------------------------------------------- ask Claude about one meal or dish
-// ASK 1.2 (2026-11-14; 1.0 and 1.1 the same day). Stage 1: questions. Stage 2 (1.1): Claude can propose a change, shown as
+// ASK 1.3 (2026-11-20; 1.0 to 1.2 on 2026-11-14). Stage 1: questions. Stage 2 (1.1): Claude can propose a change, shown as
 // a card with the before and after. A minor change (wording, buying and shopping notes) saves on Apply and can be undone.
 // Stage 3 (1.2): a material one (anything that changes the plate, food safety or the timeline) gets Review with GPT: the
 // app runs the review protocol step by step (askReviewPoll), shows the Review log, and offers Apply only after a clean
-// review; an open disagreement can only be sent to the Cooking project. The page talks to the kitchen-assistant Edge Function, which reads the
+// review; an open disagreement can only be sent to the Cooking project. Stage 4 (1.3): on a meal, a change can also take a dish
+// off, put a saved dish on or add a simple new one; the card shows each dish in and out, and a new dish in full. The page talks to the kitchen-assistant Edge Function, which reads the
 // recipe, its cook history, the governance files and the cellar; Claude itself never writes. A device has to be paired
 // once: the phone makes a random key (kept in localStorage, never shown), the function stores only its SHA-256 and
 // answers with a 6-character code that Jin sends to Claude in a chat to approve. Answers are drawn through askMd, which
@@ -27,7 +28,7 @@ function askMd(s){ // a small, safe markdown: escape first, then bold, italic, c
     if(/^\s*\|.*\|\s*$/.test(l)){ if(/^\s*\|[\s:|-]+\|\s*$/.test(l)) continue; fl(); para.push(l.replace(/^\s*\||\|\s*$/g,'').split('|').map(x=>x.trim()).join(' · ')); continue; }
     fl(); para.push(l.trim()); }
   fp(); fl(); return h; }
-function askBox(kind,slug){ return `<section class="glass ask"><div class="eyebrow">Ask Claude</div><p class="askp">Timing, scaling, substitutions, what to prep ahead: answered from this recipe, its cook history and your kitchen rules.</p><a class="btn ghost" href="#/ask/${kind}/${slug}">Ask about this ${kind}</a></section>`; }
+function askBox(kind,slug){ return `<section class="glass ask"><div class="eyebrow">Ask Claude</div><p class="askp">Timing, scaling, substitutions${kind==='meal'?', swapping a dish':''}, what to prep ahead: answered from this recipe, its cook history and your kitchen rules.</p><a class="btn ghost" href="#/ask/${kind}/${slug}">Ask about this ${kind}</a></section>`; }
 const ASK_STARTERS={meal:['What can I prep the day before?','Where is this most likely to go wrong?','Scale this to 5 people'],dish:['What can I prep ahead?','Where is this most likely to go wrong?','What should I taste for at the end?']};
 const askDots='<span class="askdots" aria-hidden="true"><i></i><i></i><i></i></span>';
 const ASK_CH={proposed:'Proposed change',applied:'Saved to the recipe',undone:'Undone',discarded:'Discarded',filed:'Sent for review',saved:'Reviewed and saved',declined:'Reviewed, not saved',stale:'Out of date',failed:'Could not be saved'};
@@ -40,7 +41,7 @@ function askReviewLog(c){ const rv=c.review||{}, R=rv.rounds||[]; if(!R.length) 
 function askChangeHtml(c){ const a=(ASK.cur||'/').split('/'), kind=a[0], slug=a[1];
   const open=c.status==='proposed', mat=c.class==='material', busy=c._busy, dis=busy?' disabled':'';
   const btn=(op,label,cls)=>`<button class="btn ${cls||''}"${dis} onclick="askChange('${kind}','${slug}','${c.id}','${op}')">${label}</button>`;
-  const rows=(c.display||[]).map(d=>`<div class="askd"><div class="askdw">${esc(d.where)}</div>${d.was?`<div class="askwas"><span>Was</span><div>${askTxt(d.was)}</div></div>`:''}<div class="asknow"><span>${d.was?'Now':'New'}</span><div>${askTxt(d.now)}</div></div></div>`).join('');
+  const rows=(c.display||[]).map(d=>`<div class="askd"><div class="askdw">${esc(d.where)}</div>${d.was?`<div class="askwas"><span>Was</span><div>${askTxt(d.was)}</div></div>`:''}<div class="asknow"><span>${d.was?'Now':'New'}</span>${!d.was&&/^\s*\d{1,3}[.)]\s/m.test(d.now||'')?`<div class="askmd">${askMd(d.now)}</div>`:`<div>${askTxt(d.now)}</div>`}</div></div>`).join(''); // a new dish's method reads as numbered steps
   const rs=c.review_status||'none', rv=c.review||{};
   let foot='';
   if(open&&mat&&rs==='running'){ const rd=`Round ${rv.round||1}${rv.confirm?' (confirmation)':''}`;

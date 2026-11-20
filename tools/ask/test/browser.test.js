@@ -49,6 +49,17 @@ const ANSWER = 'Yes. **Poach the fish and make the mash the day before**; assemb
           if (b.op === 'file') { c.status = 'filed'; return J({ status: 'filed', change: c }); }
           if (b.op === 'discard') { c.status = 'discarded'; return J({ status: 'ok', change: c }); }
         }
+        if (b.action === 'ask' && /^Swap the dessert/.test(b.message)) { // ASK 1.3: a dish out, a new dish in
+          const c = { id: 'aaaaaaaa-0000-4000-8000-0000000000' + (90 + fn.changes.length), summary: 'Swap the chocolate mandarins for a bought mango sorbet with strawberries.', class: 'material', class_reason: 'A dish is taken off and a new one put on.', status: 'proposed', review_status: 'none', display: [
+            { where: 'Meal · Dishes', was: 'Chocolate Mandarins (dessert)', now: '(taken off the meal; stays in the Library)' },
+            { where: 'Meal · Dishes', was: '', now: 'Add a new dish: Mango Sorbet with Strawberries (dessert)' },
+            { where: 'Mango Sorbet with Strawberries · Ingredients', was: '', now: '500 ml mango sorbet · (2 cups) · buy: good-quality, dairy-free\n200 g strawberry\n2 sprig fresh mint · optional' },
+            { where: 'Mango Sorbet with Strawberries · Method', was: '', now: '## Method\n\n1. **Hull and halve 200 g / 7 oz strawberries; chill.**\n2. **Soften the sorbet 5 min at room temperature.**\n3. **Scoop into chilled bowls and top with the berries and mint.**' },
+            { where: 'Mango Sorbet with Strawberries · Nutrition estimate', was: '', now: '190 kcal · 1 g protein · 45 g carbs · 0.5 g fat · per serving' },
+            { where: 'Meal · Workflow', was: '- T-20 dip the mandarins in chocolate', now: '- T-5 scoop the sorbet' }] };
+          fn.changes.push(c);
+          return route.fulfill({ status: 200, headers: { 'content-type': 'text/event-stream; charset=utf-8' }, body: sse([{ t: 'start' }, { t: 'change', change: c }, { t: 'delta', text: 'A dish swap is a material change, so it goes for review first.' }, { t: 'done', used_today: 4, daily_limit: 60, month_usd: 0.7, monthly_usd_cap: 15 }]) });
+        }
         if (b.action === 'ask' && /^(Add a note|Bake it)/.test(b.message)) {
           const mat = /^Bake it/.test(b.message);
           const c = mat ? { id: 'aaaaaaaa-0000-4000-8000-00000000000' + (fn.changes.length + 1), summary: 'Bake 40 min instead of 30 for a pie baked from cold.', class: 'material', class_reason: 'Marked for review by the app: a number changes in the method of Fish Pie.', status: 'proposed', display: [{ where: 'Fish Pie · Method', was: '**Bake at 200°C / 390°F for 30 min** until the centre reads 75°C / 167°F.', now: '**Bake at 200°C / 390°F for 40 min** until the centre reads 75°C / 167°F.' }, { where: 'Meal · Workflow', was: '- T-40 pie in', now: '- T-50 pie in' }] }
@@ -139,6 +150,14 @@ const ANSWER = 'Yes. **Poach the fish and make the mash the day before**; assemb
     await page.locator('.askchg.mat .askca .btn').first().click(); await page.waitForSelector('.askchg.mat.applied');
     ok(`[${scheme}] a reviewed change applies`, /Saved to the recipe/i.test(await page.locator('.askchg.mat.applied').innerText()) && fn.calls.at(-1).op === 'apply');
     ok(`[${scheme}] cards do not widen the page`, !(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1)));
+    // ASK 1.3: a dish swap card
+    await page.fill('#askin', 'Swap the dessert for mango sorbet'); await page.click('#askgo');
+    await page.waitForSelector('.askchg.mat.proposed .askca .btn');
+    const sw = page.locator('.askchg.mat.proposed').last(), swt = await sw.innerText();
+    ok(`[${scheme}] swap card: dish out, new dish in full, review first`, /Chocolate Mandarins \(dessert\)/.test(swt) && /stays in the Library/.test(swt) && /Add a new dish: Mango Sorbet with Strawberries/.test(swt) && await sw.locator('.asknow .askmd ol li').count() === 3 && await sw.locator('.askca .btn').allInnerTexts().then((a) => a.join('|')) === 'Review with GPT|Send to the Cooking project|Discard', swt);
+    ok(`[${scheme}] swap card does not widen the page`, !(await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1)));
+    await sw.scrollIntoViewIfNeeded(); await page.screenshot({ path: `${SHOTS}/${scheme}-10-swap-card.png`, fullPage: false });
+    await sw.screenshot({ path: `${SHOTS}/${scheme}-10b-swap-card-element.png` });
     // the dish page has its own card and its own conversation; no key hides the form
     fn.has_key = false; fn.msgs = [];
     await page.goto('http://localhost:8765/#/dish/fish-pie'); await page.waitForSelector('.glass.ask');
