@@ -96,7 +96,7 @@ const askHere=k=>parse().view==='ask'&&ASK.cur===k;
 function askDraw(kind,slug){ const k=kind+'/'+slug; if(!askHere(k)) return; const el=document.getElementById('askbody'); if(el) el.innerHTML=askBody(kind,slug); }
 function askPaint(kind,slug){ // redraw the conversation without touching the question being typed
   const k=kind+'/'+slug; if(!askHere(k)) return; const ms=document.getElementById('askmsgs'), ft=document.getElementById('askfoot'), go=document.getElementById('askgo'), er=document.getElementById('askerr'), s=askS(k);
-  if(!ms||!ft||(!go&&!askOff(s))||(go&&askOff(s))){ askDraw(kind,slug); return; }
+  if(ASK.dev.st!=='approved'||s.st!=='ok'||!ms||!ft||(!go&&!askOff(s))||(go&&askOff(s))){ askDraw(kind,slug); return; }
   ms.innerHTML=askMsgsHtml(kind,slug); ft.innerHTML=askFootHtml(kind,slug);
   if(go){ go.disabled=!!ASK.busy[k]; go.textContent=ASK.busy[k]?'Answering…':'Ask'; }
   if(er){ er.hidden=!s.err; er.textContent=s.err||''; } }
@@ -118,7 +118,7 @@ async function askOpen(kind,slug,manual){ const k=kind+'/'+slug, s=askS(k);
   try{ const r=await askCall({action:'open',kind,slug}); const j=await r.json(); askTake(j,kind,slug);
     if(manual&&ASK.dev.st==='pending') ASK.dev.msg='Not approved yet. Send the code to Claude, then check again.'; }
   catch(e){ s.st='error'; s.err=navigator.onLine===false?'You are offline. Ask needs a connection.':'Could not reach the kitchen assistant. Check the connection and try again.'; }
-  askDraw(kind,slug); askResume(kind,slug); }
+  if(manual) askDraw(kind,slug); else askPaint(kind,slug); askResume(kind,slug); } // a background open never wipes a question being typed
 async function askPair(kind,slug,again){ const k=kind+'/'+slug;
   if(again){ try{localStorage.removeItem('kitchen:ask:key');}catch(e){} }
   const key=askKey(true); if(!key||askKey(false)!==key){ ASK.dev={st:'unpaired',code:null,msg:'This browser will not keep the device key (private browsing?). Open the app normally and try again.'}; askDraw(kind,slug); return; }

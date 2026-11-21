@@ -1691,7 +1691,7 @@ function gcalLink(title,t,details){ // opens Google Calendar with the event fill
   const f=x=>new Date(x).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
   return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(title)+'&dates='+f(t)+'/'+f(t+15*60000)+'&details='+encodeURIComponent(details);
 }
-function homeTick(slug,id){const k='shop:meal/'+slug, st=shopState(k); st[id]=!st[id]; try{localStorage.setItem(k,JSON.stringify(st));}catch(e){} softRender();}
+function shopTick(slug,id){const k='shop:meal/'+slug, st=shopState(k); st[id]=!st[id]; try{localStorage.setItem(k,JSON.stringify(st));}catch(e){} softRender();}
 function beforeBlock(pl,items,st){
   const m=pl.m, now=Date.now(), {pre,first}=prePlan(pl);
   if(first&&first.at<now) return ''; // the cooking day has started: cook mode takes over
@@ -1703,7 +1703,7 @@ function beforeBlock(pl,items,st){
   oa.forEach(i=>{const done=!!st[i.id], spec=String(i.spec||'').split(/;\s*/)[0];
     rows.push(`<div class="btw now"><b>${done?'Done':'Now'}</b><span>${esc(new Date().toLocaleDateString('en-GB',{weekday:'short'}))}</span></div>
       <div class="btc ${done?'done':''}"><span class="oa">Order ahead${i.shop?' · '+esc(i.shop):''}</span><span class="t">${esc(i.label)} <span class="q">${esc(i.buyQty||i.qty)}</span></span>${spec?`<span class="d">${esc(spec)}</span>`:''}${need&&!done?`<span class="d nb">${esc(need)}</span>`:''}
-      <div class="acts"><button class="btn ghost sm" aria-pressed="${done}" onclick="homeTick('${m.slug}','${i.id}')">${done?'Bought · undo':'Mark bought'}</button></div></div>`);});
+      <div class="acts"><button class="btn ghost sm" aria-pressed="${done}" onclick="shopTick('${m.slug}','${i.id}')">${done?'Bought · undo':'Mark bought'}</button></div></div>`);});
   pre.forEach(({x,at})=>{const [t,d]=stepTitle(x.text), past=at!=null&&at<now;
     rows.push(`<div class="btw"><b>${at!=null?esc(dShort(at)):esc(x.label||'Before')}</b><span>${at!=null?esc(hm(at)):''}</span></div>
       <div class="btc ${past?'past':''}"><span class="t">${esc(t)}</span>${d?`<span class="d">${esc(d.length>200?d.slice(0,197)+'…':d)}</span>`:''}${past?'<span class="d nb">This time has passed. Check it was done.</span>':''}
@@ -1717,9 +1717,9 @@ function beforeBlock(pl,items,st){
     <p class="bsub">Everything in the plan dated before the first cooking step, in order.</p>
     <div class="btl">${rows.join('')}</div>
     ${pantry.length?`<div class="bpan"><div class="row"><span class="eyebrow grow">Pantry check before you shop</span><span class="mono small dim">${pantry.filter(i=>st[i.id]).length} / ${pantry.length}</span></div>
-      <div class="pchips">${pantry.map(i=>`<button class="pchip ${st[i.id]?'on':''}" aria-pressed="${!!st[i.id]}" onclick="homeTick('${m.slug}','${i.id}')">${esc(i.label)}${esc(pq(i))}</button>`).join('')}</div></div>`:''}
+      <div class="pchips">${pantry.map(i=>`<button class="pchip ${st[i.id]?'on':''}" aria-pressed="${!!st[i.id]}" onclick="shopTick('${m.slug}','${i.id}')">${esc(i.label)}${esc(pq(i))}</button>`).join('')}</div></div>`:''}
     ${kit.length?`<div class="bpan"><div class="row"><span class="eyebrow grow">Equipment to have ready</span><span class="mono small dim">${kit.filter(i=>st[i.id]).length} / ${kit.length}</span></div>
-      <div class="pchips">${kit.map(i=>`<button class="pchip ${st[i.id]?'on':''}" aria-pressed="${!!st[i.id]}" onclick="homeTick('${m.slug}','${i.id}')">${esc(i.label)}</button>`).join('')}</div></div>`:''}`;
+      <div class="pchips">${kit.map(i=>`<button class="pchip ${st[i.id]?'on':''}" aria-pressed="${!!st[i.id]}" onclick="shopTick('${m.slug}','${i.id}')">${esc(i.label)}</button>`).join('')}</div></div>`:''}`;
 }
 const unitlessQ=t=>String(t||'').replace(/(\d)\s(?:piece|pieces)\b/g,'$1');
 
@@ -1837,7 +1837,7 @@ const askHere=k=>parse().view==='ask'&&ASK.cur===k;
 function askDraw(kind,slug){ const k=kind+'/'+slug; if(!askHere(k)) return; const el=document.getElementById('askbody'); if(el) el.innerHTML=askBody(kind,slug); }
 function askPaint(kind,slug){ // redraw the conversation without touching the question being typed
   const k=kind+'/'+slug; if(!askHere(k)) return; const ms=document.getElementById('askmsgs'), ft=document.getElementById('askfoot'), go=document.getElementById('askgo'), er=document.getElementById('askerr'), s=askS(k);
-  if(!ms||!ft||(!go&&!askOff(s))||(go&&askOff(s))){ askDraw(kind,slug); return; }
+  if(ASK.dev.st!=='approved'||s.st!=='ok'||!ms||!ft||(!go&&!askOff(s))||(go&&askOff(s))){ askDraw(kind,slug); return; }
   ms.innerHTML=askMsgsHtml(kind,slug); ft.innerHTML=askFootHtml(kind,slug);
   if(go){ go.disabled=!!ASK.busy[k]; go.textContent=ASK.busy[k]?'Answering…':'Ask'; }
   if(er){ er.hidden=!s.err; er.textContent=s.err||''; } }
@@ -1859,7 +1859,7 @@ async function askOpen(kind,slug,manual){ const k=kind+'/'+slug, s=askS(k);
   try{ const r=await askCall({action:'open',kind,slug}); const j=await r.json(); askTake(j,kind,slug);
     if(manual&&ASK.dev.st==='pending') ASK.dev.msg='Not approved yet. Send the code to Claude, then check again.'; }
   catch(e){ s.st='error'; s.err=navigator.onLine===false?'You are offline. Ask needs a connection.':'Could not reach the kitchen assistant. Check the connection and try again.'; }
-  askDraw(kind,slug); askResume(kind,slug); }
+  if(manual) askDraw(kind,slug); else askPaint(kind,slug); askResume(kind,slug); } // a background open never wipes a question being typed
 async function askPair(kind,slug,again){ const k=kind+'/'+slug;
   if(again){ try{localStorage.removeItem('kitchen:ask:key');}catch(e){} }
   const key=askKey(true); if(!key||askKey(false)!==key){ ASK.dev={st:'unpaired',code:null,msg:'This browser will not keep the device key (private browsing?). Open the app normally and try again.'}; askDraw(kind,slug); return; }
