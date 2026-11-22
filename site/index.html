@@ -871,7 +871,7 @@ function hashLabel(h){
   if(v==='shopping') return a?'Shopping list':'Shopping';
   return {sunday:'Sunday',library:'Library',meals:'Meals',more:'More',validations:'Checks',docs:'Docs',cook:'Cook',steps:'Step-by-step',print:'Print',postcook:'Log cook',ask:'Ask'}[v]||'Back';
 }
-function goBack(fb){ if(HSTACK.length>1) history.back(); else location.hash=fb; }
+function goBack(fb){ if(HSTACK.length>1) history.back(); else { history.replaceState(null,'',fb); HSTACK.splice(0,HSTACK.length,fb); render(); } } // no earlier page (fresh start): replace, never stack, so the parent's Back can't loop to here (22 Nov)
 function setHeader(title,back,fade=false){
   const h=document.getElementById('hdr'), top=h.parentElement;
   top.classList.toggle('fade',!!fade); top.classList.remove('scrolled');

@@ -75,6 +75,11 @@ only edit them. On a meal page `propose_change` takes `meal.dishes_out` (dishes 
   order matched the snapshot taken before. A new dish was checked by the database's dry run only, so no test dish was
   left in the Library.
 
+- **Fixed 21 Nov 2026 (still ASK 1.3):** a background open, when the page is revisited after 5 minutes, used to end in
+  `askDraw`, which rebuilt the question box under the keyboard. It now ends in `askPaint`, which leaves the box alone and
+  falls back to `askDraw` only when the device is not approved or the conversation is not loaded. A manual open (Check,
+  Try again) still redraws in full.
+
 ## The parts
 
 | Part | Where | Changed how |
