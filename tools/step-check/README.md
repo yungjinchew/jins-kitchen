@@ -13,3 +13,5 @@ hides.
 
 Baseline 6 Nov 2026: 158 dishes · 1,360 steps · 0 hiding an action · 1,007 without a bold lead (those are shown whole
 and get a lead when the dish is next revised).
+
+**Step budget (22 Nov 2026, Core 3.17):** the checker and the app's Step check also flag a step whose bold lead runs past 30 words or holds two or more semicolons, or that runs past 70 words in all (LONG lines; exit 1). Steps without a bold lead are not measured: they are shown whole and get a lead, and the budget, when the dish is next revised. `makesql.py` refuses a changed line count, so a revision that splits steps is saved as the full method with an md5-guarded `kitchen_save_dish` (the 22 Nov pot pie save). Baseline 22 Nov: 163 dishes · 1,568 steps · 1 hiding an action · 292 over budget in 73 dishes.

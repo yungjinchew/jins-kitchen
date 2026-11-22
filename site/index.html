@@ -1264,25 +1264,30 @@ function leadSplit(t){ // a step opens with a bold lead that is the whole instru
 // the bold text, or for a step without one the first sentence, which is all the step list showed before. Target: none. A branch is
 // written "If …" or "X → …", never as a bare instruction after the lead. Same test as the library conversion queries.
 const ACT_START=/(^|[.;:]\s+|\)\s+)(Add|Stir|Fold|Tip|Pour|Transfer|Cover|Bake|Remove|Place|Set|Turn|Whisk|Season|Sprinkle|Scrape|Press|Cut|Roll|Wrap|Refrigerate|Return|Lift|Strain|Flip|Baste|Drain|Toss|Serve|Slice|Pull|Put|Heat|Cook|Simmer|Boil|Reduce|Spoon|Mix|Combine|Chop|Peel|Pat|Brush|Spread|Arrange|Squeeze|Move|Discard|Grate|Mash|Insert|Lower|Lay|Fill|Trim|Score|Rub|Sear|Grill|Torch|Chill|Freeze|Dust|Ease|Rotate|Carry|Stand)\b/;
+const STEP_BUDGET={lead:30,step:70,semis:1}; // Core 3.17 §III Step budget (22 Nov 2026): lead ≤30 words with at most one semicolon, step ≤70 words
+const stepWords=t=>String(t).replace(/\*\*/g,'').trim().split(/\s+/).filter(Boolean).length;
 function stepIssues(d){
-  const S=d.method_md?flatSteps(methodModel(d.method_md)):[]; let nolead=0; const hid=[];
+  const S=d.method_md?flatSteps(methodModel(d.method_md)):[]; let nolead=0; const hid=[], long=[];
   S.forEach(s=>{const t=String(s.text||'').trim(), m=t.match(/^\*\*(.+?)\*\*\s*[:.—–-]?\s*([\s\S]*)$/); let rest;
     if(m) rest=m[2]; else {nolead++; rest=t.length<=110?'':((t.match(/^.{12,120}?[.!?]\s+([\s\S]+)$/)||[])[1]||'');}
-    if(ACT_START.test(rest)) hid.push(s);});
-  return {n:S.length,nolead,hid};
+    if(ACT_START.test(rest)) hid.push(s);
+    const lw=m?stepWords(m[1]):0, sc=m?(m[1].match(/;/g)||[]).length:0, w=stepWords(t), why=[];
+    if(lw>STEP_BUDGET.lead) why.push('lead '+lw+' words'); if(sc>STEP_BUDGET.semis) why.push(sc+' semicolons in the lead'); if(w>STEP_BUDGET.step) why.push(w+' words');
+    if(m&&why.length) long.push(Object.assign({},s,{why:why.join(', ')}));}); // steps without a bold lead are shown whole and get a lead (and the budget) when next revised
+  return {n:S.length,nolead,hid,long};
 }
 const stepDishes=()=>DB.dish.filter(d=>d.method_md&&!/^zz-test/.test(d.slug));
-function stepTotal(){try{return stepDishes().reduce((a,d)=>a+stepIssues(d).hid.length,0);}catch(e){return '';}}
+function stepTotal(){try{return stepDishes().reduce((a,d)=>{const r=stepIssues(d);return a+r.hid.length+r.long.length;},0);}catch(e){return '';}}
 routes.stepcheck=()=>{
   setHeader('Step check','#/more'); tabs('more');
   const next=d=>d.meals.filter(m=>m.planned_date&&m.status!=='cooked').map(m=>m.planned_date).sort()[0]||'';
   const res=stepDishes().map(d=>({d,...stepIssues(d),next:next(d)}));
-  const steps=res.reduce((a,r)=>a+r.n,0), hid=res.reduce((a,r)=>a+r.hid.length,0), dh=res.filter(r=>r.hid.length).length, nl=res.reduce((a,r)=>a+r.nolead,0);
-  const fl=res.filter(r=>r.hid.length).sort((a,b)=>(a.next||'9999').localeCompare(b.next||'9999')||a.d.name.localeCompare(b.d.name));
+  const steps=res.reduce((a,r)=>a+r.n,0), hid=res.reduce((a,r)=>a+r.hid.length,0), dh=res.filter(r=>r.hid.length).length, nl=res.reduce((a,r)=>a+r.nolead,0), lg=res.reduce((a,r)=>a+r.long.length,0), dl=res.filter(r=>r.long.length).length;
+  const fl=res.filter(r=>r.hid.length||r.long.length).sort((a,b)=>(a.next||'9999').localeCompare(b.next||'9999')||a.d.name.localeCompare(b.d.name));
   const cut=t=>{t=String(t).replace(/\*\*/g,''); return t.length>140?t.slice(0,137)+'…':t;};
-  return `<div class="stack" style="padding-top:12px"><p class="muted small">Every step in the library, read the way the step list shows it. A step <b>hides an action</b> when a sentence after its lead starts with one (Add, Fold, Tip…); the target is none. The bold lead holds the whole instruction: the action, the amount, the vessel, the time and the stop cue. Reasons, checks and "If …" branches follow it.</p>
-    <p><b>${res.length} dishes · ${steps} steps · ${hid} hiding an action in ${dh} dish${dh===1?'':'es'} · ${nl} without a bold lead</b></p>
-    ${fl.length?`<div class="md"><table><thead><tr><th>Dish</th><th>Next cook</th><th>Steps hiding an action</th></tr></thead><tbody>${fl.map(r=>`<tr><td><a href="#/steps/${r.d.slug}">${esc(splitName(r.d.name)[0])}</a></td><td>${r.next?esc(r.next):'—'}</td><td>${r.hid.map(x=>esc((x.phase||'Method')+' '+x.k+': '+cut(x.text))).join('<br>')}</td></tr>`).join('')}</tbody></table></div>`:'<p>No step hides an action.</p>'}</div>`;
+  return `<div class="stack" style="padding-top:12px"><p class="muted small">Every step in the library, read the way the step list shows it. A step <b>hides an action</b> when a sentence after its lead starts with one (Add, Fold, Tip…); the target is none. The bold lead holds the whole instruction: the action, the amount, the vessel, the time and the stop cue. Reasons, checks and "If …" branches follow it. A step is <b>over budget</b> when its bold lead runs past 30 words or holds two or more semicolons, or the whole step runs past 70 words: split it, or move the text to its home (Critical path, CCP, Holding &amp; Assembly) and point to it. The target is none; a dish is brought under budget when it is next revised, and before its cook day when it is on a planned meal.</p>
+    <p><b>${res.length} dishes · ${steps} steps · ${hid} hiding an action in ${dh} dish${dh===1?'':'es'} · ${nl} without a bold lead · ${lg} over the step budget in ${dl} dish${dl===1?'':'es'}</b></p>
+    ${fl.length?`<div class="md"><table><thead><tr><th>Dish</th><th>Next cook</th><th>Steps to fix</th></tr></thead><tbody>${fl.map(r=>`<tr><td><a href="#/steps/${r.d.slug}">${esc(splitName(r.d.name)[0])}</a></td><td>${r.next?esc(r.next):'—'}</td><td>${[...r.hid.map(x=>esc((x.phase||'Method')+' '+x.k+' hides an action: '+cut(x.text))),...r.long.map(x=>esc((x.phase||'Method')+' '+x.k+' over budget ('+x.why+'): '+cut(x.text)))].join('<br>')}</td></tr>`).join('')}</tbody></table></div>`:'<p>No step hides an action or runs over the step budget.</p>'}</div>`;
 };
 const qtyShow=di=>di.qty!=null?qtyText(di).replace(/\s(piece|pieces|whole)$/i,''):'';
 function ingRow(di){
@@ -1734,7 +1739,7 @@ routes.more=()=>{
     <div class="morelist" style="margin-top:10px">
       <a href="#/validations"><div><div class="nm">Open checks</div><div class="mt">Designed parameters still to confirm, by when you next cook them</div></div><span class="ct">${openN}</span></a>
       <a href="#/docs"><div><div class="nm">Documents</div><div class="mt">Stored Word and PDF cooking sheets</div></div><span class="ct">${docsN}</span></a>
-      <a href="#/stepcheck"><div><div class="nm">Step check</div><div class="mt">Steps that hide an action behind their lead (target: none)</div></div><span class="ct">${stepN}</span></a>
+      <a href="#/stepcheck"><div><div class="nm">Step check</div><div class="mt">Steps that hide an action or run over the step budget (target: none)</div></div><span class="ct">${stepN}</span></a>
     </div>
     <p class="foot">${libBase().length} dishes · ${cooked} cooked · ${meals} meals<br>${DB.fromCache?'Offline — showing what this phone saved':'Live data'}${at?' · loaded '+at:''}<br><button class="btn ghost sm" style="margin-top:10px" onclick="refreshData(true)">Refresh now</button> <button class="btn ghost sm" style="margin-top:10px" onclick="sndTest()">Test timer sound</button></p>`;
 };
