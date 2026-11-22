@@ -1,15 +1,16 @@
 // ---------------------------------------------------------------- print (cooking sheet rendered from the database)
-// PRINT SPEC 1.5 (2026-11-06; 1.4 on 1 Nov, 1.3 on 31 Oct, 1.0–1.2 on 30 Oct). 1.5: equipment (ingredient department Equipment) prints on its own line under the shopping list, never in the pantry check. 1.4: the ingredient table prints a heading row for each part of a dish built from parts (dish_ingredient.section), and "not a purchase" stays off the sheet. 1.3: stored renders made before print spec 1.0 are an archive, not linked (docCurrent, set at load). Every printed cooking sheet and dish sheet is built here, so every print follows one method.
+// PRINT SPEC 1.6 (2026-11-22; 1.5 on 6 Nov, 1.4 on 1 Nov, 1.3 on 31 Oct, 1.0–1.2 on 30 Oct). 1.6: planning sections written as bold-labelled paragraphs are left out as well as headed ones, and the band check, arithmetic verification and attention budget join them; the dish header prints the one-line yield, once; the diner line prints on the cover only (a dish print keeps it under the header); #/printcheck counts text over the print limits (print protocol §7). 1.5: equipment (ingredient department Equipment) prints on its own line under the shopping list, never in the pantry check. 1.4: the ingredient table prints a heading row for each part of a dish built from parts (dish_ingredient.section), and "not a purchase" stays off the sheet. 1.3: stored renders made before print spec 1.0 are an archive, not linked (docCurrent, set at load). Every printed cooking sheet and dish sheet is built here, so every print follows one method.
 // The written spec is the print protocol in jins-cooking-governance (recipe_output_print_protocol.md). Change the two
 // together, then open #/printcheck and confirm the totals and that no flags appear.
 const PF={full:false,shop:false};
 const PRINT={
-  spec:'print spec 1.5',
+  spec:'print spec 1.6',
   // meal workflow: planning and verification sections stay in the database and off the cooking sheet
-  wfDrop:/^(?:the\s+)?menu\b|^failure\s+priorit|^heat\b|^oven\s+sequenc|^parallel\b|^(?:final\s+)?plating\s+window|^timeline\s+verification|^arithmetic\s+check|^meal\s+balance|^sourcing\s+notes?|^register\b|^nutrition|^flavou?r\s+architecture|^scaling/i,
+  wfDrop:/^(?:the\s+)?menu\b|^failure\s+priorit|^heat\b|^oven\s+sequenc|^parallel\b|^(?:final\s+)?plating\s+window|^timeline\s+verification|^arithmetic\b|^(?:timeline\s+)?verification\b|^band\s+check|^timeline\s+check|^attention\s+budget|^meal\s+balance|^sourcing\s+notes?|^register\b|^nutrition|^flavou?r\s+architecture|^scaling/i,
   // dish: design-record sections; the overview and yield/timing are lifted into the dish header instead
   dishDrop:/^flavou?r\s+architecture|^nutrition|^scaling|^correction\s+to\s+the\s+superseded|^superseded\s+variant|^dish\s+overview|^overview$|^yield\b|^timing$/i,
   ingDup:/^ingredients?(?:\s+list)?$/i, // a method's own ingredient list, dropped when the ingredient table prints
+  limits:{tl:30,hold:15,ccpFail:25,ccpRec:40,wfPara:60,dishPara:70,ov:30,timing:30}, // print protocol §7 (1.6): most words in a printed block
   pageRoles:/^(main|soup)$/i            // these start a page; every other dish follows on when it fits whole
 };
 function stripSections(t,names){ // drop "## <name>" blocks (to the next ## heading) — kept for older callers
@@ -33,6 +34,15 @@ function mdCut(t,re){ // remove "#… Title" blocks whose title matches re, to t
     out.push(l);
   }
   return {text:out.join('\n'),cut};
+}
+function wfCutLabels(t,re){ // 1.6: planning sections written as "**Label.** text" lines (not headings) leave the sheet too; the lines after a dropped label go with it until the next label or heading
+  const out=[]; let drop=false;
+  for(const l of String(t||'').replace(/\r/g,'').split('\n')){
+    const s=l.trim(), m=s.match(/^(?:[-•]\s+)?\*\*([^*]+?)[.:]?\*\*/)||s.match(/^#{1,6}\s+(.*)/);
+    if(m) drop=re.test(m[1].replace(/[*_`.:]/g,'').trim());
+    if(!drop) out.push(l);
+  }
+  return out.join('\n');
 }
 const mdPlain=lines=>lines.map(l=>l.replace(/^\s*(?:[-*•]|\d+[.)])\s+/,'').replace(/\*\*|__|[*_`]/g,'').trim()).filter(Boolean);
 const firstSentence=s=>{const m=String(s).match(/^.*?[.!?](?=\s+[A-Z0-9“"(]|$)/); return m?m[0]:String(s);};
@@ -122,12 +132,15 @@ function sheetDish(d,role,first,measure){
   </section>`;
   }
   let {text,cut}=mdCut(d.method_md,PRINT.dishDrop);
+  let yl='', dl=''; { // 1.6: the italic yield line above the first heading is the timing line (printed once); the diner line prints on the cover only
+    const h=text.search(/^#{1,6}\s/m), pre=h<0?text:text.slice(0,h), rest=h<0?'':text.slice(h);
+    text=pre.split('\n').filter(l=>{const t=l.trim(); if(!yl&&/^[*_]?Yield:/i.test(t)){yl=t.replace(/[*_]/g,'').trim(); return false;} if(!dl&&/^Diners?:/i.test(t)){dl=t; return false;} return true;}).join('\n')+rest; }
   if(d.ings.length) text=mdCut(text,PRINT.ingDup).text;
   const take=re=>mdPlain(cut.filter(c=>re.test(c.title)).flatMap(c=>c.lines));
-  const ov=take(/overview/i).join(' '), tm=take(/^yield|^timing$/i).join(' · ');
+  const ov=take(/overview/i).join(' '), tm=yl||take(/^yield|^timing$/i).join(' · ');
   const meta=[role,!tm&&d.servings?'serves '+num(d.servings):null,(d.equipment||[]).length?d.equipment.join(', '):null].filter(Boolean).join(' · ');
   return `<section class="${cls}"><h2>${esc(d.name)}</h2>
-    ${tm?`<p class="dsub">${esc(tm)}</p>`:''}${meta?`<div class="meta">${esc(meta)}</div>`:''}
+    ${tm?`<p class="dsub">${esc(tm)}</p>`:''}${meta?`<div class="meta">${esc(meta)}</div>`:''}${measure&&dl?`<div class="meta">${esc(dl)}</div>`:''}
     ${ov?`<p class="ov">${esc(firstSentence(ov))}</p>`:''}
     ${sheetIngs(d)}
     ${text.trim()?`<div class="md">${sheetPost(md(text),{ccp:true})}</div>`:'<p class="meta">No recipe text stored for this dish.</p>'}
@@ -138,7 +151,7 @@ function sheetBody(kind,owner){ // the inside of .sheet: used by the print view 
   const long=d=>new Date(d).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
   const ds=kind==='meal'?owner.dishes.map(x=>({d:x.dish,role:x.role})):[{d:owner,role:(owner.category||[]).join('/')}];
   const shop=kind==='meal'&&(PF.shop||PF.full)?sheetShop(ds.map(x=>x.d),owner):'';
-  const wf=owner.workflow_md?(PF.full?owner.workflow_md:mdCut(owner.workflow_md,PRINT.wfDrop).text):'';
+  const wf=owner.workflow_md?(PF.full?owner.workflow_md:wfCutLabels(mdCut(owner.workflow_md,PRINT.wfDrop).text,PRINT.wfDrop)):'';
   const cover=kind==='meal'?`<section class="cover${shop?' pg':''}"><h1>${esc(owner.name)}</h1><p class="sub">${esc([owner.last?long(owner.last+'T00:00:00'):null,owner.pax?owner.pax+' pax':null,'service '+(owner.service_time||'18:00').slice(0,5)].filter(Boolean).join(' · '))}</p>
       ${owner.wine_pairing?`<p><b>Wine</b> ${esc(owner.wine_pairing)}</p>`:''}
       <h3>Menu</h3><ul>${ds.map(x=>`<li><b>${esc(x.d.name)}</b> <span class="meta">${esc(x.role)}</span></li>`).join('')}</ul>
@@ -202,7 +215,7 @@ function pageMap(inner){
 routes.printcheck=()=>{
   setHeader('Print check','#/more'); tabs('more');
   setTimeout(()=>{try{printCheck();}catch(e){const o=document.getElementById('pcout'); if(o) o.textContent='Print check failed: '+e.message;}},30);
-  return `<div class="stack" style="padding-top:12px"><p class="muted small">Every meal's cooking sheet, paged as A4 with the print stylesheet (${esc(PRINT.spec)}). Flags: a page under 15% full · a main not starting a page · a design-only section printed · markdown left in the text · a table wider than the page.</p>
+  return `<div class="stack" style="padding-top:12px"><p class="muted small">Every meal's cooking sheet, paged as A4 with the print stylesheet (${esc(PRINT.spec)}). Flags: a page under 15% full · a main not starting a page · a design-only section printed · markdown left in the text · a table wider than the page. <b>Over the print limits</b> (print protocol §7): a timeline row over 30 words, a holding-chain cell over 15, a CCP failure over 25 or recovery over 40, a workflow paragraph over 60, a method paragraph or step over 70, an overview or timing line over 30; a meal is brought under them when it is next revised, and before its cook day when it is planned.</p>
     <div id="pcout"><span class="spin"></span> Measuring…</div></div>`;
 };
 function printCheck(){
@@ -214,13 +227,24 @@ function printCheck(){
       fill.forEach((f,i)=>{if(f<15) flags.push('page '+(i+1)+' is '+f+'% full');});
       sh.querySelectorAll('section.dish.pg').forEach(s=>{const r=s.getClientRects()[0]; if(r&&r.top-R.top>2) flags.push('main mid-page: '+s.querySelector('h2').textContent);});
       sh.querySelectorAll('h2,h3,h4').forEach(h=>{const t=h.textContent.trim(); if((h.closest('.pb')&&PRINT.wfDrop.test(t))||/^(scaling|flavou?r\s+architecture|nutrition)/i.test(t)) flags.push('printed: '+t);});
+      sh.querySelectorAll('.pb p>b:first-child,.pb p>strong:first-child').forEach(b=>{const t=b.textContent.replace(/[.:]\s*$/,'').trim(); if(PRINT.wfDrop.test(t)) flags.push('printed: '+t);});
       if(/\*\*|^#{1,4}\s|\|\s*-{3}/m.test(sh.textContent)) flags.push('markdown in text');
       sh.querySelectorAll('table').forEach(t=>{if([...t.rows].some(r=>r.getBoundingClientRect().width>W+2)) flags.push('table wider than the page');});
-      res.push({m,n,low:fill.filter(f=>f<40).length,flags});
+      const L=PRINT.limits, wc=e=>((e&&e.textContent)||'').trim().split(/\s+/).filter(Boolean).length, ov={}, add=(k,w)=>{const o=ov[k]||(ov[k]={n:0,max:0}); o.n++; o.max=Math.max(o.max,w);};
+      const hd=t=>[...((t.rows[0]||{}).cells||[])].map(c=>c.textContent.trim().toLowerCase());
+      sh.querySelectorAll('.pb table').forEach(t=>{if(!(t.classList.contains('tmin')||hd(t).includes('action'))) return; [...t.rows].slice(1).forEach(r=>{const c=r.cells[r.cells.length-1], w=wc(c); if(w>L.tl) add('timeline row',w);});});
+      sh.querySelectorAll('.pb table').forEach(t=>{if(hd(t)[0]!=='component') return; [...t.rows].slice(1).forEach(r=>[...r.cells].forEach(c=>{const w=wc(c); if(w>L.hold) add('holding cell',w);}));});
+      sh.querySelectorAll('table').forEach(t=>{const h=hd(t), fi=h.indexOf('failure mode'), ri=h.indexOf('recovery'); if(fi<0) return; [...t.rows].slice(1).forEach(r=>{const a=wc(r.cells[fi]), b=ri>=0?wc(r.cells[ri]):0; if(a>L.ccpFail) add('CCP failure',a); if(b>L.ccpRec) add('CCP recovery',b);});});
+      sh.querySelectorAll('.pb .md p,.pb .md li').forEach(e=>{const w=wc(e); if(w>L.wfPara) add('workflow paragraph',w);});
+      sh.querySelectorAll('section.dish .md p,section.dish .md li').forEach(e=>{const w=wc(e); if(w>L.dishPara) add('method block',w);});
+      sh.querySelectorAll('section.dish .ov').forEach(e=>{const w=wc(e); if(w>L.ov) add('overview',w);});
+      sh.querySelectorAll('section.dish .dsub').forEach(e=>{const w=wc(e); if(w>L.timing) add('timing line',w);});
+      const over=Object.entries(ov).map(([k,o])=>`${o.n>1?k.replace(/y$/,'ie')+'s':k} ${o.n} (max ${o.max})`), overN=Object.values(ov).reduce((a,o)=>a+o.n,0);
+      res.push({m,n,low:fill.filter(f=>f<40).length,flags,over,overN});
     }
   } finally {[PF.full,PF.shop]=keep; const st=document.getElementById('pcstage'); if(st) st.innerHTML='';}
-  const tot=res.reduce((a,r)=>a+r.n,0), low=res.reduce((a,r)=>a+r.low,0), fl=res.reduce((a,r)=>a+r.flags.length,0);
-  out.innerHTML=`<p><b>${res.length} meals · ${tot} pages · ${low} pages under 40% full · ${fl} flag${fl===1?'':'s'}</b></p>
-    <div class="md"><table><thead><tr><th>Meal</th><th>Pages</th><th>Under 40%</th><th>Flags</th></tr></thead><tbody>${res.map(r=>`<tr><td><a href="#/print/meal/${r.m.slug}">${esc(r.m.name)}</a></td><td>${r.n}</td><td>${r.low}</td><td>${esc(r.flags.join('; '))||'—'}</td></tr>`).join('')}</tbody></table></div>`;
+  const tot=res.reduce((a,r)=>a+r.n,0), low=res.reduce((a,r)=>a+r.low,0), fl=res.reduce((a,r)=>a+r.flags.length,0), ovt=res.reduce((a,r)=>a+r.overN,0), ovm=res.filter(r=>r.overN).length;
+  out.innerHTML=`<p><b>${res.length} meals · ${tot} pages · ${low} pages under 40% full · ${fl} flag${fl===1?'':'s'} · ${ovt} block${ovt===1?'':'s'} over the print limits in ${ovm} meal${ovm===1?'':'s'}</b></p>
+    <div class="md"><table><thead><tr><th>Meal</th><th>Pages</th><th>Under 40%</th><th>Flags</th><th>Over the print limits</th></tr></thead><tbody>${res.map(r=>`<tr><td><a href="#/print/meal/${r.m.slug}">${esc(r.m.name)}</a></td><td>${r.n}</td><td>${r.low}</td><td>${esc(r.flags.join('; '))||'—'}</td><td>${esc(r.over.join(' · '))||'—'}</td></tr>`).join('')}</tbody></table></div>`;
 }
 
